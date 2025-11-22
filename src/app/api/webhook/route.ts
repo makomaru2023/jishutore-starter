@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2025-11-17.clover',
-});
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-
 export async function POST(req: NextRequest) {
     const body = await req.text();
     const signature = req.headers.get('stripe-signature');
@@ -21,6 +15,10 @@ export async function POST(req: NextRequest) {
     let event: Stripe.Event;
 
     try {
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+            apiVersion: '2025-11-17.clover',
+        });
+        const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
         event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
     } catch (err) {
         console.error('Webhook署名検証エラー:', err);
