@@ -11,7 +11,7 @@ export default function Home() {
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8 text-center">
           <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
-            リハビリ職のための自主トレ素材庫
+            リハビリ職のための自主トレ素材庫 v2
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
             現場ですぐに使える、統一感のある自主トレイラストを無料でダウンロード。
