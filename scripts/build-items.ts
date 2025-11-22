@@ -1,4 +1,4 @@
-import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { S3Client, ListObjectsV2Command, ListObjectsV2CommandOutput } from "@aws-sdk/client-s3";
 import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -46,7 +46,7 @@ async function listAll(prefix: string) {
   const keys: { Key: string; Size: number }[] = [];
   let token: string | undefined = undefined;
   do {
-    const out = await s3.send(new ListObjectsV2Command({ Bucket: bucket, Prefix: prefix, ContinuationToken: token }));
+    const out: ListObjectsV2CommandOutput = await s3.send(new ListObjectsV2Command({ Bucket: bucket, Prefix: prefix, ContinuationToken: token }));
     for (const o of out.Contents ?? []) {
       if (!o.Key || o.Key.endsWith("/")) continue;
       keys.push({ Key: o.Key, Size: o.Size ?? 0 });
