@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 interface Plan {
     name: string;
@@ -36,18 +34,12 @@ export function PricingCard({ plan }: PricingCardProps) {
                 }),
             });
 
-            const { sessionId } = await response.json();
+            const { url } = await response.json();
 
-            const stripe = await stripePromise;
-            if (!stripe) {
-                throw new Error('Stripeの読み込みに失敗しました');
-            }
-
-            const { error } = await stripe.redirectToCheckout({ sessionId });
-
-            if (error) {
-                console.error('Stripe checkout error:', error);
-                alert('決済ページへの遷移に失敗しました。もう一度お試しください。');
+            if (url) {
+                window.location.href = url;
+            } else {
+                throw new Error('決済URLの取得に失敗しました');
             }
         } catch (error) {
             console.error('Checkout error:', error);
@@ -60,8 +52,8 @@ export function PricingCard({ plan }: PricingCardProps) {
     return (
         <div
             className={`relative rounded-2xl p-8 ${plan.highlighted
-                    ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-xl scale-105'
-                    : 'bg-white text-gray-900 shadow-lg'
+                ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-xl scale-105'
+                : 'bg-white text-gray-900 shadow-lg'
                 }`}
         >
             {plan.highlighted && (
@@ -116,8 +108,8 @@ export function PricingCard({ plan }: PricingCardProps) {
                 onClick={handleCheckout}
                 disabled={loading}
                 className={`w-full rounded-lg py-3 px-6 font-semibold transition-all ${plan.highlighted
-                        ? 'bg-white text-blue-600 hover:bg-blue-50 disabled:bg-gray-200'
-                        : 'bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-400'
+                    ? 'bg-white text-blue-600 hover:bg-blue-50 disabled:bg-gray-200'
+                    : 'bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-400'
                     } disabled:cursor-not-allowed`}
             >
                 {loading ? '処理中...' : '今すぐはじめる'}
