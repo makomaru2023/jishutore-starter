@@ -35,7 +35,7 @@ async function main() {
     let continuationToken: string | undefined = undefined;
 
     do {
-        const command = new ListObjectsV2Command({
+        const command: ListObjectsV2Command = new ListObjectsV2Command({
             Bucket: R2_BUCKET_NAME,
             MaxKeys: 1000,
             ContinuationToken: continuationToken,

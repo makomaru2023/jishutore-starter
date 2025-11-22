@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
-import { S3Client, HeadBucketCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { S3Client, HeadBucketCommand, ListObjectsV2Command, ListObjectsV2CommandOutput } from "@aws-sdk/client-s3";
 
 const accountId = process.env.R2_ACCOUNT_ID!;
 const bucket = process.env.R2_BUCKET!;
@@ -12,7 +12,7 @@ const endpoint = (process.env.R2_ENDPOINT || `https://${accountId}.r2.cloudflare
 async function tryClient(label: string, client: S3Client) {
   try {
     await client.send(new HeadBucketCommand({ Bucket: bucket }));
-    const out = await client.send(new ListObjectsV2Command({ Bucket: bucket, MaxKeys: 3 }));
+    const out: ListObjectsV2CommandOutput = await client.send(new ListObjectsV2Command({ Bucket: bucket, MaxKeys: 3 }));
     console.log(`✅ ${label} OK`, (out.Contents ?? []).map(o => o?.Key));
     return true;
   } catch (e) {

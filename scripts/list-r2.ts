@@ -23,7 +23,7 @@ const S3 = new S3Client({
 
 async function listObjects() {
     try {
-        const command = new ListObjectsV2Command({
+        const command: ListObjectsV2Command = new ListObjectsV2Command({
             Bucket: R2_BUCKET_NAME,
             Prefix: "basic/plain/",
             MaxKeys: 100,
