@@ -26,10 +26,10 @@ export async function POST(req: NextRequest) {
         });
 
         return NextResponse.json({ sessionId: session.id, url: session.url });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Stripe checkout error:', error);
         return NextResponse.json(
-            { error: 'チェックアウトセッションの作成に失敗しました' },
+            { error: error.message || 'チェックアウトセッションの作成に失敗しました' },
             { status: 500 }
         );
     }
