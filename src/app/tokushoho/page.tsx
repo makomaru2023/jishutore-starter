@@ -12,12 +12,12 @@ export default function TokushohoPage() {
                     <div className="space-y-6 text-gray-700">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-6">
                             <div className="font-semibold text-gray-900">販売事業者名</div>
-                            <div className="md:col-span-2">自主トレ素材庫.jp 運営事務局</div>
+                            <div className="md:col-span-2">Smart Reha</div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-6">
                             <div className="font-semibold text-gray-900">代表責任者</div>
-                            <div className="md:col-span-2">武 誠（アタケ マコト）</div>
+                            <div className="md:col-span-2">請求があったら遅滞なく開示します</div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-6">
@@ -36,7 +36,7 @@ export default function TokushohoPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-6">
                             <div className="font-semibold text-gray-900">メールアドレス</div>
-                            <div className="md:col-span-2">info@self-training.pro-kinkin-sss.com</div>
+                            <div className="md:col-span-2">smart.rehabili@gmail.com</div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-b pb-6">
