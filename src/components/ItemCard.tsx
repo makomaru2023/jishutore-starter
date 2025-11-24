@@ -20,6 +20,10 @@ export function ItemCard({ item }: ItemCardProps) {
         imageUrl = `/api/image?key=${encodeURIComponent(item.previewSrc)}`;
     }
 
+    // 簡易的な購入チェック (クライアントサイドのみ)
+    // 注意: これはセキュリティ的には不十分ですが、要件を満たすためのMVP実装です
+    const isPurchased = typeof document !== "undefined" && document.cookie.includes("purchased=true");
+
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
@@ -44,13 +48,22 @@ export function ItemCard({ item }: ItemCardProps) {
                     {item.title}
                 </h3>
                 <div className="mt-auto">
-                    <a
-                        href={item.fileHref}
-                        download
-                        className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                    >
-                        ダウンロード
-                    </a>
+                    {isPurchased ? (
+                        <a
+                            href={item.fileHref}
+                            download
+                            className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+                            ダウンロード
+                        </a>
+                    ) : (
+                        <a
+                            href="/pricing"
+                            className="inline-flex w-full items-center justify-center rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                        >
+                            購入してダウンロード
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

@@ -13,7 +13,8 @@ function SuccessContent() {
 
     useEffect(() => {
         if (sessionId) {
-            // ここで必要に応じてセッション情報を検証できます
+            // 簡易的な購入済みフラグをCookieに保存 (有効期限: 1年)
+            document.cookie = "purchased=true; path=/; max-age=31536000";
             setTimeout(() => setLoading(false), 1000);
         } else {
             setError('セッションIDが見つかりません');
