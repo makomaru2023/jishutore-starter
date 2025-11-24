@@ -21,7 +21,7 @@ export function Header() {
                         プライバシーポリシー
                     </Link>
                     <Link href="/tokushoho" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        特商法
+                        特定商取引法に基づく表記
                     </Link>
                 </nav>
             </div>

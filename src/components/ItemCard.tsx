@@ -29,13 +29,15 @@ export function ItemCard({ item }: ItemCardProps) {
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
-                <Image
-                    src={imageUrl}
-                    alt={item.title}
-                    fill
-                    className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                <Link href={`/items/${item.id}`}>
+                    <Image
+                        src={imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                </Link>
             </div>
             <div className="flex flex-1 flex-col p-4">
                 <div className="mb-2 flex items-center gap-2 text-xs text-gray-500">

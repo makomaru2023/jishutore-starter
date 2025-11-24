@@ -117,16 +117,22 @@ function SuccessContent() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                    href="/"
+                    href="/basic"
                     className="rounded-lg bg-blue-600 px-6 py-3 text-center text-white hover:bg-blue-700"
                 >
-                    ホームに戻る
+                    Basic素材を見る
+                </Link>
+                <Link
+                    href="/pro"
+                    className="rounded-lg border-2 border-gray-300 px-6 py-3 text-center text-gray-700 hover:bg-gray-50"
+                >
+                    Pro素材を見る
                 </Link>
                 <Link
                     href="/premium"
                     className="rounded-lg border-2 border-gray-300 px-6 py-3 text-center text-gray-700 hover:bg-gray-50"
                 >
-                    素材を見る
+                    Premium素材を見る
                 </Link>
             </div>
 
