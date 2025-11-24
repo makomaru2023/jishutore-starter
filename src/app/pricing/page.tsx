@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { PricingCard } from "@/components/PricingCard";
+import { Footer } from "@/components/Footer";
 
 export default function PricingPage() {
     const plans = [
@@ -88,11 +89,7 @@ export default function PricingPage() {
                 </div>
             </main>
 
-            <footer className="bg-white py-8 mt-12 border-t">
-                <div className="container mx-auto px-4 text-center text-gray-500">
-                    <p>© {new Date().getFullYear()} 自主トレ素材庫 All rights reserved.</p>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }
