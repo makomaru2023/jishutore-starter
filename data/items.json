@@ -4,7 +4,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Ankle Dorsiflexion And Plantarflexion",
-    "titleJa": "足首の曲げ伸ばし運動",
+    "titleJa": "足首背屈1",
     "previewSrc": "basic/plain/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fankle-dorsiflexion-and-plantarflexion.png",
     "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
@@ -63,7 +63,8 @@
     "title": "Hip Flexion With Knee Extended",
     "previewSrc": "basic/plain/hip-flexion-with-knee-extended.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fhip-flexion-with-knee-extended.png",
-    "fileName": "hip-flexion-with-knee-extended.png"
+    "fileName": "hip-flexion-with-knee-extended.png",
+    "titleJa": "もも上げ1"
   },
   {
     "id": "hip-lift",
@@ -99,7 +100,8 @@
     "title": "Seated Knee Extension",
     "previewSrc": "basic/plain/seated-knee-extension.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fseated-knee-extension.png",
-    "fileName": "seated-knee-extension.png"
+    "fileName": "seated-knee-extension.png",
+    "titleJa": "膝伸ばし1"
   },
   {
     "id": "shoulder-raise-with-bar",
@@ -126,7 +128,8 @@
     "title": "Side Lying Hip Abduction",
     "previewSrc": "basic/plain/side-lying-hip-abduction.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fside-lying-hip-abduction.png",
-    "fileName": "side-lying-hip-abduction.png"
+    "fileName": "side-lying-hip-abduction.png",
+    "titleJa": "側臥位股関節外転1"
   },
   {
     "id": "single-leg-stand",
@@ -144,7 +147,8 @@
     "title": "Sit To Stand Using Chair",
     "previewSrc": "basic/plain/sit-to-stand-using-chair.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fsit-to-stand-using-chair.png",
-    "fileName": "sit-to-stand-using-chair.png"
+    "fileName": "sit-to-stand-using-chair.png",
+    "titleJa": "立ち座り1"
   },
   {
     "id": "squat",
@@ -153,7 +157,8 @@
     "title": "Squat",
     "previewSrc": "basic/plain/squat.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fsquat.png",
-    "fileName": "squat.png"
+    "fileName": "squat.png",
+    "titleJa": "スクワット2"
   },
   {
     "id": "standing-hip-abduction",
@@ -189,7 +194,8 @@
     "title": "Ankle Dorsiflexion And Plantarflexion",
     "previewSrc": "basic/text/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fankle-dorsiflexion-and-plantarflexion.png",
-    "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
+    "fileName": "ankle-dorsiflexion-and-plantarflexion.png",
+    "titleJa": "足首背屈1(説明)"
   },
   {
     "id": "draw-in",
@@ -243,7 +249,8 @@
     "title": "Hip Flexion With Knee Extended",
     "previewSrc": "basic/text/hip-flexion-with-knee-extended.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fhip-flexion-with-knee-extended.png",
-    "fileName": "hip-flexion-with-knee-extended.png"
+    "fileName": "hip-flexion-with-knee-extended.png",
+    "titleJa": "もも上げ1(説明)"
   },
   {
     "id": "hip-lift",
@@ -279,7 +286,8 @@
     "title": "Seated Knee Extension",
     "previewSrc": "basic/text/seated-knee-extension.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fseated-knee-extension.png",
-    "fileName": "seated-knee-extension.png"
+    "fileName": "seated-knee-extension.png",
+    "titleJa": "膝伸ばし1(説明)"
   },
   {
     "id": "shoulder-raise-with-bar",
@@ -306,7 +314,8 @@
     "title": "Side Lying Hip Abduction",
     "previewSrc": "basic/text/side-lying-hip-abduction.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fside-lying-hip-abduction.png",
-    "fileName": "side-lying-hip-abduction.png"
+    "fileName": "side-lying-hip-abduction.png",
+    "titleJa": "側臥位股関節外転1(説明)"
   },
   {
     "id": "single-leg-stand",
@@ -324,7 +333,8 @@
     "title": "Sit To Stand Using Chair",
     "previewSrc": "basic/text/sit-to-stand-using-chair.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fsit-to-stand-using-chair.png",
-    "fileName": "sit-to-stand-using-chair.png"
+    "fileName": "sit-to-stand-using-chair.png",
+    "titleJa": "立ち座り1(説明)"
   },
   {
     "id": "squat",
@@ -333,7 +343,8 @@
     "title": "Squat",
     "previewSrc": "basic/text/squat.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fsquat.png",
-    "fileName": "squat.png"
+    "fileName": "squat.png",
+    "titleJa": "スクワット2(説明)"
   },
   {
     "id": "standing-hip-abduction",

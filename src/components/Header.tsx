@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeaderDropdown } from "./HeaderDropdown";
 
 export function Header() {
     return (
@@ -11,9 +12,7 @@ export function Header() {
                     <Link href="/free" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         無料素材
                     </Link>
-                    <Link href="/#materials" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        各プラン素材
-                    </Link>
+                    <HeaderDropdown />
                     <Link href="/pricing" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         料金プラン
                     </Link>
