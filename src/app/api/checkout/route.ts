@@ -3,7 +3,11 @@ import Stripe from 'stripe';
 
 export async function POST(req: NextRequest) {
     try {
-        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+        if (!process.env.STRIPE_SECRET_KEY) {
+            throw new Error('Server configuration error: Stripe Secret Key is missing');
+        }
+
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
             apiVersion: '2025-11-17.clover',
         });
 

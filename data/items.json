@@ -1,5 +1,14 @@
 [
   {
+    "id": "free-sample-1",
+    "tier": "free",
+    "category": "plain",
+    "title": "Ankle Dorsiflexion (Free Sample)",
+    "previewSrc": "basic/plain/ankle-dorsiflexion-and-plantarflexion.png",
+    "fileHref": "/api/image?key=basic%2Fplain%2Fankle-dorsiflexion-and-plantarflexion.png",
+    "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
+  },
+  {
     "id": "ankle-dorsiflexion-and-plantarflexion",
     "tier": "basic",
     "category": "plain",

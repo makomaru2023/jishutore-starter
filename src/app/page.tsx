@@ -9,27 +9,28 @@ export default function Home() {
       <Header />
       <main>
         {/* Hero Section */}
-        <div className="bg-white py-20 sm:py-24 lg:py-32">
+        {/* Hero Section */}
+        <div className="bg-blue-600 py-20 sm:py-24 lg:py-32">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              リハビリ職のための<br className="sm:hidden" />自主トレ素材庫.jp
+            <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+              自主トレ素材庫.jp
             </h1>
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600">
+            <p className="mx-auto mb-10 max-w-2xl text-lg text-blue-100">
               現場ですぐに使える、統一感のある自主トレイラストをダウンロード。<br />
               PDFやWordに貼り付けるだけで、質の高い指導資料が作成できます。
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 プランを見る
               </Link>
               <Link
-                href="/basic"
-                className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+                href="/free"
+                className="inline-flex items-center justify-center rounded-lg border border-blue-400 bg-blue-500 px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-blue-400"
               >
-                素材一覧を見る
+                無料素材を見る
               </Link>
             </div>
           </div>
