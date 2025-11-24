@@ -34,16 +34,16 @@ export function PricingCard({ plan }: PricingCardProps) {
                 }),
             });
 
-            const { url } = await response.json();
+            const data = await response.json();
 
-            if (url) {
-                window.location.href = url;
+            if (data.url) {
+                window.location.href = data.url;
             } else {
-                throw new Error('決済URLの取得に失敗しました');
+                throw new Error(data.error || '決済URLの取得に失敗しました');
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Checkout error:', error);
-            alert('エラーが発生しました。もう一度お試しください。');
+            alert(`エラーが発生しました: ${error.message}`);
         } finally {
             setLoading(false);
         }

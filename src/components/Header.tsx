@@ -8,17 +8,14 @@ export function Header() {
                     <span className="text-xl font-bold text-gray-900">自主トレ素材庫.jp</span>
                 </Link>
                 <nav className="hidden md:flex items-center gap-6">
-                    <Link href="/" className="text-sm font-medium text-gray-600 hover:text-gray-900">
-                        すべて
-                    </Link>
                     <Link href="/basic" className="text-sm font-medium text-gray-600 hover:text-gray-900">
-                        Basic
+                        無料素材
                     </Link>
-                    <Link href="/pro" className="text-sm font-medium text-gray-600 hover:text-gray-900">
-                        Pro
+                    <Link href="/pricing" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+                        料金プラン
                     </Link>
-                    <Link href="/premium" className="text-sm font-medium text-gray-600 hover:text-gray-900">
-                        Premium
+                    <Link href="/license" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+                        ライセンス
                     </Link>
                 </nav>
             </div>
