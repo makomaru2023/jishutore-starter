@@ -7,6 +7,10 @@ export async function POST(req: NextRequest) {
             throw new Error('Server configuration error: Stripe Secret Key is missing');
         }
 
+        if (!process.env.NEXT_PUBLIC_APP_URL) {
+            throw new Error('Server configuration error: NEXT_PUBLIC_APP_URL is missing');
+        }
+
         const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
             apiVersion: '2025-11-17.clover',
         });

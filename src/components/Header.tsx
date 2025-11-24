@@ -15,7 +15,13 @@ export function Header() {
                         料金プラン
                     </Link>
                     <Link href="/license" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        ライセンス
+                        利用規約・ガイドライン
+                    </Link>
+                    <Link href="/privacy" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
+                        プライバシーポリシー
+                    </Link>
+                    <Link href="/tokushoho" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
+                        特商法
                     </Link>
                 </nav>
             </div>

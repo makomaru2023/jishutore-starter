@@ -23,6 +23,7 @@ export function ItemCard({ item }: ItemCardProps) {
     // 簡易的な購入チェック (クライアントサイドのみ)
     // 注意: これはセキュリティ的には不十分ですが、要件を満たすためのMVP実装です
     const isPurchased = typeof document !== "undefined" && document.cookie.includes("purchased=true");
+    const isFree = item.tier === 'free';
 
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
@@ -48,7 +49,7 @@ export function ItemCard({ item }: ItemCardProps) {
                     {item.title}
                 </h3>
                 <div className="mt-auto">
-                    {isPurchased ? (
+                    {isPurchased || isFree ? (
                         <a
                             href={item.fileHref}
                             download

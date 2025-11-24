@@ -48,9 +48,7 @@ export default function FreePage() {
                         無料素材
                     </h1>
                     <p className="mx-auto max-w-2xl text-lg text-gray-600">
-                        毎月更新される無料の自主トレ素材です。<br />
-                        文字なし5点、文字あり5点の計10点を4ヶ月サイクルで更新しています。<br />
-                        <span className="text-sm text-gray-500">（現在は {new Date().getMonth() + 1}月のラインナップです）</span>
+                        無料素材のページは毎月更新される無料の自主トレ素材です。
                     </p>
                 </div>
 
