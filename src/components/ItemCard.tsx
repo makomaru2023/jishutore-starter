@@ -37,6 +37,17 @@ export function ItemCard({ item }: ItemCardProps) {
                         className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
+                    {!isPurchased && !isFree && (
+                        <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+                            <div className="absolute inset-0 flex flex-wrap content-center justify-center opacity-20 rotate-[-45deg] scale-150">
+                                {Array.from({ length: 10 }).map((_, i) => (
+                                    <div key={i} className="m-4 text-xl font-bold text-gray-900 whitespace-nowrap select-none">
+                                        SAMPLE
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </Link>
             </div>
             <div className="flex flex-1 flex-col p-4">

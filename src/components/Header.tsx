@@ -11,6 +11,9 @@ export function Header() {
                     <Link href="/free" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         無料素材
                     </Link>
+                    <Link href="/#materials" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
+                        素材一覧
+                    </Link>
                     <Link href="/pricing" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         料金プラン
                     </Link>

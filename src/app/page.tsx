@@ -36,6 +36,34 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Materials List Section */}
+        <div id="materials" className="bg-gray-50 py-24 sm:py-32">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                素材一覧
+              </h2>
+              <p className="mt-4 text-lg text-gray-600">
+                プランごとの素材一覧はこちらからご確認いただけます。
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+              <Link href="/basic" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">Basic素材</h3>
+                <p className="mt-2 text-center text-sm text-gray-500">基本的な自主トレ素材40点</p>
+              </Link>
+              <Link href="/pro" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">Pro素材</h3>
+                <p className="mt-2 text-center text-sm text-gray-500">Basic + 実用的な素材60点</p>
+              </Link>
+              <Link href="/premium" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">Premium素材</h3>
+                <p className="mt-2 text-center text-sm text-gray-500">全200点以上 + 新作優先</p>
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Features Section */}
         <div className="py-24 sm:py-32">
           <div className="container mx-auto px-4">
