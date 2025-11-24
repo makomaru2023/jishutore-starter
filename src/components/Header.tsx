@@ -12,19 +12,10 @@ export function Header() {
                         無料素材
                     </Link>
                     <Link href="/#materials" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        素材一覧
+                        各プラン素材
                     </Link>
                     <Link href="/pricing" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         料金プラン
-                    </Link>
-                    <Link href="/license" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        利用規約・ガイドライン
-                    </Link>
-                    <Link href="/privacy" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        プライバシーポリシー
-                    </Link>
-                    <Link href="/tokushoho" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        特定商取引法に基づく表記
                     </Link>
                 </nav>
             </div>

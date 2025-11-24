@@ -47,7 +47,11 @@ export default function Home() {
                 プランごとの素材一覧はこちらからご確認いただけます。
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              <Link href="/free" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">無料素材</h3>
+                <p className="mt-2 text-center text-sm text-gray-500">毎月更新の無料素材</p>
+              </Link>
               <Link href="/basic" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md">
                 <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">Basic素材</h3>
                 <p className="mt-2 text-center text-sm text-gray-500">基本的な自主トレ素材40点</p>
