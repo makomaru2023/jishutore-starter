@@ -59,17 +59,23 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             <main className="container mx-auto px-4 py-8">
                 <div className="mx-auto max-w-4xl bg-white rounded-xl shadow-sm overflow-hidden">
                     <div className="md:flex">
-                        {/* Image Section with Watermark */}
-                        <div className="md:w-1/2 bg-gray-100 relative aspect-[4/3] md:aspect-auto">
-                            <Image
-                                src={imageUrl}
-                                alt={title}
-                                fill
-                                className="object-contain p-8"
+                        {/* Image Section with Watermark Protection */}
+                        <div className="md:w-1/2 bg-gray-100 relative aspect-[4/3] md:aspect-auto flex items-center justify-center overflow-hidden">
+                            {/* 
+                                Protection Mechanism:
+                                1. The real image is set as a background image on a div.
+                                2. A transparent spacer image is placed on top.
+                                3. When user right-clicks/long-presses to save, they get the transparent spacer.
+                                4. The watermark is an overlay div on top of the background but below the spacer (or part of the background structure).
+                            */}
+                            <div
+                                className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+                                style={{ backgroundImage: `url(${imageUrl})` }}
                             />
-                            {/* CSS Watermark Overlay */}
+
+                            {/* Watermark Overlay */}
                             <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                                <div className="absolute inset-0 flex flex-wrap content-center justify-center opacity-20 rotate-[-45deg] scale-150">
+                                <div className="absolute inset-0 flex flex-wrap content-center justify-center opacity-30 rotate-[-45deg] scale-150">
                                     {Array.from({ length: 20 }).map((_, i) => (
                                         <div key={i} className="m-8 text-4xl font-bold text-gray-900 whitespace-nowrap select-none">
                                             SAMPLE
@@ -77,6 +83,14 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                                     ))}
                                 </div>
                             </div>
+
+                            {/* Transparent Spacer for "Save Image" Protection */}
+                            <img
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                alt={title}
+                                className="absolute inset-0 w-full h-full opacity-0 cursor-default z-10"
+                                style={{ objectFit: 'contain' }}
+                            />
                         </div>
 
                         {/* Content Section */}
