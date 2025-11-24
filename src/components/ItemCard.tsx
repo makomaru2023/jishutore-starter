@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Item } from "@/types";
+import Link from "next/link";
 
 interface ItemCardProps {
     item: Item;
@@ -46,7 +47,9 @@ export function ItemCard({ item }: ItemCardProps) {
                     </span>
                 </div>
                 <h3 className="mb-4 text-lg font-medium text-gray-900 line-clamp-2">
-                    {item.title}
+                    <Link href={`/items/${item.id}`} className="hover:text-blue-600 hover:underline">
+                        {item.titleJa || item.title}
+                    </Link>
                 </h3>
                 <div className="mt-auto">
                     {isPurchased || isFree ? (

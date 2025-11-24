@@ -4,6 +4,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Ankle Dorsiflexion And Plantarflexion",
+    "titleJa": "足首の曲げ伸ばし運動",
     "previewSrc": "basic/plain/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fankle-dorsiflexion-and-plantarflexion.png",
     "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
@@ -13,6 +14,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Draw In",
+    "titleJa": "ドローイン（腹式呼吸）",
     "previewSrc": "basic/plain/draw-in.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fdraw-in.png",
     "fileName": "draw-in.png"
@@ -22,6 +24,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Elbow Flexion With Bar",
+    "titleJa": "棒を使った肘の曲げ伸ばし",
     "previewSrc": "basic/plain/elbow-flexion-with-bar.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Felbow-flexion-with-bar.png",
     "fileName": "elbow-flexion-with-bar.png"
