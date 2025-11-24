@@ -9,12 +9,15 @@ export function Header() {
                     <span className="text-lg font-bold">自主トレ素材庫.jp</span>
                 </Link>
                 <nav className="hidden md:flex items-center gap-6">
-                    <Link href="/free" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
-                        無料素材
-                    </Link>
                     <HeaderDropdown />
                     <Link href="/pricing" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         料金プラン
+                    </Link>
+                    <Link href="/faq" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
+                        よくある質問
+                    </Link>
+                    <Link href="/contact" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
+                        お問合せ
                     </Link>
                 </nav>
             </div>
