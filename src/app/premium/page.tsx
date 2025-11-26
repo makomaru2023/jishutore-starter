@@ -1,5 +1,6 @@
 import { getItemsByTier } from "@/lib/items";
 import { ItemCard } from "@/components/ItemCard";
+import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 
 export default function PremiumPage() {
@@ -18,11 +19,7 @@ export default function PremiumPage() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {items.map((item) => (
-                        <ItemCard key={item.id} item={item} />
-                    ))}
-                </div>
+                <FilteredItemList items={items} />
             </main>
 
             <footer className="bg-white py-8 mt-12 border-t">

@@ -1,5 +1,6 @@
 import { getItemsByTier } from "@/lib/items";
 import { ItemCard } from "@/components/ItemCard";
+import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -53,11 +54,7 @@ export default function FreePage() {
                 </div>
 
                 {displayItems.length > 0 ? (
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {displayItems.map((item) => (
-                            <ItemCard key={item.id} item={{ ...item, tier: 'free' }} /> // Override tier to 'free' for display/logic if needed
-                        ))}
-                    </div>
+                    <FilteredItemList items={displayItems.map(item => ({ ...item, tier: 'free' }))} />
                 ) : (
                     <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
                         <p className="text-gray-500">
