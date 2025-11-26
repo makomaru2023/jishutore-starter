@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-
 interface PricingCardProps {
     title: string;
     price: string;
@@ -73,40 +72,23 @@ export function PricingCard({
                         <svg className="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                         </svg>
-                        </span>
+                        {feature}
                     </li>
                 ))}
             </ul>
-
             <button
                 onClick={handleCheckout}
-                disabled={loading}
-                className={`w-full rounded-lg py-3 px-6 font-semibold transition-all ${plan.highlighted
-                    ? 'bg-white text-blue-600 hover:bg-blue-50 disabled:bg-gray-200'
-                    : 'bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-400'
-                    } disabled:cursor-not-allowed`}
+                disabled={isLoading}
+                className={`mt-auto block w-full rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${recommended
+                        ? 'bg-blue-600 text-white hover:bg-blue-500 focus-visible:outline-blue-600'
+                        : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                    }`}
             >
-                {loading ? '処理中...' : '今すぐはじめる'}
+                {isLoading ? '処理中...' : buttonText}
             </button>
-
-            <div className="mt-4 text-center">
-                <a
-                    href="/license"
-                    className={`text-sm underline ${plan.highlighted ? 'text-blue-100 hover:text-white' : 'text-blue-600 hover:text-blue-800'
-                        }`}
-                >
-                    利用規約
-                </a>
-                <span className={`mx-2 ${plan.highlighted ? 'text-blue-200' : 'text-gray-400'}`}>と</span>
-                <a
-                    href="/license"
-                    className={`text-sm underline ${plan.highlighted ? 'text-blue-100 hover:text-white' : 'text-blue-600 hover:text-blue-800'
-                        }`}
-                >
-                    ライセンス
-                </a>
-                <span className={`${plan.highlighted ? 'text-blue-100' : 'text-gray-600'}`}> に同意します</span>
-            </div>
-        </div >
+            {error && (
+                <p className="mt-2 text-sm text-red-600 text-center">{error}</p>
+            )}
+        </div>
     );
 }
