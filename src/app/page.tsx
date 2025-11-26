@@ -11,7 +11,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="bg-gradient-to-b from-blue-600 to-blue-800 py-20 sm:py-28 lg:py-32">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="mb-12 text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-relaxed">
+            <h1 className="mb-12 text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-loose">
               リハビリ資料作成の時間を、<br className="hidden sm:block" />
               もっと「患者様と向き合う時間」へ。
             </h1>
