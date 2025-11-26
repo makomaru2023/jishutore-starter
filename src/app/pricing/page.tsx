@@ -22,16 +22,15 @@ export default function PricingPage() {
                         {/* Basic Plan */}
                         <PricingCard
                             title="Basic"
-                            price="500"
+                            price="980"
                             description="まずはここから。基本的な自主トレ素材セット。"
                             features={[
                                 "基本的な自主トレ素材 40点",
-                                "整形外科疾患の基本運動",
                                 "買い切り（追加費用なし）",
                                 "商用利用OK",
                                 "クレジット表記不要"
                             ]}
-                            priceId="price_1SVwPdFoWwVKxcZhmtNyRVOZ"
+                            priceId="price_1SXaSvFoWwVKxcZhcOdvsgho"
                             buttonText="Basicプランを購入"
                             recommended={false}
                         />
@@ -39,7 +38,7 @@ export default function PricingPage() {
                         {/* Pro Plan */}
                         <PricingCard
                             title="Pro"
-                            price="980"
+                            price="1,980"
                             description="臨床でよく使う、実用的な素材を追加したセット。"
                             features={[
                                 "Basicの内容すべて",
@@ -49,7 +48,7 @@ export default function PricingPage() {
                                 "商用利用OK",
                                 "クレジット表記不要"
                             ]}
-                            priceId="price_1SVwPdFoWwVKxcZhic27pdaX"
+                            priceId="price_1SXaSwFoWwVKxcZhWPk8zF47"
                             buttonText="Proプランを購入"
                             recommended={true}
                         />
@@ -67,7 +66,7 @@ export default function PricingPage() {
                                 "商用利用OK",
                                 "クレジット表記不要"
                             ]}
-                            priceId="price_1SVwPeFoWwVKxcZhjMyJG3W1"
+                            priceId="price_1SXaSxFoWwVKxcZhHswrVeNp"
                             buttonText="Premiumプランを購入"
                             recommended={false}
                         />
@@ -93,8 +92,8 @@ export default function PricingPage() {
                                     <tr>
                                         <td className="px-6 py-4 font-medium">価格（税込）</td>
                                         <td className="px-6 py-4 text-center">0円</td>
-                                        <td className="px-6 py-4 text-center">500円</td>
-                                        <td className="px-6 py-4 text-center font-bold">980円</td>
+                                        <td className="px-6 py-4 text-center">980円</td>
+                                        <td className="px-6 py-4 text-center font-bold">1,980円</td>
                                         <td className="px-6 py-4 text-center font-bold">2,980円</td>
                                     </tr>
                                     <tr>
