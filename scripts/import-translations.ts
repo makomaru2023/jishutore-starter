@@ -37,22 +37,44 @@ function importTranslations() {
         skip_empty_lines: true
     });
 
-    let updatedCount = 0;
+    // Create a lookup map: tier -> category -> fileName -> title
+    const translationMap: Record<string, Record<string, Record<string, string>>> = {};
 
     records.forEach(record => {
-        const newTitle = record.new_title_ja?.trim() || record.current_title_ja?.trim();
+        const title = record.new_title_ja?.trim() || record.current_title_ja?.trim();
+        if (!title) return;
 
+        if (!translationMap[record.tier]) translationMap[record.tier] = {};
+        if (!translationMap[record.tier][record.category]) translationMap[record.tier][record.category] = {};
+
+        translationMap[record.tier][record.category][record.fileName] = title;
+    });
+
+    let updatedCount = 0;
+
+    items.forEach(item => {
+        let newTitle = translationMap[item.tier]?.[item.category]?.[item.fileName];
+
+        // Fallback: If no direct match, try the opposite category in the same tier
         if (!newTitle) {
-            return;
+            const oppositeCategory = item.category === 'plain' ? 'text' : 'plain';
+            const fallbackTitle = translationMap[item.tier]?.[oppositeCategory]?.[item.fileName];
+
+            if (fallbackTitle) {
+                if (item.category === 'text') {
+                    // plain -> text: Add suffix if not present
+                    newTitle = fallbackTitle.includes('【文字あり】') ? fallbackTitle : `${fallbackTitle}【文字あり】`;
+                } else {
+                    // text -> plain: Remove suffix
+                    newTitle = fallbackTitle.replace(/【文字あり】$/, '');
+                }
+                // console.log(`Fallback used for ${item.tier}/${item.category}/${item.fileName}: ${fallbackTitle} -> ${newTitle}`);
+            }
         }
 
-        const match = items.find(item => item.fileName === record.fileName);
-        if (match) {
-            if (match.titleJa !== newTitle) {
-                match.titleJa = newTitle;
-                updatedCount++;
-                // console.log(`Updated: ${match.fileName} -> ${newTitle}`);
-            }
+        if (newTitle && item.titleJa !== newTitle) {
+            item.titleJa = newTitle;
+            updatedCount++;
         }
     });
 

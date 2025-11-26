@@ -4,7 +4,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Ankle Dorsiflexion And Plantarflexion",
-    "titleJa": "足関節の底屈・背屈【文字あり】",
+    "titleJa": "足関節の底屈・背屈",
     "previewSrc": "basic/plain/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fankle-dorsiflexion-and-plantarflexion.png",
     "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
@@ -14,7 +14,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Draw In",
-    "titleJa": "ドローイン【文字あり】",
+    "titleJa": "ドローイン",
     "previewSrc": "basic/plain/draw-in.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fdraw-in.png",
     "fileName": "draw-in.png"
@@ -24,7 +24,7 @@
     "tier": "basic",
     "category": "plain",
     "title": "Elbow Flexion With Bar",
-    "titleJa": "棒を使った肘の屈伸【文字あり】",
+    "titleJa": "棒を使った肘の屈伸",
     "previewSrc": "basic/plain/elbow-flexion-with-bar.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Felbow-flexion-with-bar.png",
     "fileName": "elbow-flexion-with-bar.png"
@@ -37,7 +37,7 @@
     "previewSrc": "basic/plain/hamstring-stretch.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fhamstring-stretch.png",
     "fileName": "hamstring-stretch.png",
-    "titleJa": "下後面のストレッチ【文字あり】"
+    "titleJa": "イス座位でハムストリングスのストレッチ"
   },
   {
     "id": "heel-raise",
@@ -47,7 +47,7 @@
     "previewSrc": "basic/plain/heel-raise.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fheel-raise.png",
     "fileName": "heel-raise.png",
-    "titleJa": "ヒールライズ【文字あり】"
+    "titleJa": "ヒールライズ"
   },
   {
     "id": "hip-extension-exercise",
@@ -57,7 +57,7 @@
     "previewSrc": "basic/plain/hip-extension-exercise.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fhip-extension-exercise.png",
     "fileName": "hip-extension-exercise.png",
-    "titleJa": "立位で股関節伸展運動"
+    "titleJa": "股関節伸展運動"
   },
   {
     "id": "hip-flexion-with-knee-extended",
@@ -97,7 +97,7 @@
     "previewSrc": "basic/plain/quadriceps-stretch.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fquadriceps-stretch.png",
     "fileName": "quadriceps-stretch.png",
-    "titleJa": "四頭筋ストレッチ-立位"
+    "titleJa": "(立位)四頭筋ストレッチ"
   },
   {
     "id": "seated-knee-extension",
@@ -107,7 +107,7 @@
     "previewSrc": "basic/plain/seated-knee-extension.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fseated-knee-extension.png",
     "fileName": "seated-knee-extension.png",
-    "titleJa": "四頭筋トレーニング-斜め"
+    "titleJa": "（イス座位）膝伸展運動"
   },
   {
     "id": "shoulder-raise-with-bar",
@@ -117,7 +117,7 @@
     "previewSrc": "basic/plain/shoulder-raise-with-bar.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fshoulder-raise-with-bar.png",
     "fileName": "shoulder-raise-with-bar.png",
-    "titleJa": "棒を使用した肩関節屈曲運動"
+    "titleJa": "棒を把持して両上肢挙上"
   },
   {
     "id": "shoulder-raise",
@@ -127,7 +127,7 @@
     "previewSrc": "basic/plain/shoulder-raise.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fshoulder-raise.png",
     "fileName": "shoulder-raise.png",
-    "titleJa": "肩挙上運動"
+    "titleJa": "肩甲骨の挙上"
   },
   {
     "id": "side-lying-hip-abduction",
@@ -147,7 +147,7 @@
     "previewSrc": "basic/plain/single-leg-stand.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Fsingle-leg-stand.png",
     "fileName": "single-leg-stand.png",
-    "titleJa": "イスを把持して片足立ち"
+    "titleJa": "片足立ち"
   },
   {
     "id": "sit-to-stand-using-chair",
@@ -187,7 +187,7 @@
     "previewSrc": "basic/plain/trunk-rotation.png",
     "fileHref": "/api/image?key=basic%2Fplain%2Ftrunk-rotation.png",
     "fileName": "trunk-rotation.png",
-    "titleJa": "体幹の回旋"
+    "titleJa": "イス座位で体幹の回旋"
   },
   {
     "id": "wall-achilles-stretch",
@@ -207,7 +207,7 @@
     "previewSrc": "basic/text/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fankle-dorsiflexion-and-plantarflexion.png",
     "fileName": "ankle-dorsiflexion-and-plantarflexion.png",
-    "titleJa": "足首背屈1(説明)"
+    "titleJa": "足首の底屈・背屈"
   },
   {
     "id": "draw-in",
@@ -216,7 +216,8 @@
     "title": "Draw In",
     "previewSrc": "basic/text/draw-in.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fdraw-in.png",
-    "fileName": "draw-in.png"
+    "fileName": "draw-in.png",
+    "titleJa": "ドローイン【文字あり】"
   },
   {
     "id": "elbow-flexion-with-bar",
@@ -225,7 +226,8 @@
     "title": "Elbow Flexion With Bar",
     "previewSrc": "basic/text/elbow-flexion-with-bar.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Felbow-flexion-with-bar.png",
-    "fileName": "elbow-flexion-with-bar.png"
+    "fileName": "elbow-flexion-with-bar.png",
+    "titleJa": "棒を使った肘の屈伸【文字あり】"
   },
   {
     "id": "hamstring-stretch",
@@ -234,7 +236,8 @@
     "title": "Hamstring Stretch",
     "previewSrc": "basic/text/hamstring-stretch.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fhamstring-stretch.png",
-    "fileName": "hamstring-stretch.png"
+    "fileName": "hamstring-stretch.png",
+    "titleJa": "イス座位でハムストリングスのストレッチ【文字あり】"
   },
   {
     "id": "heel-raise",
@@ -243,7 +246,8 @@
     "title": "Heel Raise",
     "previewSrc": "basic/text/heel-raise.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fheel-raise.png",
-    "fileName": "heel-raise.png"
+    "fileName": "heel-raise.png",
+    "titleJa": "ヒールライズ【文字あり】"
   },
   {
     "id": "hip-extension-exercise",
@@ -252,7 +256,8 @@
     "title": "Hip Extension Exercise",
     "previewSrc": "basic/text/hip-extension-exercise.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fhip-extension-exercise.png",
-    "fileName": "hip-extension-exercise.png"
+    "fileName": "hip-extension-exercise.png",
+    "titleJa": "股関節伸展運動【文字あり】"
   },
   {
     "id": "hip-flexion-with-knee-extended",
@@ -262,7 +267,7 @@
     "previewSrc": "basic/text/hip-flexion-with-knee-extended.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fhip-flexion-with-knee-extended.png",
     "fileName": "hip-flexion-with-knee-extended.png",
-    "titleJa": "もも上げ1(説明)"
+    "titleJa": "自動SLR【文字あり】"
   },
   {
     "id": "hip-lift",
@@ -271,7 +276,8 @@
     "title": "Hip Lift",
     "previewSrc": "basic/text/hip-lift.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fhip-lift.png",
-    "fileName": "hip-lift.png"
+    "fileName": "hip-lift.png",
+    "titleJa": "お尻上げ【文字あり】"
   },
   {
     "id": "pelvic-tilt",
@@ -280,7 +286,8 @@
     "title": "Pelvic Tilt",
     "previewSrc": "basic/text/pelvic-tilt.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fpelvic-tilt.png",
-    "fileName": "pelvic-tilt.png"
+    "fileName": "pelvic-tilt.png",
+    "titleJa": "骨盤の前後傾【文字あり】"
   },
   {
     "id": "quadriceps-stretch",
@@ -289,7 +296,8 @@
     "title": "Quadriceps Stretch",
     "previewSrc": "basic/text/quadriceps-stretch.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fquadriceps-stretch.png",
-    "fileName": "quadriceps-stretch.png"
+    "fileName": "quadriceps-stretch.png",
+    "titleJa": "(立位)四頭筋ストレッチ【文字あり】"
   },
   {
     "id": "seated-knee-extension",
@@ -299,7 +307,7 @@
     "previewSrc": "basic/text/seated-knee-extension.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fseated-knee-extension.png",
     "fileName": "seated-knee-extension.png",
-    "titleJa": "膝伸ばし1(説明)"
+    "titleJa": "（イス座位）膝伸展運動【文字あり】"
   },
   {
     "id": "shoulder-raise-with-bar",
@@ -308,7 +316,8 @@
     "title": "Shoulder Raise With Bar",
     "previewSrc": "basic/text/shoulder-raise-with-bar.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fshoulder-raise-with-bar.png",
-    "fileName": "shoulder-raise-with-bar.png"
+    "fileName": "shoulder-raise-with-bar.png",
+    "titleJa": "棒を把持して両上肢挙上【文字あり】"
   },
   {
     "id": "shoulder-raise",
@@ -317,7 +326,8 @@
     "title": "Shoulder Raise",
     "previewSrc": "basic/text/shoulder-raise.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fshoulder-raise.png",
-    "fileName": "shoulder-raise.png"
+    "fileName": "shoulder-raise.png",
+    "titleJa": "肩甲骨の挙上【文字あり】"
   },
   {
     "id": "side-lying-hip-abduction",
@@ -327,7 +337,7 @@
     "previewSrc": "basic/text/side-lying-hip-abduction.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fside-lying-hip-abduction.png",
     "fileName": "side-lying-hip-abduction.png",
-    "titleJa": "側臥位股関節外転1(説明)"
+    "titleJa": "側臥位で股関節外転運動【文字あり】"
   },
   {
     "id": "single-leg-stand",
@@ -336,7 +346,8 @@
     "title": "Single Leg Stand",
     "previewSrc": "basic/text/single-leg-stand.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fsingle-leg-stand.png",
-    "fileName": "single-leg-stand.png"
+    "fileName": "single-leg-stand.png",
+    "titleJa": "片足立ち【文字あり】"
   },
   {
     "id": "sit-to-stand-using-chair",
@@ -346,7 +357,7 @@
     "previewSrc": "basic/text/sit-to-stand-using-chair.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fsit-to-stand-using-chair.png",
     "fileName": "sit-to-stand-using-chair.png",
-    "titleJa": "立ち座り1(説明)"
+    "titleJa": "イスを使用した立ち座り【文字あり】"
   },
   {
     "id": "squat",
@@ -356,7 +367,7 @@
     "previewSrc": "basic/text/squat.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fsquat.png",
     "fileName": "squat.png",
-    "titleJa": "スクワット2(説明)"
+    "titleJa": "スクワット【文字あり】"
   },
   {
     "id": "standing-hip-abduction",
@@ -365,7 +376,8 @@
     "title": "Standing Hip Abduction",
     "previewSrc": "basic/text/standing-hip-abduction.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fstanding-hip-abduction.png",
-    "fileName": "standing-hip-abduction.png"
+    "fileName": "standing-hip-abduction.png",
+    "titleJa": "立位で股関節外転運動【文字あり】"
   },
   {
     "id": "trunk-rotation",
@@ -374,7 +386,8 @@
     "title": "Trunk Rotation",
     "previewSrc": "basic/text/trunk-rotation.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Ftrunk-rotation.png",
-    "fileName": "trunk-rotation.png"
+    "fileName": "trunk-rotation.png",
+    "titleJa": "イス座位で体幹の回旋【文字あり】"
   },
   {
     "id": "wall-achilles-stretch",
@@ -383,7 +396,8 @@
     "title": "Wall Achilles Stretch",
     "previewSrc": "basic/text/wall-achilles-stretch.png",
     "fileHref": "/api/image?key=basic%2Ftext%2Fwall-achilles-stretch.png",
-    "fileName": "wall-achilles-stretch.png"
+    "fileName": "wall-achilles-stretch.png",
+    "titleJa": "壁を使用してアキレス腱のストレッチ【文字あり】"
   },
   {
     "id": "air-bike",
@@ -393,7 +407,7 @@
     "previewSrc": "premium/plain/air-bike.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fair-bike.png",
     "fileName": "air-bike.png",
-    "titleJa": "エアロバイク【文字あり】"
+    "titleJa": "エアロバイク"
   },
   {
     "id": "ankle-dorsiflexion-and-plantarflexion",
@@ -402,7 +416,8 @@
     "title": "Ankle Dorsiflexion And Plantarflexion",
     "previewSrc": "premium/plain/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fankle-dorsiflexion-and-plantarflexion.png",
-    "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
+    "fileName": "ankle-dorsiflexion-and-plantarflexion.png",
+    "titleJa": "足関節の底屈・背屈"
   },
   {
     "id": "cane-walking",
@@ -412,7 +427,7 @@
     "previewSrc": "premium/plain/cane-walking.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fcane-walking.png",
     "fileName": "cane-walking.png",
-    "titleJa": "杖歩き【文字あり】"
+    "titleJa": "杖歩行"
   },
   {
     "id": "cat-and-dog",
@@ -422,7 +437,7 @@
     "previewSrc": "premium/plain/cat-and-dog.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fcat-and-dog.png",
     "fileName": "cat-and-dog.png",
-    "titleJa": "キャットアンドドッグ【文字あり】"
+    "titleJa": "キャットアンドドッグ"
   },
   {
     "id": "chest-opening-with-stretch-pole",
@@ -432,7 +447,7 @@
     "previewSrc": "premium/plain/chest-opening-with-stretch-pole.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fchest-opening-with-stretch-pole.png",
     "fileName": "chest-opening-with-stretch-pole.png",
-    "titleJa": "胸開き運動【文字あり】"
+    "titleJa": "胸開き運動"
   },
   {
     "id": "chopstick-training-with-azuki",
@@ -442,7 +457,7 @@
     "previewSrc": "premium/plain/chopstick-training-with-azuki.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fchopstick-training-with-azuki.png",
     "fileName": "chopstick-training-with-azuki.png",
-    "titleJa": "小豆を使用しての箸操作【文字あり】"
+    "titleJa": "小豆を使用しての箸操作"
   },
   {
     "id": "coin-finger-movement-training",
@@ -452,7 +467,7 @@
     "previewSrc": "premium/plain/coin-finger-movement-training.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fcoin-finger-movement-training.png",
     "fileName": "coin-finger-movement-training.png",
-    "titleJa": "硬貨を使用しての指運動【文字あり】"
+    "titleJa": "コインを使用して手指の運動"
   },
   {
     "id": "contraindicated-exercises-for-spine",
@@ -462,7 +477,7 @@
     "previewSrc": "premium/plain/contraindicated-exercises-for-spine.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fcontraindicated-exercises-for-spine.png",
     "fileName": "contraindicated-exercises-for-spine.png",
-    "titleJa": "脊椎疾患の禁忌運動【文字あり】"
+    "titleJa": "脊椎疾患の禁忌運動"
   },
   {
     "id": "diagonal-exercise",
@@ -472,7 +487,7 @@
     "previewSrc": "premium/plain/diagonal-exercise.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fdiagonal-exercise.png",
     "fileName": "diagonal-exercise.png",
-    "titleJa": "ダイアゴナル【文字あり】"
+    "titleJa": "ダイアゴナル"
   },
   {
     "id": "door-way-stretch",
@@ -482,7 +497,7 @@
     "previewSrc": "premium/plain/door-way-stretch.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fdoor-way-stretch.png",
     "fileName": "door-way-stretch.png",
-    "titleJa": "ドアウェイストレッチ【文字あり】"
+    "titleJa": "ドアウェイストレッチ"
   },
   {
     "id": "double-leg-raise",
@@ -492,7 +507,7 @@
     "previewSrc": "premium/plain/double-leg-raise.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fdouble-leg-raise.png",
     "fileName": "double-leg-raise.png",
-    "titleJa": "両足レッグレイズ【文字あり】"
+    "titleJa": "両足レッグレイズ"
   },
   {
     "id": "draw-in",
@@ -501,7 +516,8 @@
     "title": "Draw In",
     "previewSrc": "premium/plain/draw-in.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fdraw-in.png",
-    "fileName": "draw-in.png"
+    "fileName": "draw-in.png",
+    "titleJa": "ドローイン"
   },
   {
     "id": "dumbbell-shoulder-abduction",
@@ -511,7 +527,7 @@
     "previewSrc": "premium/plain/dumbbell-shoulder-abduction.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fdumbbell-shoulder-abduction.png",
     "fileName": "dumbbell-shoulder-abduction.png",
-    "titleJa": "ダンベルを使った肩関節外転運動【文字あり】"
+    "titleJa": "ダンベルを使った肩関節外展運動"
   },
   {
     "id": "elbow-flexion-with-bar",
@@ -520,7 +536,8 @@
     "title": "Elbow Flexion With Bar",
     "previewSrc": "premium/plain/elbow-flexion-with-bar.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Felbow-flexion-with-bar.png",
-    "fileName": "elbow-flexion-with-bar.png"
+    "fileName": "elbow-flexion-with-bar.png",
+    "titleJa": "棒を使った肘の屈伸"
   },
   {
     "id": "fixed-walker-walking.png",
@@ -540,7 +557,7 @@
     "previewSrc": "premium/plain/foot-rolling.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Ffoot-rolling.png",
     "fileName": "foot-rolling.png",
-    "titleJa": "ボールを使用した足裏マッサージ【文字あり】"
+    "titleJa": "ボールを使用した足裏マッサージ"
   },
   {
     "id": "forearm-hand-stretch",
@@ -550,7 +567,7 @@
     "previewSrc": "premium/plain/forearm-hand-stretch.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fforearm-hand-stretch.png",
     "fileName": "forearm-hand-stretch.png",
-    "titleJa": "前腕のストレッチ【文字あり】"
+    "titleJa": "前腕のストレッチ"
   },
   {
     "id": "fullbody-chopstick-training-with-azuki",
@@ -560,7 +577,7 @@
     "previewSrc": "premium/plain/fullbody-chopstick-training-with-azuki.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Ffullbody-chopstick-training-with-azuki.png",
     "fileName": "fullbody-chopstick-training-with-azuki.png",
-    "titleJa": "小豆を使った全身の箸操作【文字あり】"
+    "titleJa": "小豆を使用しての箸操作-全身"
   },
   {
     "id": "hamstring-stretch",
@@ -569,7 +586,8 @@
     "title": "Hamstring Stretch",
     "previewSrc": "premium/plain/hamstring-stretch.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fhamstring-stretch.png",
-    "fileName": "hamstring-stretch.png"
+    "fileName": "hamstring-stretch.png",
+    "titleJa": "ハムストリングスストレッチ"
   },
   {
     "id": "hand-support-plank",
@@ -579,7 +597,7 @@
     "previewSrc": "premium/plain/hand-support-plank.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fhand-support-plank.png",
     "fileName": "hand-support-plank.png",
-    "titleJa": "手を支えながらプランク【文字あり】"
+    "titleJa": "手をついてプランク"
   },
   {
     "id": "heel-raise",
@@ -588,7 +606,8 @@
     "title": "Heel Raise",
     "previewSrc": "premium/plain/heel-raise.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fheel-raise.png",
-    "fileName": "heel-raise.png"
+    "fileName": "heel-raise.png",
+    "titleJa": "ヒールライズ"
   },
   {
     "id": "heel-slide",
@@ -617,7 +636,8 @@
     "title": "Hip Extension Exercise",
     "previewSrc": "premium/plain/hip-extension-exercise.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fhip-extension-exercise.png",
-    "fileName": "hip-extension-exercise.png"
+    "fileName": "hip-extension-exercise.png",
+    "titleJa": "立位で股関節伸展運動"
   },
   {
     "id": "hip-flexion-with-knee-extended",
@@ -626,7 +646,8 @@
     "title": "Hip Flexion With Knee Extended",
     "previewSrc": "premium/plain/hip-flexion-with-knee-extended.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fhip-flexion-with-knee-extended.png",
-    "fileName": "hip-flexion-with-knee-extended.png"
+    "fileName": "hip-flexion-with-knee-extended.png",
+    "titleJa": "自動SLR"
   },
   {
     "id": "hip-hinge-with-bar",
@@ -655,7 +676,8 @@
     "title": "Hip Lift",
     "previewSrc": "premium/plain/hip-lift.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fhip-lift.png",
-    "fileName": "hip-lift.png"
+    "fileName": "hip-lift.png",
+    "titleJa": "お尻上げ"
   },
   {
     "id": "knee-flexion-extension-with-feet-flat",
@@ -734,7 +756,8 @@
     "title": "Pelvic Tilt",
     "previewSrc": "premium/plain/pelvic-tilt.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fpelvic-tilt.png",
-    "fileName": "pelvic-tilt.png"
+    "fileName": "pelvic-tilt.png",
+    "titleJa": "骨盤の前後傾"
   },
   {
     "id": "pendulum-exercise-with-bottle",
@@ -783,7 +806,8 @@
     "title": "Quadriceps Stretch",
     "previewSrc": "premium/plain/quadriceps-stretch.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fquadriceps-stretch.png",
-    "fileName": "quadriceps-stretch.png"
+    "fileName": "quadriceps-stretch.png",
+    "titleJa": "四頭筋ストレッチ-立位"
   },
   {
     "id": "quadruped-trunk-rotation-training",
@@ -862,7 +886,8 @@
     "title": "Seated Knee Extension",
     "previewSrc": "premium/plain/seated-knee-extension.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fseated-knee-extension.png",
-    "fileName": "seated-knee-extension.png"
+    "fileName": "seated-knee-extension.png",
+    "titleJa": "四頭筋トレーニング-斜め"
   },
   {
     "id": "seated-leg-open-stretch",
@@ -951,7 +976,8 @@
     "title": "Shoulder Raise With Bar",
     "previewSrc": "premium/plain/shoulder-raise-with-bar.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fshoulder-raise-with-bar.png",
-    "fileName": "shoulder-raise-with-bar.png"
+    "fileName": "shoulder-raise-with-bar.png",
+    "titleJa": "棒を使用した肩関節屈曲運動"
   },
   {
     "id": "shoulder-raise",
@@ -960,7 +986,8 @@
     "title": "Shoulder Raise",
     "previewSrc": "premium/plain/shoulder-raise.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fshoulder-raise.png",
-    "fileName": "shoulder-raise.png"
+    "fileName": "shoulder-raise.png",
+    "titleJa": "肩挙上運動"
   },
   {
     "id": "side-bridge",
@@ -979,7 +1006,8 @@
     "title": "Side Lying Hip Abduction",
     "previewSrc": "premium/plain/side-lying-hip-abduction.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fside-lying-hip-abduction.png",
-    "fileName": "side-lying-hip-abduction.png"
+    "fileName": "side-lying-hip-abduction.png",
+    "titleJa": "側臥位で股関節外転運動"
   },
   {
     "id": "side-plank-on-elbow",
@@ -1028,7 +1056,8 @@
     "title": "Single Leg Stand",
     "previewSrc": "premium/plain/single-leg-stand.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fsingle-leg-stand.png",
-    "fileName": "single-leg-stand.png"
+    "fileName": "single-leg-stand.png",
+    "titleJa": "イスを把持して片足立ち"
   },
   {
     "id": "sit-to-stand-using-chair",
@@ -1037,7 +1066,8 @@
     "title": "Sit To Stand Using Chair",
     "previewSrc": "premium/plain/sit-to-stand-using-chair.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fsit-to-stand-using-chair.png",
-    "fileName": "sit-to-stand-using-chair.png"
+    "fileName": "sit-to-stand-using-chair.png",
+    "titleJa": "イスを使用した立ち座り"
   },
   {
     "id": "sit-to-stand-with-parallel-bars",
@@ -1066,7 +1096,8 @@
     "title": "Squat",
     "previewSrc": "premium/plain/squat.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fsquat.png",
-    "fileName": "squat.png"
+    "fileName": "squat.png",
+    "titleJa": "スクワット"
   },
   {
     "id": "stair-step-right-up-left-down",
@@ -1105,7 +1136,8 @@
     "title": "Standing Hip Abduction",
     "previewSrc": "premium/plain/standing-hip-abduction.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fstanding-hip-abduction.png",
-    "fileName": "standing-hip-abduction.png"
+    "fileName": "standing-hip-abduction.png",
+    "titleJa": "立位で股関節外転運動"
   },
   {
     "id": "standing-left-side-bend-with-towel",
@@ -1294,7 +1326,8 @@
     "title": "Trunk Rotation",
     "previewSrc": "premium/plain/trunk-rotation.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Ftrunk-rotation.png",
-    "fileName": "trunk-rotation.png"
+    "fileName": "trunk-rotation.png",
+    "titleJa": "体幹の回旋"
   },
   {
     "id": "walking",
@@ -1313,7 +1346,8 @@
     "title": "Wall Achilles Stretch",
     "previewSrc": "premium/plain/wall-achilles-stretch.png",
     "fileHref": "/api/image?key=premium%2Fplain%2Fwall-achilles-stretch.png",
-    "fileName": "wall-achilles-stretch.png"
+    "fileName": "wall-achilles-stretch.png",
+    "titleJa": "壁を使用してアキレス腱のストレッチ"
   },
   {
     "id": "wall-push-up",
@@ -1362,7 +1396,8 @@
     "title": "Air Bike",
     "previewSrc": "premium/text/air-bike.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fair-bike.png",
-    "fileName": "air-bike.png"
+    "fileName": "air-bike.png",
+    "titleJa": "エアロバイク【文字あり】"
   },
   {
     "id": "ankle-dorsiflexion-and-plantarflexion",
@@ -1371,7 +1406,8 @@
     "title": "Ankle Dorsiflexion And Plantarflexion",
     "previewSrc": "premium/text/ankle-dorsiflexion-and-plantarflexion.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fankle-dorsiflexion-and-plantarflexion.png",
-    "fileName": "ankle-dorsiflexion-and-plantarflexion.png"
+    "fileName": "ankle-dorsiflexion-and-plantarflexion.png",
+    "titleJa": "足関節の底屈・背屈【文字あり】"
   },
   {
     "id": "cane-walking",
@@ -1380,7 +1416,8 @@
     "title": "Cane Walking",
     "previewSrc": "premium/text/cane-walking.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fcane-walking.png",
-    "fileName": "cane-walking.png"
+    "fileName": "cane-walking.png",
+    "titleJa": "杖歩き【文字あり】"
   },
   {
     "id": "cat-and-dog",
@@ -1389,7 +1426,8 @@
     "title": "Cat And Dog",
     "previewSrc": "premium/text/cat-and-dog.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fcat-and-dog.png",
-    "fileName": "cat-and-dog.png"
+    "fileName": "cat-and-dog.png",
+    "titleJa": "キャットアンドドッグ【文字あり】"
   },
   {
     "id": "chest-opening-with-stretch-pole",
@@ -1398,7 +1436,8 @@
     "title": "Chest Opening With Stretch Pole",
     "previewSrc": "premium/text/chest-opening-with-stretch-pole.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fchest-opening-with-stretch-pole.png",
-    "fileName": "chest-opening-with-stretch-pole.png"
+    "fileName": "chest-opening-with-stretch-pole.png",
+    "titleJa": "胸開き運動【文字あり】"
   },
   {
     "id": "chopstick-training-with-azuki",
@@ -1407,7 +1446,8 @@
     "title": "Chopstick Training With Azuki",
     "previewSrc": "premium/text/chopstick-training-with-azuki.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fchopstick-training-with-azuki.png",
-    "fileName": "chopstick-training-with-azuki.png"
+    "fileName": "chopstick-training-with-azuki.png",
+    "titleJa": "小豆を使用しての箸操作【文字あり】"
   },
   {
     "id": "coin-finger-movement-training",
@@ -1416,7 +1456,8 @@
     "title": "Coin Finger Movement Training",
     "previewSrc": "premium/text/coin-finger-movement-training.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fcoin-finger-movement-training.png",
-    "fileName": "coin-finger-movement-training.png"
+    "fileName": "coin-finger-movement-training.png",
+    "titleJa": "硬貨を使用しての指運動【文字あり】"
   },
   {
     "id": "contraindicated-exercises-for-spine",
@@ -1425,7 +1466,8 @@
     "title": "Contraindicated Exercises For Spine",
     "previewSrc": "premium/text/contraindicated-exercises-for-spine.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fcontraindicated-exercises-for-spine.png",
-    "fileName": "contraindicated-exercises-for-spine.png"
+    "fileName": "contraindicated-exercises-for-spine.png",
+    "titleJa": "脊椎疾患の禁忌運動【文字あり】"
   },
   {
     "id": "diagonal-exercise",
@@ -1434,7 +1476,8 @@
     "title": "Diagonal Exercise",
     "previewSrc": "premium/text/diagonal-exercise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fdiagonal-exercise.png",
-    "fileName": "diagonal-exercise.png"
+    "fileName": "diagonal-exercise.png",
+    "titleJa": "ダイアゴナル【文字あり】"
   },
   {
     "id": "door-way-stretch",
@@ -1443,7 +1486,8 @@
     "title": "Door Way Stretch",
     "previewSrc": "premium/text/door-way-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fdoor-way-stretch.png",
-    "fileName": "door-way-stretch.png"
+    "fileName": "door-way-stretch.png",
+    "titleJa": "ドアウェイストレッチ【文字あり】"
   },
   {
     "id": "double-leg-raise",
@@ -1452,7 +1496,8 @@
     "title": "Double Leg Raise",
     "previewSrc": "premium/text/double-leg-raise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fdouble-leg-raise.png",
-    "fileName": "double-leg-raise.png"
+    "fileName": "double-leg-raise.png",
+    "titleJa": "両足レッグレイズ【文字あり】"
   },
   {
     "id": "draw-in",
@@ -1461,7 +1506,8 @@
     "title": "Draw In",
     "previewSrc": "premium/text/draw-in.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fdraw-in.png",
-    "fileName": "draw-in.png"
+    "fileName": "draw-in.png",
+    "titleJa": "ドローイン【文字あり】"
   },
   {
     "id": "dumbbell-shoulder-abduction",
@@ -1470,7 +1516,8 @@
     "title": "Dumbbell Shoulder Abduction",
     "previewSrc": "premium/text/dumbbell-shoulder-abduction.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fdumbbell-shoulder-abduction.png",
-    "fileName": "dumbbell-shoulder-abduction.png"
+    "fileName": "dumbbell-shoulder-abduction.png",
+    "titleJa": "ダンベルを使った肩関節外転運動【文字あり】"
   },
   {
     "id": "elbow-flexion-with-bar",
@@ -1479,7 +1526,8 @@
     "title": "Elbow Flexion With Bar",
     "previewSrc": "premium/text/elbow-flexion-with-bar.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Felbow-flexion-with-bar.png",
-    "fileName": "elbow-flexion-with-bar.png"
+    "fileName": "elbow-flexion-with-bar.png",
+    "titleJa": "棒を使った肘の屈伸【文字あり】"
   },
   {
     "id": "fixed-walker-walking",
@@ -1498,7 +1546,8 @@
     "title": "Foot Rolling",
     "previewSrc": "premium/text/foot-rolling.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ffoot-rolling.png",
-    "fileName": "foot-rolling.png"
+    "fileName": "foot-rolling.png",
+    "titleJa": "ボールを使用した足裏マッサージ【文字あり】"
   },
   {
     "id": "forearm-hand-stretch",
@@ -1507,7 +1556,8 @@
     "title": "Forearm Hand Stretch",
     "previewSrc": "premium/text/forearm-hand-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fforearm-hand-stretch.png",
-    "fileName": "forearm-hand-stretch.png"
+    "fileName": "forearm-hand-stretch.png",
+    "titleJa": "前腕のストレッチ【文字あり】"
   },
   {
     "id": "fullbody-chopstick-training-with-azuki",
@@ -1516,7 +1566,8 @@
     "title": "Fullbody Chopstick Training With Azuki",
     "previewSrc": "premium/text/fullbody-chopstick-training-with-azuki.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ffullbody-chopstick-training-with-azuki.png",
-    "fileName": "fullbody-chopstick-training-with-azuki.png"
+    "fileName": "fullbody-chopstick-training-with-azuki.png",
+    "titleJa": "小豆を使った全身の箸操作【文字あり】"
   },
   {
     "id": "hamstring-stretch",
@@ -1525,7 +1576,8 @@
     "title": "Hamstring Stretch",
     "previewSrc": "premium/text/hamstring-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhamstring-stretch.png",
-    "fileName": "hamstring-stretch.png"
+    "fileName": "hamstring-stretch.png",
+    "titleJa": "下後面のストレッチ【文字あり】"
   },
   {
     "id": "hand-support-plank",
@@ -1534,7 +1586,8 @@
     "title": "Hand Support Plank",
     "previewSrc": "premium/text/hand-support-plank.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhand-support-plank.png",
-    "fileName": "hand-support-plank.png"
+    "fileName": "hand-support-plank.png",
+    "titleJa": "手を支えながらプランク【文字あり】"
   },
   {
     "id": "heel-raise",
@@ -1543,7 +1596,8 @@
     "title": "Heel Raise",
     "previewSrc": "premium/text/heel-raise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fheel-raise.png",
-    "fileName": "heel-raise.png"
+    "fileName": "heel-raise.png",
+    "titleJa": "ヒールライズ【文字あり】"
   },
   {
     "id": "heel-slide",
@@ -1552,7 +1606,8 @@
     "title": "Heel Slide",
     "previewSrc": "premium/text/heel-slide.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fheel-slide.png",
-    "fileName": "heel-slide.png"
+    "fileName": "heel-slide.png",
+    "titleJa": "ヒールスライド【文字あり】"
   },
   {
     "id": "hip-abduction-with-band",
@@ -1561,7 +1616,8 @@
     "title": "Hip Abduction With Band",
     "previewSrc": "premium/text/hip-abduction-with-band.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhip-abduction-with-band.png",
-    "fileName": "hip-abduction-with-band.png"
+    "fileName": "hip-abduction-with-band.png",
+    "titleJa": "ゴムチューブを使用した股関節外転運動【文字あり】"
   },
   {
     "id": "hip-extension-exercise",
@@ -1570,7 +1626,8 @@
     "title": "Hip Extension Exercise",
     "previewSrc": "premium/text/hip-extension-exercise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhip-extension-exercise.png",
-    "fileName": "hip-extension-exercise.png"
+    "fileName": "hip-extension-exercise.png",
+    "titleJa": "立位で股関節伸展運動【文字あり】"
   },
   {
     "id": "hip-flexion-with-knee-extended",
@@ -1579,7 +1636,8 @@
     "title": "Hip Flexion With Knee Extended",
     "previewSrc": "premium/text/hip-flexion-with-knee-extended.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhip-flexion-with-knee-extended.png",
-    "fileName": "hip-flexion-with-knee-extended.png"
+    "fileName": "hip-flexion-with-knee-extended.png",
+    "titleJa": "自動SLR【文字あり】"
   },
   {
     "id": "hip-hinge-with-bar",
@@ -1588,7 +1646,8 @@
     "title": "Hip Hinge With Bar",
     "previewSrc": "premium/text/hip-hinge-with-bar.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhip-hinge-with-bar.png",
-    "fileName": "hip-hinge-with-bar.png"
+    "fileName": "hip-hinge-with-bar.png",
+    "titleJa": "棒を使用したヒップヒンジ【文字あり】"
   },
   {
     "id": "hip-hinge",
@@ -1597,7 +1656,8 @@
     "title": "Hip Hinge",
     "previewSrc": "premium/text/hip-hinge.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhip-hinge.png",
-    "fileName": "hip-hinge.png"
+    "fileName": "hip-hinge.png",
+    "titleJa": "ヒップヒンジ【文字あり】"
   },
   {
     "id": "hip-lift",
@@ -1606,7 +1666,8 @@
     "title": "Hip Lift",
     "previewSrc": "premium/text/hip-lift.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fhip-lift.png",
-    "fileName": "hip-lift.png"
+    "fileName": "hip-lift.png",
+    "titleJa": "お尻上げ【文字あり】"
   },
   {
     "id": "knee-flexion-extension-with-feet-flat",
@@ -1615,7 +1676,8 @@
     "title": "Knee Flexion Extension With Feet Flat",
     "previewSrc": "premium/text/knee-flexion-extension-with-feet-flat.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fknee-flexion-extension-with-feet-flat.png",
-    "fileName": "knee-flexion-extension-with-feet-flat.png"
+    "fileName": "knee-flexion-extension-with-feet-flat.png",
+    "titleJa": "ヒールスライド②【文字あり】"
   },
   {
     "id": "knee-plank",
@@ -1624,7 +1686,8 @@
     "title": "Knee Plank",
     "previewSrc": "premium/text/knee-plank.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fknee-plank.png",
-    "fileName": "knee-plank.png"
+    "fileName": "knee-plank.png",
+    "titleJa": "膝をついてプランク【文字あり】"
   },
   {
     "id": "neck-flexion-extension-stretch",
@@ -1633,7 +1696,8 @@
     "title": "Neck Flexion Extension Stretch",
     "previewSrc": "premium/text/neck-flexion-extension-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fneck-flexion-extension-stretch.png",
-    "fileName": "neck-flexion-extension-stretch.png"
+    "fileName": "neck-flexion-extension-stretch.png",
+    "titleJa": "頚部の屈曲・伸展【文字あり】"
   },
   {
     "id": "neck-side-bend-stretch",
@@ -1642,7 +1706,8 @@
     "title": "Neck Side Bend Stretch",
     "previewSrc": "premium/text/neck-side-bend-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fneck-side-bend-stretch.png",
-    "fileName": "neck-side-bend-stretch.png"
+    "fileName": "neck-side-bend-stretch.png",
+    "titleJa": "頚部の側屈【文字あり】"
   },
   {
     "id": "nordic-walking",
@@ -1651,7 +1716,8 @@
     "title": "Nordic Walking",
     "previewSrc": "premium/text/nordic-walking.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fnordic-walking.png",
-    "fileName": "nordic-walking.png"
+    "fileName": "nordic-walking.png",
+    "titleJa": "ノルディック杖歩行【文字あり】"
   },
   {
     "id": "parallel-bar-walking",
@@ -1660,7 +1726,8 @@
     "title": "Parallel Bar Walking",
     "previewSrc": "premium/text/parallel-bar-walking.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fparallel-bar-walking.png",
-    "fileName": "parallel-bar-walking.png"
+    "fileName": "parallel-bar-walking.png",
+    "titleJa": "平行棒内歩行【文字あり】"
   },
   {
     "id": "peg-manipulation",
@@ -1669,7 +1736,8 @@
     "title": "Peg Manipulation",
     "previewSrc": "premium/text/peg-manipulation.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fpeg-manipulation.png",
-    "fileName": "peg-manipulation.png"
+    "fileName": "peg-manipulation.png",
+    "titleJa": "ペグ操作【文字あり】"
   },
   {
     "id": "pelvic-tilt",
@@ -1678,7 +1746,8 @@
     "title": "Pelvic Tilt",
     "previewSrc": "premium/text/pelvic-tilt.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fpelvic-tilt.png",
-    "fileName": "pelvic-tilt.png"
+    "fileName": "pelvic-tilt.png",
+    "titleJa": "骨盤の前後傾【文字あり】"
   },
   {
     "id": "pendulum-exercise-with-bottle",
@@ -1687,7 +1756,8 @@
     "title": "Pendulum Exercise With Bottle",
     "previewSrc": "premium/text/pendulum-exercise-with-bottle.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fpendulum-exercise-with-bottle.png",
-    "fileName": "pendulum-exercise-with-bottle.png"
+    "fileName": "pendulum-exercise-with-bottle.png",
+    "titleJa": "振り子運動【文字あり】"
   },
   {
     "id": "plank-good-bad-example",
@@ -1696,7 +1766,8 @@
     "title": "Plank Good Bad Example",
     "previewSrc": "premium/text/plank-good-bad-example.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fplank-good-bad-example.png",
-    "fileName": "plank-good-bad-example.png"
+    "fileName": "plank-good-bad-example.png",
+    "titleJa": "プランクの良い例・悪い例【文字あり】"
   },
   {
     "id": "plank",
@@ -1705,7 +1776,8 @@
     "title": "Plank",
     "previewSrc": "premium/text/plank.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fplank.png",
-    "fileName": "plank.png"
+    "fileName": "plank.png",
+    "titleJa": "プランク【文字あり】"
   },
   {
     "id": "puppy-position",
@@ -1714,7 +1786,8 @@
     "title": "Puppy Position",
     "previewSrc": "premium/text/puppy-position.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fpuppy-position.png",
-    "fileName": "puppy-position.png"
+    "fileName": "puppy-position.png",
+    "titleJa": "パピーポジション【文字あり】"
   },
   {
     "id": "quadriceps-stretch",
@@ -1723,7 +1796,8 @@
     "title": "Quadriceps Stretch",
     "previewSrc": "premium/text/quadriceps-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fquadriceps-stretch.png",
-    "fileName": "quadriceps-stretch.png"
+    "fileName": "quadriceps-stretch.png",
+    "titleJa": "四頭筋ストレッチ-立位【文字あり】"
   },
   {
     "id": "quadruped-trunk-rotation-training",
@@ -1732,7 +1806,8 @@
     "title": "Quadruped Trunk Rotation Training",
     "previewSrc": "premium/text/quadruped-trunk-rotation-training.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fquadruped-trunk-rotation-training.png",
-    "fileName": "quadruped-trunk-rotation-training.png"
+    "fileName": "quadruped-trunk-rotation-training.png",
+    "titleJa": "四つん這いで体幹回旋運動【文字あり】"
   },
   {
     "id": "scapular-retraction-exercise",
@@ -1741,7 +1816,8 @@
     "title": "Scapular Retraction Exercise",
     "previewSrc": "premium/text/scapular-retraction-exercise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fscapular-retraction-exercise.png",
-    "fileName": "scapular-retraction-exercise.png"
+    "fileName": "scapular-retraction-exercise.png",
+    "titleJa": "肩甲骨の内転運動【文字あり】"
   },
   {
     "id": "seated-aerobike",
@@ -1750,7 +1826,8 @@
     "title": "Seated Aerobike",
     "previewSrc": "premium/text/seated-aerobike.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-aerobike.png",
-    "fileName": "seated-aerobike.png"
+    "fileName": "seated-aerobike.png",
+    "titleJa": "イスに座ってエアロバイク【文字あり】"
   },
   {
     "id": "seated-finger-training-with-clothespin",
@@ -1759,7 +1836,8 @@
     "title": "Seated Finger Training With Clothespin",
     "previewSrc": "premium/text/seated-finger-training-with-clothespin.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-finger-training-with-clothespin.png",
-    "fileName": "seated-finger-training-with-clothespin.png"
+    "fileName": "seated-finger-training-with-clothespin.png",
+    "titleJa": "ペグ操作-側方【文字あり】"
   },
   {
     "id": "seated-hamstring-stretch-with-towel.",
@@ -1768,7 +1846,8 @@
     "title": "Seated Hamstring Stretch With Towel.",
     "previewSrc": "premium/text/seated-hamstring-stretch-with-towel..png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-hamstring-stretch-with-towel..png",
-    "fileName": "seated-hamstring-stretch-with-towel..png"
+    "fileName": "seated-hamstring-stretch-with-towel..png",
+    "titleJa": "下腿後面のストレッチ【文字あり】"
   },
   {
     "id": "seated-hip-adduction-training",
@@ -1777,7 +1856,8 @@
     "title": "Seated Hip Adduction Training",
     "previewSrc": "premium/text/seated-hip-adduction-training.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-hip-adduction-training.png",
-    "fileName": "seated-hip-adduction-training.png"
+    "fileName": "seated-hip-adduction-training.png",
+    "titleJa": "股関節内転筋のトレーニング【文字あり】"
   },
   {
     "id": "seated-knee-extension-side-view",
@@ -1786,7 +1866,8 @@
     "title": "Seated Knee Extension Side View",
     "previewSrc": "premium/text/seated-knee-extension-side-view.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-knee-extension-side-view.png",
-    "fileName": "seated-knee-extension-side-view.png"
+    "fileName": "seated-knee-extension-side-view.png",
+    "titleJa": "四頭筋トレーニング-側方【文字あり】"
   },
   {
     "id": "seated-knee-extension",
@@ -1795,7 +1876,8 @@
     "title": "Seated Knee Extension",
     "previewSrc": "premium/text/seated-knee-extension.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-knee-extension.png",
-    "fileName": "seated-knee-extension.png"
+    "fileName": "seated-knee-extension.png",
+    "titleJa": "四頭筋トレーニング-斜め【文字あり】"
   },
   {
     "id": "seated-leg-open-stretch",
@@ -1804,7 +1886,8 @@
     "title": "Seated Leg Open Stretch",
     "previewSrc": "premium/text/seated-leg-open-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-leg-open-stretch.png",
-    "fileName": "seated-leg-open-stretch.png"
+    "fileName": "seated-leg-open-stretch.png",
+    "titleJa": "開脚してストレッチ【文字あり】"
   },
   {
     "id": "seated-leg-raise-hold",
@@ -1813,7 +1896,8 @@
     "title": "Seated Leg Raise Hold",
     "previewSrc": "premium/text/seated-leg-raise-hold.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-leg-raise-hold.png",
-    "fileName": "seated-leg-raise-hold.png"
+    "fileName": "seated-leg-raise-hold.png",
+    "titleJa": "足をあげた状態をキープ【文字あり】"
   },
   {
     "id": "seated-leg-raise",
@@ -1822,7 +1906,8 @@
     "title": "Seated Leg Raise",
     "previewSrc": "premium/text/seated-leg-raise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-leg-raise.png",
-    "fileName": "seated-leg-raise.png"
+    "fileName": "seated-leg-raise.png",
+    "titleJa": "レッグレイズ【文字あり】"
   },
   {
     "id": "seated-neck-rotation-stretch",
@@ -1831,7 +1916,8 @@
     "title": "Seated Neck Rotation Stretch",
     "previewSrc": "premium/text/seated-neck-rotation-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-neck-rotation-stretch.png",
-    "fileName": "seated-neck-rotation-stretch.png"
+    "fileName": "seated-neck-rotation-stretch.png",
+    "titleJa": "頚部の回旋【文字あり】"
   },
   {
     "id": "seated-popliteal-stretch",
@@ -1840,7 +1926,8 @@
     "title": "Seated Popliteal Stretch",
     "previewSrc": "premium/text/seated-popliteal-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-popliteal-stretch.png",
-    "fileName": "seated-popliteal-stretch.png"
+    "fileName": "seated-popliteal-stretch.png",
+    "titleJa": "腋窩のストレッチ【文字あり】"
   },
   {
     "id": "seated-shoulder-flexion-with-towel",
@@ -1849,7 +1936,8 @@
     "title": "Seated Shoulder Flexion With Towel",
     "previewSrc": "premium/text/seated-shoulder-flexion-with-towel.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-shoulder-flexion-with-towel.png",
-    "fileName": "seated-shoulder-flexion-with-towel.png"
+    "fileName": "seated-shoulder-flexion-with-towel.png",
+    "titleJa": "両手でタオルを把持して、肩関節屈曲運動【文字あり】"
   },
   {
     "id": "seated-side-step-exercise",
@@ -1858,7 +1946,8 @@
     "title": "Seated Side Step Exercise",
     "previewSrc": "premium/text/seated-side-step-exercise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fseated-side-step-exercise.png",
-    "fileName": "seated-side-step-exercise.png"
+    "fileName": "seated-side-step-exercise.png",
+    "titleJa": "イス座位でサイドステップ【文字あり】"
   },
   {
     "id": "shoulder-horizontal-adduction-stretch",
@@ -1867,7 +1956,8 @@
     "title": "Shoulder Horizontal Adduction Stretch",
     "previewSrc": "premium/text/shoulder-horizontal-adduction-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fshoulder-horizontal-adduction-stretch.png",
-    "fileName": "shoulder-horizontal-adduction-stretch.png"
+    "fileName": "shoulder-horizontal-adduction-stretch.png",
+    "titleJa": "肩甲骨外転ストレッチ【文字あり】"
   },
   {
     "id": "shoulder-raise-with-bar",
@@ -1876,7 +1966,8 @@
     "title": "Shoulder Raise With Bar",
     "previewSrc": "premium/text/shoulder-raise-with-bar.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fshoulder-raise-with-bar.png",
-    "fileName": "shoulder-raise-with-bar.png"
+    "fileName": "shoulder-raise-with-bar.png",
+    "titleJa": "棒を使用した肩関節屈曲運動【文字あり】"
   },
   {
     "id": "shoulder-raise",
@@ -1885,7 +1976,8 @@
     "title": "Shoulder Raise",
     "previewSrc": "premium/text/shoulder-raise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fshoulder-raise.png",
-    "fileName": "shoulder-raise.png"
+    "fileName": "shoulder-raise.png",
+    "titleJa": "肩挙上運動【文字あり】"
   },
   {
     "id": "side-bridge",
@@ -1894,7 +1986,8 @@
     "title": "Side Bridge",
     "previewSrc": "premium/text/side-bridge.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fside-bridge.png",
-    "fileName": "side-bridge.png"
+    "fileName": "side-bridge.png",
+    "titleJa": "サイドブリッジ【文字あり】"
   },
   {
     "id": "side-lying-hip-abduction",
@@ -1903,7 +1996,8 @@
     "title": "Side Lying Hip Abduction",
     "previewSrc": "premium/text/side-lying-hip-abduction.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fside-lying-hip-abduction.png",
-    "fileName": "side-lying-hip-abduction.png"
+    "fileName": "side-lying-hip-abduction.png",
+    "titleJa": "側臥位で股関節外転運動【文字あり】"
   },
   {
     "id": "side-plank-on-elbow",
@@ -1912,7 +2006,8 @@
     "title": "Side Plank On Elbow",
     "previewSrc": "premium/text/side-plank-on-elbow.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fside-plank-on-elbow.png",
-    "fileName": "side-plank-on-elbow.png"
+    "fileName": "side-plank-on-elbow.png",
+    "titleJa": "肘をついてサイドプランク【文字あり】"
   },
   {
     "id": "side-step",
@@ -1921,7 +2016,8 @@
     "title": "Side Step",
     "previewSrc": "premium/text/side-step.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fside-step.png",
-    "fileName": "side-step.png"
+    "fileName": "side-step.png",
+    "titleJa": "サイドステップ【文字あり】"
   },
   {
     "id": "single-leg-bridge",
@@ -1930,7 +2026,8 @@
     "title": "Single Leg Bridge",
     "previewSrc": "premium/text/single-leg-bridge.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsingle-leg-bridge.png",
-    "fileName": "single-leg-bridge.png"
+    "fileName": "single-leg-bridge.png",
+    "titleJa": "片足ブリッジ【文字あり】"
   },
   {
     "id": "single-leg-heel-raise",
@@ -1939,7 +2036,8 @@
     "title": "Single Leg Heel Raise",
     "previewSrc": "premium/text/single-leg-heel-raise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsingle-leg-heel-raise.png",
-    "fileName": "single-leg-heel-raise.png"
+    "fileName": "single-leg-heel-raise.png",
+    "titleJa": "片足ヒールライズ【文字あり】"
   },
   {
     "id": "single-leg-stand",
@@ -1948,7 +2046,8 @@
     "title": "Single Leg Stand",
     "previewSrc": "premium/text/single-leg-stand.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsingle-leg-stand.png",
-    "fileName": "single-leg-stand.png"
+    "fileName": "single-leg-stand.png",
+    "titleJa": "イスを把持して片足立ち【文字あり】"
   },
   {
     "id": "sit-to-stand-using-chair",
@@ -1957,7 +2056,8 @@
     "title": "Sit To Stand Using Chair",
     "previewSrc": "premium/text/sit-to-stand-using-chair.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsit-to-stand-using-chair.png",
-    "fileName": "sit-to-stand-using-chair.png"
+    "fileName": "sit-to-stand-using-chair.png",
+    "titleJa": "イスを使用した立ち座り【文字あり】"
   },
   {
     "id": "sit-to-stand-with-parallel-bars",
@@ -1966,7 +2066,8 @@
     "title": "Sit To Stand With Parallel Bars",
     "previewSrc": "premium/text/sit-to-stand-with-parallel-bars.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsit-to-stand-with-parallel-bars.png",
-    "fileName": "sit-to-stand-with-parallel-bars.png"
+    "fileName": "sit-to-stand-with-parallel-bars.png",
+    "titleJa": "支持物ありで立ち座り【文字あり】"
   },
   {
     "id": "sitting-quadriceps-stretch",
@@ -1975,7 +2076,8 @@
     "title": "Sitting Quadriceps Stretch",
     "previewSrc": "premium/text/sitting-quadriceps-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsitting-quadriceps-stretch.png",
-    "fileName": "sitting-quadriceps-stretch.png"
+    "fileName": "sitting-quadriceps-stretch.png",
+    "titleJa": "座って四頭筋ストレッチ【文字あり】"
   },
   {
     "id": "squat",
@@ -1984,7 +2086,8 @@
     "title": "Squat",
     "previewSrc": "premium/text/squat.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsquat.png",
-    "fileName": "squat.png"
+    "fileName": "squat.png",
+    "titleJa": "スクワット【文字あり】"
   },
   {
     "id": "stair-step-right-up-left-down",
@@ -1993,7 +2096,8 @@
     "title": "Stair Step Right Up Left Down",
     "previewSrc": "premium/text/stair-step-right-up-left-down.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstair-step-right-up-left-down.png",
-    "fileName": "stair-step-right-up-left-down.png"
+    "fileName": "stair-step-right-up-left-down.png",
+    "titleJa": "階段昇降【文字あり】"
   },
   {
     "id": "standing-armpit-stretch",
@@ -2002,7 +2106,8 @@
     "title": "Standing Armpit Stretch",
     "previewSrc": "premium/text/standing-armpit-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-armpit-stretch.png",
-    "fileName": "standing-armpit-stretch.png"
+    "fileName": "standing-armpit-stretch.png",
+    "titleJa": "立位で腋窩のストレッチ【文字あり】"
   },
   {
     "id": "standing-dumbbell-scaption",
@@ -2011,7 +2116,8 @@
     "title": "Standing Dumbbell Scaption",
     "previewSrc": "premium/text/standing-dumbbell-scaption.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-dumbbell-scaption.png",
-    "fileName": "standing-dumbbell-scaption.png"
+    "fileName": "standing-dumbbell-scaption.png",
+    "titleJa": "立位でスキャプション【文字あり】"
   },
   {
     "id": "standing-hip-abduction",
@@ -2020,7 +2126,8 @@
     "title": "Standing Hip Abduction",
     "previewSrc": "premium/text/standing-hip-abduction.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-hip-abduction.png",
-    "fileName": "standing-hip-abduction.png"
+    "fileName": "standing-hip-abduction.png",
+    "titleJa": "立位で股関節外転運動【文字あり】"
   },
   {
     "id": "standing-left-side-bend-with-towel",
@@ -2029,7 +2136,8 @@
     "title": "Standing Left Side Bend With Towel",
     "previewSrc": "premium/text/standing-left-side-bend-with-towel.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-left-side-bend-with-towel.png",
-    "fileName": "standing-left-side-bend-with-towel.png"
+    "fileName": "standing-left-side-bend-with-towel.png",
+    "titleJa": "タオルを使用した体幹の側屈-立位【文字あり】"
   },
   {
     "id": "standing-leg-raise",
@@ -2038,7 +2146,8 @@
     "title": "Standing Leg Raise",
     "previewSrc": "premium/text/standing-leg-raise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-leg-raise.png",
-    "fileName": "standing-leg-raise.png"
+    "fileName": "standing-leg-raise.png",
+    "titleJa": "立位でレッグレイズ【文字あり】"
   },
   {
     "id": "standing-right-side-bend-with-towel",
@@ -2047,7 +2156,8 @@
     "title": "Standing Right Side Bend With Towel",
     "previewSrc": "premium/text/standing-right-side-bend-with-towel.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-right-side-bend-with-towel.png",
-    "fileName": "standing-right-side-bend-with-towel.png"
+    "fileName": "standing-right-side-bend-with-towel.png",
+    "titleJa": "立位で体幹の側屈【文字あり】"
   },
   {
     "id": "standing-trunk-rotation-stretch",
@@ -2056,7 +2166,8 @@
     "title": "Standing Trunk Rotation Stretch",
     "previewSrc": "premium/text/standing-trunk-rotation-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstanding-trunk-rotation-stretch.png",
-    "fileName": "standing-trunk-rotation-stretch.png"
+    "fileName": "standing-trunk-rotation-stretch.png",
+    "titleJa": "立位で体幹の回旋【文字あり】"
   },
   {
     "id": "step-exercise",
@@ -2065,7 +2176,8 @@
     "title": "Step Exercise",
     "previewSrc": "premium/text/step-exercise.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstep-exercise.png",
-    "fileName": "step-exercise.png"
+    "fileName": "step-exercise.png",
+    "titleJa": "ステップ運動【文字あり】"
   },
   {
     "id": "step-left-with-band",
@@ -2074,7 +2186,8 @@
     "title": "Step Left With Band",
     "previewSrc": "premium/text/step-left-with-band.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstep-left-with-band.png",
-    "fileName": "step-left-with-band.png"
+    "fileName": "step-left-with-band.png",
+    "titleJa": "ゴムチューブを使用したステップ運動-左【文字あり】"
   },
   {
     "id": "step-right-with-band",
@@ -2083,7 +2196,8 @@
     "title": "Step Right With Band",
     "previewSrc": "premium/text/step-right-with-band.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstep-right-with-band.png",
-    "fileName": "step-right-with-band.png"
+    "fileName": "step-right-with-band.png",
+    "titleJa": "ゴムチューブを使用したステップ運動-右【文字あり】"
   },
   {
     "id": "step-to-side",
@@ -2092,7 +2206,8 @@
     "title": "Step To Side",
     "previewSrc": "premium/text/step-to-side.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstep-to-side.png",
-    "fileName": "step-to-side.png"
+    "fileName": "step-to-side.png",
+    "titleJa": "段差を用いたサイドステップ【文字あり】"
   },
   {
     "id": "step-up-and-down",
@@ -2101,7 +2216,8 @@
     "title": "Step Up And Down",
     "previewSrc": "premium/text/step-up-and-down.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fstep-up-and-down.png",
-    "fileName": "step-up-and-down.png"
+    "fileName": "step-up-and-down.png",
+    "titleJa": "段差を用いた前方へのステップ【文字あり】"
   },
   {
     "id": "supine-hamstring-stretch-with-towel",
@@ -2110,7 +2226,8 @@
     "title": "Supine Hamstring Stretch With Towel",
     "previewSrc": "premium/text/supine-hamstring-stretch-with-towel.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsupine-hamstring-stretch-with-towel.png",
-    "fileName": "supine-hamstring-stretch-with-towel.png"
+    "fileName": "supine-hamstring-stretch-with-towel.png",
+    "titleJa": "臥位で下後面のストレッチ【文字あり】"
   },
   {
     "id": "supine-shoulder-flexion-with-both-hands",
@@ -2119,7 +2236,8 @@
     "title": "Supine Shoulder Flexion With Both Hands",
     "previewSrc": "premium/text/supine-shoulder-flexion-with-both-hands.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fsupine-shoulder-flexion-with-both-hands.png",
-    "fileName": "supine-shoulder-flexion-with-both-hands.png"
+    "fileName": "supine-shoulder-flexion-with-both-hands.png",
+    "titleJa": "臥位で両肩の屈曲運動【文字あり】"
   },
   {
     "id": "thumb-pinky-opposition",
@@ -2128,7 +2246,8 @@
     "title": "Thumb Pinky Opposition",
     "previewSrc": "premium/text/thumb-pinky-opposition.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fthumb-pinky-opposition.png",
-    "fileName": "thumb-pinky-opposition.png"
+    "fileName": "thumb-pinky-opposition.png",
+    "titleJa": "母指と小指の対立【文字あり】"
   },
   {
     "id": "towel-gather",
@@ -2137,7 +2256,8 @@
     "title": "Towel Gather",
     "previewSrc": "premium/text/towel-gather.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftowel-gather.png",
-    "fileName": "towel-gather.png"
+    "fileName": "towel-gather.png",
+    "titleJa": "タオルギャザー【文字あり】"
   },
   {
     "id": "towel-side-bend",
@@ -2146,7 +2266,8 @@
     "title": "Towel Side Bend",
     "previewSrc": "premium/text/towel-side-bend.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftowel-side-bend.png",
-    "fileName": "towel-side-bend.png"
+    "fileName": "towel-side-bend.png",
+    "titleJa": "タオルを使用して体幹の側屈【文字あり】"
   },
   {
     "id": "towel-trunk-rotation",
@@ -2155,7 +2276,8 @@
     "title": "Towel Trunk Rotation",
     "previewSrc": "premium/text/towel-trunk-rotation.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftowel-trunk-rotation.png",
-    "fileName": "towel-trunk-rotation.png"
+    "fileName": "towel-trunk-rotation.png",
+    "titleJa": "タオルを使用して体幹の回旋-立位【文字あり】"
   },
   {
     "id": "treadmill-walking",
@@ -2164,7 +2286,8 @@
     "title": "Treadmill Walking",
     "previewSrc": "premium/text/treadmill-walking.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftreadmill-walking.png",
-    "fileName": "treadmill-walking.png"
+    "fileName": "treadmill-walking.png",
+    "titleJa": "トレッドミル【文字あり】"
   },
   {
     "id": "trunk-extension-stretch",
@@ -2173,7 +2296,8 @@
     "title": "Trunk Extension Stretch",
     "previewSrc": "premium/text/trunk-extension-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftrunk-extension-stretch.png",
-    "fileName": "trunk-extension-stretch.png"
+    "fileName": "trunk-extension-stretch.png",
+    "titleJa": "体幹の伸展【文字あり】"
   },
   {
     "id": "trunk-flexion-stretch",
@@ -2182,7 +2306,8 @@
     "title": "Trunk Flexion Stretch",
     "previewSrc": "premium/text/trunk-flexion-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftrunk-flexion-stretch.png",
-    "fileName": "trunk-flexion-stretch.png"
+    "fileName": "trunk-flexion-stretch.png",
+    "titleJa": "体幹の屈曲【文字あり】"
   },
   {
     "id": "trunk-rotation",
@@ -2191,7 +2316,8 @@
     "title": "Trunk Rotation",
     "previewSrc": "premium/text/trunk-rotation.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Ftrunk-rotation.png",
-    "fileName": "trunk-rotation.png"
+    "fileName": "trunk-rotation.png",
+    "titleJa": "体幹の回旋【文字あり】"
   },
   {
     "id": "walking",
@@ -2200,7 +2326,8 @@
     "title": "Walking",
     "previewSrc": "premium/text/walking.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwalking.png",
-    "fileName": "walking.png"
+    "fileName": "walking.png",
+    "titleJa": "ウォーキング【文字あり】"
   },
   {
     "id": "wall-achilles-stretch",
@@ -2209,7 +2336,8 @@
     "title": "Wall Achilles Stretch",
     "previewSrc": "premium/text/wall-achilles-stretch.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwall-achilles-stretch.png",
-    "fileName": "wall-achilles-stretch.png"
+    "fileName": "wall-achilles-stretch.png",
+    "titleJa": "壁を使用してアキレス腱のストレッチ【文字あり】"
   },
   {
     "id": "wall-push-up",
@@ -2218,7 +2346,8 @@
     "title": "Wall Push Up",
     "previewSrc": "premium/text/wall-push-up.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwall-push-up.png",
-    "fileName": "wall-push-up.png"
+    "fileName": "wall-push-up.png",
+    "titleJa": "壁を使って腕立て【文字あり】"
   },
   {
     "id": "wall-slide",
@@ -2227,7 +2356,8 @@
     "title": "Wall Slide",
     "previewSrc": "premium/text/wall-slide.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwall-slide.png",
-    "fileName": "wall-slide.png"
+    "fileName": "wall-slide.png",
+    "titleJa": "ウォールサイド【文字あり】"
   },
   {
     "id": "wall-squat",
@@ -2236,7 +2366,8 @@
     "title": "Wall Squat",
     "previewSrc": "premium/text/wall-squat.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwall-squat.png",
-    "fileName": "wall-squat.png"
+    "fileName": "wall-squat.png",
+    "titleJa": "壁にもたれて空気イス【文字あり】"
   },
   {
     "id": "wheelchair-seating-tips",
@@ -2245,7 +2376,8 @@
     "title": "Wheelchair Seating Tips",
     "previewSrc": "premium/text/wheelchair-seating-tips.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwheelchair-seating-tips.png",
-    "fileName": "wheelchair-seating-tips.png"
+    "fileName": "wheelchair-seating-tips.png",
+    "titleJa": "車椅子座位姿勢【文字あり】"
   },
   {
     "id": "ankle-dorsiflexion-and-plantarflexion",
