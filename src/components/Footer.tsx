@@ -6,6 +6,9 @@ export function Footer() {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
                     <div className="text-sm text-gray-600">
+                        <Link href="/about" className="hover:text-gray-900 hover:underline mr-6">
+                            運営者情報
+                        </Link>
                         <Link href="/faq" className="hover:text-gray-900 hover:underline mr-6">
                             よくあるご質問
                         </Link>

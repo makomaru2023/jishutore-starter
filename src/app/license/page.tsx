@@ -6,58 +6,77 @@ export default function LicensePage() {
         <div className="min-h-screen bg-gray-50">
             <Header />
             <main className="container mx-auto px-4 py-12">
-                <div className="mx-auto max-w-3xl bg-white p-8 rounded-xl shadow-sm">
-                    <h1 className="mb-8 text-3xl font-bold text-gray-900">利用規約・ガイドライン</h1>
+                <div className="mx-auto max-w-4xl bg-white p-8 rounded-xl shadow-sm">
+                    <h1 className="mb-8 text-3xl font-bold text-gray-900 text-center">利用規約・ライセンス</h1>
 
-                    <div className="prose prose-blue max-w-none text-gray-600">
-                        <p>
-                            自主トレ素材庫.jp、以下「本サイト」で配布する素材の利用条件は、以下のとおりです。<br />
-                            本ページの内容は、「利用規約」とあわせて適用されます。
-                        </p>
+                    <div className="space-y-12 text-gray-700">
+                        {/* 1. 共通事項 */}
+                        <section>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">1. 共通事項（全素材共通）</h2>
+                            <div className="bg-gray-50 p-6 rounded-lg">
+                                <h3 className="font-bold text-lg mb-3">禁止事項</h3>
+                                <ul className="list-disc pl-5 space-y-2">
+                                    <li>素材データそのものを再配布・転売すること（加工の有無を問わず）</li>
+                                    <li>素材をメインとした商品（LINEスタンプ、グッズ等）を販売すること</li>
+                                    <li>公序良俗に反する目的、反社会的勢力に関わる利用</li>
+                                    <li>その他、当サイトが不適切と判断する利用</li>
+                                </ul>
+                                <h3 className="font-bold text-lg mt-6 mb-3">免責事項</h3>
+                                <p>
+                                    当サイトの素材を利用したことによるトラブルや損害について、当サイトは一切の責任を負いません。
+                                    運動指導の際は、必ず専門職の判断のもと、対象者の身体機能に合わせて安全に実施してください。
+                                </p>
+                            </div>
+                        </section>
 
-                        <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">無料素材（CC BY 4.0）</h2>
-                        <p>
-                            本サイトの無料素材は、クリエイティブ・コモンズ・ライセンス「表示 4.0 国際（CC BY 4.0）」のもとで提供されます。
-                        </p>
-                        <ul className="list-disc pl-6 mb-4 space-y-2">
-                            <li>商用・非商用を問わず利用可能</li>
-                            <li>画像の加工・編集・一部切り出し等も可能</li>
-                            <li>クレジット表記が必須</li>
-                        </ul>
+                        {/* 2. 無料素材 */}
+                        <section>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">2. 無料素材（Freeプラン）</h2>
+                            <div className="space-y-4">
+                                <p>
+                                    無料素材は、クリエイティブ・コモンズ・ライセンス<strong>「表示 4.0 国際 (CC BY 4.0)」</strong>の下で提供されています。
+                                </p>
+                                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                                    <h3 className="font-bold text-blue-900 mb-2">利用条件：クレジット表記が必要です</h3>
+                                    <p className="text-sm mb-4">
+                                        利用する際は、資料の隅などに以下のいずれかの表記を入れてください。
+                                    </p>
+                                    <div className="bg-white p-3 rounded border border-gray-200 text-sm font-mono text-gray-600">
+                                        出典：自主トレ素材庫.jp<br />
+                                        （https://self-training.pro-kinkin-sss.com）
+                                    </div>
+                                    <p className="text-sm mt-4">
+                                        ※クレジット表記があれば、商用利用・改変・再配布（CC BY 4.0の条件下で）も可能です。
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
 
-                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
-                            <p className="font-bold mb-2">クレジット表記例：</p>
-                            <p>「出典：自主トレ素材庫.jp」</p>
-                            <p className="text-sm mt-2 text-gray-500">可能であれば、上記に加えて URL（https://self-training.pro-kinkin-sss.com）も併記してください。</p>
-                        </div>
-
-                        <p>
-                            CC BY 4.0 ライセンスの詳細：<br />
-                            <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                https://creativecommons.org/licenses/by/4.0/deed.ja
-                            </a>
-                        </p>
-
-                        <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">有料素材（SmartReha独自ライセンス）</h2>
-                        <p>
-                            有料素材は、自主トレ素材庫.jp独自の商用利用ライセンスで提供されます。買い切り制であり、購入者は以下の範囲で継続的に利用できます。
-                        </p>
-                        <ul className="list-disc pl-6 mb-4 space-y-2">
-                            <li>商用利用可（院内資料・患者配布物・講習会資料・SNS投稿・Web教材など）</li>
-                            <li>クレジット表記は不要</li>
-                            <li>本素材データそのものの再配布・再販売・貸与は禁止</li>
-                            <li>購入者本人、または同一の医療機関・事業所内の職員による共有利用に限る</li>
-                        </ul>
-
-                        <p className="mb-4">
-                            デジタル商品の性質上、ダウンロード完了後の返品・返金には応じられません。<br />
-                            ただし、決済の重複やデータ破損など、当サイトに起因する不具合が確認された場合は、
-                            合理的な範囲で返金または再配布等の対応を行います。<a href="mailto:smart.rehabili@gmail.com" className="text-blue-600 hover:underline">smart.rehabili@gmail.com</a> までご連絡ください。
-                        </p>
-
-                        <p className="text-sm text-gray-500">
-                            ※個別のライセンス条件が商品ページに記載されている場合は、そちらが優先されます。
-                        </p>
+                        {/* 3. 有料素材 */}
+                        <section>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">3. 有料素材（Basic / Pro / Premium）</h2>
+                            <div className="space-y-4">
+                                <p>
+                                    有料プランで購入された素材は、<strong>「自主トレ素材庫.jp 独自ライセンス」</strong>が適用されます。
+                                </p>
+                                <div className="bg-green-50 p-6 rounded-lg border border-green-100">
+                                    <h3 className="font-bold text-green-900 mb-2">利用条件：クレジット表記は不要です</h3>
+                                    <p className="mb-4">
+                                        購入者は、以下の用途で自由に利用できます。
+                                    </p>
+                                    <ul className="list-disc pl-5 space-y-2 mb-4">
+                                        <li>院内・施設内での掲示物、配布資料</li>
+                                        <li>患者様・利用者様への個別指導資料</li>
+                                        <li>学会発表、論文、勉強会のスライド資料</li>
+                                        <li>Webサイト、SNS、ブログ、動画などへの掲載</li>
+                                        <li>商用利用（有料セミナーの資料、有料noteの挿絵など）</li>
+                                    </ul>
+                                    <p className="text-sm font-bold text-red-600">
+                                        ※ただし、「素材そのものの再配布・転売」は固く禁止します。
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </main>

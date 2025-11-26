@@ -3,102 +3,76 @@
 import { useState } from 'react';
 
 
-interface Plan {
-    name: string;
+interface PricingCardProps {
+    title: string;
     price: string;
     description: string;
     features: string[];
     priceId: string;
-    highlighted: boolean;
+    buttonText: string;
+    recommended?: boolean;
 }
 
-interface PricingCardProps {
-    plan: Plan;
-}
-
-export function PricingCard({ plan }: PricingCardProps) {
-    const [loading, setLoading] = useState(false);
+export function PricingCard({
+    title,
+    price,
+    description,
+    features,
+    priceId,
+    buttonText,
+    recommended = false
+}: PricingCardProps) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleCheckout = async () => {
+        setIsLoading(true);
+        setError(null);
         try {
-            setLoading(true);
-
             const response = await fetch('/api/checkout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    priceId: plan.priceId,
-                    planName: plan.name,
-                }),
+                body: JSON.stringify({ priceId }),
             });
 
             const data = await response.json();
 
-            if (data.url) {
-                window.location.href = data.url;
-            } else {
-                throw new Error(data.error || '決済URLの取得に失敗しました');
+            if (!response.ok) {
+                throw new Error(data.error || 'Checkout failed');
             }
-        } catch (error: any) {
-            console.error('Checkout error:', error);
-            alert(`エラーが発生しました: ${error.message}`);
-        } finally {
-            setLoading(false);
+
+            // Redirect to Stripe Checkout
+            window.location.href = data.url;
+        } catch (err) {
+            console.error('Checkout error:', err);
+            setError(err instanceof Error ? err.message : 'An error occurred');
+            setIsLoading(false);
         }
     };
 
     return (
-        <div
-            className={`relative rounded-2xl p-8 ${plan.highlighted
-                ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-xl scale-105'
-                : 'bg-white text-gray-900 shadow-lg'
-                }`}
-        >
-            {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-yellow-400 px-4 py-1 text-sm font-semibold text-gray-900">
-                    おすすめ
+        <div className={`relative flex flex-col rounded-2xl border ${recommended ? 'border-blue-600 shadow-xl scale-105 z-10' : 'border-gray-200 shadow-sm'} bg-white p-8`}>
+            {recommended && (
+                <div className="absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-blue-600 px-3 py-1 text-center text-sm font-medium text-white">
+                    人気プラン
                 </div>
             )}
-
-            <div className="mb-6">
-                <h3 className={`text-2xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
-                    {plan.name}
-                </h3>
-                <p className={`mt-2 text-sm ${plan.highlighted ? 'text-blue-100' : 'text-gray-600'}`}>
-                    {plan.description}
+            <div className="mb-8">
+                <h3 className="text-xl font-semibold leading-7 text-gray-900">{title}</h3>
+                <p className="mt-4 flex items-baseline gap-x-2">
+                    <span className="text-5xl font-bold tracking-tight text-gray-900">¥{price}</span>
+                    <span className="text-base text-gray-500">（税込）</span>
                 </p>
+                <p className="mt-6 text-base leading-7 text-gray-600">{description}</p>
             </div>
-
-            <div className="mb-6">
-                <div className={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
-                    {plan.price}
-                </div>
-                <p className={`mt-1 text-sm ${plan.highlighted ? 'text-blue-100' : 'text-gray-500'}`}>
-                    ※ 買い切り型・ライセンスフリー
-                </p>
-            </div>
-
-            <ul className="mb-8 space-y-3">
-                {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                        <svg
-                            className={`mr-3 h-5 w-5 flex-shrink-0 ${plan.highlighted ? 'text-blue-200' : 'text-blue-500'
-                                }`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 13l4 4L19 7"
-                            />
+            <ul role="list" className="mb-8 space-y-3 text-sm leading-6 text-gray-600 flex-1">
+                {features.map((feature) => (
+                    <li key={feature} className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                         </svg>
-                        <span className={`text-sm ${plan.highlighted ? 'text-blue-50' : 'text-gray-700'}`}>
-                            {feature}
                         </span>
                     </li>
                 ))}
@@ -133,6 +107,6 @@ export function PricingCard({ plan }: PricingCardProps) {
                 </a>
                 <span className={`${plan.highlighted ? 'text-blue-100' : 'text-gray-600'}`}> に同意します</span>
             </div>
-        </div>
+        </div >
     );
 }
