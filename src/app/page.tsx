@@ -11,15 +11,10 @@ export default function Home() {
         {/* Hero Section */}
         <div className="bg-gradient-to-b from-blue-600 to-blue-800 py-20 sm:py-28 lg:py-32">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="mb-8 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">
+            <h1 className="mb-12 text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-relaxed">
               リハビリ資料作成の時間を、<br className="hidden sm:block" />
               もっと「患者様と向き合う時間」へ。
             </h1>
-            <p className="mx-auto mb-12 max-w-2xl text-lg sm:text-xl text-blue-100 leading-relaxed">
-              PT・OT・ST・介護職のための、統一感のある自主トレ素材集。<br />
-              ダウンロードして印刷するだけで、伝わる指導資料が完成します。<br />
-              <span className="text-sm mt-2 block opacity-80">（商用利用OK / 会員登録不要で試せます）</span>
-            </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/free"
