@@ -1,134 +1,129 @@
-'use client';
-
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export default function FAQPage() {
-    {
-        title: "ダウンロード・技術的なこと",
-            items: [
-                {
-                    question: "ダウンロード方法がわかりません。",
-                    answer: (
-                        <>
-                            決済完了後に表示される「ダウンロードボタン」から、すぐにファイルを取得できます。<br />
-                            また、購入時に入力いただいたメールアドレス宛にもダウンロード情報が送信されます（※環境により異なります）。<br />
-                            - スマートフォンの場合：通信環境の良い場所でWi-Fi接続を推奨します。<br />
-                            - PCの場合：ダウンロードフォルダの保存先をご確認ください。
-                        </>
-                    )
-                },
-                {
-                    question: "ファイルが開けません／画像が表示されません。",
-                    answer: (
-                        <>
-                            以下の点をご確認ください。<br />
-                            - Zip形式の場合：解凍ソフトで展開できているか<br />
-                            - 画像形式：WebP / PNG などに対応したビューア・ブラウザをお使いか<br />
-                            - スマホの場合：ストレージ容量に余裕があるか<br /><br />
-                            それでも解決しない場合は、<br />
-                            「ご利用端末（例：iPhone 15 / Windows 10）」「ブラウザ名」「エラーの状況」などを添えてお問い合わせください。
-                        </>
-                    )
-                },
-                {
-                    question: "推奨環境はありますか？",
-                    answer: (
-                        <>
-                            以下の環境を推奨しています。<br />
-                            - 最新版の Google Chrome / Safari / Microsoft Edge などのWebブラウザ<br />
-                            - スマートフォン：iOS / Android の最新版付近<br />
-                            - PC：Windows / macOS のサポート対象バージョン<br /><br />
-                            古いOSやブラウザでは、表示崩れやダウンロードエラーが発生する場合があります。
-                        </>
-                    )
-                }
-            ]
-    },
-    {
-        title: "医療・安全面について",
-            items: [
-                {
-                    question: "掲載されている運動は、誰が行っても大丈夫ですか？",
-                    answer: (
-                        <>
-                            いいえ。自主トレ素材庫.jpの資料は、あくまで「説明用イラスト・資料」です。<br />
-                            実際の運動を行うかどうか、運動の強度・回数などは、<strong>必ず主治医・担当セラピストの指示に従ってください。</strong><br /><br />
-                            持病や痛み、手術直後など、運動に制限が必要なケースもあります。<br />
-                            安全のため、自己判断で新しい運動を始めることはお控えください。
-                        </>
-                    )
-                },
-                {
-                    question: "個別のリハビリ相談や医学的なアドバイスはしてもらえますか？",
-                    answer: (
-                        <>
-                            申し訳ありませんが、個別の診断・治療・リハビリ計画の立案など、医療行為に該当するご相談にはお答えできません。<br />
-                            具体的な症状や不安がある場合は、必ず主治医や担当セラピストにご相談ください。
-                        </>
-                    )
-                }
-            ]
-    },
-    {
-        title: "その他",
-            items: [
-                {
-                    question: "掲載してほしい自主トレやイラストをリクエストできますか？",
-                    answer: (
-                        <>
-                            可能な範囲でお受けします。<br />
-                            「こんな姿勢バージョンがほしい」「○○疾患向けの自主トレがほしい」などのご要望がありましたら、お問い合わせフォームからお送りください。<br />
-                            すべてを採用できるわけではありませんが、今後の制作の参考にさせていただきます。
-                        </>
-                    )
-                },
-                {
-                    question: "施設オリジナルの資料を作ってほしいのですが、個別依頼はできますか？",
-                    answer: (
-                        <>
-                            現時点では「サイト掲載素材の提供」が中心ですが、個別の制作依頼についてもご相談は可能です。<br />
-                            ご予算感・用途・納期などを添えてお問い合わせください。対応可能な場合は、別途お見積もりさせていただきます。
-                        </>
-                    )
-                },
-                {
-                    question: "問い合わせはどこからできますか？",
-                    answer: (
-                        <>
-                            サイト内の「お問い合わせ」ページ、またはフッターに記載のメールアドレスからご連絡いただけます。<br />
-                            「よくある質問を読んだけれど解決しなかった点」や「購入済み商品のトラブル」なども、お気軽にお知らせください。
-                        </>
-                    )
-                }
-            ]
-    }
-    ];
-
     return (
         <div className="min-h-screen bg-gray-50">
             <Header />
-            <main className="container mx-auto px-4 py-16">
+            <main className="container mx-auto px-4 py-12">
                 <div className="mx-auto max-w-3xl">
-                    <div className="text-center mb-16">
-                        <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm">Q & A</span>
-                        <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">よくあるご質問</h1>
-                        <div className="mt-4 h-1 w-20 bg-blue-200 mx-auto rounded-full"></div>
+                    <h1 className="mb-8 text-3xl font-bold text-gray-900 text-center">よくあるご質問</h1>
+
+                    {/* Top 3 Questions */}
+                    <div className="mb-12 grid gap-6 md:grid-cols-3">
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
+                            <h3 className="font-bold text-blue-600 mb-2 text-lg">Q. 本当に買い切りですか？</h3>
+                            <p className="text-gray-700 text-sm">はい、月額費用は一切かかりません。一度購入すれば、期限なく何度でもダウンロードしてご利用いただけます。</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
+                            <h3 className="font-bold text-blue-600 mb-2 text-lg">Q. 商用利用は可能ですか？</h3>
+                            <p className="text-gray-700 text-sm">はい、可能です。院内資料はもちろん、有料セミナーの資料や、有料noteの挿絵などにもご利用いただけます。</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
+                            <h3 className="font-bold text-blue-600 mb-2 text-lg">Q. 支払い方法は？</h3>
+                            <p className="text-gray-700 text-sm">クレジットカード決済（Stripe）に対応しています。安全に決済いただけます。</p>
+                        </div>
                     </div>
 
-                    <div className="space-y-12">
-                        {faqCategories.map((category, catIndex) => (
-                            <div key={catIndex}>
-                                <h2 className="text-xl font-bold text-gray-900 mb-6 border-l-4 border-blue-600 pl-4">
-                                    {category.title}
-                                </h2>
-                                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10">
-                                    {category.items.map((faq, index) => (
-                                        <FAQItem key={index} question={faq.question} answer={faq.answer} />
-                                    ))}
-                                </div>
+                    <div className="space-y-8">
+                        {/* Section 1 */}
+                        <section>
+                            <h2 className="text-xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">サービス全般について</h2>
+                            <div className="space-y-4">
+                                <details className="group bg-white rounded-lg shadow-sm">
+                                    <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-gray-900">
+                                        Q. どんな職種向けの素材ですか？
+                                        <span className="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>主に理学療法士（PT）、作業療法士（OT）、言語聴覚士（ST）、および介護職の方々が、患者様や利用者様への指導に使うことを想定して作成しています。</p>
+                                    </div>
+                                </details>
+                                <details className="group bg-white rounded-lg shadow-sm">
+                                    <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-gray-900">
+                                        Q. スマホからでもダウンロードできますか？
+                                        <span className="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>はい、可能です。画像データ（PNG形式）として保存されますので、スマホの写真アプリ等で確認・利用できます。</p>
+                                    </div>
+                                </details>
                             </div>
-                        ))}
+                        </section>
+
+                        {/* Section 2 */}
+                        <section>
+                            <h2 className="text-xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">ライセンス・利用条件について</h2>
+                            <div className="space-y-4">
+                                <details className="group bg-white rounded-lg shadow-sm">
+                                    <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-gray-900">
+                                        Q. 学会発表や論文で使ってもいいですか？
+                                        <span className="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>はい、問題ありません。有料プラン（Basic/Pro/Premium）であればクレジット表記も不要ですので、スライドや誌面にそのまま掲載いただけます。</p>
+                                    </div>
+                                </details>
+                                <details className="group bg-white rounded-lg shadow-sm">
+                                    <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-gray-900">
+                                        Q. 職場内で共有してもいいですか？
+                                        <span className="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>同一の事業所内（同じ病院のリハビリ科内など）であれば、共有サーバーに入れてチームで使用していただいて構いません。ただし、系列病院など別拠点への配布や、ネット上での不特定多数への公開はご遠慮ください。</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </section>
+
+                        {/* Section 3 */}
+                        <section>
+                            <h2 className="text-xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">購入・支払いについて</h2>
+                            <div className="space-y-4">
+                                <details className="group bg-white rounded-lg shadow-sm">
+                                    <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-gray-900">
+                                        Q. 領収書は発行されますか？
+                                        <span className="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>決済完了後、Stripeよりメールにて領収書が自動送信されます。</p>
+                                    </div>
+                                </details>
+                                <details className="group bg-white rounded-lg shadow-sm">
+                                    <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-gray-900">
+                                        Q. 返金はできますか？
+                                        <span className="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>デジタルコンテンツの性質上、原則として返金には応じかねます。ただし、重複決済などのシステムエラーの場合は対応いたしますので、お問合せフォームよりご連絡ください。</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </main>
