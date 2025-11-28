@@ -51,6 +51,18 @@ function PreviewThankYouContent() {
                         ※ダウンロードが始まらない場合は、ブラウザのポップアップブロック設定をご確認ください。
                     </p>
 
+                    <div className="mt-6">
+                        <Link
+                            href={`/${planName.toLowerCase()}`}
+                            className="block w-full bg-white border-2 border-blue-600 text-blue-600 font-bold py-4 px-6 rounded-xl hover:bg-blue-50 transition-colors"
+                        >
+                            {planName}素材一覧を見る
+                        </Link>
+                        <p className="mt-2 text-xs text-gray-500">
+                            ※個別に検索・ダウンロードしたい場合はこちら
+                        </p>
+                    </div>
+
                     <div className="mt-8 pt-8 border-t border-gray-100">
                         <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium">
                             トップページに戻る
