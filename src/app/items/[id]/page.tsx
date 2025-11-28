@@ -30,9 +30,14 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
 }
 
+import { cookies } from "next/headers";
+
 export default function ItemPage({ params }: { params: { id: string } }) {
     const items = getItems();
     const item = items.find((i) => i.id === params.id);
+
+    const cookieStore = cookies();
+    const isPurchased = cookieStore.get("purchased")?.value === "true";
 
     if (!item) {
         return <div>Item not found</div>;
@@ -73,16 +78,18 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                                 style={{ backgroundImage: `url(${imageUrl})` }}
                             />
 
-                            {/* Watermark Overlay */}
-                            <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                                <div className="absolute inset-0 flex flex-wrap content-center justify-center opacity-30 rotate-[-45deg] scale-150">
-                                    {Array.from({ length: 20 }).map((_, i) => (
-                                        <div key={i} className="m-8 text-4xl font-bold text-gray-900 whitespace-nowrap select-none">
-                                            SAMPLE
-                                        </div>
-                                    ))}
+                            {/* Watermark Overlay - Only show if NOT purchased */}
+                            {!isPurchased && (
+                                <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+                                    <div className="absolute inset-0 flex flex-wrap content-center justify-center opacity-30 rotate-[-45deg] scale-150">
+                                        {Array.from({ length: 20 }).map((_, i) => (
+                                            <div key={i} className="m-8 text-4xl font-bold text-gray-900 whitespace-nowrap select-none">
+                                                SAMPLE
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* Transparent Spacer for "Save Image" Protection */}
                             <img
@@ -113,16 +120,33 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                             <div className="mt-auto space-y-4">
                                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                     <h3 className="font-semibold text-gray-900 mb-2">ダウンロードについて</h3>
-                                    <p className="text-sm text-gray-600 mb-4">
-                                        この素材をダウンロードするには、プランの購入が必要です。
-                                        購入後は制限なくダウンロードいただけます。
-                                    </p>
-                                    <Link
-                                        href="/pricing"
-                                        className="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold rounded-lg transition-colors"
-                                    >
-                                        料金プランを見る
-                                    </Link>
+                                    {isPurchased ? (
+                                        <>
+                                            <p className="text-sm text-green-700 mb-4 font-bold">
+                                                購入済みのため、ダウンロード可能です。
+                                            </p>
+                                            <a
+                                                href={item.fileHref}
+                                                download
+                                                className="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold rounded-lg transition-colors"
+                                            >
+                                                画像をダウンロード
+                                            </a>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p className="text-sm text-gray-600 mb-4">
+                                                この素材をダウンロードするには、プランの購入が必要です。
+                                                購入後は制限なくダウンロードいただけます。
+                                            </p>
+                                            <Link
+                                                href="/pricing"
+                                                className="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold rounded-lg transition-colors"
+                                            >
+                                                料金プランを見る
+                                            </Link>
+                                        </>
+                                    )}
                                 </div>
                                 <Link href="/basic" className="block text-center text-gray-500 hover:text-gray-900 text-sm">
                                     一覧に戻る

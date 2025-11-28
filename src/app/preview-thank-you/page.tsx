@@ -14,6 +14,11 @@ function PreviewThankYouContent() {
     const planName = planParam === 'basic' ? 'Basic' : planParam === 'pro' ? 'Pro' : 'Premium';
     const downloadUrl = '#'; // Dummy link for preview
 
+    // Set cookie for previewing the "purchased" state on other pages
+    if (typeof document !== 'undefined') {
+        document.cookie = "purchased=true; path=/; max-age=3600"; // 1 hour for preview
+    }
+
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col">
             <Header />
