@@ -30,8 +30,7 @@ function ThankYouContent() {
                 setDownloadUrl(`/api/download?token=${result.token}`);
                 setPlanName(result.plan === 'basic' ? 'Basic' : result.plan === 'pro' ? 'Pro' : 'Premium');
 
-                // Set purchased cookie for client-side state if needed (optional, but good for UX)
-                document.cookie = "purchased=true; path=/; max-age=31536000"; // 1 year
+                // Cookie is now set server-side in verifySessionAndGetToken for better durability (10 years)
             } else {
                 setStatus('error');
                 setErrorMessage(result.error || '不明なエラーが発生しました。');

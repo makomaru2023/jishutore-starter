@@ -16,7 +16,7 @@ function PreviewThankYouContent() {
 
     // Set cookie for previewing the "purchased" state on other pages
     if (typeof document !== 'undefined') {
-        document.cookie = "purchased=true; path=/; max-age=3600"; // 1 hour for preview
+        document.cookie = "purchased=true; path=/; max-age=315360000"; // 10 years for preview
     }
 
     return (

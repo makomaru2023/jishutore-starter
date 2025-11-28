@@ -3,6 +3,8 @@
 import Stripe from 'stripe';
 import { signDownloadToken } from '@/lib/auth';
 
+import { cookies } from 'next/headers';
+
 export async function verifySessionAndGetToken(sessionId: string) {
     if (!process.env.STRIPE_SECRET_KEY) {
         throw new Error('Stripe Secret Key is missing');
@@ -40,6 +42,15 @@ export async function verifySessionAndGetToken(sessionId: string) {
         }
 
         const token = await signDownloadToken({ plan, sessionId });
+
+        // Set purchased cookie server-side for better durability (10 years)
+        cookies().set('purchased', 'true', {
+            path: '/',
+            maxAge: 315360000, // 10 years in seconds
+            httpOnly: false, // Allow client-side access if needed for UI checks
+            secure: true,
+            sameSite: 'lax',
+        });
 
         return { success: true, token, plan };
     } catch (error) {
