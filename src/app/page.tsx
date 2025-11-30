@@ -10,13 +10,13 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         {/* Hero Section */}
-        <div className="bg-gradient-to-b from-blue-600 to-blue-800 py-16 sm:py-24 lg:py-32">
+        <div className="bg-gradient-to-b from-blue-600 to-blue-800 py-16 sm:py-20 lg:py-24">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 max-w-6xl mx-auto">
               {/* Text Content */}
               <div className="flex-1 text-center lg:text-left">
                 <h1 className="mb-6 text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-normal">
-                  「自主トレ資料づくり」に、<br className="hidden sm:block" />もう悩まない。<br />
+                  「自主トレ資料づくり」に<br className="hidden sm:block" /> もう悩まない。<br />
                   <span className="text-blue-200 text-xl sm:text-3xl lg:text-4xl mt-4 block">
                     現場のプロが作った、貼るだけ5分のイラスト素材集。
                   </span>
@@ -51,20 +51,20 @@ export default function Home() {
               </div>
 
               {/* Profile Image */}
-              <div className="flex-shrink-0 relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80">
+              <div className="flex-shrink-0 relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
                 <div className="absolute inset-0 bg-blue-500 rounded-full opacity-20 blur-2xl transform translate-y-4"></div>
-                <div className="relative w-full h-full rounded-full border-4 border-white/30 overflow-hidden shadow-2xl">
+                <div className="relative w-full h-full rounded-full border-4 border-white/30 overflow-hidden shadow-xl">
                   <Image
                     src="/images/profile.png"
                     alt="運営者（作業療法士）"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
+                    sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
                     priority
                   />
                 </div>
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full shadow-lg border border-blue-100 whitespace-nowrap z-10">
-                  <p className="text-blue-800 text-sm sm:text-base font-bold">運営者: トロル (OT)</p>
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-blue-100 whitespace-nowrap z-10">
+                  <p className="text-blue-800 text-xs font-bold">運営者: トロル (OT)</p>
                 </div>
               </div>
             </div>
