@@ -63,9 +63,6 @@ export default function Home() {
                     priority
                   />
                 </div>
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full shadow-lg border border-blue-100 whitespace-nowrap">
-                  <p className="text-blue-800 text-sm font-bold">運営者: トロル (OT)</p>
-                </div>
               </div>
             </div>
           </div>
@@ -110,46 +107,62 @@ export default function Home() {
         {/* Features Section */}
         <div className="bg-gray-50 py-24 sm:py-32">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">
                 選ばれる理由
               </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                忙しい臨床現場で働く療法士のために作られました。
-              </p>
+              <div className="text-lg text-gray-600 leading-relaxed mb-16">
+                <p className="mb-4">
+                  「自主トレ素材庫.jp」は、臨床経験14年目の現役作業療法士である運営者（トロル）が、
+                  「自分の臨床で本当に使うために作った素材」を集めたサイトです。
+                </p>
+                <p>
+                  回復期から生活期まで、多くの患者様と関わる中で感じた
+                  「もっとこうだったらいいのに」という現場の声を形にしました。
+                </p>
+              </div>
             </div>
+
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col items-center text-center bg-white p-8 rounded-xl shadow-sm">
+              <div className="flex flex-col items-center text-center bg-white p-8 rounded-xl shadow-sm h-full">
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-blue-100">
                   <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">統一感のあるデザイン</h3>
-                <p className="mt-4 text-gray-600">
-                  全てのイラストが同じテイストで描かれているため、資料全体に統一感が生まれます。「バラバラのフリー素材」から卒業しましょう。
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">統一感のあるデザイン</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  フリー素材や写真を組み合わせた「つぎはぎの資料」から卒業しませんか？
+                  全てのイラストが同じテイストで描かれているため、資料全体にプロのような統一感が生まれます。
+                  患者様にとっても「見やすく、分かりやすい」資料になります。
                 </p>
               </div>
-              <div className="flex flex-col items-center text-center bg-white p-8 rounded-xl shadow-sm">
+
+              <div className="flex flex-col items-center text-center bg-white p-8 rounded-xl shadow-sm h-full">
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-blue-100">
                   <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">時短で資料作成</h3>
-                <p className="mt-4 text-gray-600">
-                  ダウンロードして貼り付けるだけ。絵を描く時間を節約し、患者様とのコミュニケーションやカルテ記載の時間を増やせます。
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">時短で資料作成</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  「絵を描く」「探す」時間を大幅にカット。ダウンロードして貼り付けるだけで、
+                  1枚20分かかっていた資料作成が5分で完了します。
+                  仮に月30枚作成する場合、約7.5時間の業務削減に。浮いた時間を、臨床や記録など本来の業務に充てられます。
                 </p>
               </div>
-              <div className="flex flex-col items-center text-center bg-white p-8 rounded-xl shadow-sm">
+
+              <div className="flex flex-col items-center text-center bg-white p-8 rounded-xl shadow-sm h-full">
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-blue-100">
                   <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">商用利用OK</h3>
-                <p className="mt-4 text-gray-600">
-                  有料素材はクレジット表記不要で商用利用が可能。院内掲示、配布資料、学会発表、SNSなど、幅広く安心してご利用いただけます。
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">商用利用OKで安心</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  有料素材はクレジット表記不要で商用利用が可能です。
+                  院内掲示や配布資料はもちろん、学会発表のスライドや、地域での講演資料など、
+                  著作権を気にせず安心して幅広くご利用いただけます。
                 </p>
               </div>
             </div>
