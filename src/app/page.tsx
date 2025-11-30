@@ -23,7 +23,7 @@ export default function Home() {
                 </h1>
 
                 <p className="mb-8 text-lg text-blue-100 sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  回復期病棟11年・生活期3年の経験を持つ現役作業療法士が、
+                  臨床経験14年目の現役作業療法士が、
                   「現場で本当に使いやすい」を追求して作成しました。<br className="hidden sm:block" />
                   統一感のある素材で、資料作成の時間を20分から5分へ。<br className="hidden sm:block" />
                   浮いた時間を、患者様と向き合う大切な時間にお使いください。
