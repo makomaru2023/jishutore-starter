@@ -9,49 +9,48 @@ export default function Home() {
       <Header />
       <main>
         {/* Hero Section */}
-        {/* Hero Section */}
         <div className="bg-gradient-to-b from-blue-600 to-blue-800 py-16 sm:py-20 lg:py-24">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 max-w-6xl mx-auto">
-              {/* Text Content */}
-              <div className="flex-1 text-center lg:text-left">
-                <h1 className="mb-6 text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-normal">
-                  「自主トレ資料づくり」に<br className="hidden sm:block" /> もう悩まない。<br />
-                  <span className="text-blue-200 text-xl sm:text-3xl lg:text-4xl mt-4 block">
-                    現場のプロが作った、貼るだけ5分のイラスト素材集。
-                  </span>
-                </h1>
-
-                <p className="mb-8 text-lg text-blue-100 sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  臨床経験14年目の現役作業療法士が、
-                  「現場で本当に使いやすい」を追求して作成しました。<br className="hidden sm:block" />
-                  統一感のある素材で、資料作成の時間を20分から5分へ。<br className="hidden sm:block" />
-                  浮いた時間を、患者様と向き合う大切な時間にお使いください。
+            <div className="mx-auto max-w-5xl lg:flex lg:items-center lg:justify-between gap-10">
+              {/* Left: Text */}
+              <div className="max-w-xl space-y-6 text-center lg:text-left mx-auto lg:mx-0">
+                <p className="text-sm font-bold text-blue-200 tracking-wider">
+                  PT・OT・通所スタッフ向け 自主トレイラスト
                 </p>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                  「自主トレ資料づくり」に、<br />もう悩まない。
+                </h1>
+                <div className="space-y-2">
+                  <p className="text-lg text-blue-50 font-medium">
+                    現場14年目の作業療法士が作った、貼るだけ5分のイラスト素材集です。
+                  </p>
+                  <p className="text-sm text-blue-200">
+                    統一感のあるイラストで、資料作成の時間を20分 → 5分に。
+                  </p>
+                </div>
 
-                <div className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start mb-6">
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                   <Link
                     href="/free"
-                    className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-blue-600 shadow-lg hover:bg-blue-50 transition-all transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    className="px-8 py-3 rounded-full bg-white text-blue-600 font-bold hover:bg-blue-50 transition-all shadow-lg flex items-center justify-center"
                   >
-                    無料素材を見る
-                    <span className="ml-2 text-xs font-normal text-blue-500">（登録不要）</span>
+                    無料素材を見る <span className="text-xs font-normal ml-1">（登録不要）</span>
                   </Link>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center rounded-lg border-2 border-blue-400 bg-transparent px-8 py-4 text-lg font-bold text-white shadow-sm hover:bg-white/10 transition-all"
+                    className="px-8 py-3 rounded-full border border-blue-300 text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center"
                   >
                     料金プランを見る
                   </Link>
                 </div>
-
-                <p className="text-sm text-blue-200">
-                  ※無料素材はクレジット表記で利用OK。有料プランはクレジット不要・買い切り。
+                <p className="text-xs text-blue-300">
+                  ※無料素材はクレジット表記で利用OK。有料プランはクレジット不要・買い切りです。
                 </p>
               </div>
 
-              {/* Profile Image */}
-              <div className="flex-shrink-0 relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
+              {/* Right: Image */}
+              <div className="mt-10 lg:mt-0 flex-shrink-0 relative w-40 h-40 sm:w-48 sm:h-48 mx-auto lg:mx-0">
                 <div className="absolute inset-0 bg-blue-500 rounded-full opacity-20 blur-2xl transform translate-y-4"></div>
                 <div className="relative w-full h-full rounded-full border-4 border-white/30 overflow-hidden shadow-xl">
                   <Image
@@ -59,7 +58,7 @@ export default function Home() {
                     alt="運営者（作業療法士）"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
+                    sizes="(max-width: 768px) 160px, 192px"
                     priority
                   />
                 </div>
@@ -68,6 +67,16 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* About Section (Moved from Hero) */}
+        <div className="bg-white py-12 border-b border-gray-100">
+          <div className="container mx-auto px-4 max-w-3xl text-center">
+            <p className="text-gray-600 leading-relaxed text-lg">
+              臨床経験14年目の現役作業療法士が、「現場で本当に使いやすい」を追求して作成しました。<br className="hidden sm:block" />
+              浮いた時間を、患者様と向き合う大切な時間にお使いください。
+            </p>
           </div>
         </div>
 
