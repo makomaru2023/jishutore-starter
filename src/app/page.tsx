@@ -13,12 +13,13 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-5xl lg:flex lg:items-center lg:justify-between gap-10">
               {/* Left: Text */}
-              <div className="max-w-xl space-y-6 text-center lg:text-left mx-auto lg:mx-0">
+              <div className="max-w-2xl space-y-6 text-center lg:text-left mx-auto lg:mx-0">
                 <p className="text-sm font-bold text-blue-200 tracking-wider">
                   PT・OT・通所スタッフ向け 自主トレイラスト
                 </p>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                  「自主トレ資料づくり」に、<br />もう悩まない。
+                  <span className="inline-block">「自主トレ資料づくり」に、</span><br />
+                  <span className="inline-block">もう悩まない。</span>
                 </h1>
                 <div className="space-y-2">
                   <p className="text-lg text-blue-50 font-medium">
@@ -73,7 +74,7 @@ export default function Home() {
         {/* About Section (Moved from Hero) */}
         <div className="bg-white py-12 border-b border-gray-100">
           <div className="container mx-auto px-4 max-w-3xl text-center">
-            <p className="text-gray-600 leading-relaxed text-lg">
+            <p className="text-gray-600 leading-relaxed text-lg inline-block text-balance">
               臨床経験14年目の現役作業療法士が、「現場で本当に使いやすい」を追求して作成しました。<br className="hidden sm:block" />
               浮いた時間を、患者様と向き合う大切な時間にお使いください。
             </p>
