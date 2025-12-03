@@ -15,7 +15,7 @@ export default function Home() {
               {/* Left: Text */}
               <div className="max-w-2xl space-y-6 text-center lg:text-left mx-auto lg:mx-0">
                 <p className="text-sm font-bold text-blue-200 tracking-wider">
-                  PT・OT・通所スタッフ向け 自主トレイラスト
+                  PT・OT・ST向け 自主トレイラスト
                 </p>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
                   <span className="inline-block">「自主トレ資料づくり」に、</span><br />
