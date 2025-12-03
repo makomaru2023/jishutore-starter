@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "自主トレ素材庫.jp",
   description: "リハビリ職のための自主トレ素材配布サイト",
+  metadataBase: new URL('https://self-training.pro-kinkin-sss.com'),
 };
 
 export default function RootLayout({
