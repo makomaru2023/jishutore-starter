@@ -21,11 +21,6 @@ export function ItemCard({ item }: ItemCardProps) {
         imageUrl = `/api/image?key=${encodeURIComponent(item.previewSrc)}`;
     }
 
-    // 簡易的な購入チェック (クライアントサイドのみ)
-    // 注意: これはセキュリティ的には不十分ですが、要件を満たすためのMVP実装です
-    const isPurchased = typeof document !== "undefined" && document.cookie.includes("purchased=true");
-    const isFree = item.tier === 'free';
-
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
@@ -37,17 +32,6 @@ export function ItemCard({ item }: ItemCardProps) {
                         className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    {!isPurchased && !isFree && (
-                        <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                            <div className="absolute inset-0 flex flex-wrap content-center justify-center opacity-20 rotate-[-45deg] scale-150">
-                                {Array.from({ length: 10 }).map((_, i) => (
-                                    <div key={i} className="m-4 text-xl font-bold text-gray-900 whitespace-nowrap select-none">
-                                        SAMPLE
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
                 </Link>
             </div>
             <div className="flex flex-1 flex-col p-4">
@@ -56,7 +40,7 @@ export function ItemCard({ item }: ItemCardProps) {
                         {item.category}
                     </span>
                     <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-600 capitalize">
-                        {item.tier}
+                        Free
                     </span>
                 </div>
                 <h3 className="mb-4 text-lg font-medium text-gray-900 line-clamp-2">
@@ -65,22 +49,13 @@ export function ItemCard({ item }: ItemCardProps) {
                     </Link>
                 </h3>
                 <div className="mt-auto">
-                    {isPurchased || isFree ? (
-                        <a
-                            href={item.fileHref}
-                            download
-                            className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                        >
-                            ダウンロード
-                        </a>
-                    ) : (
-                        <a
-                            href="/pricing"
-                            className="inline-flex w-full items-center justify-center rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-                        >
-                            購入してダウンロード
-                        </a>
-                    )}
+                    <a
+                        href={item.fileHref}
+                        download
+                        className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        ダウンロード
+                    </a>
                 </div>
             </div>
         </div>

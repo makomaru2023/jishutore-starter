@@ -33,20 +33,14 @@ export default function Home() {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                   <Link
-                    href="/free"
+                    href="/items"
                     className="px-8 py-3 rounded-full bg-white text-blue-600 font-bold hover:bg-blue-50 transition-all shadow-lg flex items-center justify-center"
                   >
-                    無料素材を見る <span className="text-xs font-normal ml-1">（登録不要）</span>
-                  </Link>
-                  <Link
-                    href="/pricing"
-                    className="px-8 py-3 rounded-full border border-blue-300 text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center"
-                  >
-                    料金プランを見る
+                    素材一覧を見る <span className="text-xs font-normal ml-1">（全品無料）</span>
                   </Link>
                 </div>
                 <p className="text-xs text-blue-300">
-                  ※無料素材はクレジット表記で利用OK。有料プランはクレジット不要・買い切りです。
+                  ※全ての素材を無料でご利用いただけます。商用利用もOK（CC BY 4.0）。
                 </p>
               </div>
 
@@ -86,36 +80,22 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                各プラン素材
+                提供中の自主トレ素材
               </h2>
               <p className="mt-4 text-lg text-gray-600">
-                用途や頻度に合わせて選べる、4つのバリエーション。
+                全ての素材を無料で公開しています。
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              <Link href="/free" className="group relative flex flex-col items-center rounded-2xl bg-gray-50 p-8 border border-gray-100 transition-all hover:shadow-lg hover:border-blue-200">
-                <div className="mb-4 rounded-full bg-blue-100 p-3 text-blue-600 font-bold">Free</div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600">無料素材</h3>
-                <p className="mt-2 text-center text-sm text-gray-500">毎月更新のお試し素材<br />（CC BY 4.0）</p>
-              </Link>
-              <Link href="/basic" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 border border-gray-200 transition-all hover:shadow-lg hover:border-blue-200">
-                <div className="mb-4 rounded-full bg-gray-100 p-3 text-gray-600 font-bold">Basic</div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600">Basic素材</h3>
-                <p className="mt-2 text-center text-sm text-gray-500">基本的な自主トレ40点<br />（買い切り）</p>
-              </Link>
-              <Link href="/pro" className="group relative flex flex-col items-center rounded-2xl bg-white p-8 border border-gray-200 transition-all hover:shadow-lg hover:border-blue-200">
-                <div className="mb-4 rounded-full bg-gray-100 p-3 text-gray-600 font-bold">Pro</div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600">Pro素材</h3>
-                <p className="mt-2 text-center text-sm text-gray-500">実用的な素材60点<br />（買い切り）</p>
-              </Link>
-              <Link href="/premium" className="group relative flex flex-col items-center rounded-2xl bg-gradient-to-br from-blue-50 to-white p-8 border border-blue-200 transition-all hover:shadow-lg hover:border-blue-400">
-                <div className="mb-4 rounded-full bg-blue-600 p-3 text-white font-bold">Premium</div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600">Premium素材</h3>
-                <p className="mt-2 text-center text-sm text-gray-500">全200点以上 + 新作優先<br />（買い切り）</p>
+            <div className="flex justify-center">
+              <Link href="/items" className="group relative flex flex-col items-center rounded-2xl bg-gradient-to-br from-blue-50 to-white p-8 border border-blue-200 transition-all hover:shadow-lg hover:border-blue-400 max-w-sm w-full">
+                <div className="mb-4 rounded-full bg-blue-600 p-3 text-white font-bold">All Free</div>
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600">素材一覧を見る</h3>
+                <p className="mt-2 text-center text-sm text-gray-500">200点以上の自主トレ素材<br />全て無料・登録不要</p>
               </Link>
             </div>
           </div>
         </div>
+
 
         {/* Features Section */}
         <div className="bg-gray-50 py-24 sm:py-32">

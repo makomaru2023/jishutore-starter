@@ -401,7 +401,7 @@
   },
   {
     "id": "air-bike",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Air Bike",
     "previewSrc": "premium/plain/air-bike.png",
@@ -411,7 +411,7 @@
   },
   {
     "id": "ankle-dorsiflexion-and-plantarflexion",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Ankle Dorsiflexion And Plantarflexion",
     "previewSrc": "premium/plain/ankle-dorsiflexion-and-plantarflexion.png",
@@ -421,7 +421,7 @@
   },
   {
     "id": "cane-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Cane Walking",
     "previewSrc": "premium/plain/cane-walking.png",
@@ -431,7 +431,7 @@
   },
   {
     "id": "cat-and-dog",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Cat And Dog",
     "previewSrc": "premium/plain/cat-and-dog.png",
@@ -441,7 +441,7 @@
   },
   {
     "id": "chest-opening-with-stretch-pole",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Chest Opening With Stretch Pole",
     "previewSrc": "premium/plain/chest-opening-with-stretch-pole.png",
@@ -451,7 +451,7 @@
   },
   {
     "id": "chopstick-training-with-azuki",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Chopstick Training With Azuki",
     "previewSrc": "premium/plain/chopstick-training-with-azuki.png",
@@ -461,7 +461,7 @@
   },
   {
     "id": "coin-finger-movement-training",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Coin Finger Movement Training",
     "previewSrc": "premium/plain/coin-finger-movement-training.png",
@@ -471,7 +471,7 @@
   },
   {
     "id": "contraindicated-exercises-for-spine",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Contraindicated Exercises For Spine",
     "previewSrc": "premium/plain/contraindicated-exercises-for-spine.png",
@@ -481,7 +481,7 @@
   },
   {
     "id": "diagonal-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Diagonal Exercise",
     "previewSrc": "premium/plain/diagonal-exercise.png",
@@ -491,7 +491,7 @@
   },
   {
     "id": "door-way-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Door Way Stretch",
     "previewSrc": "premium/plain/door-way-stretch.png",
@@ -501,7 +501,7 @@
   },
   {
     "id": "double-leg-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Double Leg Raise",
     "previewSrc": "premium/plain/double-leg-raise.png",
@@ -511,7 +511,7 @@
   },
   {
     "id": "draw-in",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Draw In",
     "previewSrc": "premium/plain/draw-in.png",
@@ -521,7 +521,7 @@
   },
   {
     "id": "dumbbell-shoulder-abduction",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Dumbbell Shoulder Abduction",
     "previewSrc": "premium/plain/dumbbell-shoulder-abduction.png",
@@ -531,7 +531,7 @@
   },
   {
     "id": "elbow-flexion-with-bar",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Elbow Flexion With Bar",
     "previewSrc": "premium/plain/elbow-flexion-with-bar.png",
@@ -541,7 +541,7 @@
   },
   {
     "id": "fixed-walker-walking.png",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Fixed Walker Walking.png",
     "previewSrc": "premium/plain/fixed-walker-walking.png.png",
@@ -551,7 +551,7 @@
   },
   {
     "id": "foot-rolling",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Foot Rolling",
     "previewSrc": "premium/plain/foot-rolling.png",
@@ -561,7 +561,7 @@
   },
   {
     "id": "forearm-hand-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Forearm Hand Stretch",
     "previewSrc": "premium/plain/forearm-hand-stretch.png",
@@ -571,7 +571,7 @@
   },
   {
     "id": "fullbody-chopstick-training-with-azuki",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Fullbody Chopstick Training With Azuki",
     "previewSrc": "premium/plain/fullbody-chopstick-training-with-azuki.png",
@@ -581,7 +581,7 @@
   },
   {
     "id": "hamstring-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hamstring Stretch",
     "previewSrc": "premium/plain/hamstring-stretch.png",
@@ -591,7 +591,7 @@
   },
   {
     "id": "hand-support-plank",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hand Support Plank",
     "previewSrc": "premium/plain/hand-support-plank.png",
@@ -601,7 +601,7 @@
   },
   {
     "id": "heel-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Heel Raise",
     "previewSrc": "premium/plain/heel-raise.png",
@@ -611,7 +611,7 @@
   },
   {
     "id": "heel-slide",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Heel Slide",
     "previewSrc": "premium/plain/heel-slide.png",
@@ -621,7 +621,7 @@
   },
   {
     "id": "hip-abduction-with-band",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hip Abduction With Band",
     "previewSrc": "premium/plain/hip-abduction-with-band.png",
@@ -631,7 +631,7 @@
   },
   {
     "id": "hip-extension-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hip Extension Exercise",
     "previewSrc": "premium/plain/hip-extension-exercise.png",
@@ -641,7 +641,7 @@
   },
   {
     "id": "hip-flexion-with-knee-extended",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hip Flexion With Knee Extended",
     "previewSrc": "premium/plain/hip-flexion-with-knee-extended.png",
@@ -651,7 +651,7 @@
   },
   {
     "id": "hip-hinge-with-bar",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hip Hinge With Bar",
     "previewSrc": "premium/plain/hip-hinge-with-bar.png",
@@ -661,7 +661,7 @@
   },
   {
     "id": "hip-hinge",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hip Hinge",
     "previewSrc": "premium/plain/hip-hinge.png",
@@ -671,7 +671,7 @@
   },
   {
     "id": "hip-lift",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Hip Lift",
     "previewSrc": "premium/plain/hip-lift.png",
@@ -681,7 +681,7 @@
   },
   {
     "id": "knee-flexion-extension-with-feet-flat",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Knee Flexion Extension With Feet Flat",
     "previewSrc": "premium/plain/knee-flexion-extension-with-feet-flat.png",
@@ -691,7 +691,7 @@
   },
   {
     "id": "knee-plank",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Knee Plank",
     "previewSrc": "premium/plain/knee-plank.png",
@@ -701,7 +701,7 @@
   },
   {
     "id": "neck-flexion-extension-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Neck Flexion Extension Stretch",
     "previewSrc": "premium/plain/neck-flexion-extension-stretch.png",
@@ -711,7 +711,7 @@
   },
   {
     "id": "neck-side-bend-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Neck Side Bend Stretch",
     "previewSrc": "premium/plain/neck-side-bend-stretch.png",
@@ -721,7 +721,7 @@
   },
   {
     "id": "nordic-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Nordic Walking",
     "previewSrc": "premium/plain/nordic-walking.png",
@@ -731,7 +731,7 @@
   },
   {
     "id": "parallel-bar-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Parallel Bar Walking",
     "previewSrc": "premium/plain/parallel-bar-walking.png",
@@ -741,7 +741,7 @@
   },
   {
     "id": "peg-manipulation",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Peg Manipulation",
     "previewSrc": "premium/plain/peg-manipulation.png",
@@ -751,7 +751,7 @@
   },
   {
     "id": "pelvic-tilt",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Pelvic Tilt",
     "previewSrc": "premium/plain/pelvic-tilt.png",
@@ -761,7 +761,7 @@
   },
   {
     "id": "pendulum-exercise-with-bottle",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Pendulum Exercise With Bottle",
     "previewSrc": "premium/plain/pendulum-exercise-with-bottle.png",
@@ -771,7 +771,7 @@
   },
   {
     "id": "plank-good-bad-example",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Plank Good Bad Example",
     "previewSrc": "premium/plain/plank-good-bad-example.png",
@@ -781,7 +781,7 @@
   },
   {
     "id": "plank",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Plank",
     "previewSrc": "premium/plain/plank.png",
@@ -791,7 +791,7 @@
   },
   {
     "id": "puppy-position",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Puppy Position",
     "previewSrc": "premium/plain/puppy-position.png",
@@ -801,7 +801,7 @@
   },
   {
     "id": "quadriceps-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Quadriceps Stretch",
     "previewSrc": "premium/plain/quadriceps-stretch.png",
@@ -811,7 +811,7 @@
   },
   {
     "id": "quadruped-trunk-rotation-training",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Quadruped Trunk Rotation Training",
     "previewSrc": "premium/plain/quadruped-trunk-rotation-training.png",
@@ -821,7 +821,7 @@
   },
   {
     "id": "scapular-retraction-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Scapular Retraction Exercise",
     "previewSrc": "premium/plain/scapular-retraction-exercise.png",
@@ -831,7 +831,7 @@
   },
   {
     "id": "seated-aerobike",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Aerobike",
     "previewSrc": "premium/plain/seated-aerobike.png",
@@ -841,7 +841,7 @@
   },
   {
     "id": "seated-finger-training-with-clothespin",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Finger Training With Clothespin",
     "previewSrc": "premium/plain/seated-finger-training-with-clothespin.png",
@@ -851,7 +851,7 @@
   },
   {
     "id": "seated-hamstring-stretch-with-towel.",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Hamstring Stretch With Towel.",
     "previewSrc": "premium/plain/seated-hamstring-stretch-with-towel..png",
@@ -861,7 +861,7 @@
   },
   {
     "id": "seated-hip-adduction-training",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Hip Adduction Training",
     "previewSrc": "premium/plain/seated-hip-adduction-training.png",
@@ -871,7 +871,7 @@
   },
   {
     "id": "seated-knee-extension-side-view",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Knee Extension Side View",
     "previewSrc": "premium/plain/seated-knee-extension-side-view.png",
@@ -881,7 +881,7 @@
   },
   {
     "id": "seated-knee-extension",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Knee Extension",
     "previewSrc": "premium/plain/seated-knee-extension.png",
@@ -891,7 +891,7 @@
   },
   {
     "id": "seated-leg-open-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Leg Open Stretch",
     "previewSrc": "premium/plain/seated-leg-open-stretch.png",
@@ -901,7 +901,7 @@
   },
   {
     "id": "seated-leg-raise-hold",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Leg Raise Hold",
     "previewSrc": "premium/plain/seated-leg-raise-hold.png",
@@ -911,7 +911,7 @@
   },
   {
     "id": "seated-leg-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Leg Raise",
     "previewSrc": "premium/plain/seated-leg-raise.png",
@@ -921,7 +921,7 @@
   },
   {
     "id": "seated-neck-rotation-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Neck Rotation Stretch",
     "previewSrc": "premium/plain/seated-neck-rotation-stretch.png",
@@ -931,7 +931,7 @@
   },
   {
     "id": "seated-popliteal-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Popliteal Stretch",
     "previewSrc": "premium/plain/seated-popliteal-stretch.png",
@@ -941,7 +941,7 @@
   },
   {
     "id": "seated-shoulder-flexion-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Shoulder Flexion With Towel",
     "previewSrc": "premium/plain/seated-shoulder-flexion-with-towel.png",
@@ -951,7 +951,7 @@
   },
   {
     "id": "seated-side-step-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Seated Side Step Exercise",
     "previewSrc": "premium/plain/seated-side-step-exercise.png",
@@ -961,7 +961,7 @@
   },
   {
     "id": "shoulder-horizontal-adduction-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Shoulder Horizontal Adduction Stretch",
     "previewSrc": "premium/plain/shoulder-horizontal-adduction-stretch.png",
@@ -971,7 +971,7 @@
   },
   {
     "id": "shoulder-raise-with-bar",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Shoulder Raise With Bar",
     "previewSrc": "premium/plain/shoulder-raise-with-bar.png",
@@ -981,7 +981,7 @@
   },
   {
     "id": "shoulder-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Shoulder Raise",
     "previewSrc": "premium/plain/shoulder-raise.png",
@@ -991,7 +991,7 @@
   },
   {
     "id": "side-bridge",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Side Bridge",
     "previewSrc": "premium/plain/side-bridge.png",
@@ -1001,7 +1001,7 @@
   },
   {
     "id": "side-lying-hip-abduction",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Side Lying Hip Abduction",
     "previewSrc": "premium/plain/side-lying-hip-abduction.png",
@@ -1011,7 +1011,7 @@
   },
   {
     "id": "side-plank-on-elbow",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Side Plank On Elbow",
     "previewSrc": "premium/plain/side-plank-on-elbow.png",
@@ -1021,7 +1021,7 @@
   },
   {
     "id": "side-step",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Side Step",
     "previewSrc": "premium/plain/side-step.png",
@@ -1031,7 +1031,7 @@
   },
   {
     "id": "single-leg-bridge",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Single Leg Bridge",
     "previewSrc": "premium/plain/single-leg-bridge.png",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "single-leg-heel-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Single Leg Heel Raise",
     "previewSrc": "premium/plain/single-leg-heel-raise.png",
@@ -1051,7 +1051,7 @@
   },
   {
     "id": "single-leg-stand",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Single Leg Stand",
     "previewSrc": "premium/plain/single-leg-stand.png",
@@ -1061,7 +1061,7 @@
   },
   {
     "id": "sit-to-stand-using-chair",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Sit To Stand Using Chair",
     "previewSrc": "premium/plain/sit-to-stand-using-chair.png",
@@ -1071,7 +1071,7 @@
   },
   {
     "id": "sit-to-stand-with-parallel-bars",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Sit To Stand With Parallel Bars",
     "previewSrc": "premium/plain/sit-to-stand-with-parallel-bars.png",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "sitting-quadriceps-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Sitting Quadriceps Stretch",
     "previewSrc": "premium/plain/sitting-quadriceps-stretch.png",
@@ -1091,7 +1091,7 @@
   },
   {
     "id": "squat",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Squat",
     "previewSrc": "premium/plain/squat.png",
@@ -1101,7 +1101,7 @@
   },
   {
     "id": "stair-step-right-up-left-down",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Stair Step Right Up Left Down",
     "previewSrc": "premium/plain/stair-step-right-up-left-down.png",
@@ -1111,7 +1111,7 @@
   },
   {
     "id": "standing-armpit-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Armpit Stretch",
     "previewSrc": "premium/plain/standing-armpit-stretch.png",
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "standing-dumbbell-scaption",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Dumbbell Scaption",
     "previewSrc": "premium/plain/standing-dumbbell-scaption.png",
@@ -1131,7 +1131,7 @@
   },
   {
     "id": "standing-hip-abduction",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Hip Abduction",
     "previewSrc": "premium/plain/standing-hip-abduction.png",
@@ -1141,7 +1141,7 @@
   },
   {
     "id": "standing-left-side-bend-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Left Side Bend With Towel",
     "previewSrc": "premium/plain/standing-left-side-bend-with-towel.png",
@@ -1151,7 +1151,7 @@
   },
   {
     "id": "standing-leg-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Leg Raise",
     "previewSrc": "premium/plain/standing-leg-raise.png",
@@ -1161,7 +1161,7 @@
   },
   {
     "id": "standing-right-side-bend-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Right Side Bend With Towel",
     "previewSrc": "premium/plain/standing-right-side-bend-with-towel.png",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "standing-trunk-rotation-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Standing Trunk Rotation Stretch",
     "previewSrc": "premium/plain/standing-trunk-rotation-stretch.png",
@@ -1181,7 +1181,7 @@
   },
   {
     "id": "step-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Step Exercise",
     "previewSrc": "premium/plain/step-exercise.png",
@@ -1191,7 +1191,7 @@
   },
   {
     "id": "step-left-with-band",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Step Left With Band",
     "previewSrc": "premium/plain/step-left-with-band.png",
@@ -1201,7 +1201,7 @@
   },
   {
     "id": "step-right-with-band",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Step Right With Band",
     "previewSrc": "premium/plain/step-right-with-band.png",
@@ -1211,7 +1211,7 @@
   },
   {
     "id": "step-to-side",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Step To Side",
     "previewSrc": "premium/plain/step-to-side.png",
@@ -1221,7 +1221,7 @@
   },
   {
     "id": "step-up-and-down",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Step Up And Down",
     "previewSrc": "premium/plain/step-up-and-down.png",
@@ -1231,7 +1231,7 @@
   },
   {
     "id": "supine-hamstring-stretch-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Supine Hamstring Stretch With Towel",
     "previewSrc": "premium/plain/supine-hamstring-stretch-with-towel.png",
@@ -1241,7 +1241,7 @@
   },
   {
     "id": "supine-shoulder-flexion-with-both-hands",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Supine Shoulder Flexion With Both Hands",
     "previewSrc": "premium/plain/supine-shoulder-flexion-with-both-hands.png",
@@ -1251,7 +1251,7 @@
   },
   {
     "id": "thumb-pinky-opposition",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Thumb Pinky Opposition",
     "previewSrc": "premium/plain/thumb-pinky-opposition.png",
@@ -1261,7 +1261,7 @@
   },
   {
     "id": "towel-gather",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Towel Gather",
     "previewSrc": "premium/plain/towel-gather.png",
@@ -1271,7 +1271,7 @@
   },
   {
     "id": "towel-side-bend",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Towel Side Bend",
     "previewSrc": "premium/plain/towel-side-bend.png",
@@ -1281,7 +1281,7 @@
   },
   {
     "id": "towel-trunk-rotation",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Towel Trunk Rotation",
     "previewSrc": "premium/plain/towel-trunk-rotation.png",
@@ -1291,7 +1291,7 @@
   },
   {
     "id": "treadmill-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Treadmill Walking",
     "previewSrc": "premium/plain/treadmill-walking.png",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "trunk-extension-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Trunk Extension Stretch",
     "previewSrc": "premium/plain/trunk-extension-stretch.png",
@@ -1311,7 +1311,7 @@
   },
   {
     "id": "trunk-flexion-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Trunk Flexion Stretch",
     "previewSrc": "premium/plain/trunk-flexion-stretch.png",
@@ -1321,7 +1321,7 @@
   },
   {
     "id": "trunk-rotation",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Trunk Rotation",
     "previewSrc": "premium/plain/trunk-rotation.png",
@@ -1331,7 +1331,7 @@
   },
   {
     "id": "walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Walking",
     "previewSrc": "premium/plain/walking.png",
@@ -1341,7 +1341,7 @@
   },
   {
     "id": "wall-achilles-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Wall Achilles Stretch",
     "previewSrc": "premium/plain/wall-achilles-stretch.png",
@@ -1351,7 +1351,7 @@
   },
   {
     "id": "wall-push-up",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Wall Push Up",
     "previewSrc": "premium/plain/wall-push-up.png",
@@ -1361,7 +1361,7 @@
   },
   {
     "id": "wall-slide",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Wall Slide",
     "previewSrc": "premium/plain/wall-slide.png",
@@ -1371,7 +1371,7 @@
   },
   {
     "id": "wall-squat",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Wall Squat",
     "previewSrc": "premium/plain/wall-squat.png",
@@ -1381,7 +1381,7 @@
   },
   {
     "id": "wheelchair-seating-tips",
-    "tier": "premium",
+    "tier": "basic",
     "category": "plain",
     "title": "Wheelchair Seating Tips",
     "previewSrc": "premium/plain/wheelchair-seating-tips.png",
@@ -1391,7 +1391,7 @@
   },
   {
     "id": "air-bike",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Air Bike",
     "previewSrc": "premium/text/air-bike.png",
@@ -1401,7 +1401,7 @@
   },
   {
     "id": "ankle-dorsiflexion-and-plantarflexion",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Ankle Dorsiflexion And Plantarflexion",
     "previewSrc": "premium/text/ankle-dorsiflexion-and-plantarflexion.png",
@@ -1411,7 +1411,7 @@
   },
   {
     "id": "cane-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Cane Walking",
     "previewSrc": "premium/text/cane-walking.png",
@@ -1421,7 +1421,7 @@
   },
   {
     "id": "cat-and-dog",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Cat And Dog",
     "previewSrc": "premium/text/cat-and-dog.png",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "chest-opening-with-stretch-pole",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Chest Opening With Stretch Pole",
     "previewSrc": "premium/text/chest-opening-with-stretch-pole.png",
@@ -1441,7 +1441,7 @@
   },
   {
     "id": "chopstick-training-with-azuki",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Chopstick Training With Azuki",
     "previewSrc": "premium/text/chopstick-training-with-azuki.png",
@@ -1451,7 +1451,7 @@
   },
   {
     "id": "coin-finger-movement-training",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Coin Finger Movement Training",
     "previewSrc": "premium/text/coin-finger-movement-training.png",
@@ -1461,7 +1461,7 @@
   },
   {
     "id": "contraindicated-exercises-for-spine",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Contraindicated Exercises For Spine",
     "previewSrc": "premium/text/contraindicated-exercises-for-spine.png",
@@ -1471,7 +1471,7 @@
   },
   {
     "id": "diagonal-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Diagonal Exercise",
     "previewSrc": "premium/text/diagonal-exercise.png",
@@ -1481,7 +1481,7 @@
   },
   {
     "id": "door-way-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Door Way Stretch",
     "previewSrc": "premium/text/door-way-stretch.png",
@@ -1491,7 +1491,7 @@
   },
   {
     "id": "double-leg-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Double Leg Raise",
     "previewSrc": "premium/text/double-leg-raise.png",
@@ -1501,7 +1501,7 @@
   },
   {
     "id": "draw-in",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Draw In",
     "previewSrc": "premium/text/draw-in.png",
@@ -1511,7 +1511,7 @@
   },
   {
     "id": "dumbbell-shoulder-abduction",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Dumbbell Shoulder Abduction",
     "previewSrc": "premium/text/dumbbell-shoulder-abduction.png",
@@ -1521,7 +1521,7 @@
   },
   {
     "id": "elbow-flexion-with-bar",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Elbow Flexion With Bar",
     "previewSrc": "premium/text/elbow-flexion-with-bar.png",
@@ -1531,7 +1531,7 @@
   },
   {
     "id": "fixed-walker-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Fixed Walker Walking",
     "previewSrc": "premium/text/fixed-walker-walking.png",
@@ -1541,7 +1541,7 @@
   },
   {
     "id": "foot-rolling",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Foot Rolling",
     "previewSrc": "premium/text/foot-rolling.png",
@@ -1551,7 +1551,7 @@
   },
   {
     "id": "forearm-hand-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Forearm Hand Stretch",
     "previewSrc": "premium/text/forearm-hand-stretch.png",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "fullbody-chopstick-training-with-azuki",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Fullbody Chopstick Training With Azuki",
     "previewSrc": "premium/text/fullbody-chopstick-training-with-azuki.png",
@@ -1571,7 +1571,7 @@
   },
   {
     "id": "hamstring-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hamstring Stretch",
     "previewSrc": "premium/text/hamstring-stretch.png",
@@ -1581,7 +1581,7 @@
   },
   {
     "id": "hand-support-plank",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hand Support Plank",
     "previewSrc": "premium/text/hand-support-plank.png",
@@ -1591,7 +1591,7 @@
   },
   {
     "id": "heel-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Heel Raise",
     "previewSrc": "premium/text/heel-raise.png",
@@ -1601,7 +1601,7 @@
   },
   {
     "id": "heel-slide",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Heel Slide",
     "previewSrc": "premium/text/heel-slide.png",
@@ -1611,7 +1611,7 @@
   },
   {
     "id": "hip-abduction-with-band",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hip Abduction With Band",
     "previewSrc": "premium/text/hip-abduction-with-band.png",
@@ -1621,7 +1621,7 @@
   },
   {
     "id": "hip-extension-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hip Extension Exercise",
     "previewSrc": "premium/text/hip-extension-exercise.png",
@@ -1631,7 +1631,7 @@
   },
   {
     "id": "hip-flexion-with-knee-extended",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hip Flexion With Knee Extended",
     "previewSrc": "premium/text/hip-flexion-with-knee-extended.png",
@@ -1641,7 +1641,7 @@
   },
   {
     "id": "hip-hinge-with-bar",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hip Hinge With Bar",
     "previewSrc": "premium/text/hip-hinge-with-bar.png",
@@ -1651,7 +1651,7 @@
   },
   {
     "id": "hip-hinge",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hip Hinge",
     "previewSrc": "premium/text/hip-hinge.png",
@@ -1661,7 +1661,7 @@
   },
   {
     "id": "hip-lift",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Hip Lift",
     "previewSrc": "premium/text/hip-lift.png",
@@ -1671,7 +1671,7 @@
   },
   {
     "id": "knee-flexion-extension-with-feet-flat",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Knee Flexion Extension With Feet Flat",
     "previewSrc": "premium/text/knee-flexion-extension-with-feet-flat.png",
@@ -1681,7 +1681,7 @@
   },
   {
     "id": "knee-plank",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Knee Plank",
     "previewSrc": "premium/text/knee-plank.png",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "neck-flexion-extension-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Neck Flexion Extension Stretch",
     "previewSrc": "premium/text/neck-flexion-extension-stretch.png",
@@ -1701,7 +1701,7 @@
   },
   {
     "id": "neck-side-bend-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Neck Side Bend Stretch",
     "previewSrc": "premium/text/neck-side-bend-stretch.png",
@@ -1711,7 +1711,7 @@
   },
   {
     "id": "nordic-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Nordic Walking",
     "previewSrc": "premium/text/nordic-walking.png",
@@ -1721,7 +1721,7 @@
   },
   {
     "id": "parallel-bar-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Parallel Bar Walking",
     "previewSrc": "premium/text/parallel-bar-walking.png",
@@ -1731,7 +1731,7 @@
   },
   {
     "id": "peg-manipulation",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Peg Manipulation",
     "previewSrc": "premium/text/peg-manipulation.png",
@@ -1741,7 +1741,7 @@
   },
   {
     "id": "pelvic-tilt",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Pelvic Tilt",
     "previewSrc": "premium/text/pelvic-tilt.png",
@@ -1751,7 +1751,7 @@
   },
   {
     "id": "pendulum-exercise-with-bottle",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Pendulum Exercise With Bottle",
     "previewSrc": "premium/text/pendulum-exercise-with-bottle.png",
@@ -1761,7 +1761,7 @@
   },
   {
     "id": "plank-good-bad-example",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Plank Good Bad Example",
     "previewSrc": "premium/text/plank-good-bad-example.png",
@@ -1771,7 +1771,7 @@
   },
   {
     "id": "plank",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Plank",
     "previewSrc": "premium/text/plank.png",
@@ -1781,7 +1781,7 @@
   },
   {
     "id": "puppy-position",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Puppy Position",
     "previewSrc": "premium/text/puppy-position.png",
@@ -1791,7 +1791,7 @@
   },
   {
     "id": "quadriceps-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Quadriceps Stretch",
     "previewSrc": "premium/text/quadriceps-stretch.png",
@@ -1801,7 +1801,7 @@
   },
   {
     "id": "quadruped-trunk-rotation-training",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Quadruped Trunk Rotation Training",
     "previewSrc": "premium/text/quadruped-trunk-rotation-training.png",
@@ -1811,7 +1811,7 @@
   },
   {
     "id": "scapular-retraction-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Scapular Retraction Exercise",
     "previewSrc": "premium/text/scapular-retraction-exercise.png",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "seated-aerobike",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Aerobike",
     "previewSrc": "premium/text/seated-aerobike.png",
@@ -1831,7 +1831,7 @@
   },
   {
     "id": "seated-finger-training-with-clothespin",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Finger Training With Clothespin",
     "previewSrc": "premium/text/seated-finger-training-with-clothespin.png",
@@ -1841,7 +1841,7 @@
   },
   {
     "id": "seated-hamstring-stretch-with-towel.",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Hamstring Stretch With Towel.",
     "previewSrc": "premium/text/seated-hamstring-stretch-with-towel..png",
@@ -1851,7 +1851,7 @@
   },
   {
     "id": "seated-hip-adduction-training",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Hip Adduction Training",
     "previewSrc": "premium/text/seated-hip-adduction-training.png",
@@ -1861,7 +1861,7 @@
   },
   {
     "id": "seated-knee-extension-side-view",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Knee Extension Side View",
     "previewSrc": "premium/text/seated-knee-extension-side-view.png",
@@ -1871,7 +1871,7 @@
   },
   {
     "id": "seated-knee-extension",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Knee Extension",
     "previewSrc": "premium/text/seated-knee-extension.png",
@@ -1881,7 +1881,7 @@
   },
   {
     "id": "seated-leg-open-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Leg Open Stretch",
     "previewSrc": "premium/text/seated-leg-open-stretch.png",
@@ -1891,7 +1891,7 @@
   },
   {
     "id": "seated-leg-raise-hold",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Leg Raise Hold",
     "previewSrc": "premium/text/seated-leg-raise-hold.png",
@@ -1901,7 +1901,7 @@
   },
   {
     "id": "seated-leg-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Leg Raise",
     "previewSrc": "premium/text/seated-leg-raise.png",
@@ -1911,7 +1911,7 @@
   },
   {
     "id": "seated-neck-rotation-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Neck Rotation Stretch",
     "previewSrc": "premium/text/seated-neck-rotation-stretch.png",
@@ -1921,7 +1921,7 @@
   },
   {
     "id": "seated-popliteal-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Popliteal Stretch",
     "previewSrc": "premium/text/seated-popliteal-stretch.png",
@@ -1931,7 +1931,7 @@
   },
   {
     "id": "seated-shoulder-flexion-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Shoulder Flexion With Towel",
     "previewSrc": "premium/text/seated-shoulder-flexion-with-towel.png",
@@ -1941,7 +1941,7 @@
   },
   {
     "id": "seated-side-step-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Seated Side Step Exercise",
     "previewSrc": "premium/text/seated-side-step-exercise.png",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "shoulder-horizontal-adduction-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Shoulder Horizontal Adduction Stretch",
     "previewSrc": "premium/text/shoulder-horizontal-adduction-stretch.png",
@@ -1961,7 +1961,7 @@
   },
   {
     "id": "shoulder-raise-with-bar",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Shoulder Raise With Bar",
     "previewSrc": "premium/text/shoulder-raise-with-bar.png",
@@ -1971,7 +1971,7 @@
   },
   {
     "id": "shoulder-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Shoulder Raise",
     "previewSrc": "premium/text/shoulder-raise.png",
@@ -1981,7 +1981,7 @@
   },
   {
     "id": "side-bridge",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Side Bridge",
     "previewSrc": "premium/text/side-bridge.png",
@@ -1991,7 +1991,7 @@
   },
   {
     "id": "side-lying-hip-abduction",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Side Lying Hip Abduction",
     "previewSrc": "premium/text/side-lying-hip-abduction.png",
@@ -2001,7 +2001,7 @@
   },
   {
     "id": "side-plank-on-elbow",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Side Plank On Elbow",
     "previewSrc": "premium/text/side-plank-on-elbow.png",
@@ -2011,7 +2011,7 @@
   },
   {
     "id": "side-step",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Side Step",
     "previewSrc": "premium/text/side-step.png",
@@ -2021,7 +2021,7 @@
   },
   {
     "id": "single-leg-bridge",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Single Leg Bridge",
     "previewSrc": "premium/text/single-leg-bridge.png",
@@ -2031,7 +2031,7 @@
   },
   {
     "id": "single-leg-heel-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Single Leg Heel Raise",
     "previewSrc": "premium/text/single-leg-heel-raise.png",
@@ -2041,7 +2041,7 @@
   },
   {
     "id": "single-leg-stand",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Single Leg Stand",
     "previewSrc": "premium/text/single-leg-stand.png",
@@ -2051,7 +2051,7 @@
   },
   {
     "id": "sit-to-stand-using-chair",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Sit To Stand Using Chair",
     "previewSrc": "premium/text/sit-to-stand-using-chair.png",
@@ -2061,7 +2061,7 @@
   },
   {
     "id": "sit-to-stand-with-parallel-bars",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Sit To Stand With Parallel Bars",
     "previewSrc": "premium/text/sit-to-stand-with-parallel-bars.png",
@@ -2071,7 +2071,7 @@
   },
   {
     "id": "sitting-quadriceps-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Sitting Quadriceps Stretch",
     "previewSrc": "premium/text/sitting-quadriceps-stretch.png",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "squat",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Squat",
     "previewSrc": "premium/text/squat.png",
@@ -2091,7 +2091,7 @@
   },
   {
     "id": "stair-step-right-up-left-down",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Stair Step Right Up Left Down",
     "previewSrc": "premium/text/stair-step-right-up-left-down.png",
@@ -2101,7 +2101,7 @@
   },
   {
     "id": "standing-armpit-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Armpit Stretch",
     "previewSrc": "premium/text/standing-armpit-stretch.png",
@@ -2111,7 +2111,7 @@
   },
   {
     "id": "standing-dumbbell-scaption",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Dumbbell Scaption",
     "previewSrc": "premium/text/standing-dumbbell-scaption.png",
@@ -2121,7 +2121,7 @@
   },
   {
     "id": "standing-hip-abduction",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Hip Abduction",
     "previewSrc": "premium/text/standing-hip-abduction.png",
@@ -2131,7 +2131,7 @@
   },
   {
     "id": "standing-left-side-bend-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Left Side Bend With Towel",
     "previewSrc": "premium/text/standing-left-side-bend-with-towel.png",
@@ -2141,7 +2141,7 @@
   },
   {
     "id": "standing-leg-raise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Leg Raise",
     "previewSrc": "premium/text/standing-leg-raise.png",
@@ -2151,7 +2151,7 @@
   },
   {
     "id": "standing-right-side-bend-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Right Side Bend With Towel",
     "previewSrc": "premium/text/standing-right-side-bend-with-towel.png",
@@ -2161,7 +2161,7 @@
   },
   {
     "id": "standing-trunk-rotation-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Standing Trunk Rotation Stretch",
     "previewSrc": "premium/text/standing-trunk-rotation-stretch.png",
@@ -2171,7 +2171,7 @@
   },
   {
     "id": "step-exercise",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Step Exercise",
     "previewSrc": "premium/text/step-exercise.png",
@@ -2181,7 +2181,7 @@
   },
   {
     "id": "step-left-with-band",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Step Left With Band",
     "previewSrc": "premium/text/step-left-with-band.png",
@@ -2191,7 +2191,7 @@
   },
   {
     "id": "step-right-with-band",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Step Right With Band",
     "previewSrc": "premium/text/step-right-with-band.png",
@@ -2201,7 +2201,7 @@
   },
   {
     "id": "step-to-side",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Step To Side",
     "previewSrc": "premium/text/step-to-side.png",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "step-up-and-down",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Step Up And Down",
     "previewSrc": "premium/text/step-up-and-down.png",
@@ -2221,7 +2221,7 @@
   },
   {
     "id": "supine-hamstring-stretch-with-towel",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Supine Hamstring Stretch With Towel",
     "previewSrc": "premium/text/supine-hamstring-stretch-with-towel.png",
@@ -2231,7 +2231,7 @@
   },
   {
     "id": "supine-shoulder-flexion-with-both-hands",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Supine Shoulder Flexion With Both Hands",
     "previewSrc": "premium/text/supine-shoulder-flexion-with-both-hands.png",
@@ -2241,7 +2241,7 @@
   },
   {
     "id": "thumb-pinky-opposition",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Thumb Pinky Opposition",
     "previewSrc": "premium/text/thumb-pinky-opposition.png",
@@ -2251,7 +2251,7 @@
   },
   {
     "id": "towel-gather",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Towel Gather",
     "previewSrc": "premium/text/towel-gather.png",
@@ -2261,7 +2261,7 @@
   },
   {
     "id": "towel-side-bend",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Towel Side Bend",
     "previewSrc": "premium/text/towel-side-bend.png",
@@ -2271,7 +2271,7 @@
   },
   {
     "id": "towel-trunk-rotation",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Towel Trunk Rotation",
     "previewSrc": "premium/text/towel-trunk-rotation.png",
@@ -2281,7 +2281,7 @@
   },
   {
     "id": "treadmill-walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Treadmill Walking",
     "previewSrc": "premium/text/treadmill-walking.png",
@@ -2291,7 +2291,7 @@
   },
   {
     "id": "trunk-extension-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Trunk Extension Stretch",
     "previewSrc": "premium/text/trunk-extension-stretch.png",
@@ -2301,7 +2301,7 @@
   },
   {
     "id": "trunk-flexion-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Trunk Flexion Stretch",
     "previewSrc": "premium/text/trunk-flexion-stretch.png",
@@ -2311,7 +2311,7 @@
   },
   {
     "id": "trunk-rotation",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Trunk Rotation",
     "previewSrc": "premium/text/trunk-rotation.png",
@@ -2321,7 +2321,7 @@
   },
   {
     "id": "walking",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Walking",
     "previewSrc": "premium/text/walking.png",
@@ -2331,7 +2331,7 @@
   },
   {
     "id": "wall-achilles-stretch",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Wall Achilles Stretch",
     "previewSrc": "premium/text/wall-achilles-stretch.png",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "wall-push-up",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Wall Push Up",
     "previewSrc": "premium/text/wall-push-up.png",
@@ -2351,7 +2351,7 @@
   },
   {
     "id": "wall-slide",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Wall Slide",
     "previewSrc": "premium/text/wall-slide.png",
@@ -2361,7 +2361,7 @@
   },
   {
     "id": "wall-squat",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Wall Squat",
     "previewSrc": "premium/text/wall-squat.png",
@@ -2371,7 +2371,7 @@
   },
   {
     "id": "wheelchair-seating-tips",
-    "tier": "premium",
+    "tier": "basic",
     "category": "text",
     "title": "Wheelchair Seating Tips",
     "previewSrc": "premium/text/wheelchair-seating-tips.png",

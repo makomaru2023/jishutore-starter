@@ -15,11 +15,8 @@ export function Footer() {
                         <Link href="/license" className="hover:text-gray-900 hover:underline mr-6">
                             利用規約・ガイドライン
                         </Link>
-                        <Link href="/privacy" className="hover:text-gray-900 hover:underline mr-6">
+                        <Link href="/privacy" className="hover:text-gray-900 hover:underline">
                             プライバシーポリシー
-                        </Link>
-                        <Link href="/tokushoho" className="hover:text-gray-900 hover:underline">
-                            特定商取引法に基づく表記
                         </Link>
                     </div>
                     <div className="text-sm text-gray-500">
