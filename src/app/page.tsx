@@ -40,7 +40,7 @@ export default function Home() {
                   </Link>
                 </div>
                 <p className="text-xs text-blue-300">
-                  ※全ての素材を無料でご利用いただけます。商用利用もOK（CC BY 4.0）。
+                  ※全ての素材を無料でご利用いただけます。商用利用もOK。
                 </p>
               </div>
 
@@ -148,7 +148,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">商用利用も安心</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  有料素材はクレジット表記不要。<br />
+                  面倒なクレジット表記も不要。<br />
                   学会発表や配布資料、SNSなど、権利関係を気にせず自由に使えます。
                 </p>
               </div>
