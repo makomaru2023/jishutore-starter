@@ -45,7 +45,7 @@ export function MaterialSlider(props: PropType) {
                                 <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
                                     <Image
                                         src={getImageUrl(item.previewSrc)}
-                                        alt={item.title}
+                                        alt={item.titleJa || item.title}
                                         fill
                                         className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 45vw, 30vw"
@@ -60,9 +60,8 @@ export function MaterialSlider(props: PropType) {
                                 {/* Text Area */}
                                 <div className="p-4 flex-grow flex flex-col justify-between">
                                     <div>
-                                        <p className="text-xs text-blue-600 mb-1 font-medium">{item.category}</p>
                                         <h3 className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
-                                            {item.title}
+                                            {item.titleJa || item.title}
                                         </h3>
                                     </div>
                                 </div>
