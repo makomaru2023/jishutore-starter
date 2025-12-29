@@ -13,7 +13,7 @@ export default function AboutPage() {
                         <section>
                             <h2 className="text-xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">ご挨拶</h2>
                             <p>
-                                はじめまして。「自主トレ素材庫.jp」を運営しております、作業療法士のタケマコトと申します。
+                                はじめまして。「自主トレ素材庫.jp」を運営しております、作業療法士のトロルと申します。
                             </p>
                             <p className="mt-4">
                                 私はこれまで、回復期リハビリテーション病院や訪問リハビリの現場で、多くの患者様のリハビリに携わってきました。
@@ -30,7 +30,7 @@ export default function AboutPage() {
                             <div className="bg-gray-50 p-6 rounded-lg">
                                 <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                     <dt className="font-bold text-gray-900">氏名</dt>
-                                    <dd className="sm:col-span-2">タケマコト</dd>
+                                    <dd className="sm:col-span-2">トロル</dd>
 
                                     <dt className="font-bold text-gray-900">保有資格</dt>
                                     <dd className="sm:col-span-2">作業療法士（OT）</dd>
