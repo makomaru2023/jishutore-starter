@@ -108,64 +108,7 @@ export default function Home() {
         </div>
 
 
-        {/* Features Section */}
-        <div className="bg-gray-50 py-24 sm:py-32">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
-                選ばれる理由
-              </h2>
-              <p className="text-lg text-gray-600">
-                臨床経験14年目の作業療法士が、<br className="hidden sm:block" />
-                「現場での使いやすさ」を第一に考えて作成しました。
-              </p>
-            </div>
 
-            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              {/* Feature 1 */}
-              <div className="flex flex-col bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 self-start">
-                  <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">統一感のある資料に</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  全てのイラストを同一テイストで作成。<br />
-                  つぎはぎの資料から卒業し、プロのような統一感のある資料が作れます。
-                </p>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="flex flex-col bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 self-start">
-                  <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">作成時間を1/4に</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  ダウンロードして貼るだけ5分。<br />
-                  月7時間の業務削減で、患者様と向き合う時間を増やせます。
-                </p>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="flex flex-col bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 self-start">
-                  <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">商用利用も安心</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  面倒なクレジット表記も不要。<br />
-                  学会発表や配布資料、SNSなど、権利関係を気にせず自由に使えます。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </main>
       <Footer />
     </div>

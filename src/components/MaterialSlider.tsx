@@ -18,6 +18,22 @@ export function MaterialSlider(props: PropType) {
         Autoplay({ playOnInit: true, delay: 4000 })
     ])
 
+    if (!items || items.length === 0) return null;
+
+    const getImageUrl = (path: string) => {
+        if (!path) return '/placeholder.png';
+        if (path.startsWith("https://")) {
+            return `/api/image?key=${encodeURIComponent(
+                path.replace(
+                    "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev/",
+                    ""
+                )
+            )}`;
+        }
+        if (path.startsWith("/")) return path;
+        return `/api/image?key=${encodeURIComponent(path)}`;
+    }
+
     return (
         <div className="embla overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex">
@@ -28,7 +44,7 @@ export function MaterialSlider(props: PropType) {
                                 {/* Image Area */}
                                 <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
                                     <Image
-                                        src={item.previewSrc?.startsWith('/') ? item.previewSrc : `/${item.previewSrc || 'placeholder.png'}`}
+                                        src={getImageUrl(item.previewSrc)}
                                         alt={item.title}
                                         fill
                                         className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
