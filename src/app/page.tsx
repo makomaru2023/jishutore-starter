@@ -2,8 +2,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
+import { MaterialSlider } from "@/components/MaterialSlider";
+import { getItems } from "@/lib/items";
 
 export default function Home() {
+  const items = getItems();
+  const popularItems = items.slice(0, 10);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -86,6 +91,12 @@ export default function Home() {
                 全ての素材を無料で公開しています。
               </p>
             </div>
+
+            {/* Popular Items Slider */}
+            <div className="mb-16">
+              <MaterialSlider items={popularItems} options={{ loop: true, align: 'start' }} />
+            </div>
+
             <div className="flex justify-center">
               <Link href="/items" className="group relative flex flex-col items-center rounded-2xl bg-gradient-to-br from-blue-50 to-white p-8 border border-blue-200 transition-all hover:shadow-lg hover:border-blue-400 max-w-sm w-full">
                 <div className="mb-4 rounded-full bg-blue-600 p-3 text-white font-bold">All Free</div>
