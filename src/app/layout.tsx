@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   description: "リハビリ職のための自主トレ素材配布サイト",
   metadataBase: new URL('https://self-training.pro-kinkin-sss.com'),
   verification: {
-    google: 'f3q9ceJU7IKZ48rmxhZJNpec6pHOKeaLGqjc0wu5Q78',
+    google: [
+      'f3q9ceJU7IKZ48rmxhZJNpec6pHOKeaLGqjc0wu5Q78',
+      'ucu5LYwdOVYrYr2CHVnd3o6vUlBRjTpjrJUiSZEXAgM'
+    ],
   },
 };
 
