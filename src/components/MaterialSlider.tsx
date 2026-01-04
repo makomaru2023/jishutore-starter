@@ -22,16 +22,10 @@ export function MaterialSlider(props: PropType) {
 
     const getImageUrl = (path: string) => {
         if (!path) return '/placeholder.png';
-        if (path.startsWith("https://")) {
-            return `/api/image?key=${encodeURIComponent(
-                path.replace(
-                    "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev/",
-                    ""
-                )
-            )}`;
-        }
-        if (path.startsWith("/")) return path;
-        return `/api/image?key=${encodeURIComponent(path)}`;
+        if (path.startsWith("https://")) return path;
+
+        const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev";
+        return `${R2_DOMAIN}/${path}`;
     }
 
     return (

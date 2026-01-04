@@ -13,7 +13,7 @@ export default function AboutPage() {
                         <section>
                             <h2 className="text-xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">ご挨拶</h2>
                             <p>
-                                はじめまして。「自主トレ素材庫.jp」を運営しております、作業療法士のトロルと申します。
+                                はじめまして。「自主トレ素材庫」を運営しております、作業療法士のトロルと申します。
                             </p>
                             <p className="mt-4">
                                 私はこれまで、回復期リハビリテーション病院や訪問リハビリの現場で、多くの患者様のリハビリに携わってきました。

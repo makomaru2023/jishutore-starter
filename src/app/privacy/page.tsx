@@ -11,7 +11,7 @@ export default function PrivacyPage() {
 
                     <div className="prose prose-blue max-w-none text-gray-600">
                         <p>
-                            自主トレ素材庫.jp、以下「当サイト」は、ユーザーの個人情報を適切に取り扱うため、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。
+                            自主トレ素材庫、以下「当サイト」は、ユーザーの個人情報を適切に取り扱うため、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。
                         </p>
 
                         <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">1. 取得する情報</h2>

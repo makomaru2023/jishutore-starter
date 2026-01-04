@@ -20,7 +20,7 @@ export function Footer() {
                         </Link>
                     </div>
                     <div className="text-sm text-gray-500">
-                        © {new Date().getFullYear()} 自主トレ素材庫.jp All rights reserved.
+                        © {new Date().getFullYear()} 自主トレ素材庫 All rights reserved.
                     </div>
                 </div>
             </div>

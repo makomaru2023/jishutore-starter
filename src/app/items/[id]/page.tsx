@@ -26,30 +26,24 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     const title = item.titleJa || item.title;
 
     // Construct image URL for OG
+    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev";
     let imageUrl = item.previewSrc;
-    if (item.previewSrc.startsWith("https://")) {
-        imageUrl = `/api/image?key=${encodeURIComponent(
-            item.previewSrc.replace(
-                "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev/",
-                ""
-            )
-        )}`;
-    } else {
-        imageUrl = `/api/image?key=${encodeURIComponent(item.previewSrc)}`;
+    if (!imageUrl.startsWith("https://")) {
+        imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
     }
     const absoluteImageUrl = new URL(imageUrl, 'https://self-training.pro-kinkin-sss.com').toString();
 
     return {
-        title: `${title} | 自主トレ素材庫.jp`,
+        title: `${title} | 自主トレ素材庫`,
         description: `${title}の自主トレ素材イラストです。リハビリ職のための高品質な指導用資料素材。`,
         openGraph: {
-            title: `${title} | 自主トレ素材庫.jp`,
+            title: `${title} | 自主トレ素材庫`,
             description: `${title}の自主トレ素材イラストです。`,
             images: [absoluteImageUrl],
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${title} | 自主トレ素材庫.jp`,
+            title: `${title} | 自主トレ素材庫`,
             description: `${title}の自主トレ素材イラストです。`,
             images: [absoluteImageUrl],
         },
@@ -68,17 +62,11 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         return <div>Item not found</div>;
     }
 
-    // Transform URL logic (same as ItemCard)
+    // Use direct R2 URL for better performance
+    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev";
     let imageUrl = item.previewSrc;
-    if (item.previewSrc.startsWith("https://")) {
-        imageUrl = `/api/image?key=${encodeURIComponent(
-            item.previewSrc.replace(
-                "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev/",
-                ""
-            )
-        )}`;
-    } else {
-        imageUrl = `/api/image?key=${encodeURIComponent(item.previewSrc)}`;
+    if (!imageUrl.startsWith("https://")) {
+        imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
     }
 
     const title = item.titleJa || item.title;

@@ -10,7 +10,7 @@ export function Header() {
         <header className="sticky top-0 z-50 w-full border-b border-blue-700 bg-blue-600 text-white shadow-sm">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
                 <Link href="/" className="flex items-center gap-2">
-                    <span className="text-lg font-bold">自主トレ素材庫.jp</span>
+                    <span className="text-lg font-bold">自主トレ素材庫</span>
                 </Link>
 
                 {/* Desktop Navigation */}

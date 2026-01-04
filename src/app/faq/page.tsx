@@ -21,7 +21,7 @@ export default function FAQPage() {
                         </div>
                         <div className="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
                             <h3 className="font-bold text-blue-600 mb-2 text-lg">Q. クレジット表記は必須ですか？</h3>
-                            <p className="text-gray-700 text-sm">いいえ、必須ではありません。ただ、表記していただけると運営者がとても喜びます（例：©自主トレ素材庫.jp）。</p>
+                            <p className="text-gray-700 text-sm">いいえ、必須ではありません。ただ、表記していただけると運営者がとても喜びます（例：©自主トレ素材庫）。</p>
                         </div>
                     </div>
 
