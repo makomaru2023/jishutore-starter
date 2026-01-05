@@ -8,7 +8,7 @@ interface ItemCardProps {
 
 export function ItemCard({ item }: ItemCardProps) {
     // Use direct R2 URL for better performance
-    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d50d6772c3.r2.dev";
+    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
     let imageUrl = item.previewSrc;
     if (!imageUrl.startsWith("https://")) {
         imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
