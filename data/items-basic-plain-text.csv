@@ -1,41 +1,199 @@
-tier,category,title,url
-basic,plain,膝伸ばし1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/knee-extension-1.png
-basic,plain,膝曲げ1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/knee-flexion-1.png
-basic,plain,ハムストリングカール1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/hamstring-curl-1.png
-basic,plain,ブリッジ1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/bridge-1.png
-basic,plain,ブリッジ2,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/bridge-2.png
-basic,plain,股関節外転1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/hip-abduction-1.png
-basic,plain,股関節内転1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/hip-adduction-1.png
-basic,plain,側臥位股関節外転1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/side-lying-hip-abduction-1.png
-basic,plain,カーフレイズ1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/calf-raise-1.png
-basic,plain,つま先立ち1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/toe-raise-1.png
-basic,plain,足首背屈1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/ankle-dorsiflexion-1.png
-basic,plain,足首底屈1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/ankle-plantarflexion-1.png
-basic,plain,股関節外旋1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/hip-external-rotation-1.png
-basic,plain,股関節内旋1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/hip-internal-rotation-1.png
-basic,plain,足上げ腹筋1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/leg-raise-1.png
-basic,plain,スクワット1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/squat-1.png
-basic,plain,スクワット2,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/squat-2.png
-basic,plain,立ち座り1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/sit-to-stand-1.png
-basic,plain,かかと上げ1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/calf-raise-2.png
-basic,plain,もも上げ1,https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/plain/hip-flexion-1.png
-basic,text,膝伸ばし1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/knee-extension-1.png
-basic,text,膝曲げ1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/knee-flexion-1.png
-basic,text,ハムストリングカール1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/hamstring-curl-1.png
-basic,text,ブリッジ1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/bridge-1.png
-basic,text,ブリッジ2(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/bridge-2.png
-basic,text,股関節外転1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/hip-abduction-1.png
-basic,text,股関節内転1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/hip-adduction-1.png
-basic,text,側臥位股関節外転1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/side-lying-hip-abduction-1.png
-basic,text,カーフレイズ1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/calf-raise-1.png
-basic,text,つま先立ち1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/toe-raise-1.png
-basic,text,足首背屈1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/ankle-dorsiflexion-1.png
-basic,text,足首底屈1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/ankle-plantarflexion-1.png
-basic,text,股関節外旋1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/hip-external-rotation-1.png
-basic,text,股関節内旋1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/hip-internal-rotation-1.png
-basic,text,足上げ腹筋1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/leg-raise-1.png
-basic,text,スクワット1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/squat-1.png
-basic,text,スクワット2(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/squat-2.png
-basic,text,立ち座り1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/sit-to-stand-1.png
-basic,text,かかと上げ1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/calf-raise-2.png
-basic,text,もも上げ1(説明),https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev/basic/text/hip-flexion-1.png
+tier,category,title,titleJa,url
+premium,plain,Air Bike,エアロバイク,premium/plain/air-bike.png
+premium,plain,Ankle Dorsiflexion And Plantarflexion,足関節の底屈・背屈,premium/plain/ankle-dorsiflexion-and-plantarflexion.png
+premium,plain,Cane Walking,杖歩行,premium/plain/cane-walking.png
+premium,plain,Cat And Dog,キャットアンドドッグ,premium/plain/cat-and-dog.png
+premium,plain,Chest Opening With Stretch Pole,胸開き運動,premium/plain/chest-opening-with-stretch-pole.png
+premium,plain,Chopstick Training With Azuki,小豆を使用しての箸操作,premium/plain/chopstick-training-with-azuki.png
+premium,plain,Coin Finger Movement Training,コインを使用して手指の運動,premium/plain/coin-finger-movement-training.png
+premium,plain,Contraindicated Exercises For Spine,脊椎疾患の禁忌運動,premium/plain/contraindicated-exercises-for-spine.png
+premium,plain,Diagonal Exercise,ダイアゴナル,premium/plain/diagonal-exercise.png
+premium,plain,Door Way Stretch,ドアウェイストレッチ,premium/plain/door-way-stretch.png
+premium,plain,Double Leg Raise,両足レッグレイズ,premium/plain/double-leg-raise.png
+premium,plain,Draw In,ドローイン,premium/plain/draw-in.png
+premium,plain,Dumbbell Shoulder Abduction,ダンベルを使った肩関節外展運動,premium/plain/dumbbell-shoulder-abduction.png
+premium,plain,Elbow Flexion With Bar,棒を使った肘の屈伸,premium/plain/elbow-flexion-with-bar.png
+premium,plain,Fixed Walker Walking.png,固定型歩行器歩行,premium/plain/fixed-walker-walking.png.png
+premium,plain,Foot Rolling,ボールを使用した足裏マッサージ,premium/plain/foot-rolling.png
+premium,plain,Forearm Hand Stretch,前腕のストレッチ,premium/plain/forearm-hand-stretch.png
+premium,plain,Fullbody Chopstick Training With Azuki,小豆を使用しての箸操作-全身,premium/plain/fullbody-chopstick-training-with-azuki.png
+premium,plain,Hamstring Stretch,ハムストリングスストレッチ,premium/plain/hamstring-stretch.png
+premium,plain,Hand Support Plank,手をついてプランク,premium/plain/hand-support-plank.png
+premium,plain,Heel Raise,ヒールライズ,premium/plain/heel-raise.png
+premium,plain,Heel Slide,ヒールスライド,premium/plain/heel-slide.png
+premium,plain,Hip Abduction With Band,ゴムチューブを使用した股関節外転運動,premium/plain/hip-abduction-with-band.png
+premium,plain,Hip Extension Exercise,立位で股関節伸展運動,premium/plain/hip-extension-exercise.png
+premium,plain,Hip Flexion With Knee Extended,自動SLR,premium/plain/hip-flexion-with-knee-extended.png
+premium,plain,Hip Hinge With Bar,棒を使用したヒップヒンジ,premium/plain/hip-hinge-with-bar.png
+premium,plain,Hip Hinge,ヒップヒンジ,premium/plain/hip-hinge.png
+premium,plain,Hip Lift,お尻上げ,premium/plain/hip-lift.png
+premium,plain,Knee Flexion Extension With Feet Flat,ヒールスライド②,premium/plain/knee-flexion-extension-with-feet-flat.png
+premium,plain,Knee Plank,膝をついてプランク,premium/plain/knee-plank.png
+premium,plain,Neck Flexion Extension Stretch,頚部の屈曲・伸展,premium/plain/neck-flexion-extension-stretch.png
+premium,plain,Neck Side Bend Stretch,頚部の側屈,premium/plain/neck-side-bend-stretch.png
+premium,plain,Nordic Walking,ノルディック杖歩行,premium/plain/nordic-walking.png
+premium,plain,Parallel Bar Walking,平行棒内歩行,premium/plain/parallel-bar-walking.png
+premium,plain,Peg Manipulation,ペグ操作,premium/plain/peg-manipulation.png
+premium,plain,Pelvic Tilt,骨盤の前後傾,premium/plain/pelvic-tilt.png
+premium,plain,Pendulum Exercise With Bottle,振り子運動,premium/plain/pendulum-exercise-with-bottle.png
+premium,plain,Plank Good Bad Example,プランクの良い例・悪い例,premium/plain/plank-good-bad-example.png
+premium,plain,Plank,プランク,premium/plain/plank.png
+premium,plain,Puppy Position,パピーポジション,premium/plain/puppy-position.png
+premium,plain,Quadriceps Stretch,四頭筋ストレッチ-立位,premium/plain/quadriceps-stretch.png
+premium,plain,Quadruped Trunk Rotation Training,四つん這いで体幹回旋運動,premium/plain/quadruped-trunk-rotation-training.png
+premium,plain,Scapular Retraction Exercise,肩甲骨の内転運動,premium/plain/scapular-retraction-exercise.png
+premium,plain,Seated Aerobike,イスに座ってエアロバイク,premium/plain/seated-aerobike.png
+premium,plain,Seated Finger Training With Clothespin,ペグ操作-側方,premium/plain/seated-finger-training-with-clothespin.png
+premium,plain,Seated Hamstring Stretch With Towel.,下腿後面のストレッチ,premium/plain/seated-hamstring-stretch-with-towel..png
+premium,plain,Seated Hip Adduction Training,股関節内転筋のトレーニング,premium/plain/seated-hip-adduction-training.png
+premium,plain,Seated Knee Extension Side View,四頭筋トレーニング-側方,premium/plain/seated-knee-extension-side-view.png
+premium,plain,Seated Knee Extension,四頭筋トレーニング-斜め,premium/plain/seated-knee-extension.png
+premium,plain,Seated Leg Open Stretch,開脚してストレッチ,premium/plain/seated-leg-open-stretch.png
+premium,plain,Seated Leg Raise Hold,足をあげた状態をキープ,premium/plain/seated-leg-raise-hold.png
+premium,plain,Seated Leg Raise,レッグレイズ,premium/plain/seated-leg-raise.png
+premium,plain,Seated Neck Rotation Stretch,頚部の回旋,premium/plain/seated-neck-rotation-stretch.png
+premium,plain,Seated Popliteal Stretch,腋窩のストレッチ,premium/plain/seated-popliteal-stretch.png
+premium,plain,Seated Shoulder Flexion With Towel,両手でタオルを把持して肩関節屈曲,premium/plain/seated-shoulder-flexion-with-towel.png
+premium,plain,Seated Side Step Exercise,イス座位でサイドステップ,premium/plain/seated-side-step-exercise.png
+premium,plain,Shoulder Horizontal Adduction Stretch,肩甲骨外転ストレッチ,premium/plain/shoulder-horizontal-adduction-stretch.png
+premium,plain,Shoulder Raise With Bar,棒を使用した肩関節屈曲,premium/plain/shoulder-raise-with-bar.png
+premium,plain,Shoulder Raise,肩挙上運動,premium/plain/shoulder-raise.png
+premium,plain,Side Bridge,サイドブリッジ,premium/plain/side-bridge.png
+premium,plain,Side Lying Hip Abduction,側臥位で股関節外転運動,premium/plain/side-lying-hip-abduction.png
+premium,plain,Side Plank On Elbow,肘をついてサイドプランク,premium/plain/side-plank-on-elbow.png
+premium,plain,Side Step,サイドステップ,premium/plain/side-step.png
+premium,plain,Single Leg Bridge,片足ブリッジ,premium/plain/single-leg-bridge.png
+premium,plain,Single Leg Heel Raise,片足ヒールライズ,premium/plain/single-leg-heel-raise.png
+premium,plain,Single Leg Stand,イスを把持して片足立ち,premium/plain/single-leg-stand.png
+premium,plain,Sit To Stand Using Chair,イスからの立ち座り,premium/plain/sit-to-stand-using-chair.png
+premium,plain,Sit To Stand With Parallel Bars,支持物ありで立ち座り,premium/plain/sit-to-stand-with-parallel-bars.png
+premium,plain,Sitting Quadriceps Stretch,座って四頭筋ストレッチ,premium/plain/sitting-quadriceps-stretch.png
+premium,plain,Squat,スクワット,premium/plain/squat.png
+premium,plain,Stair Step Right Up Left Down,階段昇降,premium/plain/stair-step-right-up-left-down.png
+premium,plain,Standing Armpit Stretch,立位で腋窩のストレッチ,premium/plain/standing-armpit-stretch.png
+premium,plain,Standing Dumbbell Scaption,立位でスキャプション,premium/plain/standing-dumbbell-scaption.png
+premium,plain,Standing Hip Abduction,立位で股関節外転運動,premium/plain/standing-hip-abduction.png
+premium,plain,Standing Left Side Bend With Towel,タオルを使用した体幹の左側屈,premium/plain/standing-left-side-bend-with-towel.png
+premium,plain,Standing Leg Raise,立位でレッグレイズ,premium/plain/standing-leg-raise.png
+premium,plain,Standing Right Side Bend With Towel,タオルを使用した体幹の右側屈,premium/plain/standing-right-side-bend-with-towel.png
+premium,plain,Standing Trunk Rotation Stretch,立位で体幹の回旋,premium/plain/standing-trunk-rotation-stretch.png
+premium,plain,Step Exercise,ステップ運動,premium/plain/step-exercise.png
+premium,plain,Step Left With Band,ゴムチューブを使用したステップ運動-左,premium/plain/step-left-with-band.png
+premium,plain,Step Right With Band,ゴムチューブを使用したステップ運動-右,premium/plain/step-right-with-band.png
+premium,plain,Step To Side,段差を用いたサイドステップ,premium/plain/step-to-side.png
+premium,plain,Step Up And Down,段差を用いた前方へのステップ,premium/plain/step-up-and-down.png
+premium,plain,Supine Hamstring Stretch With Towel,臥位で下後面のストレッチ,premium/plain/supine-hamstring-stretch-with-towel.png
+premium,plain,Supine Shoulder Flexion With Both Hands,臥位で両肩の屈曲運動,premium/plain/supine-shoulder-flexion-with-both-hands.png
+premium,plain,Thumb Pinky Opposition,母指と小指の対立,premium/plain/thumb-pinky-opposition.png
+premium,plain,Towel Gather,タオルギャザー,premium/plain/towel-gather.png
+premium,plain,Towel Side Bend,タオルを使用して体幹の側屈,premium/plain/towel-side-bend.png
+premium,plain,Towel Trunk Rotation,タオルを使用して体幹の回旋-立位,premium/plain/towel-trunk-rotation.png
+premium,plain,Treadmill Walking,トレッドミル,premium/plain/treadmill-walking.png
+premium,plain,Trunk Extension Stretch,体幹の伸展,premium/plain/trunk-extension-stretch.png
+premium,plain,Trunk Flexion Stretch,体幹の屈曲,premium/plain/trunk-flexion-stretch.png
+premium,plain,Trunk Rotation,体幹の回旋,premium/plain/trunk-rotation.png
+premium,plain,Walking,ウォーキング,premium/plain/walking.png
+premium,plain,Wall Achilles Stretch,壁を使用してアキレス腱のストレッチ,premium/plain/wall-achilles-stretch.png
+premium,plain,Wall Push Up,壁を使った腕立て,premium/plain/wall-push-up.png
+premium,plain,Wall Slide,ウォールサイド,premium/plain/wall-slide.png
+premium,plain,Wall Squat,壁を用いた空気イス,premium/plain/wall-squat.png
+premium,plain,Wheelchair Seating Tips,車椅子座位姿勢,premium/plain/wheelchair-seating-tips.png
+premium,text,Air Bike,エアロバイク【文字あり】,premium/text/air-bike.png
+premium,text,Ankle Dorsiflexion And Plantarflexion,足関節の底屈・背屈【文字あり】,premium/text/ankle-dorsiflexion-and-plantarflexion.png
+premium,text,Cane Walking,杖歩き【文字あり】,premium/text/cane-walking.png
+premium,text,Cat And Dog,キャットアンドドッグ【文字あり】,premium/text/cat-and-dog.png
+premium,text,Chest Opening With Stretch Pole,胸開き運動【文字あり】,premium/text/chest-opening-with-stretch-pole.png
+premium,text,Chopstick Training With Azuki,小豆を使用しての箸操作【文字あり】,premium/text/chopstick-training-with-azuki.png
+premium,text,Coin Finger Movement Training,硬貨を使用しての指運動【文字あり】,premium/text/coin-finger-movement-training.png
+premium,text,Contraindicated Exercises For Spine,脊椎疾患の禁忌運動【文字あり】,premium/text/contraindicated-exercises-for-spine.png
+premium,text,Diagonal Exercise,ダイアゴナル【文字あり】,premium/text/diagonal-exercise.png
+premium,text,Door Way Stretch,ドアウェイストレッチ【文字あり】,premium/text/door-way-stretch.png
+premium,text,Double Leg Raise,両足レッグレイズ【文字あり】,premium/text/double-leg-raise.png
+premium,text,Draw In,ドローイン【文字あり】,premium/text/draw-in.png
+premium,text,Dumbbell Shoulder Abduction,ダンベルを使った肩関節外転運動【文字あり】,premium/text/dumbbell-shoulder-abduction.png
+premium,text,Elbow Flexion With Bar,棒を使った肘の屈伸【文字あり】,premium/text/elbow-flexion-with-bar.png
+premium,text,Fixed Walker Walking,固定型歩行器歩行【文字あり】,premium/text/fixed-walker-walking.png
+premium,text,Foot Rolling,ボールを使用した足裏マッサージ【文字あり】,premium/text/foot-rolling.png
+premium,text,Forearm Hand Stretch,前腕のストレッチ【文字あり】,premium/text/forearm-hand-stretch.png
+premium,text,Fullbody Chopstick Training With Azuki,小豆を使った全身の箸操作【文字あり】,premium/text/fullbody-chopstick-training-with-azuki.png
+premium,text,Hamstring Stretch,下後面のストレッチ【文字あり】,premium/text/hamstring-stretch.png
+premium,text,Hand Support Plank,手を支えながらプランク【文字あり】,premium/text/hand-support-plank.png
+premium,text,Heel Raise,ヒールライズ【文字あり】,premium/text/heel-raise.png
+premium,text,Heel Slide,ヒールスライド【文字あり】,premium/text/heel-slide.png
+premium,text,Hip Abduction With Band,ゴムチューブを使った股関節外転運動【文字あり】,premium/text/hip-abduction-with-band.png
+premium,text,Hip Extension Exercise,立位で股関節伸展運動【文字あり】,premium/text/hip-extension-exercise.png
+premium,text,Hip Flexion With Knee Extended,自動SLR【文字あり】,premium/text/hip-flexion-with-knee-extended.png
+premium,text,Hip Hinge With Bar,棒を使用したヒップヒンジ【文字あり】,premium/text/hip-hinge-with-bar.png
+premium,text,Hip Hinge,ヒップヒンジ【文字あり】,premium/text/hip-hinge.png
+premium,text,Hip Lift,お尻上げ【文字あり】,premium/text/hip-lift.png
+premium,text,Knee Flexion Extension With Feet Flat,ヒールスライド②【文字あり】,premium/text/knee-flexion-extension-with-feet-flat.png
+premium,text,Knee Plank,膝をついてプランク【文字あり】,premium/text/knee-plank.png
+premium,text,Neck Flexion Extension Stretch,頚部の屈曲・伸展【文字あり】,premium/text/neck-flexion-extension-stretch.png
+premium,text,Neck Side Bend Stretch,頚部の側屈【文字あり】,premium/text/neck-side-bend-stretch.png
+premium,text,Nordic Walking,ノルディック歩行【文字あり】,premium/text/nordic-walking.png
+premium,text,Parallel Bar Walking,平行棒内歩行【文字あり】,premium/text/parallel-bar-walking.png
+premium,text,Peg Manipulation,ペグ操作-斜め【文字あり】,premium/text/peg-manipulation.png
+premium,text,Pelvic Tilt,骨盤前後傾【文字あり】,premium/text/pelvic-tilt.png
+premium,text,Pendulum Exercise With Bottle,振り子運動【文字あり】,premium/text/pendulum-exercise-with-bottle.png
+premium,text,Plank Good Bad Example,プランク良い例・悪い例【文字あり】,premium/text/plank-good-bad-example.png
+premium,text,Plank,プランク【文字あり】,premium/text/plank.png
+premium,text,Puppy Position,パピーポジション【文字あり】,premium/text/puppy-position.png
+premium,text,Quadriceps Stretch,四頭筋ストレッチ-立位【文字あり】,premium/text/quadriceps-stretch.png
+premium,text,Quadruped Trunk Rotation Training,四つん這いで体幹の回旋【文字あり】,premium/text/quadruped-trunk-rotation-training.png
+premium,text,Scapular Retraction Exercise,肩甲骨の内転運動【文字あり】,premium/text/scapular-retraction-exercise.png
+premium,text,Seated Aerobike,座位でエアロバイク【文字あり】,premium/text/seated-aerobike.png
+premium,text,Seated Finger Training With Clothespin,ペグ操作-側方【文字あり】,premium/text/seated-finger-training-with-clothespin.png
+premium,text,Seated Hamstring Stretch With Towel.,下後面のストレッチ【文字あり】,premium/text/seated-hamstring-stretch-with-towel..png
+premium,text,Seated Hip Adduction Training,股関節内転トレーニング【文字あり】,premium/text/seated-hip-adduction-training.png
+premium,text,Seated Knee Extension Side View,四頭筋トレーニング-側方【文字あり】,premium/text/seated-knee-extension-side-view.png
+premium,text,Seated Knee Extension,四頭筋トレーニング-斜め【文字あり】,premium/text/seated-knee-extension.png
+premium,text,Seated Leg Open Stretch,開脚してストレッチ【文字あり】,premium/text/seated-leg-open-stretch.png
+premium,text,Seated Leg Raise Hold,足を上げた状態をキープ【文字あり】,premium/text/seated-leg-raise-hold.png
+premium,text,Seated Leg Raise,座位でレッグレイズ【文字あり】,premium/text/seated-leg-raise.png
+premium,text,Seated Neck Rotation Stretch,頸部の回旋【文字あり】,premium/text/seated-neck-rotation-stretch.png
+premium,text,Seated Popliteal Stretch,腋窩後面のストレッチ【文字あり】,premium/text/seated-popliteal-stretch.png
+premium,text,Seated Shoulder Flexion With Towel,両手でタオルを把持して肩関節屈曲【文字あり】,premium/text/seated-shoulder-flexion-with-towel.png
+premium,text,Seated Side Step Exercise,イス座位でサイドステップ【文字あり】,premium/text/seated-side-step-exercise.png
+premium,text,Shoulder Horizontal Adduction Stretch,肩甲骨外転ストレッチ【文字あり】,premium/text/shoulder-horizontal-adduction-stretch.png
+premium,text,Shoulder Raise With Bar,棒を使用した肩関節屈曲【文字あり】,premium/text/shoulder-raise-with-bar.png
+premium,text,Shoulder Raise,肩挙上運動【文字あり】,premium/text/shoulder-raise.png
+premium,text,Side Bridge,サイドブリッジ【文字あり】,premium/text/side-bridge.png
+premium,text,Side Lying Hip Abduction,側臥位で股関節外転運動【文字あり】,premium/text/side-lying-hip-abduction.png
+premium,text,Side Plank On Elbow,肘をついてサイドプランク【文字あり】,premium/text/side-plank-on-elbow.png
+premium,text,Side Step,サイドステップ【文字あり】,premium/text/side-step.png
+premium,text,Single Leg Bridge,片足ブリッジ【文字あり】,premium/text/single-leg-bridge.png
+premium,text,Single Leg Heel Raise,片足ヒールライズ【文字あり】,premium/text/single-leg-heel-raise.png
+premium,text,Single Leg Stand,片足立ち【文字あり】,premium/text/single-leg-stand.png
+premium,text,Sit To Stand Using Chair,イスからの立ち座り【文字あり】,premium/text/sit-to-stand-using-chair.png
+premium,text,Sit To Stand With Parallel Bars,支持物ありで立ち座り【文字あり】,premium/text/sit-to-stand-with-parallel-bars.png
+premium,text,Sitting Quadriceps Stretch,座って四頭筋ストレッチ【文字あり】,premium/text/sitting-quadriceps-stretch.png
+premium,text,Squat,スクワット【文字あり】,premium/text/squat.png
+premium,text,Stair Step Right Up Left Down,階段昇降【文字あり】,premium/text/stair-step-right-up-left-down.png
+premium,text,Standing Armpit Stretch,腋窩のストレッチ【文字あり】,premium/text/standing-armpit-stretch.png
+premium,text,Standing Dumbbell Scaption,スキャプション【文字あり】,premium/text/standing-dumbbell-scaption.png
+premium,text,Standing Hip Abduction,股関節外転運動【文字あり】,premium/text/standing-hip-abduction.png
+premium,text,Standing Left Side Bend With Towel,タオルを使用した体幹の左側屈【文字あり】,premium/text/standing-left-side-bend-with-towel.png
+premium,text,Standing Leg Raise,立位でレッグレイズ【文字あり】,premium/text/standing-leg-raise.png
+premium,text,Standing Right Side Bend With Towel,タオルを使用した体幹の右側屈【文字あり】,premium/text/standing-right-side-bend-with-towel.png
+premium,text,Standing Trunk Rotation Stretch,立位で体幹の回旋【文字あり】,premium/text/standing-trunk-rotation-stretch.png
+premium,text,Step Exercise,ステップ運動【文字あり】,premium/text/step-exercise.png
+premium,text,Step Left With Band,ゴムチューブを使ったステップ運動-左【文字あり】,premium/text/step-left-with-band.png
+premium,text,Step Right With Band,ゴムチューブを使ったステップ運動-右【文字あり】,premium/text/step-right-with-band.png
+premium,text,Step To Side,段差を用いたサイドステップ【文字あり】,premium/text/step-to-side.png
+premium,text,Step Up And Down,段差を用いた前方へのステップ【文字あり】,premium/text/step-up-and-down.png
+premium,text,Supine Hamstring Stretch With Towel,臥位で下腿後面のストレッチ【文字あり】,premium/text/supine-hamstring-stretch-with-towel.png
+premium,text,Supine Shoulder Flexion With Both Hands,臥位で両肩の屈曲運動【文字あり】,premium/text/supine-shoulder-flexion-with-both-hands.png
+premium,text,Thumb Pinky Opposition,母指と小指の対立【文字あり】,premium/text/thumb-pinky-opposition.png
+premium,text,Towel Gather,タオルギャザー【文字あり】,premium/text/towel-gather.png
+premium,text,Towel Side Bend,タオルを使用して体幹の側屈【文字あり】,premium/text/towel-side-bend.png
+premium,text,Towel Trunk Rotation,タオルを使用して体幹の回旋【文字あり】,premium/text/towel-trunk-rotation.png
+premium,text,Treadmill Walking,トレッドミル歩行【文字あり】,premium/text/treadmill-walking.png
+premium,text,Trunk Extension Stretch,体幹の伸展【文字あり】,premium/text/trunk-extension-stretch.png
+premium,text,Trunk Flexion Stretch,体幹の屈曲【文字あり】,premium/text/trunk-flexion-stretch.png
+premium,text,Trunk Rotation,体幹の回旋【文字あり】,premium/text/trunk-rotation.png
+premium,text,Walking,ウォーキング【文字あり】,premium/text/walking.png
+premium,text,Wall Achilles Stretch,壁を使用してアキレス腱のストレッチ【文字あり】,premium/text/wall-achilles-stretch.png
+premium,text,Wall Push Up,壁を使った腕立て【文字あり】,premium/text/wall-push-up.png
+premium,text,Wall Slide,ウォールスライド【文字あり】,premium/text/wall-slide.png
+premium,text,Wall Squat,壁を用いた空気イス【文字あり】,premium/text/wall-squat.png
+premium,text,Wheelchair Seating Tips,車イス座位姿勢【文字あり】,premium/text/wheelchair-seating-tips.png

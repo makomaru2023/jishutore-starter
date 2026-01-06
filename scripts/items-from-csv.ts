@@ -1,8 +1,9 @@
+
 import fs from "fs/promises";
 import path from "path";
 
-type Row = { tier: string; category: string; title: string; url: string };
-type Item = { id: string; tier: string; category: string; title: string; previewSrc: string; fileHref: string; fileName: string };
+type Row = { tier: string; category: string; title: string; titleJa: string; url: string };
+type Item = { id: string; tier: string; category: string; title: string; titleJa: string; previewSrc: string; fileHref: string; fileName: string };
 
 const INPUTS = ["data/items-basic-plain-text.csv"];
 const OUT = "data/items.json";
@@ -16,17 +17,24 @@ function parse(csv: string): Row[] {
     t: header.indexOf("tier"),
     c: header.indexOf("category"),
     ti: header.indexOf("title"),
+    tja: header.indexOf("titleJa"),
     u: header.indexOf("url")
   };
+
+  const hasJa = idx.tja >= 0;
+
   if (idx.t < 0 || idx.c < 0 || idx.ti < 0 || idx.u < 0) return [];
+
   const out: Row[] = [];
   for (const line of lines.slice(1)) {
     const cols = line.split(",");
     if (cols.length < 4) continue;
+
     out.push({
       tier: cols[idx.t].trim(),
       category: cols[idx.c].trim(),
       title: cols[idx.ti].trim(),
+      titleJa: hasJa ? cols[idx.tja].trim() : "",
       url: cols[idx.u].trim()
     });
   }
@@ -57,25 +65,35 @@ async function main() {
   const items: Item[] = rows.map(r => {
     const { fileName, id } = nameFromUrl(r.url);
 
-    // For 'text' category, ensure ID is unique by appending suffix if not already present in filename
-    const uniqueId = (r.category === 'text' && !id.endsWith('-text')) ? `${id}-text` : id;
+    let uniqueId = id;
+    let suffix = '';
 
-    // Convert full URL to relative path for previewSrc (to use with R2_DOMAIN in components)
-    // The current CSV has full URLs like https://pub.../basic/plain/foo.png
-    // We want to store just "basic/plain/foo.png" so the component can handle the domain switching if needed
-    // checking logic inside ItemCard and others suggest they handle both, but let's stick to what was there before or ensure it works.
-    // Actually, looking at previous items.json content:
-    // "previewSrc": "basic/text/ankle-dorsiflexion-and-plantarflexion.png"
-    // "fileHref": "/api/image?key=..."
-    //
-    // The previous `items.json` had relative paths. The new CSV has IS full URLs.
-    // The script currently does: `previewSrc:r.url`.
-    // If we keep full URL, ItemCard logic `if (!imageUrl.startsWith("https://"))` will skip adding R2_DOMAIN, which is fine.
-    // BUT, we want to ensure consistency.
+    if (r.tier !== 'basic') {
+      suffix += `-${r.tier}`;
+    }
 
-    // Let's just fix the ID issue first as requested.
+    if (r.category === 'text') {
+      suffix += '-text';
+    }
 
-    return { id: uniqueId, tier: r.tier, category: r.category, title: r.title, previewSrc: r.url, fileHref: r.url, fileName };
+    if (suffix && !uniqueId.endsWith(suffix)) {
+      uniqueId = `${uniqueId}${suffix}`;
+    }
+
+    // Construct fileHref using /api/image route to proxy R2 access securely/consistently
+    // The items.json needs this to map to the correct R2 object
+    const fileHref = `/api/image?key=${encodeURIComponent(r.url)}`;
+
+    return {
+      id: uniqueId,
+      tier: r.tier,
+      category: r.category,
+      title: r.title,
+      titleJa: r.titleJa,
+      previewSrc: r.url,
+      fileHref,
+      fileName
+    };
   });
   await fs.mkdir(path.dirname(OUT), { recursive: true });
   await fs.writeFile(OUT, JSON.stringify(items, null, 2));
