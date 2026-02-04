@@ -15,10 +15,7 @@ export default function AboutPage() {
                             <p>
                                 はじめまして。「自主トレ素材庫」を運営しております、作業療法士のトロルと申します。
                             </p>
-                            <p className="mt-4">
-                                私はこれまで、回復期リハビリテーション病院や訪問リハビリの現場で、多くの患者様のリハビリに携わってきました。
-                                その中で常に感じていたのが、<strong>「自主トレ指導の資料作りにかかる負担」</strong>です。
-                            </p>
+
                             <p className="mt-4">
                                 「もっと分かりやすい絵があれば」「毎回手書きするのは大変」「ネットの画像は著作権が心配」……。
                                 同じような悩みを持つセラピストの力になりたいと思い、このサイトを立ち上げました。
@@ -33,11 +30,11 @@ export default function AboutPage() {
                                     <dd className="sm:col-span-2">トロル</dd>
 
                                     <dt className="font-bold text-gray-900">保有資格</dt>
-                                    <dd className="sm:col-span-2">作業療法士（OT）</dd>
+                                    <dd className="sm:col-span-2">作業療法士</dd>
 
                                     <dt className="font-bold text-gray-900">経歴</dt>
                                     <dd className="sm:col-span-2">
-                                        作業療法士として病院（回復期・維持期）、訪問看護ステーション等に勤務。<br />
+
                                         臨床業務の傍ら、リハビリ職向けのWebメディア運営やイラスト制作を行う。
                                     </dd>
                                 </dl>
