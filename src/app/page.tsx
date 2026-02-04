@@ -28,7 +28,7 @@ export default function Home() {
                 </h1>
                 <div className="space-y-2">
                   <p className="text-lg text-blue-50 font-medium">
-                    現場14年目の作業療法士が作った、貼るだけ5分のイラスト素材集です。
+                    現役作業療法士が作った、貼るだけ5分のイラスト素材集です。
                   </p>
                   <p className="text-sm text-blue-200">
                     統一感のあるイラストで、資料作成の時間を20分 → 5分に。
@@ -41,7 +41,7 @@ export default function Home() {
                     href="/items"
                     className="px-8 py-3 rounded-full bg-white text-blue-600 font-bold hover:bg-blue-50 transition-all shadow-lg flex items-center justify-center"
                   >
-                    素材一覧を見る <span className="text-xs font-normal ml-1">（全品無料）</span>
+                    素材一覧を見る <span className="text-xs font-normal ml-1">（全素材無料）</span>
                   </Link>
                 </div>
                 <p className="text-xs text-blue-300">
@@ -74,7 +74,7 @@ export default function Home() {
         <div className="bg-white py-12 border-b border-gray-100">
           <div className="container mx-auto px-4 max-w-3xl text-center">
             <p className="text-gray-600 leading-relaxed text-lg inline-block text-balance">
-              臨床経験14年目の現役作業療法士が、「現場で本当に使いやすい」を追求して作成しました。<br className="hidden sm:block" />
+              現役作業療法士が、「現場で本当に使いやすい」を追求して作成しました。<br className="hidden sm:block" />
               浮いた時間を、患者様と向き合う大切な時間にお使いください。
             </p>
           </div>

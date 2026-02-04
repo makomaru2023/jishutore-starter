@@ -1978,5 +1978,155 @@
     "previewSrc": "premium/text/wheelchair-seating-tips.png",
     "fileHref": "/api/image?key=premium%2Ftext%2Fwheelchair-seating-tips.png",
     "fileName": "wheelchair-seating-tips.png"
+  },
+  {
+    "id": "Cheek puffing and puckering exercises-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Cheek puffing and puckering exercises",
+    "titleJa": "頬の膨らませ・すぼませ",
+    "previewSrc": "premium/plain/Cheek puffing and puckering exercises.png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FCheek%20puffing%20and%20puckering%20exercises.png",
+    "fileName": "Cheek puffing and puckering exercises.png"
+  },
+  {
+    "id": "Cheek puffing and puckering exercises-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Cheek puffing and puckering exercises",
+    "titleJa": "頬の膨らませ・すぼませ【文字あり】",
+    "previewSrc": "premium/text/Cheek puffing and puckering exercises.png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FCheek%20puffing%20and%20puckering%20exercises.png",
+    "fileName": "Cheek puffing and puckering exercises.png"
+  },
+  {
+    "id": "Clamshell-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Clamshell",
+    "titleJa": "クラムシェル",
+    "previewSrc": "premium/plain/Clamshell.png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FClamshell.png",
+    "fileName": "Clamshell.png"
+  },
+  {
+    "id": "Clamshell-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Clamshell",
+    "titleJa": "クラムシェル【文字あり】",
+    "previewSrc": "premium/text/Clamshell.png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FClamshell.png",
+    "fileName": "Clamshell.png"
+  },
+  {
+    "id": "Knee-holding exercise (holding both knees)-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Knee-holding exercise (holding both knees)",
+    "titleJa": "膝抱え（両膝）",
+    "previewSrc": "premium/plain/Knee-holding exercise (holding both knees).png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FKnee-holding%20exercise%20(holding%20both%20knees).png",
+    "fileName": "Knee-holding exercise (holding both knees).png"
+  },
+  {
+    "id": "Knee-holding exercise (holding both knees)-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Knee-holding exercise (holding both knees)",
+    "titleJa": "膝抱え（両膝）【文字あり】",
+    "previewSrc": "premium/text/Knee-holding exercise (holding both knees).png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FKnee-holding%20exercise%20(holding%20both%20knees).png",
+    "fileName": "Knee-holding exercise (holding both knees).png"
+  },
+  {
+    "id": "Knee-holding exercise (holding one knee)-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Knee-holding exercise (holding one knee)",
+    "titleJa": "膝抱え（片膝）",
+    "previewSrc": "premium/plain/Knee-holding exercise (holding one knee).png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FKnee-holding%20exercise%20(holding%20one%20knee).png",
+    "fileName": "Knee-holding exercise (holding one knee).png"
+  },
+  {
+    "id": "Knee-holding exercise (holding one knee)-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Knee-holding exercise (holding one knee)",
+    "titleJa": "膝抱え（片膝）【文字あり】",
+    "previewSrc": "premium/text/Knee-holding exercise (holding one knee).png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FKnee-holding%20exercise%20(holding%20one%20knee).png",
+    "fileName": "Knee-holding exercise (holding one knee).png"
+  },
+  {
+    "id": "Patakara Exercise-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Patakara Exercise",
+    "titleJa": "パタカラ体操【文字あり】",
+    "previewSrc": "premium/text/Patakara Exercise.png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FPatakara%20Exercise.png",
+    "fileName": "Patakara Exercise.png"
+  },
+  {
+    "id": "Shakia Training-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Shakia Training",
+    "titleJa": "シャキア訓練",
+    "previewSrc": "premium/plain/Shakia Training.png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FShakia%20Training.png",
+    "fileName": "Shakia Training.png"
+  },
+  {
+    "id": "Shakia Training-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Shakia Training",
+    "titleJa": "シャキア訓練【文字あり】",
+    "previewSrc": "premium/text/Shakia Training.png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FShakia%20Training.png",
+    "fileName": "Shakia Training.png"
+  },
+  {
+    "id": "Swallowing forehead exercises-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Swallowing forehead exercises",
+    "titleJa": "嚥下おでこ体操",
+    "previewSrc": "premium/plain/Swallowing forehead exercises.png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FSwallowing%20forehead%20exercises.png",
+    "fileName": "Swallowing forehead exercises.png"
+  },
+  {
+    "id": "Swallowing forehead exercises-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Swallowing forehead exercises",
+    "titleJa": "嚥下おでこ体操【文字あり】",
+    "previewSrc": "premium/text/Swallowing forehead exercises.png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FSwallowing%20forehead%20exercises.png",
+    "fileName": "Swallowing forehead exercises.png"
+  },
+  {
+    "id": "Tongue protrusion and side-to-side movement-premium",
+    "tier": "premium",
+    "category": "plain",
+    "title": "Tongue protrusion and side-to-side movement",
+    "titleJa": "舌の突出と左右運動",
+    "previewSrc": "premium/plain/Tongue protrusion and side-to-side movement.png",
+    "fileHref": "/api/image?key=premium%2Fplain%2FTongue%20protrusion%20and%20side-to-side%20movement.png",
+    "fileName": "Tongue protrusion and side-to-side movement.png"
+  },
+  {
+    "id": "Tongue protrusion and side-to-side movement-premium-text",
+    "tier": "premium",
+    "category": "text",
+    "title": "Tongue protrusion and side-to-side movement",
+    "titleJa": "舌の突出と左右運動【文字あり】",
+    "previewSrc": "premium/text/Tongue protrusion and side-to-side movement.png",
+    "fileHref": "/api/image?key=premium%2Ftext%2FTongue%20protrusion%20and%20side-to-side%20movement.png",
+    "fileName": "Tongue protrusion and side-to-side movement.png"
   }
 ]
