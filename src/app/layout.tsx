@@ -18,16 +18,7 @@ export const metadata: Metadata = {
       'ucu5LYwdOVYrYr2CHVnd3o6vUlBRjTpjrJUiSZEXAgM'
     ],
   },
-  openGraph: {
-    images: [
-      {
-        url: '/opengraph-image.png?v=20240112',
-        width: 1200,
-        height: 630,
-        alt: '自主トレ素材庫',
-      },
-    ],
-  },
+
 };
 
 export default function RootLayout({
