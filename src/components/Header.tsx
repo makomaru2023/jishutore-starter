@@ -1,5 +1,6 @@
 'use client';
 
+import { CategoryDropdown } from "@/components/CategoryDropdown";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -15,9 +16,7 @@ export function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-6">
-                    <Link href="/items" className="text-sm font-bold text-white hover:text-blue-100 transition-colors">
-                        素材一覧
-                    </Link>
+                    <CategoryDropdown />
 
                     <Link href="/faq" className="text-sm font-medium text-blue-100 hover:text-white transition-colors">
                         よくある質問
@@ -54,7 +53,21 @@ export function Header() {
                             className="block py-2 text-base font-medium text-white hover:bg-blue-700 rounded px-2"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
-                            素材一覧
+                            すべての素材
+                        </Link>
+                        <Link
+                            href="/items?category=plain"
+                            className="block py-2 text-base font-medium text-white hover:bg-blue-700 rounded px-2 pl-6"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            ー 文字なし素材
+                        </Link>
+                        <Link
+                            href="/items?category=text"
+                            className="block py-2 text-base font-medium text-white hover:bg-blue-700 rounded px-2 pl-6"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            ー 文字あり素材
                         </Link>
 
                         <Link
