@@ -13,9 +13,10 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+    const { id } = await params;
     const items = getItems();
-    const item = items.find((i) => i.id === params.id);
+    const item = items.find((i) => i.id === id);
 
     if (!item) {
         return {
@@ -52,14 +53,47 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
 
 
-export default function ItemPage({ params }: { params: { id: string } }) {
+export default async function ItemPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     const items = getItems();
-    const item = items.find((i) => i.id === params.id);
+    const item = items.find((i) => i.id === id);
 
 
 
     if (!item) {
-        return <div>Item not found</div>;
+        // Find similar IDs for suggestions
+        const similarItems = items
+            .filter(i => i.id.includes(id.replace('-premium', '')) || id.includes(i.id))
+            .slice(0, 5);
+
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center p-4">
+                <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
+                    <h1 className="text-2xl font-bold text-red-600 mb-4">Item Not Found</h1>
+                    <p className="text-gray-700 mb-2">Requested ID:</p>
+                    <code className="block bg-gray-100 p-2 rounded mb-6 break-all">{id}</code>
+
+                    {similarItems.length > 0 && (
+                        <div className="mb-6 text-left">
+                            <p className="font-semibold mb-2">Did you mean:</p>
+                            <ul className="list-disc pl-5 space-y-1">
+                                {similarItems.map(similarItem => (
+                                    <li key={similarItem.id}>
+                                        <Link href={`/items/${similarItem.id}`} className="text-blue-600 hover:underline">
+                                            {similarItem.id}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    <Link href="/items" className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Return to List
+                    </Link>
+                </div>
+            </div>
+        );
     }
 
     // Use direct R2 URL for better performance
