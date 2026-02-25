@@ -75,10 +75,9 @@ export default function Home() {
               <div className="mt-16 lg:mt-0 relative w-64 h-64 sm:w-80 sm:h-80 mx-auto lg:mx-0 flex-shrink-0 perspective-1000">
                 <div className="absolute inset-0 bg-teal-500/20 rounded-[3rem] rotate-6 transform-gpu"></div>
                 <div className="absolute inset-0 bg-slate-800 rounded-[3rem] -rotate-3 border border-slate-700 shadow-2xl overflow-hidden flex items-center justify-center">
-                  {/* Placeholder for a nice hero graphic or the profile picture */}
                   <Image
-                    src="/images/profile.png"
-                    alt="運営者（作業療法士）"
+                    src="/images/therapist.jpg"
+                    alt="リハビリ指導中のセラピスト"
                     fill
                     className="object-cover opacity-90 scale-110 hover:scale-100 transition-transform duration-700"
                     sizes="(max-width: 768px) 256px, 320px"
