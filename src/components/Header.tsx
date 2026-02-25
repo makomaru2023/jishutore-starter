@@ -11,10 +11,7 @@ export function Header() {
         <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900 text-white shadow-md">
             <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-teal-500 text-white font-bold text-xl group-hover:bg-teal-400 transition-colors">
-                        素材
-                    </div>
-                    <span className="text-xl font-black tracking-tight">自主トレ素材庫</span>
+                    <span className="text-xl font-black tracking-tight group-hover:text-teal-400 transition-colors">自主トレ素材庫</span>
                 </Link>
 
                 {/* Desktop Navigation */}

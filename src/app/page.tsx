@@ -40,23 +40,28 @@ export default function Home() {
                 </div>
 
                 {/* Search Bar / Main CTA Area embedded in Hero */}
-                <div className="mt-8 max-w-xl mx-auto lg:mx-0 p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex flex-col sm:flex-row gap-2">
-                  <div className="flex-1 px-4 py-3 flex items-center text-slate-300 gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-slate-400">
+                <form action="/items" method="GET" className="mt-8 max-w-xl mx-auto lg:mx-0 p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex flex-col sm:flex-row gap-2">
+                  <div className="flex-1 px-4 py-3 flex items-center bg-slate-800/40 rounded-xl focus-within:ring-2 focus-within:ring-teal-500 transition-all cursor-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-slate-400 mr-2 flex-shrink-0">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
-                    <span className="text-sm font-medium">素材を検索（例: 肩, スクワット）</span>
+                    <input
+                      type="text"
+                      name="q"
+                      placeholder="素材を検索（例: 肩, スクワット）"
+                      className="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none font-medium text-sm"
+                    />
                   </div>
-                  <Link
-                    href="/items"
+                  <button
+                    type="submit"
                     className="px-8 py-3.5 rounded-xl bg-teal-500 text-white font-bold hover:bg-teal-400 transition-all shadow-lg shadow-teal-500/30 flex items-center justify-center gap-2 whitespace-nowrap"
                   >
-                    素材一覧を見る
+                    検索する
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                     </svg>
-                  </Link>
-                </div>
+                  </button>
+                </form>
 
                 <p className="text-xs text-slate-400 font-medium flex items-center justify-center lg:justify-start gap-1">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 text-teal-400">
