@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
 
 export const metadata: Metadata = {
   title: "自主トレ素材庫 | リハビリ職のための無料・フリーイラスト素材集",
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={`${notoSansJP.className} bg-slate-50 text-slate-800 antialiased`}>
         {children}
         <GoogleAnalytics gaId="G-TDY9RZPYWX" />
       </body>

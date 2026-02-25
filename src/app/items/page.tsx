@@ -22,14 +22,14 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
-            <main className="container mx-auto px-4 py-8">
-                <div className="mb-8 text-center">
-                    <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
+            <main className="container mx-auto px-4 py-12 flex-1">
+                <div className="mb-10 text-center">
+                    <h1 className="mb-4 text-3xl font-black text-slate-900 sm:text-4xl tracking-tight">
                         {title}
                     </h1>
-                    <p className="mx-auto max-w-2xl text-lg text-gray-600">
+                    <p className="mx-auto max-w-2xl text-lg text-slate-500 font-medium">
                         {description}
                     </p>
                 </div>

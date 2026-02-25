@@ -106,13 +106,13 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     const title = item.titleJa || item.title;
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
-            <main className="container mx-auto px-4 py-8">
-                <div className="mx-auto max-w-4xl bg-white rounded-xl shadow-sm overflow-hidden">
+            <main className="container mx-auto px-4 py-12 flex-1">
+                <div className="mx-auto max-w-5xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="md:flex">
                         {/* Image Section with Watermark Protection */}
-                        <div className="md:w-1/2 bg-gray-100 relative aspect-[4/3] md:aspect-auto flex items-center justify-center overflow-hidden">
+                        <div className="md:w-1/2 bg-slate-50 relative aspect-[4/3] md:aspect-auto flex items-center justify-center overflow-hidden p-6 md:p-10 border-r border-slate-100">
                             {/* 
                                 Protection Mechanism:
                                 1. The real image is set as a background image on a div.
@@ -135,38 +135,46 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-8 md:w-1/2 flex flex-col">
-                            <div className="mb-4">
-                                <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 capitalize mb-2">
-                                    Free
-                                </span>
-                                <h1 className="text-2xl font-bold text-gray-900 mb-2">{title}</h1>
-                                <p className="text-gray-500 text-sm">ID: {item.id}</p>
+                        <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
+                            <div className="mb-6">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-teal-50 text-teal-600 capitalize">
+                                        Free
+                                    </span>
+                                </div>
+                                <h1 className="text-3xl font-black text-slate-900 mb-3 leading-tight">{title}</h1>
+                                <p className="text-slate-400 text-sm font-medium">素材ID: {item.id}</p>
                             </div>
 
-                            <div className="prose text-gray-600 mb-8">
+                            <div className="prose text-slate-600 mb-10 font-medium leading-relaxed">
                                 <p>
                                     この自主トレ素材は、リハビリテーションの現場で患者様への指導用資料としてご利用いただけます。
                                     統一感のあるデザインで、分かりやすい資料作成をサポートします。
                                 </p>
                             </div>
 
-                            <div className="mt-auto space-y-4">
-                                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                    <h3 className="font-semibold text-gray-900 mb-2">ダウンロードについて</h3>
-                                    <p className="text-sm text-green-700 mb-4 font-bold">
-                                        無料でダウンロード可能です。
+                            <div className="mt-auto space-y-6">
+                                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                    <h3 className="font-bold text-slate-900 mb-2">ダウンロード（完全無料）</h3>
+                                    <p className="text-sm text-slate-500 mb-6 font-medium">
+                                        会員登録は不要です。すぐにダウンロードしてご利用いただけます。
                                     </p>
                                     <a
                                         href={item.fileHref}
                                         download
-                                        className="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold rounded-lg transition-colors"
+                                        className="flex items-center justify-center w-full py-4 px-6 bg-teal-500 hover:bg-teal-400 text-white font-bold rounded-full transition-all shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-[1.02] gap-2"
                                     >
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                        </svg>
                                         画像をダウンロード
                                     </a>
                                 </div>
-                                <Link href="/items" className="block text-center text-gray-500 hover:text-gray-900 text-sm">
-                                    一覧に戻る
+                                <Link href="/items" className="flex items-center justify-center gap-2 text-slate-500 hover:text-teal-500 font-bold transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                    </svg>
+                                    素材一覧に戻る
                                 </Link>
                             </div>
                         </div>

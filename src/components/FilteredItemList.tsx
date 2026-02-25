@@ -34,15 +34,15 @@ export function FilteredItemList({ items }: FilteredItemListProps) {
     return (
         <div>
             <div className="mb-8 max-w-md mx-auto">
-                <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <div className="relative shadow-sm rounded-full overflow-hidden border border-slate-200 focus-within:ring-2 focus-within:ring-teal-500 focus-within:border-teal-500 transition-all">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </div>
                     <input
                         type="text"
-                        className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 text-gray-900 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        className="block w-full pl-12 pr-4 py-3.5 border-none bg-white placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-0 sm:text-base font-medium"
                         placeholder="キーワードで検索（例: 肩, スクワット）"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -62,8 +62,10 @@ export function FilteredItemList({ items }: FilteredItemListProps) {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12 text-gray-500">
-                    条件に一致する素材は見つかりませんでした。
+                <div className="text-center py-16 text-slate-500 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                    <div className="text-4xl mb-4">🔍</div>
+                    <p className="font-bold text-lg text-slate-700">見つかりませんでした</p>
+                    <p className="mt-2 text-sm">別のキーワードでお試しください。</p>
                 </div>
             )}
         </div>
