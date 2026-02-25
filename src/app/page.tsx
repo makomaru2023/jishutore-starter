@@ -76,8 +76,8 @@ export default function Home() {
                 <div className="absolute inset-0 bg-teal-500/20 rounded-[3rem] rotate-6 transform-gpu"></div>
                 <div className="absolute inset-0 bg-slate-800 rounded-[3rem] -rotate-3 border border-slate-700 shadow-2xl overflow-hidden flex items-center justify-center">
                   <Image
-                    src="/images/therapist.jpg"
-                    alt="リハビリ指導中のセラピスト"
+                    src="/images/hero-illustration.png"
+                    alt="リハビリを指導するセラピストと患者のイラスト"
                     fill
                     className="object-cover opacity-90 scale-110 hover:scale-100 transition-transform duration-700"
                     sizes="(max-width: 768px) 256px, 320px"
