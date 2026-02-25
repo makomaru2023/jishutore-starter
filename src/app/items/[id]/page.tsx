@@ -36,16 +36,16 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
     return {
         title: `${title} | 自主トレ素材庫`,
-        description: `${title}の自主トレ素材イラストです。リハビリ職のための高品質な指導用資料素材。`,
+        description: `${title}の自主トレイラスト（フリー素材）です。PT・OT・ST向け、商用利用OK、登録不要で無料ダウンロード可能です。`,
         openGraph: {
             title: `${title} | 自主トレ素材庫`,
-            description: `${title}の自主トレ素材イラストです。`,
+            description: `${title}の自主トレイラスト（フリー素材）です。`,
             images: [absoluteImageUrl],
         },
         twitter: {
             card: 'summary_large_image',
             title: `${title} | 自主トレ素材庫`,
-            description: `${title}の自主トレ素材イラストです。`,
+            description: `${title}の自主トレイラスト（フリー素材）です。`,
             images: [absoluteImageUrl],
         },
     };
@@ -142,15 +142,46 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                         Free
                                     </span>
                                 </div>
-                                <h1 className="text-3xl font-black text-slate-900 mb-3 leading-tight">{title}</h1>
+                                <h1 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight">{title}の自主トレイラスト（フリー素材）</h1>
                                 <p className="text-slate-400 text-sm font-medium">素材ID: {item.id}</p>
                             </div>
 
-                            <div className="prose text-slate-600 mb-10 font-medium leading-relaxed">
-                                <p>
+                            <div className="prose text-slate-600 mb-8 font-medium leading-relaxed max-w-none">
+                                <p className="mb-6">
                                     この自主トレ素材は、リハビリテーションの現場で患者様への指導用資料としてご利用いただけます。
                                     統一感のあるデザインで、分かりやすい資料作成をサポートします。
                                 </p>
+
+                                {/* SEO and informational text blocks */}
+                                <div className="bg-slate-50 p-5 md:p-6 rounded-2xl border border-slate-100 space-y-5">
+                                    <div>
+                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                            </svg>
+                                            運動のポイント
+                                        </h2>
+                                        <p className="text-sm text-slate-700">「{title}」のイラストは、正しい姿勢や動作を視覚的に伝えるのに適しています。対象者の状態に合わせて負荷や回数を調整し、無理のない範囲で実施するようご指導ください。</p>
+                                    </div>
+                                    <div>
+                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                            </svg>
+                                            対象疾患・推奨される方
+                                        </h2>
+                                        <p className="text-sm text-slate-700">脳血管疾患、整形外科疾患、廃用症候群など、リハビリや予防体操が必要な方に広くご活用いただけます。身体機能評価を行った上で適用をご判断ください。</p>
+                                    </div>
+                                    <div>
+                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                                            </svg>
+                                            難易度目安
+                                        </h2>
+                                        <p className="text-sm text-slate-700">初級〜中級（※対象者の身体機能によって異なります）</p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="mt-auto space-y-6">
