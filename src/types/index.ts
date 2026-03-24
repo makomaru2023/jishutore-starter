@@ -7,4 +7,8 @@ export interface Item {
   previewSrc: string;
   fileHref: string;
   fileName: string;
+  description?: string;
+  exercisePoint?: string;
+  targetCondition?: string;
+  difficulty?: string;
 }
