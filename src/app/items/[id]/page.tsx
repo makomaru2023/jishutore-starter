@@ -34,18 +34,23 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     }
     const absoluteImageUrl = new URL(imageUrl, 'https://self-training.pro-kinkin-sss.com').toString();
 
+    // Use unique description from items.json if available
+    const metaDescription = item.description
+        ? `${title}の自主トレイラスト。${item.description}`
+        : `${title}の自主トレイラスト（フリー素材）です。PT・OT・ST向け、商用利用OK、登録不要で無料ダウンロード可能です。`;
+
     return {
         title: `${title} | 自主トレ素材庫`,
-        description: item.description || `${title}の自主トレイラスト（フリー素材）です。PT・OT・ST向け、商用利用OK、登録不要で無料ダウンロード可能です。`,
+        description: metaDescription,
         openGraph: {
             title: `${title} | 自主トレ素材庫`,
-            description: item.description || `${title}の自主トレイラスト（フリー素材）です。`,
+            description: metaDescription,
             images: [absoluteImageUrl],
         },
         twitter: {
             card: 'summary_large_image',
             title: `${title} | 自主トレ素材庫`,
-            description: item.description || `${title}の自主トレイラスト（フリー素材）です。`,
+            description: metaDescription,
             images: [absoluteImageUrl],
         },
     };
@@ -105,6 +110,19 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
     const title = item.titleJa || item.title;
 
+    // Use unique descriptions from items.json, with fallbacks
+    const descriptionText = item.description
+        || "この自主トレ素材は、リハビリテーションの現場で患者様への指導用資料としてご利用いただけます。統一感のあるデザインで、分かりやすい資料作成をサポートします。";
+
+    const exercisePointText = item.exercisePoint
+        || `「${title}」のイラストは、正しい姿勢や動作を視覚的に伝えるのに適しています。対象者の状態に合わせて負荷や回数を調整し、無理のない範囲で実施するようご指導ください。`;
+
+    const targetConditionText = item.targetCondition
+        || "脳血管疾患、整形外科疾患、廃用症候群など、リハビリや予防体操が必要な方に広くご活用いただけます。身体機能評価を行った上で適用をご判断ください。";
+
+    const difficultyText = item.difficulty
+        || "初級〜中級（※対象者の身体機能によって異なります）";
+
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
@@ -148,7 +166,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
                             <div className="prose text-slate-600 mb-8 font-medium leading-relaxed max-w-none">
                                 <p className="mb-6">
-                                    {item.description || "この自主トレ素材は、リハビリテーションの現場で患者様への指導用資料としてご利用いただけます。統一感のあるデザインで、分かりやすい資料作成をサポートします。"}
+                                    {descriptionText}
                                 </p>
 
                                 {/* SEO and informational text blocks */}
@@ -160,7 +178,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                             </svg>
                                             運動のポイント
                                         </h2>
-                                        <p className="text-sm text-slate-700">{item.exercisePoint || `「${title}」のイラストは、正しい姿勢や動作を視覚的に伝えるのに適しています。対象者の状態に合わせて負荷や回数を調整し、無理のない範囲で実施するようご指導ください。`}</p>
+                                        <p className="text-sm text-slate-700">{exercisePointText}</p>
                                     </div>
                                     <div>
                                         <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
@@ -169,7 +187,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                             </svg>
                                             対象疾患・推奨される方
                                         </h2>
-                                        <p className="text-sm text-slate-700">{item.targetCondition || "脳血管疾患、整形外科疾患、廃用症候群など、リハビリや予防体操が必要な方に広くご活用いただけます。身体機能評価を行った上で適用をご判断ください。"}</p>
+                                        <p className="text-sm text-slate-700">{targetConditionText}</p>
                                     </div>
                                     <div>
                                         <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
@@ -178,7 +196,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                             </svg>
                                             難易度目安
                                         </h2>
-                                        <p className="text-sm text-slate-700">{item.difficulty || "初級〜中級（※対象者の身体機能によって異なります）"}</p>
+                                        <p className="text-sm text-slate-700">{difficultyText}</p>
                                     </div>
                                 </div>
                             </div>
