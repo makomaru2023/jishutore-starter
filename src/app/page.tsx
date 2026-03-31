@@ -1,13 +1,8 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import Link from "next/link";
 import Image from "next/image";
-import { MaterialSlider } from "@/components/MaterialSlider";
-import { getItems } from "@/lib/items";
 
 export default function Home() {
-  const items = getItems();
-  const popularItems = items.slice(0, 10);
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -96,66 +91,8 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-12 bg-slate-50" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 100%)' }}></div>
         </section>
 
-        {/* Benefits Cards Section */}
-        <section className="bg-slate-50 py-16 -mt-8 relative z-20">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                { title: "探しやすい", desc: "部位や動作でサクッと検索", icon: "🔍" },
-                { title: "加工しやすい", desc: "シンプルな線画で使い勝手抜群", icon: "✏️" },
-                { title: "完全無料", desc: "面倒な登録不要ですぐDL", icon: "🎁" }
-              ].map((benefit, i) => (
-                <div key={i} className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-teal-50 flex items-center justify-center text-2xl flex-shrink-0">
-                    {benefit.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-slate-900 font-bold text-lg">{benefit.title}</h3>
-                    <p className="text-slate-500 text-sm mt-1 leading-relaxed">{benefit.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Materials List Section */}
-        <section id="materials" className="bg-slate-50 py-16 sm:py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl text-center mb-16">
-              <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-                人気の自主トレ素材
-              </h2>
-              <p className="mt-4 text-slate-500 font-medium">
-                現場でよく使われる定番イラストをピックアップ
-              </p>
-            </div>
-
-            <div className="mb-16 max-w-6xl mx-auto">
-              <MaterialSlider items={popularItems} options={{ loop: true, align: 'start' }} />
-            </div>
-
-            <div className="flex justify-center">
-              <Link href="/items" className="group relative flex flex-col items-center rounded-[2rem] bg-white p-10 border-2 border-slate-100 transition-all hover:border-teal-500 hover:shadow-xl hover:shadow-teal-500/10 max-w-md w-full">
-                <div className="mb-6 rounded-full bg-teal-50 px-6 py-2 text-teal-600 font-black text-sm uppercase tracking-wider">
-                  View All Materials
-                </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-3 group-hover:text-teal-500 transition-colors">もっと素材を探す</h3>
-                <p className="text-center text-slate-500 font-medium mb-8">
-                  200点以上のイラストが<br className="sm:hidden" />全て無料でダウンロード可能です
-                </p>
-                <div className="w-12 h-12 rounded-full bg-teal-500 text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-teal-400 transition-all shadow-lg shadow-teal-500/30">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </section>
-
         {/* LINE Registration Banner Section */}
-        <section className="py-16 sm:py-20 relative overflow-hidden" style={{ backgroundColor: '#06C755' }}>
+        <section id="line" className="py-16 sm:py-20 relative overflow-hidden" style={{ backgroundColor: '#06C755' }}>
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.05)', transform: 'translate(50%, -50%)' }}></div>
           <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.05)', transform: 'translate(-50%, 50%)' }}></div>
 
