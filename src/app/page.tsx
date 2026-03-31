@@ -21,7 +21,7 @@ export default function Home() {
                 PT・OT・ST向け 自主トレイラスト
               </p>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.2] tracking-tight">
+              <h1 className="text-[1.75rem] sm:text-5xl lg:text-6xl font-black text-white leading-[1.2] tracking-tight">
                 <span className="inline-block">「自主トレ資料づくり」</span><br />
                 <span className="inline-block">もう悩まない。</span>
               </h1>
