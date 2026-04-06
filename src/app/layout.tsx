@@ -6,11 +6,23 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
 
 export const metadata: Metadata = {
-  title: "自主トレ素材庫 | リハビリ職のための無料・フリーイラスト素材集",
-  description: "作業療法士が作成した、リハビリ職のための自主トレ無料イラスト素材配布サイト。全素材フリー・商用利用OK。自主トレーニング指導の資料作成を効率化します。",
+  title: "自主トレイラスト無料素材集｜リハビリ職向け200点以上｜自主トレ素材庫",
+  description: "PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど200点以上すべて無料・商用OK。患者配布資料がすぐ作れます。登録不要でダウンロード可能。",
   metadataBase: new URL('https://jishutore-sozaiko.online'),
   alternates: {
     canonical: './',
+  },
+  openGraph: {
+    title: "自主トレイラスト無料素材集｜リハビリ職向け200点以上｜自主トレ素材庫",
+    description: "PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど200点以上すべて無料・商用OK。患者配布資料がすぐ作れます。",
+    siteName: "自主トレ素材庫",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "自主トレイラスト無料素材集｜リハビリ職向け200点以上｜自主トレ素材庫",
+    description: "PT・OT・STのための自主トレイラスト素材サイト。200点以上すべて無料・商用OK。登録不要でダウンロード可能。",
   },
   verification: {
     google: [
@@ -18,7 +30,6 @@ export const metadata: Metadata = {
       'ucu5LYwdOVYrYr2CHVnd3o6vUlBRjTpjrJUiSZEXAgM'
     ],
   },
-
 };
 
 export default function RootLayout({

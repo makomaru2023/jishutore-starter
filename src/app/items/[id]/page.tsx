@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
     if (!item) {
         return {
-            title: "Item Not Found",
+            title: "素材が見つかりません | 自主トレ素材庫",
         };
     }
 
@@ -32,24 +32,26 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     if (!imageUrl.startsWith("https://")) {
         imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
     }
-    const absoluteImageUrl = new URL(imageUrl, 'https://self-training.pro-kinkin-sss.com').toString();
+    const absoluteImageUrl = new URL(imageUrl, 'https://jishutore-sozaiko.online').toString();
 
-    // Use unique description from items.json if available
+    // SEO-optimized title and description
+    const pageTitle = `${title}のイラスト【無料・商用OK】｜自主トレ素材庫`;
+
     const metaDescription = item.description
-        ? `${title}の自主トレイラスト。${item.description}`
-        : `${title}の自主トレイラスト（フリー素材）です。PT・OT・ST向け、商用利用OK、登録不要で無料ダウンロード可能です。`;
+        ? `${title}の自主トレイラストを無料ダウンロード。${item.description}リハビリ指導・患者配布資料にそのまま使えます。商用利用OK・登録不要。`
+        : `${title}の自主トレイラストを無料ダウンロード。PT・OT・STの指導資料・患者配布用にそのまま使えます。商用利用OK・登録不要。`;
 
     return {
-        title: `${title} | 自主トレ素材庫`,
+        title: pageTitle,
         description: metaDescription,
         openGraph: {
-            title: `${title} | 自主トレ素材庫`,
+            title: pageTitle,
             description: metaDescription,
             images: [absoluteImageUrl],
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${title} | 自主トレ素材庫`,
+            title: pageTitle,
             description: metaDescription,
             images: [absoluteImageUrl],
         },
@@ -123,9 +125,30 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     const difficultyText = item.difficulty
         || "初級〜中級（※対象者の身体機能によって異なります）";
 
+    // JSON-LD structured data for SEO
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ImageObject",
+        "name": `${title}の自主トレイラスト`,
+        "description": descriptionText,
+        "contentUrl": imageUrl,
+        "license": "https://jishutore-sozaiko.online/license/",
+        "acquireLicensePage": "https://jishutore-sozaiko.online/license/",
+        "creditText": "自主トレ素材庫",
+        "creator": {
+            "@type": "Organization",
+            "name": "自主トレ素材庫",
+            "url": "https://jishutore-sozaiko.online"
+        },
+    };
+
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <main className="container mx-auto px-4 py-12 flex-1">
                 <div className="mx-auto max-w-5xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="md:flex">
@@ -160,7 +183,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                         Free
                                     </span>
                                 </div>
-                                <h1 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight">{title}の自主トレイラスト（フリー素材）</h1>
+                                <h1 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight">{title}の自主トレイラスト</h1>
                                 <p className="text-slate-400 text-sm font-medium">素材ID: {item.id}</p>
                             </div>
 

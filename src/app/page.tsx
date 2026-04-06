@@ -22,8 +22,8 @@ export default function Home() {
               </p>
 
               <h1 className="text-[1.75rem] sm:text-5xl lg:text-6xl font-black text-white leading-[1.2] tracking-tight">
-                <span className="inline-block">「自主トレ資料づくり」</span><br />
-                <span className="inline-block">もう悩まない。</span>
+                <span className="inline-block">リハビリ職のための</span><br />
+                <span className="inline-block">自主トレイラスト無料素材集</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-slate-300 font-medium max-w-2xl mx-auto">
