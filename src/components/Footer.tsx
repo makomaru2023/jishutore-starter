@@ -18,6 +18,9 @@ export function Footer() {
                         <Link href="/privacy" className="hover:text-white transition-colors">
                             プライバシーポリシー
                         </Link>
+                        <Link href="/contact" className="hover:text-white transition-colors">
+                            お問合せ
+                        </Link>
                     </div>
                     <div className="text-sm font-bold text-slate-500 flex items-center gap-2">
                         © {new Date().getFullYear()} 自主トレ素材庫

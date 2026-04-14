@@ -18,15 +18,9 @@ export function Header() {
                 <nav className="hidden md:flex items-center gap-8">
                     <CategoryDropdown />
 
-                    <Link href="/faq" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        よくある質問
-                    </Link>
-                    <Link href="/license" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        ライセンス
-                    </Link>
-                    <Link href="/contact" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        お問合せ
-                    </Link>
+                    <a href="https://note.com/jisyutore" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                        note
+                    </a>
 
                     <Link href="/#line" className="ml-2 px-6 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-1.5 hover:scale-105 hover:shadow-lg hover:shadow-green-500/30" style={{ backgroundColor: '#06C755', color: '#fff' }}>
                         <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
@@ -90,27 +84,15 @@ export function Header() {
                             </Link>
                         </div>
                         <div className="pt-4 border-t border-slate-800 space-y-1">
-                            <Link
-                                href="/faq"
+                            <a
+                                href="https://note.com/jisyutore"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="block py-2 text-sm font-bold text-slate-300 hover:text-white px-4"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                よくある質問
-                            </Link>
-                            <Link
-                                href="/license"
-                                className="block py-2 text-sm font-bold text-slate-300 hover:text-white px-4"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                ライセンス
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="block py-2 text-sm font-bold text-slate-300 hover:text-white px-4"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                お問合せ
-                            </Link>
+                                note
+                            </a>
                         </div>
                     </div>
                 </div>
