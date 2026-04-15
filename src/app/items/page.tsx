@@ -2,6 +2,7 @@ import { getItems } from "@/lib/items";
 import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LineBanner } from "@/components/LineBanner";
 import { Metadata } from "next";
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ category?: string }> }): Promise<Metadata> {
@@ -57,6 +58,11 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                 </div>
 
                 <FilteredItemList items={items} />
+
+                {/* LINE友だち追加バナー */}
+                <div className="mt-16 max-w-5xl mx-auto">
+                    <LineBanner />
+                </div>
             </main>
             <Footer />
         </div>

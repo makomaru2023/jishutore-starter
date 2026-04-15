@@ -1,6 +1,7 @@
 import { getItems } from "@/lib/items";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LineBanner } from "@/components/LineBanner";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -249,6 +250,11 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                 </Link>
                             </div>
                         </div>
+                    </div>
+
+                    {/* LINE友だち追加バナー */}
+                    <div className="mt-12 max-w-5xl mx-auto">
+                        <LineBanner />
                     </div>
                 </div>
             </main>
