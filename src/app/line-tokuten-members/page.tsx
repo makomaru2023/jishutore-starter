@@ -20,8 +20,11 @@ const tokutenList: Tokuten[] = [
         icon: "📋",
         title: "自主トレを継続する理由（説明スライド）",
         description: "患者さんが「なぜ自主トレを続けるのか」を理解できるスライド資料。そのまま印刷して渡せます。",
-        files: [],
-        ready: false,
+        files: [
+            { label: "PDF", href: "/line-tokuten/jishutore-reason.pdf" },
+            { label: "PowerPoint", href: "/line-tokuten/jishutore-reason.pptx" },
+        ],
+        ready: true,
     },
     {
         icon: "✅",
