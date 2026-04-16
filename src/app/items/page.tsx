@@ -57,6 +57,11 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </p>
                 </div>
 
+                {/* LINE友だち追加バナー（上部） */}
+                <div className="mb-10 max-w-5xl mx-auto">
+                    <LineBanner />
+                </div>
+
                 <FilteredItemList items={items} />
 
                 {/* LINE友だち追加バナー */}
