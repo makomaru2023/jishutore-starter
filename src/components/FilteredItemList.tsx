@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { Suspense, useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
 
@@ -8,8 +9,14 @@ interface FilteredItemListProps {
     items: Item[];
 }
 
-export function FilteredItemList({ items }: FilteredItemListProps) {
-    const [searchQuery, setSearchQuery] = useState('');
+function FilteredItemListInner({ items }: FilteredItemListProps) {
+    const searchParams = useSearchParams();
+    const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '');
+
+    useEffect(() => {
+        const q = searchParams.get('q') || '';
+        setSearchQuery(q);
+    }, [searchParams]);
 
     const filteredItems = useMemo(() => {
         if (!searchQuery.trim()) return items;
@@ -69,5 +76,13 @@ export function FilteredItemList({ items }: FilteredItemListProps) {
                 </div>
             )}
         </div>
+    );
+}
+
+export function FilteredItemList(props: FilteredItemListProps) {
+    return (
+        <Suspense fallback={null}>
+            <FilteredItemListInner {...props} />
+        </Suspense>
     );
 }
