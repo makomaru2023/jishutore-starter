@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HomeGallery } from "@/components/HomeGallery";
 import { HomeCategoryNav } from "@/components/HomeCategoryNav";
+import { HomeHowTo } from "@/components/HomeHowTo";
 import Link from "next/link";
 
 export default function Home() {
@@ -84,6 +85,9 @@ export default function Home() {
 
         {/* Category Navigation Section */}
         <HomeCategoryNav />
+
+        {/* How To Use 3 Steps Section */}
+        <HomeHowTo />
 
         {/* LINE Registration Banner Section */}
         <section id="line" className="py-16 sm:py-20 relative overflow-hidden" style={{ backgroundColor: '#06C755' }}>
