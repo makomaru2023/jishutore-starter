@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { HomeGallery } from "@/components/HomeGallery";
 import Link from "next/link";
 
 export default function Home() {
@@ -76,6 +77,9 @@ export default function Home() {
 
           <div className="absolute bottom-0 left-0 right-0 h-12 bg-slate-50" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 100%)' }}></div>
         </section>
+
+        {/* Free Illustration Gallery Section */}
+        <HomeGallery />
 
         {/* LINE Registration Banner Section */}
         <section id="line" className="py-16 sm:py-20 relative overflow-hidden" style={{ backgroundColor: '#06C755' }}>
