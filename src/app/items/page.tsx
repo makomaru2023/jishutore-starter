@@ -5,8 +5,57 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { Metadata } from "next";
 
-export async function generateMetadata({ searchParams }: { searchParams: Promise<{ category?: string }> }): Promise<Metadata> {
-    const { category } = await searchParams;
+// カテゴリキーワード（ローマ字）→ 表示メタ情報のマッピング
+const CATEGORY_META: Record<string, { title: string; description: string; metaTitle: string; metaDescription: string }> = {
+    shoulder: {
+        title: "上肢（肩・腕）の自主トレイラスト",
+        description: "肩関節・上肢のトレーニング向けイラスト素材です。リハビリ指導や患者配布資料にお使いいただけます。",
+        metaTitle: "上肢（肩・腕）の自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "肩関節屈曲・外転・肩甲骨運動など、上肢のリハビリ自主トレイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+    hip: {
+        title: "下肢（脚・股関節）の自主トレイラスト",
+        description: "股関節・下肢のトレーニング向けイラスト素材です。歩行・バランス能力の改善指導にお使いください。",
+        metaTitle: "下肢（脚・股関節）の自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "股関節外転・SLR・ヒップヒンジ・お尻上げなど、下肢のリハビリ自主トレイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+    trunk: {
+        title: "体幹トレーニングの自主トレイラスト",
+        description: "腹筋・背筋・体幹強化のトレーニング向けイラスト素材です。姿勢改善や腰痛予防の指導に。",
+        metaTitle: "体幹トレーニングの自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "体幹回旋・伸展・屈曲・プランクなど、体幹トレーニングのイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+    stretch: {
+        title: "ストレッチの自主トレイラスト",
+        description: "筋肉の柔軟性向上・関節可動域改善のためのストレッチイラスト素材です。",
+        metaTitle: "ストレッチの自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "ハムストリングス・四頭筋・前腕・頚部・下腿などのストレッチイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+    walking: {
+        title: "歩行訓練の自主トレイラスト",
+        description: "歩行能力の改善・維持に役立つ歩行訓練イラスト素材です。杖・歩行器・平行棒の指導に。",
+        metaTitle: "歩行訓練の自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "杖歩行・歩行器・平行棒・ノルディック・トレッドミルなど、歩行訓練のイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+    stand: {
+        title: "立ち上がり・バランスの自主トレイラスト",
+        description: "立位保持・立ち上がり・転倒予防に向けたイラスト素材です。介護予防・地域体操にも。",
+        metaTitle: "立ち上がり・バランスの自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "立ち座り・片足立ち・立位での運動など、バランス・転倒予防のイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+};
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ category?: string; q?: string }> }): Promise<Metadata> {
+    const { category, q } = await searchParams;
+
+    // ローマ字カテゴリ（?q=shoulder 等）優先
+    if (q && CATEGORY_META[q]) {
+        const meta = CATEGORY_META[q];
+        return {
+            title: meta.metaTitle,
+            description: meta.metaDescription,
+        };
+    }
 
     if (category === 'plain') {
         return {
@@ -26,15 +75,19 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     };
 }
 
-export default async function ItemsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
-    const { category } = await searchParams;
+export default async function ItemsPage({ searchParams }: { searchParams: Promise<{ category?: string; q?: string }> }) {
+    const { category, q } = await searchParams;
     const allItems = getItems();
 
     let items = allItems;
     let title = "自主トレイラスト素材一覧";
     let description = "スクワット・ブリッジ・ストレッチなど200点以上の自主トレイラストを無料でダウンロードできます。";
 
-    if (category === 'plain') {
+    // ローマ字カテゴリ（?q=shoulder 等）優先
+    if (q && CATEGORY_META[q]) {
+        title = CATEGORY_META[q].title;
+        description = CATEGORY_META[q].description;
+    } else if (category === 'plain') {
         items = allItems.filter(item => item.category === 'plain');
         title = "自主トレイラスト一覧（文字なし）";
         description = "文字が入っていないシンプルなイラスト素材です。自由にテキストを追加して使えます。";
