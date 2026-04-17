@@ -66,31 +66,31 @@ export function HomeHowTo() {
                                 key={step.number}
                                 className={`relative bg-white rounded-3xl border-2 ${step.accent.split(" ")[1]} p-6 sm:p-7 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 z-10`}
                             >
-                                {/* ステップ番号バッジ */}
-                                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${step.accent.split(" ")[0]} ${step.accent.split(" ")[1]} border-2 mb-4 shadow-sm`}>
-                                    <span className={`text-base font-black tracking-tight ${step.accent.split(" ")[2]}`}>
-                                        {step.number}
-                                    </span>
-                                </div>
-
-                                {/* アイコン */}
-                                <div className="mb-4">
+                                {/* 右上の装飾アイコン */}
+                                <div className={`absolute top-5 right-5 ${step.accent.split(" ")[2]} opacity-30`}>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         strokeWidth={1.5}
                                         stroke="currentColor"
-                                        className={`w-10 h-10 ${step.accent.split(" ")[2]}`}
+                                        className="w-12 h-12"
                                     >
                                         <path strokeLinecap="round" strokeLinejoin="round" d={step.iconPath} />
                                     </svg>
                                 </div>
 
-                                {/* タイトル */}
-                                <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 leading-tight">
-                                    {step.title}
-                                </h3>
+                                {/* ステップ番号バッジ + タイトル（横並び） */}
+                                <div className="flex items-center gap-3 mb-3 pr-14">
+                                    <div className={`flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${step.accent.split(" ")[0]} ${step.accent.split(" ")[1]} border-2 shadow-sm`}>
+                                        <span className={`text-base font-black tracking-tight ${step.accent.split(" ")[2]}`}>
+                                            {step.number}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
+                                        {step.title}
+                                    </h3>
+                                </div>
 
                                 {/* 説明 */}
                                 <p className="text-sm text-slate-500 font-medium leading-relaxed">
