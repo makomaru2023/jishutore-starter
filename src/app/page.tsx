@@ -125,11 +125,11 @@ export default function Home() {
 
                 <div className="space-y-2 mb-8">
                   {[
-                    "患者さんが続けたくなる「自主トレする理由」説明スライド",
-                    "続けた日が一目でわかる、カレンダー式チェックシート",
-                    "自宅の転倒リスクがわかる環境チェックリスト",
-                    "ご家族とも共有できる、お薬・リハビリ記録ノート",
-                    "退院後あるあるに答える「生活Q&A集」"
+                    "「自主トレする理由」説明スライド",
+                    "カレンダー式チェックシート",
+                    "転倒予防チェックリスト",
+                    "お薬・リハビリ記録ノート",
+                    "退院後の生活Q&A集"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl px-4 py-2.5 max-w-lg mx-auto lg:mx-0" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
                       <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE047' }}>
