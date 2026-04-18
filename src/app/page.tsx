@@ -110,12 +110,16 @@ export default function Home() {
 
               {/* 右側: テキスト＋特典リスト＋ボタン */}
               <div className="lg:w-3/5 text-center lg:text-left">
-                <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
-                  退院後も自主トレを続けてもらう<br className="sm:hidden" />
-                  <span style={{ color: '#FDE047' }}>「5点セット」</span>を無料配布中
+                <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight mb-4">
+                  <span className="block sm:inline">退院後も自主トレを</span>
+                  <span className="block sm:inline">続けてもらう</span>
+                  <span className="block sm:inline">
+                    <span style={{ color: '#FDE047' }}>「5点セット」</span>を無料配布中
+                  </span>
                 </h2>
-                <p className="font-medium mb-6 text-sm sm:text-base" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  現役リハビリ職が現場で使っている患者配布資料。<br className="hidden sm:block" />
+                <p className="font-medium mb-6 text-sm sm:text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  現役リハビリ職が現場で使っている患者配布資料。
+                  <br />
                   LINE友だち追加で、今すぐ全部もらえます。
                 </p>
 
@@ -148,7 +152,11 @@ export default function Home() {
                   </svg>
                   LINEで受け取る（無料・1分）
                 </a>
-                <p className="text-xs mt-3" style={{ color: 'rgba(255,255,255,0.6)' }}>※ ブロックはいつでも可能です。しつこい営業メッセージは送りません。</p>
+                <p className="text-xs mt-3 leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                  ※ ブロックはいつでも可能です。
+                  <br className="sm:hidden" />
+                  しつこい営業メッセージは送りません。
+                </p>
               </div>
             </div>
           </div>
