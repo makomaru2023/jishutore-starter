@@ -106,7 +106,8 @@ export function HomeCategoryNav() {
                 <div className="text-center mt-10">
                     <p className="text-sm text-slate-500 font-medium">
                         探したい部位や運動名がある方は
-                        <Link href="/items" className="text-teal-600 font-black hover:text-teal-500 underline-offset-2 hover:underline ml-1">
+                        <br className="sm:hidden" />
+                        <Link href="/items" className="text-teal-600 font-black hover:text-teal-500 underline-offset-2 hover:underline sm:ml-1">
                             素材一覧でキーワード検索 →
                         </Link>
                     </p>

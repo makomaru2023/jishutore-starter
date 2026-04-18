@@ -51,7 +51,9 @@ export function HomeHowTo() {
                         使い方は、<span className="text-teal-500">たったの3ステップ</span>
                     </h2>
                     <p className="text-slate-500 font-medium text-sm sm:text-base max-w-2xl mx-auto">
-                        会員登録もメアド入力も一切なし。アクセスして、選んで、ダウンロードするだけ。
+                        会員登録もメアド入力も一切なし。
+                        <br className="sm:hidden" />
+                        アクセスして、選んで、ダウンロードするだけ。
                     </p>
                 </div>
 
@@ -113,7 +115,9 @@ export function HomeHowTo() {
                         </svg>
                     </Link>
                     <p className="text-xs text-slate-400 font-medium mt-3">
-                        商用利用OK・クレジット表記不要・登録不要
+                        商用利用OK・クレジット表記不要
+                        <br className="sm:hidden" />
+                        <span className="sm:ml-0 sm:before:content-['・']">登録不要</span>
                     </p>
                 </div>
             </div>
