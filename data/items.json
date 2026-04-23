@@ -3260,5 +3260,31 @@
         "exercisePoint": "書字訓練①で基本が定着したら、文章を書く・宛名を書くなど実生活に近い課題に移行します。疲労に応じて休憩を入れながら進めましょう。",
         "targetCondition": "書字訓練①からのステップアップとして、より実用的な書字能力の回復を目指す方に適しています。",
         "difficulty": "中〜上級（書字訓練①をある程度習得した方向け）"
+    },
+    {
+        "id": "seated-reaching-exercise-premium",
+        "tier": "premium",
+        "category": "plain",
+        "title": "Seated Reaching Exercise",
+        "titleJa": "座位でのリーチ動作",
+        "previewSrc": "premium/plain/seated-reaching-exercise.png",
+        "fileHref": "/api/image?key=premium%2Fplain%2Fseated-reaching-exercise.png",
+        "fileName": "seated-reaching-exercise.png",
+        "description": "椅子に座った姿勢でテーブル上の物に手を伸ばすリーチ動作の訓練です。食事や整容などADLに直結した上肢の前方リーチ能力を高める基本的な練習です。",
+        "exercisePoint": "姿勢を正して体幹を安定させた状態で、ゆっくりと手を前方へ伸ばします。無理に体を倒さず、肩関節の屈曲と肘関節の伸展を意識させましょう。日常生活の中で手を伸ばす機会を増やすことが継続的な改善につながります。",
+        "targetCondition": "脳卒中後の上肢麻痺、肩関節の可動域制限、座位バランスが不安定な方、食事・整容動作の自立を目指す方に適しています。"
+    },
+    {
+        "id": "seated-reaching-exercise-premium-text",
+        "tier": "premium",
+        "category": "text",
+        "title": "Seated Reaching Exercise",
+        "titleJa": "座位でのリーチ動作",
+        "previewSrc": "premium/text/seated-reaching-exercise.png",
+        "fileHref": "/api/image?key=premium%2Ftext%2Fseated-reaching-exercise.png",
+        "fileName": "seated-reaching-exercise.png",
+        "description": "椅子に座った姿勢でテーブル上の物に手を伸ばすリーチ動作の訓練です。食事や整容などADLに直結した上肢の前方リーチ能力を高める基本的な練習です。",
+        "exercisePoint": "姿勢を正して体幹を安定させた状態で、ゆっくりと手を前方へ伸ばします。無理に体を倒さず、肩関節の屈曲と肘関節の伸展を意識させましょう。日常生活の中で手を伸ばす機会を増やすことが継続的な改善につながります。",
+        "targetCondition": "脳卒中後の上肢麻痺、肩関節の可動域制限、座位バランスが不安定な方、食事・整容動作の自立を目指す方に適しています。"
     }
 ]
