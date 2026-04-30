@@ -98,7 +98,7 @@ export function LineBanner() {
                     </div>
 
                     {/* 特典タグ 2列目 */}
-                    <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-4 sm:mb-3">
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-3">
                         {tokutenRow2.map((item, i) => (
                             <button
                                 key={i}
@@ -110,6 +110,18 @@ export function LineBanner() {
                                 <span style={{ color: '#FDE047' }}>✓</span> {item.label}
                             </button>
                         ))}
+                    </div>
+
+                    {/* プラスαの特典 */}
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-1 mb-4 sm:mb-3 text-xs font-bold" style={{ color: 'rgba(255,255,255,0.95)' }}>
+                        <span className="inline-flex items-center gap-1">
+                            <span style={{ color: '#FDE047' }}>＋</span>
+                            新作イラストをLINEでお知らせ
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                            <span style={{ color: '#FDE047' }}>＋</span>
+                            欲しい体操をリクエストOK
+                        </span>
                     </div>
 
                     {/* モバイル用ボタン */}

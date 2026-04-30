@@ -74,7 +74,7 @@ export function LineHero() {
                                 </span>
                             </p>
 
-                            <div className="space-y-2 mb-8">
+                            <div className="space-y-2 mb-6">
                                 {tokutenList.map((item, i) => (
                                     <button
                                         key={i}
@@ -93,6 +93,27 @@ export function LineHero() {
                                         </svg>
                                     </button>
                                 ))}
+                            </div>
+
+                            {/* さらに使える、LINE登録ならではの特典 */}
+                            <div className="rounded-xl p-4 mb-8 max-w-lg mx-auto lg:mx-0" style={{ backgroundColor: 'rgba(0,0,0,0.15)', border: '1px dashed rgba(255,255,255,0.3)' }}>
+                                <p className="text-xs font-black mb-3 tracking-wider" style={{ color: '#FDE047' }}>
+                                    ＋ LINE登録ならではの特典
+                                </p>
+                                <div className="space-y-2.5">
+                                    <div className="flex items-start gap-2.5 text-white text-sm font-bold leading-snug">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor" className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: '#FDE047' }}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                                        </svg>
+                                        <span>新作イラストが追加されたらLINEでお知らせ</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5 text-white text-sm font-bold leading-snug">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor" className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: '#FDE047' }}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                                        </svg>
+                                        <span>「こんな体操が欲しい」のリクエストOK</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <a
