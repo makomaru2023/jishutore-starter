@@ -18,6 +18,10 @@ export function Header() {
                 <nav className="hidden md:flex items-center gap-8">
                     <CategoryDropdown />
 
+                    <Link href="/products" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                        商品一覧
+                    </Link>
+
                     <a href="https://note.com/jisyutore" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
                         note
                     </a>
@@ -60,6 +64,13 @@ export function Header() {
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             すべての素材を探す
+                        </Link>
+                        <Link
+                            href="/products"
+                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            商品一覧
                         </Link>
                         <Link
                             href="/#line"
