@@ -18,7 +18,7 @@ export function Header() {
                 <nav className="hidden md:flex items-center gap-8">
                     <CategoryDropdown />
 
-                    <Link href="/products" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                    <Link href="/premium" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
                         商品一覧
                     </Link>
 
@@ -66,7 +66,7 @@ export function Header() {
                             すべての素材を探す
                         </Link>
                         <Link
-                            href="/products"
+                            href="/premium"
                             className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >

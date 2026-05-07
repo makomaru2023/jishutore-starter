@@ -28,6 +28,11 @@ const nextConfig = {
         destination: '/items',
         permanent: true,
       },
+      {
+        source: '/products',
+        destination: '/premium',
+        permanent: true,
+      },
     ];
   },
 };
