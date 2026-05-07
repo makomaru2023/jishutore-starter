@@ -118,16 +118,16 @@ export default function ProductsPage() {
                                                     </div>
                                                 )}
 
-                                                <div className="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
-                                                    <div>
-                                                        <p className="text-xl font-black text-slate-900">
+                                                <div className="mt-auto pt-4 flex items-center justify-between gap-3 border-t border-slate-100">
+                                                    <div className="min-w-0">
+                                                        <p className="text-xl font-black text-slate-900 whitespace-nowrap">
                                                             {product.priceLabel ?? `¥${product.price.toLocaleString()}`}
                                                         </p>
-                                                        <p className="text-xs text-slate-500 mt-0.5">
+                                                        <p className="text-xs text-slate-500 mt-0.5 whitespace-nowrap">
                                                             公開：{formatDate(product.publishedAt)}
                                                         </p>
                                                     </div>
-                                                    <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-black group-hover:bg-teal-500 transition-colors">
+                                                    <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-black whitespace-nowrap shrink-0 group-hover:bg-teal-500 transition-colors">
                                                         noteで見る
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
