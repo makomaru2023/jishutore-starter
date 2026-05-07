@@ -3,6 +3,7 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
+import { PremiumPromoBanner } from "@/components/PremiumPromoBanner";
 import { Metadata } from "next";
 
 // カテゴリキーワード（ローマ字）→ 表示メタ情報のマッピング
@@ -117,8 +118,13 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
                 <FilteredItemList items={items} />
 
-                {/* LINE友だち追加バナー */}
+                {/* PowerPoint資料への導線 */}
                 <div className="mt-16 max-w-5xl mx-auto">
+                    <PremiumPromoBanner />
+                </div>
+
+                {/* LINE友だち追加バナー */}
+                <div className="mt-10 max-w-5xl mx-auto">
                     <LineBanner />
                 </div>
             </main>

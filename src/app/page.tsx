@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { HomeGallery } from "@/components/HomeGallery";
 import { HomeCategoryNav } from "@/components/HomeCategoryNav";
 import { HomeHowTo } from "@/components/HomeHowTo";
+import { HomePremiumPromo } from "@/components/HomePremiumPromo";
 import { LineHero } from "@/components/LineHero";
 import Link from "next/link";
 
@@ -89,6 +90,9 @@ export default function Home() {
 
         {/* How To Use 3 Steps Section */}
         <HomeHowTo />
+
+        {/* Premium PowerPoint資料 Section */}
+        <HomePremiumPromo />
 
         {/* LINE Registration Banner Section */}
         <LineHero />

@@ -2,6 +2,8 @@ import { getItems } from "@/lib/items";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
+import { PremiumItemCard } from "@/components/PremiumItemCard";
+import { premiumItems } from "../../../../data/premiumItems";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -237,6 +239,37 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     素材一覧に戻る
                                 </Link>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* 関連するPowerPoint資料 */}
+                    <div className="mt-16 max-w-5xl mx-auto">
+                        <div className="text-center mb-6">
+                            <p className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 font-bold text-xs tracking-widest mb-3">
+                                関連するPowerPoint資料
+                            </p>
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-2">
+                                この素材を含む完成済み資料もあります
+                            </h2>
+                            <p className="text-sm text-slate-500 font-medium max-w-xl mx-auto leading-relaxed">
+                                ゼロから作るのが大変なときは、編集可能なPowerPoint資料セットもご活用ください。
+                            </p>
+                        </div>
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            {premiumItems.map((premium) => (
+                                <PremiumItemCard key={premium.id} item={premium} variant="compact" />
+                            ))}
+                        </div>
+                        <div className="mt-6 text-center">
+                            <Link
+                                href="/premium"
+                                className="inline-flex items-center gap-1.5 text-sm font-bold text-teal-600 hover:text-teal-500 transition-colors"
+                            >
+                                PowerPoint資料の一覧を見る
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </Link>
                         </div>
                     </div>
 
