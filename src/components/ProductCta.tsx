@@ -61,9 +61,14 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                             </svg>
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-blue-700 mb-0.5">資料作成の時間を減らしたい方へ</p>
+                            <p className="text-sm font-bold text-blue-700 mb-0.5">
+                                <span className="inline-block">資料作成の時間を</span>
+                                <span className="inline-block">減らしたい方へ</span>
+                            </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                自主トレの説明文・構成・スライドデザインまで整えた資料も用意しています。
+                                <span className="inline-block">自主トレの説明文・構成・</span>
+                                <span className="inline-block">スライドデザインまで</span>
+                                <span className="inline-block">整えた資料も用意しています。</span>
                             </p>
                         </div>
                         <div className="flex items-center justify-end sm:flex-shrink-0">
@@ -83,10 +88,15 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
         return (
             <section className="w-full">
                 <div className="rounded-2xl border border-slate-200 bg-white px-6 py-6 sm:py-7 text-center">
-                    <p className="text-sm sm:text-base font-bold text-slate-700 mb-1.5">資料作成の時間を減らしたい方へ</p>
+                    <p className="text-sm sm:text-base font-bold text-slate-700 mb-1.5">
+                        <span className="inline-block">資料作成の時間を</span>
+                        <span className="inline-block">減らしたい方へ</span>
+                    </p>
                     <p className="text-xs sm:text-sm text-slate-500 font-medium mb-4 leading-relaxed">
-                        時間をかけずに完成度の高い資料を作りたい方は、<br className="sm:hidden" />
-                        980円のテンプレートもご検討ください。
+                        <span className="inline-block">時間をかけずに</span>
+                        <span className="inline-block">完成度の高い資料を作りたい方は、</span>
+                        <span className="inline-block">980円のテンプレートも</span>
+                        <span className="inline-block">ご検討ください。</span>
                     </p>
                     <a
                         href={NOTE_URL}
@@ -115,9 +125,14 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                             </svg>
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-blue-700 mb-1">このイラストを使って資料を作る方へ</p>
+                            <p className="text-sm font-bold text-blue-700 mb-1">
+                                <span className="inline-block">このイラストを使って</span>
+                                <span className="inline-block">資料を作る方へ</span>
+                            </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                自主トレの説明スライドをまとめたテンプレートも配布しています。
+                                <span className="inline-block">自主トレの説明スライドを</span>
+                                <span className="inline-block">まとめたテンプレートも</span>
+                                <span className="inline-block">配布しています。</span>
                             </p>
                         </div>
                     </div>
@@ -156,13 +171,20 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
 
                     <div className="flex-1 text-center md:text-left">
                         <p className="text-xs sm:text-sm font-bold text-blue-600 mb-2 tracking-wide">
-                            無料イラストだけでは、説明資料づくりに時間がかかる方へ
+                            <span className="inline-block">無料イラストだけでは、</span>
+                            <span className="inline-block">説明資料づくりに時間がかかる方へ</span>
                         </p>
                         <h3 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 leading-snug mb-3">
-                            自主トレの説明文・構成・スライドデザインまで<br className="hidden sm:block" />整えた資料を <span className="text-blue-600">980円</span> で。
+                            <span className="inline-block">自主トレの説明文・構成・</span>
+                            <span className="inline-block">スライドデザインまで</span>
+                            <span className="inline-block">整えた資料を</span>
+                            <span className="inline-block"><span className="text-blue-600">980円</span>で。</span>
                         </h3>
                         <p className="text-sm text-slate-500 font-medium leading-relaxed">
-                            患者さんへの説明、家族指導、施設内資料づくりに使いやすい買い切りテンプレートです。
+                            <span className="inline-block">患者さんへの説明、</span>
+                            <span className="inline-block">家族指導、</span>
+                            <span className="inline-block">施設内資料づくりに使いやすい</span>
+                            <span className="inline-block">買い切りテンプレートです。</span>
                         </p>
                     </div>
 
