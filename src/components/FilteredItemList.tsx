@@ -1,15 +1,19 @@
 'use client';
 
-import { Suspense, useState, useMemo, useEffect } from 'react';
+import { Suspense, useState, useMemo, useEffect, ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
 
 interface FilteredItemListProps {
     items: Item[];
+    /** N枚目のカード直後に挿入するCTA（指定がなければ挿入しない） */
+    middleCta?: ReactNode;
+    /** middleCtaを何枚目の後に挿入するか（デフォルト12） */
+    middleCtaAfter?: number;
 }
 
-function FilteredItemListInner({ items }: FilteredItemListProps) {
+function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12 }: FilteredItemListProps) {
     const searchParams = useSearchParams();
     const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '');
 
@@ -22,14 +26,13 @@ function FilteredItemListInner({ items }: FilteredItemListProps) {
         if (!searchQuery.trim()) return items;
 
         const query = searchQuery.toLowerCase().trim();
-        const keywords = query.split(/\s+/); // Split by whitespace for multiple keywords
+        const keywords = query.split(/\s+/);
 
         return items.filter((item) => {
             const titleEn = item.title.toLowerCase();
             const titleJa = item.titleJa?.toLowerCase() || '';
             const fileName = item.fileName.toLowerCase();
 
-            // Check if ALL keywords match at least one of the fields (AND search)
             return keywords.every(keyword =>
                 titleEn.includes(keyword) ||
                 titleJa.includes(keyword) ||
@@ -37,6 +40,9 @@ function FilteredItemListInner({ items }: FilteredItemListProps) {
             );
         });
     }, [items, searchQuery]);
+
+    // 検索中はCTAを挟まず通常のグリッドのみ
+    const showMiddleCta = !!middleCta && !searchQuery.trim() && filteredItems.length > middleCtaAfter;
 
     return (
         <div>
@@ -63,11 +69,34 @@ function FilteredItemListInner({ items }: FilteredItemListProps) {
             </div>
 
             {filteredItems.length > 0 ? (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {filteredItems.map((item) => (
-                        <ItemCard key={item.id} item={item} />
-                    ))}
-                </div>
+                showMiddleCta ? (
+                    <>
+                        {/* 上半分（最初のN枚） */}
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {filteredItems.slice(0, middleCtaAfter).map((item) => (
+                                <ItemCard key={item.id} item={item} />
+                            ))}
+                        </div>
+
+                        {/* 中段CTA */}
+                        <div className="my-12 max-w-5xl mx-auto">
+                            {middleCta}
+                        </div>
+
+                        {/* 下半分（残り） */}
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {filteredItems.slice(middleCtaAfter).map((item) => (
+                                <ItemCard key={item.id} item={item} />
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        {filteredItems.map((item) => (
+                            <ItemCard key={item.id} item={item} />
+                        ))}
+                    </div>
+                )
             ) : (
                 <div className="text-center py-16 text-slate-500 bg-white rounded-3xl border border-slate-100 shadow-sm">
                     <div className="text-4xl mb-4">🔍</div>

@@ -233,6 +233,10 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                         画像をダウンロード
                                     </a>
                                 </div>
+
+                                {/* note有料商品への導線（ダウンロードボタン直下） */}
+                                <ProductCta location="item_detail_cta" variant="inline" />
+
                                 <Link href="/items" className="flex items-center justify-center gap-2 text-slate-500 hover:text-teal-500 font-bold transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -274,13 +278,8 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
                     </div>
 
-                    {/* note有料商品への導線 */}
-                    <div className="mt-12 max-w-5xl mx-auto">
-                        <ProductCta />
-                    </div>
-
                     {/* LINE友だち追加バナー */}
-                    <div className="mt-10 max-w-5xl mx-auto">
+                    <div className="mt-12 max-w-5xl mx-auto">
                         <LineBanner />
                     </div>
                 </div>

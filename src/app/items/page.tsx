@@ -112,16 +112,25 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </p>
                 </div>
 
+                {/* note有料商品への導線（上部・コンパクト） */}
+                <div className="mb-8 max-w-5xl mx-auto">
+                    <ProductCta location="items_top_cta" variant="compact" />
+                </div>
+
                 {/* LINE友だち追加バナー（上部） */}
                 <div className="mb-10 max-w-5xl mx-auto">
                     <LineBanner />
                 </div>
 
-                <FilteredItemList items={items} />
+                <FilteredItemList
+                    items={items}
+                    middleCta={<ProductCta location="items_middle_cta" variant="full" />}
+                    middleCtaAfter={12}
+                />
 
-                {/* note有料商品への導線 */}
+                {/* note有料商品への導線（下部・短め再案内） */}
                 <div className="mt-16 max-w-5xl mx-auto">
-                    <ProductCta />
+                    <ProductCta location="items_bottom_cta" variant="short" />
                 </div>
 
                 {/* PowerPoint資料への導線 */}
