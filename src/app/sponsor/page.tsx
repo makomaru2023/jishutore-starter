@@ -341,7 +341,7 @@ export default function SponsorPage() {
                                     <h3 className="font-black text-slate-900 mb-2 leading-snug">
                                         {item.title}
                                     </h3>
-                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                    <p className="text-sm text-slate-600 leading-relaxed break-keep">
                                         {item.body}
                                     </p>
                                 </div>
