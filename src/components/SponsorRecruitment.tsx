@@ -53,14 +53,13 @@ export function SponsorRecruitment({
                         自主トレ素材庫を応援してくださるスポンサーを募集しています
                     </h2>
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-3">
-                        自主トレ素材庫では、リハビリ・介護現場で使える自主トレイラストを無料で配布しています。
-                        <br className="hidden sm:block" />
-                        今後も無料素材を継続して増やしていくため、サイト運営を応援してくださるスポンサーさまを募集しています。
+                        リハビリ・介護現場で使える素材を無料で配布しています。
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-3">
+                        この活動を継続するため、応援してくださるスポンサーさまを募集しています。
                     </p>
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-                        リハビリ・介護・医療福祉領域に関わるサービスや事業者さまと、
-                        <br className="hidden sm:block" />
-                        現場に役立つ形でつながれたら嬉しいです。
+                        リハビリ・介護・医療福祉領域の事業者さまと、現場に役立つ形でつながれたら嬉しいです。
                     </p>
                     <Link
                         href="/sponsor"
