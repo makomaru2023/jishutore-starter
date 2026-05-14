@@ -5,6 +5,7 @@ import { HomeCategoryNav } from "@/components/HomeCategoryNav";
 import { HomeHowTo } from "@/components/HomeHowTo";
 import { HomePremiumPromo } from "@/components/HomePremiumPromo";
 import { LineHero } from "@/components/LineHero";
+import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import Link from "next/link";
 
 export default function Home() {
@@ -93,6 +94,15 @@ export default function Home() {
 
         {/* Premium PowerPoint資料 Section */}
         <HomePremiumPromo />
+
+        {/* スポンサー募集 */}
+        <section className="py-12 sm:py-16 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <SponsorRecruitment />
+            </div>
+          </div>
+        </section>
 
         {/* LINE Registration Banner Section */}
         <LineHero />
