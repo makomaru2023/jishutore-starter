@@ -3,7 +3,6 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
-import { PremiumPromoBanner } from "@/components/PremiumPromoBanner";
 import { ProductCta } from "@/components/ProductCta";
 import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import { Metadata } from "next";
@@ -129,13 +128,8 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     middleCtaAfter={12}
                 />
 
-                {/* PowerPoint資料への導線 */}
-                <div className="mt-16 max-w-5xl mx-auto">
-                    <PremiumPromoBanner />
-                </div>
-
                 {/* スポンサー募集 */}
-                <div className="mt-10 max-w-3xl mx-auto">
+                <div className="mt-16 max-w-5xl mx-auto">
                     <SponsorRecruitment />
                 </div>
 
