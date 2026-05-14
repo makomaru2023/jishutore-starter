@@ -20,26 +20,28 @@ export function SponsorRecruitment({
                         自主トレ素材庫では、リハビリ・介護現場で使える素材を無料で配布しています。
                         この活動を応援してくださるスポンサーさまを募集しています。
                     </p>
-                    <Link
-                        href="/sponsor"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 text-xs sm:text-sm font-bold transition-colors"
-                    >
-                        スポンサー募集を見る
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2.5}
-                            stroke="currentColor"
-                            className="w-3.5 h-3.5"
+                    <div className="flex justify-end">
+                        <Link
+                            href="/sponsor"
+                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 text-xs sm:text-sm font-bold transition-colors"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                            />
-                        </svg>
-                    </Link>
+                            スポンサー募集を見る
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2.5}
+                                stroke="currentColor"
+                                className="w-3.5 h-3.5"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                                />
+                            </svg>
+                        </Link>
+                    </div>
                 </div>
             </section>
         );
