@@ -280,7 +280,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                     </div>
 
                     {/* スポンサー募集 */}
-                    <div className="mt-12 max-w-3xl mx-auto px-4 sm:px-6">
+                    <div className="mt-12 max-w-5xl mx-auto">
                         <SponsorRecruitment variant="compact" />
                     </div>
 
