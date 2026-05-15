@@ -211,8 +211,6 @@ export default function SponsorPage() {
                                 広告掲載を募集しています
                             </h1>
                             <p className="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed text-left sm:text-center">
-                                自主トレ素材庫では、リハビリ職・介護職・医療介護関係者に向けて、患者説明や資料作成に使えるイラスト素材を配布しています。
-                                <br className="hidden sm:block" />
                                 リハビリ・介護・医療・福祉領域に関連するサービス、研修、採用情報、教材などを紹介したい事業者様向けに、広告掲載・スポンサー掲載を募集しています。
                             </p>
 

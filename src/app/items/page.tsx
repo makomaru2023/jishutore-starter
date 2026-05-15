@@ -83,7 +83,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
     let items = allItems;
     let title = "自主トレイラスト素材一覧";
-    let description = "スクワット・ブリッジ・ストレッチなど200点以上の自主トレイラストを無料でダウンロードできます。";
+    let description = "スクワット・ブリッジ・ストレッチなど、200点以上の自主トレイラストを、無料でダウンロードできます。";
 
     // ローマ字カテゴリ（?q=shoulder 等）優先
     if (q && CATEGORY_META[q]) {
@@ -107,7 +107,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     <h1 className="mb-4 text-3xl font-black text-slate-900 sm:text-4xl tracking-tight">
                         {title}
                     </h1>
-                    <p className="mx-auto max-w-2xl text-lg text-slate-500 font-medium">
+                    <p className="mx-auto max-w-2xl text-lg text-slate-500 font-medium break-keep">
                         {description}
                     </p>
                 </div>
