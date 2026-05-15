@@ -150,7 +150,7 @@ const flowSteps = [
     },
     {
         title: "内容確認",
-        body: "掲載内容が自主トレ素材庫の読者層と合うか確認します。",
+        body: "掲載内容が自主トレ素材庫の読者層と合うか、確認します。",
     },
     {
         title: "掲載内容の調整",
@@ -158,11 +158,11 @@ const flowSteps = [
     },
     {
         title: "掲載開始",
-        body: "掲載開始日、掲載期間、掲載位置を決定して公開します。",
+        body: "掲載開始日、掲載期間、掲載位置を決定し、公開します。",
     },
     {
         title: "継続・終了の確認",
-        body: "掲載期間終了前に継続可否をご確認します。",
+        body: "掲載期間終了前に、継続可否をご確認します。",
     },
 ];
 
@@ -193,7 +193,7 @@ export default function SponsorPage() {
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
-            <main className="flex-1">
+            <main className="flex-1 [&_p]:break-keep [&_p]:break-words [&_h1]:break-keep [&_h1]:break-words [&_h2]:break-keep [&_h2]:break-words [&_h3]:break-keep [&_h3]:break-words [&_h4]:break-keep [&_h4]:break-words [&_li]:break-keep [&_li]:break-words">
                 {/* Hero */}
                 <section className="bg-slate-900 pt-16 pb-24 relative overflow-hidden">
                     <div className="absolute inset-0">
@@ -519,7 +519,7 @@ export default function SponsorPage() {
                                             <span className="text-blue-600 font-black flex-shrink-0">
                                                 Q{i + 1}.
                                             </span>
-                                            <span className="leading-snug">{item.q}</span>
+                                            <span className="leading-snug break-keep break-words">{item.q}</span>
                                         </span>
                                         <span className="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
                                             <svg
@@ -537,7 +537,7 @@ export default function SponsorPage() {
                                             </svg>
                                         </span>
                                     </summary>
-                                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 break-keep break-words">
                                         {item.a}
                                     </div>
                                 </details>
@@ -550,20 +550,22 @@ export default function SponsorPage() {
                 <section className="py-16 sm:py-20 bg-slate-50">
                     <div className="container mx-auto px-4">
                         <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-blue-100 shadow-sm p-8 sm:p-10 text-center">
-                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-4 leading-snug">
-                                広告掲載・スポンサー掲載のご相談はこちら
+                            <h2 className="text-lg sm:text-2xl font-black text-slate-900 mb-4 leading-snug">
+                                広告掲載・スポンサー掲載の
+                                <br className="sm:hidden" />
+                                ご相談はこちら
                             </h2>
                             <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-7">
-                                自主トレ素材庫では、リハビリ・介護現場に役立つサービスや取り組みを紹介できるスポンサー様を募集しています。
+                                自主トレ素材庫では、リハビリ・介護現場に役立つサービスや、取り組みの紹介ができる、スポンサー様を募集しています。
                                 <br className="hidden sm:block" />
-                                研修、採用、教材、福祉用具、介護予防サービスなどの告知にご活用ください。
+                                研修、採用、教材、福祉用具、介護予防サービスの告知に、ご活用ください。
                             </p>
                             <SponsorCtaButton
                                 eventName="sponsor_contact_click"
                                 location="sponsor_final_cta"
                                 buttonText="掲載について問い合わせる"
                                 href={CONTACT_MAILTO}
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-black text-base transition-all shadow-md shadow-blue-600/20"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 sm:px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-black text-sm sm:text-base transition-all shadow-md shadow-blue-600/20 whitespace-nowrap"
                             >
                                 掲載について問い合わせる
                                 <ArrowIcon className="w-4 h-4" />
