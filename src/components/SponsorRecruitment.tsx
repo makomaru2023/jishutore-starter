@@ -21,7 +21,7 @@ export function SponsorRecruitment({
                         <br />
                         活動を応援してくださるスポンサーを募集しています。
                     </p>
-                    <div className="flex justify-end">
+                    <div className="flex justify-center">
                         <Link
                             href="/sponsor"
                             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 text-xs sm:text-sm font-bold transition-colors"

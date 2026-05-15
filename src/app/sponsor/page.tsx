@@ -320,7 +320,7 @@ export default function SponsorPage() {
                             {adFits.map((item) => (
                                 <div
                                     key={item.title}
-                                    className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-sm transition-all"
+                                    className="min-w-0 bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-sm transition-all"
                                 >
                                     <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
                                         <svg
@@ -341,7 +341,7 @@ export default function SponsorPage() {
                                     <h3 className="font-black text-slate-900 mb-2 leading-snug">
                                         {item.title}
                                     </h3>
-                                    <p className="text-sm text-slate-600 leading-relaxed break-keep">
+                                    <p className="text-sm text-slate-600 leading-relaxed break-keep break-words">
                                         {item.body}
                                     </p>
                                 </div>
