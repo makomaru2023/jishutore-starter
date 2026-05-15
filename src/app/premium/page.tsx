@@ -4,6 +4,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { PremiumItemCard } from "@/components/PremiumItemCard";
 import { premiumItems } from "../../../data/premiumItems";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "PowerPoint資料｜患者さんにそのまま渡せる自主トレ説明資料｜自主トレ素材庫",
@@ -161,6 +162,39 @@ export default function PremiumPage() {
                                 </a>
                                 からお気軽にどうぞ。
                             </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Prompt Maker */}
+                <section className="py-16 sm:py-20 bg-slate-50">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-3xl mx-auto text-center bg-white rounded-3xl border border-slate-200 px-6 py-10 sm:px-10 sm:py-12">
+                            <p className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold tracking-widest mb-4">
+                                PROMPT MAKER
+                            </p>
+                            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3 leading-snug">
+                                プロンプトメーカー
+                            </h2>
+                            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 break-keep">
+                                自主トレ素材の説明文や、イラスト作成に使えるプロンプトを作成できます。
+                            </p>
+                            <Link
+                                href="/ai-prompt-maker"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-colors"
+                            >
+                                プロンプトメーカーを見る
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={2.5}
+                                    stroke="currentColor"
+                                    className="w-4 h-4"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </Link>
                         </div>
                     </div>
                 </section>

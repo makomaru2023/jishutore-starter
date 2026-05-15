@@ -24,6 +24,14 @@ export function Footer() {
                         <Link href="/sponsor" className="hover:text-white transition-colors">
                             広告掲載・スポンサー募集
                         </Link>
+                        <a
+                            href="https://note.com/jisyutore"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-white transition-colors"
+                        >
+                            note
+                        </a>
                     </div>
                     <div className="text-sm font-bold text-slate-500 flex items-center gap-2">
                         © {new Date().getFullYear()} 自主トレ素材庫
