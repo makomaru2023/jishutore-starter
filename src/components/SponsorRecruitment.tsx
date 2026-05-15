@@ -51,18 +51,18 @@ export function SponsorRecruitment({
         <section className={`w-full ${className}`}>
             <div className="rounded-3xl border border-blue-100 bg-white px-6 py-8 sm:px-10 sm:py-10">
                 <div className="max-w-2xl mx-auto text-center">
-                    <h2 className="text-lg sm:text-xl font-black text-slate-900 mb-4 leading-snug break-keep">
+                    <h2 className="text-base sm:text-xl font-black text-slate-900 mb-4 leading-snug break-keep">
                         自主トレ素材庫を応援してくださる
                         <br className="sm:hidden" />
                         スポンサーを募集しています
                     </h2>
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep mb-3">
+                    <p className="hidden sm:block text-sm sm:text-base text-slate-600 leading-relaxed break-keep mb-3">
                         リハビリ・介護現場で使える素材を無料で配布しています。
                     </p>
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep mb-3">
+                    <p className="hidden sm:block text-sm sm:text-base text-slate-600 leading-relaxed break-keep mb-3">
                         この活動を継続するため、応援してくださるスポンサーさまを募集しています。
                     </p>
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep mb-6">
+                    <p className="hidden sm:block text-sm sm:text-base text-slate-600 leading-relaxed break-keep mb-6">
                         リハビリ・介護・医療福祉領域の事業者さまと、現場に役立つ形でつながれたら嬉しいです。
                     </p>
                     <Link
