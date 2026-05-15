@@ -19,7 +19,7 @@ export function SponsorRecruitment({
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                         自主トレ素材庫では、リハビリ・介護現場で使える素材を無料で配布しています。
                         <br />
-                        この活動を応援してくださるスポンサーさまを募集しています。
+                        活動を応援してくださるスポンサーを募集しています。
                     </p>
                     <div className="flex justify-end">
                         <Link
