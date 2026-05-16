@@ -59,7 +59,7 @@ const adFits = [
     },
     {
         title: "自費リハビリ・介護予防サービス",
-        body: "地域のリハビリ関連サービスや予防事業の紹介に。",
+        body: "地域のリハビリ関連サービスや、予防事業の紹介に。",
     },
 ];
 
@@ -145,7 +145,7 @@ const placeableItems = [
 const flowSteps = [
     {
         title: "お問い合わせ",
-        body: "広告掲載を希望する内容をメールでご連絡ください。",
+        body: "広告掲載を希望する内容を、メールでご連絡ください。",
     },
     {
         title: "内容確認",
@@ -175,7 +175,7 @@ const faqs = [
         a: "訪問看護、訪問リハ、介護施設、医療機関など、リハビリ職・介護職向けの採用広報は相性がよいと考えています。",
     },
     {
-        q: "バナー画像がなくても掲載できますか？",
+        q: "バナー画像なしでも可能ですか？",
         a: "テキストのみの掲載も可能です。必要に応じて、簡単な掲載文の調整も相談できます。",
     },
     {
@@ -206,7 +206,7 @@ export default function SponsorPage() {
                             </p>
                             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
                                 リハビリ・介護現場に届く
-                                <br className="hidden sm:block" />
+                                <br />
                                 広告掲載を募集しています
                             </h1>
                             <p className="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed text-left sm:text-center">
@@ -512,7 +512,7 @@ export default function SponsorPage() {
                                     key={item.q}
                                     className="group bg-white rounded-xl border border-slate-200 overflow-hidden"
                                 >
-                                    <summary className="flex cursor-pointer items-center justify-between p-5 sm:p-6 font-bold text-slate-900 list-none">
+                                    <summary className="flex cursor-pointer items-center justify-between p-5 sm:p-6 font-bold text-slate-900 list-none text-sm sm:text-base">
                                         <span className="flex items-start gap-3 min-w-0 flex-1">
                                             <span className="text-blue-600 font-black flex-shrink-0">
                                                 Q{i + 1}.
