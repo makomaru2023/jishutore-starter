@@ -35,10 +35,9 @@ const ArrowIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 const features = [
     "リハビリ・介護現場で使える自主トレイラスト素材を配布",
-    "患者説明、配布資料、施設内資料、介護予防教室などで使いやすい内容",
-    "理学療法士・作業療法士・言語聴覚士・介護職などに届く可能性がある",
-    "無料素材を入口に、LINE登録や資料販売にも展開中",
-    "今後、素材数・資料コンテンツ・検索流入を増やしていく予定",
+    "患者説明、配布資料、施設内資料、\n介護予防教室などで使いやすい内容",
+    "医療・介護職に届きやすい",
+    "現在270点以上の素材を配布中。今後も素材数・資料コンテンツを増やしていく予定",
 ];
 
 const adFits = [
@@ -291,7 +290,7 @@ export default function SponsorPage() {
                                                     />
                                                 </svg>
                                             </span>
-                                            <span className="font-medium min-w-0 break-keep break-words">{feat}</span>
+                                            <span className="font-medium min-w-0 break-keep break-words whitespace-pre-line">{feat}</span>
                                         </li>
                                     ))}
                                 </ul>
