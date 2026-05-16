@@ -107,7 +107,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     <h1 className="mb-4 text-3xl font-black text-slate-900 sm:text-4xl tracking-tight">
                         {title}
                     </h1>
-                    <p className="mx-auto max-w-2xl text-lg text-slate-500 font-medium break-keep">
+                    <p className="mx-auto max-w-2xl text-base sm:text-lg text-slate-500 font-medium break-keep">
                         {description}
                     </p>
                 </div>

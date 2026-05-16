@@ -304,10 +304,12 @@ export default function SponsorPage() {
                     <div className="container mx-auto px-4">
                         <div className="text-center mb-10">
                             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
-                                このようなサービスと相性があります
+                                このようなサービスと
+                                <br className="sm:hidden" />
+                                相性があります
                             </h2>
                             <p className="text-slate-500 font-medium text-sm sm:text-base">
-                                リハビリ・介護現場に届きやすい広告ジャンルの例です。
+                                リハビリ・介護現場に届きやすい、広告ジャンルの例です。
                             </p>
                         </div>
                         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
