@@ -267,9 +267,6 @@ export default function SponsorPage() {
                                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
                                     自主トレ素材庫について
                                 </h2>
-                                <p className="text-slate-500 font-medium text-sm sm:text-base">
-                                    リハビリ・介護現場に向けて、無料イラスト素材を配布しているサイトです。
-                                </p>
                             </div>
                             <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
                                 <ul className="space-y-3">
@@ -294,7 +291,7 @@ export default function SponsorPage() {
                                                     />
                                                 </svg>
                                             </span>
-                                            <span className="font-medium">{feat}</span>
+                                            <span className="font-medium min-w-0 break-keep break-words">{feat}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -363,7 +360,7 @@ export default function SponsorPage() {
                             {plans.map((plan) => (
                                 <div
                                     key={plan.name}
-                                    className={`relative bg-white rounded-2xl border p-6 sm:p-7 flex flex-col ${
+                                    className={`relative min-w-0 bg-white rounded-2xl border p-6 sm:p-7 flex flex-col ${
                                         plan.highlight
                                             ? "border-blue-300 shadow-md"
                                             : "border-slate-200"
@@ -399,7 +396,7 @@ export default function SponsorPage() {
                                                         />
                                                     </svg>
                                                 </span>
-                                                <span className="leading-relaxed">{it}</span>
+                                                <span className="leading-relaxed min-w-0 break-keep break-words">{it}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -515,11 +512,11 @@ export default function SponsorPage() {
                                     className="group bg-white rounded-xl border border-slate-200 overflow-hidden"
                                 >
                                     <summary className="flex cursor-pointer items-center justify-between p-5 sm:p-6 font-bold text-slate-900 list-none">
-                                        <span className="flex items-start gap-3">
+                                        <span className="flex items-start gap-3 min-w-0 flex-1">
                                             <span className="text-blue-600 font-black flex-shrink-0">
                                                 Q{i + 1}.
                                             </span>
-                                            <span className="leading-snug break-keep break-words">{item.q}</span>
+                                            <span className="leading-snug min-w-0 break-keep break-words">{item.q}</span>
                                         </span>
                                         <span className="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
                                             <svg
