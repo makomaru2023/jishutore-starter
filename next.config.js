@@ -33,6 +33,11 @@ const nextConfig = {
         destination: '/premium',
         permanent: true,
       },
+      {
+        source: '/）を運営しております',
+        destination: '/about',
+        permanent: true,
+      },
     ];
   },
 };
