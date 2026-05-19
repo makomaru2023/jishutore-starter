@@ -5,7 +5,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "資料セット｜患者さんにそのまま使える自主トレ資料セット｜自主トレ素材庫",
+    title: "資料セット｜疾患別自主トレ資料セット｜自主トレ素材庫",
     description:
         "リハビリ・介護現場で使いやすい自主トレ説明資料セット。編集できるPPTX・印刷用PDF・イラスト素材入り。サイト内のStripe決済で購入し、すぐにダウンロードできます。",
 };
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const products = [
     {
         slug: "self-training-materials",
-        name: "患者さんにそのまま使える自主トレ資料セット Vol.1",
+        name: "疾患別自主トレ資料セット",
         price: 980,
         description:
             "リハビリ・介護現場で使いやすい自主トレ説明資料をまとめたセットです。編集できるPPTX・印刷用PDF・イラスト素材が入っています。",

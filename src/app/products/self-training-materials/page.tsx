@@ -5,13 +5,13 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "患者さんにそのまま使える自主トレ資料セット Vol.1｜自主トレ素材庫",
+    title: "疾患別自主トレ資料セット｜自主トレ素材庫",
     description:
         "編集できるPPTX・印刷用PDF・自主トレイラスト素材入りの資料セット。患者さんへの説明、家族説明、退院前指導、通所リハ・訪問リハの資料作成に。980円の買い切り。",
 };
 
 const PRODUCT_ID = "self-training-materials-vol01";
-const PRODUCT_NAME = "患者さんにそのまま使える自主トレ資料セット Vol.1";
+const PRODUCT_NAME = "疾患別自主トレ資料セット";
 const PRICE = 980;
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -49,12 +49,12 @@ export default function SelfTrainingMaterialsPage() {
                             資料セット
                         </Link>
                         <span className="mx-2">/</span>
-                        <span className="text-slate-700">Vol.1</span>
+                        <span className="text-slate-700">疾患別自主トレ資料セット</span>
                     </nav>
 
                     <header className="mb-8">
                         <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold tracking-widest text-blue-600">
-                            資料セット Vol.1
+                            資料セット
                         </p>
                         <h1 className="text-2xl font-black leading-snug tracking-tight text-slate-900 sm:text-3xl">
                             {PRODUCT_NAME}

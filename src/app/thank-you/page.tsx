@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const PRODUCT_ID = "self-training-materials-vol01";
-const PRODUCT_NAME = "患者さんにそのまま使える自主トレ資料セット Vol.1";
+const PRODUCT_NAME = "疾患別自主トレ資料セット";
 const PRICE = 980;
 const DOWNLOAD_PATH = "/products/jishutore-materials-vol01.zip";
 
