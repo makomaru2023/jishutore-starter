@@ -29,11 +29,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/products',
-        destination: '/premium',
-        permanent: true,
-      },
-      {
         source: '/）を運営しております',
         destination: '/about',
         permanent: true,
