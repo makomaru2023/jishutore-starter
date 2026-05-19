@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CheckoutButton } from "@/components/CheckoutButton";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
         "編集できるPPTX・印刷用PDF・自主トレイラスト素材入りの資料セット。患者さんへの説明、家族説明、退院前指導、通所リハ・訪問リハの資料作成に。980円の買い切り。",
 };
 
-const PRODUCT_ID = "self-training-materials-vol01";
-const PRODUCT_NAME = "疾患別自主トレ資料セット";
 const PRICE = 980;
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -57,7 +54,7 @@ export default function SelfTrainingMaterialsPage() {
                             資料セット
                         </p>
                         <h1 className="text-2xl font-black leading-snug tracking-tight text-slate-900 sm:text-3xl">
-                            {PRODUCT_NAME}
+                            疾患別自主トレ資料セット
                         </h1>
                         <div className="mt-4 flex items-baseline gap-1">
                             <span className="text-3xl font-black text-slate-900">¥{PRICE.toLocaleString()}</span>
@@ -134,11 +131,11 @@ export default function SelfTrainingMaterialsPage() {
                             </ul>
                         </Section>
 
-                        <Section title="購入後の流れ">
+                        <Section title="購入後の流れ（公開時）">
                             <ol className="space-y-2.5">
                                 {[
                                     "購入ボタンを押す",
-                                    "Stripe決済画面で支払い",
+                                    "決済画面で支払い",
                                     "決済完了後、ダウンロードページに移動",
                                     "ZIPファイルをダウンロード",
                                 ].map((step, i) => (
@@ -155,17 +152,18 @@ export default function SelfTrainingMaterialsPage() {
 
                     <div className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/50 p-6 sm:p-7">
                         <div className="mb-4 text-center">
-                            <p className="text-sm font-bold text-slate-600">買い切り価格</p>
+                            <p className="text-sm font-bold text-slate-600">買い切り価格（予定）</p>
                             <p className="text-3xl font-black text-slate-900">¥{PRICE.toLocaleString()}</p>
                         </div>
-                        <CheckoutButton
-                            productId={PRODUCT_ID}
-                            productName={PRODUCT_NAME}
-                            price={PRICE}
-                            label="980円で購入する"
-                        />
+                        <button
+                            type="button"
+                            disabled
+                            className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-full bg-slate-300 px-7 py-4 text-base font-bold text-white"
+                        >
+                            販売準備中
+                        </button>
                         <p className="mt-3 text-center text-xs leading-relaxed text-slate-500">
-                            Stripeの決済画面に移動します。決済完了後、ダウンロードページに自動で戻ります。
+                            現在販売の準備を進めています。公開までもう少々お待ちください。
                         </p>
                     </div>
                 </div>
