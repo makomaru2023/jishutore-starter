@@ -1,40 +1,49 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { verifyDownloadToken } from '@/lib/auth';
-import fs from 'fs';
-import path from 'path';
+import { NextRequest, NextResponse } from "next/server";
+import { verifyDownloadToken } from "@/lib/auth";
+import { getOrder, isOrderActive } from "@/lib/orders";
+import { getR2Object } from "@/lib/r2";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-    const searchParams = req.nextUrl.searchParams;
-    const token = searchParams.get('token');
-
+    const token = req.nextUrl.searchParams.get("token");
     if (!token) {
-        return NextResponse.json({ error: 'Token is missing' }, { status: 400 });
+        return NextResponse.json({ error: "Token is missing" }, { status: 400 });
     }
 
     const payload = await verifyDownloadToken(token);
-
     if (!payload) {
-        return NextResponse.json({ error: 'Invalid or expired token' }, { status: 401 });
+        return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
     }
 
-    const { plan } = payload;
-    const fileName = `${plan}.zip`; // e.g., basic.zip, pro.zip, premium.zip
-    const filePath = path.join(process.cwd(), 'public', 'files', fileName);
-
-    if (!fs.existsSync(filePath)) {
-        // For MVP, if file doesn't exist, we might want to return a placeholder or error.
-        // But to avoid breaking the flow if the user hasn't uploaded files yet, 
-        // we can return a friendly error or a dummy file if we had one.
-        console.error(`File not found: ${filePath}`);
-        return NextResponse.json({ error: 'File not found on server' }, { status: 404 });
+    const order = await getOrder(payload.sessionId);
+    if (!order) {
+        return NextResponse.json({ error: "Order not found" }, { status: 404 });
     }
 
-    const fileBuffer = fs.readFileSync(filePath);
+    if (order.productId !== payload.productId) {
+        return NextResponse.json({ error: "Token does not match order" }, { status: 403 });
+    }
 
-    return new NextResponse(fileBuffer, {
-        headers: {
-            'Content-Type': 'application/zip',
-            'Content-Disposition': `attachment; filename="jishutore-${fileName}"`,
-        },
-    });
+    if (!isOrderActive(order)) {
+        return NextResponse.json({ error: "Re-download window has expired" }, { status: 403 });
+    }
+
+    try {
+        const obj = await getR2Object(order.zipKey);
+        const filename = order.zipKey.split("/").pop() || "download.zip";
+
+        return new NextResponse(obj.body, {
+            headers: {
+                "Content-Type": obj.contentType || "application/zip",
+                "Content-Disposition": `attachment; filename="${filename}"`,
+                ...(obj.contentLength ? { "Content-Length": String(obj.contentLength) } : {}),
+                "Cache-Control": "private, no-store",
+            },
+        });
+    } catch (err) {
+        console.error(`Failed to stream R2 object ${order.zipKey}:`, err);
+        return NextResponse.json({ error: "Failed to fetch file" }, { status: 500 });
+    }
 }

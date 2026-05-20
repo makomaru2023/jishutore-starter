@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -29,9 +30,38 @@ export default function LicensePage() {
                             </div>
                         </section>
 
-                        {/* 2. 利用条件 */}
+                        {/* 2. 有料資料セット（資料セット） */}
                         <section>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">2. 利用条件</h2>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">2. 有料資料セット（資料セット商品）</h2>
+                            <div className="space-y-4">
+                                <p>
+                                    <Link href="/products" className="text-blue-600 hover:underline">資料セット</Link>
+                                    （疾患別自主トレ資料セット 等）でご購入いただいた PPTX・PDF・素材ファイルは、購入者ご本人による次の用途でのみご利用いただけます。
+                                </p>
+                                <ul className="list-disc pl-5 space-y-2">
+                                    <li>患者さん・利用者さんへの自主トレ指導／家族説明／退院前指導</li>
+                                    <li>所属する医療・介護施設内での資料作成および勉強会資料</li>
+                                    <li>編集（文言・写真・配色等の調整）を加えてご利用いただくこと</li>
+                                </ul>
+                                <div className="bg-red-50 p-6 rounded-lg border border-red-100">
+                                    <h3 className="font-bold text-red-900 mb-2">禁止事項（有料資料セット）</h3>
+                                    <ul className="list-disc pl-5 space-y-2 text-red-900">
+                                        <li>ZIP・PPTX・PDF・素材ファイルそのものの再配布・転売・共有（加工の有無を問わず）</li>
+                                        <li>ダウンロード URL の SNS 等での共有・公開</li>
+                                        <li>購入者以外への複製・データ受け渡し</li>
+                                        <li>素材や資料をそのまま販売・配布する行為</li>
+                                    </ul>
+                                </div>
+                                <p className="text-sm text-gray-600">
+                                    商品ページに記載の利用範囲・禁止事項も併せてご確認ください：
+                                    <Link href="/products/self-training-materials" className="text-blue-600 hover:underline ml-1">疾患別自主トレ資料セット</Link>
+                                </p>
+                            </div>
+                        </section>
+
+                        {/* 3. 利用条件 */}
+                        <section>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">3. 利用条件（無料素材）</h2>
                             <div className="space-y-4">
                                 <p>
                                     当サイトで配布している素材は、<strong>規約の範囲内であれば、個人、法人、商用、非商用問わず無料で</strong>ご利用いただけます。

@@ -1,20 +1,45 @@
 import { SignJWT, jwtVerify } from 'jose';
 
-const SECRET_KEY = new TextEncoder().encode(process.env.STRIPE_SECRET_KEY || 'default_secret_key_for_dev');
+/**
+ * Secret used to sign short-lived download tokens.
+ * In production, set DOWNLOAD_TOKEN_SECRET to a long random string (e.g. `openssl rand -hex 32`).
+ * Falls back to STRIPE_SECRET_KEY for backwards compatibility, and a dev placeholder otherwise.
+ */
+function getSecret(): Uint8Array {
+    const secret =
+        process.env.DOWNLOAD_TOKEN_SECRET ||
+        process.env.STRIPE_SECRET_KEY ||
+        'default_secret_key_for_dev';
+    return new TextEncoder().encode(secret);
+}
 
-export async function signDownloadToken(payload: { plan: string; sessionId: string }) {
+export interface DownloadTokenPayload extends Record<string, unknown> {
+    sessionId: string;
+    productId: string;
+}
+
+/**
+ * Issue a short-lived (15 min) JWT that authorizes one download.
+ */
+export async function signDownloadToken(payload: DownloadTokenPayload): Promise<string> {
     return await new SignJWT(payload)
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()
-        .setExpirationTime('24h') // Token valid for 24 hours
-        .sign(SECRET_KEY);
+        .setExpirationTime('15m')
+        .sign(getSecret());
 }
 
-export async function verifyDownloadToken(token: string) {
+/**
+ * Verify a download token. Returns the payload if valid, otherwise null.
+ */
+export async function verifyDownloadToken(token: string): Promise<DownloadTokenPayload | null> {
     try {
-        const { payload } = await jwtVerify(token, SECRET_KEY);
-        return payload as { plan: string; sessionId: string };
-    } catch (error) {
+        const { payload } = await jwtVerify(token, getSecret());
+        if (typeof payload.sessionId === 'string' && typeof payload.productId === 'string') {
+            return { sessionId: payload.sessionId, productId: payload.productId };
+        }
+        return null;
+    } catch {
         return null;
     }
 }
