@@ -158,8 +158,8 @@ function OkBody({ token, expiresAt }: { token: string; expiresAt: string }) {
                 <p className="mb-2 text-sm font-bold text-slate-700">ダウンロード内容</p>
                 <ul className="space-y-1.5">
                     {[
-                        "編集できるPPTX資料",
-                        "印刷用PDF",
+                        "編集できるPPTX資料（9疾患）",
+                        "印刷用PDF（9疾患）",
                         "使い方テキスト",
                         "利用規約テキスト",
                     ].map((item) => (

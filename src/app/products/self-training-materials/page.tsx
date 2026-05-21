@@ -81,13 +81,15 @@ export default function SelfTrainingMaterialsPage() {
                         <Section title="含まれるファイル">
                             <CheckList
                                 items={[
-                                    "編集用PPTX",
-                                    "印刷用PDF",
-                                    "自主トレイラスト素材",
+                                    "編集用PPTX（9疾患）",
+                                    "印刷用PDF（9疾患）",
                                     "使い方テキスト",
                                     "利用規約テキスト",
                                 ]}
                             />
+                            <p className="mt-3 text-xs text-slate-500">
+                                収録疾患：パーキンソン病 ／ 五十肩 ／ 人工股関節（術後）／ 圧迫骨折後 ／ 大腿骨骨折（術後）／ 脳卒中 上肢・下肢 ／ 腰痛 ／ 膝OA・TKA
+                            </p>
                         </Section>
 
                         <Section title="使える場面">
