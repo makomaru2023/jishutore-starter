@@ -1,13 +1,15 @@
 'use client';
 
+import Link from 'next/link';
+
 declare global {
     interface Window {
         gtag?: (...args: unknown[]) => void;
     }
 }
 
-const NOTE_URL = "https://note.com/jisyutore/n/n8334f145dd2a";
-const LABEL = "自主トレ説明資料980円";
+const PRODUCT_URL = "/products/self-training-materials";
+const LABEL = "疾患別自主トレ資料セット980円";
 
 export type ProductCtaLocation =
     | 'items_top_cta'
@@ -26,9 +28,9 @@ interface ProductCtaProps {
 
 const trackClick = (location: ProductCtaLocation) => {
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-        window.gtag('event', 'note_click', {
+        window.gtag('event', 'product_cta_click', {
             location,
-            url: NOTE_URL,
+            url: PRODUCT_URL,
             label: LABEL,
         });
     }
@@ -47,10 +49,8 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
     if (variant === 'compact') {
         return (
             <section className="w-full">
-                <a
-                    href={NOTE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <Link
+                    href={PRODUCT_URL}
                     onClick={handleClick}
                     className="group block rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/60 to-sky-50/40 hover:from-blue-50 hover:to-sky-50 transition-all px-5 py-4 sm:px-6 sm:py-5"
                 >
@@ -78,7 +78,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                             </span>
                         </div>
                     </div>
-                </a>
+                </Link>
             </section>
         );
     }
@@ -98,16 +98,14 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         <span className="inline-block">980円のテンプレートも</span>
                         <span className="inline-block">ご検討ください。</span>
                     </p>
-                    <a
-                        href={NOTE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        href={PRODUCT_URL}
                         onClick={handleClick}
                         className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white text-sm font-bold transition-all"
                     >
                         テンプレートを見る
                         <ArrowIcon className="w-3.5 h-3.5" />
-                    </a>
+                    </Link>
                 </div>
             </section>
         );
@@ -136,16 +134,14 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                             </p>
                         </div>
                     </div>
-                    <a
-                        href={NOTE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        href={PRODUCT_URL}
                         onClick={handleClick}
                         className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-all shadow-sm"
                     >
                         980円の資料テンプレートを見る
                         <ArrowIcon className="w-3.5 h-3.5" />
-                    </a>
+                    </Link>
                 </div>
             </section>
         );
@@ -161,7 +157,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                 <div className="relative px-6 py-8 sm:px-10 sm:py-10 md:flex md:items-center md:gap-10">
                     <div className="flex md:flex-col md:items-start items-center gap-3 md:gap-2 md:w-48 md:flex-shrink-0 mb-5 md:mb-0">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold border border-blue-100">
-                            note公式
+                            資料セット
                         </span>
                         <div className="flex items-baseline gap-1">
                             <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">¥980</span>
@@ -189,18 +185,16 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                     </div>
 
                     <div className="mt-6 md:mt-0 md:w-auto md:flex-shrink-0">
-                        <a
-                            href={NOTE_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href={PRODUCT_URL}
                             onClick={handleClick}
                             className="inline-flex w-full md:w-auto items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base transition-all shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 hover:scale-[1.02] whitespace-nowrap"
                         >
                             中身を見てみる
                             <ArrowIcon className="w-4 h-4" />
-                        </a>
+                        </Link>
                         <p className="text-[11px] text-slate-400 mt-2 text-center md:text-right font-medium">
-                            ※ noteの商品ページが別タブで開きます
+                            ※ サイト内の商品ページが開きます
                         </p>
                     </div>
                 </div>
