@@ -25,6 +25,7 @@ const tokutenRow1: TokutenItem[] = [
 const tokutenRow2: TokutenItem[] = [
     { label: "お薬・リハビリ記録ノート", preview: "/line-tokuten/previews/medicine-rehab-record-weekly.jpg", ready: true },
     { label: "退院後の生活Q&A集", preview: "/line-tokuten/previews/post-discharge-qa.jpg", ready: true },
+    { label: "腰痛 自主トレメニュー（資料セットサンプル）", preview: "/line-tokuten/previews/low-back-pain-jishutore.jpg", ready: true },
 ];
 
 function LineIcon({ className }: { className: string }) {
@@ -61,7 +62,7 @@ export function LineBanner() {
 
                         <div className="flex-1 text-center sm:text-left">
                             <h3 className="text-lg sm:text-xl font-black text-white leading-tight mb-2">
-                                退院後も自主トレを続けてもらう<span style={{ color: '#FDE047' }}>「5点セット」</span>を無料配布
+                                退院後も自主トレを続けてもらう<span style={{ color: '#FDE047' }}>「6点セット」</span>を無料配布
                             </h3>
                             <p className="text-xs sm:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>
                                 現役リハビリ職が現場で使っている患者配布資料。印刷してそのまま渡せます。
