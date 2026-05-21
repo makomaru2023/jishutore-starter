@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CheckoutButton } from "@/components/CheckoutButton";
@@ -10,6 +11,15 @@ export const metadata: Metadata = {
     title: "疾患別自主トレ資料セット｜自主トレ素材庫",
     description:
         "編集できるPPTX・印刷用PDF・自主トレイラスト素材入りの資料セット。患者さんへの説明、家族説明、退院前指導、通所リハ・訪問リハの資料作成に。980円の買い切り。",
+    openGraph: {
+        title: "疾患別自主トレ資料セット｜自主トレ素材庫",
+        description: "9 疾患の自主トレ資料（PPTX・PDF）が 980 円の買い切り。患者さんへの説明、家族説明、退院前指導に。",
+        images: ["/products/self-training-materials/og.jpg"],
+    },
+    twitter: {
+        card: "summary_large_image",
+        images: ["/products/self-training-materials/og.jpg"],
+    },
 };
 
 const PRODUCT_ID = "self-training-materials-vol01";
@@ -53,6 +63,17 @@ export default function SelfTrainingMaterialsPage() {
                         <span className="mx-2">/</span>
                         <span className="text-slate-700">疾患別自主トレ資料セット</span>
                     </nav>
+
+                    <div className="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                        <Image
+                            src="/products/self-training-materials/thumbnail.jpg"
+                            alt={`${PRODUCT_NAME} 概要`}
+                            width={1200}
+                            height={900}
+                            className="h-auto w-full"
+                            priority
+                        />
+                    </div>
 
                     <header className="mb-8">
                         <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold tracking-widest text-blue-600">
