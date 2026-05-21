@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { SelfTrainingPreviewGallery } from "@/components/SelfTrainingPreviewGallery";
+import { FreeSampleLineCta } from "@/components/FreeSampleLineCta";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -94,6 +96,10 @@ export default function SelfTrainingMaterialsPage() {
                                 収録疾患：パーキンソン病 ／ 五十肩 ／ 人工股関節（術後）／ 圧迫骨折後 ／ 大腿骨骨折（術後）／ 脳卒中 上肢・下肢 ／ 腰痛 ／ 膝OA・TKA
                             </p>
                         </Section>
+
+                        <SelfTrainingPreviewGallery />
+
+                        <FreeSampleLineCta />
 
                         <Section title="使える場面">
                             <CheckList
