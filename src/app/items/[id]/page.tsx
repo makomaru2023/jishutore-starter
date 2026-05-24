@@ -1,4 +1,4 @@
-import { getItems } from "@/lib/items";
+import { getItems, findItemById } from "@/lib/items";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
@@ -18,8 +18,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
     const { id } = await params;
-    const items = getItems();
-    const item = items.find((i) => i.id === id);
+    const item = findItemById(id);
 
     if (!item) {
         return {
@@ -66,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function ItemPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const items = getItems();
-    const item = items.find((i) => i.id === id);
+    const item = findItemById(id);
 
 
 
