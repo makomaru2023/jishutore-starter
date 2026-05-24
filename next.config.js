@@ -1,5 +1,10 @@
 const nextConfig = {
   trailingSlash: true,
+  // Pin the workspace root to this project so Next.js doesn't mistakenly infer
+  // the home directory (where a stray package-lock.json exists) as the root.
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
