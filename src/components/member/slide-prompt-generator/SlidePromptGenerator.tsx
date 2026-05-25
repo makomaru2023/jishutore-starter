@@ -3,23 +3,27 @@
 import { useCallback, useMemo, useState } from "react";
 import { OptionCard } from "./OptionCard";
 import { PromptPreview } from "./PromptPreview";
+import { DesignCard } from "./DesignCard";
 import { buildPrompt } from "./buildPrompt";
 import {
   AUDIENCES,
-  DESIGNS,
   EXTRA_OPTIONS,
   GOALS,
   PRESETS,
   PURPOSES,
   SLIDE_COUNTS,
   type Audience,
-  type Design,
   type ExtraOption,
   type Goal,
   type Preset,
   type Purpose,
   type SlideCount,
 } from "./constants";
+import {
+  SLIDE_DESIGNS,
+  buildDesignDescriptor,
+  getDesignById,
+} from "./slideDesigns";
 
 function Section({
   step,
@@ -60,7 +64,7 @@ export function SlidePromptGenerator() {
   const [theme, setTheme] = useState("");
   const [audience, setAudience] = useState<Audience | null>(null);
   const [goal, setGoal] = useState<Goal | null>(null);
-  const [design, setDesign] = useState<Design | null>(null);
+  const [designId, setDesignId] = useState<string | null>(null);
   const [extras, setExtras] = useState<ExtraOption[]>([]);
 
   const toggleExtra = useCallback((value: ExtraOption) => {
@@ -75,7 +79,7 @@ export function SlidePromptGenerator() {
     setTheme(preset.theme);
     setAudience(preset.audience);
     setGoal(preset.goal);
-    setDesign(preset.design);
+    setDesignId(preset.designId);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -87,15 +91,15 @@ export function SlidePromptGenerator() {
     setTheme("");
     setAudience(null);
     setGoal(null);
-    setDesign(null);
+    setDesignId(null);
     setExtras([]);
   }, []);
 
-  const prompt = useMemo(
-    () =>
-      buildPrompt({ purpose, slideCount, theme, audience, goal, design, extras }),
-    [purpose, slideCount, theme, audience, goal, design, extras]
-  );
+  const prompt = useMemo(() => {
+    const d = designId ? getDesignById(designId) : undefined;
+    const design = d ? buildDesignDescriptor(d) : null;
+    return buildPrompt({ purpose, slideCount, theme, audience, goal, design, extras });
+  }, [purpose, slideCount, theme, audience, goal, designId, extras]);
 
   return (
     <div className="space-y-6">
@@ -191,14 +195,17 @@ export function SlidePromptGenerator() {
             </div>
           </Section>
 
-          <Section step={6} title="デザイン方針">
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {DESIGNS.map((d) => (
-                <OptionCard
-                  key={d}
-                  label={d}
-                  selected={design === d}
-                  onClick={() => setDesign(design === d ? null : d)}
+          <Section step={6} title="ビジュアルスタイル">
+            <p className="-mt-2 mb-3 text-xs font-medium text-slate-500">
+              カードにカーソルを合わせるとスライド見本が切り替わります。選ぶとプロンプトに反映されます。
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {SLIDE_DESIGNS.map((d) => (
+                <DesignCard
+                  key={d.id}
+                  design={d}
+                  selected={designId === d.id}
+                  onSelect={() => setDesignId(designId === d.id ? null : d.id)}
                 />
               ))}
             </div>

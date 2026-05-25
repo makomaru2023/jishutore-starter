@@ -43,17 +43,8 @@ export const GOALS = [
 ] as const;
 export type Goal = (typeof GOALS)[number];
 
-export const DESIGNS = [
-  "医療・介護向けのシンプル資料",
-  "やさしい家族説明資料",
-  "研修資料っぽい落ち着いたデザイン",
-  "症例発表向けの学会風デザイン",
-  "図解多めの分かりやすい資料",
-  "文字少なめ・ビジュアル重視",
-  "A4配布資料にも転用しやすい構成",
-  "自主トレ素材庫のイラストを使う前提",
-] as const;
-export type Design = (typeof DESIGNS)[number];
+/* ビジュアルスタイル（デザイン）は slideDesigns.ts に定義。
+   プリセットからは designId で参照する。 */
 
 export const EXTRA_OPTIONS = [
   "発表者ノートを入れる",
@@ -146,7 +137,8 @@ export interface Preset {
   theme: string;
   audience: Audience;
   goal: Goal;
-  design: Design;
+  /** slideDesigns.ts の SlideDesign.id を参照 */
+  designId: string;
 }
 
 export const PRESETS: Preset[] = [
@@ -158,7 +150,7 @@ export const PRESETS: Preset[] = [
     theme: "転倒予防について、介護職が明日から注意できるポイントを伝えたい",
     audience: "介護職",
     goal: "注意点を共有する",
-    design: "図解多めの分かりやすい資料",
+    designId: "infographic-blue",
   },
   {
     id: "positioning",
@@ -168,7 +160,7 @@ export const PRESETS: Preset[] = [
     theme: "拘縮予防と安楽な姿勢づくりにつながるポジショニングの基本を伝えたい",
     audience: "介護職",
     goal: "介助方法を統一する",
-    design: "研修資料っぽい落ち着いたデザイン",
+    designId: "training-slate",
   },
   {
     id: "self-training-need",
@@ -178,7 +170,7 @@ export const PRESETS: Preset[] = [
     theme: "退院後も自主トレを継続する必要性を家族に分かりやすく伝えたい",
     audience: "家族",
     goal: "自主トレを継続してもらう",
-    design: "やさしい家族説明資料",
+    designId: "rose-gentle",
   },
   {
     id: "stroke-hemiplegia",
@@ -189,7 +181,7 @@ export const PRESETS: Preset[] = [
       "脳卒中片麻痺の方が自宅で安全に自主トレを継続するためのポイントを説明したい",
     audience: "家族",
     goal: "退院後の生活をイメージしてもらう",
-    design: "自主トレ素材庫のイラストを使う前提",
+    designId: "soft-sky",
   },
   {
     id: "tka-precautions",
@@ -199,7 +191,7 @@ export const PRESETS: Preset[] = [
     theme: "TKA術後の日常生活で膝に負担をかけすぎないための注意点を説明したい",
     audience: "利用者本人",
     goal: "注意点を共有する",
-    design: "医療・介護向けのシンプル資料",
+    designId: "medical-clean",
   },
   {
     id: "community-rehab",
@@ -209,7 +201,7 @@ export const PRESETS: Preset[] = [
     theme: "生活期リハビリの考え方と、機能訓練だけで終わらない関わり方を伝えたい",
     audience: "新人スタッフ",
     goal: "理解してもらう",
-    design: "研修資料っぽい落ち着いたデザイン",
+    designId: "training-slate",
   },
   {
     id: "case-presentation",
@@ -219,7 +211,7 @@ export const PRESETS: Preset[] = [
     theme: "症例の評価、問題点、介入、経過、考察を分かりやすく整理したい",
     audience: "リハ職",
     goal: "症例の経過を伝える",
-    design: "症例発表向けの学会風デザイン",
+    designId: "academic-navy",
   },
   {
     id: "pre-discharge",
@@ -230,6 +222,6 @@ export const PRESETS: Preset[] = [
       "退院後の生活で安全に過ごすための環境調整、動作方法、家族の見守りポイントを伝えたい",
     audience: "家族",
     goal: "退院後の生活をイメージしてもらう",
-    design: "A4配布資料にも転用しやすい構成",
+    designId: "handout-a4",
   },
 ];

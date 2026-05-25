@@ -1,7 +1,6 @@
 import {
   PURPOSE_GUIDELINES,
   type Audience,
-  type Design,
   type ExtraOption,
   type Goal,
   type Purpose,
@@ -14,7 +13,8 @@ export interface PromptInput {
   theme: string;
   audience: Audience | null;
   goal: Goal | null;
-  design: Design | null;
+  /** 選択されたビジュアルスタイルの説明文（slideDesigns の buildDesignDescriptor） */
+  design: string | null;
   extras: ExtraOption[];
 }
 
