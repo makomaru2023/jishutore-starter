@@ -116,9 +116,6 @@ export function SlidePromptGenerator() {
     setAudience(preset.audience);
     setGoal(preset.goal);
     setDesignId(preset.designId);
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
   }, []);
 
   const handleReset = useCallback(() => {
