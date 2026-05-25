@@ -6,18 +6,27 @@ interface OptionCardProps {
   onClick: () => void;
   /** チェックボックス型（複数選択）の見た目にする */
   multi?: boolean;
+  compact?: boolean;
 }
 
-export function OptionCard({ label, selected, onClick, multi = false }: OptionCardProps) {
+export function OptionCard({
+  label,
+  selected,
+  onClick,
+  multi = false,
+  compact = false,
+}: OptionCardProps) {
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`group flex items-center gap-2.5 rounded-2xl border px-4 py-3 text-left text-sm font-bold transition-all duration-200 ${
+      className={`group flex min-h-11 items-center gap-2.5 rounded-2xl border text-left text-sm font-bold transition-all duration-200 ${
+        compact ? "px-3 py-2.5" : "px-4 py-3"
+      } ${
         selected
-          ? "border-blue-500/70 bg-gradient-to-br from-blue-50 to-sky-50 text-blue-700 shadow-md shadow-blue-500/10 ring-2 ring-blue-200/50"
-          : "border-slate-200 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md hover:shadow-slate-200/60"
+          ? "border-sky-500 bg-sky-50 text-sky-800 shadow-sm ring-2 ring-sky-100"
+          : "border-slate-200 bg-white text-slate-700 hover:border-sky-300 hover:bg-slate-50"
       }`}
     >
       <span
@@ -25,8 +34,8 @@ export function OptionCard({ label, selected, onClick, multi = false }: OptionCa
           multi ? "rounded-md" : "rounded-full"
         } ${
           selected
-            ? "border-blue-500 bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-sm shadow-blue-500/30"
-            : "border-slate-300 bg-white text-transparent group-hover:border-blue-300"
+            ? "border-sky-600 bg-sky-600 text-white"
+            : "border-slate-300 bg-white text-transparent group-hover:border-sky-400"
         }`}
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">

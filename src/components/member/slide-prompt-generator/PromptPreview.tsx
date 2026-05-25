@@ -5,9 +5,10 @@ import { useCallback, useState } from "react";
 interface PromptPreviewProps {
   prompt: string | null;
   onReset: () => void;
+  completedCount: number;
 }
 
-export function PromptPreview({ prompt, onReset }: PromptPreviewProps) {
+export function PromptPreview({ prompt, onReset, completedCount }: PromptPreviewProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
@@ -27,26 +28,46 @@ export function PromptPreview({ prompt, onReset }: PromptPreviewProps) {
   }, [prompt]);
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-lg shadow-slate-200/50 ring-1 ring-slate-100">
-      <div className="h-1.5 w-full bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500" />
-      <div className="p-5 sm:p-6">
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <h2 className="flex items-center gap-2.5 text-lg font-black text-slate-900">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 text-white shadow-sm shadow-blue-500/30">
+    <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
+      <div className="border-b border-slate-200 bg-slate-950 px-5 py-4 text-white sm:px-6">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-300">
+              Prompt Output
+            </p>
+            <h2 className="mt-1 flex items-center gap-2.5 text-lg font-black">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500 text-white shadow-sm shadow-sky-500/30">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
-            </span>
-            生成プロンプト
-          </h2>
+              </span>
+              生成プロンプト
+            </h2>
+          </div>
           <button
             type="button"
             onClick={onReset}
-            className="rounded-lg px-3 py-1.5 text-xs font-bold text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700"
+            className="rounded-full border border-white/15 px-3 py-1.5 text-xs font-bold text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
           >
             初期化
           </button>
         </div>
+        <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+          <div className="rounded-2xl bg-white/10 px-2 py-2">
+            <p className="text-[10px] font-bold text-slate-300">必須入力</p>
+            <p className="mt-0.5 text-sm font-black">{completedCount}/3</p>
+          </div>
+          <div className="rounded-2xl bg-white/10 px-2 py-2">
+            <p className="text-[10px] font-bold text-slate-300">状態</p>
+            <p className="mt-0.5 text-sm font-black">{prompt ? "完成" : "準備中"}</p>
+          </div>
+          <div className="rounded-2xl bg-white/10 px-2 py-2">
+            <p className="text-[10px] font-bold text-slate-300">出力先</p>
+            <p className="mt-0.5 text-sm font-black">ChatGPT</p>
+          </div>
+        </div>
+      </div>
+      <div className="p-5 sm:p-6">
 
         {!prompt && (
           <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
@@ -76,8 +97,8 @@ export function PromptPreview({ prompt, onReset }: PromptPreviewProps) {
               onClick={handleCopy}
               className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-base font-black transition-all ${
                 copied
-                  ? "bg-blue-50 text-blue-700 ring-2 ring-blue-200"
-                  : "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-md shadow-blue-600/25 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-600/30"
+                  ? "bg-emerald-50 text-emerald-700 ring-2 ring-emerald-200"
+                  : "bg-sky-600 text-white shadow-md shadow-sky-600/25 hover:bg-sky-700 hover:shadow-lg hover:shadow-sky-600/30"
               }`}
             >
               {copied ? (
@@ -93,7 +114,7 @@ export function PromptPreview({ prompt, onReset }: PromptPreviewProps) {
             </button>
 
             <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-              <div className="flex items-center gap-1.5 border-b border-slate-200 bg-slate-100/80 px-4 py-2.5">
+              <div className="flex items-center gap-1.5 border-b border-slate-200 bg-slate-100 px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-rose-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-sky-300" />
@@ -101,7 +122,7 @@ export function PromptPreview({ prompt, onReset }: PromptPreviewProps) {
                   ChatGPT用プロンプト
                 </span>
               </div>
-              <pre className="max-h-[56vh] overflow-auto whitespace-pre-wrap break-words bg-slate-50 p-4 font-mono text-[13px] leading-relaxed text-slate-700">
+              <pre className="max-h-[60vh] overflow-auto whitespace-pre-wrap break-words bg-slate-950 p-4 font-mono text-[13px] leading-relaxed text-slate-100">
                 {prompt}
               </pre>
             </div>

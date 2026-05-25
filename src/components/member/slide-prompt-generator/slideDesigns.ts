@@ -103,30 +103,14 @@ interface DesignSeed {
 }
 
 const SEEDS: DesignSeed[] = [
-  { id: "corporate-clean", name: "コーポレート・クリーン", description: "白基調・余白多めの正統派スライド", tags: ["信頼感", "白基調", "余白"], layout: "leftBar", palette: "clean", set: "present" },
-  { id: "strategy-navy", name: "戦略コンサル", description: "ネイビー基調・図表で論理性を演出", tags: ["コンサル", "戦略", "論理的"], layout: "framed", palette: "navy", set: "case" },
-  { id: "vivid-blue", name: "ビビッドブルー・フラット", description: "ビビッドブルーを効かせた現代的フラット", tags: ["フラット", "現代的", "知的"], layout: "topBand", palette: "blueVivid", set: "present" },
-  { id: "soft-sky", name: "やさしいスカイ", description: "淡い水色でやわらかい家族説明向け", tags: ["やさしい", "家族向け", "安心"], layout: "centered", palette: "sky", set: "home" },
-  { id: "medical-clean", name: "メディカル・クリーン", description: "医療現場になじむ清潔感のある白×青", tags: ["医療", "清潔感", "シンプル"], layout: "leftBar", palette: "medical", set: "fall" },
-  { id: "training-slate", name: "研修スレート", description: "落ち着いたグレー基調の研修資料", tags: ["研修", "落ち着き", "中立"], layout: "topBand", palette: "slate", set: "edu" },
-  { id: "academic-navy", name: "学会ポスター風", description: "学会発表向けの端正な学術デザイン", tags: ["学会", "症例", "端正"], layout: "framed", palette: "navy", set: "case" },
-  { id: "warm-care", name: "あたたかケア", description: "温かみのあるコーラルで介護向け", tags: ["あたたかい", "介護", "親しみ"], layout: "sidebar", palette: "coral", set: "home" },
-  { id: "indigo-modern", name: "インディゴ・モダン", description: "インディゴの効いた今っぽいデザイン", tags: ["モダン", "知的", "洗練"], layout: "split", palette: "indigo", set: "present" },
-  { id: "dark-impact", name: "ダーク・インパクト", description: "濃紺背景で要点が映えるプレゼン向け", tags: ["プレゼン", "映える", "力強い"], layout: "centered", palette: "dark", set: "present" },
-  { id: "handout-a4", name: "A4配布フレンドリー", description: "印刷・配布しやすい情報整理型", tags: ["配布", "印刷", "整理"], layout: "leftBar", palette: "clean", set: "edu" },
-  { id: "infographic-blue", name: "インフォグラフィック", description: "図解・アイコン中心で直感的に伝える", tags: ["図解", "アイコン", "直感的"], layout: "split", palette: "blueVivid", set: "fall" },
-  { id: "amber-friendly", name: "フレンドリー・アンバー", description: "親しみやすい黄系アクセントで前向きに", tags: ["親しみ", "明るい", "前向き"], layout: "topBand", palette: "amber", set: "home" },
-  { id: "sky-sidebar", name: "スカイ・サイドバー", description: "左帯デザインで見出しが映える", tags: ["見出し", "整然", "水色"], layout: "sidebar", palette: "sky", set: "edu" },
-  { id: "mono-minimal", name: "モノ・ミニマル", description: "白黒基調の超ミニマルデザイン", tags: ["ミニマル", "白黒", "洗練"], layout: "centered", palette: "mono", set: "case" },
-  { id: "rose-gentle", name: "ローズ・やさしい", description: "やわらかいローズで家族説明に", tags: ["やさしい", "家族", "やわらか"], layout: "centered", palette: "rose", set: "home" },
-  { id: "navy-split", name: "ネイビー・スプリット", description: "左右分割で図と文章を両立", tags: ["分割", "図解", "論理的"], layout: "split", palette: "navy", set: "present" },
-  { id: "vivid-red", name: "ビビッド・レッド", description: "攻めの赤アクセント。注意喚起にも", tags: ["注意喚起", "力強い", "赤"], layout: "topBand", palette: "red", set: "fall" },
-  { id: "purple-creative", name: "パープル・クリエイティブ", description: "個性的な紫で新規提案向け", tags: ["個性的", "提案", "クリエイティブ"], layout: "split", palette: "purple", set: "present" },
-  { id: "clinical-grid", name: "クリニカル・グリッド", description: "整然としたグリッドで臨床向け", tags: ["臨床", "整然", "データ"], layout: "leftBar", palette: "medical", set: "case" },
-  { id: "sky-centered", name: "スカイ・センター", description: "中央寄せで一枚に一メッセージ", tags: ["シンプル", "中央", "明快"], layout: "centered", palette: "sky", set: "fall" },
-  { id: "slate-frame", name: "スレート・フレーム", description: "枠付きで引き締まった研修向け", tags: ["研修", "枠", "端正"], layout: "framed", palette: "slate", set: "edu" },
-  { id: "blue-steps", name: "ブルー・ステップ", description: "手順・流れを示すのが得意", tags: ["手順", "流れ", "プロセス"], layout: "leftBar", palette: "clean", set: "edu" },
-  { id: "coral-poster", name: "コーラル・ポスター", description: "掲示・ポスター映えする明るさ", tags: ["ポスター", "掲示", "明るい"], layout: "centered", palette: "coral", set: "fall" },
+  { id: "medical-clean", name: "医療向けクリーン", description: "白地に青を少しだけ効かせた、説明資料の標準形", tags: ["医療", "清潔感", "万能"], layout: "leftBar", palette: "medical", set: "fall" },
+  { id: "infographic-blue", name: "図解ブルー", description: "図解やOK/NGを入れやすい、勉強会向けの構成", tags: ["図解", "勉強会", "実践"], layout: "split", palette: "blueVivid", set: "fall" },
+  { id: "training-slate", name: "研修スレート", description: "落ち着いたグレー基調で、職員研修に使いやすい", tags: ["研修", "落ち着き", "職員向け"], layout: "topBand", palette: "slate", set: "edu" },
+  { id: "soft-sky", name: "やさしい説明", description: "淡い水色で、家族説明や利用者説明に使いやすい", tags: ["やさしい", "家族向け", "安心"], layout: "centered", palette: "sky", set: "home" },
+  { id: "rose-gentle", name: "あたたか家族向け", description: "やわらかい色味で、不安を強めずに伝える資料向け", tags: ["家族", "やわらか", "生活場面"], layout: "centered", palette: "rose", set: "home" },
+  { id: "academic-navy", name: "症例発表ネイビー", description: "評価・経過・考察を端正に見せる症例発表向け", tags: ["症例", "学会風", "端正"], layout: "framed", palette: "navy", set: "case" },
+  { id: "handout-a4", name: "A4配布向け", description: "印刷して渡す資料にも転用しやすい情報整理型", tags: ["配布", "印刷", "整理"], layout: "leftBar", palette: "clean", set: "edu" },
+  { id: "clinical-grid", name: "臨床グリッド", description: "評価やデータをすっきり整理するリハ職向け", tags: ["臨床", "データ", "整理"], layout: "framed", palette: "medical", set: "case" },
 ];
 
 export const SLIDE_DESIGNS: SlideDesign[] = SEEDS.map((s) => ({

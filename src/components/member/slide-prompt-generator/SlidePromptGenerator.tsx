@@ -29,32 +29,68 @@ function Section({
   step,
   title,
   required,
+  description,
   children,
 }: {
   step: number;
   title: string;
   required?: boolean;
+  description?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-200/50 ring-1 ring-slate-100 transition-shadow hover:shadow-md hover:shadow-slate-200/60 sm:p-6">
-      <h3 className="mb-4 flex items-center gap-2.5 text-base font-black text-slate-900">
-        <span className="inline-flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-xs font-black text-white shadow-sm shadow-blue-500/30">
-          {step}
-        </span>
-        {title}
-        {required ? (
-          <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-bold text-rose-500">
-            必須
+    <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 sm:p-6">
+      <div className="mb-4 flex items-start justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-slate-950 text-xs font-black text-white">
+            {step}
           </span>
-        ) : (
-          <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-400">
-            任意
-          </span>
-        )}
-      </h3>
+          <div>
+            <h3 className="flex flex-wrap items-center gap-2 text-base font-black text-slate-900">
+              {title}
+              {required ? (
+                <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-bold text-rose-500">
+                  必須
+                </span>
+              ) : (
+                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-400">
+                  任意
+                </span>
+              )}
+            </h3>
+            {description ? (
+              <p className="mt-1 text-xs font-medium leading-relaxed text-slate-500">
+                {description}
+              </p>
+            ) : null}
+          </div>
+        </div>
+      </div>
       {children}
     </section>
+  );
+}
+
+function ProgressPill({
+  label,
+  done,
+}: {
+  label: string;
+  done: boolean;
+}) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold ${
+        done
+          ? "border-sky-200 bg-sky-50 text-sky-700"
+          : "border-slate-200 bg-white text-slate-400"
+      }`}
+    >
+      <span
+        className={`h-2 w-2 rounded-full ${done ? "bg-sky-500" : "bg-slate-300"}`}
+      />
+      {label}
+    </span>
   );
 }
 
@@ -101,39 +137,66 @@ export function SlidePromptGenerator() {
     return buildPrompt({ purpose, slideCount, theme, audience, goal, design, extras });
   }, [purpose, slideCount, theme, audience, goal, designId, extras]);
 
+  const completedRequiredCount = [
+    Boolean(purpose),
+    Boolean(slideCount),
+    Boolean(theme.trim()),
+  ].filter(Boolean).length;
+
   return (
     <div className="space-y-6">
-      {/* プリセット */}
-      <section className="rounded-3xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50 p-5 shadow-sm shadow-blue-100/50 sm:p-6">
-        <h3 className="mb-1 flex items-center gap-2 text-base font-black text-slate-900">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-500 text-white shadow-sm shadow-blue-500/30">
-            <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-              <path d="M10 1.5 12.5 7l5.5.5-4.2 3.7 1.3 5.4L10 13.8 4.9 16.6l1.3-5.4L2 7.5 7.5 7 10 1.5Z" />
-            </svg>
-          </span>
-          プリセットから始める
-        </h3>
-        <p className="mb-4 text-xs font-medium text-slate-500">
-          よくある資料の型をワンタップで読み込めます。読み込んだ後に自由に調整できます。
-        </p>
-        <div className="flex flex-wrap gap-2">
+      <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 sm:p-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">
+              Quick Start
+            </p>
+            <h3 className="mt-1 text-lg font-black text-slate-900">
+              プリセットから始める
+            </h3>
+            <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">
+              よくある資料の型を読み込んで、テーマだけ微調整できます。
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <ProgressPill label="用途" done={Boolean(purpose)} />
+            <ProgressPill label="枚数" done={Boolean(slideCount)} />
+            <ProgressPill label="テーマ" done={Boolean(theme.trim())} />
+          </div>
+        </div>
+
+        <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
           {PRESETS.map((preset) => (
             <button
               key={preset.id}
               type="button"
               onClick={() => applyPreset(preset)}
-              className="rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-sm font-bold text-blue-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-sky-500 hover:text-white hover:shadow-md hover:shadow-blue-500/25"
+              className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left transition-colors hover:border-sky-300 hover:bg-sky-50"
             >
-              {preset.label}
+              <span className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white text-sky-600 ring-1 ring-slate-200 group-hover:ring-sky-200">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+              <path d="M10 1.5 12.5 7l5.5.5-4.2 3.7 1.3 5.4L10 13.8 4.9 16.6l1.3-5.4L2 7.5 7.5 7 10 1.5Z" />
+            </svg>
+              </span>
+              <span className="block text-sm font-black leading-snug text-slate-900">
+                {preset.label}
+              </span>
+              <span className="mt-2 block text-xs font-medium leading-relaxed text-slate-500">
+                {preset.slideCount} / {preset.audience}
+              </span>
             </button>
           ))}
         </div>
       </section>
 
-      <div className="grid items-start gap-6 lg:grid-cols-2">
-        {/* 左：入力フォーム */}
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
         <div className="space-y-6">
-          <Section step={1} title="使用用途" required>
+          <Section
+            step={1}
+            title="使用用途"
+            required
+            description="誰に、どの場面で使う資料かを選びます。"
+          >
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {PURPOSES.map((p) => (
                 <OptionCard
@@ -159,17 +222,22 @@ export function SlidePromptGenerator() {
             </div>
           </Section>
 
-          <Section step={3} title="テーマ" required>
+          <Section
+            step={3}
+            title="テーマ"
+            required
+            description="その資料で一番伝えたいことを、普段の言葉で入れてください。"
+          >
             <textarea
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
-              rows={3}
+              rows={4}
               placeholder="例：転倒予防について、介護職が明日から注意できるポイントを伝えたい"
-              className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 transition-all focus:border-blue-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium leading-relaxed text-slate-800 placeholder:text-slate-400 transition-all focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-100"
             />
           </Section>
 
-          <Section step={4} title="対象者">
+          <Section step={4} title="対象者" description="任意ですが、入れると表現の粒度が安定します。">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {AUDIENCES.map((a) => (
                 <OptionCard
@@ -195,11 +263,12 @@ export function SlidePromptGenerator() {
             </div>
           </Section>
 
-          <Section step={6} title="ビジュアルスタイル">
-            <p className="-mt-2 mb-3 text-xs font-medium text-slate-500">
-              カードにカーソルを合わせるとスライド見本が切り替わります。選ぶとプロンプトに反映されます。
-            </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+          <Section
+            step={6}
+            title="ビジュアルスタイル"
+            description="候補を厳選しました。見た目よりも、用途に合う読みやすさを優先しています。"
+          >
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {SLIDE_DESIGNS.map((d) => (
                 <DesignCard
                   key={d.id}
@@ -218,6 +287,7 @@ export function SlidePromptGenerator() {
                   key={o}
                   label={o}
                   multi
+                  compact
                   selected={extras.includes(o)}
                   onClick={() => toggleExtra(o)}
                 />
@@ -226,9 +296,12 @@ export function SlidePromptGenerator() {
           </Section>
         </div>
 
-        {/* 右：生成プロンプト（PCではsticky） */}
         <div className="lg:sticky lg:top-24">
-          <PromptPreview prompt={prompt} onReset={handleReset} />
+          <PromptPreview
+            prompt={prompt}
+            onReset={handleReset}
+            completedCount={completedRequiredCount}
+          />
         </div>
       </div>
     </div>
