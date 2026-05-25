@@ -1,4 +1,4 @@
-import { getItems, findItemById } from "@/lib/items";
+import { getItems, findItemById, getItemImageUrl } from "@/lib/items";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
@@ -29,11 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const title = item.titleJa || item.title;
 
     // Construct image URL for OG
-    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
-    let imageUrl = item.previewSrc;
-    if (!imageUrl.startsWith("https://")) {
-        imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
-    }
+    const imageUrl = getItemImageUrl(item.previewSrc);
     const absoluteImageUrl = new URL(imageUrl, 'https://jishutore-sozaiko.online').toString();
 
     // SEO-optimized title and description
@@ -106,11 +102,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     }
 
     // Use direct R2 URL for better performance
-    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
-    let imageUrl = item.previewSrc;
-    if (!imageUrl.startsWith("https://")) {
-        imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
-    }
+    const imageUrl = getItemImageUrl(item.previewSrc);
 
     const title = item.titleJa || item.title;
 

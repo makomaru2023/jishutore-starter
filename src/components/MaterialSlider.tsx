@@ -25,7 +25,9 @@ export function MaterialSlider(props: PropType) {
         if (path.startsWith("https://")) return path;
 
         const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
-        return `${R2_DOMAIN}/${path}`;
+        // Encode each path segment so spaces/parentheses become valid URL characters.
+        const encodedPath = path.split("/").map(encodeURIComponent).join("/");
+        return `${R2_DOMAIN}/${encodedPath}`;
     }
 
     return (

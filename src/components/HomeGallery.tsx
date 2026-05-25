@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getItems } from "@/lib/items";
+import { getItems, getItemImageUrl } from "@/lib/items";
 
 /**
  * トップページ用・無料素材ショーケース
@@ -17,8 +17,6 @@ const FEATURED_IDS = [
     "draw-in-premium",
     "chest-opening-with-stretch-pole-premium",
 ];
-
-const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
 
 export function HomeGallery() {
     const allItems = getItems();
@@ -46,9 +44,7 @@ export function HomeGallery() {
                 {/* ギャラリーグリッド */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 max-w-6xl mx-auto mb-10">
                     {featured.map((item) => {
-                        const imageUrl = item.previewSrc.startsWith("https://")
-                            ? item.previewSrc
-                            : `${R2_DOMAIN}/${item.previewSrc}`;
+                        const imageUrl = getItemImageUrl(item.previewSrc);
 
                         return (
                             <Link

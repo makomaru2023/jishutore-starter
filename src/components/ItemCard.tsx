@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Item } from "@/types";
+import { getItemImageUrl } from "@/lib/items";
 import Link from "next/link";
 
 interface ItemCardProps {
@@ -8,11 +9,7 @@ interface ItemCardProps {
 
 export function ItemCard({ item }: ItemCardProps) {
     // Use direct R2 URL for better performance
-    const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
-    let imageUrl = item.previewSrc;
-    if (!imageUrl.startsWith("https://")) {
-        imageUrl = `${R2_DOMAIN}/${item.previewSrc}`;
-    }
+    const imageUrl = getItemImageUrl(item.previewSrc);
 
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-[2rem] border-2 border-slate-100 bg-white shadow-sm transition-all hover:shadow-xl hover:shadow-teal-500/10 hover:border-teal-500/30">
