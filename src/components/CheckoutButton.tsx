@@ -2,14 +2,30 @@
 
 import { useState } from 'react';
 
+declare global {
+    interface Window {
+        gtag?: (...args: unknown[]) => void;
+    }
+}
+
 interface CheckoutButtonProps {
     productId: string;
     productName: string;
     price: number;
     label?: string;
+    className?: string;
 }
 
-export function CheckoutButton({ productId, productName, price, label }: CheckoutButtonProps) {
+const DEFAULT_CLASSNAME =
+    'flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60';
+
+export function CheckoutButton({
+    productId,
+    productName,
+    price,
+    label,
+    className,
+}: CheckoutButtonProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -17,13 +33,23 @@ export function CheckoutButton({ productId, productName, price, label }: Checkou
         setLoading(true);
         setError(null);
 
-        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-            window.gtag('event', 'begin_checkout', {
-                product_id: productId,
-                product_name: productName,
-                value: price,
-                currency: 'JPY',
-            });
+        try {
+            if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+                window.gtag('event', 'checkout_start', {
+                    item_name: productName,
+                    price,
+                    currency: 'JPY',
+                });
+                // 既存互換イベント（products ページなどで使用されている）。
+                window.gtag('event', 'begin_checkout', {
+                    product_id: productId,
+                    product_name: productName,
+                    value: price,
+                    currency: 'JPY',
+                });
+            }
+        } catch {
+            // gtag 実行エラーは決済フローを止めない。
         }
 
         try {
@@ -41,7 +67,7 @@ export function CheckoutButton({ productId, productName, price, label }: Checkou
 
             window.location.href = data.url;
         } catch {
-            setError('決済ページへの移動に失敗しました。時間をおいて再度お試しください。');
+            setError('決済ページを開けませんでした。時間をおいて再度お試しください。');
             setLoading(false);
         }
     };
@@ -52,7 +78,8 @@ export function CheckoutButton({ productId, productName, price, label }: Checkou
                 type="button"
                 onClick={handleClick}
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 disabled:cursor-not-allowed disabled:opacity-60"
+                aria-busy={loading}
+                className={className ?? DEFAULT_CLASSNAME}
             >
                 {loading ? (
                     <>

@@ -1,11 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe } from '@/lib/stripe';
+import { getStripe, isStripeConfigured } from '@/lib/stripe';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
-const PRODUCTS: Record<string, { priceId: string | undefined }> = {
+type ProductConfig = {
+    /** Stripe Price ID（環境変数） */
+    priceId: string | undefined;
+    /** キャンセル時に戻す URL（NEXT_PUBLIC_SITE_URL を起点とした絶対 URL） */
+    cancelPath: string;
+};
+
+const PRODUCTS: Record<string, ProductConfig> = {
     'self-training-materials-vol01': {
         priceId: process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET,
+        cancelPath: '/premium',
     },
 };
 
@@ -23,12 +31,29 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: '不正な商品IDです。' }, { status: 400 });
     }
 
-    const priceId = PRODUCTS[productId].priceId;
+    const { priceId, cancelPath } = PRODUCTS[productId];
+
+    if (!isStripeConfigured()) {
+        console.error('Stripe checkout: STRIPE_SECRET_KEY is not configured.');
+        return NextResponse.json(
+            { error: '決済機能の準備中です。時間をおいて再度お試しください。' },
+            { status: 503 }
+        );
+    }
 
     if (!priceId) {
+        console.error(`Stripe checkout: price id is not configured for product "${productId}".`);
         return NextResponse.json(
             { error: '商品の価格設定が見つかりません。' },
-            { status: 500 }
+            { status: 503 }
+        );
+    }
+
+    const stripe = getStripe();
+    if (!stripe) {
+        return NextResponse.json(
+            { error: '決済機能の準備中です。時間をおいて再度お試しください。' },
+            { status: 503 }
         );
     }
 
@@ -37,7 +62,7 @@ export async function POST(req: NextRequest) {
             mode: 'payment',
             line_items: [{ price: priceId, quantity: 1 }],
             success_url: `${SITE_URL}/thank-you?product=${productId}&session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${SITE_URL}/products/self-training-materials?canceled=1`,
+            cancel_url: `${SITE_URL}${cancelPath}?canceled=1`,
         });
 
         if (!session.url) {
