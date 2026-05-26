@@ -1,3 +1,5 @@
+import type { VisualStyleId } from "./visualStylePresets";
+
 /* スライド作成プロンプトメーカーの選択肢データ・プリセット */
 
 export const PURPOSES = [
@@ -14,7 +16,7 @@ export const PURPOSES = [
 ] as const;
 export type Purpose = (typeof PURPOSES)[number];
 
-export const SLIDE_COUNTS = ["5枚", "10枚", "15枚", "20枚"] as const;
+export const SLIDE_COUNTS = ["6枚", "10枚", "15枚", "20枚"] as const;
 export type SlideCount = (typeof SLIDE_COUNTS)[number];
 
 export const AUDIENCES = [
@@ -43,8 +45,14 @@ export const GOALS = [
 ] as const;
 export type Goal = (typeof GOALS)[number];
 
-/* ビジュアルスタイル（デザイン）は slideDesigns.ts に定義。
-   プリセットからは designId で参照する。 */
+export const TONES = [
+  "やさしい言葉",
+  "専門職向け",
+  "かみ砕いて説明",
+  "研修資料らしく",
+  "症例発表向けに整理",
+] as const;
+export type Tone = (typeof TONES)[number];
 
 export const EXTRA_OPTIONS = [
   "発表者ノートを入れる",
@@ -136,8 +144,8 @@ export interface Preset {
   theme: string;
   audience: Audience;
   goal: Goal;
-  /** slideDesigns.ts の SlideDesign.id を参照 */
-  designId: string;
+  tone: Tone;
+  visualStyleId: VisualStyleId;
 }
 
 export const PRESETS: Preset[] = [
@@ -149,7 +157,8 @@ export const PRESETS: Preset[] = [
     theme: "転倒予防について、介護職が明日から注意できるポイントを伝えたい",
     audience: "介護職",
     goal: "注意点を共有する",
-    designId: "infographic-blue",
+    tone: "研修資料らしく",
+    visualStyleId: "diagram-blue",
   },
   {
     id: "positioning",
@@ -159,7 +168,8 @@ export const PRESETS: Preset[] = [
     theme: "拘縮予防と安楽な姿勢づくりにつながるポジショニングの基本を伝えたい",
     audience: "介護職",
     goal: "介助方法を統一する",
-    designId: "training-slate",
+    tone: "研修資料らしく",
+    visualStyleId: "training-slate",
   },
   {
     id: "self-training-need",
@@ -169,7 +179,8 @@ export const PRESETS: Preset[] = [
     theme: "退院後も自主トレを継続する必要性を家族に分かりやすく伝えたい",
     audience: "家族",
     goal: "自主トレを継続してもらう",
-    designId: "rose-gentle",
+    tone: "やさしい言葉",
+    visualStyleId: "gentle-family",
   },
   {
     id: "stroke-hemiplegia",
@@ -180,7 +191,8 @@ export const PRESETS: Preset[] = [
       "脳卒中片麻痺の方が自宅で安全に自主トレを継続するためのポイントを説明したい",
     audience: "家族",
     goal: "退院後の生活をイメージしてもらう",
-    designId: "soft-sky",
+    tone: "かみ砕いて説明",
+    visualStyleId: "gentle-family",
   },
   {
     id: "tka-precautions",
@@ -190,7 +202,8 @@ export const PRESETS: Preset[] = [
     theme: "TKA術後の日常生活で膝に負担をかけすぎないための注意点を説明したい",
     audience: "利用者本人",
     goal: "注意点を共有する",
-    designId: "medical-clean",
+    tone: "かみ砕いて説明",
+    visualStyleId: "ok-ng-compare",
   },
   {
     id: "community-rehab",
@@ -200,7 +213,8 @@ export const PRESETS: Preset[] = [
     theme: "生活期リハビリの考え方と、機能訓練だけで終わらない関わり方を伝えたい",
     audience: "新人スタッフ",
     goal: "理解してもらう",
-    designId: "training-slate",
+    tone: "研修資料らしく",
+    visualStyleId: "training-slate",
   },
   {
     id: "case-presentation",
@@ -210,7 +224,8 @@ export const PRESETS: Preset[] = [
     theme: "症例の評価、問題点、介入、経過、考察を分かりやすく整理したい",
     audience: "リハ職",
     goal: "症例の経過を伝える",
-    designId: "academic-navy",
+    tone: "症例発表向けに整理",
+    visualStyleId: "case-conference",
   },
   {
     id: "pre-discharge",
@@ -221,6 +236,7 @@ export const PRESETS: Preset[] = [
       "退院後の生活で安全に過ごすための環境調整、動作方法、家族の見守りポイントを伝えたい",
     audience: "家族",
     goal: "退院後の生活をイメージしてもらう",
-    designId: "handout-a4",
+    tone: "やさしい言葉",
+    visualStyleId: "medical-clean",
   },
 ];

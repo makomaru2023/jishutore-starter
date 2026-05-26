@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { OptionCard } from "./OptionCard";
 import { PromptPreview } from "./PromptPreview";
 import { DesignCard } from "./DesignCard";
-import { buildPrompt } from "./buildPrompt";
+import { buildSlidePrompt } from "./buildSlidePrompt";
 import {
   AUDIENCES,
   EXTRA_OPTIONS,
@@ -12,18 +12,21 @@ import {
   PRESETS,
   PURPOSES,
   SLIDE_COUNTS,
+  TONES,
   type Audience,
   type ExtraOption,
   type Goal,
   type Preset,
   type Purpose,
   type SlideCount,
+  type Tone,
 } from "./constants";
 import {
-  SLIDE_DESIGNS,
-  buildDesignDescriptor,
-  getDesignById,
-} from "./slideDesigns";
+  defaultVisualStyleId,
+  getVisualStylePreset,
+  visualStylePresets,
+  type VisualStyleId,
+} from "./visualStylePresets";
 
 function Section({
   step,
@@ -100,7 +103,9 @@ export function SlidePromptGenerator() {
   const [theme, setTheme] = useState("");
   const [audience, setAudience] = useState<Audience | null>(null);
   const [goal, setGoal] = useState<Goal | null>(null);
-  const [designId, setDesignId] = useState<string | null>(null);
+  const [tone, setTone] = useState<Tone | null>(null);
+  const [selectedVisualStyleId, setSelectedVisualStyleId] =
+    useState<VisualStyleId>(defaultVisualStyleId);
   const [extras, setExtras] = useState<ExtraOption[]>([]);
 
   const toggleExtra = useCallback((value: ExtraOption) => {
@@ -115,7 +120,8 @@ export function SlidePromptGenerator() {
     setTheme(preset.theme);
     setAudience(preset.audience);
     setGoal(preset.goal);
-    setDesignId(preset.designId);
+    setTone(preset.tone);
+    setSelectedVisualStyleId(preset.visualStyleId);
   }, []);
 
   const handleReset = useCallback(() => {
@@ -124,15 +130,28 @@ export function SlidePromptGenerator() {
     setTheme("");
     setAudience(null);
     setGoal(null);
-    setDesignId(null);
+    setTone(null);
+    setSelectedVisualStyleId(defaultVisualStyleId);
     setExtras([]);
   }, []);
 
+  const selectedVisualStyle = useMemo(
+    () => getVisualStylePreset(selectedVisualStyleId),
+    [selectedVisualStyleId]
+  );
+
   const prompt = useMemo(() => {
-    const d = designId ? getDesignById(designId) : undefined;
-    const design = d ? buildDesignDescriptor(d) : null;
-    return buildPrompt({ purpose, slideCount, theme, audience, goal, design, extras });
-  }, [purpose, slideCount, theme, audience, goal, designId, extras]);
+    return buildSlidePrompt({
+      purpose,
+      slideCount,
+      theme,
+      audience,
+      goal,
+      tone,
+      visualStyleId: selectedVisualStyleId,
+      extras,
+    });
+  }, [purpose, slideCount, theme, audience, goal, tone, selectedVisualStyleId, extras]);
 
   const completedRequiredCount = [
     Boolean(purpose),
@@ -260,24 +279,38 @@ export function SlidePromptGenerator() {
             </div>
           </Section>
 
-          <Section
-            step={6}
-            title="ビジュアルスタイル"
-            description="候補を厳選しました。見た目よりも、用途に合う読みやすさを優先しています。"
-          >
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {SLIDE_DESIGNS.map((d) => (
-                <DesignCard
-                  key={d.id}
-                  design={d}
-                  selected={designId === d.id}
-                  onSelect={() => setDesignId(designId === d.id ? null : d.id)}
+          <Section step={6} title="トーン">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {TONES.map((t) => (
+                <OptionCard
+                  key={t}
+                  label={t}
+                  selected={tone === t}
+                  onClick={() => setTone(tone === t ? null : t)}
                 />
               ))}
             </div>
           </Section>
 
-          <Section step={7} title="追加オプション">
+          <Section
+            step={7}
+            title="ビジュアルスタイル"
+            required
+            description="選んだスタイルは、右側の生成プロンプト本文にそのまま反映されます。"
+          >
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {visualStylePresets.map((style) => (
+                <DesignCard
+                  key={style.id}
+                  style={style}
+                  selected={selectedVisualStyleId === style.id}
+                  onSelect={() => setSelectedVisualStyleId(style.id)}
+                />
+              ))}
+            </div>
+          </Section>
+
+          <Section step={8} title="追加オプション">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {EXTRA_OPTIONS.map((o) => (
                 <OptionCard
@@ -298,6 +331,7 @@ export function SlidePromptGenerator() {
             prompt={prompt}
             onReset={handleReset}
             completedCount={completedRequiredCount}
+            visualStyle={selectedVisualStyle}
           />
         </div>
       </div>

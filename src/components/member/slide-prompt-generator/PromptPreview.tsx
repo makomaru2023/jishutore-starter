@@ -1,18 +1,24 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import type { VisualStylePreset } from "./visualStylePresets";
 
 interface PromptPreviewProps {
-  prompt: string | null;
+  prompt: string;
   onReset: () => void;
   completedCount: number;
+  visualStyle: VisualStylePreset;
 }
 
-export function PromptPreview({ prompt, onReset, completedCount }: PromptPreviewProps) {
+export function PromptPreview({
+  prompt,
+  onReset,
+  completedCount,
+  visualStyle,
+}: PromptPreviewProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
-    if (!prompt) return;
     try {
       await navigator.clipboard.writeText(prompt);
     } catch {
@@ -59,7 +65,9 @@ export function PromptPreview({ prompt, onReset, completedCount }: PromptPreview
           </div>
           <div className="rounded-2xl bg-white/10 px-2 py-2">
             <p className="text-[10px] font-bold text-slate-300">状態</p>
-            <p className="mt-0.5 text-sm font-black">{prompt ? "完成" : "準備中"}</p>
+            <p className="mt-0.5 text-sm font-black">
+              {completedCount === 3 ? "完成" : "下書き"}
+            </p>
           </div>
           <div className="rounded-2xl bg-white/10 px-2 py-2">
             <p className="text-[10px] font-bold text-slate-300">出力先</p>
@@ -69,7 +77,7 @@ export function PromptPreview({ prompt, onReset, completedCount }: PromptPreview
       </div>
       <div className="p-5 sm:p-6">
 
-        {!prompt && (
+        {completedCount < 3 && (
           <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
             <p className="flex items-start gap-2 text-sm font-bold leading-relaxed text-amber-800">
               <svg
@@ -90,8 +98,29 @@ export function PromptPreview({ prompt, onReset, completedCount }: PromptPreview
           </div>
         )}
 
-        {prompt && (
-          <div className="space-y-4">
+        <div className="mt-4 space-y-4">
+          <div className="rounded-2xl border border-sky-100 bg-sky-50 p-4">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-sky-700">
+              選択中スタイル
+            </p>
+            <h3 className="mt-1 text-base font-black text-slate-950">
+              {visualStyle.name}
+            </h3>
+            <p className="mt-1.5 text-xs font-medium leading-relaxed text-slate-600">
+              {visualStyle.summary}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {visualStyle.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md bg-white px-2 py-1 text-[11px] font-bold text-sky-700 ring-1 ring-sky-100"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
             <button
               type="button"
               onClick={handleCopy}
@@ -131,7 +160,6 @@ export function PromptPreview({ prompt, onReset, completedCount }: PromptPreview
               コピーしてChatGPTにそのまま貼り付けてください。
             </p>
           </div>
-        )}
       </div>
     </div>
   );

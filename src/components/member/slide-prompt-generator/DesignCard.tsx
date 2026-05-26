@@ -1,18 +1,129 @@
 "use client";
 
-import { SlideThumbnail } from "./SlideThumbnail";
-import type { SlideDesign } from "./slideDesigns";
+import type { CSSProperties } from "react";
+import type { VisualStyleId, VisualStylePreset } from "./visualStylePresets";
 
 interface DesignCardProps {
-  design: SlideDesign;
+  style: VisualStylePreset;
   selected: boolean;
   onSelect: () => void;
 }
 
-export function DesignCard({ design, selected, onSelect }: DesignCardProps) {
-  const coverSlide = design.slides[0];
-  const p = design.palette;
+const styleVisuals: Record<
+  VisualStyleId,
+  { accent: string; accent2: string; bg: string; ink: string; surface: string; motif: "clean" | "family" | "training" | "diagram" | "compare" | "case" }
+> = {
+  "medical-clean": {
+    accent: "#2563eb",
+    accent2: "#7dd3fc",
+    bg: "#ffffff",
+    ink: "#0f172a",
+    surface: "#eff6ff",
+    motif: "clean",
+  },
+  "gentle-family": {
+    accent: "#0ea5e9",
+    accent2: "#f9a8d4",
+    bg: "#f8fcff",
+    ink: "#0f3a54",
+    surface: "#e0f2fe",
+    motif: "family",
+  },
+  "training-slate": {
+    accent: "#334155",
+    accent2: "#94a3b8",
+    bg: "#ffffff",
+    ink: "#111827",
+    surface: "#f1f5f9",
+    motif: "training",
+  },
+  "diagram-blue": {
+    accent: "#1d4ed8",
+    accent2: "#38bdf8",
+    bg: "#ffffff",
+    ink: "#0b1f3a",
+    surface: "#eff6ff",
+    motif: "diagram",
+  },
+  "ok-ng-compare": {
+    accent: "#16a34a",
+    accent2: "#ef4444",
+    bg: "#ffffff",
+    ink: "#111827",
+    surface: "#f8fafc",
+    motif: "compare",
+  },
+  "case-conference": {
+    accent: "#1e3a8a",
+    accent2: "#64748b",
+    bg: "#ffffff",
+    ink: "#0f172a",
+    surface: "#eef2f7",
+    motif: "case",
+  },
+};
 
+function MockPreview({ style }: { style: VisualStylePreset }) {
+  const visual = styleVisuals[style.id];
+  const previewStyle: CSSProperties = {
+    backgroundColor: visual.bg,
+    color: visual.ink,
+  };
+
+  return (
+    <div
+      className="relative aspect-[16/9] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
+      style={previewStyle}
+    >
+      <div className="absolute left-7 top-7">
+        <div
+          className="mb-3 h-1 w-9 rounded-full"
+          style={{ backgroundColor: visual.accent }}
+        />
+        <div className="h-3 w-28 rounded-full" style={{ backgroundColor: visual.ink }} />
+        <div className="mt-2 h-2 w-40 rounded-full bg-slate-200" />
+        <div className="mt-1.5 h-2 w-32 rounded-full bg-slate-100" />
+      </div>
+
+      {visual.motif === "compare" ? (
+        <div className="absolute bottom-7 left-7 right-7 grid grid-cols-2 gap-3">
+          <div className="rounded-lg border border-red-100 bg-red-50 p-3">
+            <div className="mb-2 h-2 w-10 rounded-full bg-red-400" />
+            <div className="h-2 w-full rounded-full bg-red-100" />
+          </div>
+          <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-3">
+            <div className="mb-2 h-2 w-10 rounded-full bg-emerald-500" />
+            <div className="h-2 w-full rounded-full bg-emerald-100" />
+          </div>
+        </div>
+      ) : (
+        <div className="absolute bottom-7 right-7 flex items-end gap-2">
+          <div className="h-10 w-10 rounded-xl" style={{ backgroundColor: visual.surface }} />
+          <div className="h-14 w-10 rounded-xl" style={{ backgroundColor: visual.accent2 }} />
+          <div className="h-20 w-10 rounded-xl" style={{ backgroundColor: visual.accent }} />
+        </div>
+      )}
+
+      {visual.motif === "diagram" ? (
+        <div className="absolute bottom-9 left-8 flex items-center gap-2">
+          <span className="h-6 w-6 rounded-full" style={{ backgroundColor: visual.accent }} />
+          <span className="h-0.5 w-8 bg-slate-300" />
+          <span className="h-6 w-6 rounded-full" style={{ backgroundColor: visual.accent2 }} />
+          <span className="h-0.5 w-8 bg-slate-300" />
+          <span className="h-6 w-6 rounded-full bg-slate-200" />
+        </div>
+      ) : null}
+
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-slate-900/30 px-2 py-1">
+        <span className="h-1.5 w-4 rounded-full bg-white" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/65" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/65" />
+      </div>
+    </div>
+  );
+}
+
+export function DesignCard({ style, selected, onSelect }: DesignCardProps) {
   return (
     <button
       type="button"
@@ -24,24 +135,27 @@ export function DesignCard({ design, selected, onSelect }: DesignCardProps) {
           : "border-slate-200 hover:border-slate-400 hover:shadow-md hover:shadow-slate-200/80"
       }`}
     >
-      <div className="relative border-b border-slate-200 bg-slate-50 p-3">
-        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-          <SlideThumbnail design={design} slide={coverSlide} />
-        </div>
+      <div className="border-b border-slate-200 bg-slate-50 p-3">
+        <MockPreview style={style} />
+      </div>
 
-        <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-slate-900/35 px-2 py-1 backdrop-blur-sm">
-          {design.slides.map((_, index) => (
-            <span
-              key={index}
-              className={`h-1.5 rounded-full bg-white ${
-                index === 0 ? "w-4 opacity-95" : "w-1.5 opacity-60"
-              }`}
-            />
-          ))}
-        </div>
-
-        {selected ? (
-          <span className="absolute right-5 top-5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-white shadow-md">
+      <div className="space-y-3 p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h4 className="text-lg font-black leading-snug tracking-tight text-slate-950">
+              {style.name}
+            </h4>
+            <p className="mt-2 text-sm font-medium leading-relaxed text-slate-500">
+              {style.summary}
+            </p>
+          </div>
+          <span
+            className={`mt-1 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border ${
+              selected
+                ? "border-slate-950 bg-slate-950 text-white"
+                : "border-slate-200 bg-white text-transparent group-hover:text-slate-300"
+            }`}
+          >
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -52,32 +166,10 @@ export function DesignCard({ design, selected, onSelect }: DesignCardProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
             </svg>
           </span>
-        ) : null}
-      </div>
-
-      <div className="space-y-3 p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h4 className="text-lg font-black leading-snug tracking-tight text-slate-950">
-              {design.name}
-            </h4>
-            <p className="mt-2 text-sm font-medium leading-relaxed text-slate-500">
-              {design.description}
-            </p>
-          </div>
-          <div className="flex flex-shrink-0 items-center gap-1 pt-1">
-            {[p.accent, p.accent2, p.surface].map((color) => (
-              <span
-                key={color}
-                className="h-3.5 w-3.5 rounded-full border border-white shadow-sm ring-1 ring-slate-200"
-                style={{ backgroundColor: color }}
-              />
-            ))}
-          </div>
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {design.tags.map((tag) => (
+          {style.tags.map((tag) => (
             <span
               key={tag}
               className={`rounded-md px-2.5 py-1 text-xs font-bold ${
