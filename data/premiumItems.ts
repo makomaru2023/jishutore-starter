@@ -34,7 +34,7 @@ export const premiumItems: PremiumItem[] = [
             "膝OA・TKA 自主トレメニュー",
         ],
         tags: ["疾患別", "9本セット", "PowerPoint", "編集OK", "印刷配布OK"],
-        href: "https://note.com/jisyutore/n/n8334f145dd2a",
+        href: "/premium",
         status: "available",
     },
     {

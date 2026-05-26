@@ -8,13 +8,14 @@ type Props = {
 
 export function PremiumItemCard({ item, variant = "default" }: Props) {
     const isComingSoon = item.status === "coming-soon";
+    const isExternal = /^https?:\/\//.test(item.href);
 
     if (variant === "compact") {
         return (
             <a
                 href={isComingSoon ? undefined : item.href}
-                target={isComingSoon ? undefined : "_blank"}
-                rel={isComingSoon ? undefined : "noopener noreferrer"}
+                target={isComingSoon || !isExternal ? undefined : "_blank"}
+                rel={isComingSoon || !isExternal ? undefined : "noopener noreferrer"}
                 aria-disabled={isComingSoon}
                 className={`group flex items-start gap-4 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm transition-all ${
                     isComingSoon
@@ -124,11 +125,11 @@ export function PremiumItemCard({ item, variant = "default" }: Props) {
                     ) : (
                         <a
                             href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={isExternal ? "_blank" : undefined}
+                            rel={isExternal ? "noopener noreferrer" : undefined}
                             className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-teal-500 hover:bg-teal-400 text-white font-black text-sm shadow-lg shadow-teal-500/30 transition-all whitespace-nowrap shrink-0"
                         >
-                            noteで購入する
+                            詳しく見る
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                             </svg>
