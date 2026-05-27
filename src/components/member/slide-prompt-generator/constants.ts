@@ -1,7 +1,3 @@
-import type { VisualStyleId } from "./visualStylePresets";
-
-/* スライド作成プロンプトメーカーの選択肢データ・プリセット */
-
 export const PURPOSES = [
   "家族説明用",
   "利用者説明用",
@@ -16,7 +12,7 @@ export const PURPOSES = [
 ] as const;
 export type Purpose = (typeof PURPOSES)[number];
 
-export const SLIDE_COUNTS = ["6枚", "10枚", "15枚", "20枚"] as const;
+export const SLIDE_COUNTS = ["3枚", "5枚", "7枚", "10枚"] as const;
 export type SlideCount = (typeof SLIDE_COUNTS)[number];
 
 export const AUDIENCES = [
@@ -45,29 +41,40 @@ export const GOALS = [
 ] as const;
 export type Goal = (typeof GOALS)[number];
 
-export const TONES = [
-  "やさしい言葉",
-  "専門職向け",
-  "かみ砕いて説明",
-  "研修資料らしく",
-  "症例発表向けに整理",
+export const DESIGN_POLICIES = [
+  "医療・介護向けのシンプル資料",
+  "やさしい家族説明資料",
+  "研修資料っぽい落ち着いたデザイン",
+  "症例発表向けの学会風デザイン",
+  "図解多めの分かりやすい資料",
+  "文字少なめ・ビジュアル重視",
+  "A4配布資料にも転用しやすい構成",
+  "自主トレ素材庫のイラストを使う前提",
 ] as const;
-export type Tone = (typeof TONES)[number];
+export type DesignPolicy = (typeof DESIGN_POLICIES)[number];
 
 export const EXTRA_OPTIONS = [
-  "発表者ノートを入れる",
-  "各スライドに図解案を入れる",
-  "自主トレ素材庫のイラスト挿入案を入れる",
+  "図解を多めにする",
+  "自主トレ素材庫のイラストテイストに寄せる",
   "家族向けに専門用語を減らす",
   "注意点・禁忌を入れる",
   "まとめスライドを入れる",
   "最後に行動提案を入れる",
-  "参考文献欄を入れる",
-  "PowerPointに貼りやすい表で出力する",
+  "表紙スライドをしっかり作る",
+  "文字を大きく見やすくする",
 ] as const;
 export type ExtraOption = (typeof EXTRA_OPTIONS)[number];
 
-/** 使用用途ごとの作成方針（プロンプトに差し込む指示文） */
+export const SLIDE_KINDS = ["表紙", "導入", "本文", "図解", "まとめ"] as const;
+export type SlideKind = (typeof SLIDE_KINDS)[number];
+
+export interface SlideConfig {
+  kind: SlideKind;
+  title: string;
+  message: string;
+  note: string;
+}
+
 export const PURPOSE_GUIDELINES: Record<Purpose, string[]> = {
   家族説明用: [
     "専門用語をできるだけ避ける",
@@ -104,10 +111,10 @@ export const PURPOSE_GUIDELINES: Record<Purpose, string[]> = {
   ],
   症例発表用: [
     "個人情報を入れない",
-    "背景情報、評価、問題点、目標、介入、経過、考察を整理する",
-    "ICFの視点で整理する",
+    "文字量は控えめにする",
+    "背景、評価、問題点、介入、経過、考察を簡潔に整理する",
     "事実と考察を分ける",
-    "今後の課題を入れる",
+    "細かい表や長文は避ける",
   ],
   カンファレンス用: [
     "多職種が理解できる言葉にする",
@@ -132,7 +139,6 @@ export const PURPOSE_GUIDELINES: Record<Purpose, string[]> = {
     "課題、提案、期待される効果を明確にする",
     "管理者や多職種にも伝わる言葉にする",
     "現場で実行しやすい形にする",
-    "必要に応じて導入手順を入れる",
   ],
 };
 
@@ -144,8 +150,8 @@ export interface Preset {
   theme: string;
   audience: Audience;
   goal: Goal;
-  tone: Tone;
-  visualStyleId: VisualStyleId;
+  designPolicy: DesignPolicy;
+  slides: SlideConfig[];
 }
 
 export const PRESETS: Preset[] = [
@@ -153,90 +159,58 @@ export const PRESETS: Preset[] = [
     id: "fall-prevention",
     label: "転倒予防の勉強会",
     purpose: "介護職向け勉強会",
-    slideCount: "10枚",
+    slideCount: "5枚",
     theme: "転倒予防について、介護職が明日から注意できるポイントを伝えたい",
     audience: "介護職",
     goal: "注意点を共有する",
-    tone: "研修資料らしく",
-    visualStyleId: "diagram-blue",
-  },
-  {
-    id: "positioning",
-    label: "ポジショニング研修",
-    purpose: "介護職向け勉強会",
-    slideCount: "15枚",
-    theme: "拘縮予防と安楽な姿勢づくりにつながるポジショニングの基本を伝えたい",
-    audience: "介護職",
-    goal: "介助方法を統一する",
-    tone: "研修資料らしく",
-    visualStyleId: "training-slate",
+    designPolicy: "図解多めの分かりやすい資料",
+    slides: [
+      { kind: "表紙", title: "転倒予防", message: "勉強会のテーマを明確に伝える", note: "" },
+      { kind: "導入", title: "なぜ転倒予防が必要か", message: "転倒が利用者の生活や安全に与える影響を伝える", note: "" },
+      { kind: "本文", title: "転倒の主な原因", message: "環境面・身体面・介助面から原因を整理する", note: "" },
+      { kind: "図解", title: "OK例とNG例", message: "介助時に気をつけるポイントを比較して見せる", note: "" },
+      { kind: "まとめ", title: "明日からできること", message: "現場で実践できるポイントを簡潔にまとめる", note: "" },
+    ],
   },
   {
     id: "self-training-need",
     label: "自主トレの必要性",
     purpose: "家族説明用",
-    slideCount: "10枚",
+    slideCount: "5枚",
     theme: "退院後も自主トレを継続する必要性を家族に分かりやすく伝えたい",
     audience: "家族",
     goal: "自主トレを継続してもらう",
-    tone: "やさしい言葉",
-    visualStyleId: "gentle-family",
-  },
-  {
-    id: "stroke-hemiplegia",
-    label: "脳卒中片麻痺の自主トレ",
-    purpose: "家族説明用",
-    slideCount: "15枚",
-    theme:
-      "脳卒中片麻痺の方が自宅で安全に自主トレを継続するためのポイントを説明したい",
-    audience: "家族",
-    goal: "退院後の生活をイメージしてもらう",
-    tone: "かみ砕いて説明",
-    visualStyleId: "gentle-family",
-  },
-  {
-    id: "tka-precautions",
-    label: "TKA術後の注意点",
-    purpose: "利用者説明用",
-    slideCount: "10枚",
-    theme: "TKA術後の日常生活で膝に負担をかけすぎないための注意点を説明したい",
-    audience: "利用者本人",
-    goal: "注意点を共有する",
-    tone: "かみ砕いて説明",
-    visualStyleId: "ok-ng-compare",
-  },
-  {
-    id: "community-rehab",
-    label: "生活期リハビリとは",
-    purpose: "新人教育用",
-    slideCount: "15枚",
-    theme: "生活期リハビリの考え方と、機能訓練だけで終わらない関わり方を伝えたい",
-    audience: "新人スタッフ",
-    goal: "理解してもらう",
-    tone: "研修資料らしく",
-    visualStyleId: "training-slate",
-  },
-  {
-    id: "case-presentation",
-    label: "症例発表テンプレート",
-    purpose: "症例発表用",
-    slideCount: "15枚",
-    theme: "症例の評価、問題点、介入、経過、考察を分かりやすく整理したい",
-    audience: "リハ職",
-    goal: "症例の経過を伝える",
-    tone: "症例発表向けに整理",
-    visualStyleId: "case-conference",
+    designPolicy: "やさしい家族説明資料",
+    slides: [
+      { kind: "表紙", title: "自主トレの大切さ", message: "家族向け説明のテーマをやさしく伝える", note: "" },
+      { kind: "導入", title: "なぜ自主トレが必要か", message: "退院後の生活で自主トレが役立つ理由を伝える", note: "" },
+      { kind: "本文", title: "続けることで得られること", message: "継続による生活面のメリットを伝える", note: "" },
+      { kind: "図解", title: "家族の関わり方", message: "過介助にならない見守り方を示す", note: "" },
+      { kind: "まとめ", title: "無理なく続ける工夫", message: "家で続けやすくする工夫をまとめる", note: "" },
+    ],
   },
   {
     id: "pre-discharge",
     label: "退院前指導",
     purpose: "退院前指導用",
-    slideCount: "20枚",
-    theme:
-      "退院後の生活で安全に過ごすための環境調整、動作方法、家族の見守りポイントを伝えたい",
+    slideCount: "7枚",
+    theme: "退院後の生活で安全に過ごすための環境調整、動作方法、家族の見守りポイントを伝えたい",
     audience: "家族",
     goal: "退院後の生活をイメージしてもらう",
-    tone: "やさしい言葉",
-    visualStyleId: "medical-clean",
+    designPolicy: "A4配布資料にも転用しやすい構成",
+    slides: [
+      { kind: "表紙", title: "退院後の安全な暮らし", message: "退院前指導の全体テーマを伝える", note: "" },
+      { kind: "導入", title: "自宅生活で大切な視点", message: "病院と自宅で環境が変わることを伝える", note: "" },
+      { kind: "本文", title: "移動と転倒予防", message: "歩行や移乗で注意したい場面を整理する", note: "" },
+      { kind: "本文", title: "トイレ・入浴の注意点", message: "生活場面ごとの安全確認ポイントを伝える", note: "" },
+      { kind: "図解", title: "環境調整のポイント", message: "手すり、段差、動線、照明などを図解で示す", note: "" },
+      { kind: "本文", title: "家族の見守り方", message: "やりすぎない支援と相談が必要な場面を伝える", note: "" },
+      { kind: "まとめ", title: "退院後に確認すること", message: "安全に過ごすための確認項目を簡潔にまとめる", note: "" },
+    ],
   },
 ];
+
+export function slideCountToNumber(slideCount: SlideCount | null): number {
+  if (!slideCount) return 0;
+  return Number.parseInt(slideCount.replace("枚", ""), 10);
+}

@@ -3,30 +3,26 @@
 import { useCallback, useMemo, useState } from "react";
 import { OptionCard } from "./OptionCard";
 import { PromptPreview } from "./PromptPreview";
-import { DesignCard } from "./DesignCard";
-import { buildSlidePrompt } from "./buildSlidePrompt";
+import { SlideConfigEditor } from "./SlideConfigEditor";
+import { buildPrompt } from "./buildPrompt";
 import {
   AUDIENCES,
+  DESIGN_POLICIES,
   EXTRA_OPTIONS,
   GOALS,
   PRESETS,
   PURPOSES,
   SLIDE_COUNTS,
-  TONES,
+  slideCountToNumber,
   type Audience,
+  type DesignPolicy,
   type ExtraOption,
   type Goal,
   type Preset,
   type Purpose,
+  type SlideConfig,
   type SlideCount,
-  type Tone,
 } from "./constants";
-import {
-  defaultVisualStyleId,
-  getVisualStylePreset,
-  visualStylePresets,
-  type VisualStyleId,
-} from "./visualStylePresets";
 
 function Section({
   step,
@@ -43,30 +39,26 @@ function Section({
 }) {
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 sm:p-6">
-      <div className="mb-4 flex items-start justify-between gap-4">
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-slate-950 text-xs font-black text-white">
-            {step}
-          </span>
-          <div>
-            <h3 className="flex flex-wrap items-center gap-2 text-base font-black text-slate-900">
-              {title}
-              {required ? (
-                <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-bold text-rose-500">
-                  必須
-                </span>
-              ) : (
-                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-400">
-                  任意
-                </span>
-              )}
-            </h3>
-            {description ? (
-              <p className="mt-1 text-xs font-medium leading-relaxed text-slate-500">
-                {description}
-              </p>
-            ) : null}
-          </div>
+      <div className="mb-4 flex items-start gap-3">
+        <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-slate-950 text-xs font-black text-white">
+          {step}
+        </span>
+        <div>
+          <h3 className="flex flex-wrap items-center gap-2 text-base font-black text-slate-900">
+            {title}
+            <span
+              className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                required ? "bg-rose-50 text-rose-500" : "bg-slate-100 text-slate-400"
+              }`}
+            >
+              {required ? "必須" : "任意"}
+            </span>
+          </h3>
+          {description && (
+            <p className="mt-1 text-xs font-medium leading-relaxed text-slate-500">
+              {description}
+            </p>
+          )}
         </div>
       </div>
       {children}
@@ -74,27 +66,18 @@ function Section({
   );
 }
 
-function ProgressPill({
-  label,
-  done,
-}: {
-  label: string;
-  done: boolean;
-}) {
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold ${
-        done
-          ? "border-sky-200 bg-sky-50 text-sky-700"
-          : "border-slate-200 bg-white text-slate-400"
-      }`}
-    >
-      <span
-        className={`h-2 w-2 rounded-full ${done ? "bg-sky-500" : "bg-slate-300"}`}
-      />
-      {label}
-    </span>
-  );
+function createDefaultSlides(count: number): SlideConfig[] {
+  return Array.from({ length: count }).map((_, index) => ({
+    kind: index === 0 ? "表紙" : index === count - 1 ? "まとめ" : index === 1 ? "導入" : "本文",
+    title: index === 0 ? "タイトル" : index === count - 1 ? "まとめ" : "",
+    message: "",
+    note: "",
+  }));
+}
+
+function adjustSlides(slides: SlideConfig[], count: number): SlideConfig[] {
+  const defaults = createDefaultSlides(count);
+  return defaults.map((defaultSlide, index) => slides[index] ?? defaultSlide);
 }
 
 export function SlidePromptGenerator() {
@@ -103,16 +86,23 @@ export function SlidePromptGenerator() {
   const [theme, setTheme] = useState("");
   const [audience, setAudience] = useState<Audience | null>(null);
   const [goal, setGoal] = useState<Goal | null>(null);
-  const [tone, setTone] = useState<Tone | null>(null);
-  const [selectedVisualStyleId, setSelectedVisualStyleId] =
-    useState<VisualStyleId>(defaultVisualStyleId);
+  const [designPolicy, setDesignPolicy] = useState<DesignPolicy | null>(null);
   const [extras, setExtras] = useState<ExtraOption[]>([]);
+  const [slides, setSlides] = useState<SlideConfig[]>(createDefaultSlides(5));
 
   const toggleExtra = useCallback((value: ExtraOption) => {
     setExtras((prev) =>
-      prev.includes(value) ? prev.filter((e) => e !== value) : [...prev, value]
+      prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
     );
   }, []);
+
+  const handleSlideCount = useCallback(
+    (value: SlideCount) => {
+      setSlideCount(value);
+      setSlides((prev) => adjustSlides(prev, slideCountToNumber(value)));
+    },
+    []
+  );
 
   const applyPreset = useCallback((preset: Preset) => {
     setPurpose(preset.purpose);
@@ -120,8 +110,9 @@ export function SlidePromptGenerator() {
     setTheme(preset.theme);
     setAudience(preset.audience);
     setGoal(preset.goal);
-    setTone(preset.tone);
-    setSelectedVisualStyleId(preset.visualStyleId);
+    setDesignPolicy(preset.designPolicy);
+    setExtras([]);
+    setSlides(preset.slides);
   }, []);
 
   const handleReset = useCallback(() => {
@@ -130,74 +121,60 @@ export function SlidePromptGenerator() {
     setTheme("");
     setAudience(null);
     setGoal(null);
-    setTone(null);
-    setSelectedVisualStyleId(defaultVisualStyleId);
+    setDesignPolicy(null);
     setExtras([]);
+    setSlides(createDefaultSlides(5));
   }, []);
 
-  const selectedVisualStyle = useMemo(
-    () => getVisualStylePreset(selectedVisualStyleId),
-    [selectedVisualStyleId]
+  const updateSlide = useCallback((index: number, patch: Partial<SlideConfig>) => {
+    setSlides((prev) =>
+      prev.map((slide, slideIndex) =>
+        slideIndex === index ? { ...slide, ...patch } : slide
+      )
+    );
+  }, []);
+
+  const output = useMemo(
+    () =>
+      buildPrompt({
+        purpose,
+        slideCount,
+        theme,
+        audience,
+        goal,
+        designPolicy,
+        extras,
+        slides,
+      }),
+    [purpose, slideCount, theme, audience, goal, designPolicy, extras, slides]
   );
-
-  const prompt = useMemo(() => {
-    return buildSlidePrompt({
-      purpose,
-      slideCount,
-      theme,
-      audience,
-      goal,
-      tone,
-      visualStyleId: selectedVisualStyleId,
-      extras,
-    });
-  }, [purpose, slideCount, theme, audience, goal, tone, selectedVisualStyleId, extras]);
-
-  const completedRequiredCount = [
-    Boolean(purpose),
-    Boolean(slideCount),
-    Boolean(theme.trim()),
-  ].filter(Boolean).length;
 
   return (
     <div className="space-y-6">
       <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 sm:p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">
-              Quick Start
-            </p>
-            <h3 className="mt-1 text-lg font-black text-slate-900">
-              プリセットから始める
-            </h3>
-            <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">
-              よくある資料の型を読み込んで、テーマだけ微調整できます。
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <ProgressPill label="用途" done={Boolean(purpose)} />
-            <ProgressPill label="枚数" done={Boolean(slideCount)} />
-            <ProgressPill label="テーマ" done={Boolean(theme.trim())} />
-          </div>
+        <div className="mb-5">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">
+            Quick Start
+          </p>
+          <h3 className="mt-1 text-lg font-black text-slate-900">
+            プリセットから始める
+          </h3>
+          <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">
+            よく使う資料の型を読み込んで、各スライドの内容を調整できます。
+          </p>
         </div>
-
-        <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-2 sm:grid-cols-3">
           {PRESETS.map((preset) => (
             <button
               key={preset.id}
               type="button"
               onClick={() => applyPreset(preset)}
-              className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left transition-colors hover:border-sky-300 hover:bg-sky-50"
+              className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left transition-colors hover:border-sky-300 hover:bg-sky-50"
             >
-              <span className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white text-sky-600 ring-1 ring-slate-200 group-hover:ring-sky-200">
-            <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-              <path d="M10 1.5 12.5 7l5.5.5-4.2 3.7 1.3 5.4L10 13.8 4.9 16.6l1.3-5.4L2 7.5 7.5 7 10 1.5Z" />
-            </svg>
-              </span>
-              <span className="block text-sm font-black leading-snug text-slate-900">
+              <span className="block text-sm font-black text-slate-900">
                 {preset.label}
               </span>
-              <span className="mt-2 block text-xs font-medium leading-relaxed text-slate-500">
+              <span className="mt-2 block text-xs font-medium text-slate-500">
                 {preset.slideCount} / {preset.audience}
               </span>
             </button>
@@ -207,19 +184,14 @@ export function SlidePromptGenerator() {
 
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
         <div className="space-y-6">
-          <Section
-            step={1}
-            title="使用用途"
-            required
-            description="誰に、どの場面で使う資料かを選びます。"
-          >
+          <Section step={1} title="使用用途" required>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {PURPOSES.map((p) => (
+              {PURPOSES.map((item) => (
                 <OptionCard
-                  key={p}
-                  label={p}
-                  selected={purpose === p}
-                  onClick={() => setPurpose(purpose === p ? null : p)}
+                  key={item}
+                  label={item}
+                  selected={purpose === item}
+                  onClick={() => setPurpose(purpose === item ? null : item)}
                 />
               ))}
             </div>
@@ -227,12 +199,12 @@ export function SlidePromptGenerator() {
 
           <Section step={2} title="スライド枚数" required>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {SLIDE_COUNTS.map((c) => (
+              {SLIDE_COUNTS.map((item) => (
                 <OptionCard
-                  key={c}
-                  label={c}
-                  selected={slideCount === c}
-                  onClick={() => setSlideCount(slideCount === c ? null : c)}
+                  key={item}
+                  label={item}
+                  selected={slideCount === item}
+                  onClick={() => handleSlideCount(item)}
                 />
               ))}
             </div>
@@ -242,25 +214,25 @@ export function SlidePromptGenerator() {
             step={3}
             title="テーマ"
             required
-            description="その資料で一番伝えたいことを、普段の言葉で入れてください。"
+            description="資料全体で扱うテーマを入力してください。"
           >
             <textarea
               value={theme}
-              onChange={(e) => setTheme(e.target.value)}
+              onChange={(event) => setTheme(event.target.value)}
               rows={4}
               placeholder="例：転倒予防について、介護職が明日から注意できるポイントを伝えたい"
-              className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium leading-relaxed text-slate-800 placeholder:text-slate-400 transition-all focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-100"
+              className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium leading-relaxed text-slate-800 placeholder:text-slate-400 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-100"
             />
           </Section>
 
-          <Section step={4} title="対象者" description="任意ですが、入れると表現の粒度が安定します。">
+          <Section step={4} title="対象者">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {AUDIENCES.map((a) => (
+              {AUDIENCES.map((item) => (
                 <OptionCard
-                  key={a}
-                  label={a}
-                  selected={audience === a}
-                  onClick={() => setAudience(audience === a ? null : a)}
+                  key={item}
+                  label={item}
+                  selected={audience === item}
+                  onClick={() => setAudience(audience === item ? null : item)}
                 />
               ))}
             </div>
@@ -268,71 +240,57 @@ export function SlidePromptGenerator() {
 
           <Section step={5} title="資料のゴール">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {GOALS.map((g) => (
+              {GOALS.map((item) => (
                 <OptionCard
-                  key={g}
-                  label={g}
-                  selected={goal === g}
-                  onClick={() => setGoal(goal === g ? null : g)}
+                  key={item}
+                  label={item}
+                  selected={goal === item}
+                  onClick={() => setGoal(goal === item ? null : item)}
                 />
               ))}
             </div>
           </Section>
 
-          <Section step={6} title="トーン">
+          <Section step={6} title="デザイン方針">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {TONES.map((t) => (
+              {DESIGN_POLICIES.map((item) => (
                 <OptionCard
-                  key={t}
-                  label={t}
-                  selected={tone === t}
-                  onClick={() => setTone(tone === t ? null : t)}
+                  key={item}
+                  label={item}
+                  selected={designPolicy === item}
+                  onClick={() => setDesignPolicy(designPolicy === item ? null : item)}
+                />
+              ))}
+            </div>
+          </Section>
+
+          <Section step={7} title="追加オプション">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {EXTRA_OPTIONS.map((item) => (
+                <OptionCard
+                  key={item}
+                  label={item}
+                  multi
+                  compact
+                  selected={extras.includes(item)}
+                  onClick={() => toggleExtra(item)}
                 />
               ))}
             </div>
           </Section>
 
           <Section
-            step={7}
-            title="ビジュアルスタイル"
+            step={8}
+            title="各スライド設定"
             required
-            description="選んだスタイルは、右側の生成プロンプト本文にそのまま反映されます。"
+            description="選択した枚数分だけ、各スライドで伝えたいことを編集できます。"
           >
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {visualStylePresets.map((style) => (
-                <DesignCard
-                  key={style.id}
-                  style={style}
-                  selected={selectedVisualStyleId === style.id}
-                  onSelect={() => setSelectedVisualStyleId(style.id)}
-                />
-              ))}
-            </div>
-          </Section>
-
-          <Section step={8} title="追加オプション">
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {EXTRA_OPTIONS.map((o) => (
-                <OptionCard
-                  key={o}
-                  label={o}
-                  multi
-                  compact
-                  selected={extras.includes(o)}
-                  onClick={() => toggleExtra(o)}
-                />
-              ))}
-            </div>
+            <SlideConfigEditor slides={slides} onChange={updateSlide} />
           </Section>
         </div>
 
         <div className="lg:sticky lg:top-24">
-          <PromptPreview
-            prompt={prompt}
-            onReset={handleReset}
-            completedCount={completedRequiredCount}
-            visualStyle={selectedVisualStyle}
-          />
+          <PromptPreview output={output} onReset={handleReset} />
         </div>
       </div>
     </div>

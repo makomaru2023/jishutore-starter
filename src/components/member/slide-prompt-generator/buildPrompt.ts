@@ -1,9 +1,12 @@
 import {
   PURPOSE_GUIDELINES,
+  slideCountToNumber,
   type Audience,
+  type DesignPolicy,
   type ExtraOption,
   type Goal,
   type Purpose,
+  type SlideConfig,
   type SlideCount,
 } from "./constants";
 
@@ -13,74 +16,160 @@ export interface PromptInput {
   theme: string;
   audience: Audience | null;
   goal: Goal | null;
-  /** 選択されたビジュアルスタイルの説明文（slideDesigns の buildDesignDescriptor） */
-  design: string | null;
+  designPolicy: DesignPolicy | null;
   extras: ExtraOption[];
+  slides: SlideConfig[];
 }
 
-/** 必須項目（用途・枚数・テーマ）が揃っているか */
-export function isPromptReady(input: PromptInput): boolean {
-  return Boolean(input.purpose && input.slideCount && input.theme.trim());
+export interface PromptOutput {
+  allPrompt: string;
+  slidePrompts: string[];
+  missingRequired: boolean;
+  missingSlideMessages: boolean;
 }
 
-/**
- * 入力内容からChatGPTに貼り付けるプロンプト文字列を生成する。
- * 必須項目が未入力の場合は null を返す。
- */
-export function buildPrompt(input: PromptInput): string | null {
-  if (!isPromptReady(input)) return null;
+function valueOrDefault(value: string | null | undefined): string {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : "指定なし";
+}
 
-  const purpose = input.purpose as Purpose;
-  const slideCount = input.slideCount as SlideCount;
-  const theme = input.theme.trim();
-  const audience = input.audience ?? "指定なし（用途に合わせて適切に設定してください）";
-  const goal = input.goal ?? "指定なし";
-  const design =
-    input.design ?? "指定なし（医療・介護向けの清潔感あるデザイン）";
+function listLines(items: string[]): string {
+  return items.length > 0 ? items.map((item) => `- ${item}`).join("\n") : "- 指定なし";
+}
 
-  const extras =
-    input.extras.length > 0
-      ? input.extras.map((e) => `- ${e}`).join("\n")
-      : "- 特になし";
+function commonImageRules(): string {
+  return `- あなたは医療・介護分野に強いプロのスライドデザイナーです
+- プレゼン資料で使う16:9横長のスライド画像を作成してください
+- 1回の生成で1枚の独立したスライド画像を作成してください
+- 複数スライドを1枚にまとめた一覧画像、グリッド、コラージュは作らないでください
+- 白背景を基調にする
+- 薄い青とグレーを中心に使う
+- 清潔感のある医療・介護向けデザインにする
+- 余白を広く取る
+- 文字量は少なめにする
+- 1スライド1メッセージにする
+- 読みやすい日本語にする
+- 箇条書きは短くする
+- 高齢者や家族にも見やすいデザインにする
+- 図解や簡単なアイコンを必要に応じて使う
+- 過度に派手にしない
+- 不安や痛みを強くあおる表現は避ける
+- 医学的に断定しすぎる表現は避ける
+- 「必ず改善する」「これだけで十分」などの断定表現は避ける
+- 個人情報は含めない`;
+}
 
-  const guidelines = PURPOSE_GUIDELINES[purpose]
-    .map((g) => `- ${g}`)
+function slideSummary(slides: SlideConfig[]): string {
+  return slides
+    .map(
+      (slide, index) =>
+        `${index + 1}枚目：${slide.kind} / タイトル：${valueOrDefault(slide.title)} / 伝えたいこと：${valueOrDefault(slide.message)}${
+          slide.note.trim() ? ` / 補足：${slide.note.trim()}` : ""
+        }`
+    )
     .join("\n");
+}
 
-  return `あなたは医療・介護分野に強いプロのスライド構成作家です。
-以下の条件に沿って、${purpose}のスライド構成案を作成してください。
+export function buildSingleSlidePrompt(
+  input: PromptInput,
+  slide: SlideConfig,
+  index: number
+): string {
+  const total = input.slides.length || slideCountToNumber(input.slideCount);
+  const purposeGuidelines = input.purpose ? PURPOSE_GUIDELINES[input.purpose] : [];
 
-# 基本情報
-- 使用用途：${purpose}
-- スライド枚数：${slideCount}（表紙・まとめスライドを含む）
-- テーマ：${theme}
-- 対象者：${audience}
-- 資料のゴール：${goal}
-- デザイン方針：${design}
+  return `あなたは医療・介護分野に強いプロのスライドデザイナーです。
 
-# 追加オプション
-${extras}
+プレゼン資料で使う16:9横長のスライド画像を1枚だけ作成してください。
+1回の生成で1枚の独立したスライド画像を作成してください。
+複数枚をまとめた一覧画像、グリッド、コラージュは作らないでください。
 
-# ${purpose}としての作成方針
-${guidelines}
+【現在作るスライド】
+- スライド番号：${index + 1}枚目
+- 全体枚数：${total || "指定なし"}
+- スライドの役割：${slide.kind}
+- タイトル：${valueOrDefault(slide.title)}
+- このスライドで伝えたいこと：${valueOrDefault(slide.message)}
+- 補足内容：${valueOrDefault(slide.note)}
 
-# 出力形式
-各スライドについて、以下の項目を順番に出力してください。
-1. スライド番号
-2. スライドタイトル
-3. メインメッセージ（そのスライドで一番伝えたいこと・1文）
-4. 本文（箇条書き中心。実際に話す・載せる内容の要点）
-5. 図解・イラスト案（どんな図やイメージが合うか）
-6. 自主トレ素材庫のイラストを使う場合の挿入案（どの場面でどんなイラストを入れると良いか）
-7. 発表者ノート（口頭で補足する内容）
+【資料全体の条件】
+- 使用用途：${input.purpose ?? "指定なし"}
+- テーマ：${valueOrDefault(input.theme)}
+- 対象者：${input.audience ?? "指定なし"}
+- 資料のゴール：${input.goal ?? "指定なし"}
+- デザイン方針：${input.designPolicy ?? "指定なし"}
+- 追加オプション：
+${listLines([...input.extras])}
 
-PowerPointにそのまま貼り付けやすいよう、スライドごとに区切って整理して出力してください。
+【使用用途ごとの指示】
+${listLines(purposeGuidelines)}
 
-# 注意点
-- 医学的に断定しすぎる表現は避けてください。
-- 「必ず改善する」「これだけで十分」「全員に効果がある」などの表現は使わないでください。
-- 実際の指導では、主治医や担当療法士の方針を優先する旨を添えてください。
-- 個人情報は含めないでください。
-- 症例発表の場合は、年齢・疾患・生活背景などが個人特定につながらないように匿名化してください。
-- PowerPointに貼り付けやすいよう、スライドごとに整理してください。`;
+【画像生成ルール】
+${commonImageRules()}
+
+【このスライドの見せ方】
+- 文字量は少なめにする
+- 1スライド1メッセージにする
+- 箇条書きは短く、最大3項目までにする
+- 白背景ベース、薄い青とグレー中心にする
+- 医療・介護向けの清潔感を出す
+- 必要に応じて図解、簡単なアイコン、人物シルエットを使う
+- 高齢者や家族にも見やすい大きめの文字にする
+- 過度に派手にしない
+- 読みやすい日本語だけを使う
+
+この条件で、1枚の独立したスライド画像として出力してください。`;
+}
+
+export function buildPrompt(input: PromptInput): PromptOutput {
+  const missingRequired = !input.purpose || !input.slideCount || !input.theme.trim();
+  const missingSlideMessages = input.slides.some((slide) => !slide.message.trim());
+  const purposeGuidelines = input.purpose ? PURPOSE_GUIDELINES[input.purpose] : [];
+  const total = input.slides.length || slideCountToNumber(input.slideCount);
+  const slidePrompts = input.slides.map((slide, index) =>
+    buildSingleSlidePrompt(input, slide, index)
+  );
+
+  const allPrompt = `あなたは医療・介護分野に強いプロのスライドデザイナーです。
+
+以下の条件に沿って、プレゼン資料で使う16:9横長のスライド画像を作成するためのプロンプト案を整理してください。
+画像生成は1回につき1枚のスライド画像です。
+一覧コラージュや複数枚まとめ画像は作らないでください。
+
+【資料全体】
+- この資料は全${total || "指定なし"}枚構成です
+- 使用用途：${input.purpose ?? "指定なし"}
+- テーマ：${valueOrDefault(input.theme)}
+- 対象者：${input.audience ?? "指定なし"}
+- 資料のゴール：${input.goal ?? "指定なし"}
+- デザイン方針：${input.designPolicy ?? "指定なし"}
+
+【各スライドの役割】
+${slideSummary(input.slides)}
+
+【使用用途ごとの指示】
+${listLines(purposeGuidelines)}
+
+【追加オプション】
+${listLines([...input.extras])}
+
+【全体のデザインルール】
+${commonImageRules()}
+
+【作成方針】
+- 各スライドは独立した1枚画像として生成する
+- 1枚ずつ順番に生成できるよう、スライドごとの意図を明確にする
+- 表紙、導入、本文、図解、まとめの役割に応じて見せ方を変える
+- 文字を詰め込みすぎず、見出し・短い要点・図解で伝える
+- 一覧やコラージュではなく、1枚ごとに完成した横長スライド画像にする
+
+【個別生成時の注意】
+各スライドを作るときは、下の「各スライドごとの個別プロンプト」を1つずつChatGPTに貼り付けてください。`;
+
+  return {
+    allPrompt,
+    slidePrompts,
+    missingRequired,
+    missingSlideMessages,
+  };
 }

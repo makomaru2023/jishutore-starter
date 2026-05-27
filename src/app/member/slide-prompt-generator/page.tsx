@@ -4,9 +4,9 @@ import { Footer } from "@/components/Footer";
 import { SlidePromptGenerator } from "@/components/member/slide-prompt-generator/SlidePromptGenerator";
 
 export const metadata: Metadata = {
-  title: "リハ職向けスライド作成プロンプトメーカー｜自主トレ素材庫",
+  title: "リハ職向けスライド画像プロンプトメーカー｜自主トレ素材庫",
   description:
-    "用途・枚数・テーマを選ぶだけで、ChatGPTにそのまま貼り付けられるスライド作成プロンプトを生成します。",
+    "用途・テーマ・枚数を選ぶだけで、ChatGPTにそのまま貼り付けられるスライド画像生成プロンプトを作成できます。",
   robots: { index: false, follow: false },
 };
 
@@ -25,11 +25,11 @@ export default function SlidePromptGeneratorPage() {
                 購入者専用ツール
               </p>
               <h1 className="max-w-3xl text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-                リハ職向けスライド作成プロンプトメーカー
+                リハ職向けスライド画像プロンプトメーカー
               </h1>
               <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
-                用途・枚数・テーマを選ぶだけで、ChatGPTにそのまま貼り付けられるスライド作成プロンプトを生成します。
-                家族説明、勉強会、症例発表、自主トレ指導資料のたたき台作成に使えます。
+                用途・テーマ・枚数を選ぶだけで、ChatGPT にそのまま貼り付けられるスライド画像生成プロンプトを作成できます。
+                家族説明、勉強会、利用者説明、退院前指導などの資料づくりに使えます。
               </p>
 
               <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4">
