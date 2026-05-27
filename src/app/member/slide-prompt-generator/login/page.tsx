@@ -4,9 +4,9 @@ import { Footer } from "@/components/Footer";
 import { LoginForm } from "@/components/member/slide-prompt-generator/LoginForm";
 
 export const metadata: Metadata = {
-  title: "購入者専用ページ｜スライド画像プロンプトメーカー｜自主トレ素材庫",
+  title: "購入者専用ページ｜伝わるプロンプト工房｜自主トレ素材庫",
   description:
-    "スライド画像プロンプトメーカーを利用するには、購入時に案内されたパスワードを入力してください。",
+    "伝わるプロンプト工房を利用するには、購入時に案内されたパスワードを入力してください。",
   robots: { index: false, follow: false },
 };
 
@@ -39,7 +39,7 @@ export default function SlidePromptLoginPage() {
               購入者専用ページ
             </h1>
             <p className="text-sm font-medium leading-relaxed text-slate-500">
-              スライド画像プロンプトメーカーを利用するには、購入時に案内されたパスワードを入力してください。
+              伝わるプロンプト工房を利用するには、購入時に案内されたパスワードを入力してください。
             </p>
           </div>
 

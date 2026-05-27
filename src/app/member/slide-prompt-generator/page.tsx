@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { SlidePromptGenerator } from "@/components/member/slide-prompt-generator/SlidePromptGenerator";
 
 export const metadata: Metadata = {
-  title: "リハ職向けスライド画像プロンプトメーカー｜自主トレ素材庫",
+  title: "伝わるプロンプト工房｜自主トレ素材庫",
   description:
     "用途・テーマ・枚数を選ぶだけで、ChatGPTにそのまま貼り付けられるスライド画像生成プロンプトを作成できます。",
   robots: { index: false, follow: false },
@@ -25,9 +25,8 @@ export default function SlidePromptGeneratorPage() {
                 購入者専用ツール
               </p>
               <h1 className="flex max-w-3xl flex-wrap gap-x-3 text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-                <span className="inline-block">リハ職向け</span>
-                <span className="inline-block">スライド画像</span>
-                <span className="inline-block">プロンプトメーカー</span>
+                <span className="inline-block">伝わる</span>
+                <span className="inline-block">プロンプト工房</span>
               </h1>
               <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
                 用途・テーマ・枚数を選ぶだけで、ChatGPT にそのまま貼り付けられるスライド画像生成プロンプトを作成できます。
