@@ -31,7 +31,7 @@ export function HomePremiumPromo() {
 
                     <div className="mt-8 text-center">
                         <Link
-                            href="/premium"
+                            href="/products/self-training-materials"
                             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-all"
                         >
                             PowerPoint資料の詳細を見る

@@ -9,7 +9,7 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
     if (variant === "subtle") {
         return (
             <Link
-                href="/premium"
+                href="/products/self-training-materials"
                 className="group flex items-center gap-4 px-5 py-4 bg-white border border-slate-200 rounded-2xl hover:border-teal-300 hover:shadow-md transition-all"
             >
                 <div className="shrink-0 w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
@@ -59,7 +59,7 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
 
     return (
         <Link
-            href="/premium"
+            href="/products/self-training-materials"
             className="group block bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-teal-400/50 transition-all"
         >
             <div className="relative px-6 py-6 sm:px-10 sm:py-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">

@@ -38,6 +38,11 @@ const nextConfig = {
         destination: '/about',
         permanent: true,
       },
+      {
+        source: '/premium',
+        destination: '/products/self-training-materials',
+        permanent: true,
+      },
     ];
   },
 };

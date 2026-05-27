@@ -13,7 +13,7 @@ type ProductConfig = {
 const PRODUCTS: Record<string, ProductConfig> = {
     'self-training-materials-vol01': {
         priceId: process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET,
-        cancelPath: '/premium',
+        cancelPath: '/products/self-training-materials',
     },
 };
 

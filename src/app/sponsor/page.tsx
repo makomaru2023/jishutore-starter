@@ -114,7 +114,7 @@ const plans: Plan[] = [
         price: "月額 10,000円",
         items: [
             "トップページまたは主要導線付近に掲載",
-            "/items または /premium 下部に掲載",
+            "/items または /products/self-training-materials 下部に掲載",
             "200文字程度の紹介文掲載",
             "バナー画像掲載可能",
             "noteまたはSNSでの紹介を相談可能",
