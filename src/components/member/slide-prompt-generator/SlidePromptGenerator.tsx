@@ -157,7 +157,7 @@ export function SlidePromptGenerator() {
             TEMPLATE
           </p>
           <h3 className="mt-1 text-lg font-black text-slate-900">
-            入力テンプレートから始める
+            テンプレートの選択
           </h3>
           <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">
             クリックすると、テーマや各スライドのたたき台をまとめて入力します。読み込んだあとに、下の項目は自由に変更できます。

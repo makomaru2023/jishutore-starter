@@ -24,8 +24,10 @@ export default function SlidePromptGeneratorPage() {
                 </svg>
                 購入者専用ツール
               </p>
-              <h1 className="max-w-3xl text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-                リハ職向けスライド画像プロンプトメーカー
+              <h1 className="flex max-w-3xl flex-wrap gap-x-3 text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                <span className="inline-block">リハ職向け</span>
+                <span className="inline-block">スライド画像</span>
+                <span className="inline-block">プロンプトメーカー</span>
               </h1>
               <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
                 用途・テーマ・枚数を選ぶだけで、ChatGPT にそのまま貼り付けられるスライド画像生成プロンプトを作成できます。
