@@ -16,7 +16,7 @@ export default function SlidePromptGeneratorPage() {
       <Header />
       <main className="flex-1">
         <section className="border-b border-slate-200 bg-white">
-          <div className="container mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:py-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
+          <div className="container mx-auto grid max-w-6xl gap-8 px-4 pb-6 pt-10 sm:pb-8 sm:pt-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
             <div>
               <p className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-3.5 py-1.5 text-xs font-black tracking-wide text-sky-700">
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
@@ -71,7 +71,7 @@ export default function SlidePromptGeneratorPage() {
           </div>
         </section>
 
-        <section className="py-8 sm:py-12">
+        <section className="pb-8 pt-4 sm:pb-12 sm:pt-6">
           <div className="container mx-auto max-w-6xl px-4">
             <SlidePromptGenerator />
           </div>
