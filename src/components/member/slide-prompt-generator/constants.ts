@@ -145,6 +145,7 @@ export const PURPOSE_GUIDELINES: Record<Purpose, string[]> = {
 export interface Preset {
   id: string;
   label: string;
+  summary: string;
   purpose: Purpose;
   slideCount: SlideCount;
   theme: string;
@@ -158,6 +159,7 @@ export const PRESETS: Preset[] = [
   {
     id: "fall-prevention",
     label: "転倒予防の勉強会",
+    summary: "介護職向けの導入、原因整理、OK/NG比較まで入った勉強会の型です。",
     purpose: "介護職向け勉強会",
     slideCount: "5枚",
     theme: "転倒予防について、介護職が明日から注意できるポイントを伝えたい",
@@ -175,6 +177,7 @@ export const PRESETS: Preset[] = [
   {
     id: "self-training-need",
     label: "自主トレの必要性",
+    summary: "家族に自主トレの意味と見守り方をやさしく伝える説明資料の型です。",
     purpose: "家族説明用",
     slideCount: "5枚",
     theme: "退院後も自主トレを継続する必要性を家族に分かりやすく伝えたい",
@@ -192,6 +195,7 @@ export const PRESETS: Preset[] = [
   {
     id: "pre-discharge",
     label: "退院前指導",
+    summary: "自宅生活の安全確認、環境調整、家族の見守りを整理する指導資料の型です。",
     purpose: "退院前指導用",
     slideCount: "7枚",
     theme: "退院後の生活で安全に過ごすための環境調整、動作方法、家族の見守りポイントを伝えたい",

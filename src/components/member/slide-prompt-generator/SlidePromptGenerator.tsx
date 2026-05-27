@@ -154,14 +154,22 @@ export function SlidePromptGenerator() {
       <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 sm:p-6">
         <div className="mb-5">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">
-            Quick Start
+            TEMPLATE
           </p>
           <h3 className="mt-1 text-lg font-black text-slate-900">
-            プリセットから始める
+            入力テンプレートから始める
           </h3>
           <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">
-            よく使う資料の型を読み込んで、各スライドの内容を調整できます。
+            クリックすると、テーマや各スライドのたたき台をまとめて入力します。読み込んだあとに、下の項目は自由に変更できます。
           </p>
+          <div className="mt-3 grid gap-2 text-xs font-bold leading-relaxed text-slate-500 sm:grid-cols-2">
+            <div className="rounded-2xl bg-sky-50 px-3 py-2 text-sky-800">
+              入力テンプレート：よく使う資料のたたき台を一括入力
+            </div>
+            <div className="rounded-2xl bg-slate-100 px-3 py-2 text-slate-600">
+              使用用途：生成プロンプトの言葉づかい・構成方針を決定
+            </div>
+          </div>
         </div>
         <div className="grid gap-2 sm:grid-cols-3">
           {PRESETS.map((preset) => (
@@ -174,8 +182,8 @@ export function SlidePromptGenerator() {
               <span className="block text-sm font-black text-slate-900">
                 {preset.label}
               </span>
-              <span className="mt-2 block text-xs font-medium text-slate-500">
-                {preset.slideCount} / {preset.audience}
+              <span className="mt-2 block text-xs font-medium leading-relaxed text-slate-500">
+                {preset.summary}
               </span>
             </button>
           ))}
@@ -184,7 +192,12 @@ export function SlidePromptGenerator() {
 
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
         <div className="space-y-6">
-          <Section step={1} title="使用用途" required>
+          <Section
+            step={1}
+            title="使用用途"
+            required
+            description="誰に、どんな場面で見せる資料かを選びます。ここで選んだ内容に合わせて、プロンプト内の作成方針が切り替わります。"
+          >
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {PURPOSES.map((item) => (
                 <OptionCard
