@@ -1,5 +1,6 @@
 import {
   PURPOSE_GUIDELINES,
+  VISUAL_STYLES,
   slideCountToNumber,
   type Audience,
   type DesignPolicy,
@@ -8,6 +9,7 @@ import {
   type Purpose,
   type SlideConfig,
   type SlideCount,
+  type VisualStyleId,
 } from "./constants";
 
 export interface PromptInput {
@@ -17,6 +19,7 @@ export interface PromptInput {
   audience: Audience | null;
   goal: Goal | null;
   designPolicy: DesignPolicy | null;
+  visualStyleId: VisualStyleId;
   extras: ExtraOption[];
   slides: SlideConfig[];
 }
@@ -59,6 +62,10 @@ function commonImageRules(): string {
 - 個人情報は含めない`;
 }
 
+function getVisualStyle(visualStyleId: VisualStyleId) {
+  return VISUAL_STYLES.find((style) => style.id === visualStyleId) ?? VISUAL_STYLES[0];
+}
+
 function slideSummary(slides: SlideConfig[]): string {
   return slides
     .map(
@@ -77,6 +84,7 @@ export function buildSingleSlidePrompt(
 ): string {
   const total = input.slides.length || slideCountToNumber(input.slideCount);
   const purposeGuidelines = input.purpose ? PURPOSE_GUIDELINES[input.purpose] : [];
+  const visualStyle = getVisualStyle(input.visualStyleId);
 
   return `あなたは医療・介護分野に強いプロのスライドデザイナーです。
 
@@ -98,8 +106,12 @@ export function buildSingleSlidePrompt(
 - 対象者：${input.audience ?? "指定なし"}
 - 資料のゴール：${input.goal ?? "指定なし"}
 - デザイン方針：${input.designPolicy ?? "指定なし"}
+- ビジュアルスタイル：${visualStyle.name}
 - 追加オプション：
 ${listLines([...input.extras])}
+
+【ビジュアルスタイルの指示】
+${visualStyle.promptBlock}
 
 【使用用途ごとの指示】
 ${listLines(purposeGuidelines)}
@@ -125,6 +137,7 @@ export function buildPrompt(input: PromptInput): PromptOutput {
   const missingRequired = !input.purpose || !input.slideCount || !input.theme.trim();
   const missingSlideMessages = input.slides.some((slide) => !slide.message.trim());
   const purposeGuidelines = input.purpose ? PURPOSE_GUIDELINES[input.purpose] : [];
+  const visualStyle = getVisualStyle(input.visualStyleId);
   const total = input.slides.length || slideCountToNumber(input.slideCount);
   const slidePrompts = input.slides.map((slide, index) =>
     buildSingleSlidePrompt(input, slide, index)
@@ -143,9 +156,13 @@ export function buildPrompt(input: PromptInput): PromptOutput {
 - 対象者：${input.audience ?? "指定なし"}
 - 資料のゴール：${input.goal ?? "指定なし"}
 - デザイン方針：${input.designPolicy ?? "指定なし"}
+- ビジュアルスタイル：${visualStyle.name}
 
 【各スライドの役割】
 ${slideSummary(input.slides)}
+
+【ビジュアルスタイルの指示】
+${visualStyle.promptBlock}
 
 【使用用途ごとの指示】
 ${listLines(purposeGuidelines)}
