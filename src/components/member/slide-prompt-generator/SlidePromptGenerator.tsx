@@ -89,6 +89,7 @@ export function SlidePromptGenerator() {
   const [designPolicy, setDesignPolicy] = useState<DesignPolicy | null>(null);
   const [extras, setExtras] = useState<ExtraOption[]>([]);
   const [slides, setSlides] = useState<SlideConfig[]>(createDefaultSlides(5));
+  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
 
   const toggleExtra = useCallback((value: ExtraOption) => {
     setExtras((prev) =>
@@ -105,6 +106,7 @@ export function SlidePromptGenerator() {
   );
 
   const applyPreset = useCallback((preset: Preset) => {
+    setSelectedPresetId(preset.id);
     setPurpose(preset.purpose);
     setSlideCount(preset.slideCount);
     setTheme(preset.theme);
@@ -124,6 +126,7 @@ export function SlidePromptGenerator() {
     setDesignPolicy(null);
     setExtras([]);
     setSlides(createDefaultSlides(5));
+    setSelectedPresetId(null);
   }, []);
 
   const updateSlide = useCallback((index: number, patch: Partial<SlideConfig>) => {
@@ -162,31 +165,48 @@ export function SlidePromptGenerator() {
           <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">
             クリックすると、テーマや各スライドのたたき台をまとめて入力します。読み込んだあとに、下の項目は自由に変更できます。
           </p>
-          <div className="mt-3 grid gap-2 text-xs font-bold leading-relaxed text-slate-500 sm:grid-cols-2">
-            <div className="rounded-2xl bg-sky-50 px-3 py-2 text-sky-800">
-              入力テンプレート：よく使う資料のたたき台を一括入力
-            </div>
-            <div className="rounded-2xl bg-slate-100 px-3 py-2 text-slate-600">
-              使用用途：生成プロンプトの言葉づかい・構成方針を決定
-            </div>
-          </div>
         </div>
         <div className="grid gap-2 sm:grid-cols-3">
-          {PRESETS.map((preset) => (
+          {PRESETS.map((preset) => {
+            const selected = selectedPresetId === preset.id;
+            return (
             <button
               key={preset.id}
               type="button"
               onClick={() => applyPreset(preset)}
-              className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-left transition-colors hover:border-sky-300 hover:bg-sky-50"
+              aria-pressed={selected}
+              className={`rounded-2xl border p-4 text-left transition-all duration-200 ${
+                selected
+                  ? "border-sky-500 bg-sky-50 shadow-sm ring-2 ring-sky-100"
+                  : "border-slate-200 bg-slate-50 hover:border-sky-300 hover:bg-sky-50"
+              }`}
             >
-              <span className="block text-sm font-black text-slate-900">
-                {preset.label}
+              <span className="flex items-start justify-between gap-3">
+                <span className="block text-sm font-black text-slate-900">
+                  {preset.label}
+                </span>
+                <span
+                  className={`mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border ${
+                    selected
+                      ? "border-sky-600 bg-sky-600 text-white"
+                      : "border-slate-300 bg-white text-transparent"
+                  }`}
+                >
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
+                    <path
+                      fillRule="evenodd"
+                      d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.2 7.3a1 1 0 0 1-1.42.005l-3.6-3.6a1 1 0 1 1 1.414-1.414l2.89 2.89 6.49-6.59a1 1 0 0 1 1.414-.005Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
               <span className="mt-2 block text-xs font-medium leading-relaxed text-slate-500">
                 {preset.summary}
               </span>
             </button>
-          ))}
+            );
+          })}
         </div>
       </section>
 
