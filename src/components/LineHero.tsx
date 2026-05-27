@@ -22,6 +22,7 @@ const tokutenList: TokutenItem[] = [
     { label: "転倒予防チェックリスト", preview: "/line-tokuten/previews/fall-prevention-checklist.jpg", ready: true },
     { label: "お薬・リハビリ記録ノート", preview: "/line-tokuten/previews/medicine-rehab-record-weekly.jpg", ready: true },
     { label: "退院後の生活Q&A集", preview: "/line-tokuten/previews/post-discharge-qa.jpg", ready: true },
+    { label: "腰痛 自主トレメニュー（資料セットサンプル）", preview: "/line-tokuten/previews/low-back-pain-jishutore.jpg", ready: true },
 ];
 
 function LineIconWhite({ className }: { className: string }) {
@@ -51,7 +52,7 @@ export function LineHero() {
                                         <path d={LINE_SVG_PATH} />
                                     </svg>
                                 </div>
-                                <p className="text-white font-black text-lg text-center leading-tight">退院後も<br />続けてもらう<br />5点セット</p>
+                                <p className="text-white font-black text-lg text-center leading-tight">退院後も<br />続けてもらう<br />6点セット</p>
                             </div>
                         </div>
 
@@ -61,11 +62,15 @@ export function LineHero() {
                                 <span className="block sm:inline">退院後も自主トレを</span>
                                 <span className="block sm:inline">続けてもらう</span>
                                 <span className="block sm:inline">
-                                    <span style={{ color: '#FDE047' }}>「5点セット」</span>を無料配布中
+                                    <span style={{ color: '#FDE047' }}>「6点セット」</span>を無料配布中
                                 </span>
                             </h2>
                             <p className="font-medium mb-6 text-sm sm:text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
                                 現役リハビリ職が現場で使っている患者配布資料。
+                                <br />
+                                <span className="font-black" style={{ color: '#FDE047' }}>
+                                    有料9本セットから「腰痛 自主トレメニュー」のサンプルも追加！
+                                </span>
                                 <br />
                                 LINE友だち追加で、今すぐ全部もらえます。
                                 <br />
