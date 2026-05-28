@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
@@ -153,18 +154,15 @@ export default function HomeElderlySelfTrainingPage() {
                             </div>
                         </div>
 
-                        <div className="rounded-3xl border border-blue-100 bg-white p-5 shadow-sm">
-                            <div className="rounded-2xl bg-blue-50 p-5">
-                                <p className="text-xs font-black tracking-widest text-blue-600">INCLUDED</p>
-                                <p className="mt-2 text-2xl font-black text-slate-900">6種類 x PPTX / PDF</p>
-                                <div className="mt-5 grid grid-cols-2 gap-2">
-                                    {["全身", "上肢", "下肢", "座位", "臥位", "立位"].map((item) => (
-                                        <div key={item} className="rounded-xl bg-white px-3 py-3 text-center text-sm font-black text-blue-700 shadow-sm">
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                        <div className="overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-sm">
+                            <Image
+                                src="/products/home-elderly-self-training/thumbnail.png"
+                                alt="在宅高齢者向け 自主トレ指導資料セットのサムネイル"
+                                width={1792}
+                                height={1024}
+                                className="h-auto w-full"
+                                priority
+                            />
                         </div>
                     </div>
                 </section>

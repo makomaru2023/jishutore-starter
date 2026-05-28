@@ -36,7 +36,7 @@ const products = [
         cardDescription:
             "在宅高齢者向けの自主トレメニューを、全身・上肢・下肢・座位・臥位・立位の6種類で収録。PowerPointで編集でき、PDFですぐ印刷できます。",
         badges: ["PowerPoint編集可", "PDF版つき", "6種類収録"],
-        thumbnail: null,
+        thumbnail: "/products/home-elderly-self-training/thumbnail.png",
         checkoutReady: Boolean(process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID),
     },
 ];
@@ -70,7 +70,7 @@ export default function ProductsPage() {
                                 key={product.slug}
                                 className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-md"
                             >
-                                <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-xl bg-blue-50">
+                                <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-xl bg-blue-50">
                                     {product.thumbnail ? (
                                         <Image
                                             src={product.thumbnail}
@@ -80,30 +80,7 @@ export default function ProductsPage() {
                                             className="object-cover transition-transform group-hover:scale-105"
                                             priority
                                         />
-                                    ) : (
-                                        <div className="flex h-full w-full flex-col justify-between bg-gradient-to-br from-blue-50 via-white to-slate-50 p-5">
-                                            <div className="inline-flex w-fit rounded-full bg-white px-3 py-1 text-xs font-black text-blue-600 shadow-sm">
-                                                PowerPoint + PDF
-                                            </div>
-                                            <div>
-                                                <p className="mb-2 text-xs font-bold tracking-widest text-blue-500">
-                                                    HOME EXERCISE
-                                                </p>
-                                                <p className="break-words text-xl font-black leading-snug text-slate-900">
-                                                    在宅高齢者向け
-                                                    <br />
-                                                    自主トレ指導資料
-                                                </p>
-                                            </div>
-                                            <div className="grid grid-cols-3 gap-2">
-                                                {["全身", "座位", "立位"].map((item) => (
-                                                    <span key={item} className="rounded-xl bg-white px-2 py-2 text-center text-xs font-bold text-blue-700 shadow-sm">
-                                                        {item}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+                                    ) : null}
                                 </div>
                                 <h2 className="break-words text-base font-black leading-snug text-slate-900 group-hover:text-blue-600">
                                     {product.name}
