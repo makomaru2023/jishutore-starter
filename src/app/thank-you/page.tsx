@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 
 const PRODUCT_NAME_BY_ID: Record<string, string> = {
     "self-training-materials-vol01": "疾患別自主トレ資料セット",
-    "home-elderly-self-training": "在宅高齢者向け 自主トレ指導資料セット",
+    "home-elderly-self-training": "姿勢別 自主トレ指導資料セット",
 };
 
 const PUBLIC_DOWNLOADS: Record<
@@ -27,7 +27,7 @@ const PUBLIC_DOWNLOADS: Record<
     { itemName: string; fileName: string; href: string; description: string }
 > = {
     "home-elderly-self-training": {
-        itemName: "在宅高齢者向け 自主トレ指導資料セット",
+        itemName: "姿勢別 自主トレ指導資料セット",
         fileName: "home-elderly-self-training.zip",
         href: "/files/home-elderly-self-training.zip",
         description: "PowerPoint版とPDF版をまとめたZIPファイルです。",

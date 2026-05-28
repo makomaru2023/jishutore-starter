@@ -6,7 +6,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
 
 const PRODUCT_ID = "home-elderly-self-training";
-const PRODUCT_NAME = "在宅高齢者向け 自主トレ指導資料セット";
+const PRODUCT_NAME = "姿勢別 自主トレ指導資料セット";
 const PRICE = 980;
 const CHECKOUT_READY = Boolean(
     process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID
@@ -15,9 +15,9 @@ const CHECKOUT_READY = Boolean(
 const JP_TEXT = "break-words [overflow-wrap:anywhere] text-pretty";
 
 export const metadata: Metadata = {
-    title: "在宅高齢者向け 自主トレ指導資料セット | 自主トレ素材庫",
+    title: "姿勢別 自主トレ指導資料セット | 自主トレ素材庫",
     description:
-        "訪問リハ・通所リハ・老健・デイサービスで使える、在宅高齢者向けの自主トレ指導資料セット。PowerPointで編集でき、PDFですぐ印刷できます。",
+        "訪問リハ・通所リハ・老健・デイサービスで使える、姿勢別の自主トレ指導資料セット。PowerPointで編集でき、PDFですぐ印刷できます。",
     alternates: {
         canonical:
             "https://jishutore-sozaiko.online/products/home-elderly-self-training/",
@@ -57,6 +57,21 @@ const RECOMMENDED = [
     "老健・介護施設で利用者向けの運動資料を整えたい方",
     "家族説明用に分かりやすい自主トレ資料を準備したい方",
     "PowerPointで修正できる資料がほしい方",
+];
+
+const SAMPLE_PREVIEWS = [
+    {
+        title: "全身 自主トレメニュー",
+        image: "/products/home-elderly-self-training/samples/sample-full-body.png",
+    },
+    {
+        title: "座位 自主トレメニュー",
+        image: "/products/home-elderly-self-training/samples/sample-sitting.png",
+    },
+    {
+        title: "立位 自主トレメニュー",
+        image: "/products/home-elderly-self-training/samples/sample-standing.png",
+    },
 ];
 
 const CHECKOUT_CLASS =
@@ -119,10 +134,10 @@ export default function HomeElderlySelfTrainingPage() {
                     <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_390px] lg:px-8">
                         <div>
                             <p className="mb-4 inline-block rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-black tracking-widest text-blue-700 shadow-sm">
-                                在宅高齢者向け 自主トレ指導資料セット
+                                姿勢別 自主トレ指導資料セット
                             </p>
                             <h1 className={`text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl ${JP_TEXT}`}>
-                                在宅高齢者への自主トレ指導、
+                                姿勢に合わせた自主トレ指導、
                                 <br className="hidden sm:block" />
                                 毎回ゼロから作っていませんか？
                             </h1>
@@ -157,7 +172,7 @@ export default function HomeElderlySelfTrainingPage() {
                         <div className="overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-sm">
                             <Image
                                 src="/products/home-elderly-self-training/thumbnail.png"
-                                alt="在宅高齢者向け 自主トレ指導資料セットのサムネイル"
+                                alt="姿勢別 自主トレ指導資料セットのサムネイル"
                                 width={1792}
                                 height={1024}
                                 className="h-auto w-full"
@@ -171,6 +186,33 @@ export default function HomeElderlySelfTrainingPage() {
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title="こんな資料作成の負担を減らせます" />
                         <CheckList items={PAIN_POINTS} />
+                    </div>
+                </section>
+
+                <section className="bg-white py-14 sm:py-20">
+                    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                        <SectionHeading kicker="サンプル" title="実際の資料イメージを確認できます" />
+                        <p className={`mx-auto -mt-5 mb-8 max-w-2xl text-center text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
+                            収録資料の一部を、透かし入りのプレビューとして掲載しています。
+                            購入後はPowerPoint版とPDF版をまとめてダウンロードできます。
+                        </p>
+                        <div className="grid gap-5 lg:grid-cols-3">
+                            {SAMPLE_PREVIEWS.map((sample) => (
+                                <article key={sample.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                                    <Image
+                                        src={sample.image}
+                                        alt={`${sample.title}の透かし入りサンプル`}
+                                        width={1200}
+                                        height={675}
+                                        className="h-auto w-full"
+                                    />
+                                    <div className="border-t border-slate-100 px-4 py-3">
+                                        <h3 className={`text-sm font-black text-slate-900 ${JP_TEXT}`}>{sample.title}</h3>
+                                        <p className="mt-1 text-xs font-bold text-slate-500">透かし入りサンプル</p>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
                     </div>
                 </section>
 

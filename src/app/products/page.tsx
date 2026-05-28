@@ -29,12 +29,12 @@ const products = [
     {
         slug: "home-elderly-self-training",
         productId: "home-elderly-self-training",
-        name: "在宅高齢者向け 自主トレ指導資料セット",
+        name: "姿勢別 自主トレ指導資料セット",
         price: 980,
         description:
-            "訪問リハ・通所リハ・老健・デイサービスで使いやすい、在宅高齢者向けの自主トレ指導資料セットです。",
+            "訪問リハ・通所リハ・老健・デイサービスで使いやすい、姿勢別に整理した自主トレ指導資料セットです。",
         cardDescription:
-            "在宅高齢者向けの自主トレメニューを、全身・上肢・下肢・座位・臥位・立位の6種類で収録。PowerPointで編集でき、PDFですぐ印刷できます。",
+            "自主トレメニューを、全身・上肢・下肢・座位・臥位・立位の6種類で収録。PowerPointで編集でき、PDFですぐ印刷できます。",
         badges: ["PowerPoint編集可", "PDF版つき", "6種類収録"],
         thumbnail: "/products/home-elderly-self-training/thumbnail.png",
         checkoutReady: Boolean(process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID),

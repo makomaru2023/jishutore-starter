@@ -90,7 +90,7 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
                         作るのが大変なときは、完成済み資料を。
                     </h3>
                     <p className="text-sm text-slate-300 leading-relaxed">
-                        疾患別・在宅高齢者向けのPowerPoint資料セットをご用意しています。編集も自由です。
+                        疾患別・姿勢別のPowerPoint資料セットをご用意しています。編集も自由です。
                     </p>
                 </div>
 
