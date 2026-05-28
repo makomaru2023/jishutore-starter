@@ -14,6 +14,8 @@ interface CheckoutButtonProps {
     price: number;
     label?: string;
     className?: string;
+    disabled?: boolean;
+    disabledLabel?: string;
 }
 
 const DEFAULT_CLASSNAME =
@@ -25,11 +27,14 @@ export function CheckoutButton({
     price,
     label,
     className,
+    disabled = false,
+    disabledLabel = '準備中',
 }: CheckoutButtonProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const handleClick = async () => {
+        if (disabled) return;
         setLoading(true);
         setError(null);
 
@@ -77,7 +82,7 @@ export function CheckoutButton({
             <button
                 type="button"
                 onClick={handleClick}
-                disabled={loading}
+                disabled={loading || disabled}
                 aria-busy={loading}
                 className={className ?? DEFAULT_CLASSNAME}
             >
@@ -91,7 +96,7 @@ export function CheckoutButton({
                     </>
                 ) : (
                     <>
-                        {label ?? '購入する'}
+                        {disabled ? disabledLabel : label ?? '購入する'}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-4 w-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
                         </svg>
@@ -100,6 +105,11 @@ export function CheckoutButton({
             </button>
             {error && (
                 <p className="mt-2 text-sm font-medium text-red-600">{error}</p>
+            )}
+            {disabled && (
+                <p className="mt-2 text-center text-xs font-bold text-slate-500">
+                    決済準備中です。
+                </p>
             )}
         </div>
     );

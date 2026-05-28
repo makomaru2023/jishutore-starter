@@ -15,6 +15,10 @@ const PRODUCTS: Record<string, ProductConfig> = {
         priceId: process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET,
         cancelPath: '/products/self-training-materials',
     },
+    'home-elderly-self-training': {
+        priceId: process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID,
+        cancelPath: '/products/home-elderly-self-training',
+    },
 };
 
 export async function POST(req: NextRequest) {

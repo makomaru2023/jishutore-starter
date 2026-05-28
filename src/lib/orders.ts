@@ -21,6 +21,7 @@ export interface Order {
  */
 export const PRODUCT_ZIP_KEYS: Record<string, string> = {
     "self-training-materials-vol01": "products/jishutore-materials-vol01.zip",
+    "home-elderly-self-training": "products/home-elderly-self-training.zip",
 };
 
 function orderKey(sessionId: string): string {
