@@ -16,7 +16,9 @@ const PRODUCTS: Record<string, ProductConfig> = {
         cancelPath: '/products/self-training-materials',
     },
     'home-elderly-self-training': {
-        priceId: process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID,
+        priceId:
+            process.env.STRIPE_PRICE_ID_POSTURE_SELF_TRAINING_SET ||
+            process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID,
         cancelPath: '/products/home-elderly-self-training',
     },
 };

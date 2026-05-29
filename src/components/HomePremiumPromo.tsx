@@ -9,17 +9,17 @@ export function HomePremiumPromo() {
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-10">
                         <p className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 font-bold text-xs tracking-widest mb-4">
-                            POWERPOINT資料
+                            完成済み資料セット
                         </p>
                         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3 leading-tight">
-                            完成済みのPowerPoint資料も
+                            無料イラストを1枚ずつ貼る
                             <br className="sm:hidden" />
-                            ご用意しています
+                            時間がない方へ
                         </h2>
                         <p className="text-slate-500 font-medium text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                             イラストを集めて1枚ずつ作るのが大変なときに。
                             <br className="hidden sm:block" />
-                            退院前指導や訪問リハで、そのまま使える資料をまとめました。
+                            疾患別に説明したい場合と、今できる姿勢から選びたい場合で使い分けられます。
                         </p>
                     </div>
 

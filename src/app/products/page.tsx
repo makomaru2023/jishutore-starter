@@ -29,15 +29,18 @@ const products = [
     {
         slug: "home-elderly-self-training",
         productId: "home-elderly-self-training",
-        name: "姿勢別 自主トレ指導資料セット",
+        name: "今できる姿勢から選べる 姿勢別自主トレPowerPointセット",
         price: 980,
         description:
-            "訪問リハ・通所リハ・老健・デイサービスで使いやすい、姿勢別に整理した自主トレ指導資料セットです。",
+            "座位・立位・臥位など、対象者の能力に合わせて使える自主トレ説明資料。訪問リハ・通所リハ・在宅高齢者の指導に。",
         cardDescription:
-            "自主トレメニューを、全身・上肢・下肢・座位・臥位・立位の6種類で収録。PowerPointで編集でき、PDFですぐ印刷できます。",
+            "疾患名ではなく、座位・立位・臥位など「今できる姿勢」から運動を選びたい方向け。PowerPointで編集でき、PDFですぐ印刷できます。",
         badges: ["PowerPoint編集可", "PDF版つき", "6種類収録"],
         thumbnail: "/products/home-elderly-self-training/thumbnail.png",
-        checkoutReady: Boolean(process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID),
+        checkoutReady: Boolean(
+            process.env.STRIPE_PRICE_ID_POSTURE_SELF_TRAINING_SET ||
+            process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID
+        ),
     },
 ];
 

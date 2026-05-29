@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export function Footer() {
+type FooterProps = {
+    showNoteLink?: boolean;
+};
+
+export function Footer({ showNoteLink = true }: FooterProps) {
     return (
         <footer className="bg-slate-900 py-12 border-t border-slate-800">
             <div className="container mx-auto px-4 max-w-5xl">
@@ -27,14 +31,16 @@ export function Footer() {
                         <Link href="/sponsor" className="hover:text-white transition-colors">
                             広告掲載・スポンサー募集
                         </Link>
-                        <a
-                            href="https://note.com/jisyutore"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
-                        >
-                            note
-                        </a>
+                        {showNoteLink && (
+                            <a
+                                href="https://note.com/jisyutore"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-white transition-colors"
+                            >
+                                note
+                            </a>
+                        )}
                     </div>
                     <div className="text-sm font-bold text-slate-500 flex items-center gap-2">
                         © {new Date().getFullYear()} 自主トレ素材庫
