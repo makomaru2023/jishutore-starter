@@ -70,7 +70,11 @@ export default function ProductsPage() {
                                 key={product.slug}
                                 className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-md"
                             >
-                                <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-xl bg-blue-50">
+                                <Link
+                                    href={`/products/${product.slug}`}
+                                    aria-label={`${product.name}の詳細ページを見る`}
+                                    className="relative mb-4 block aspect-video w-full overflow-hidden rounded-xl bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                >
                                     {product.thumbnail ? (
                                         <Image
                                             src={product.thumbnail}
@@ -81,7 +85,7 @@ export default function ProductsPage() {
                                             priority
                                         />
                                     ) : null}
-                                </div>
+                                </Link>
                                 <h2 className="break-words text-base font-black leading-snug text-slate-900 group-hover:text-blue-600">
                                     {product.name}
                                 </h2>
