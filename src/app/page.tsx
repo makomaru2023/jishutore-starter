@@ -34,8 +34,10 @@ export default function Home() {
                 PT・OT・ST向け 自主トレ素材サイト
               </p>
 
-              <h1 className="mx-auto max-w-4xl break-words text-[2rem] font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                自主トレ資料、毎回ゼロから作っていませんか？
+              <h1 className="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-4 gap-y-1 text-[2rem] font-black leading-tight tracking-tight text-white sm:gap-x-6 sm:text-5xl lg:text-6xl">
+                <span className="inline-block whitespace-nowrap">自主トレ資料、</span>
+                <span className="inline-block whitespace-nowrap">毎回ゼロから</span>
+                <span className="inline-block whitespace-nowrap">作っていませんか？</span>
               </h1>
 
               <p className="mx-auto max-w-2xl break-words text-base font-bold leading-relaxed text-slate-200 sm:text-xl">
