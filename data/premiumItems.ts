@@ -39,11 +39,11 @@ export const premiumItems: PremiumItem[] = [
     },
     {
         id: "home-elderly-6set",
-        title: "在宅高齢者向け 自主トレ資料6点セット",
+        title: "姿勢別 自主トレ指導資料セット",
         subtitle: "上肢・下肢・全身・座位・立位・臥位をまとめたPowerPoint資料",
         price: "980円",
         description:
-            "在宅で過ごす70〜80代の高齢者に使いやすい自主トレ資料を、上肢・下肢・全身・座位・立位・臥位の6テーマでまとめたセットです。疾患を限定せず、退院後や訪問リハ、通所リハ、家族説明で使いやすい内容にしています。",
+            "自主トレ資料を、上肢・下肢・全身・座位・立位・臥位の6テーマでまとめたセットです。疾患を限定せず、退院後や訪問リハ、通所リハ、家族説明で使いやすい内容にしています。",
         contents: [
             "上肢の自主トレメニュー",
             "下肢の自主トレメニュー",
@@ -52,8 +52,8 @@ export const premiumItems: PremiumItem[] = [
             "立位の自主トレメニュー",
             "臥位の自主トレメニュー",
         ],
-        tags: ["在宅高齢者向け", "6点セット", "PowerPoint", "編集OK", "印刷配布OK"],
-        href: "#",
-        status: "coming-soon",
+        tags: ["姿勢別", "6点セット", "PowerPoint", "編集OK", "印刷配布OK"],
+        href: "/products/home-elderly-self-training",
+        status: "available",
     },
 ];

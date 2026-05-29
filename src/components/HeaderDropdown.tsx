@@ -61,7 +61,7 @@ export function HeaderDropdown() {
                         Pro素材
                     </Link>
                     <Link
-                        href="/products/self-training-materials"
+                        href="/products"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                         onClick={() => setIsOpen(false)}
                     >

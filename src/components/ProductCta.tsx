@@ -8,8 +8,8 @@ declare global {
     }
 }
 
-const PRODUCT_URL = "/products/self-training-materials";
-const LABEL = "疾患別自主トレ資料セット980円";
+const PRODUCT_URL = "/products";
+const LABEL = "PowerPoint資料一覧";
 
 export type ProductCtaLocation =
     | 'items_top_cta'
@@ -73,7 +73,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         </div>
                         <div className="flex items-center justify-end sm:flex-shrink-0">
                             <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-blue-200 text-blue-600 text-sm font-bold group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all whitespace-nowrap">
-                                980円の買い切りテンプレートを見る
+                                PowerPoint資料の商品一覧を見る
                                 <ArrowIcon className="w-3.5 h-3.5" />
                             </span>
                         </div>
@@ -95,7 +95,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                     <p className="text-xs sm:text-sm text-slate-500 font-medium mb-4 leading-relaxed">
                         <span className="inline-block">時間をかけずに</span>
                         <span className="inline-block">完成度の高い資料を作りたい方は、</span>
-                        <span className="inline-block">980円のテンプレートも</span>
+                        <span className="inline-block">PowerPoint資料も</span>
                         <span className="inline-block">ご検討ください。</span>
                     </p>
                     <Link
@@ -103,7 +103,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         onClick={handleClick}
                         className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white text-sm font-bold transition-all"
                     >
-                        テンプレートを見る
+                        商品一覧を見る
                         <ArrowIcon className="w-3.5 h-3.5" />
                     </Link>
                 </div>
@@ -139,7 +139,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         onClick={handleClick}
                         className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-all shadow-sm"
                     >
-                        980円の資料テンプレートを見る
+                        PowerPoint資料の商品一覧を見る
                         <ArrowIcon className="w-3.5 h-3.5" />
                     </Link>
                 </div>
@@ -180,7 +180,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                             <span className="inline-block">患者さんへの説明、</span>
                             <span className="inline-block">家族指導、</span>
                             <span className="inline-block">施設内資料づくりに使いやすい</span>
-                            <span className="inline-block">買い切りテンプレートです。</span>
+                            <span className="inline-block">買い切り資料セットです。</span>
                         </p>
                     </div>
 
@@ -190,7 +190,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                             onClick={handleClick}
                             className="inline-flex w-full md:w-auto items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base transition-all shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 hover:scale-[1.02] whitespace-nowrap"
                         >
-                            中身を見てみる
+                            商品一覧を見る
                             <ArrowIcon className="w-4 h-4" />
                         </Link>
                         <p className="text-[11px] text-slate-400 mt-2 text-center md:text-right font-medium">
