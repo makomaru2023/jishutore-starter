@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { WatermarkPreviewSection, type PreviewItem } from "@/components/WatermarkPreviewSection";
 import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 
 const PRODUCT_ID = "home-elderly-self-training";
@@ -116,18 +115,38 @@ const RECOMMENDED = [
     "無料素材を貼り合わせる時間を減らしたい",
 ];
 
-const SAMPLE_PREVIEWS = [
+// 透かし入りプレビュー候補。実在する画像だけが自動的に表示される（404は出ない）。
+// samples/ の既存画像は現状で表示され、previews/ の webp は用意でき次第そのまま表示される。
+const PREVIEW_ITEMS: PreviewItem[] = [
     {
-        title: "座位の資料サンプル",
-        image: "/products/home-elderly-self-training/samples/sample-sitting.png",
+        title: "座位でできる自主トレ",
+        caption: "立位が不安定な方にも使いやすい例",
+        src: "/products/home-elderly-self-training/samples/sample-sitting.png",
     },
     {
-        title: "立位の資料サンプル",
-        image: "/products/home-elderly-self-training/samples/sample-standing.png",
+        title: "立位でできる自主トレ",
+        caption: "支持物を使った運動例",
+        src: "/products/home-elderly-self-training/samples/sample-standing.png",
     },
     {
-        title: "臥位の資料サンプル",
-        image: "/products/home-elderly-self-training/samples/sample-full-body.png",
+        title: "全身体操",
+        caption: "通所リハでも使いやすい例",
+        src: "/products/home-elderly-self-training/samples/sample-full-body.png",
+    },
+    {
+        title: "臥位でできる自主トレ",
+        caption: "ベッド上で行いやすい例",
+        src: "/products/home-elderly-self-training/previews/supine-01.webp",
+    },
+    {
+        title: "上肢の自主トレ",
+        caption: "肩・肘・手指の運動例",
+        src: "/products/home-elderly-self-training/previews/upper-limb-01.webp",
+    },
+    {
+        title: "下肢の自主トレ",
+        caption: "立ち上がり・歩行につながる運動例",
+        src: "/products/home-elderly-self-training/previews/lower-limb-01.webp",
     },
 ];
 
@@ -502,44 +521,16 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-white py-14 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading
-                            kicker="SAMPLE"
-                            title="中身のサンプル"
-                            description="座位・立位・臥位など、実際の資料の雰囲気を一部確認できます。サンプル透かしは購入後のファイルには入りません。"
-                        />
-                        <div className="grid gap-5 lg:grid-cols-3">
-                            {SAMPLE_PREVIEWS.map((sample) => {
-                                // ビルド時にファイル存在を確認し、無い画像は読み込まず「準備中」を表示する（404を出さない）
-                                const available = existsSync(
-                                    join(process.cwd(), "public", sample.image),
-                                );
-                                return (
-                                    <article key={sample.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                                        {available ? (
-                                            <Image
-                                                src={sample.image}
-                                                alt={`${sample.title}の透かし入りサンプル`}
-                                                width={1200}
-                                                height={675}
-                                                className="h-auto w-full max-w-full"
-                                            />
-                                        ) : (
-                                            <div className="flex aspect-[16/9] w-full max-w-full items-center justify-center bg-slate-100 px-4 text-center text-sm font-bold text-slate-400">
-                                                サンプル画像を準備中です
-                                            </div>
-                                        )}
-                                        <div className="border-t border-slate-100 px-4 py-3">
-                                            <h3 className={`text-sm font-black text-slate-900 ${JP_TEXT}`}>{sample.title}</h3>
-                                            <p className="mt-1 text-xs font-bold text-slate-500">透かし入りサンプル</p>
-                                        </div>
-                                    </article>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section>
+                <WatermarkPreviewSection
+                    id="preview"
+                    kicker="SAMPLE"
+                    heading="座位・立位・臥位の資料イメージを確認できます"
+                    intro="どのような姿勢・場面で使える資料なのかイメージしやすいよう、一部ページを掲載しています。"
+                    subcopy="対象者の「今できる姿勢」に合わせて使えるよう、実施姿勢ごとに資料を整理しています。購入後のファイルには透かしは入りません。"
+                    items={PREVIEW_ITEMS}
+                    background="white"
+                    columns={3}
+                />
 
                 <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

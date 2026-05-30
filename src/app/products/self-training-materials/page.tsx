@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
-import { SelfTrainingPreviewGallery } from "@/components/SelfTrainingPreviewGallery";
+import { WatermarkPreviewSection, type PreviewItem } from "@/components/WatermarkPreviewSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -92,6 +92,19 @@ const CONTENTS: { title: string; description: string }[] = [
         title: "大腿骨骨折術後",
         description: "免荷期から荷重期まで使いやすい下肢運動と、立ち上がり・歩行への流れを解説。",
     },
+];
+
+// 透かし入りプレビュー候補。実在する画像だけが自動的に表示される（404は出ない）。
+const PREVIEW_ITEMS: PreviewItem[] = [
+    { title: "脳卒中 上肢", caption: "自主トレ資料サンプル", src: "/preview/self-training-materials/stroke-upper.jpg" },
+    { title: "脳卒中 下肢", caption: "座位中心の運動メニュー例", src: "/preview/self-training-materials/stroke-lower.jpg" },
+    { title: "腰痛", caption: "運動メニュー例", src: "/preview/self-training-materials/low-back-pain.jpg" },
+    { title: "膝OA・TKA", caption: "大腿四頭筋セッティング例", src: "/preview/self-training-materials/knee-oa-tka.jpg" },
+    { title: "圧迫骨折後", caption: "前屈を避けた運動例", src: "/preview/self-training-materials/compression-fracture.jpg" },
+    { title: "パーキンソン病", caption: "リズム運動・大きな動きの例", src: "/preview/self-training-materials/parkinsons.jpg" },
+    { title: "五十肩", caption: "時期に合わせた可動域運動の例", src: "/preview/self-training-materials/frozen-shoulder.jpg" },
+    { title: "人工股関節術後", caption: "脱臼予防に配慮した運動例", src: "/preview/self-training-materials/hip-replacement.jpg" },
+    { title: "大腿骨骨折術後", caption: "下肢運動・歩行への流れの例", src: "/preview/self-training-materials/femur-fracture.jpg" },
 ];
 
 const USE_STEPS = [
@@ -388,13 +401,19 @@ export default function SelfTrainingMaterialsPage() {
                                 </article>
                             ))}
                         </div>
-
-                        {/* サンプル画像ギャラリー */}
-                        <div className="mt-10">
-                            <SelfTrainingPreviewGallery />
-                        </div>
                     </div>
                 </section>
+
+                {/* E2. 透かし入りプレビュー */}
+                <WatermarkPreviewSection
+                    id="preview"
+                    heading="収録資料の一部をプレビューできます"
+                    intro="購入前に、実際の資料の雰囲気を確認したい方のために、一部ページを掲載しています。"
+                    subcopy="実際のPowerPoint資料の一部を、透かし入りで掲載しています。購入後のファイルには透かしは入りません。"
+                    items={PREVIEW_ITEMS}
+                    background="slate"
+                    columns={3}
+                />
 
                 {/* F. 使い方 */}
                 <section className="bg-slate-50 py-14 sm:py-20">
