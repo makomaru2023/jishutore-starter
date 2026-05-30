@@ -18,7 +18,7 @@ function priceIdToProductId(priceId: string | null | undefined): string | null {
     if (!priceId) return null;
     const map: Record<string, string> = {
         [process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET || ""]: "self-training-materials-vol01",
-        [POSTURE_SELF_TRAINING_PRICE_ID]: "home-elderly-self-training",
+        [POSTURE_SELF_TRAINING_PRICE_ID || ""]: "home-elderly-self-training",
     };
     return map[priceId] || null;
 }
