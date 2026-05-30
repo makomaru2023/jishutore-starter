@@ -5,14 +5,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 
 const PRODUCT_ID = "home-elderly-self-training";
 const PRODUCT_NAME = "姿勢別自主トレPowerPointセット";
 const PRICE = 980;
-const CHECKOUT_READY = Boolean(
-    process.env.STRIPE_PRICE_ID_POSTURE_SELF_TRAINING_SET ||
-    process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID
-);
+const CHECKOUT_READY = Boolean(POSTURE_SELF_TRAINING_PRICE_ID);
 
 const JP_TEXT = "break-words [overflow-wrap:anywhere] text-pretty";
 

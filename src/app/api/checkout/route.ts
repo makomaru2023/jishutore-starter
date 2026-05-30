@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe, isStripeConfigured } from '@/lib/stripe';
+import { POSTURE_SELF_TRAINING_PRICE_ID } from '@/lib/products';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
@@ -16,9 +17,7 @@ const PRODUCTS: Record<string, ProductConfig> = {
         cancelPath: '/products/self-training-materials',
     },
     'home-elderly-self-training': {
-        priceId:
-            process.env.STRIPE_PRICE_ID_POSTURE_SELF_TRAINING_SET ||
-            process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID,
+        priceId: POSTURE_SELF_TRAINING_PRICE_ID,
         cancelPath: '/products/home-elderly-self-training',
     },
 };

@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -37,10 +38,7 @@ const products = [
             "疾患名ではなく、座位・立位・臥位など「今できる姿勢」から運動を選びたい方向け。PowerPointで編集でき、PDFですぐ印刷できます。",
         badges: ["PowerPoint編集可", "PDF版つき", "6種類収録"],
         thumbnail: "/products/home-elderly-self-training/thumbnail.png",
-        checkoutReady: Boolean(
-            process.env.STRIPE_PRICE_ID_POSTURE_SELF_TRAINING_SET ||
-            process.env.NEXT_PUBLIC_STRIPE_HOME_ELDERLY_SELF_TRAINING_PRICE_ID
-        ),
+        checkoutReady: Boolean(POSTURE_SELF_TRAINING_PRICE_ID),
     },
 ];
 
