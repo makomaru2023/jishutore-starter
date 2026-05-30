@@ -87,7 +87,7 @@ export default function ProductsPage() {
                                         />
                                     ) : null}
                                 </Link>
-                                <h2 className="break-words text-base font-black leading-snug text-slate-900 group-hover:text-blue-600">
+                                <h2 className="jp-heading text-base font-black leading-snug text-slate-900 group-hover:text-blue-600">
                                     {product.name}
                                 </h2>
                                 <div className="mt-3 flex flex-wrap gap-2">

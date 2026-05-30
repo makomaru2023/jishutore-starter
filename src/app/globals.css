@@ -3,3 +3,38 @@
 @tailwind utilities;
 
 /* Additional global styles for the new "pop" design can be added here if needed */
+
+@layer components {
+    /*
+     * 日本語タイポグラフィ共通方針
+     * --------------------------------------------------------------
+     * 方針：日本語は文字間で自然に折り返し、英単語（PowerPoint / PDF / Stripe など）
+     * は途中で切らない。break-all / overflow-wrap:anywhere は本文・見出しには使わない。
+     */
+
+    /* 本文用：英単語の途中切れを防ぎつつ、日本語は自然に折り返す */
+    .jp-text {
+        word-break: normal;
+        overflow-wrap: break-word; /* 長い英数字が枠を超えるときだけ折り返す */
+        line-break: strict; /* 「、」「。」「？」等の行頭・行末禁則を守る */
+        text-wrap: pretty; /* 行末の泣き別れを減らす */
+    }
+
+    /* 見出し用：行のバランスを取りつつ、英単語の途中切れを防ぐ */
+    .jp-heading {
+        word-break: normal;
+        overflow-wrap: break-word;
+        line-break: strict;
+        text-wrap: balance; /* 見出しは各行の長さを均す */
+    }
+
+    /*
+     * URL・環境変数名・ファイルパス・長い英数字ID など、
+     * 途中で折り返さないと枠からはみ出すものにだけ使う。
+     * （日本語本文・見出しには使わない）
+     */
+    .break-url {
+        word-break: break-all;
+        overflow-wrap: anywhere;
+    }
+}

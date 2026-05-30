@@ -13,7 +13,10 @@ const PRODUCT_NAME = "姿勢別自主トレPowerPointセット";
 const PRICE = 980;
 const CHECKOUT_READY = Boolean(POSTURE_SELF_TRAINING_PRICE_ID);
 
-const JP_TEXT = "break-words [overflow-wrap:anywhere] text-pretty";
+// 本文用：英単語（PowerPoint/PDF/Stripe など）は途中で切らず、日本語は自然に折り返す。
+const JP_TEXT = "jp-text";
+// 見出し用：行のバランスを取りつつ、英単語の途中切れを防ぐ。
+const JP_HEADING = "jp-heading";
 
 export const metadata: Metadata = {
     title: "今できる姿勢から選べる 姿勢別自主トレPowerPointセット｜自主トレ素材庫",
@@ -204,7 +207,7 @@ function SectionHeading({
                     {kicker}
                 </p>
             )}
-            <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_TEXT}`}>
+            <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                 {title}
             </h2>
             {description && (
@@ -237,7 +240,7 @@ function CheckList({ items }: { items: string[] }) {
 }
 
 function ProductCheckoutButton({
-    label = "980円で姿勢別セットを購入する",
+    label = "980円で購入する",
 }: {
     label?: string;
 }) {
@@ -434,7 +437,7 @@ export default function HomeElderlySelfTrainingPage() {
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                         <div className="rounded-3xl border border-blue-100 bg-blue-50 p-6 text-center shadow-sm sm:p-10">
                             <p className="mb-3 text-xs font-black tracking-widest text-blue-600">SOLUTION</p>
-                            <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_TEXT}`}>
+                            <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                                 このセットは、能力・姿勢に合わせて運動を選ぶための資料です
                             </h2>
                             <p className={`mx-auto mt-5 max-w-3xl text-sm font-medium leading-relaxed text-slate-700 sm:text-base ${JP_TEXT}`}>
@@ -466,7 +469,7 @@ export default function HomeElderlySelfTrainingPage() {
                                         <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xs font-black text-blue-600">
                                             {String(index + 1).padStart(2, "0")}
                                         </span>
-                                        <h3 className={`font-black text-slate-900 ${JP_TEXT}`}>{content.title}</h3>
+                                        <h3 className={`font-black text-slate-900 ${JP_HEADING}`}>{content.title}</h3>
                                     </div>
                                     <p className={`text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
                                         {content.description}
@@ -490,7 +493,7 @@ export default function HomeElderlySelfTrainingPage() {
                                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white">
                                         {step}
                                     </span>
-                                    <h3 className={`mt-4 text-lg font-black leading-snug text-slate-900 ${JP_TEXT}`}>{text}</h3>
+                                    <h3 className={`mt-4 text-lg font-black leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
                                 </article>
                             ))}
                         </div>
@@ -578,7 +581,7 @@ export default function HomeElderlySelfTrainingPage() {
                             ].map(([step, text]) => (
                                 <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                                     <span className="text-sm font-black text-blue-600">STEP {step}</span>
-                                    <h3 className={`mt-2 text-base font-black leading-snug text-slate-900 ${JP_TEXT}`}>{text}</h3>
+                                    <h3 className={`mt-2 text-base font-black leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
                                 </article>
                             ))}
                         </div>
@@ -591,7 +594,7 @@ export default function HomeElderlySelfTrainingPage() {
                         <div className="space-y-3">
                             {FAQS.map((faq) => (
                                 <details key={faq.q} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                                    <summary className={`cursor-pointer list-none text-base font-black leading-snug text-slate-900 ${JP_TEXT}`}>
+                                    <summary className={`cursor-pointer list-none text-base font-black leading-snug text-slate-900 ${JP_HEADING}`}>
                                         {faq.q}
                                     </summary>
                                     <p className={`mt-3 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>{faq.a}</p>
@@ -603,7 +606,7 @@ export default function HomeElderlySelfTrainingPage() {
 
                 <section className="bg-blue-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_TEXT}`}>
+                        <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                             購入前に雰囲気を確認したい方へ
                         </h2>
                         <p className={`mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base ${JP_TEXT}`}>
@@ -623,7 +626,7 @@ export default function HomeElderlySelfTrainingPage() {
 
                 <section className="bg-gradient-to-b from-white to-blue-50 py-16 sm:py-24">
                     <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_TEXT}`}>
+                        <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                             対象者に合わせた自主トレ資料を、ゼロから作らない。
                         </h2>
                         <p className={`mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base ${JP_TEXT}`}>

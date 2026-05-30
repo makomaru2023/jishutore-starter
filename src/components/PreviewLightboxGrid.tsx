@@ -12,7 +12,9 @@ export interface PreviewItem {
     src: string;
 }
 
-const JP_WRAP = 'break-words [overflow-wrap:anywhere] text-pretty';
+// 本文用 / 見出し用の日本語タイポグラフィ（globals.css の共通方針）
+const JP_WRAP = 'jp-text';
+const JP_HEADING = 'jp-heading';
 
 /**
  * 透かし入りプレビュー画像のグリッド。クリックで拡大（ライトボックス）表示する。
@@ -70,7 +72,7 @@ export function PreviewLightboxGrid({
                             </span>
                         </div>
                         <div className="border-t border-slate-100 px-4 py-3">
-                            <h3 className={`text-sm font-black text-slate-900 ${JP_WRAP}`}>
+                            <h3 className={`text-sm font-black text-slate-900 ${JP_HEADING}`}>
                                 {item.title}
                             </h3>
                             {item.caption && (

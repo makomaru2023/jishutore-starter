@@ -4,7 +4,9 @@ import { PreviewLightboxGrid, type PreviewItem } from './PreviewLightboxGrid';
 
 export type { PreviewItem };
 
-const JP_WRAP = 'break-words [overflow-wrap:anywhere] text-pretty';
+// 本文用 / 見出し用の日本語タイポグラフィ（globals.css の共通方針）
+const JP_WRAP = 'jp-text';
+const JP_HEADING = 'jp-heading';
 
 interface WatermarkPreviewSectionProps {
     id?: string;
@@ -53,7 +55,7 @@ export function WatermarkPreviewSection({
                             {kicker}
                         </p>
                     )}
-                    <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_WRAP}`}>
+                    <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                         {heading}
                     </h2>
                     {intro && (
