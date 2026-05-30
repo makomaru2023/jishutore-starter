@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -508,21 +510,33 @@ export default function HomeElderlySelfTrainingPage() {
                             description="座位・立位・臥位など、実際の資料の雰囲気を一部確認できます。サンプル透かしは購入後のファイルには入りません。"
                         />
                         <div className="grid gap-5 lg:grid-cols-3">
-                            {SAMPLE_PREVIEWS.map((sample) => (
-                                <article key={sample.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                                    <Image
-                                        src={sample.image}
-                                        alt={`${sample.title}の透かし入りサンプル`}
-                                        width={1200}
-                                        height={675}
-                                        className="h-auto w-full max-w-full"
-                                    />
-                                    <div className="border-t border-slate-100 px-4 py-3">
-                                        <h3 className={`text-sm font-black text-slate-900 ${JP_TEXT}`}>{sample.title}</h3>
-                                        <p className="mt-1 text-xs font-bold text-slate-500">透かし入りサンプル</p>
-                                    </div>
-                                </article>
-                            ))}
+                            {SAMPLE_PREVIEWS.map((sample) => {
+                                // ビルド時にファイル存在を確認し、無い画像は読み込まず「準備中」を表示する（404を出さない）
+                                const available = existsSync(
+                                    join(process.cwd(), "public", sample.image),
+                                );
+                                return (
+                                    <article key={sample.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                                        {available ? (
+                                            <Image
+                                                src={sample.image}
+                                                alt={`${sample.title}の透かし入りサンプル`}
+                                                width={1200}
+                                                height={675}
+                                                className="h-auto w-full max-w-full"
+                                            />
+                                        ) : (
+                                            <div className="flex aspect-[16/9] w-full max-w-full items-center justify-center bg-slate-100 px-4 text-center text-sm font-bold text-slate-400">
+                                                サンプル画像を準備中です
+                                            </div>
+                                        )}
+                                        <div className="border-t border-slate-100 px-4 py-3">
+                                            <h3 className={`text-sm font-black text-slate-900 ${JP_TEXT}`}>{sample.title}</h3>
+                                            <p className="mt-1 text-xs font-bold text-slate-500">透かし入りサンプル</p>
+                                        </div>
+                                    </article>
+                                );
+                            })}
                         </div>
                     </div>
                 </section>
