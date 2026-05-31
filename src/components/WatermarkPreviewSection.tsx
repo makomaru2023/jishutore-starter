@@ -1,8 +1,12 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { PreviewLightboxGrid, type PreviewItem } from './PreviewLightboxGrid';
+import {
+    PreviewLightboxGrid,
+    type PreviewGroup,
+    type PreviewItem,
+} from './PreviewLightboxGrid';
 
-export type { PreviewItem };
+export type { PreviewItem, PreviewGroup };
 
 // 本文用 / 見出し用の日本語タイポグラフィ（globals.css の共通方針）
 const JP_WRAP = 'jp-text';
@@ -17,15 +21,21 @@ interface WatermarkPreviewSectionProps {
     intro?: string;
     /** プレビューの位置づけを説明するサブコピー */
     subcopy: string;
-    /** プレビュー候補（存在する画像だけ自動的に表示される） */
-    items: PreviewItem[];
+    /** プレビュー候補（存在する画像だけ自動的に表示される）。groups と併用しない。 */
+    items?: PreviewItem[];
+    /** カテゴリごとにまとめたプレビュー。存在する画像だけ自動的に表示される。 */
+    groups?: PreviewGroup[];
     background?: 'white' | 'slate';
     columns?: 2 | 3;
 }
 
+const fileExists = (src: string) =>
+    existsSync(join(process.cwd(), 'public', src));
+
 /**
  * 透かし入りプレビューセクション（サーバーコンポーネント）。
  * ビルド時に public 配下のファイル存在を確認し、実在する画像だけをグリッドに渡す。
+ * - items / groups のどちらかを渡す（groups はカテゴリ見出し付きで表示）
  * - 1枚以上ある場合：存在する画像だけ表示
  * - 1枚もない場合：「サンプル画像を準備中です」プレースホルダを表示
  * これにより存在しない画像パスを参照して 404 になることを防ぐ。
@@ -37,12 +47,23 @@ export function WatermarkPreviewSection({
     intro,
     subcopy,
     items,
+    groups,
     background = 'white',
     columns = 3,
 }: WatermarkPreviewSectionProps) {
-    const available = items.filter((item) =>
-        existsSync(join(process.cwd(), 'public', item.src)),
-    );
+    // 存在する画像だけに絞り込む（groups はカテゴリ単位で空になったら除外）
+    const availableGroups = (groups ?? [])
+        .map((group) => ({
+            ...group,
+            items: group.items.filter((item) => fileExists(item.src)),
+        }))
+        .filter((group) => group.items.length > 0);
+
+    const availableItems = (items ?? []).filter((item) => fileExists(item.src));
+
+    const totalCount =
+        availableGroups.reduce((sum, group) => sum + group.items.length, 0) +
+        availableItems.length;
 
     const bgClass = background === 'slate' ? 'bg-slate-50' : 'bg-white';
 
@@ -68,8 +89,12 @@ export function WatermarkPreviewSection({
                     </p>
                 </div>
 
-                {available.length > 0 ? (
-                    <PreviewLightboxGrid items={available} columns={columns} />
+                {totalCount > 0 ? (
+                    availableGroups.length > 0 ? (
+                        <PreviewLightboxGrid groups={availableGroups} columns={columns} />
+                    ) : (
+                        <PreviewLightboxGrid items={availableItems} columns={columns} />
+                    )
                 ) : (
                     <div className="mx-auto flex max-w-md items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
                         <p className="text-sm font-bold text-slate-400">

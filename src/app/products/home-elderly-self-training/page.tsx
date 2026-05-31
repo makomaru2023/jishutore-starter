@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
-import { WatermarkPreviewSection, type PreviewItem } from "@/components/WatermarkPreviewSection";
+import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 
 const PRODUCT_ID = "home-elderly-self-training";
@@ -118,40 +118,33 @@ const RECOMMENDED = [
     "無料素材を貼り合わせる時間を減らしたい",
 ];
 
-// 透かし入りプレビュー候補。実在する画像だけが自動的に表示される（404は出ない）。
-// samples/ の既存画像は現状で表示され、previews/ の webp は用意でき次第そのまま表示される。
-const PREVIEW_ITEMS: PreviewItem[] = [
-    {
-        title: "座位でできる自主トレ",
-        caption: "立位が不安定な方にも使いやすい例",
-        src: "/products/home-elderly-self-training/samples/sample-sitting.png",
-    },
-    {
-        title: "立位でできる自主トレ",
-        caption: "支持物を使った運動例",
-        src: "/products/home-elderly-self-training/samples/sample-standing.png",
-    },
-    {
-        title: "全身体操",
-        caption: "通所リハでも使いやすい例",
-        src: "/products/home-elderly-self-training/samples/sample-full-body.png",
-    },
-    {
-        title: "臥位でできる自主トレ",
-        caption: "ベッド上で行いやすい例",
-        src: "/products/home-elderly-self-training/previews/supine-01.webp",
-    },
-    {
-        title: "上肢の自主トレ",
-        caption: "肩・肘・手指の運動例",
-        src: "/products/home-elderly-self-training/previews/upper-limb-01.webp",
-    },
-    {
-        title: "下肢の自主トレ",
-        caption: "立ち上がり・歩行につながる運動例",
-        src: "/products/home-elderly-self-training/previews/lower-limb-01.webp",
-    },
+// 透かし入りプレビュー（全ページ掲載）。
+// previews/{slug}-01..12.webp を PDF 全ページからレンダリングして掲載している。
+// 実在する画像だけが自動的に表示される（存在チェックで404は出ない）。
+const PREVIEW_DIR = "/products/home-elderly-self-training/previews";
+const PREVIEW_PAGES = 12;
+
+const PREVIEW_CATEGORIES: {
+    slug: string;
+    title: string;
+    caption: string;
+}[] = [
+    { slug: "sitting", title: "座位でできる自主トレ", caption: "椅子に座って行える運動メニュー" },
+    { slug: "standing", title: "立位でできる自主トレ", caption: "支持物を使った立位での運動メニュー" },
+    { slug: "supine", title: "臥位でできる自主トレ", caption: "ベッド上で行える運動メニュー" },
+    { slug: "full-body", title: "全身の自主トレ", caption: "全身をバランスよく動かす運動メニュー" },
+    { slug: "upper-limb", title: "上肢の自主トレ", caption: "肩・肘・手指の運動メニュー" },
+    { slug: "lower-limb", title: "下肢の自主トレ", caption: "立ち上がり・歩行につながる運動メニュー" },
 ];
+
+const PREVIEW_GROUPS: PreviewGroup[] = PREVIEW_CATEGORIES.map((category) => ({
+    title: category.title,
+    caption: category.caption,
+    items: Array.from({ length: PREVIEW_PAGES }, (_, i) => ({
+        title: `${i + 1}ページ目`,
+        src: `${PREVIEW_DIR}/${category.slug}-${String(i + 1).padStart(2, "0")}.webp`,
+    })),
+}));
 
 const FAQS = [
     {
@@ -527,10 +520,10 @@ export default function HomeElderlySelfTrainingPage() {
                 <WatermarkPreviewSection
                     id="preview"
                     kicker="SAMPLE"
-                    heading="座位・立位・臥位の資料イメージを確認できます"
-                    intro="どのような姿勢・場面で使える資料なのかイメージしやすいよう、一部ページを掲載しています。"
-                    subcopy="対象者の「今できる姿勢」に合わせて使えるよう、実施姿勢ごとに資料を整理しています。購入後のファイルには透かしは入りません。"
-                    items={PREVIEW_ITEMS}
+                    heading="全ページを透かし入りで公開しています"
+                    intro="購入前に中身をしっかり確認できるよう、座位・立位・臥位・全身・上肢・下肢の全ページを掲載しています。画像をクリックすると拡大表示でき、左右の矢印でページを送れます。"
+                    subcopy="対象者の「今できる姿勢」に合わせて使えるよう、実施姿勢ごとに資料を整理しています。掲載画像は透かし入りですが、購入後のPowerPoint・PDFファイルには透かしは入りません。"
+                    groups={PREVIEW_GROUPS}
                     background="white"
                     columns={3}
                 />
