@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
-import { WatermarkPreviewSection, type PreviewItem } from "@/components/WatermarkPreviewSection";
+import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -94,18 +94,32 @@ const CONTENTS: { title: string; description: string }[] = [
     },
 ];
 
-// 透かし入りプレビュー候補。実在する画像だけが自動的に表示される（404は出ない）。
-const PREVIEW_ITEMS: PreviewItem[] = [
-    { title: "脳卒中 上肢", caption: "自主トレ資料サンプル", src: "/preview/self-training-materials/stroke-upper.jpg" },
-    { title: "脳卒中 下肢", caption: "座位中心の運動メニュー例", src: "/preview/self-training-materials/stroke-lower.jpg" },
-    { title: "腰痛", caption: "運動メニュー例", src: "/preview/self-training-materials/low-back-pain.jpg" },
-    { title: "膝OA・TKA", caption: "大腿四頭筋セッティング例", src: "/preview/self-training-materials/knee-oa-tka.jpg" },
-    { title: "圧迫骨折後", caption: "前屈を避けた運動例", src: "/preview/self-training-materials/compression-fracture.jpg" },
-    { title: "パーキンソン病", caption: "リズム運動・大きな動きの例", src: "/preview/self-training-materials/parkinsons.jpg" },
-    { title: "五十肩", caption: "時期に合わせた可動域運動の例", src: "/preview/self-training-materials/frozen-shoulder.jpg" },
-    { title: "人工股関節術後", caption: "脱臼予防に配慮した運動例", src: "/preview/self-training-materials/hip-replacement.jpg" },
-    { title: "大腿骨骨折術後", caption: "下肢運動・歩行への流れの例", src: "/preview/self-training-materials/femur-fracture.jpg" },
+// 透かし入りプレビュー（全ページ掲載）。
+// previews/{slug}-01..12.webp を各疾患PDFの全ページからレンダリングして掲載。
+// 実在する画像だけが自動的に表示される（存在チェックで404は出ない）。
+const PREVIEW_DIR = "/preview/self-training-materials/previews";
+const PREVIEW_PAGES = 12;
+
+const PREVIEW_CATEGORIES: { slug: string; title: string; caption: string }[] = [
+    { slug: "stroke-upper", title: "脳卒中 上肢", caption: "肩・肘・手指の運動メニュー" },
+    { slug: "stroke-lower", title: "脳卒中 下肢", caption: "立位・歩行につながる下肢運動" },
+    { slug: "low-back-pain", title: "腰痛", caption: "体幹支持・股関節を中心にした運動" },
+    { slug: "knee-oa-tka", title: "膝OA・TKA", caption: "大腿四頭筋・膝可動域・荷重練習" },
+    { slug: "compression-fracture", title: "圧迫骨折後", caption: "前屈を避けた背筋・体幹の運動" },
+    { slug: "parkinsons", title: "パーキンソン病", caption: "大きな動き・リズム運動" },
+    { slug: "frozen-shoulder", title: "五十肩", caption: "時期に合わせた可動域運動" },
+    { slug: "hip-replacement", title: "人工股関節術後", caption: "脱臼予防に配慮した運動" },
+    { slug: "femur-fracture", title: "大腿骨骨折術後", caption: "免荷期から荷重期までの下肢運動" },
 ];
+
+const PREVIEW_GROUPS: PreviewGroup[] = PREVIEW_CATEGORIES.map((category) => ({
+    title: category.title,
+    caption: category.caption,
+    items: Array.from({ length: PREVIEW_PAGES }, (_, i) => ({
+        title: `${i + 1}ページ目`,
+        src: `${PREVIEW_DIR}/${category.slug}-${String(i + 1).padStart(2, "0")}.webp`,
+    })),
+}));
 
 const USE_STEPS = [
     "対象疾患のPowerPointを開く",
@@ -404,13 +418,14 @@ export default function SelfTrainingMaterialsPage() {
                     </div>
                 </section>
 
-                {/* E2. 透かし入りプレビュー */}
+                {/* E2. 透かし入りプレビュー（全ページ掲載） */}
                 <WatermarkPreviewSection
                     id="preview"
-                    heading="収録資料の一部をプレビューできます"
-                    intro="購入前に、実際の資料の雰囲気を確認したい方のために、一部ページを掲載しています。"
-                    subcopy="実際のPowerPoint資料の一部を、透かし入りで掲載しています。購入後のファイルには透かしは入りません。"
-                    items={PREVIEW_ITEMS}
+                    kicker="SAMPLE"
+                    heading="9疾患の全ページを透かし入りで公開しています"
+                    intro="購入前に中身をしっかり確認できるよう、9疾患・全108ページを掲載しています。画像をクリックすると拡大表示でき、左右の矢印でページを送れます。"
+                    subcopy="実際のPowerPoint資料の全ページを、透かし入りで掲載しています。購入後のPowerPoint・PDFファイルには透かしは入りません。"
+                    groups={PREVIEW_GROUPS}
                     background="slate"
                     columns={3}
                 />
