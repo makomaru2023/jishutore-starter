@@ -217,6 +217,87 @@ export function SlidePromptGenerator() {
         </div>
       </section>
 
+      <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 sm:p-6">
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">
+              VISUAL STYLE
+            </p>
+            <h3 className="mt-1 flex flex-wrap items-center gap-2 text-lg font-black text-slate-900">
+              ビジュアルスタイル
+              <span className="rounded-full bg-sky-50 px-2 py-0.5 text-[11px] font-bold text-sky-600">
+                差別化ポイント
+              </span>
+            </h3>
+            <p className="mt-1 max-w-2xl text-sm font-medium leading-relaxed text-slate-500">
+              スライドの「味」を決める見た目のテイストです。選んだスタイルの配色・トーンが、生成プロンプトの最優先指示として反映されます。
+            </p>
+          </div>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-500">
+            選択中：{VISUAL_STYLES.find((s) => s.id === visualStyleId)?.name}
+          </span>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {VISUAL_STYLES.map((style) => {
+            const selected = visualStyleId === style.id;
+            return (
+              <button
+                key={style.id}
+                type="button"
+                onClick={() => setVisualStyleId(style.id)}
+                aria-pressed={selected}
+                className={`group flex flex-col rounded-2xl border p-3 text-left transition-all duration-200 ${
+                  selected
+                    ? "border-sky-500 bg-sky-50 shadow-sm ring-2 ring-sky-200"
+                    : "border-slate-200 bg-white hover:border-sky-300 hover:bg-slate-50"
+                }`}
+              >
+                <span className="relative flex h-12 overflow-hidden rounded-xl ring-1 ring-black/5">
+                  {style.palette.map((color, colorIndex) => (
+                    <span
+                      key={`${style.id}-${colorIndex}`}
+                      className="flex-1"
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                  {selected && (
+                    <span className="absolute right-1.5 top-1.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-600 text-white shadow">
+                      <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
+                        <path
+                          fillRule="evenodd"
+                          d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.2 7.3a1 1 0 0 1-1.42.005l-3.6-3.6a1 1 0 1 1 1.414-1.414l2.89 2.89 6.49-6.59a1 1 0 0 1 1.414-.005Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  )}
+                </span>
+                <span className="mt-3 block text-sm font-black text-slate-900">
+                  {style.name}
+                </span>
+                <span className="mt-1 block flex-1 text-xs font-medium leading-relaxed text-slate-500">
+                  {style.summary}
+                </span>
+                <span className="mt-2.5 flex flex-wrap gap-1.5">
+                  {style.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                        selected
+                          ? "bg-white text-sky-600"
+                          : "bg-slate-100 text-slate-500"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
         <div className="space-y-6">
           <Section
@@ -291,7 +372,11 @@ export function SlidePromptGenerator() {
             </div>
           </Section>
 
-          <Section step={6} title="デザイン方針">
+          <Section
+            step={6}
+            title="デザイン方針"
+            description="資料の構成・まとめ方の方針です。見た目のテイスト（配色）は上の「ビジュアルスタイル」で選びます。"
+          >
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {DESIGN_POLICIES.map((item) => (
                 <OptionCard
@@ -321,65 +406,6 @@ export function SlidePromptGenerator() {
 
           <Section
             step={8}
-            title="ビジュアルスタイル"
-            description="スライドの見た目の方向性を選びます。選択したスタイルは生成プロンプト本文にも反映されます。"
-          >
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {VISUAL_STYLES.map((style) => {
-                const selected = visualStyleId === style.id;
-                return (
-                  <button
-                    key={style.id}
-                    type="button"
-                    onClick={() => setVisualStyleId(style.id)}
-                    aria-pressed={selected}
-                    className={`rounded-2xl border p-4 text-left transition-all duration-200 ${
-                      selected
-                        ? "border-sky-500 bg-sky-50 shadow-sm ring-2 ring-sky-100"
-                        : "border-slate-200 bg-white hover:border-sky-300 hover:bg-slate-50"
-                    }`}
-                  >
-                    <span className="flex items-start justify-between gap-3">
-                      <span className="text-sm font-black text-slate-900">
-                        {style.name}
-                      </span>
-                      <span
-                        className={`mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border ${
-                          selected
-                            ? "border-sky-600 bg-sky-600 text-white"
-                            : "border-slate-300 bg-white text-transparent"
-                        }`}
-                      >
-                        <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
-                          <path
-                            fillRule="evenodd"
-                            d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.2 7.3a1 1 0 0 1-1.42.005l-3.6-3.6a1 1 0 1 1 1.414-1.414l2.89 2.89 6.49-6.59a1 1 0 0 1 1.414-.005Z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </span>
-                    </span>
-                    <span className="mt-2 block text-xs font-medium leading-relaxed text-slate-500">
-                      {style.summary}
-                    </span>
-                    <span className="mt-3 flex flex-wrap gap-1.5">
-                      {style.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-500"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </Section>
-
-          <Section
-            step={9}
             title="各スライド設定"
             required
             description="選択した枚数分だけ、各スライドで伝えたいことを編集できます。"

@@ -15,7 +15,7 @@ export default function SlidePromptGeneratorPage() {
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
       <main className="flex-1">
-        <section className="border-b border-slate-200 bg-white">
+        <section className="border-b border-slate-200 bg-gradient-to-b from-sky-50 via-white to-white">
           <div className="container mx-auto grid max-w-6xl gap-8 px-4 pb-6 pt-10 sm:pb-8 sm:pt-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
             <div>
               <p className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-3.5 py-1.5 text-xs font-black tracking-wide text-sky-700">
