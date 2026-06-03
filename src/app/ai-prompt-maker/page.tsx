@@ -60,7 +60,7 @@ export default function AiPromptMakerPage() {
               完成イラストの素材も無料で使えます
             </h2>
             <p className="text-slate-300 font-medium mb-8">
-              プロンプトで生成したイラストだけでなく、すぐ使える既製素材も200点以上。
+              プロンプトで生成したイラストだけでなく、すぐ使える既製素材も300点以上。
               <br className="hidden sm:block" />
               すべて無料・商用OK・登録不要。
             </p>
