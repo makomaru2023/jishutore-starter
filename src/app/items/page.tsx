@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductDualCta } from "@/components/ProductDualCta";
+import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import { Metadata } from "next";
 
@@ -112,9 +113,9 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </p>
                 </div>
 
-                {/* 有料商品への導線（上部・2商品LP直リンク） */}
+                {/* 上部（ファーストビュー直下）：スポンサー募集枠 */}
                 <div className="mb-8 max-w-5xl mx-auto">
-                    <ProductDualCta />
+                    <SponsorAdPlaceholder variant="page" />
                 </div>
 
                 {/* LINE友だち追加バナー（上部） */}
@@ -127,8 +128,13 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     inlineAds
                 />
 
-                {/* スポンサー募集 */}
+                {/* 中盤に移動した自社商品導線（2LP直リンク） */}
                 <div className="mt-16 max-w-5xl mx-auto">
+                    <ProductDualCta />
+                </div>
+
+                {/* スポンサー募集（既存） */}
+                <div className="mt-12 max-w-5xl mx-auto">
                     <SponsorRecruitment />
                 </div>
 

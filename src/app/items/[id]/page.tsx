@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductCta } from "@/components/ProductCta";
+import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import Image from "next/image";
 import Link from "next/link";
@@ -240,6 +241,11 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                     {/* スポンサー募集 */}
                     <div className="mt-16 max-w-5xl mx-auto">
                         <SponsorRecruitment variant="compact" />
+                    </div>
+
+                    {/* 素材詳細ページ用スポンサー枠（フッターより上） */}
+                    <div className="mt-10 max-w-5xl mx-auto">
+                        <SponsorAdPlaceholder variant="detail" />
                     </div>
 
                     {/* LINE友だち追加バナー */}

@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 import { Metadata } from "next";
 
@@ -130,6 +131,13 @@ export default function ProductsPage() {
                                 </div>
                             </article>
                         ))}
+                    </div>
+                </section>
+
+                {/* プレミアムスポンサー枠（購入ボタンとは離した位置） */}
+                <section className="container mx-auto px-4 py-10">
+                    <div className="max-w-5xl mx-auto">
+                        <SponsorAdPlaceholder variant="premium" />
                     </div>
                 </section>
 

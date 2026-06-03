@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SponsorCtaButton } from "@/components/SponsorCtaButton";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "広告掲載・スポンサー募集｜自主トレ素材庫",
@@ -68,6 +69,7 @@ type Plan = {
     price: string;
     items: string[];
     target: string;
+    href: string;
     highlight?: boolean;
 };
 
@@ -82,6 +84,7 @@ const plans: Plan[] = [
             "公式サイトへのリンク掲載",
         ],
         target: "まずは小さく応援掲載を試したい事業者様",
+        href: "/sponsor/detail-sponsor",
     },
     {
         name: "ページスポンサー",
@@ -94,6 +97,7 @@ const plans: Plan[] = [
             "バナー画像掲載可能",
         ],
         target: "特定ページの読者に継続的に認知を取りたい事業者様",
+        href: "/sponsor/page-sponsor",
     },
     {
         name: "カテゴリスポンサー",
@@ -107,6 +111,7 @@ const plans: Plan[] = [
             "バナー画像掲載可能",
         ],
         target: "リハビリ職・介護職の特定領域に絞って届けたい事業者様",
+        href: "/sponsor/category-sponsor",
         highlight: true,
     },
     {
@@ -120,6 +125,19 @@ const plans: Plan[] = [
             "noteまたはSNSでの紹介を相談可能",
         ],
         target: "研修告知、採用広報、サービス認知をしっかり行いたい事業者様",
+        href: "/sponsor/premium-sponsor",
+    },
+    {
+        name: "noteスポンサー",
+        price: "1記事 3,000円",
+        items: [
+            "自主トレ素材庫のnote記事内に掲載",
+            "記事テーマに合わせた紹介文",
+            "100〜150文字程度の紹介文掲載",
+            "公式サイトまたはSNSへのリンク掲載",
+        ],
+        target: "読み物の中でサービスを自然に紹介したい事業者様",
+        href: "/sponsor/note-sponsor",
     },
 ];
 
@@ -354,10 +372,10 @@ export default function SponsorPage() {
                                 掲載メニュー
                             </h2>
                             <p className="text-slate-500 font-medium text-sm sm:text-base">
-                                4つの掲載プランをご用意しています。
+                                5つの掲載プランをご用意しています。
                             </p>
                         </div>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-6xl mx-auto">
                             {plans.map((plan) => (
                                 <div
                                     key={plan.name}
@@ -405,9 +423,16 @@ export default function SponsorPage() {
                                         <p className="text-xs font-bold text-slate-500 mb-1">
                                             おすすめ対象
                                         </p>
-                                        <p className="text-sm text-slate-700 leading-relaxed">
+                                        <p className="text-sm text-slate-700 leading-relaxed mb-4">
                                             {plan.target}
                                         </p>
+                                        <Link
+                                            href={plan.href}
+                                            className="inline-flex w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-blue-200 bg-white px-4 py-2.5 text-sm font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white"
+                                        >
+                                            詳細を見る
+                                            <ArrowIcon className="h-3.5 w-3.5" />
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
