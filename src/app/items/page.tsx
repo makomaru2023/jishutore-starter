@@ -3,10 +3,9 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
-import { ProductCta } from "@/components/ProductCta";
+import { ProductDualCta } from "@/components/ProductDualCta";
 import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import { Metadata } from "next";
-import Link from "next/link";
 
 // カテゴリキーワード（ローマ字）→ 表示メタ情報のマッピング
 const CATEGORY_META: Record<string, { title: string; description: string; metaTitle: string; metaDescription: string }> = {
@@ -113,9 +112,9 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </p>
                 </div>
 
-                {/* 有料商品への導線（上部・コンパクト） */}
+                {/* 有料商品への導線（上部・2商品LP直リンク） */}
                 <div className="mb-8 max-w-5xl mx-auto">
-                    <ProductCta location="items_top_cta" variant="compact" />
+                    <ProductDualCta />
                 </div>
 
                 {/* LINE友だち追加バナー（上部） */}
@@ -123,27 +122,9 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     <LineBanner />
                 </div>
 
-                <div className="mb-10 max-w-5xl mx-auto">
-                    <Link
-                        href="/products/home-elderly-self-training"
-                        className="block rounded-2xl border border-blue-100 bg-white px-5 py-4 shadow-sm transition-all hover:border-blue-200 hover:shadow-md"
-                    >
-                        <p className="text-xs font-black tracking-widest text-blue-600">
-                            POWERPOINT資料
-                        </p>
-                        <p className="mt-1 text-sm font-black leading-snug text-slate-900 sm:text-base">
-                            姿勢ごとに資料を作る時間を減らしたい方へ
-                        </p>
-                        <p className="mt-1 text-sm leading-relaxed text-slate-600">
-                            座位・立位・臥位で整理されたPowerPoint資料もあります。
-                        </p>
-                    </Link>
-                </div>
-
                 <FilteredItemList
                     items={items}
-                    middleCta={<ProductCta location="items_middle_cta" variant="full" />}
-                    middleCtaAfter={12}
+                    inlineAds
                 />
 
                 {/* スポンサー募集 */}

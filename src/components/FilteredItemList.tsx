@@ -4,16 +4,32 @@ import { Suspense, useState, useMemo, useEffect, ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
+import { ProductInlineAd, ProductAdType } from '@/components/ProductInlineAd';
 
 interface FilteredItemListProps {
     items: Item[];
-    /** N枚目のカード直後に挿入するCTA（指定がなければ挿入しない） */
+    /** N枚目のカード直後に挿入する単発CTA（旧仕様・互換用） */
     middleCta?: ReactNode;
     /** middleCtaを何枚目の後に挿入するか（デフォルト12） */
     middleCtaAfter?: number;
+    /** グリッド内に商品広告カードを一定間隔で挿入するか */
+    inlineAds?: boolean;
 }
 
-function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12 }: FilteredItemListProps) {
+// グリッド共通クラス
+const GRID_CLASS = 'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+
+// 広告挿入位置（1-indexed: 16枚目の後 → 40枚目の後 → 64枚目の後 → 88枚目の後 …）
+const FIRST_AD_AFTER = 16;
+const AD_INTERVAL = 24;
+// 検索結果がこの枚数以下のときはインライン広告を出さない
+const INLINE_AD_MIN_ITEMS = 12;
+// 広告のあとに残るカードがこの枚数未満なら、その広告は省く（末尾広告の防止）
+const TRAILING_GUARD = 4;
+
+const AD_TYPE_ORDER: ProductAdType[] = ['condition', 'posture'];
+
+function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAds = false }: FilteredItemListProps) {
     const searchParams = useSearchParams();
     const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '');
 
@@ -41,8 +57,33 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12 }: Filter
         });
     }, [items, searchQuery]);
 
-    // 検索中はCTAを挟まず通常のグリッドのみ
-    const showMiddleCta = !!middleCta && !searchQuery.trim() && filteredItems.length > middleCtaAfter;
+    const isSearching = !!searchQuery.trim();
+
+    // 旧middleCtaモード: 検索中は出さない
+    const showMiddleCta = !!middleCta && !isSearching && filteredItems.length > middleCtaAfter;
+    // 新inlineAdsモード: 検索中・件数少のときは出さない
+    const showInlineAds = inlineAds && !isSearching && filteredItems.length >= INLINE_AD_MIN_ITEMS;
+
+    // 一覧+広告を1つのフラットな配列に組み立てる
+    const renderedGridChildren = useMemo<ReactNode[]>(() => {
+        const out: ReactNode[] = [];
+        let adCount = 0;
+        filteredItems.forEach((item, i) => {
+            out.push(<ItemCard key={item.id} item={item} />);
+            if (!showInlineAds) return;
+            const pos = i + 1; // 1-indexed
+            const nextAdPos = FIRST_AD_AFTER + AD_INTERVAL * adCount;
+            if (pos === nextAdPos) {
+                const remaining = filteredItems.length - pos;
+                if (remaining >= TRAILING_GUARD) {
+                    const type = AD_TYPE_ORDER[adCount % AD_TYPE_ORDER.length];
+                    out.push(<ProductInlineAd key={`ad-${adCount}-${type}`} type={type} />);
+                }
+                adCount += 1;
+            }
+        });
+        return out;
+    }, [filteredItems, showInlineAds]);
 
     return (
         <div>
@@ -72,29 +113,27 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12 }: Filter
                 showMiddleCta ? (
                     <>
                         {/* 上半分（最初のN枚） */}
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        <div className={GRID_CLASS}>
                             {filteredItems.slice(0, middleCtaAfter).map((item) => (
                                 <ItemCard key={item.id} item={item} />
                             ))}
                         </div>
 
-                        {/* 中段CTA */}
+                        {/* 中段CTA（旧middleCtaモード） */}
                         <div className="my-12 max-w-5xl mx-auto">
                             {middleCta}
                         </div>
 
                         {/* 下半分（残り） */}
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        <div className={GRID_CLASS}>
                             {filteredItems.slice(middleCtaAfter).map((item) => (
                                 <ItemCard key={item.id} item={item} />
                             ))}
                         </div>
                     </>
                 ) : (
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {filteredItems.map((item) => (
-                            <ItemCard key={item.id} item={item} />
-                        ))}
+                    <div className={GRID_CLASS}>
+                        {renderedGridChildren}
                     </div>
                 )
             ) : (
