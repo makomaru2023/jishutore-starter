@@ -49,6 +49,7 @@ export default function Home() {
 
               <p className="mx-auto max-w-3xl break-keep text-sm font-medium leading-relaxed text-slate-400 sm:text-base">
                 スクワット・ブリッジ・ストレッチ・歩行練習など、300点以上のイラストを無料でダウンロードできます。
+                <br className="hidden sm:block" />
                 退院前指導・訪問リハ・通所リハ・家族説明の資料作成に使えます。
               </p>
 
