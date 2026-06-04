@@ -189,7 +189,7 @@ function OkBody({
 
             {publicDownload ? (
                 <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
-                    <p className="break-words text-base font-black text-slate-900">
+                    <p className="break-keep text-base font-black text-slate-900">
                         {publicDownload.itemName}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">

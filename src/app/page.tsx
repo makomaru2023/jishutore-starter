@@ -41,13 +41,13 @@ export default function Home() {
                 <span className="inline-block whitespace-nowrap">作っていませんか？</span>
               </h1>
 
-              <p className="mx-auto max-w-2xl break-words text-base font-bold leading-relaxed text-slate-200 sm:text-xl">
+              <p className="mx-auto max-w-2xl break-keep text-base font-bold leading-relaxed text-slate-200 sm:text-xl">
                 患者さんに渡せる自主トレ資料を、もっと短時間で。
                 <br className="hidden sm:block" />
                 現役作業療法士が作った、リハビリ職向けの自主トレイラスト素材サイトです。
               </p>
 
-              <p className="mx-auto max-w-3xl break-words text-sm font-medium leading-relaxed text-slate-400 sm:text-base">
+              <p className="mx-auto max-w-3xl break-keep text-sm font-medium leading-relaxed text-slate-400 sm:text-base">
                 スクワット・ブリッジ・ストレッチ・歩行練習など、300点以上のイラストを無料でダウンロードできます。
                 退院前指導・訪問リハ・通所リハ・家族説明の資料作成に使えます。
               </p>
@@ -63,7 +63,7 @@ export default function Home() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 text-teal-400">
                       <path strokeLinecap="round" strokeLinejoin="round" d={badge.icon} />
                     </svg>
-                    <span className="break-words">{badge.text}</span>
+                    <span className="break-keep">{badge.text}</span>
                   </span>
                 ))}
               </div>
