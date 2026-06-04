@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
 import { ProductInlineAd, ProductAdType } from '@/components/ProductInlineAd';
+import { SponsorAdPlaceholder } from '@/components/SponsorAdPlaceholder';
 
 interface FilteredItemListProps {
     items: Item[];
@@ -27,7 +28,8 @@ const INLINE_AD_MIN_ITEMS = 12;
 // 広告のあとに残るカードがこの枚数未満なら、その広告は省く（末尾広告の防止）
 const TRAILING_GUARD = 4;
 
-const AD_TYPE_ORDER: ProductAdType[] = ['condition', 'posture'];
+type InlineSlotType = ProductAdType | 'sponsor';
+const AD_TYPE_ORDER: InlineSlotType[] = ['condition', 'posture', 'sponsor'];
 
 function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAds = false }: FilteredItemListProps) {
     const searchParams = useSearchParams();
@@ -77,7 +79,15 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
                 const remaining = filteredItems.length - pos;
                 if (remaining >= TRAILING_GUARD) {
                     const type = AD_TYPE_ORDER[adCount % AD_TYPE_ORDER.length];
-                    out.push(<ProductInlineAd key={`ad-${adCount}-${type}`} type={type} />);
+                    if (type === 'sponsor') {
+                        out.push(
+                            <div key={`ad-${adCount}-sponsor`} className="col-span-full">
+                                <SponsorAdPlaceholder variant="page" />
+                            </div>
+                        );
+                    } else {
+                        out.push(<ProductInlineAd key={`ad-${adCount}-${type}`} type={type} />);
+                    }
                 }
                 adCount += 1;
             }

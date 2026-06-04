@@ -103,14 +103,7 @@ export function SponsorAdPlaceholder({
         return (
             <section className="w-full">
                 <div className="rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/30 px-4 py-4 sm:px-5 sm:py-5">
-                    <div className="mb-3 flex items-center gap-2 text-blue-700">
-                        <MegaphoneIcon className="h-4 w-4" />
-                        <p className="text-xs font-bold tracking-wider">
-                            この位置にあなたの広告が掲載されます
-                        </p>
-                    </div>
-                    <SampleAdCard cfg={cfg} compact />
-                    <div className="mt-3 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <div className="mb-3 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                         <p className="text-xs font-bold text-slate-600">
                             <span className="text-blue-700">{cfg.planLabel}</span>
                             <span className="mx-1.5 text-slate-300">/</span>
@@ -124,6 +117,13 @@ export function SponsorAdPlaceholder({
                             <ArrowIcon className="h-3 w-3" />
                         </Link>
                     </div>
+                    <div className="mb-3 flex items-center gap-2 text-blue-700">
+                        <MegaphoneIcon className="h-4 w-4" />
+                        <p className="text-xs font-bold tracking-wider">
+                            この位置にあなたの広告が掲載されます
+                        </p>
+                    </div>
+                    <SampleAdCard cfg={cfg} compact />
                 </div>
             </section>
         );
@@ -132,25 +132,8 @@ export function SponsorAdPlaceholder({
     return (
         <section className="w-full">
             <div className="rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50/40 p-4 sm:p-5">
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex items-center gap-2 text-blue-700">
-                        <MegaphoneIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                        <p className="text-xs font-black tracking-wider sm:text-sm">
-                            この位置にあなたの広告が掲載されます
-                        </p>
-                    </div>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-blue-600 ring-1 ring-blue-200">
-                        SAMPLE
-                    </span>
-                </div>
-
-                <SampleAdCard cfg={cfg} />
-
-                <p className="mt-3 text-[11px] leading-relaxed text-slate-500 sm:text-xs">
-                    ↑ {cfg.placementHint}（上はサンプル表示です）
-                </p>
-
-                <div className="mt-4 flex flex-col items-stretch gap-3 rounded-xl bg-white px-4 py-4 ring-1 ring-blue-100 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                {/* 上段：プラン名 + 価格 + CTA */}
+                <div className="mb-4 flex flex-col items-stretch gap-3 rounded-xl bg-white px-4 py-4 ring-1 ring-blue-100 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <div className="min-w-0">
                         <p className="text-[11px] font-bold tracking-widest text-blue-600">
                             SPONSOR
@@ -170,6 +153,25 @@ export function SponsorAdPlaceholder({
                         <ArrowIcon className="h-3.5 w-3.5" />
                     </Link>
                 </div>
+
+                {/* 下段：掲載イメージ */}
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 text-blue-700">
+                        <MegaphoneIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+                        <p className="text-xs font-black tracking-wider sm:text-sm">
+                            この位置にあなたの広告が掲載されます
+                        </p>
+                    </div>
+                    <span className="rounded-full bg-white px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-blue-600 ring-1 ring-blue-200">
+                        SAMPLE
+                    </span>
+                </div>
+
+                <SampleAdCard cfg={cfg} />
+
+                <p className="mt-3 text-[11px] leading-relaxed text-slate-500 sm:text-xs">
+                    ↑ {cfg.placementHint}（上はサンプル表示です）
+                </p>
             </div>
         </section>
     );
