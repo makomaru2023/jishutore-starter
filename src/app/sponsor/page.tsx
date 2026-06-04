@@ -51,7 +51,7 @@ const CheckIcon = ({ className = "w-3 h-3" }: { className?: string }) => (
 const aboutPoints = [
     "リハビリ職・介護職向けの無料素材サイト",
     "自主トレイラストや説明資料を継続的に追加",
-    "患者説明・家族指導・退院前指導に使いやすい構成",
+    "患者説明・家族指導・退院前指導・通所リハ・訪問リハで使いやすい構成",
     "資料作成に関心の高いユーザーが訪問",
 ];
 
@@ -329,9 +329,6 @@ export default function SponsorPage() {
                                     自主トレ素材庫とは
                                 </h2>
                             </div>
-                            <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6 break-keep">
-                                自主トレ素材庫は、リハビリ・介護現場で使える自主トレイラストや説明資料を配布しているサイトです。患者さんへの自主トレ指導、家族説明、退院前指導、通所リハ・訪問リハでの資料作成などに使える素材を公開しています。
-                            </p>
                             <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
                                 <ul className="space-y-3">
                                     {aboutPoints.map((point) => (
