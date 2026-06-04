@@ -111,10 +111,10 @@ export function SponsorAdPlaceholder({
                         </p>
                         <Link
                             href={cfg.href}
-                            className="inline-flex w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-blue-500 bg-white px-4 py-2 text-xs font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white sm:w-auto"
+                            className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-blue-500 bg-white px-4 py-2 text-center text-xs font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white sm:w-auto sm:whitespace-nowrap"
                         >
                             {cfg.detailButtonLabel}
-                            <ArrowIcon className="h-3 w-3" />
+                            <ArrowIcon className="h-3 w-3 flex-shrink-0" />
                         </Link>
                     </div>
                     <div className="mb-3 flex items-center gap-2 text-blue-700">
@@ -147,10 +147,10 @@ export function SponsorAdPlaceholder({
                     </div>
                     <Link
                         href={cfg.href}
-                        className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-500 sm:w-auto"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 sm:w-auto sm:whitespace-nowrap"
                     >
                         {cfg.detailButtonLabel}
-                        <ArrowIcon className="h-3.5 w-3.5" />
+                        <ArrowIcon className="h-3.5 w-3.5 flex-shrink-0" />
                     </Link>
                 </div>
 
@@ -180,7 +180,7 @@ export function SponsorAdPlaceholder({
 function SampleAdCard({ cfg, compact = false }: { cfg: PresetConfig; compact?: boolean }) {
     return (
         <div
-            className="rounded-xl border border-slate-200 bg-white px-4 py-4 sm:px-5 sm:py-5"
+            className="max-w-full rounded-xl border border-slate-200 bg-white px-4 py-4 sm:px-5 sm:py-5"
             aria-hidden
         >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
@@ -198,10 +198,10 @@ function SampleAdCard({ cfg, compact = false }: { cfg: PresetConfig; compact?: b
 
                 {/* 紹介文プレースホルダー */}
                 <div className="min-w-0 flex-1">
-                    <p className="mb-2 text-sm font-black leading-snug text-slate-400 sm:text-base">
+                    <p className="mb-2 text-sm font-black leading-snug text-slate-400 sm:text-base break-keep break-words">
                         {cfg.mockTitle}
                     </p>
-                    <p className={`text-xs leading-relaxed text-slate-400 sm:text-sm ${compact ? 'line-clamp-2' : ''} break-keep`}>
+                    <p className={`text-xs leading-relaxed text-slate-400 sm:text-sm ${compact ? 'line-clamp-2' : ''} break-keep break-words`}>
                         {cfg.mockBody}
                     </p>
                     <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-slate-400">
@@ -210,9 +210,9 @@ function SampleAdCard({ cfg, compact = false }: { cfg: PresetConfig; compact?: b
                     </p>
                 </div>
 
-                {/* バナー画像プレースホルダー（プランによる） */}
+                {/* バナー画像プレースホルダー（プランによる・PCのみ表示） */}
                 {cfg.showBanner && !compact && (
-                    <div className="flex-shrink-0 sm:w-40">
+                    <div className="hidden flex-shrink-0 sm:block sm:w-40">
                         <div className="flex aspect-[4/3] items-center justify-center rounded-lg bg-slate-100 text-slate-400 ring-1 ring-slate-200">
                             <div className="text-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="mx-auto h-5 w-5">

@@ -76,10 +76,10 @@ export function SponsorDetailLayout({
                             <p className="mb-3 inline-block rounded-full border border-slate-700 bg-slate-800 px-4 py-1.5 text-xs font-bold tracking-widest text-blue-300">
                                 スポンサー枠 詳細
                             </p>
-                            <h1 className="mb-4 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl">
+                            <h1 className="mb-4 text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl break-keep">
                                 {planName}
                             </h1>
-                            <p className="mb-6 text-3xl font-black text-blue-300 sm:text-4xl">
+                            <p className="mb-6 text-2xl font-black text-blue-300 sm:text-3xl lg:text-4xl break-keep">
                                 {price}
                             </p>
                             <p className="text-base font-medium leading-relaxed text-slate-300 break-keep sm:text-lg">
@@ -122,8 +122,8 @@ export function SponsorDetailLayout({
                                         {previewCaption}
                                     </p>
                                 )}
-                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
-                                    <p className="mb-3 text-[11px] font-bold tracking-widest text-slate-400">
+                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-2 sm:p-5">
+                                    <p className="mb-3 px-2 pt-1 text-[11px] font-bold tracking-widest text-slate-400 sm:px-0 sm:pt-0">
                                         掲載イメージ（プレビュー）
                                     </p>
                                     <SponsorAdPlaceholder variant={previewVariant} />

@@ -263,7 +263,7 @@ export default function SponsorPage() {
                             <p className="inline-block px-4 py-1.5 rounded-full bg-slate-800 text-blue-300 font-bold text-sm tracking-widest border border-slate-700">
                                 スポンサー募集
                             </p>
-                            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+                            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight break-keep">
                                 自主トレ素材庫の
                                 <br className="sm:hidden" />
                                 スポンサーを募集しています
@@ -373,18 +373,18 @@ export default function SponsorPage() {
                                 2026年3月から5月にかけて、掲載素材数は213点から271点へ増加しました。それにあわせて、アクティブユーザー数・新規ユーザー数・表示回数も大きく伸びています。
                             </p>
 
-                            <div className="rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                            <figure className="max-w-full rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden">
                                 <div className="p-3 sm:p-5">
                                     <Image
                                         src="/images/sponsor-performance-2026-spring.png"
                                         alt="自主トレ素材庫 2026年3月から5月までの3ヶ月間の推移"
                                         width={1672}
                                         height={941}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1024px"
-                                        className="w-full h-auto rounded-2xl"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+                                        className="block w-full h-auto rounded-2xl"
                                     />
                                 </div>
-                            </div>
+                            </figure>
 
                             <p className="mt-4 text-xs sm:text-sm text-slate-500 text-center leading-relaxed">
                                 ※数値はGoogle Analytics 4による参考値です。広告効果を保証するものではありません。
@@ -491,7 +491,7 @@ export default function SponsorPage() {
                                 まずは小さく試しやすい価格帯で、複数のスポンサー枠をご用意しています。掲載場所や内容は、サイトの状況に応じて個別にご相談となります。
                             </p>
                         </div>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-6xl mx-auto">
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
                             {plans.map((plan) => (
                                 <div
                                     key={plan.name}
@@ -506,10 +506,10 @@ export default function SponsorPage() {
                                             おすすめ
                                         </span>
                                     )}
-                                    <h3 className="text-lg font-black text-slate-900 mb-2">
+                                    <h3 className="text-lg font-black text-slate-900 mb-2 break-keep">
                                         {plan.name}
                                     </h3>
-                                    <p className="text-2xl font-black text-blue-600 mb-4">
+                                    <p className="text-xl sm:text-2xl font-black text-blue-600 mb-4 break-keep">
                                         {plan.price}
                                     </p>
                                     <div className="mb-4 px-3 py-2 rounded-lg bg-blue-50/60 border border-blue-100">
