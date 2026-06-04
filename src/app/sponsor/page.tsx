@@ -378,8 +378,8 @@ export default function SponsorPage() {
                                     <Image
                                         src="/images/sponsor-performance-2026-spring.png"
                                         alt="自主トレ素材庫 2026年3月から5月までの3ヶ月間の推移"
-                                        width={1920}
-                                        height={1080}
+                                        width={1672}
+                                        height={941}
                                         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1024px"
                                         className="w-full h-auto rounded-2xl"
                                     />
