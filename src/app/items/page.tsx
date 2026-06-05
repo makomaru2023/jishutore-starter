@@ -8,6 +8,86 @@ import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import { Metadata } from "next";
 
+// カテゴリキーワード（ローマ字）→ フィルタ用キーワードのマッピング
+// FilteredItemList が title / titleJa / fileName 中にいずれか1ワードを含めばヒット扱い
+const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> = {
+    shoulder: {
+        label: "上肢（肩・腕）",
+        keywords: [
+            // 英語
+            "shoulder", "scapular", "elbow", "arm", "wrist", "hand", "finger",
+            "chopstick", "peg", "reach", "grip", "beanbag", "azuki", "banzai",
+            "patakara", "pataka", "puffing", "puckering",
+            // 日本語
+            "肩", "肘", "腕", "上肢", "手指", "手のひら", "手首", "タオル握",
+            "バンザイ", "箸", "お手玉", "ペグ", "ダンベル", "棒", "リーチ",
+            "ピンキー", "母指", "対立",
+        ],
+    },
+    hip: {
+        label: "下肢（脚・股関節）",
+        keywords: [
+            // 英語
+            "hip", "knee", "leg", "thigh", "squat", "heel", "slr", "leg-raise",
+            "quadriceps", "hamstring", "glute", "bridge", "clam", "lunge",
+            "ankle", "foot", "toe", "calf", "kneeling",
+            // 日本語
+            "膝", "股", "脚", "下肢", "足首", "足関節", "ヒール", "スライド", "SLR",
+            "レッグレイズ", "スクワット", "ブリッジ", "太もも", "クラム", "四頭筋",
+            "お尻", "臀", "ハム", "ヒンジ", "カーフ", "つま先", "かかと",
+            "底背屈", "底屈", "背屈", "セッティング",
+        ],
+    },
+    trunk: {
+        label: "体幹トレーニング",
+        keywords: [
+            // 英語
+            "trunk", "core", "plank", "abdomen", "back", "pelvic", "pelvis",
+            "draw-in", "cat-and-dog", "diagonal", "rotation", "side-bridge",
+            "puppy",
+            // 日本語
+            "体幹", "腹", "背筋", "骨盤", "ドローイン", "プランク", "ダイアゴナル",
+            "回旋", "キャット", "腰", "サイドブリッジ", "パピーポジション",
+            "腹筋",
+        ],
+    },
+    stretch: {
+        label: "ストレッチ",
+        keywords: [
+            // 英語
+            "stretch", "flexion-stretch", "extension-stretch", "opening",
+            "doorway", "towel-side-bend", "trunk-extension", "trunk-flexion",
+            // 日本語
+            "ストレッチ", "伸ばし", "柔軟", "ハムストリング", "胸開き",
+            "ロッキング", "ドアウェイ",
+        ],
+    },
+    walking: {
+        label: "歩行訓練",
+        keywords: [
+            // 英語
+            "walking", "walk", "cane", "walker", "parallel-bar", "treadmill", "gait",
+            // 日本語
+            "歩行", "歩", "杖", "歩行器", "平行棒", "トレッドミル", "ノルディック",
+        ],
+    },
+    stand: {
+        label: "立ち上がり・バランス",
+        keywords: [
+            // 英語
+            "stand", "sit-to-stand", "sit", "standing", "single-leg", "balance",
+            "side-step", "step", "rolling", "side-lying", "edge-sitting",
+            "wheelchair", "toilet", "bath",
+            // 日本語
+            "立ち", "立位", "片足", "バランス", "サイドステップ", "椅子", "イス",
+            "段差", "転倒", "スリッパ", "車椅子", "トイレ", "浴室", "寝返り",
+            "端座位", "側臥位", "起き上がり", "肘立て", "両膝倒し", "コード",
+            "正座", "脚を組", "脚組み", "前屈", "靴下", "靴ひも", "しゃがみ",
+            "階段", "THA",
+        ],
+    },
+};
+
 // カテゴリキーワード（ローマ字）→ 表示メタ情報のマッピング
 const CATEGORY_META: Record<string, { title: string; description: string; metaTitle: string; metaDescription: string }> = {
     shoulder: {
@@ -100,6 +180,10 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         description = "運動名・手順の説明付き。印刷してそのまま患者さんに渡せるイラスト素材です。";
     }
 
+    const categoryFilter = q && CATEGORY_KEYWORDS[q]
+        ? { key: q, label: CATEGORY_KEYWORDS[q].label, keywords: CATEGORY_KEYWORDS[q].keywords }
+        : undefined;
+
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
@@ -126,6 +210,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                 <FilteredItemList
                     items={items}
                     inlineAds
+                    categoryFilter={categoryFilter}
                 />
 
                 {/* 中盤に移動した自社商品導線（2LP直リンク） */}
