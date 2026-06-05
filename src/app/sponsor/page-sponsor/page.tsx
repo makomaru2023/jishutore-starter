@@ -44,8 +44,6 @@ export default function PageSponsorDetailPage() {
                 '掲載開始までに内容調整のための打ち合わせが入る場合があります。',
                 '掲載期間中の差し替えは月単位でご相談可能です。',
             ]}
-            previewVariant="page"
-            previewCaption="無料素材一覧ページや素材詳細ページに、下のような形で掲載されます。"
         />
     );
 }

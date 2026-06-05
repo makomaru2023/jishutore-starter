@@ -42,8 +42,6 @@ export default function NoteSponsorPage() {
                 '記事中での見せ方は、運営側で内容を整える形になります。',
                 '掲載タイミングは、記事の公開スケジュールに合わせて調整します。',
             ]}
-            previewVariant="support"
-            previewCaption="note記事内に、文脈に合わせてサービスや取り組みを自然に紹介します。サイト内掲載とは別の枠です。"
         />
     );
 }

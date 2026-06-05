@@ -44,8 +44,6 @@ export default function CategorySponsorPage() {
                 '同カテゴリで競合関係にあるサービスは、同時期の掲載をお断りすることがあります。',
                 '掲載するカテゴリは申し込み時にご指定ください。',
             ]}
-            previewVariant="category"
-            previewCaption="該当カテゴリのページ下部や関連素材ページに、下のような形で掲載されます。"
         />
     );
 }

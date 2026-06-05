@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { SponsorAdPlaceholder, SponsorAdVariant } from '@/components/SponsorAdPlaceholder';
 
 const CONTACT_MAILTO =
     'mailto:smart.rehabili@gmail.com?subject=' +
@@ -35,10 +34,6 @@ export interface SponsorDetailLayoutProps {
     fitFor: string[];
     placeableItems: string[];
     notes: string[];
-    /** 掲載イメージ用の SponsorAdPlaceholder variant */
-    previewVariant: SponsorAdVariant;
-    /** 掲載イメージのキャプション */
-    previewCaption?: string;
     children?: ReactNode;
 }
 
@@ -51,8 +46,6 @@ export function SponsorDetailLayout({
     fitFor,
     placeableItems,
     notes,
-    previewVariant,
-    previewCaption,
     children,
 }: SponsorDetailLayoutProps) {
     return (
@@ -114,20 +107,6 @@ export function SponsorDetailLayout({
                                         </li>
                                     ))}
                                 </ul>
-                            </DetailBlock>
-
-                            <DetailBlock title="掲載イメージ">
-                                {previewCaption && (
-                                    <p className="mb-4 text-sm font-medium leading-relaxed text-slate-500 break-keep">
-                                        {previewCaption}
-                                    </p>
-                                )}
-                                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-2 sm:p-5">
-                                    <p className="mb-3 px-2 pt-1 text-[11px] font-bold tracking-widest text-slate-400 sm:px-0 sm:pt-0">
-                                        掲載イメージ（プレビュー）
-                                    </p>
-                                    <SponsorAdPlaceholder variant={previewVariant} />
-                                </div>
                             </DetailBlock>
 
                             <DetailBlock title="向いているサービス">

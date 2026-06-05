@@ -47,8 +47,6 @@ export default function PremiumSponsorPage() {
                 'noteでの紹介は別途内容の打ち合わせをさせていただきます。',
                 '初回は1ヶ月単位から、継続のご相談も承ります。',
             ]}
-            previewVariant="premium"
-            previewCaption="無料素材一覧ページの目立つ位置や資料セットページ下部に、下のような形で掲載されます。"
         />
     );
 }

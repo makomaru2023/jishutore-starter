@@ -42,8 +42,6 @@ export default function DetailSponsorPage() {
                 '紹介文は内容を一緒に整える形になります。',
                 '個人さまの場合、表記名はニックネーム・サービス名のみでもOKです。',
             ]}
-            previewVariant="support"
-            previewCaption="トップページ下部や応援スポンサー欄に、下のような形で掲載されます。"
         />
     );
 }
