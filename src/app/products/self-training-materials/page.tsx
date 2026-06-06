@@ -254,7 +254,7 @@ export default function SelfTrainingMaterialsPage() {
                                         productId={PRODUCT_ID}
                                         productName={PRODUCT_NAME}
                                         price={PRICE}
-                                        label="980円で9本セットを購入する"
+                                        label="980円で購入する"
                                         className={HERO_CHECKOUT_CLASS}
                                     />
                                 </div>
@@ -549,7 +549,7 @@ export default function SelfTrainingMaterialsPage() {
                                     productId={PRODUCT_ID}
                                     productName={PRODUCT_NAME}
                                     price={PRICE}
-                                    label="980円で9本セットを購入する"
+                                    label="980円で購入する"
                                     className={SECTION_CHECKOUT_CLASS}
                                 />
                                 <p className={`mt-3 text-center text-xs text-slate-500 leading-relaxed ${JP_TEXT}`}>
@@ -655,7 +655,7 @@ export default function SelfTrainingMaterialsPage() {
                                 productId={PRODUCT_ID}
                                 productName={PRODUCT_NAME}
                                 price={PRICE}
-                                label="980円で9本セットを購入する"
+                                label="980円で購入する"
                                 className={SECTION_CHECKOUT_CLASS}
                             />
                             <p className={`mt-3 text-xs text-slate-500 leading-relaxed ${JP_TEXT}`}>
