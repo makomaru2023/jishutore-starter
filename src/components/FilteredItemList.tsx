@@ -39,7 +39,9 @@ const INLINE_AD_MIN_ITEMS = 12;
 const TRAILING_GUARD = 4;
 
 type InlineSlotType = ProductAdType | 'sponsor';
-const AD_TYPE_ORDER: InlineSlotType[] = ['condition', 'posture', 'sponsor'];
+// 表示順：疾患別 → スポンサー → 姿勢別 → 疾患別 → スポンサー → 姿勢別 …
+// 自社商品の方が優先度が高いので、間にスポンサーを挟む形にしている
+const AD_TYPE_ORDER: InlineSlotType[] = ['condition', 'sponsor', 'posture'];
 
 function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAds = false, categoryFilter }: FilteredItemListProps) {
     const searchParams = useSearchParams();
