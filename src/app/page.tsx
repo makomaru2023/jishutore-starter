@@ -5,7 +5,6 @@ import { HomeCategoryNav } from "@/components/HomeCategoryNav";
 import { HomeHowTo } from "@/components/HomeHowTo";
 import { HomePremiumPromo } from "@/components/HomePremiumPromo";
 import { LineHero } from "@/components/LineHero";
-import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -108,13 +107,11 @@ export default function Home() {
         {/* Premium PowerPoint資料 Section */}
         <HomePremiumPromo />
 
-        {/* スポンサー募集 */}
+        {/* スポンサー枠（広告掲載募集） */}
         <section className="py-12 sm:py-16 bg-slate-50">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto space-y-6">
-              <SponsorRecruitment />
-              {/* 応援スポンサー枠（トップページ下部・フッター上） */}
-              <SponsorAdPlaceholder variant="support" />
+            <div className="max-w-3xl mx-auto">
+              <SponsorAdPlaceholder variant="compact" />
             </div>
           </div>
         </section>

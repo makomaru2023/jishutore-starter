@@ -5,7 +5,6 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductDualCta } from "@/components/ProductDualCta";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
-import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import { Metadata } from "next";
 
 // カテゴリキーワード（ローマ字）→ フィルタ用キーワードのマッピング
@@ -199,7 +198,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
                 {/* 上部（ファーストビュー直下）：スポンサー募集枠 */}
                 <div className="mb-8 max-w-5xl mx-auto">
-                    <SponsorAdPlaceholder variant="page" />
+                    <SponsorAdPlaceholder variant="top" />
                 </div>
 
                 {/* LINE友だち追加バナー（上部） */}
@@ -216,11 +215,6 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                 {/* 中盤に移動した自社商品導線（2LP直リンク） */}
                 <div className="mt-16 max-w-5xl mx-auto">
                     <ProductDualCta />
-                </div>
-
-                {/* スポンサー募集（既存） */}
-                <div className="mt-12 max-w-5xl mx-auto">
-                    <SponsorRecruitment />
                 </div>
 
                 {/* LINE友だち追加バナー */}

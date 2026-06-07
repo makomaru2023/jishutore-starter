@@ -117,7 +117,7 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
                     if (type === 'sponsor') {
                         out.push(
                             <div key={`ad-${adCount}-sponsor`} className="col-span-full">
-                                <SponsorAdPlaceholder variant="page" />
+                                <SponsorAdPlaceholder variant="inline" />
                             </div>
                         );
                     } else {

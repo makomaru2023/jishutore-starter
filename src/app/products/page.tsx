@@ -137,7 +137,7 @@ export default function ProductsPage() {
                 {/* プレミアムスポンサー枠（購入ボタンとは離した位置） */}
                 <section className="container mx-auto px-4 py-10">
                     <div className="max-w-5xl mx-auto">
-                        <SponsorAdPlaceholder variant="premium" />
+                        <SponsorAdPlaceholder variant="compact" />
                     </div>
                 </section>
 

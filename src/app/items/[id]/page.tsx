@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductCta } from "@/components/ProductCta";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
-import { SponsorRecruitment } from "@/components/SponsorRecruitment";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -238,14 +237,9 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
                     </div>
 
-                    {/* スポンサー募集 */}
-                    <div className="mt-16 max-w-5xl mx-auto">
-                        <SponsorRecruitment variant="compact" />
-                    </div>
-
                     {/* 素材詳細ページ用スポンサー枠（フッターより上） */}
-                    <div className="mt-10 max-w-5xl mx-auto">
-                        <SponsorAdPlaceholder variant="detail" />
+                    <div className="mt-16 max-w-5xl mx-auto">
+                        <SponsorAdPlaceholder variant="compact" />
                     </div>
 
                     {/* LINE友だち追加バナー */}
