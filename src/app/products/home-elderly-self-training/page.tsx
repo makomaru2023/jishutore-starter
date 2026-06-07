@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 
@@ -628,6 +629,34 @@ export default function HomeElderlySelfTrainingPage() {
                         </p>
                         <div className="mx-auto mt-8 max-w-md">
                             <ProductCheckoutButton />
+                        </div>
+                    </div>
+                </section>
+
+                {/* 疾患別セットへの回遊導線 */}
+                <section className="bg-white py-12 sm:py-16 border-t border-slate-100">
+                    <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
+                        <div className="rounded-3xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
+                            <p className="mb-2 text-[11px] font-bold tracking-widest text-blue-700">
+                                もう1つの資料セット
+                            </p>
+                            <h2 className={`text-xl sm:text-2xl font-black leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
+                                疾患ごとの注意点も整理したい方へ
+                            </h2>
+                            <p className={`text-sm sm:text-base leading-relaxed text-slate-600 mb-5 ${JP_TEXT}`}>
+                                脳卒中・腰痛・膝OAなど、疾患ごとに使える自主トレ資料セットもあります。退院前指導や疾患別の家族説明に使いやすい資料です。
+                            </p>
+                            <ProductSelectLink
+                                href="/products/self-training-materials/"
+                                itemName="疾患別自主トレ資料セット"
+                                location="products_cross_link"
+                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-blue-500 bg-white px-6 py-3 text-sm font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white"
+                            >
+                                疾患別セットを見る
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
+                                </svg>
+                            </ProductSelectLink>
                         </div>
                     </div>
                 </section>
