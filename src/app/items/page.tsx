@@ -196,14 +196,14 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </p>
                 </div>
 
-                {/* 上部（ファーストビュー直下）：自社商品2LP直リンク（メインCTA） */}
-                <div className="mb-8 max-w-5xl mx-auto">
+                {/* 上部：自社商品2LP直リンク（メインCTA） */}
+                <div className="mb-6 max-w-5xl mx-auto">
                     <ProductDualCta />
                 </div>
 
-                {/* LINE友だち追加バナー（上部） */}
+                {/* 上部：スポンサー枠（広告主向け） */}
                 <div className="mb-10 max-w-5xl mx-auto">
-                    <LineBanner />
+                    <SponsorAdPlaceholder variant="top" />
                 </div>
 
                 <FilteredItemList
@@ -212,13 +212,8 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     categoryFilter={categoryFilter}
                 />
 
-                {/* 中盤：スポンサー枠（広告主募集・自社商品より下に） */}
+                {/* 下部：LINE無料特典 */}
                 <div className="mt-16 max-w-5xl mx-auto">
-                    <SponsorAdPlaceholder variant="top" />
-                </div>
-
-                {/* LINE友だち追加バナー */}
-                <div className="mt-10 max-w-5xl mx-auto">
                     <LineBanner />
                 </div>
             </main>
