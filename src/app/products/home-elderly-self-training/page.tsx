@@ -634,7 +634,7 @@ export default function HomeElderlySelfTrainingPage() {
 
                 <LineBanner />
             </main>
-            <Footer showNoteLink={false} />
+            <Footer />
         </div>
     );
 }

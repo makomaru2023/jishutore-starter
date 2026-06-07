@@ -225,7 +225,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     </a>
                                 </div>
 
-                                {/* note有料商品への導線（ダウンロードボタン直下） */}
+                                {/* 有料商品（PowerPoint資料セット）への導線（ダウンロードボタン直下） */}
                                 <ProductCta location="item_detail_cta" variant="inline" />
 
                                 <Link href="/items" className="flex items-center justify-center gap-2 text-slate-500 hover:text-teal-500 font-bold transition-colors">

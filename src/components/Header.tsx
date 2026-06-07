@@ -89,17 +89,6 @@ export function Header() {
                             </svg>
                             無料特典を受け取る
                         </Link>
-                        <div className="pt-4 border-t border-slate-800">
-                            <a
-                                href="https://note.com/jisyutore"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block py-2 text-sm font-bold text-slate-300 hover:text-white px-4"
-                                onClick={closeMenu}
-                            >
-                                note
-                            </a>
-                        </div>
                     </div>
                 </div>
             )}

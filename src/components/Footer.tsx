@@ -1,10 +1,6 @@
 import Link from "next/link";
 
-type FooterProps = {
-    showNoteLink?: boolean;
-};
-
-export function Footer({ showNoteLink = true }: FooterProps) {
+export function Footer() {
     return (
         <footer className="bg-slate-900 py-12 border-t border-slate-800">
             <div className="container mx-auto px-4 max-w-5xl">
@@ -12,6 +8,9 @@ export function Footer({ showNoteLink = true }: FooterProps) {
                     <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-sm font-bold text-slate-400">
                         <Link href="/about" className="hover:text-white transition-colors">
                             運営者情報
+                        </Link>
+                        <Link href="/products" className="hover:text-white transition-colors">
+                            資料セット
                         </Link>
                         <Link href="/faq" className="hover:text-white transition-colors">
                             よくあるご質問
@@ -31,16 +30,6 @@ export function Footer({ showNoteLink = true }: FooterProps) {
                         <Link href="/sponsor" className="hover:text-white transition-colors">
                             広告掲載・スポンサー募集
                         </Link>
-                        {showNoteLink && (
-                            <a
-                                href="https://note.com/jisyutore"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-white transition-colors"
-                            >
-                                note
-                            </a>
-                        )}
                     </div>
                     <div className="text-sm font-bold text-slate-500 flex items-center gap-2">
                         © {new Date().getFullYear()} 自主トレ素材庫
