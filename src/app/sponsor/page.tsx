@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "広告掲載・スポンサー募集｜成長中のリハビリ職向け無料素材サイト｜自主トレ素材庫",
+    title: "広告掲載・スポンサー募集｜月3,000円からリハビリ・介護職に届く｜自主トレ素材庫",
     description:
-        "自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。300点以上の無料素材を掲載し、検索流入も伸びています。研修・教材・採用・福祉用具・介護サービスなどを、関心の近いユーザーへ届けられます。",
+        "月3,000円から、リハビリ・介護現場のユーザーに広告を掲載できます。自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイト。読者層は医療・介護領域に絞られています。研修・教材・採用・福祉用具・介護サービスの掲載に。",
     alternates: { canonical: "/sponsor" },
 };
 
@@ -203,14 +203,14 @@ export default function SponsorPage() {
                                 スポンサー募集
                             </p>
                             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight break-keep">
-                                リハビリ・介護職に届く、
+                                月3,000円から、
+                                <br />
+                                リハビリ・介護現場のユーザーに
                                 <br className="sm:hidden" />
-                                成長中の無料素材サイトに
-                                <br className="sm:hidden" />
-                                掲載しませんか？
+                                広告を掲載できます
                             </h1>
                             <p className="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed text-left sm:text-center">
-                                自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。300点以上の無料素材を掲載し、検索流入も伸びています。研修・教材・採用・福祉用具・介護サービスなどを、関心の近いユーザーへ届けられます。
+                                自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。300点以上の無料素材を掲載し、読者層は医療・介護領域に絞られています。研修・教材・採用・福祉用具・介護サービスを、関心の近いユーザーへ届けられます。
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
