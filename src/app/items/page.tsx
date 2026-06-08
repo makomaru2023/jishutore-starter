@@ -165,10 +165,21 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
     let title = "自主トレイラスト素材一覧";
     let description = "スクワット・ブリッジ・ストレッチなど、300点以上の自主トレイラストを、無料でダウンロードできます。";
 
-    // ローマ字カテゴリ（?q=shoulder 等）優先
-    if (q && CATEGORY_META[q]) {
-        title = CATEGORY_META[q].title;
-        description = CATEGORY_META[q].description;
+    // ローマ字カテゴリ（?q=shoulder 等）優先。サーバー側で複数キーワードORフィルタを実行し、
+    // SSR時点で素材一覧がHTMLに出るようにする（Suspense fallback空問題の解消）。
+    if (q && CATEGORY_KEYWORDS[q]) {
+        const cfg = CATEGORY_KEYWORDS[q];
+        const lowerKw = cfg.keywords.map((k) => k.toLowerCase());
+        items = allItems.filter((item) => {
+            const t = item.title.toLowerCase();
+            const tj = (item.titleJa ?? '').toLowerCase();
+            const fn = item.fileName.toLowerCase();
+            return lowerKw.some((kw) => t.includes(kw) || tj.includes(kw) || fn.includes(kw));
+        });
+        if (CATEGORY_META[q]) {
+            title = CATEGORY_META[q].title;
+            description = CATEGORY_META[q].description;
+        }
     } else if (category === 'plain') {
         items = allItems.filter(item => item.category === 'plain');
         title = "自主トレイラスト一覧（文字なし）";
@@ -179,8 +190,9 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         description = "運動名・手順の説明付き。印刷してそのまま患者さんに渡せるイラスト素材です。";
     }
 
+    // カテゴリチップ・検索バー挙動だけ知らせれば良い（filterは既にサーバー側で完了）。
     const categoryFilter = q && CATEGORY_KEYWORDS[q]
-        ? { key: q, label: CATEGORY_KEYWORDS[q].label, keywords: CATEGORY_KEYWORDS[q].keywords }
+        ? { key: q, label: CATEGORY_KEYWORDS[q].label }
         : undefined;
 
     return (
