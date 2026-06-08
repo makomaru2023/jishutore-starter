@@ -212,8 +212,8 @@ export default function ProductsPage() {
                             </h2>
                         </div>
 
-                        {/* スマホ：2カード積み */}
-                        <div className="grid gap-5 sm:hidden">
+                        {/* スマホ・小タブレット（〜767px）：2カード積み */}
+                        <div className="grid gap-5 md:hidden">
                             {[
                                 {
                                     name: "疾患別自主トレ資料セット",
@@ -260,7 +260,7 @@ export default function ProductsPage() {
                         </div>
 
                         {/* PC（md以上）：横並びテーブル */}
-                        <div className="hidden sm:block max-w-5xl mx-auto">
+                        <div className="hidden md:block max-w-5xl mx-auto">
                             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
                                 <table className="w-full text-sm">
                                     <thead className="bg-slate-50 border-b border-slate-200">
