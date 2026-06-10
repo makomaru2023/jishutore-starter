@@ -125,7 +125,7 @@ export default function ProductsPage() {
                             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base break-keep">
                                 退院前指導・訪問リハ・通所リハで使いやすい、編集可能なPowerPoint資料と印刷用PDFをまとめました。<strong className="text-slate-800">疾患名から選ぶ資料</strong>と<strong className="text-slate-800">今できる姿勢から選ぶ資料</strong>を、用途に合わせて使い分けできます。
                             </p>
-                            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
                                 <Link
                                     href="#compare"
                                     className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500"
@@ -134,6 +134,13 @@ export default function ProductsPage() {
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                     </svg>
+                                </Link>
+                                <Link
+                                    href="#bundle"
+                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-6 py-3 text-sm font-bold text-amber-800 transition-colors hover:bg-amber-100"
+                                >
+                                    <span className="text-[11px] font-black tracking-wider text-amber-700">★お得</span>
+                                    2点セット 1,480円
                                 </Link>
                                 <Link
                                     href="#products"
@@ -315,6 +322,50 @@ export default function ProductsPage() {
                                     </ProductSelectLink>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 3.5 まとめ買いセット プロモバナー（比較→商品の間に「迷ったら」訴求） */}
+                <section className="bg-white py-8 sm:py-10">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-4xl">
+                            <Link
+                                href="#bundle"
+                                className="group block rounded-3xl border border-amber-200 bg-gradient-to-r from-amber-50 via-amber-50/60 to-white p-5 transition-all hover:border-amber-300 hover:shadow-md sm:p-7"
+                            >
+                                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                                    <div className="min-w-0 flex-1">
+                                        <p className="mb-1 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-black tracking-widest text-amber-800">
+                                            ★ 迷う方におすすめ
+                                        </p>
+                                        <h3 className="text-base font-black leading-snug text-slate-900 sm:text-lg break-keep">
+                                            両方使うなら、2点まとめ買いセットがお得です
+                                        </h3>
+                                        <p className="mt-1.5 text-sm leading-relaxed text-slate-600 break-keep">
+                                            退院前指導は疾患別、在宅高齢者の指導は姿勢別…と<strong className="text-slate-800">場面に応じて使い分けたい方</strong>へ。
+                                        </p>
+                                    </div>
+                                    <div className="flex-shrink-0 text-center sm:text-right">
+                                        <p className="text-xs font-bold text-slate-500">
+                                            通常 <span className="line-through">1,960円</span>
+                                        </p>
+                                        <p className="flex items-baseline justify-center gap-1 sm:justify-end">
+                                            <span className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">1,480</span>
+                                            <span className="text-sm font-bold text-slate-700">円</span>
+                                        </p>
+                                        <p className="text-[11px] font-black text-amber-700">
+                                            480円お得・買い切り
+                                        </p>
+                                        <span className="mt-2 inline-flex items-center gap-1 text-sm font-bold text-amber-700 group-hover:text-amber-800">
+                                            セット詳細を見る
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </section>

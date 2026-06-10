@@ -46,7 +46,7 @@ export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
     },
 };
 
-export type ProductAdLocation = 'items_inline_ad' | 'items_top_cta';
+export type ProductAdLocation = 'items_inline_ad' | 'items_top_cta' | 'items_top_bundle_cta';
 
 export function trackProductAdClick(type: ProductAdType, location: ProductAdLocation) {
     if (typeof window === 'undefined') return;

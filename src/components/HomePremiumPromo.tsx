@@ -29,7 +29,33 @@ export function HomePremiumPromo() {
                         ))}
                     </div>
 
-                    <div className="mt-8 text-center">
+                    {/* 2点まとめ買いセットの訴求 */}
+                    <div className="mt-6 rounded-2xl border border-amber-100 bg-gradient-to-r from-amber-50/60 to-white p-5 sm:p-6">
+                        <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+                            <div className="min-w-0 flex-1 text-center sm:text-left">
+                                <p className="mb-1 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-black tracking-widest text-amber-800">
+                                    ★ お得なセット
+                                </p>
+                                <p className="text-sm font-black leading-snug text-slate-900 sm:text-base break-keep">
+                                    両方使いたい方へ：2点まとめ買いセット
+                                </p>
+                                <p className="mt-1 text-xs text-slate-600 break-keep sm:text-sm">
+                                    通常 <span className="line-through">1,960円</span> → <strong className="text-amber-700">1,480円</strong>（480円お得・買い切り）
+                                </p>
+                            </div>
+                            <Link
+                                href="/products#bundle"
+                                className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full border border-amber-200 bg-white px-5 py-2.5 text-sm font-bold text-amber-700 transition-colors hover:bg-amber-50"
+                            >
+                                2点セットを見る
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 text-center">
                         <Link
                             href="/products"
                             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-all"

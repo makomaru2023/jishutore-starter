@@ -59,7 +59,25 @@ export function ProductDualCta() {
                     どちらも無料イラストはそのまま使えます
                 </p>
 
-                <p className="mt-2 text-center text-[11px] text-slate-400">
+                {/* 2点まとめ買いの補助訴求 */}
+                <Link
+                    href="/products#bundle"
+                    onClick={() => trackProductAdClick('condition', 'items_top_bundle_cta')}
+                    className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-amber-50/40 px-4 py-3 transition-colors hover:bg-amber-50"
+                >
+                    <div className="min-w-0 flex-1">
+                        <p className="text-[11px] font-black tracking-widest text-amber-800">
+                            ★ 両方使いたい方へ
+                        </p>
+                        <p className="mt-0.5 text-xs font-bold text-slate-800 sm:text-sm break-keep">
+                            2点まとめ買いセット <span className="text-amber-700">1,480円</span>
+                            <span className="ml-1 text-[11px] font-medium text-slate-500">（通常1,960円・480円お得）</span>
+                        </p>
+                    </div>
+                    <ArrowIcon className="h-3.5 w-3.5 flex-shrink-0 text-amber-700" />
+                </Link>
+
+                <p className="mt-3 text-center text-[11px] text-slate-400">
                     <Link href="/products" className="underline decoration-dotted underline-offset-2 hover:text-blue-600">
                         すべての商品を見る
                     </Link>
