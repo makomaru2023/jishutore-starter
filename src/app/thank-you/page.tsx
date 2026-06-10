@@ -4,7 +4,8 @@ import { Footer } from "@/components/Footer";
 import { PurchaseTracker } from "./PurchaseTracker";
 import { Metadata } from "next";
 import { stripe } from "@/lib/stripe";
-import { getOrder, isOrderActive } from "@/lib/orders";
+import { buildOrder, getOrder, isOrderActive, saveOrder, PRODUCT_ZIP_KEYS } from "@/lib/orders";
+import { POSTURE_SELF_TRAINING_PRICE_ID, BUNDLE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 import { signDownloadToken } from "@/lib/auth";
 import { DownloadTrackingLink } from "@/components/DownloadTrackingLink";
 
@@ -20,19 +21,75 @@ export const dynamic = "force-dynamic";
 const PRODUCT_NAME_BY_ID: Record<string, string> = {
     "self-training-materials-vol01": "疾患別自主トレ資料セット",
     "home-elderly-self-training": "姿勢別 自主トレ指導資料セット",
+    "bundle-self-training-set": "疾患別＋姿勢別 まとめ買いセット",
 };
 
-const PUBLIC_DOWNLOADS: Record<
-    string,
-    { itemName: string; fileName: string; href: string; description: string }
-> = {
-    "home-elderly-self-training": {
-        itemName: "姿勢別 自主トレ指導資料セット",
-        fileName: "home-elderly-self-training.zip",
-        href: "/files/home-elderly-self-training.zip",
-        description: "PowerPoint版とPDF版をまとめたZIPファイルです。",
-    },
+type DownloadEntry = {
+    itemName: string;
+    fileName: string;
+    description: string;
+    /**
+     * `public` … /files/ 以下の静的ZIPを直接配信。
+     * `r2-token` … サンクスページで発行する短期トークンで /api/download 経由で R2 から配信。
+     */
+    delivery: "public" | "r2-token";
+    /** delivery === "public" の場合のみ使用する直リンク先。 */
+    publicHref?: string;
 };
+
+/**
+ * productId ごとのダウンロード一覧。
+ * バンドル商品は複数エントリを持つ。
+ */
+const PRODUCT_DOWNLOADS: Record<string, DownloadEntry[]> = {
+    "self-training-materials-vol01": [
+        {
+            itemName: "疾患別自主トレ資料セット",
+            fileName: "jishutore-materials-vol01.zip",
+            description: "PowerPoint版とPDF版をまとめたZIPファイルです。",
+            delivery: "r2-token",
+        },
+    ],
+    "home-elderly-self-training": [
+        {
+            itemName: "姿勢別 自主トレ指導資料セット",
+            fileName: "home-elderly-self-training.zip",
+            description: "PowerPoint版とPDF版をまとめたZIPファイルです。",
+            delivery: "public",
+            publicHref: "/files/home-elderly-self-training.zip",
+        },
+    ],
+    "bundle-self-training-set": [
+        {
+            itemName: "疾患別 自主トレ資料9本セット",
+            fileName: "jishutore-materials-vol01.zip",
+            description: "脳卒中・大腿骨頸部骨折など、疾患別9本のPowerPoint＋PDFをまとめたZIPです。",
+            delivery: "r2-token",
+        },
+        {
+            itemName: "姿勢別 自主トレ指導資料セット",
+            fileName: "home-elderly-self-training.zip",
+            description: "在宅高齢者向け・姿勢別6種のPowerPoint＋PDFをまとめたZIPです。",
+            delivery: "public",
+            publicHref: "/files/home-elderly-self-training.zip",
+        },
+    ],
+};
+
+/**
+ * Stripe Price ID → 内部 productId のマップ。
+ * thank-you ページの自己修復（Webhook 取りこぼし時のリカバリ）で使う。
+ * Webhook 側の `priceIdToProductId` と同じ内容を保つこと。
+ */
+function priceIdToProductId(priceId: string | null | undefined): string | null {
+    if (!priceId) return null;
+    const map: Record<string, string> = {
+        [process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET || ""]: "self-training-materials-vol01",
+        [POSTURE_SELF_TRAINING_PRICE_ID || ""]: "home-elderly-self-training",
+        [BUNDLE_SELF_TRAINING_PRICE_ID || ""]: "bundle-self-training-set",
+    };
+    return map[priceId] || null;
+}
 
 type ThankYouState =
     | { status: "missing-session" }
@@ -64,7 +121,39 @@ async function resolveState(sessionId?: string): Promise<ThankYouState> {
     }
 
     // 2. Look up the order record saved by the webhook.
-    const order = await getOrder(sessionId);
+    let order = await getOrder(sessionId);
+
+    // 2b. Self-healing — Webhook may not have run yet, or may have failed (e.g. unknown product
+    //     before this code shipped). If the session is paid AND the line item's priceId resolves
+    //     to a known productId, persist the order on-the-fly so the download UI works without
+    //     manual intervention.
+    if (!order) {
+        try {
+            const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 5 });
+            const priceId = lineItems.data[0]?.price?.id;
+            const productId = priceIdToProductId(priceId);
+            if (productId && PRODUCT_ZIP_KEYS[productId]) {
+                const recovered = buildOrder({
+                    sessionId: session.id,
+                    productId,
+                    amount: session.amount_total ?? 0,
+                    currency: session.currency ?? "jpy",
+                    email: session.customer_details?.email ?? session.customer_email ?? null,
+                    stripeCustomerId:
+                        typeof session.customer === "string"
+                            ? session.customer
+                            : session.customer?.id ?? null,
+                    paymentStatus: session.payment_status,
+                });
+                await saveOrder(recovered);
+                console.log(`Order recovered on thank-you page: ${recovered.sessionId} (${recovered.productId})`);
+                order = recovered;
+            }
+        } catch (err) {
+            console.error("Self-heal of missing order failed:", err);
+        }
+    }
+
     if (!order) {
         // Webhook may not have run yet (race condition right after redirect).
         return { status: "order-not-ready" };
@@ -166,7 +255,8 @@ function OkBody({
     productName: string;
     expiresAt: string;
 }) {
-    const publicDownload = PUBLIC_DOWNLOADS[productId];
+    const downloads = PRODUCT_DOWNLOADS[productId] ?? [];
+    const isBundle = downloads.length > 1;
 
     return (
         <>
@@ -181,77 +271,83 @@ function OkBody({
             <h1 className="text-center text-2xl font-black tracking-tight text-slate-900">
                 ご購入ありがとうございます
             </h1>
-            <p className="mt-4 text-center text-sm leading-relaxed text-slate-600">
+            <p className="mt-4 text-center text-sm leading-relaxed text-slate-600 break-keep">
                 {productName}をご購入いただきありがとうございます。
                 <br />
-                以下のボタンから資料セットをダウンロードしてください。
+                {isBundle
+                    ? "以下の2つのZIPをそれぞれダウンロードしてください。"
+                    : "以下のボタンから資料セットをダウンロードしてください。"}
             </p>
 
-            {publicDownload ? (
-                <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
-                    <p className="break-keep text-base font-black text-slate-900">
-                        {publicDownload.itemName}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                        {publicDownload.description}
-                    </p>
-                    <DownloadTrackingLink
-                        href={publicDownload.href}
-                        fileName={publicDownload.fileName}
-                        itemName={publicDownload.itemName}
-                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
-                        ZIPをダウンロードする
-                    </DownloadTrackingLink>
-                </div>
-            ) : (
-                <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5">
-                    <p className="mb-2 text-sm font-bold text-slate-700">ダウンロード内容</p>
-                    <ul className="space-y-1.5">
-                        {[
-                            "編集できるPPTX資料（9疾患）",
-                            "印刷用PDF（9疾患）",
-                            "使い方テキスト",
-                            "利用規約テキスト",
-                        ].map((item) => (
-                            <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-500">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                </svg>
-                                <span>{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-
-            {!publicDownload && (
-            <div className="mt-6">
-                <a
-                    href={`/api/download?token=${encodeURIComponent(token)}`}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                    </svg>
-                    資料セットをダウンロードする
-                </a>
-                <p className="mt-2 text-center text-xs text-slate-500">
-                    このダウンロードリンクは <strong>{formatDate(expiresAt)}</strong> まで有効です（ページを再読み込みすればリンクを再発行できます）。
-                </p>
+            <div className="mt-6 space-y-4">
+                {downloads.map((dl, index) => (
+                    <DownloadCard
+                        key={`${dl.fileName}-${index}`}
+                        entry={dl}
+                        token={token}
+                        index={isBundle ? index + 1 : undefined}
+                        total={isBundle ? downloads.length : undefined}
+                    />
+                ))}
             </div>
+
+            {downloads.some((d) => d.delivery === "r2-token") && (
+                <p className="mt-3 text-center text-xs text-slate-500 break-keep">
+                    署名つきダウンロードリンクは <strong>{formatDate(expiresAt)}</strong> まで有効です（ページを再読み込みすればリンクを再発行できます）。
+                </p>
             )}
 
             <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-4">
-                <p className="text-xs leading-relaxed text-amber-800">
+                <p className="text-xs leading-relaxed text-amber-800 break-keep">
                     ダウンロードURLの共有、資料データそのものの再配布はご遠慮ください。
                     患者さんへの説明、家族説明、施設内資料作成にはご利用いただけます。
                 </p>
             </div>
         </>
+    );
+}
+
+function DownloadCard({
+    entry,
+    token,
+    index,
+    total,
+}: {
+    entry: DownloadEntry;
+    token: string;
+    index?: number;
+    total?: number;
+}) {
+    const href =
+        entry.delivery === "public" && entry.publicHref
+            ? entry.publicHref
+            : `/api/download?token=${encodeURIComponent(token)}`;
+
+    return (
+        <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
+            {index && total && (
+                <p className="mb-1 text-[11px] font-bold tracking-widest text-blue-600">
+                    ZIP {index} / {total}
+                </p>
+            )}
+            <p className="break-keep text-base font-black text-slate-900">
+                {entry.itemName}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600 break-keep">
+                {entry.description}
+            </p>
+            <DownloadTrackingLink
+                href={href}
+                fileName={entry.fileName}
+                itemName={entry.itemName}
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                ZIPをダウンロードする
+            </DownloadTrackingLink>
+        </div>
     );
 }
 

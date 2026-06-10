@@ -22,6 +22,9 @@ export interface Order {
 export const PRODUCT_ZIP_KEYS: Record<string, string> = {
     "self-training-materials-vol01": "products/jishutore-materials-vol01.zip",
     "home-elderly-self-training": "products/home-elderly-self-training.zip",
+    // バンドル：order.zipKey は R2 から配信する疾患別ZIPを指す。
+    // 姿勢別ZIPは public/files/ から直接配信するため、サンクスページ側で別途リンクを出す。
+    "bundle-self-training-set": "products/jishutore-materials-vol01.zip",
 };
 
 function orderKey(sessionId: string): string {
