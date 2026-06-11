@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: ['/api/', '/ai-prompt-maker/', '/line-tokuten-members/', '/line-tokuten/', '/member/'],
+            disallow: ['/api/', '/line-tokuten-members/', '/line-tokuten/', '/member/'],
         },
         sitemap: 'https://jishutore-sozaiko.online/sitemap.xml',
     }

@@ -6,7 +6,11 @@ import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
-import { POSTURE_SELF_TRAINING_PRICE_ID, BUNDLE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
+import {
+    POSTURE_SELF_TRAINING_PRICE_ID,
+    BUNDLE_SELF_TRAINING_PRICE_ID,
+    SLIDE_PROMPT_GENERATOR_PRICE_ID,
+} from "@/lib/products";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -106,6 +110,7 @@ const compareRows: CompareRow[] = [
 ];
 
 const bundleCheckoutReady = Boolean(BUNDLE_SELF_TRAINING_PRICE_ID);
+const slidePromptCheckoutReady = Boolean(SLIDE_PROMPT_GENERATOR_PRICE_ID);
 
 export default function ProductsPage() {
     return (
@@ -525,6 +530,92 @@ export default function ProductsPage() {
                                                         セット販売は準備中です。販売開始はLINEでお知らせします。
                                                     </p>
                                                 </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 5.5 制作ツール（プロンプト工房） */}
+                <section id="tools" className="bg-white py-14 sm:py-20 scroll-mt-20">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-4xl">
+                            <div className="text-center mb-8">
+                                <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                    制作ツール
+                                </p>
+                                <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
+                                    自分で資料を作る方には、プロンプト工房も
+                                </h2>
+                                <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep">
+                                    既製の資料セットではなく、ChatGPT で自分の現場にあわせた資料を作りたい方向けの購入者専用ツールです。
+                                </p>
+                            </div>
+                            <div className="rounded-3xl border border-blue-100 bg-white p-6 sm:p-8 shadow-sm">
+                                <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
+                                    <div className="min-w-0 flex-1">
+                                        <p className="mb-2 inline-block rounded-full bg-sky-50 px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-sky-700 border border-sky-100">
+                                            購入者専用ツール
+                                        </p>
+                                        <h3 className="mb-2 text-lg font-black leading-snug text-slate-900 sm:text-xl break-keep">
+                                            伝わるプロンプト工房
+                                        </h3>
+                                        <p className="text-sm leading-relaxed text-slate-600 break-keep">
+                                            用途・テーマ・枚数を選ぶだけで、ChatGPT にそのまま貼り付けられるスライド画像生成プロンプトが完成します。家族説明・勉強会・利用者説明・退院前指導の資料づくりに。
+                                        </p>
+                                        <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
+                                            {[
+                                                "ChatGPT 直貼り対応のプロンプトを自動生成",
+                                                "家族説明・勉強会・利用者説明など用途別テンプレ",
+                                                "チェック式UIで誰でもすぐ使える",
+                                                "永久アクセス・買い切り",
+                                            ].map((it) => (
+                                                <li key={it} className="flex items-start gap-2">
+                                                    <span className="mt-0.5 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="h-2.5 w-2.5" aria-hidden="true">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                                        </svg>
+                                                    </span>
+                                                    <span className="leading-relaxed min-w-0 break-keep">{it}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="md:w-64 md:flex-shrink-0">
+                                        <div className="rounded-2xl bg-blue-50/60 border border-blue-100 px-4 py-5 text-center">
+                                            <p className="text-xs font-bold text-slate-500">
+                                                買い切り・永久アクセス
+                                            </p>
+                                            <p className="mt-1 flex items-baseline justify-center gap-1">
+                                                <span className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">980</span>
+                                                <span className="text-sm font-bold text-slate-700">円</span>
+                                            </p>
+                                            <p className="text-[11px] font-bold text-blue-700 mt-1">
+                                                追加課金なし
+                                            </p>
+                                            <div className="mt-4 grid gap-2">
+                                                <CheckoutButton
+                                                    productId="slide-prompt-generator"
+                                                    productName="伝わるプロンプト工房"
+                                                    price={980}
+                                                    label="980円で購入する"
+                                                    disabled={!slidePromptCheckoutReady}
+                                                    className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-4 py-3 text-center text-sm font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+                                                />
+                                                <Link
+                                                    href="/products/slide-prompt-generator"
+                                                    className="flex min-h-10 w-full items-center justify-center gap-1 rounded-full border border-blue-200 px-4 py-2 text-xs font-bold text-blue-700 transition-colors hover:bg-blue-50"
+                                                >
+                                                    詳細を見る
+                                                </Link>
+                                            </div>
+                                            {!slidePromptCheckoutReady && (
+                                                <p className="mt-2 text-[11px] leading-relaxed text-slate-500 break-keep">
+                                                    現在販売準備中です。
+                                                </p>
                                             )}
                                         </div>
                                     </div>

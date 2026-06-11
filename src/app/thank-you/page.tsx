@@ -5,9 +5,14 @@ import { PurchaseTracker } from "./PurchaseTracker";
 import { Metadata } from "next";
 import { stripe } from "@/lib/stripe";
 import { buildOrder, getOrder, isOrderActive, saveOrder, PRODUCT_ZIP_KEYS } from "@/lib/orders";
-import { POSTURE_SELF_TRAINING_PRICE_ID, BUNDLE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
+import {
+    POSTURE_SELF_TRAINING_PRICE_ID,
+    BUNDLE_SELF_TRAINING_PRICE_ID,
+    SLIDE_PROMPT_GENERATOR_PRICE_ID,
+} from "@/lib/products";
 import { signDownloadToken } from "@/lib/auth";
 import { DownloadTrackingLink } from "@/components/DownloadTrackingLink";
+import { grantSlidePromptAccess } from "./grant-slide-prompt-access";
 
 export const metadata: Metadata = {
     title: "ご購入ありがとうございます｜自主トレ素材庫",
@@ -22,7 +27,11 @@ const PRODUCT_NAME_BY_ID: Record<string, string> = {
     "self-training-materials-vol01": "疾患別自主トレ資料セット",
     "home-elderly-self-training": "姿勢別 自主トレ指導資料セット",
     "bundle-self-training-set": "疾患別＋姿勢別 まとめ買いセット",
+    "slide-prompt-generator": "伝わるプロンプト工房（スライド画像生成）",
 };
+
+/** アクセス権付与型の商品（ZIPダウンロードではなくサイト内ツールへの入場権） */
+const ACCESS_ONLY_PRODUCT_IDS = new Set(["slide-prompt-generator"]);
 
 type DownloadEntry = {
     itemName: string;
@@ -87,6 +96,7 @@ function priceIdToProductId(priceId: string | null | undefined): string | null {
         [process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET || ""]: "self-training-materials-vol01",
         [POSTURE_SELF_TRAINING_PRICE_ID || ""]: "home-elderly-self-training",
         [BUNDLE_SELF_TRAINING_PRICE_ID || ""]: "bundle-self-training-set",
+        [SLIDE_PROMPT_GENERATOR_PRICE_ID || ""]: "slide-prompt-generator",
     };
     return map[priceId] || null;
 }
@@ -213,6 +223,7 @@ export default async function ThankYouPage({
                                 productId={state.productId}
                                 productName={state.productName}
                                 expiresAt={state.expiresAt}
+                                sessionId={session_id}
                             />
                         )}
                         {state.status === "order-not-ready" && <OrderNotReadyBody />}
@@ -249,12 +260,19 @@ function OkBody({
     productId,
     productName,
     expiresAt,
+    sessionId,
 }: {
     token: string;
     productId: string;
     productName: string;
     expiresAt: string;
+    sessionId?: string;
 }) {
+    // アクセス権付与型の商品（プロンプト工房など）は専用UIに分岐
+    if (ACCESS_ONLY_PRODUCT_IDS.has(productId)) {
+        return <AccessOnlyBody productId={productId} productName={productName} sessionId={sessionId} />;
+    }
+
     const downloads = PRODUCT_DOWNLOADS[productId] ?? [];
     const isBundle = downloads.length > 1;
 
@@ -348,6 +366,103 @@ function DownloadCard({
                 ZIPをダウンロードする
             </DownloadTrackingLink>
         </div>
+    );
+}
+
+/**
+ * アクセス権付与型の商品（プロンプト工房など）向けのサンクスページ本体。
+ * 「アクセス開始」ボタンを押すと Server Action が Cookie をセットして
+ * /member/slide-prompt-generator にリダイレクトする。
+ */
+function AccessOnlyBody({
+    productId,
+    productName,
+    sessionId,
+}: {
+    productId: string;
+    productName: string;
+    sessionId?: string;
+}) {
+    if (productId !== "slide-prompt-generator" || !sessionId) {
+        // 想定外の到達。安全側に倒して工房のLPへ案内。
+        return (
+            <>
+                <h1 className="text-center text-xl font-black tracking-tight text-slate-900">
+                    ご購入ありがとうございます
+                </h1>
+                <p className="mt-4 text-center text-sm text-slate-600 break-keep">
+                    アクセス情報の表示中に問題が発生しました。お手数ですが
+                    <a href="mailto:smart.rehabili@gmail.com" className="text-blue-600 hover:underline">smart.rehabili@gmail.com</a>
+                    までご連絡ください。
+                </p>
+            </>
+        );
+    }
+
+    const fallbackPassword = process.env.SLIDE_PROMPT_PASSWORD;
+
+    return (
+        <>
+            <div className="mb-5 flex justify-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-7 w-7">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                </div>
+            </div>
+
+            <h1 className="text-center text-2xl font-black tracking-tight text-slate-900">
+                ご購入ありがとうございます
+            </h1>
+            <p className="mt-4 text-center text-sm leading-relaxed text-slate-600 break-keep">
+                {productName}をご購入いただきありがとうございます。
+                <br />
+                下の「アクセスを開始する」を押すと、工房にログインした状態でジャンプします。
+            </p>
+
+            {/* アクセス開始ボタン（Server Action） */}
+            <form
+                action={async () => {
+                    "use server";
+                    await grantSlidePromptAccess(sessionId);
+                }}
+                className="mt-6"
+            >
+                <button
+                    type="submit"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                    工房へのアクセスを開始する
+                </button>
+            </form>
+
+            {/* 再ログイン用パスワードの案内（30日後のCookie失効後など、念のため） */}
+            {fallbackPassword && (
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="mb-2 text-xs font-black tracking-widest text-slate-600">
+                        再ログイン用パスワード
+                    </p>
+                    <p className="mb-2 text-sm leading-relaxed text-slate-600 break-keep">
+                        端末を変えたとき・しばらく経ってからアクセスし直すときは、ログイン画面でこのパスワードを入力してください。
+                    </p>
+                    <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 font-mono text-base font-bold tracking-wider text-slate-900 select-all">
+                        {fallbackPassword}
+                    </div>
+                    <p className="mt-2 text-[11px] leading-relaxed text-slate-500 break-keep">
+                        ※ メモアプリや LINE Keep などに控えておくと安心です。
+                    </p>
+                </div>
+            )}
+
+            <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-4">
+                <p className="text-xs leading-relaxed text-amber-800 break-keep">
+                    パスワードの共有・転載はご遠慮ください。生成されたプロンプトの利用は、医療・介護現場での確認のうえでお願いいたします。
+                </p>
+            </div>
+        </>
     );
 }
 

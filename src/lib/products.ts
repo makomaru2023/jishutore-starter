@@ -10,3 +10,10 @@ export const POSTURE_SELF_TRAINING_PRICE_ID =
 // 「準備中・LINE通知」表示に切り替わる。
 export const BUNDLE_SELF_TRAINING_PRICE_ID =
     process.env.STRIPE_PRICE_ID_BUNDLE_SELF_TRAINING_SET;
+
+// 伝わるプロンプト工房（スライド画像生成プロンプトメーカー）の Stripe Price ID。
+// 環境変数 STRIPE_PRICE_ID_SLIDE_PROMPT_GENERATOR から取得する。
+// 未設定時は undefined。商品LPの購入ボタンは disabled・サンクスページの分岐は
+// 「準備中」表示にフォールバックする。
+export const SLIDE_PROMPT_GENERATOR_PRICE_ID =
+    process.env.STRIPE_PRICE_ID_SLIDE_PROMPT_GENERATOR;

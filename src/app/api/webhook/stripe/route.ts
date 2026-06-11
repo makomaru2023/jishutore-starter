@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
 import { buildOrder, saveOrder, PRODUCT_ZIP_KEYS } from "@/lib/orders";
-import { POSTURE_SELF_TRAINING_PRICE_ID, BUNDLE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
+import {
+    POSTURE_SELF_TRAINING_PRICE_ID,
+    BUNDLE_SELF_TRAINING_PRICE_ID,
+    SLIDE_PROMPT_GENERATOR_PRICE_ID,
+} from "@/lib/products";
 
 // Disable Next.js body parsing — Stripe needs the raw request body for signature verification.
 export const runtime = "nodejs";
@@ -20,6 +24,7 @@ function priceIdToProductId(priceId: string | null | undefined): string | null {
         [process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET || ""]: "self-training-materials-vol01",
         [POSTURE_SELF_TRAINING_PRICE_ID || ""]: "home-elderly-self-training",
         [BUNDLE_SELF_TRAINING_PRICE_ID || ""]: "bundle-self-training-set",
+        [SLIDE_PROMPT_GENERATOR_PRICE_ID || ""]: "slide-prompt-generator",
     };
     return map[priceId] || null;
 }

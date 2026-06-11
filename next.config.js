@@ -43,6 +43,11 @@ const nextConfig = {
         destination: '/products/self-training-materials',
         permanent: true,
       },
+      {
+        source: '/ai-prompt-maker',
+        destination: '/products/slide-prompt-generator',
+        permanent: true,
+      },
     ];
   },
 };

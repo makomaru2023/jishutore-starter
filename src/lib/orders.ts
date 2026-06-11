@@ -25,6 +25,9 @@ export const PRODUCT_ZIP_KEYS: Record<string, string> = {
     // バンドル：order.zipKey は R2 から配信する疾患別ZIPを指す。
     // 姿勢別ZIPは public/files/ から直接配信するため、サンクスページ側で別途リンクを出す。
     "bundle-self-training-set": "products/jishutore-materials-vol01.zip",
+    // 伝わるプロンプト工房：ZIP配布ではなくサイト内アクセス権付与のみ。
+    // /api/download は呼ばれない（サンクスページが「アクセス開始」ボタンに分岐）。
+    "slide-prompt-generator": "access-only/slide-prompt-generator",
 };
 
 function orderKey(sessionId: string): string {
