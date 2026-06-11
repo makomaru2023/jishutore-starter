@@ -9,6 +9,7 @@ export const PURPOSES = [
   "サービス担当者会議用",
   "退院前指導用",
   "施設内プレゼン用",
+  "地域住民向け",
 ] as const;
 export type Purpose = (typeof PURPOSES)[number];
 
@@ -42,14 +43,12 @@ export const GOALS = [
 export type Goal = (typeof GOALS)[number];
 
 export const DESIGN_POLICIES = [
-  "医療・介護向けのシンプル資料",
-  "やさしい家族説明資料",
-  "研修資料っぽい落ち着いたデザイン",
-  "症例発表向けの学会風デザイン",
-  "図解多めの分かりやすい資料",
-  "文字少なめ・ビジュアル重視",
+  "結論を最初に伝える構成",
+  "ストーリー仕立てで段階的に伝える構成",
+  "図解を主役にして文章を減らす構成",
+  "OK例・NG例の比較を入れる構成",
   "A4配布資料にも転用しやすい構成",
-  "自主トレ素材庫のイラストを使う前提",
+  "1スライド1メッセージを徹底する構成",
 ] as const;
 export type DesignPolicy = (typeof DESIGN_POLICIES)[number];
 
@@ -256,6 +255,13 @@ export const PURPOSE_GUIDELINES: Record<Purpose, string[]> = {
     "管理者や多職種にも伝わる言葉にする",
     "現場で実行しやすい形にする",
   ],
+  地域住民向け: [
+    "専門用語を使わず、日常の言葉で伝える",
+    "運動の効果を生活場面と結びつけて伝える",
+    "無理をしない・痛みを我慢しないことを必ず入れる",
+    "自宅でも続けやすい小さな行動を提案する",
+    "楽しく前向きな雰囲気にする",
+  ],
 };
 
 export interface Preset {
@@ -268,6 +274,7 @@ export interface Preset {
   audience: Audience;
   goal: Goal;
   designPolicy: DesignPolicy;
+  recommendedStyle: VisualStyleId;
   slides: SlideConfig[];
 }
 
@@ -281,7 +288,8 @@ export const PRESETS: Preset[] = [
     theme: "現場でよくある困りごとについて、明日から実践できるポイントを伝えたい",
     audience: "介護職",
     goal: "注意点を共有する",
-    designPolicy: "図解多めの分かりやすい資料",
+    designPolicy: "OK例・NG例の比較を入れる構成",
+    recommendedStyle: "handdrawn-friendly",
     slides: [
       { kind: "表紙", title: "院内勉強会", message: "勉強会のテーマと対象者を明確に伝える", note: "" },
       { kind: "導入", title: "現場で起きやすい困りごと", message: "参加者が自分ごととして捉えやすい場面から導入する", note: "" },
@@ -294,12 +302,13 @@ export const PRESETS: Preset[] = [
     id: "community-exercise-class",
     label: "地域体操教室",
     summary: "地域の参加者に、運動の目的と安全に続けるコツを伝える型です。",
-    purpose: "施設内プレゼン用",
+    purpose: "地域住民向け",
     slideCount: "5枚",
     theme: "地域の体操教室で、参加者が安全に楽しく運動を続けるポイントを伝えたい",
     audience: "一般の方向け",
     goal: "行動を変えてもらう",
-    designPolicy: "文字少なめ・ビジュアル重視",
+    designPolicy: "1スライド1メッセージを徹底する構成",
+    recommendedStyle: "pop-colorful",
     slides: [
       { kind: "表紙", title: "地域体操教室", message: "体操教室のテーマと目的を親しみやすく伝える", note: "" },
       { kind: "導入", title: "なぜ体を動かすのか", message: "生活の中で運動を続ける意味を分かりやすく伝える", note: "" },
@@ -317,7 +326,8 @@ export const PRESETS: Preset[] = [
     theme: "自宅で安全に自主トレを続けるための目的、やり方、注意点を分かりやすく伝えたい",
     audience: "家族",
     goal: "自主トレを継続してもらう",
-    designPolicy: "やさしい家族説明資料",
+    designPolicy: "ストーリー仕立てで段階的に伝える構成",
+    recommendedStyle: "jishutore-style",
     slides: [
       { kind: "表紙", title: "自宅で続ける自主トレ", message: "自主トレ指導のテーマをやさしく伝える", note: "" },
       { kind: "導入", title: "なぜ自主トレが必要か", message: "生活の中で自主トレが役立つ理由を伝える", note: "" },
@@ -335,7 +345,8 @@ export const PRESETS: Preset[] = [
     theme: "退院後の生活で安全に過ごすための環境調整、動作方法、家族の見守りポイントを伝えたい",
     audience: "家族",
     goal: "退院後の生活をイメージしてもらう",
-    designPolicy: "A4配布資料にも転用しやすい構成",
+    designPolicy: "A4配布資料にも転用しやすい構成", // そのまま使える既存項目
+    recommendedStyle: "gentle-pastel",
     slides: [
       { kind: "表紙", title: "退院後の安全な暮らし", message: "退院前指導の全体テーマを伝える", note: "" },
       { kind: "導入", title: "自宅生活で大切な視点", message: "病院と自宅で環境が変わることを伝える", note: "" },
@@ -355,7 +366,8 @@ export const PRESETS: Preset[] = [
     theme: "スタッフ間で介助方法やケアの考え方をそろえるために、基本手順と注意点を伝えたい",
     audience: "介護職",
     goal: "介助方法を統一する",
-    designPolicy: "研修資料っぽい落ち着いたデザイン",
+    designPolicy: "OK例・NG例の比較を入れる構成",
+    recommendedStyle: "navy-formal",
     slides: [
       { kind: "表紙", title: "院内研修", message: "研修テーマと現場で使う目的を伝える", note: "" },
       { kind: "導入", title: "なぜ統一が必要か", message: "スタッフ間で対応をそろえる意味を伝える", note: "" },
@@ -375,7 +387,8 @@ export const PRESETS: Preset[] = [
     theme: "日常生活で安全に過ごすための注意点と、無理なく取り組める行動を説明したい",
     audience: "利用者本人",
     goal: "注意点を共有する",
-    designPolicy: "医療・介護向けのシンプル資料",
+    designPolicy: "1スライド1メッセージを徹底する構成",
+    recommendedStyle: "simple-medical-care",
     slides: [
       { kind: "表紙", title: "生活の注意点", message: "本人向けに説明するテーマを分かりやすく伝える", note: "" },
       { kind: "導入", title: "大切にしたい考え方", message: "無理をしすぎず、安全に行動する必要性を伝える", note: "" },
@@ -393,7 +406,8 @@ export const PRESETS: Preset[] = [
     theme: "新人スタッフに、現場で必要な基礎知識と関わり方を段階的に伝えたい",
     audience: "新人スタッフ",
     goal: "理解してもらう",
-    designPolicy: "研修資料っぽい落ち着いたデザイン",
+    designPolicy: "ストーリー仕立てで段階的に伝える構成",
+    recommendedStyle: "navy-formal",
     slides: [
       { kind: "表紙", title: "新人教育", message: "新人スタッフ向けに扱うテーマを明確に伝える", note: "" },
       { kind: "導入", title: "まず押さえること", message: "テーマを学ぶ目的と現場で役立つ場面を伝える", note: "" },
@@ -413,7 +427,8 @@ export const PRESETS: Preset[] = [
     theme: "症例の評価、問題点、介入、経過、考察を分かりやすく整理したい",
     audience: "リハ職",
     goal: "症例の経過を伝える",
-    designPolicy: "症例発表向けの学会風デザイン",
+    designPolicy: "1スライド1メッセージを徹底する構成",
+    recommendedStyle: "academic-clean",
     slides: [
       { kind: "表紙", title: "症例発表", message: "症例テーマと発表の焦点を匿名化して伝える", note: "" },
       { kind: "導入", title: "発表の目的", message: "この症例から共有したい臨床上の問いを示す", note: "" },

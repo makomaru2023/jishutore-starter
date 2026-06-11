@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { PromptOutput } from "./buildPrompt";
 
 interface PromptPreviewProps {
@@ -10,8 +10,16 @@ interface PromptPreviewProps {
 
 export function PromptPreview({ output, onReset }: PromptPreviewProps) {
   const [copied, setCopied] = useState(false);
+  const [advancedTo, setAdvancedTo] = useState<number | null>(null);
   const [mode, setMode] = useState<"all" | "single">("all");
   const [slideIndex, setSlideIndex] = useState(0);
+
+  // 枚数が変わって slideIndex が範囲外になったら 0 にリセット
+  useEffect(() => {
+    if (slideIndex >= output.slidePrompts.length) {
+      setSlideIndex(0);
+    }
+  }, [output.slidePrompts.length, slideIndex]);
 
   const currentPrompt = useMemo(() => {
     if (mode === "all") return output.allPrompt;
@@ -30,8 +38,24 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
       document.body.removeChild(textarea);
     }
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [currentPrompt]);
+
+    // 個別プロンプトでコピー成功時、2秒後に次のスライドへ自動進行（最終スライドでは進めない）
+    let nextIndex: number | null = null;
+    if (mode === "single" && slideIndex < output.slidePrompts.length - 1) {
+      nextIndex = slideIndex + 1;
+      setAdvancedTo(nextIndex + 1); // 表示は1始まり
+      setTimeout(() => {
+        setSlideIndex((current) => (current === slideIndex ? slideIndex + 1 : current));
+      }, 2000);
+    } else {
+      setAdvancedTo(null);
+    }
+
+    setTimeout(() => {
+      setCopied(false);
+      setAdvancedTo(null);
+    }, 2400);
+  }, [currentPrompt, mode, slideIndex, output.slidePrompts.length]);
 
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
@@ -64,6 +88,24 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
             )}
           </div>
         )}
+
+        {/* 使い方3ステップ（常時表示・モード切替の上） */}
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+          <p className="mb-1.5 text-[11px] font-black tracking-wider text-slate-500">
+            使い方
+          </p>
+          <ol className="space-y-1 text-xs leading-relaxed text-slate-600">
+            <li>
+              <span className="font-bold text-slate-700">①</span> 「全体プロンプト」をChatGPTに貼る（画像はまだ作られません）
+            </li>
+            <li>
+              <span className="font-bold text-slate-700">②</span> 「個別プロンプト」の1枚目を貼って生成
+            </li>
+            <li>
+              <span className="font-bold text-slate-700">③</span> 2枚目からは、前のスライド画像を添付してから貼る
+            </li>
+          </ol>
+        </div>
 
         <div className="grid grid-cols-2 gap-2 rounded-2xl bg-slate-100 p-1">
           <button
@@ -114,7 +156,11 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
               : "bg-sky-600 text-white shadow-md shadow-sky-600/25 hover:bg-sky-700"
           }`}
         >
-          {copied ? "コピーしました" : "プロンプトをコピー"}
+          {copied
+            ? advancedTo
+              ? `コピーしました → 次は${advancedTo}枚目`
+              : "コピーしました"
+            : "プロンプトをコピー"}
         </button>
 
         <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">

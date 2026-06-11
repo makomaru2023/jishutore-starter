@@ -117,7 +117,7 @@ export function SlidePromptGenerator() {
     setAudience(preset.audience);
     setGoal(preset.goal);
     setDesignPolicy(preset.designPolicy);
-    setVisualStyleId("simple-medical-care");
+    setVisualStyleId(preset.recommendedStyle);
     setExtras([]);
     setSlides(preset.slides);
   }, []);
@@ -374,8 +374,8 @@ export function SlidePromptGenerator() {
 
           <Section
             step={6}
-            title="デザイン方針"
-            description="資料の構成・まとめ方の方針です。見た目のテイスト（配色）は上の「ビジュアルスタイル」で選びます。"
+            title="構成方針"
+            description="資料の組み立て方の方針です。見た目（配色・テイスト）は上のビジュアルスタイルで選びます。"
           >
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {DESIGN_POLICIES.map((item) => (
@@ -414,10 +414,29 @@ export function SlidePromptGenerator() {
           </Section>
         </div>
 
-        <div className="lg:sticky lg:top-24">
+        <div id="prompt-preview" className="scroll-mt-20 lg:sticky lg:top-24">
           <PromptPreview output={output} onReset={handleReset} />
         </div>
       </div>
+
+      {/* モバイル限定の下部固定 CTA：プレビューへスムーズスクロール */}
+      <button
+        type="button"
+        onClick={() => {
+          const el = document.getElementById("prompt-preview");
+          el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+        className="fixed inset-x-4 bottom-4 z-40 flex items-center justify-center gap-2 rounded-2xl bg-sky-600 px-5 py-3.5 text-base font-black text-white shadow-lg shadow-sky-600/30 transition-colors hover:bg-sky-700 lg:hidden"
+      >
+        生成プロンプトを見る
+        <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+          <path
+            fillRule="evenodd"
+            d="M10 3a1 1 0 0 1 1 1v9.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L9 13.586V4a1 1 0 0 1 1-1Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
     </div>
   );
 }

@@ -95,7 +95,16 @@ export function buildSingleSlidePrompt(
   const purposeGuidelines = input.purpose ? PURPOSE_GUIDELINES[input.purpose] : [];
   const visualStyle = getVisualStyle(input.visualStyleId);
 
-  return `あなたは医療・介護分野に強いプロのスライドデザイナーです。
+  const referencePreface =
+    index >= 1
+      ? `※前のスライド画像を添付してから、このプロンプトを送ってください。
+添付画像と同じ配色・フォントの雰囲気・余白の取り方・イラストのタッチを維持して、
+スタイルが完全に一致した続きのスライドとして作成してください。
+
+`
+      : "";
+
+  return `${referencePreface}あなたは医療・介護分野に強いプロのスライドデザイナーです。
 プレゼン資料で使う16:9横長のスライド画像を「1枚だけ」作成してください。一覧・グリッド・コラージュにはしないでください。
 
 # ビジュアルスタイル（最優先：この見た目に必ず合わせる）
@@ -116,7 +125,7 @@ ${slideTextSpec(slide)}
 - テーマ：${valueOrDefault(input.theme)}
 - 対象者：${input.audience ?? "指定なし"}
 - 資料のゴール：${input.goal ?? "指定なし"}
-- デザイン方針：${input.designPolicy ?? "指定なし"}
+- 構成方針：${input.designPolicy ?? "指定なし"}
 - 追加オプション：
 ${listLines([...input.extras])}
 
@@ -140,7 +149,7 @@ export function buildPrompt(input: PromptInput): PromptOutput {
   );
 
   const allPrompt = `あなたは医療・介護分野に強いプロのスライドデザイナーです。
-これから、16:9横長のスライド画像を全${total || "指定なし"}枚そろえます。まず全体の方針を共有します。画像生成は1回につき1枚のスライド画像とし、一覧・グリッド・コラージュは作らないでください。
+これから、16:9横長のスライド画像を全${total || "指定なし"}枚そろえます。まず全体の方針を共有します。このメッセージでは画像を生成しないでください。画像生成は1回につき1枚のスライド画像とし、一覧・グリッド・コラージュは作らないでください。
 
 # ビジュアルスタイル（最優先：全スライド共通の見た目）
 スタイル名：${visualStyle.name}
@@ -153,7 +162,7 @@ ${visualStyle.promptBlock}
 - テーマ：${valueOrDefault(input.theme)}
 - 対象者：${input.audience ?? "指定なし"}
 - 資料のゴール：${input.goal ?? "指定なし"}
-- デザイン方針：${input.designPolicy ?? "指定なし"}
+- 構成方針：${input.designPolicy ?? "指定なし"}
 
 # 各スライドの役割と表示文字
 ${slideSummary(input.slides)}
@@ -174,7 +183,11 @@ ${commonImageRules()}
 - 文字を詰め込みすぎず、見出し・短い要点・図解で伝える
 
 # 実際の生成手順
-1枚ずつ作るときは、下の「各スライドごとの個別プロンプト」を1つずつChatGPTに貼り付けてください。`;
+1枚ずつ作るときは、下の「各スライドごとの個別プロンプト」を1つずつChatGPTに貼り付けてください。
+
+# このメッセージへの返答について
+この段階ではまだ画像を生成しないでください。
+方針を理解したら「了解しました。1枚目のプロンプトを貼ってください」とだけ返答してください。`;
 
   return {
     allPrompt,
