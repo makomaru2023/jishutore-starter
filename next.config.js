@@ -44,11 +44,9 @@ const nextConfig = {
         permanent: true,
       },
       {
-        // 旧プロンプトメーカーURL：プロンプト工房（新商品）は公開準備中のため、
-        // 旧URLからのアクセスは資料セット一覧へ案内する。販売開始したら
-        // destination を /products/slide-prompt-generator に切り替える。
+        // 旧プロンプトメーカーURL → 新商品LPへ 301
         source: '/ai-prompt-maker',
-        destination: '/products',
+        destination: '/products/slide-prompt-generator',
         permanent: true,
       },
     ];
