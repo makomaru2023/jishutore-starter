@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Metadata } from "next";
@@ -103,6 +104,33 @@ export default function LineTokutenPage() {
 
                 {/* 特典カード一覧 */}
                 <div className="space-y-6">
+                    {/* NEW：プロンプト工房（無料版） */}
+                    <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                        <div className="flex items-start gap-4">
+                            <div className="text-3xl flex-shrink-0 mt-1">🛠</div>
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <h2 className="text-lg font-black text-slate-900">伝わるプロンプト工房（無料版）</h2>
+                                    <span className="text-xs font-black bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full tracking-wider">
+                                        NEW
+                                    </span>
+                                </div>
+                                <p className="text-sm text-slate-500 font-medium mb-4">
+                                    用途とテーマを選ぶだけで、ChatGPT用のスライド画像生成プロンプトが完成。家族説明や勉強会の資料づくりに。無料版はテンプレート2種・スタイル3種・3枚まで使えます。
+                                </p>
+                                <Link
+                                    href="/line-tokuten-members/slide-prompt-generator/"
+                                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-teal-500 hover:bg-teal-400 text-white font-bold text-sm rounded-full transition-all hover:scale-105 shadow-sm"
+                                >
+                                    ツールを使う
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
                     {tokutenList.map((item, i) => (
                         <div
                             key={i}

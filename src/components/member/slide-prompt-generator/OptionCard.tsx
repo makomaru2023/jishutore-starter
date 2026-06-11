@@ -7,6 +7,9 @@ interface OptionCardProps {
   /** チェックボックス型（複数選択）の見た目にする */
   multi?: boolean;
   compact?: boolean;
+  /** ロック表示（無料版での制限項目）。クリックは onLockedClick が呼ばれる。 */
+  locked?: boolean;
+  onLockedClick?: () => void;
 }
 
 export function OptionCard({
@@ -15,7 +18,34 @@ export function OptionCard({
   onClick,
   multi = false,
   compact = false,
+  locked = false,
+  onLockedClick,
 }: OptionCardProps) {
+  if (locked) {
+    return (
+      <button
+        type="button"
+        onClick={onLockedClick}
+        aria-pressed={false}
+        aria-disabled="true"
+        className={`group relative flex min-h-11 items-center gap-2.5 rounded-2xl border border-dashed border-slate-300 bg-slate-50 text-left text-sm font-bold text-slate-400 transition-colors hover:border-amber-300 hover:bg-amber-50 ${
+          compact ? "px-3 py-2.5" : "px-4 py-3"
+        }`}
+      >
+        <span
+          className={`flex h-5 w-5 flex-shrink-0 items-center justify-center border border-slate-300 bg-white text-transparent ${
+            multi ? "rounded-md" : "rounded-full"
+          }`}
+          aria-hidden="true"
+        />
+        <span className="leading-snug">{label}</span>
+        <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-black tracking-wide text-amber-800">
+          🔒 有料版
+        </span>
+      </button>
+    );
+  }
+
   return (
     <button
       type="button"

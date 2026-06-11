@@ -25,6 +25,11 @@ import {
   type SlideCount,
   type VisualStyleId,
 } from "./constants";
+import {
+  PLAN_CONFIGS,
+  UPGRADE_BANNER_ID,
+  type Plan,
+} from "./planConfig";
 
 function Section({
   step,
@@ -82,7 +87,47 @@ function adjustSlides(slides: SlideConfig[], count: number): SlideConfig[] {
   return defaults.map((defaultSlide, index) => slides[index] ?? defaultSlide);
 }
 
-export function SlidePromptGenerator() {
+interface SlidePromptGeneratorProps {
+  /** プラン（"free" or "full"）。デフォルト "full"。 */
+  plan?: Plan;
+}
+
+/** スクロール先のアップセルバナーへスムーズスクロールする。 */
+function scrollToUpgradeBanner() {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById(UPGRADE_BANNER_ID);
+  el?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+export function SlidePromptGenerator({ plan = "full" }: SlidePromptGeneratorProps = {}) {
+  const planConfig = PLAN_CONFIGS[plan];
+
+  // ロック判定ヘルパー（null は無制限）
+  const isPresetLocked = useCallback(
+    (id: string) =>
+      planConfig.allowedPresetIds !== null && !planConfig.allowedPresetIds.includes(id),
+    [planConfig.allowedPresetIds]
+  );
+  const isStyleLocked = useCallback(
+    (id: VisualStyleId) =>
+      planConfig.allowedStyleIds !== null && !planConfig.allowedStyleIds.includes(id),
+    [planConfig.allowedStyleIds]
+  );
+  const isSlideCountLocked = useCallback(
+    (count: SlideCount) =>
+      planConfig.allowedSlideCounts !== null &&
+      !planConfig.allowedSlideCounts.includes(count),
+    [planConfig.allowedSlideCounts]
+  );
+
+  // 無料版での初期ビジュアルスタイル：利用可能な先頭を使う
+  const defaultStyleId: VisualStyleId =
+    planConfig.allowedStyleIds && planConfig.allowedStyleIds.length > 0
+      ? planConfig.allowedStyleIds[0]
+      : "simple-medical-care";
+  // 無料版での初期スライド枚数：3枚、それ以外は5枚
+  const initialSlideCountNumber = plan === "free" ? 3 : 5;
+
   const [purpose, setPurpose] = useState<Purpose | null>(null);
   const [slideCount, setSlideCount] = useState<SlideCount | null>(null);
   const [theme, setTheme] = useState("");
@@ -90,9 +135,11 @@ export function SlidePromptGenerator() {
   const [goal, setGoal] = useState<Goal | null>(null);
   const [designPolicy, setDesignPolicy] = useState<DesignPolicy | null>(null);
   const [visualStyleId, setVisualStyleId] =
-    useState<VisualStyleId>("simple-medical-care");
+    useState<VisualStyleId>(defaultStyleId);
   const [extras, setExtras] = useState<ExtraOption[]>([]);
-  const [slides, setSlides] = useState<SlideConfig[]>(createDefaultSlides(5));
+  const [slides, setSlides] = useState<SlideConfig[]>(
+    createDefaultSlides(initialSlideCountNumber)
+  );
   const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
 
   const toggleExtra = useCallback((value: ExtraOption) => {
@@ -109,18 +156,42 @@ export function SlidePromptGenerator() {
     []
   );
 
-  const applyPreset = useCallback((preset: Preset) => {
-    setSelectedPresetId(preset.id);
-    setPurpose(preset.purpose);
-    setSlideCount(preset.slideCount);
-    setTheme(preset.theme);
-    setAudience(preset.audience);
-    setGoal(preset.goal);
-    setDesignPolicy(preset.designPolicy);
-    setVisualStyleId(preset.recommendedStyle);
-    setExtras([]);
-    setSlides(preset.slides);
-  }, []);
+  const applyPreset = useCallback(
+    (preset: Preset) => {
+      // 無料版では制限対象プリセットは選択できない
+      if (isPresetLocked(preset.id)) {
+        scrollToUpgradeBanner();
+        return;
+      }
+      setSelectedPresetId(preset.id);
+      setPurpose(preset.purpose);
+      // プリセットの slideCount が無料版で許可されてなければ、許可済の先頭枚数を採用
+      const presetSlideCountAllowed = !isSlideCountLocked(preset.slideCount);
+      const effectiveSlideCount: SlideCount = presetSlideCountAllowed
+        ? preset.slideCount
+        : planConfig.allowedSlideCounts?.[0] ?? preset.slideCount;
+      setSlideCount(effectiveSlideCount);
+      setTheme(preset.theme);
+      setAudience(preset.audience);
+      setGoal(preset.goal);
+      setDesignPolicy(preset.designPolicy);
+      // recommendedStyle が無料版で許可されてなければ defaultStyleId にフォールバック
+      setVisualStyleId(
+        isStyleLocked(preset.recommendedStyle) ? defaultStyleId : preset.recommendedStyle
+      );
+      setExtras([]);
+      // プリセットのスライド枚数も無料版では effectiveSlideCount に合わせる
+      const effectiveCount = slideCountToNumber(effectiveSlideCount);
+      setSlides(adjustSlides(preset.slides, effectiveCount));
+    },
+    [
+      isPresetLocked,
+      isSlideCountLocked,
+      isStyleLocked,
+      defaultStyleId,
+      planConfig.allowedSlideCounts,
+    ]
+  );
 
   const handleReset = useCallback(() => {
     setPurpose(null);
@@ -129,11 +200,11 @@ export function SlidePromptGenerator() {
     setAudience(null);
     setGoal(null);
     setDesignPolicy(null);
-    setVisualStyleId("simple-medical-care");
+    setVisualStyleId(defaultStyleId);
     setExtras([]);
-    setSlides(createDefaultSlides(5));
+    setSlides(createDefaultSlides(initialSlideCountNumber));
     setSelectedPresetId(null);
-  }, []);
+  }, [defaultStyleId, initialSlideCountNumber]);
 
   const updateSlide = useCallback((index: number, patch: Partial<SlideConfig>) => {
     setSlides((prev) =>
@@ -176,6 +247,28 @@ export function SlidePromptGenerator() {
         <div className="grid gap-2 sm:grid-cols-3">
           {PRESETS.map((preset) => {
             const selected = selectedPresetId === preset.id;
+            const locked = isPresetLocked(preset.id);
+            if (locked) {
+              return (
+                <button
+                  key={preset.id}
+                  type="button"
+                  onClick={scrollToUpgradeBanner}
+                  aria-disabled="true"
+                  className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-left text-slate-400 transition-colors hover:border-amber-300 hover:bg-amber-50"
+                >
+                  <span className="flex items-start justify-between gap-3">
+                    <span className="block text-sm font-black">{preset.label}</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-black tracking-wide text-amber-800">
+                      🔒 有料版
+                    </span>
+                  </span>
+                  <span className="mt-2 block text-xs font-medium leading-relaxed">
+                    {preset.summary}
+                  </span>
+                </button>
+              );
+            }
             return (
             <button
               key={preset.id}
@@ -240,14 +333,18 @@ export function SlidePromptGenerator() {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {VISUAL_STYLES.map((style) => {
             const selected = visualStyleId === style.id;
+            const locked = isStyleLocked(style.id);
             return (
               <button
                 key={style.id}
                 type="button"
-                onClick={() => setVisualStyleId(style.id)}
+                onClick={() => (locked ? scrollToUpgradeBanner() : setVisualStyleId(style.id))}
                 aria-pressed={selected}
+                aria-disabled={locked || undefined}
                 className={`group flex flex-col rounded-2xl border p-3 text-left transition-all duration-200 ${
-                  selected
+                  locked
+                    ? "border-dashed border-slate-300 bg-slate-50 text-slate-400 hover:border-amber-300 hover:bg-amber-50"
+                    : selected
                     ? "border-sky-500 bg-sky-50 shadow-sm ring-2 ring-sky-200"
                     : "border-slate-200 bg-white hover:border-sky-300 hover:bg-slate-50"
                 }`}
@@ -272,10 +369,17 @@ export function SlidePromptGenerator() {
                     </span>
                   )}
                 </span>
-                <span className="mt-3 block text-sm font-black text-slate-900">
-                  {style.name}
+                <span className={`mt-3 flex items-center justify-between gap-2 ${locked ? "" : "text-slate-900"}`}>
+                  <span className="block text-sm font-black">
+                    {style.name}
+                  </span>
+                  {locked && (
+                    <span className="inline-flex flex-shrink-0 items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-black tracking-wide text-amber-800">
+                      🔒 有料版
+                    </span>
+                  )}
                 </span>
-                <span className="mt-1 block flex-1 text-xs font-medium leading-relaxed text-slate-500">
+                <span className={`mt-1 block flex-1 text-xs font-medium leading-relaxed ${locked ? "" : "text-slate-500"}`}>
                   {style.summary}
                 </span>
                 <span className="mt-2.5 flex flex-wrap gap-1.5">
@@ -283,7 +387,9 @@ export function SlidePromptGenerator() {
                     <span
                       key={tag}
                       className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
-                        selected
+                        locked
+                          ? "bg-white text-slate-400"
+                          : selected
                           ? "bg-white text-sky-600"
                           : "bg-slate-100 text-slate-500"
                       }`}
@@ -326,6 +432,8 @@ export function SlidePromptGenerator() {
                   label={item}
                   selected={slideCount === item}
                   onClick={() => handleSlideCount(item)}
+                  locked={isSlideCountLocked(item)}
+                  onLockedClick={scrollToUpgradeBanner}
                 />
               ))}
             </div>
