@@ -62,7 +62,7 @@ export function LineBanner() {
 
                         <div className="flex-1 text-center sm:text-left">
                             <h3 className="text-lg sm:text-xl font-black text-white leading-tight mb-2">
-                                退院後も自主トレを続けてもらう<span style={{ color: '#FDE047' }}>「6点セット」</span>を無料配布
+                                退院後も自主トレを続けてもらう<span style={{ color: '#FDE047' }}>「7点セット」</span>を無料配布
                             </h3>
                             <p className="text-xs sm:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>
                                 現役リハビリ職が現場で使っている患者配布資料。印刷してそのまま渡せます。
@@ -81,6 +81,23 @@ export function LineBanner() {
                                 LINEで受け取る（無料）
                             </a>
                         </div>
+                    </div>
+
+                    {/* NEW：プロンプト工房（無料版） */}
+                    <div className="mb-2 flex flex-wrap justify-center gap-2 sm:justify-start">
+                        <span
+                            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-black text-white"
+                            style={{ backgroundColor: 'rgba(255,255,255,0.28)' }}
+                        >
+                            <span
+                                className="inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-black tracking-wider"
+                                style={{ backgroundColor: '#FDE047', color: '#1f2937' }}
+                            >
+                                NEW
+                            </span>
+                            <span aria-hidden="true">🛠</span>
+                            伝わるプロンプト工房（無料版）も使える
+                        </span>
                     </div>
 
                     {/* 特典タグ 1列目 */}
