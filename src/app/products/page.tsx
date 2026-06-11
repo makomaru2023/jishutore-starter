@@ -539,7 +539,10 @@ export default function ProductsPage() {
                     </div>
                 </section>
 
-                {/* 5.5 制作ツール（プロンプト工房） */}
+                {/* 5.5 制作ツール（プロンプト工房）
+                    公開条件: STRIPE_PRICE_ID_SLIDE_PROMPT_GENERATOR が設定されたら自動的に公開される。
+                    未設定時は /products カタログから完全に非表示（LP自体は直URLで参照可、noindex 設定済み）。 */}
+                {slidePromptCheckoutReady && (
                 <section id="tools" className="bg-white py-14 sm:py-20 scroll-mt-20">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-4xl">
@@ -624,6 +627,7 @@ export default function ProductsPage() {
                         </div>
                     </div>
                 </section>
+                )}
 
                 {/* 6. LINE 無料特典（購入前サンプル位置づけ） */}
                 <section className="bg-white py-14 sm:py-20">

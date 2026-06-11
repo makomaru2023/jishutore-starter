@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     title: "伝わるプロンプト工房｜ChatGPTでスライド画像を量産する購入者専用ツール｜自主トレ素材庫",
     description:
         "用途・テーマ・枚数を選ぶだけで、ChatGPT にそのまま貼り付けられるスライド画像生成プロンプトを作成できる購入者専用ツール。家族説明・勉強会・利用者説明・退院前指導の資料づくりを時短。980円・買い切り・永久アクセス。",
+    // 公開準備中のため、検索エンジンには載せない。直URLでアクセスした人だけが見られる状態。
+    robots: { index: false, follow: false },
     openGraph: {
         title: "伝わるプロンプト工房｜自主トレ素材庫",
         description:
