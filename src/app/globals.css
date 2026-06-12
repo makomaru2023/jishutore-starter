@@ -4,6 +4,29 @@
 
 /* Additional global styles for the new "pop" design can be added here if needed */
 
+@layer base {
+    /*
+     * スマホ崩れ対策（サイト全体）
+     * --------------------------------------------------------------
+     * 1) 画像・動画・表は画面幅を超えない（はみ出す大画像を防ぐ）
+     * 2) 横方向のはみ出しは body で clip（overflow:hidden と違い
+     *    position:sticky を壊さないので Header の追従が維持される）
+     */
+    html,
+    body {
+        overflow-x: clip;
+        /* 古いブラウザ向けフォールバック（clip 非対応時のみ効く） */
+        max-width: 100%;
+    }
+
+    img,
+    video,
+    canvas,
+    table {
+        max-width: 100%;
+    }
+}
+
 @layer components {
     /*
      * 日本語タイポグラフィ共通方針
