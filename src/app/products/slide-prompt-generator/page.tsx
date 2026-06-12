@@ -84,7 +84,7 @@ const FAQ: { q: string; a: string }[] = [
     },
     {
         q: "ChatGPT は別途用意が必要ですか？",
-        a: "はい。本ツールは「ChatGPT に貼り付けるためのプロンプト」を作成するツールです。ChatGPT（無料プランでも利用可）は別途お使いください。",
+        a: "はい。本ツールは「ChatGPT に貼り付けるためのプロンプト」を作成するツールです。ChatGPT は別途お使いください。なお、スライド用のイラストを AI に描かせる場合（画像生成）は、画像生成に対応した有料プラン（ChatGPT Plus など）が必要です。無料プランでは画像生成が安定しないため、テキストのプロンプト作成のお試し用とお考えください。",
     },
     {
         q: "生成された内容はそのまま現場で使えますか？",
@@ -274,7 +274,7 @@ export default function SlidePromptGeneratorLpPage() {
                                         <ul className="space-y-1.5 text-xs sm:text-sm leading-relaxed text-amber-900 break-keep">
                                             <li>・生成AIの出力には誤りが含まれる場合があります。医療・介護現場での使用前に、必ず専門職による確認をお願いします。</li>
                                             <li>・個人情報、実名、詳細な症例情報は ChatGPT に入力しないでください。</li>
-                                            <li>・本ツールは ChatGPT 等の生成AIサービスを別途ご用意いただく前提です（無料プランでも利用可）。</li>
+                                            <li>・本ツールは ChatGPT 等の生成AIサービスを別途ご用意いただく前提です（画像生成を使う場合は ChatGPT Plus など画像生成対応の有料プランが必要です）。</li>
                                         </ul>
                                     </div>
                                 </div>
