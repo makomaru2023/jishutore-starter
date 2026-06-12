@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { PremiumItemCard } from "./PremiumItemCard";
 import { premiumItems } from "../../data/premiumItems";
+import { SLIDE_PROMPT_GENERATOR_PRICE_ID } from "@/lib/products";
 
 export function HomePremiumPromo() {
+    // 工房（Webツール）は購入可能になったときだけ導線を出す（カタログ側と同条件）。
+    const slidePromptReady = Boolean(SLIDE_PROMPT_GENERATOR_PRICE_ID);
+
     return (
         <section className="bg-white py-16 sm:py-24">
             <div className="container mx-auto px-4">
@@ -77,6 +81,19 @@ export function HomePremiumPromo() {
                             </svg>
                         </Link>
                     </div>
+
+                    {/* スライドを自分で作りたい方への控えめな導線（Webツール） */}
+                    {slidePromptReady && (
+                        <p className="mt-4 text-center text-sm text-slate-500">
+                            スライドを自分で作りたい方へ：
+                            <Link
+                                href="/products/slide-prompt-generator"
+                                className="font-bold text-blue-600 hover:underline"
+                            >
+                                伝わるプロンプト工房 →
+                            </Link>
+                        </p>
+                    )}
                 </div>
             </div>
         </section>

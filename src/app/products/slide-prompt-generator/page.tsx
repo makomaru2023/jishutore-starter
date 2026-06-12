@@ -77,6 +77,36 @@ const SCENES: { title: string; description: string }[] = [
     },
 ];
 
+// 無料版（LINE特典）とフル版（980円）の機能比較。
+// 数値は planConfig.ts / constants.ts の実値に対応：
+//   テンプレート（用途プリセット）free 2種 / full 8種
+//   ビジュアルスタイル free 3種 / full 10種
+//   スライド枚数 free 3枚 / full 10枚
+const COMPARE_ROWS: { item: string; free: string; full: string; fullNote?: string }[] = [
+    {
+        item: "テンプレート（用途別）",
+        free: "2種",
+        full: "8種すべて",
+        fullNote: "症例発表・退院前指導・新人教育ほか",
+    },
+    {
+        item: "ビジュアルスタイル",
+        free: "3種",
+        full: "10種すべて",
+        fullNote: "学会クリーン・ネイビーフォーマルほか",
+    },
+    {
+        item: "スライド枚数",
+        free: "3枚まで",
+        full: "10枚まで",
+    },
+    {
+        item: "今後の追加テンプレ・スタイル",
+        free: "−",
+        full: "追加料金なしで利用可",
+    },
+];
+
 const FAQ: { q: string; a: string }[] = [
     {
         q: "購入後、どのくらいで使えるようになりますか？",
@@ -199,6 +229,122 @@ export default function SlidePromptGeneratorLpPage() {
                             <p className="text-sm sm:text-base leading-relaxed text-slate-600 break-keep">
                                 「伝わるプロンプト工房」は、リハビリ・介護現場でよく使われるスライド構成を<strong className="text-slate-800">チェック式UI</strong>でまとめたツールです。チェックを入れるだけで、ChatGPTにそのまま貼り付け可能なプロンプトが完成します。
                             </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* C2. 無料版との比較 */}
+                <section id="compare" className="bg-slate-50 py-14 sm:py-20 scroll-mt-20">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-3xl text-center mb-10">
+                            <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                無料版との違い
+                            </p>
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
+                                LINE特典の無料版で、まず試せます
+                            </h2>
+                            <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep">
+                                操作感はLINE特典の無料版でそのまま体験できます。テンプレートやスタイルをすべて使い、長めのスライドまで作りたくなったら、フル版（買い切り）にどうぞ。
+                            </p>
+                        </div>
+
+                        {/* スマホ（〜639px）：2カード積み */}
+                        <div className="mx-auto grid max-w-3xl gap-4 sm:hidden">
+                            {/* 無料版カード */}
+                            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                                <h3 className="mb-4 text-sm font-black text-slate-700 break-keep">
+                                    無料版（LINE特典）
+                                </h3>
+                                <dl className="space-y-3">
+                                    {COMPARE_ROWS.map((row) => (
+                                        <div key={row.item} className="border-b border-slate-100 pb-2 last:border-b-0">
+                                            <dt className="text-[11px] font-bold tracking-widest text-slate-500">
+                                                {row.item}
+                                            </dt>
+                                            <dd className="mt-0.5 text-sm font-bold text-slate-700 leading-relaxed break-keep">
+                                                {row.free}
+                                            </dd>
+                                        </div>
+                                    ))}
+                                </dl>
+                            </div>
+                            {/* フル版カード（強調） */}
+                            <div className="rounded-2xl border-2 border-blue-300 bg-white p-5 shadow-sm shadow-blue-100">
+                                <h3 className="mb-4 flex items-center gap-2 text-sm font-black text-blue-700 break-keep">
+                                    フル版（980円・買い切り）
+                                    <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-black tracking-wider text-blue-700">
+                                        おすすめ
+                                    </span>
+                                </h3>
+                                <dl className="space-y-3">
+                                    {COMPARE_ROWS.map((row) => (
+                                        <div key={row.item} className="border-b border-slate-100 pb-2 last:border-b-0">
+                                            <dt className="text-[11px] font-bold tracking-widest text-blue-700">
+                                                {row.item}
+                                            </dt>
+                                            <dd className="mt-0.5 text-sm font-black text-slate-900 leading-relaxed break-keep">
+                                                {row.full}
+                                                {row.fullNote && (
+                                                    <span className="block text-[11px] font-bold text-slate-500">
+                                                        {row.fullNote}
+                                                    </span>
+                                                )}
+                                            </dd>
+                                        </div>
+                                    ))}
+                                </dl>
+                            </div>
+                        </div>
+
+                        {/* PC（sm以上）：横並びテーブル */}
+                        <div className="mx-auto hidden max-w-3xl sm:block">
+                            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                                <table className="w-full text-sm">
+                                    <thead className="border-b border-slate-200 bg-slate-50">
+                                        <tr>
+                                            <th className="w-1/3 p-4 text-left text-xs font-bold tracking-widest text-slate-500"></th>
+                                            <th className="p-4 text-center text-sm font-black text-slate-600 break-keep">
+                                                無料版<span className="block text-[11px] font-bold text-slate-400">LINE特典</span>
+                                            </th>
+                                            <th className="p-4 text-center text-sm font-black text-blue-700 break-keep">
+                                                フル版<span className="block text-[11px] font-bold text-blue-500">980円・買い切り</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {COMPARE_ROWS.map((row, i) => (
+                                            <tr key={row.item} className={i % 2 === 0 ? "bg-white" : "bg-slate-50/40"}>
+                                                <td className="p-4 align-top text-xs font-bold tracking-wider text-slate-600 break-keep">
+                                                    {row.item}
+                                                </td>
+                                                <td className="p-4 text-center align-top font-bold text-slate-600 break-keep">
+                                                    {row.free}
+                                                </td>
+                                                <td className="bg-blue-50/40 p-4 text-center align-top font-black text-slate-900 break-keep">
+                                                    {row.full}
+                                                    {row.fullNote && (
+                                                        <span className="block text-[11px] font-bold text-slate-500">
+                                                            {row.fullNote}
+                                                        </span>
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 text-center">
+                            <Link
+                                href="#purchase"
+                                className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3 text-sm font-bold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500"
+                            >
+                                フル版を980円で購入する
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </Link>
                         </div>
                     </div>
                 </section>

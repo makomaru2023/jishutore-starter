@@ -561,7 +561,7 @@ export default function ProductsPage() {
                                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
                                     <div className="min-w-0 flex-1">
                                         <p className="mb-2 inline-block rounded-full bg-sky-50 px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-sky-700 border border-sky-100">
-                                            購入者専用ツール
+                                            Webツール（ブラウザで完結）
                                         </p>
                                         <h3 className="mb-2 text-lg font-black leading-snug text-slate-900 sm:text-xl break-keep">
                                             伝わるプロンプト工房

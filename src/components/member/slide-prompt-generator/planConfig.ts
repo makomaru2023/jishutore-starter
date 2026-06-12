@@ -31,9 +31,9 @@ export const PLAN_CONFIGS: Record<Plan, PlanConfig> = {
 
 /**
  * 無料版から有料版へのアップグレード遷移先。
- * 販売ページが確定したら差し替える（例: "/products/slide-prompt-generator/"）。
+ * 有料版の商品LP（伝わるプロンプト工房・980円買い切り）。
  */
-export const UPGRADE_URL = "/products/";
+export const UPGRADE_URL = "/products/slide-prompt-generator/";
 
 /** ロック項目クリック時にスクロールするアップセルバナーの id */
 export const UPGRADE_BANNER_ID = "upgrade-banner";
