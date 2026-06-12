@@ -14,9 +14,15 @@ export function PurchaseTracker({ sessionId, productId, productName, value }: Pu
         if (!sessionId) return;
         if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
 
+        // 二重計上の防止：同じ transaction_id では再送信しない。
+        // localStorage に記録し、リロード・再訪問しても発火は1回に保つ。
         const key = `purchase_tracked_${sessionId}`;
-        if (sessionStorage.getItem(key)) return;
-        sessionStorage.setItem(key, '1');
+        try {
+            if (localStorage.getItem(key)) return;
+            localStorage.setItem(key, '1');
+        } catch {
+            /* storage 不可環境では従来どおり送信（最悪でも稀に二重計上） */
+        }
 
         window.gtag('event', 'purchase', {
             transaction_id: sessionId,

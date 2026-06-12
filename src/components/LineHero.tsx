@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { trackLineClick } from "@/lib/analytics";
 
 /**
  * トップページ用 LINE特典セクション（大）
@@ -136,6 +137,7 @@ export function LineHero() {
                                 href="https://lin.ee/79a5bNt"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackLineClick('top_section')}
                                 className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white font-black text-lg rounded-full hover:scale-105 transition-all shadow-xl"
                                 style={{ color: '#06C755' }}
                             >
@@ -200,6 +202,7 @@ export function LineHero() {
                                 href="https://lin.ee/79a5bNt"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackLineClick('top_section')}
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 font-black text-white text-sm rounded-full hover:scale-105 transition-all shadow-md w-full"
                                 style={{ backgroundColor: '#06C755' }}
                             >

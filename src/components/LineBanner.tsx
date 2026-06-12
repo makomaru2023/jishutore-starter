@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { trackLineClick } from "@/lib/analytics";
 
 /**
  * LINE友だち追加バナー（再利用コンポーネント）
@@ -74,6 +75,7 @@ export function LineBanner() {
                                 href="https://lin.ee/79a5bNt"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackLineClick('tokuten_banner')}
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white font-black text-base rounded-full hover:scale-105 transition-all shadow-lg whitespace-nowrap"
                                 style={{ color: '#06C755' }}
                             >
@@ -148,6 +150,7 @@ export function LineBanner() {
                             href="https://lin.ee/79a5bNt"
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackLineClick('tokuten_banner')}
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white font-black text-base rounded-full hover:scale-105 transition-all shadow-lg"
                             style={{ color: '#06C755' }}
                         >
@@ -204,6 +207,7 @@ export function LineBanner() {
                                 href="https://lin.ee/79a5bNt"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackLineClick('tokuten_banner')}
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 font-black text-white text-sm rounded-full hover:scale-105 transition-all shadow-md w-full"
                                 style={{ backgroundColor: '#06C755' }}
                             >

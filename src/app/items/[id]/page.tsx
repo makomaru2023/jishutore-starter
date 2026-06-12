@@ -4,6 +4,9 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductCta } from "@/components/ProductCta";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
+import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
+import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
+import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -212,19 +215,24 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     <p className="text-sm text-slate-500 mb-6 font-medium">
                                         会員登録は不要です。すぐにダウンロードしてご利用いただけます。
                                     </p>
-                                    <a
+                                    <MaterialDownloadButton
                                         href={item.fileHref}
-                                        download
+                                        materialName={title}
+                                        materialSlug={item.id}
+                                        materialType={item.tier}
                                         className="flex items-center justify-center w-full py-4 px-6 bg-teal-500 hover:bg-teal-400 text-white font-bold rounded-full transition-all shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-[1.02] gap-2"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                         </svg>
                                         画像をダウンロード
-                                    </a>
+                                    </MaterialDownloadButton>
                                 </div>
 
-                                {/* 有料商品（PowerPoint資料セット）への導線（ダウンロードボタン直下） */}
+                                {/* 新作通知＆配布資料7点セットのLINE導線（ダウンロードボタン直下） */}
+                                <ItemDetailLineBanner />
+
+                                {/* 有料商品（PowerPoint資料セット）への導線 */}
                                 <ProductCta location="item_detail_cta" variant="inline" />
 
                                 <Link href="/items" className="flex items-center justify-center gap-2 text-slate-500 hover:text-teal-500 font-bold transition-colors">
@@ -249,6 +257,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                 </div>
             </main>
             <Footer />
+            <PostDownloadLineToast />
         </div>
     );
 }

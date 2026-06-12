@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { trackLineClick } from '@/lib/analytics';
 
 const LINE_URL = 'https://lin.ee/79a5bNt';
 const LINE_SVG_PATH =
@@ -35,6 +38,7 @@ export function FreeSampleLineCta() {
                         href={LINE_URL}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackLineClick('free_sample_cta')}
                         className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-black shadow-lg transition-all hover:scale-105"
                         style={{ color: '#06C755' }}
                     >

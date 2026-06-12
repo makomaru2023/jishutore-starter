@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductDualCta } from "@/components/ProductDualCta";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
+import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { Metadata } from "next";
 
 // カテゴリキーワード（ローマ字）→ フィルタ用キーワードのマッピング
@@ -230,6 +231,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                 </div>
             </main>
             <Footer />
+            <PostDownloadLineToast />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { trackMaterialDownload } from "@/lib/analytics";
 
 interface DownloadTrackingLinkProps {
     href: string;
@@ -10,12 +11,10 @@ interface DownloadTrackingLinkProps {
     className?: string;
 }
 
-declare global {
-    interface Window {
-        gtag?: (...args: unknown[]) => void;
-    }
-}
-
+/**
+ * 購入後ZIPなど、ファイル名指定のダウンロードリンク（計測付き）
+ * 旧 download_click は廃止し、material_download に一本化している。
+ */
 export function DownloadTrackingLink({
     href,
     fileName,
@@ -24,12 +23,10 @@ export function DownloadTrackingLink({
     className,
 }: DownloadTrackingLinkProps) {
     const handleClick = () => {
-        if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-
-        window.gtag("event", "download_click", {
-            item_name: itemName,
-            file_name: fileName,
-            file_type: "zip",
+        trackMaterialDownload({
+            materialName: itemName,
+            materialSlug: fileName,
+            materialType: "purchased-zip",
         });
     };
 

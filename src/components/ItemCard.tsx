@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Item } from "@/types";
 import { getItemImageUrl } from "@/lib/items";
 import Link from "next/link";
+import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 
 interface ItemCardProps {
     item: Item;
@@ -39,13 +40,15 @@ export function ItemCard({ item }: ItemCardProps) {
                     </Link>
                 </h3>
                 <div className="mt-auto">
-                    <a
+                    <MaterialDownloadButton
                         href={item.fileHref}
-                        download
+                        materialName={item.titleJa || item.title}
+                        materialSlug={item.id}
+                        materialType={item.tier}
                         className="inline-flex w-full items-center justify-center rounded-full bg-teal-500 px-4 py-3 text-sm font-bold text-white transition-all shadow-md shadow-teal-500/20 hover:bg-teal-400 hover:shadow-lg hover:shadow-teal-500/40 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                     >
                         ダウンロード
-                    </a>
+                    </MaterialDownloadButton>
                 </div>
             </div>
         </div>
