@@ -244,7 +244,7 @@ export function SlidePromptGenerator({ plan = "full" }: SlidePromptGeneratorProp
             クリックすると、テーマや各スライドのたたき台をまとめて入力します。読み込んだあとに、下の項目は自由に変更できます。
           </p>
         </div>
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           {PRESETS.map((preset) => {
             const selected = selectedPresetId === preset.id;
             const locked = isPresetLocked(preset.id);
@@ -404,7 +404,7 @@ export function SlidePromptGenerator({ plan = "full" }: SlidePromptGeneratorProp
         </div>
       </section>
 
-      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)]">
         <div className="space-y-6">
           <Section
             step={1}

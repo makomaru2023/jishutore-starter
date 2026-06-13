@@ -169,7 +169,7 @@ export default function ProductsPage() {
                                 疾患名から資料を選びたい方は<strong className="text-slate-800">「疾患別セット」</strong>。座位・立位・臥位など、今できる姿勢から運動を選びたい方は<strong className="text-slate-800">「姿勢別セット」</strong>がおすすめです。
                             </p>
                         </div>
-                        <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2">
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-2">
                             {compareCards.map((c) => (
                                 <div
                                     key={c.heading}
@@ -386,7 +386,7 @@ export default function ProductsPage() {
                                 どちらも 980円・買い切り
                             </p>
                         </div>
-                        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-6 sm:grid-cols-2">
                             {products.map((product) => (
                                 <article
                                     key={product.slug}
@@ -433,7 +433,7 @@ export default function ProductsPage() {
                                             <span className="ml-1 text-xs font-bold text-slate-400">買い切り</span>
                                         </span>
                                     </div>
-                                    <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                                    <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                                         <Link
                                             href={`/products/${product.slug}`}
                                             className="inline-flex min-h-12 items-center justify-center gap-1 rounded-full border border-blue-200 px-4 py-3 text-center text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50"

@@ -198,7 +198,7 @@ export default function SlidePromptGeneratorLpPage() {
                                 家族説明、勉強会、利用者説明、退院前指導… 場面に合わせた資料づくりに、こんなお悩みはありませんか？
                             </p>
                         </div>
-                        <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2">
+                        <div className="mx-auto grid grid-cols-1 max-w-4xl gap-3 sm:grid-cols-2">
                             {PAIN_POINTS.map((p) => (
                                 <div
                                     key={p}
@@ -357,7 +357,7 @@ export default function SlidePromptGeneratorLpPage() {
                                 使い方は、たったの3ステップ
                             </h2>
                         </div>
-                        <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-3">
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-3">
                             {STEPS.map((s) => (
                                 <div
                                     key={s.num}
@@ -386,7 +386,7 @@ export default function SlidePromptGeneratorLpPage() {
                                 こんな場面でお使いいただけます
                             </h2>
                         </div>
-                        <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2">
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-2">
                             {SCENES.map((s) => (
                                 <div
                                     key={s.title}

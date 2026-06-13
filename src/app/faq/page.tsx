@@ -10,7 +10,7 @@ export default function FAQPage() {
                     <h1 className="mb-8 text-3xl font-bold text-gray-900 text-center">よくあるご質問</h1>
 
                     {/* Top 3 Questions */}
-                    <div className="mb-12 grid gap-6 md:grid-cols-3">
+                    <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
                         <div className="bg-white p-6 rounded-xl shadow-sm border border-blue-100">
                             <h3 className="font-bold text-blue-600 mb-2 text-lg">Q. 本当にすべて無料ですか？</h3>
                             <p className="text-gray-700 text-sm">はい、すべての素材を無料でダウンロードしてご利用いただけます。会員登録も不要です。</p>

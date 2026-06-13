@@ -215,7 +215,7 @@ function SectionHeading({
 
 function CheckList({ items }: { items: string[] }) {
     return (
-        <ul className="grid gap-3 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {items.map((item) => (
                 <li
                     key={item}
@@ -328,7 +328,7 @@ function FreeMaterialComparison() {
                     title="無料素材との違い"
                     description="無料素材は、必要なイラストを自分で選んで資料を作りたい方向けです。姿勢別自主トレ資料セットは、説明の流れや運動メニューまで整えた資料です。"
                 />
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
                     {rows.map(([label, free, product]) => (
                         <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                             <h3 className="text-sm font-black text-slate-900">{label}</h3>
@@ -356,7 +356,7 @@ export default function HomeElderlySelfTrainingPage() {
             <Header />
             <main className="flex-1">
                 <section className="bg-gradient-to-b from-blue-50 via-white to-white py-12 sm:py-16 lg:py-20">
-                    <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8">
+                    <div className="mx-auto grid grid-cols-1 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8">
                         <div>
                             <p className="mb-4 inline-block rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-black tracking-widest text-blue-700 shadow-sm">
                                 姿勢別自主トレPowerPointセット
@@ -456,7 +456,7 @@ export default function HomeElderlySelfTrainingPage() {
                             title="収録内容"
                             description="座位・立位・臥位など、実施姿勢ごとに使いやすく整理しています。実際の商品は6種類収録です。"
                         />
-                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {CONTENTS.map((content, index) => (
                                 <article key={content.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                                     <div className="mb-3 flex items-center gap-3">
@@ -477,7 +477,7 @@ export default function HomeElderlySelfTrainingPage() {
                 <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="HOW TO USE" title="使い方はかんたんです" />
-                        <div className="grid gap-4 md:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                             {[
                                 ["1", "対象者が安全に行える姿勢を選ぶ"],
                                 ["2", "必要な運動ページだけ残す"],
@@ -500,7 +500,7 @@ export default function HomeElderlySelfTrainingPage() {
                 <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="SCENE" title="こんな場面で使えます" />
-                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             {USE_SCENES.map(([title, description]) => (
                                 <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                                     <h3 className="text-base font-black text-slate-900">{title}</h3>
@@ -567,7 +567,7 @@ export default function HomeElderlySelfTrainingPage() {
                 <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="FLOW" title="購入後の流れ" />
-                        <div className="grid gap-4 md:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                             {[
                                 ["1", "サイト内でStripe決済"],
                                 ["2", "決済完了後、ダウンロードページへ移動"],

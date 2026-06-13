@@ -323,7 +323,7 @@ export default function SponsorPage() {
                                     自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。掲載素材数の拡充とともに、検索流入も少しずつ伸びています。
                                 </p>
                             </div>
-                            <div className="grid gap-3 sm:grid-cols-2">
+                            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                                 {mediaStatus.map((row) => (
                                     <div
                                         key={row.label}
@@ -385,7 +385,7 @@ export default function SponsorPage() {
                                 広告主さまの目的に合わせて、複数の掲載場所をご用意しています。サイト内記事やSNSでの紹介（プレミアムスポンサー枠）もご相談可能です。
                             </p>
                         </div>
-                        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
                             {placements.map((p, i) => (
                                 <div key={p.title} className="min-w-0 bg-white rounded-2xl p-6 border border-blue-100 hover:border-blue-200 hover:shadow-sm transition-all flex flex-col">
                                     <div className="flex items-center gap-2 mb-3">
@@ -419,7 +419,7 @@ export default function SponsorPage() {
                                 まずは小さく試しやすい価格帯で、3つのプランをご用意しています。掲載場所や内容は、サイトの状況に応じて個別にご相談となります。
                             </p>
                         </div>
-                        <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-3 max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 max-w-6xl mx-auto">
                             {plans.map((plan) => (
                                 <div
                                     key={plan.name}
@@ -502,7 +502,7 @@ export default function SponsorPage() {
                                     リハビリ・介護・医療福祉領域に関わるサービスと相性が良いです。
                                 </p>
                             </div>
-                            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                                 {compatibleServices.map((s) => (
                                     <div
                                         key={s}
@@ -520,7 +520,7 @@ export default function SponsorPage() {
                 {/* 10. 掲載できる内容 + 11. 掲載できない可能性があるもの */}
                 <section className="py-16 sm:py-20 bg-white">
                     <div className="container mx-auto px-4">
-                        <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-2">
+                        <div className="max-w-4xl mx-auto grid grid-cols-1 gap-8 md:grid-cols-2">
                             <div>
                                 <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-4">
                                     掲載できる内容

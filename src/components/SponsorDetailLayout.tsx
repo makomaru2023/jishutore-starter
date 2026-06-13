@@ -110,7 +110,7 @@ export function SponsorDetailLayout({
                             </DetailBlock>
 
                             <DetailBlock title="向いているサービス">
-                                <div className="grid gap-2.5 sm:grid-cols-2">
+                                <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                                     {fitFor.map((f) => (
                                         <div
                                             key={f}
@@ -123,7 +123,7 @@ export function SponsorDetailLayout({
                             </DetailBlock>
 
                             <DetailBlock title="掲載できる内容">
-                                <ul className="grid gap-2 sm:grid-cols-2">
+                                <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                     {placeableItems.map((it) => (
                                         <li key={it} className="flex items-center gap-2 text-slate-700">
                                             <span className="inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500" />

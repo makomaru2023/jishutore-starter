@@ -59,7 +59,7 @@ export function HomeHowTo() {
 
                 {/* ステップグリッド */}
                 <div className="max-w-6xl mx-auto">
-                    <div className="grid md:grid-cols-3 gap-6 md:gap-4 lg:gap-8 relative">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 lg:gap-8 relative">
                         {/* 接続ライン（PC/タブレットのみ） */}
                         <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-rose-200 via-teal-200 to-amber-200 -z-0"></div>
 
