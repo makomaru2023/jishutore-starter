@@ -26,6 +26,10 @@ export function Header() {
                         資料セット
                     </Link>
 
+                    <Link href="/products/slide-prompt-generator" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                        資料作成ツール
+                    </Link>
+
                     <Link href="/sponsor" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
                         スポンサー募集
                     </Link>
@@ -71,6 +75,13 @@ export function Header() {
                             onClick={closeMenu}
                         >
                             資料セット
+                        </Link>
+                        <Link
+                            href="/products/slide-prompt-generator"
+                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                            onClick={closeMenu}
+                        >
+                            資料作成ツール
                         </Link>
                         <Link
                             href="/sponsor"

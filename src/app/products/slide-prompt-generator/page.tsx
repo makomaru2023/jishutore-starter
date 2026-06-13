@@ -233,6 +233,61 @@ export default function SlidePromptGeneratorLpPage() {
                     </div>
                 </section>
 
+                {/* D. 使い方 */}
+                <section id="how-to-use" className="bg-slate-50 py-14 sm:py-20 scroll-mt-20">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-10">
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
+                                使い方は、たったの3ステップ
+                            </h2>
+                        </div>
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-3">
+                            {STEPS.map((s) => (
+                                <div
+                                    key={s.num}
+                                    className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-6"
+                                >
+                                    <p className="mb-3 text-3xl font-black tracking-tight text-blue-600">
+                                        {s.num}
+                                    </p>
+                                    <h3 className="mb-2 text-base font-black leading-snug text-slate-900 break-keep">
+                                        {s.title}
+                                    </h3>
+                                    <p className="text-sm leading-relaxed text-slate-600 break-keep">
+                                        {s.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* E. こんな場面で */}
+                <section className="bg-white py-14 sm:py-20">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-10">
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
+                                こんな場面でお使いいただけます
+                            </h2>
+                        </div>
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-2">
+                            {SCENES.map((s) => (
+                                <div
+                                    key={s.title}
+                                    className="flex min-w-0 flex-col rounded-2xl border border-blue-100 bg-blue-50/30 p-6"
+                                >
+                                    <h3 className="mb-2 text-base font-black leading-snug text-slate-900 break-keep">
+                                        {s.title}
+                                    </h3>
+                                    <p className="text-sm leading-relaxed text-slate-600 break-keep">
+                                        {s.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
                 {/* C2. 無料版との比較 */}
                 <section id="compare" className="bg-slate-50 py-14 sm:py-20 scroll-mt-20">
                     <div className="container mx-auto px-4">
@@ -345,61 +400,6 @@ export default function SlidePromptGeneratorLpPage() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                 </svg>
                             </Link>
-                        </div>
-                    </div>
-                </section>
-
-                {/* D. 使い方 */}
-                <section id="how-to-use" className="bg-slate-50 py-14 sm:py-20 scroll-mt-20">
-                    <div className="container mx-auto px-4">
-                        <div className="text-center mb-10">
-                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
-                                使い方は、たったの3ステップ
-                            </h2>
-                        </div>
-                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-3">
-                            {STEPS.map((s) => (
-                                <div
-                                    key={s.num}
-                                    className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-6"
-                                >
-                                    <p className="mb-3 text-3xl font-black tracking-tight text-blue-600">
-                                        {s.num}
-                                    </p>
-                                    <h3 className="mb-2 text-base font-black leading-snug text-slate-900 break-keep">
-                                        {s.title}
-                                    </h3>
-                                    <p className="text-sm leading-relaxed text-slate-600 break-keep">
-                                        {s.description}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* E. こんな場面で */}
-                <section className="bg-white py-14 sm:py-20">
-                    <div className="container mx-auto px-4">
-                        <div className="text-center mb-10">
-                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
-                                こんな場面でお使いいただけます
-                            </h2>
-                        </div>
-                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-2">
-                            {SCENES.map((s) => (
-                                <div
-                                    key={s.title}
-                                    className="flex min-w-0 flex-col rounded-2xl border border-blue-100 bg-blue-50/30 p-6"
-                                >
-                                    <h3 className="mb-2 text-base font-black leading-snug text-slate-900 break-keep">
-                                        {s.title}
-                                    </h3>
-                                    <p className="text-sm leading-relaxed text-slate-600 break-keep">
-                                        {s.description}
-                                    </p>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </section>
