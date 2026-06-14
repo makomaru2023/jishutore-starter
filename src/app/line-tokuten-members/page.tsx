@@ -97,7 +97,7 @@ export default function LineTokutenPage() {
                         友だち追加ありがとうございます！
                     </h1>
                     <p className="text-slate-500 font-medium">
-                        配布資料6点＋制作ツール（無料版）をご利用いただけます。<br />
+                        配布資料6点＋制作ツール（無料版）の計7点をご利用いただけます。<br />
                         資料は印刷してそのまま患者さんに渡せるフォーマットです。
                     </p>
                 </div>

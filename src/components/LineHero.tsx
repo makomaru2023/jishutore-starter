@@ -6,7 +6,7 @@ import { trackLineClick } from "@/lib/analytics";
 
 /**
  * トップページ用 LINE特典セクション（大）
- * 5点セットの各項目をクリックでプレビュー表示
+ * 7点セット（配布資料6点＋制作ツール無料版）。資料はクリックでプレビュー表示
  */
 
 type TokutenItem = {
