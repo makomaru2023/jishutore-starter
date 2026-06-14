@@ -17,7 +17,6 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
             // 英語
             "shoulder", "scapular", "elbow", "arm", "wrist", "hand", "finger",
             "chopstick", "peg", "reach", "grip", "beanbag", "azuki", "banzai",
-            "patakara", "pataka", "puffing", "puckering",
             // 日本語
             "肩", "肘", "腕", "上肢", "手指", "手のひら", "手首", "タオル握",
             "バンザイ", "箸", "お手玉", "ペグ", "ダンベル", "棒", "リーチ",
@@ -86,6 +85,17 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
             "階段", "THA",
         ],
     },
+    oral: {
+        label: "口腔・嚥下",
+        keywords: [
+            // 英語
+            "cheek", "puffing", "puckering", "swallowing", "swallow",
+            "forehead", "tongue", "saliva", "patakara", "pataka",
+            // 日本語
+            "頬", "嚥下", "おでこ", "舌", "唾液", "口腔", "口唇",
+            "パタカラ", "唇", "飲み込み",
+        ],
+    },
 };
 
 // カテゴリキーワード（ローマ字）→ 表示メタ情報のマッピング
@@ -125,6 +135,12 @@ const CATEGORY_META: Record<string, { title: string; description: string; metaTi
         description: "立位保持・立ち上がり・転倒予防に向けたイラスト素材です。介護予防・地域体操にも。",
         metaTitle: "立ち上がり・バランスの自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
         metaDescription: "立ち座り・片足立ち・立位での運動など、バランス・転倒予防のイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
+    },
+    oral: {
+        title: "口腔・嚥下の自主トレイラスト",
+        description: "嚥下体操・舌・頬・口唇の運動向けイラスト素材です。摂食嚥下リハビリや口腔フレイル予防の指導に。",
+        metaTitle: "口腔・嚥下の自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+        metaDescription: "パタカラ体操・嚥下おでこ体操・舌の運動・頬の膨らませなど、口腔・嚥下のリハビリイラストを無料ダウンロード。PT・OT・ST向け。商用利用OK・登録不要。",
     },
 };
 

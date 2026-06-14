@@ -70,6 +70,15 @@ const ScaleIcon = (props: IconProps) => (
     </svg>
 );
 
+const SmileIcon = (props: IconProps) => (
+    <svg {...baseIconProps} {...props}>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+        <line x1="9" x2="9.01" y1="9" y2="9" />
+        <line x1="15" x2="15.01" y1="9" y2="9" />
+    </svg>
+);
+
 type Tone = "blue" | "emerald" | "cyan";
 
 type Category = {
@@ -128,6 +137,13 @@ const categories: Category[] = [
         query: "stand",
         Icon: ScaleIcon,
         tone: "cyan",
+    },
+    {
+        title: "口腔・嚥下の自主トレ素材",
+        description: "嚥下体操・舌・頬・口唇の運動イラスト",
+        query: "oral",
+        Icon: SmileIcon,
+        tone: "blue",
     },
 ];
 
