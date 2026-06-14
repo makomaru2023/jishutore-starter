@@ -17,10 +17,12 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
             // 英語
             "shoulder", "scapular", "elbow", "arm", "wrist", "hand", "finger",
             "chopstick", "peg", "reach", "grip", "beanbag", "azuki", "banzai",
+            "pendulum", "wall slide", "wall-slide", "writing", "eating", "spoon",
             // 日本語
             "肩", "肘", "腕", "上肢", "手指", "手のひら", "手首", "タオル握",
             "バンザイ", "箸", "お手玉", "ペグ", "ダンベル", "棒", "リーチ",
             "ピンキー", "母指", "対立",
+            "振り子", "ウォールサイド", "書字", "食事", "スプーン",
         ],
     },
     hip: {
@@ -30,11 +32,13 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
             "hip", "knee", "leg", "thigh", "squat", "heel", "slr", "leg-raise",
             "quadriceps", "hamstring", "glute", "bridge", "clam", "lunge",
             "ankle", "foot", "toe", "calf", "kneeling",
+            "aerobike", "air bike", "air-bike", "towel gather", "towel-gather",
             // 日本語
             "膝", "股", "脚", "下肢", "足首", "足関節", "ヒール", "スライド", "SLR",
             "レッグレイズ", "スクワット", "ブリッジ", "太もも", "クラム", "四頭筋",
             "お尻", "臀", "ハム", "ヒンジ", "カーフ", "つま先", "かかと",
             "底背屈", "底屈", "背屈", "セッティング",
+            "エアロバイク", "タオルギャザー", "ギャザー",
         ],
     },
     trunk: {
@@ -43,11 +47,11 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
             // 英語
             "trunk", "core", "plank", "abdomen", "back", "pelvic", "pelvis",
             "draw-in", "cat-and-dog", "diagonal", "rotation", "side-bridge",
-            "puppy",
+            "puppy", "spine",
             // 日本語
             "体幹", "腹", "背筋", "骨盤", "ドローイン", "プランク", "ダイアゴナル",
             "回旋", "キャット", "腰", "サイドブリッジ", "パピーポジション",
-            "腹筋",
+            "腹筋", "脊椎",
         ],
     },
     stretch: {
@@ -76,13 +80,13 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
             // 英語
             "stand", "sit-to-stand", "sit", "standing", "single-leg", "balance",
             "side-step", "step", "rolling", "side-lying", "edge-sitting",
-            "wheelchair", "toilet", "bath",
+            "wheelchair", "toilet", "bath", "sock", "jogging",
             // 日本語
             "立ち", "立位", "片足", "バランス", "サイドステップ", "椅子", "イス",
             "段差", "転倒", "スリッパ", "車椅子", "トイレ", "浴室", "寝返り",
             "端座位", "側臥位", "起き上がり", "肘立て", "両膝倒し", "コード",
             "正座", "脚を組", "脚組み", "前屈", "靴下", "靴ひも", "しゃがみ",
-            "階段", "THA",
+            "階段", "THA", "ソックス", "ジョギング",
         ],
     },
     oral: {
@@ -90,10 +94,10 @@ const CATEGORY_KEYWORDS: Record<string, { label: string; keywords: string[] }> =
         keywords: [
             // 英語
             "cheek", "puffing", "puckering", "swallowing", "swallow",
-            "forehead", "tongue", "saliva", "patakara", "pataka",
+            "forehead", "tongue", "saliva", "patakara", "pataka", "shakia",
             // 日本語
             "頬", "嚥下", "おでこ", "舌", "唾液", "口腔", "口唇",
-            "パタカラ", "唇", "飲み込み",
+            "パタカラ", "唇", "飲み込み", "シャキア",
         ],
     },
 };
