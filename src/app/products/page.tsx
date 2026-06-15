@@ -165,7 +165,7 @@ export default function ProductsPage() {
                             <h2 className="text-xl sm:text-3xl font-black text-slate-900 mb-3 break-keep">
                                 どちらの資料セットを選べばいい？
                             </h2>
-                            <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep">
+                            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 疾患名から資料を選びたい方は<strong className="text-slate-800">「疾患別セット」</strong>。座位・立位・臥位など、今できる姿勢から運動を選びたい方は<strong className="text-slate-800">「姿勢別セット」</strong>がおすすめです。
                             </p>
                         </div>
@@ -178,7 +178,7 @@ export default function ProductsPage() {
                                     <h3 className="mb-3 text-base sm:text-lg font-black text-slate-900 leading-snug break-keep">
                                         {c.heading}
                                     </h3>
-                                    <p className="mb-4 text-sm leading-relaxed text-slate-600 break-keep">
+                                    <p className="mb-4 text-sm leading-relaxed text-slate-600">
                                         {c.description}
                                     </p>
                                     <div className="mb-5 flex-1">

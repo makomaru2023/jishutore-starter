@@ -60,4 +60,16 @@
         word-break: break-all;
         overflow-wrap: anywhere;
     }
+
+    /*
+     * break-keep（word-break:keep-all）の保険
+     * --------------------------------------------------------------
+     * keep-all は英単語や短い見出しを途中で切らないための指定だが、
+     * 読点・句点が無い長い日本語本文に付くと改行機会が無く、枠から
+     * はみ出してしまう。収まっている間は従来どおり、はみ出す直前だけ
+     * 折り返せるよう overflow-wrap で保険をかける（見た目はほぼ不変）。
+     */
+    .break-keep {
+        overflow-wrap: anywhere;
+    }
 }
