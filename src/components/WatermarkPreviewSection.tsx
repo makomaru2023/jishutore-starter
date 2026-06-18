@@ -27,6 +27,8 @@ interface WatermarkPreviewSectionProps {
     groups?: PreviewGroup[];
     background?: 'white' | 'slate';
     columns?: 2 | 3;
+    /** groups 表示時のレイアウト。'carousel' でカテゴリごとに1枚のめくれるカードにする。 */
+    display?: 'grid' | 'carousel';
 }
 
 const fileExists = (src: string) =>
@@ -50,6 +52,7 @@ export function WatermarkPreviewSection({
     groups,
     background = 'white',
     columns = 3,
+    display = 'grid',
 }: WatermarkPreviewSectionProps) {
     // 存在する画像だけに絞り込む（groups はカテゴリ単位で空になったら除外）
     const availableGroups = (groups ?? [])
@@ -91,7 +94,7 @@ export function WatermarkPreviewSection({
 
                 {totalCount > 0 ? (
                     availableGroups.length > 0 ? (
-                        <PreviewLightboxGrid groups={availableGroups} columns={columns} />
+                        <PreviewLightboxGrid groups={availableGroups} columns={columns} display={display} />
                     ) : (
                         <PreviewLightboxGrid items={availableItems} columns={columns} />
                     )

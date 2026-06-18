@@ -522,11 +522,12 @@ export default function HomeElderlySelfTrainingPage() {
                     id="preview"
                     kicker="SAMPLE"
                     heading="全ページを透かし入りで公開しています"
-                    intro="購入前に中身をしっかり確認できるよう、座位・立位・臥位・全身・上肢・下肢の全ページを掲載しています。画像をクリックすると拡大表示でき、左右の矢印でページを送れます。"
+                    intro="購入前に中身をしっかり確認できるよう、座位・立位・臥位・全身・上肢・下肢の全ページを掲載しています。カードにカーソルを合わせるとページが流れ、クリックすると拡大表示で左右の矢印でも送れます。"
                     subcopy="対象者の「今できる姿勢」に合わせて使えるよう、実施姿勢ごとに資料を整理しています。掲載画像は透かし入りですが、購入後のPowerPoint・PDFファイルには透かしは入りません。"
                     groups={PREVIEW_GROUPS}
                     background="white"
                     columns={3}
+                    display="carousel"
                 />
 
                 <section className="bg-slate-50 py-14 sm:py-20">

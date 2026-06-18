@@ -424,11 +424,12 @@ export default function SelfTrainingMaterialsPage() {
                     id="preview"
                     kicker="SAMPLE"
                     heading="9疾患の全ページを透かし入りで公開しています"
-                    intro="購入前に中身をしっかり確認できるよう、9疾患・全108ページを掲載しています。画像をクリックすると拡大表示でき、左右の矢印でページを送れます。"
+                    intro="購入前に中身をしっかり確認できるよう、9疾患・全108ページを掲載しています。カードにカーソルを合わせるとページが流れ、クリックすると拡大表示で左右の矢印でも送れます。"
                     subcopy="実際のPowerPoint資料の全ページを、透かし入りで掲載しています。購入後のPowerPoint・PDFファイルには透かしは入りません。"
                     groups={PREVIEW_GROUPS}
                     background="slate"
                     columns={3}
+                    display="carousel"
                 />
 
                 {/* F. 使い方 */}

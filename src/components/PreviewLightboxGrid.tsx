@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 
 export interface PreviewItem {
@@ -37,6 +37,155 @@ const colClassFor = (columns: 2 | 3) =>
         ? 'grid-cols-1 sm:grid-cols-2'
         : 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3';
 
+// 自動再生のフレーム間隔（ミリ秒）
+const AUTOPLAY_MS = 1300;
+
+const canHover = () =>
+    typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches;
+const prefersReduced = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/**
+ * カテゴリ1つ分を「めくれる1枚のカード」として表示する。
+ * - PC: ホバー中だけ全ページを順に自動再生（離れると先頭に戻る）
+ * - タッチ端末: 画面に入っている間だけ自動再生（ホバーが無いため）
+ * - reduce motion 設定時は自動再生せず、ドット/クリックで操作
+ * クリックすると、表示中のページで拡大ライトボックスを開く。
+ */
+function GroupCarouselCard({
+    group,
+    groupNumber,
+    onOpen,
+}: {
+    group: PreviewGroup;
+    groupNumber: number;
+    onOpen: (src: string) => void;
+}) {
+    const items = group.items;
+    const total = items.length;
+    const [index, setIndex] = useState(0);
+    const [playing, setPlaying] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    // 念のため範囲外を防ぐ
+    useEffect(() => {
+        if (index >= total) setIndex(0);
+    }, [index, total]);
+
+    // 自動再生タイマー
+    useEffect(() => {
+        if (!playing || total <= 1) return;
+        const id = setInterval(() => setIndex((i) => (i + 1) % total), AUTOPLAY_MS);
+        return () => clearInterval(id);
+    }, [playing, total]);
+
+    // タッチ端末は画面内にある間だけ再生（PCはホバーで制御）
+    useEffect(() => {
+        const el = cardRef.current;
+        if (!el || canHover() || prefersReduced()) return;
+        const io = new IntersectionObserver(
+            (entries) =>
+                setPlaying(
+                    !!entries[0]?.isIntersecting && entries[0].intersectionRatio > 0.5,
+                ),
+            { threshold: [0, 0.5, 1] },
+        );
+        io.observe(el);
+        return () => io.disconnect();
+    }, []);
+
+    const handleEnter = () => {
+        if (canHover() && !prefersReduced()) setPlaying(true);
+    };
+    const handleLeave = () => {
+        if (canHover()) {
+            setPlaying(false);
+            setIndex(0);
+        }
+    };
+
+    return (
+        <div ref={cardRef} className="flex flex-col">
+            {/* カテゴリ見出し */}
+            <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+                <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-blue-600 text-[11px] font-black text-white">
+                    {String(groupNumber).padStart(2, '0')}
+                </span>
+                <h3 className={`min-w-0 text-sm font-black text-slate-900 sm:text-base ${JP_HEADING}`}>
+                    {group.title}
+                </h3>
+                <span className="ml-auto flex-shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-500">
+                    全{total}ページ
+                </span>
+            </div>
+
+            {/* めくれるカード */}
+            <button
+                type="button"
+                onClick={() => onOpen(items[index]?.src ?? items[0].src)}
+                onMouseEnter={handleEnter}
+                onMouseLeave={handleLeave}
+                aria-label={`${group.title}のサンプルを拡大（全${total}ページ）`}
+                className="group relative block w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:border-blue-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
+            >
+                <div className="relative aspect-[16/9] w-full bg-slate-50">
+                    {items.map((it, i) => (
+                        <Image
+                            key={it.src}
+                            src={it.src}
+                            alt={i === index ? `${group.title}｜${it.title}｜透かし入りサンプル` : ''}
+                            fill
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            className={`object-cover transition-opacity duration-500 ${
+                                i === index ? 'opacity-100' : 'opacity-0'
+                            }`}
+                        />
+                    ))}
+                    <span className="absolute left-2 top-2 rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-bold tracking-wide text-white">
+                        透かし入りサンプル
+                    </span>
+                    <span className="absolute right-2 top-2 rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-bold tabular-nums text-white">
+                        {index + 1}/{total}
+                    </span>
+                    <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-3 transition-colors group-hover:bg-slate-900/10">
+                        <span className="translate-y-2 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-black text-slate-700 opacity-0 shadow transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                            クリックで拡大
+                        </span>
+                    </div>
+                </div>
+            </button>
+
+            {group.caption && (
+                <p className={`mt-2.5 text-xs font-medium leading-relaxed text-slate-500 ${JP_WRAP}`}>
+                    {group.caption}
+                </p>
+            )}
+
+            {/* ページインジケーター（クリックでそのページへ） */}
+            {total > 1 && (
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    {items.map((it, i) => (
+                        <button
+                            key={it.src}
+                            type="button"
+                            onClick={() => {
+                                setPlaying(false);
+                                setIndex(i);
+                            }}
+                            aria-label={`${i + 1}ページ目を表示`}
+                            aria-current={i === index}
+                            className={`h-2 rounded-full transition-all ${
+                                i === index ? 'w-4 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                            }`}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
 /**
  * 透かし入りプレビュー画像のグリッド。クリックで拡大（ライトボックス）表示する。
  * - items: 単一グリッド表示（従来どおり）
@@ -48,10 +197,13 @@ export function PreviewLightboxGrid({
     items,
     groups,
     columns = 3,
+    display = 'grid',
 }: {
     items?: PreviewItem[];
     groups?: PreviewGroup[];
     columns?: 2 | 3;
+    /** groups 表示時のレイアウト。'carousel' はカテゴリごとに1枚のめくれるカードにする。 */
+    display?: 'grid' | 'carousel';
 }) {
     // ライトボックス用に全画像を表示順でフラット化する
     const flat = useMemo<FlatItem[]>(() => {
@@ -134,9 +286,22 @@ export function PreviewLightboxGrid({
         </button>
     );
 
+    const openBySrc = (src: string) => setActiveIndex(indexBySrc.get(src) ?? null);
+
     return (
         <>
-            {groups && groups.length > 0 ? (
+            {display === 'carousel' && groups && groups.length > 0 ? (
+                <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+                    {groups.map((group, gi) => (
+                        <GroupCarouselCard
+                            key={group.title}
+                            group={group}
+                            groupNumber={gi + 1}
+                            onOpen={openBySrc}
+                        />
+                    ))}
+                </div>
+            ) : groups && groups.length > 0 ? (
                 <div className="space-y-10 sm:space-y-12">
                     {groups.map((group, gi) => (
                         <div key={group.title}>
