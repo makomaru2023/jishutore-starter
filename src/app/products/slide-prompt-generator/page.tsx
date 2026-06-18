@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { SampleSlideGallery } from "@/components/products/SampleSlideGallery";
 import { SLIDE_PROMPT_GENERATOR_PRICE_ID } from "@/lib/products";
 import { Metadata } from "next";
 
@@ -307,6 +308,28 @@ export default function SlidePromptGeneratorLpPage() {
                         </div>
                         <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-slate-400 break-keep">
                             ※ 画面はフル版のものです。実際の見た目は更新により変わる場合があります。
+                        </p>
+                    </div>
+                </section>
+
+                {/* D3. 生成イメージ（サンプルスライド集） */}
+                <section className="bg-slate-50 py-14 sm:py-20">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-10">
+                            <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                生成イメージ
+                            </p>
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
+                                こんなスライドが作れます
+                            </h2>
+                            <p className="mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 break-keep">
+                                「ポジショニングの院内勉強会」をテーマに、このツールのプロンプトで作った全7枚の実例です。
+                                カーソルを合わせるとめくれます。クリック／タップで拡大できます。
+                            </p>
+                        </div>
+                        <SampleSlideGallery />
+                        <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-slate-400 break-keep">
+                            ※ ChatGPTで生成した一例です（ビジュアルスタイル：クリーンメディカル）。テーマや選んだスタイルによって仕上がりは変わります。
                         </p>
                     </div>
                 </section>
