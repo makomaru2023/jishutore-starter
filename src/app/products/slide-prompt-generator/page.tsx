@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
@@ -259,6 +260,54 @@ export default function SlidePromptGeneratorLpPage() {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </section>
+
+                {/* D2. 実際の操作画面 */}
+                <section className="bg-white py-14 sm:py-20">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-10">
+                            <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                ツール画面
+                            </p>
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 break-keep">
+                                これが実際の操作画面です
+                            </h2>
+                            <p className="mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 break-keep">
+                                用途とビジュアルスタイルを選び、チェックを入れていくだけ。右側に、ChatGPTへそのまま貼り付けられるプロンプトが組み上がっていきます。
+                            </p>
+                        </div>
+                        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
+                            <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                                <Image
+                                    src="/products/slide-prompt-generator/ui-style-picker.png"
+                                    alt="伝わるプロンプト工房の操作画面。用途別テンプレート8種とビジュアルスタイル10種を一覧から選べる。"
+                                    width={1600}
+                                    height={2023}
+                                    sizes="(min-width: 640px) 50vw, 100vw"
+                                    className="h-auto w-full"
+                                />
+                                <figcaption className="border-t border-slate-100 px-4 py-3 text-xs font-bold leading-relaxed text-slate-500 break-keep">
+                                    ① 用途テンプレート8種＋ビジュアルスタイル10種から選ぶ
+                                </figcaption>
+                            </figure>
+                            <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                                <Image
+                                    src="/products/slide-prompt-generator/ui-prompt-output.png"
+                                    alt="伝わるプロンプト工房の操作画面。チェック式の入力フォームと、生成されたChatGPT用プロンプト。"
+                                    width={1600}
+                                    height={2269}
+                                    sizes="(min-width: 640px) 50vw, 100vw"
+                                    className="h-auto w-full"
+                                />
+                                <figcaption className="border-t border-slate-100 px-4 py-3 text-xs font-bold leading-relaxed text-slate-500 break-keep">
+                                    ② チェックを入れると、貼り付け用プロンプトが完成
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-slate-400 break-keep">
+                            ※ 画面はフル版のものです。実際の見た目は更新により変わる場合があります。
+                        </p>
                     </div>
                 </section>
 
