@@ -4,19 +4,41 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type Slide = { src: string; title: string };
+type Deck = { id: string; label: string; slides: Slide[] };
 
-const SLIDES: Slide[] = [
-    { src: "/products/slide-prompt-generator/samples/positioning-01.webp", title: "ポジショニングとは何か？" },
-    { src: "/products/slide-prompt-generator/samples/positioning-02.webp", title: "なぜポジショニングが必要なのか？" },
-    { src: "/products/slide-prompt-generator/samples/positioning-03.webp", title: "良いポジショニングの原則" },
-    { src: "/products/slide-prompt-generator/samples/positioning-04.webp", title: "臥位ポジショニングのポイント" },
-    { src: "/products/slide-prompt-generator/samples/positioning-05.webp", title: "座位ポジショニングのポイント" },
-    { src: "/products/slide-prompt-generator/samples/positioning-06.webp", title: "よくあるNGのポジショニング" },
-    { src: "/products/slide-prompt-generator/samples/positioning-07.webp", title: "現場で実践するためのポイント" },
+const DECKS: Deck[] = [
+    {
+        id: "positioning",
+        label: "ポジショニング勉強会",
+        slides: [
+            { src: "/products/slide-prompt-generator/samples/positioning-01.webp", title: "ポジショニングとは何か？" },
+            { src: "/products/slide-prompt-generator/samples/positioning-02.webp", title: "なぜポジショニングが必要なのか？" },
+            { src: "/products/slide-prompt-generator/samples/positioning-03.webp", title: "良いポジショニングの原則" },
+            { src: "/products/slide-prompt-generator/samples/positioning-04.webp", title: "臥位ポジショニングのポイント" },
+            { src: "/products/slide-prompt-generator/samples/positioning-05.webp", title: "座位ポジショニングのポイント" },
+            { src: "/products/slide-prompt-generator/samples/positioning-06.webp", title: "よくあるNGのポジショニング" },
+            { src: "/products/slide-prompt-generator/samples/positioning-07.webp", title: "現場で実践するためのポイント" },
+        ],
+    },
+    {
+        id: "edema",
+        label: "浮腫ケア勉強会",
+        slides: [
+            { src: "/products/slide-prompt-generator/samples/edema-01.webp", title: "浮腫の管理とリハビリで行うこと" },
+            { src: "/products/slide-prompt-generator/samples/edema-02.webp", title: "浮腫とは何か：体液がたまった状態" },
+            { src: "/products/slide-prompt-generator/samples/edema-03.webp", title: "浮腫がリハビリに与える影響" },
+            { src: "/products/slide-prompt-generator/samples/edema-04.webp", title: "介入前に危険な浮腫を見逃さない" },
+            { src: "/products/slide-prompt-generator/samples/edema-05.webp", title: "変化を追える形で評価する" },
+            { src: "/products/slide-prompt-generator/samples/edema-06.webp", title: "基本は挙上・運動・圧迫・皮膚管理" },
+            { src: "/products/slide-prompt-generator/samples/edema-07.webp", title: "筋ポンプを安全に使う" },
+            { src: "/products/slide-prompt-generator/samples/edema-08.webp", title: "圧迫は合えば有効、合わなければリスク" },
+            { src: "/products/slide-prompt-generator/samples/edema-09.webp", title: "リハ室だけでは終わらせない" },
+            { src: "/products/slide-prompt-generator/samples/edema-10.webp", title: "浮腫管理は機能と生活を守る介入" },
+        ],
+    },
 ];
 
 const AUTOPLAY_MS = 1300;
-const TOTAL = SLIDES.length;
 
 function ChevronLeft() {
     return (
@@ -41,24 +63,34 @@ function CloseIcon() {
 }
 
 export function SampleSlideGallery() {
+    const [deckIndex, setDeckIndex] = useState(0);
     const [index, setIndex] = useState(0);
     const [playing, setPlaying] = useState(false);
     const [open, setOpen] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
+
+    const slides = DECKS[deckIndex].slides;
+    const total = slides.length;
 
     const prefersReduced = useCallback(
         () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         []
     );
 
-    const go = useCallback((dir: number) => setIndex((i) => (i + dir + TOTAL) % TOTAL), []);
+    const go = useCallback((dir: number) => setIndex((i) => (i + dir + total) % total), [total]);
+
+    const selectDeck = (i: number) => {
+        setDeckIndex(i);
+        setIndex(0);
+        setPlaying(false);
+    };
 
     // 自動再生のタイマー（モーダルを開いている間は停止）
     useEffect(() => {
         if (!playing || open) return;
-        const id = setInterval(() => setIndex((i) => (i + 1) % TOTAL), AUTOPLAY_MS);
+        const id = setInterval(() => setIndex((i) => (i + 1) % total), AUTOPLAY_MS);
         return () => clearInterval(id);
-    }, [playing, open]);
+    }, [playing, open, total]);
 
     // タッチ端末（ホバー不可）は、画面に入ったら自動再生
     useEffect(() => {
@@ -105,6 +137,28 @@ export function SampleSlideGallery() {
 
     return (
         <div className="mx-auto max-w-3xl">
+            {/* テーマ切替タブ */}
+            <div className="mb-5 flex flex-wrap justify-center gap-2">
+                {DECKS.map((deck, i) => (
+                    <button
+                        key={deck.id}
+                        type="button"
+                        onClick={() => selectDeck(i)}
+                        aria-pressed={i === deckIndex}
+                        className={`rounded-full px-4 py-2 text-sm font-black transition ${
+                            i === deckIndex
+                                ? "bg-blue-600 text-white shadow-sm"
+                                : "border border-slate-200 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700"
+                        }`}
+                    >
+                        {deck.label}
+                        <span className={`ml-1.5 text-xs font-bold ${i === deckIndex ? "text-blue-100" : "text-slate-400"}`}>
+                            {deck.slides.length}枚
+                        </span>
+                    </button>
+                ))}
+            </div>
+
             {/* プレビューカード */}
             <div ref={cardRef}>
                 <button
@@ -112,11 +166,11 @@ export function SampleSlideGallery() {
                     onClick={() => setOpen(true)}
                     onMouseEnter={handleEnter}
                     onMouseLeave={handleLeave}
-                    aria-label={`サンプルスライドを拡大表示（全${TOTAL}枚）`}
+                    aria-label={`サンプルスライドを拡大表示（全${total}枚）`}
                     className="group relative block w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
                     <div className="relative aspect-[16/9] w-full bg-slate-100">
-                        {SLIDES.map((s, i) => (
+                        {slides.map((s, i) => (
                             <Image
                                 key={s.src}
                                 src={s.src}
@@ -128,7 +182,7 @@ export function SampleSlideGallery() {
                         ))}
                         <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-slate-900/0 p-4 transition-colors group-hover:bg-slate-900/10">
                             <span className="translate-y-2 rounded-full bg-white/95 px-4 py-2 text-xs font-black text-slate-700 opacity-0 shadow-md transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                                タップ／クリックで全{TOTAL}枚を拡大
+                                タップ／クリックで全{total}枚を拡大
                             </span>
                         </div>
                     </div>
@@ -136,7 +190,7 @@ export function SampleSlideGallery() {
 
                 {/* インジケーター（クリックで該当スライドへ） */}
                 <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                    {SLIDES.map((s, i) => (
+                    {slides.map((s, i) => (
                         <button
                             key={s.src}
                             type="button"
@@ -155,9 +209,9 @@ export function SampleSlideGallery() {
 
                 <p className="mt-3 text-center text-sm font-bold text-slate-700 break-keep">
                     <span className="text-blue-600">{index + 1}</span>
-                    <span className="text-slate-400"> / {TOTAL}</span>
+                    <span className="text-slate-400"> / {total}</span>
                     <span className="mx-2 text-slate-300">｜</span>
-                    {SLIDES[index].title}
+                    {slides[index].title}
                 </p>
             </div>
 
@@ -172,7 +226,7 @@ export function SampleSlideGallery() {
                 >
                     <div className="flex items-center justify-between px-1 pb-3 text-white" onClick={(e) => e.stopPropagation()}>
                         <span className="text-sm font-bold">
-                            {index + 1} / {TOTAL}
+                            {index + 1} / {total}
                         </span>
                         <button
                             type="button"
@@ -188,14 +242,14 @@ export function SampleSlideGallery() {
                         <div className="relative w-full max-w-5xl">
                             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-slate-800 shadow-2xl">
                                 <Image
-                                    src={SLIDES[index].src}
-                                    alt={SLIDES[index].title}
+                                    src={slides[index].src}
+                                    alt={slides[index].title}
                                     fill
                                     sizes="(min-width: 1024px) 960px, 100vw"
                                     className="object-contain"
                                 />
                             </div>
-                            <p className="mt-3 text-center text-sm font-bold text-white/90 break-keep">{SLIDES[index].title}</p>
+                            <p className="mt-3 text-center text-sm font-bold text-white/90 break-keep">{slides[index].title}</p>
 
                             <button
                                 type="button"
@@ -217,7 +271,7 @@ export function SampleSlideGallery() {
                     </div>
 
                     <div className="flex justify-center gap-2 overflow-x-auto px-1 pt-4" onClick={(e) => e.stopPropagation()}>
-                        {SLIDES.map((s, i) => (
+                        {slides.map((s, i) => (
                             <button
                                 key={s.src}
                                 type="button"

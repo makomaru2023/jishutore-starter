@@ -323,8 +323,8 @@ export default function SlidePromptGeneratorLpPage() {
                                 こんなスライドが作れます
                             </h2>
                             <p className="mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 break-keep">
-                                「ポジショニングの院内勉強会」をテーマに、このツールのプロンプトで作った全7枚の実例です。
-                                カーソルを合わせるとめくれます。クリック／タップで拡大できます。
+                                リハの院内勉強会を想定して、このツールのプロンプトで作った実例です。
+                                上のタブでテーマを切り替えられます。カーソルを合わせるとめくれ、クリック／タップで拡大できます。
                             </p>
                         </div>
                         <SampleSlideGallery />
