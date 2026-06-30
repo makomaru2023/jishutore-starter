@@ -12,7 +12,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "自主トレ資料、毎回ゼロから作っていませんか？｜自主トレ素材庫",
   description:
-    "PT・OT・ST向けの自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチ・歩行練習など300点以上の素材を無料ダウンロード。退院前指導・訪問リハ・通所リハ・家族説明の資料作成に使えます。",
+    "PT・OT・ST向けの自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチ・歩行練習など370点以上の素材を無料ダウンロード。退院前指導・訪問リハ・通所リハ・家族説明の資料作成に使えます。",
 };
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
               </p>
 
               <p className="mx-auto max-w-3xl break-keep text-sm font-medium leading-relaxed text-slate-400 sm:text-base">
-                スクワット・ブリッジ・ストレッチ・歩行練習など、300点以上のイラストを無料でダウンロードできます。
+                スクワット・ブリッジ・ストレッチ・歩行練習など、370点以上のイラストを無料でダウンロードできます。
                 <br className="hidden sm:block" />
                 退院前指導・訪問リハ・通所リハ・家族説明の資料作成に使えます。
               </p>
@@ -55,7 +55,7 @@ export default function Home() {
               {/* 特徴バッジ */}
               <div className="flex flex-wrap justify-center gap-3 pt-2">
                 {[
-                  { icon: "M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z", text: "300点以上の自主トレイラスト" },
+                  { icon: "M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z", text: "370点以上の自主トレイラスト" },
                   { icon: "M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z", text: "無料ダウンロード・商用利用OK" },
                   { icon: "M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z", text: "患者配布資料に使いやすい" },
                 ].map((badge, i) => (

@@ -173,8 +173,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     }
 
     return {
-        title: "自主トレイラスト素材一覧（全300点以上）｜無料ダウンロード｜自主トレ素材庫",
-        description: "スクワット・ブリッジ・ストレッチ・歩行訓練など300点以上の自主トレイラストを無料ダウンロード。上肢・下肢・体幹・嚥下など部位別に検索可能。文字あり・文字なしの2タイプ。商用利用OK。",
+        title: "自主トレイラスト素材一覧（全370点以上）｜無料ダウンロード｜自主トレ素材庫",
+        description: "スクワット・ブリッジ・ストレッチ・歩行訓練など370点以上の自主トレイラストを無料ダウンロード。上肢・下肢・体幹・嚥下など部位別に検索可能。文字あり・文字なしの2タイプ。商用利用OK。",
     };
 }
 
@@ -184,7 +184,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
     let items = allItems;
     let title = "自主トレイラスト素材一覧";
-    let description = "スクワット・ブリッジ・ストレッチなど、300点以上の自主トレイラストを、無料でダウンロードできます。";
+    let description = "スクワット・ブリッジ・ストレッチなど、370点以上の自主トレイラストを、無料でダウンロードできます。";
 
     // ローマ字カテゴリ（?q=shoulder 等）優先。サーバー側で複数キーワードORフィルタを実行し、
     // SSR時点で素材一覧がHTMLに出るようにする（Suspense fallback空問題の解消）。

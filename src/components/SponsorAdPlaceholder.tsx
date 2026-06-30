@@ -36,7 +36,7 @@ const PRESETS: Record<SponsorAdVariant, PresetConfig> = {
         label: 'スポンサー枠',
         title: 'リハビリ・介護現場へ広告掲載できます',
         description:
-            '300点以上の無料素材を探すリハビリ職・介護職に、サービスや取り組みを紹介できます。',
+            '370点以上の無料素材を探すリハビリ職・介護職に、サービスや取り組みを紹介できます。',
         buttonLabel: '掲載プランを見る',
     },
 };

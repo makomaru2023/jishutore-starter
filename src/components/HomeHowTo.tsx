@@ -18,7 +18,7 @@ const steps: Step[] = [
     {
         number: "01",
         title: "部位・目的から\n探す",
-        description: "カテゴリやキーワードで検索。\n300点以上のイラストから1枚がすぐ見つかります。",
+        description: "カテゴリやキーワードで検索。\n370点以上のイラストから1枚がすぐ見つかります。",
         iconPath: "m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z",
         accent: "from-rose-50 border-rose-200 text-rose-500",
     },

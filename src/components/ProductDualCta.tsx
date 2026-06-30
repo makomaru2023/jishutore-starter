@@ -27,7 +27,7 @@ export function ProductDualCta() {
                         無料イラストだけでは、説明資料づくりに時間がかかる方へ
                     </h2>
                     <p className="mx-auto max-w-2xl text-sm font-medium leading-relaxed text-slate-600 break-keep">
-                        自主トレ素材庫では、300点以上の無料イラストに加えて、患者さんにそのまま渡しやすいPowerPoint資料セットも用意しています。疾患名から選べる資料と、今できる姿勢から選べる資料を用途に合わせて使い分けできます。
+                        自主トレ素材庫では、370点以上の無料イラストに加えて、患者さんにそのまま渡しやすいPowerPoint資料セットも用意しています。疾患名から選べる資料と、今できる姿勢から選べる資料を用途に合わせて使い分けできます。
                     </p>
                 </div>
 
