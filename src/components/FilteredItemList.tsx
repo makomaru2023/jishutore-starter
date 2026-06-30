@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState, useMemo, useEffect, ReactNode } from 'react';
+import { Suspense, useState, useMemo, ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Item } from '@/types';
@@ -24,6 +24,145 @@ interface FilteredItemListProps {
     /** カテゴリーモード。サーバー側で既に items をフィルタ済みである前提で、
      *  ここではチップ表示と検索バーの URL q 流し込み抑止だけに使う。 */
     categoryFilter?: CategoryFilter;
+}
+
+type SearchSuggestion = {
+    label: string;
+    query: string;
+};
+
+type SearchSuggestionGroup = {
+    label: string;
+    suggestions: SearchSuggestion[];
+};
+
+const SEARCH_SUGGESTION_GROUPS: SearchSuggestionGroup[] = [
+    {
+        label: '疾患名',
+        suggestions: [
+            { label: '脳卒中', query: '脳卒中' },
+            { label: '腰痛', query: '腰痛' },
+            { label: '膝OA・TKA', query: '膝OA' },
+            { label: '五十肩', query: '五十肩' },
+            { label: 'パーキンソン病', query: 'パーキンソン病' },
+            { label: '大腿骨骨折', query: '大腿骨骨折' },
+            { label: '圧迫骨折', query: '圧迫骨折' },
+        ],
+    },
+    {
+        label: '部位',
+        suggestions: [
+            { label: '上肢', query: '上肢' },
+            { label: '肩', query: '肩' },
+            { label: '手指', query: '手指' },
+            { label: '体幹', query: '体幹' },
+            { label: '股関節', query: '股関節' },
+            { label: '膝', query: '膝' },
+            { label: '足首', query: '足首' },
+            { label: '口腔・嚥下', query: '口腔 嚥下' },
+        ],
+    },
+    {
+        label: '姿勢',
+        suggestions: [
+            { label: '座位', query: '座位' },
+            { label: '立位', query: '立位' },
+            { label: '仰向け', query: '仰向け' },
+            { label: '横向き', query: '横向き' },
+            { label: '四つん這い', query: '四つん這い' },
+        ],
+    },
+];
+
+const SEARCH_ALIASES: Record<string, string[]> = {
+    '脳梗塞': ['脳卒中', '片麻痺'],
+    '脳出血': ['脳卒中', '片麻痺'],
+    '膝oa': ['変形性膝関節症', '膝関節症', '人工膝関節', 'tka', '膝'],
+    'tka': ['人工膝関節', '変形性膝関節症', '膝'],
+    '五十肩': ['肩関節周囲炎', '肩'],
+    'パーキンソン病': ['パーキンソン'],
+    '圧迫骨折': ['圧迫骨折', '脊椎', '腰椎'],
+    '仰臥位': ['仰臥位', '仰向け', 'supine'],
+    '臥位': ['臥位', '仰向け', '横向き', '側臥位', 'supine', 'side lying'],
+    '横向き': ['横向き', '側臥位', 'side lying', 'side-lying'],
+    '四つ這い': ['四つ這い', '四つん這い'],
+};
+
+function normalizeSearchText(value: string): string {
+    return value.normalize('NFKC').toLowerCase();
+}
+
+function getSearchHaystack(item: Item): string {
+    return normalizeSearchText([
+        item.title,
+        item.titleJa,
+        item.fileName,
+        item.description,
+        item.exercisePoint,
+        item.targetCondition,
+        item.difficulty,
+    ].filter(Boolean).join(' '));
+}
+
+function matchesSearch(item: Item, query: string): boolean {
+    const haystack = getSearchHaystack(item);
+    const keywords = normalizeSearchText(query).trim().split(/\s+/).filter(Boolean);
+
+    return keywords.every((keyword) => {
+        const candidates = [keyword, ...(SEARCH_ALIASES[keyword] ?? [])]
+            .map(normalizeSearchText);
+        return candidates.some((candidate) => haystack.includes(candidate));
+    });
+}
+
+function SearchSuggestions({
+    activeQuery,
+    onSelect,
+}: {
+    activeQuery?: string;
+    onSelect?: (query: string) => void;
+}) {
+    return (
+        <div className="mt-4 space-y-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            {SEARCH_SUGGESTION_GROUPS.map((group) => (
+                <div key={group.label} className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start">
+                    <span className="w-14 flex-none pt-1 text-xs font-bold text-slate-500">
+                        {group.label}
+                    </span>
+                    <div className="flex min-w-0 flex-wrap gap-2">
+                        {group.suggestions.map((suggestion) => {
+                            const isActive = activeQuery === suggestion.query;
+                            const className = `inline-flex min-h-8 items-center justify-center rounded-full border px-3 py-1 text-xs font-bold transition-colors ${
+                                isActive
+                                    ? 'border-teal-500 bg-teal-50 text-teal-700'
+                                    : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700'
+                            }`;
+
+                            return onSelect ? (
+                                <button
+                                    key={suggestion.label}
+                                    type="button"
+                                    onClick={() => onSelect(suggestion.query)}
+                                    aria-pressed={isActive}
+                                    className={className}
+                                >
+                                    {suggestion.label}
+                                </button>
+                            ) : (
+                                <Link
+                                    key={suggestion.label}
+                                    href={`/items?q=${encodeURIComponent(suggestion.query)}`}
+                                    className={className}
+                                >
+                                    {suggestion.label}
+                                </Link>
+                            );
+                        })}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 // グリッド共通クラス
@@ -72,21 +211,15 @@ function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): R
 
 function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAds = false, categoryFilter }: FilteredItemListProps) {
     const searchParams = useSearchParams();
-
-    // カテゴリーモードのときは、URLの q を検索バーに流し込まない（英単語表示防止）
-    const [searchQuery, setSearchQuery] = useState(() => {
-        if (categoryFilter) return '';
-        return searchParams.get('q') || '';
-    });
-
-    useEffect(() => {
-        if (categoryFilter) {
-            setSearchQuery('');
-            return;
-        }
-        const q = searchParams.get('q') || '';
-        setSearchQuery(q);
-    }, [searchParams, categoryFilter]);
+    const urlQuery = categoryFilter ? '' : searchParams.get('q') || '';
+    const [searchState, setSearchState] = useState(() => ({
+        source: urlQuery,
+        value: urlQuery,
+    }));
+    const searchQuery = searchState.source === urlQuery ? searchState.value : urlQuery;
+    const setSearchQuery = (value: string) => {
+        setSearchState({ source: urlQuery, value });
+    };
 
     const filteredItems = useMemo(() => {
         // items は既にサーバー側でカテゴリフィルタ済み。
@@ -94,16 +227,7 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
         const trimmed = searchQuery.trim();
         if (!trimmed) return items;
 
-        const query = trimmed.toLowerCase();
-        const keywords = query.split(/\s+/);
-        return items.filter((item) => {
-            const titleEn = item.title.toLowerCase();
-            const titleJa = item.titleJa?.toLowerCase() || '';
-            const fileName = item.fileName.toLowerCase();
-            return keywords.every((keyword) =>
-                titleEn.includes(keyword) || titleJa.includes(keyword) || fileName.includes(keyword)
-            );
-        });
+        return items.filter((item) => matchesSearch(item, trimmed));
     }, [items, searchQuery]);
 
     const isManualSearching = !!searchQuery.trim();
@@ -142,7 +266,7 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
                 </div>
             )}
 
-            <div className="mb-8 max-w-md mx-auto">
+            <div className="mb-8 mx-auto max-w-3xl">
                 <div className="relative shadow-sm rounded-full overflow-hidden border border-slate-200 focus-within:ring-2 focus-within:ring-teal-500 focus-within:border-teal-500 transition-all">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -151,12 +275,25 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
                     </div>
                     <input
                         type="text"
-                        className="block w-full pl-12 pr-4 py-3.5 border-none bg-white placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-0 sm:text-base font-medium"
-                        placeholder={categoryFilter ? `${categoryFilter.label}内をさらに絞り込み（例: タオル, 立位）` : 'キーワードで検索（例: 肩, スクワット）'}
+                        className="block w-full border-none bg-white py-3.5 pl-12 pr-12 font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-0 sm:text-base"
+                        placeholder={categoryFilter ? `${categoryFilter.label}内を検索（例：座位、タオル）` : '疾患名・部位・姿勢で検索（例：脳卒中、肩、座位）'}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
+                    {searchQuery && (
+                        <button
+                            type="button"
+                            onClick={() => setSearchQuery('')}
+                            aria-label="検索キーワードを消去"
+                            className="absolute inset-y-0 right-0 flex w-12 items-center justify-center text-slate-400 transition-colors hover:text-slate-700"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    )}
                 </div>
+                <SearchSuggestions activeQuery={searchQuery} onSelect={setSearchQuery} />
                 {(searchQuery || categoryFilter) && (
                     <p className="mt-2 text-sm text-gray-500 text-center">
                         {filteredItems.length} 件見つかりました
@@ -226,7 +363,7 @@ function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: I
                     </span>
                 </div>
             )}
-            <div className="mb-8 max-w-md mx-auto">
+            <div className="mb-8 mx-auto max-w-3xl">
                 <div className="relative shadow-sm rounded-full overflow-hidden border border-slate-200">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -236,10 +373,11 @@ function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: I
                     <input
                         type="text"
                         readOnly
-                        placeholder={categoryFilter ? `${categoryFilter.label}内をさらに絞り込み（例: タオル, 立位）` : 'キーワードで検索（例: 肩, スクワット）'}
-                        className="block w-full pl-12 pr-4 py-3.5 border-none bg-white placeholder-slate-400 text-slate-900 sm:text-base font-medium"
+                        placeholder={categoryFilter ? `${categoryFilter.label}内を検索（例：座位、タオル）` : '疾患名・部位・姿勢で検索（例：脳卒中、肩、座位）'}
+                        className="block w-full border-none bg-white py-3.5 pl-12 pr-4 font-medium text-slate-900 placeholder-slate-400 sm:text-base"
                     />
                 </div>
+                <SearchSuggestions />
             </div>
 
             {items.length > 0 ? (
