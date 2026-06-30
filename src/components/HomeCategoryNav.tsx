@@ -85,6 +85,7 @@ type Category = {
     title: string;
     description: string;
     query: string;
+    href?: string;
     Icon: ComponentType<IconProps>;
     tone: Tone;
 };
@@ -142,6 +143,7 @@ const categories: Category[] = [
         title: "口腔・嚥下の自主トレ素材",
         description: "嚥下体操・舌・頬・口唇の運動イラスト",
         query: "oral",
+        href: "/items/swallowing-exercises/",
         Icon: SmileIcon,
         tone: "blue",
     },
@@ -172,7 +174,7 @@ export function HomeCategoryNav() {
                         return (
                             <Link
                                 key={cat.query}
-                                href={`/items?q=${encodeURIComponent(cat.query)}`}
+                                href={cat.href ?? ("/items?q=" + encodeURIComponent(cat.query))}
                                 className="group relative flex flex-col min-w-0 max-w-full p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 transition-all duration-200 hover:border-blue-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                             >
                                 <div className={`flex items-center justify-center w-11 h-11 rounded-xl ${tone.bg} ${tone.text} mb-4`}>
