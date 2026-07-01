@@ -168,7 +168,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     } else if (category === 'text') {
         return {
             title: "文字あり自主トレイラスト一覧【無料・商用OK】｜自主トレ素材庫",
-            description: "運動名・手順の説明付き自主トレイラスト素材を無料ダウンロード。印刷してそのまま患者さんに渡せます。PT・OT・STの指導資料に。商用利用OK・登録不要。",
+            description: "運動名・手順の説明付きPNG素材を無料ダウンロード。印刷してそのまま患者さんに渡せます。画像内の文字は編集できません。商用利用OK・登録不要。",
         };
     }
 
@@ -208,7 +208,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
     } else if (category === 'text') {
         items = allItems.filter(item => item.category === 'text');
         title = "自主トレイラスト一覧（文字あり）";
-        description = "運動名・手順の説明付き。印刷してそのまま患者さんに渡せるイラスト素材です。";
+        description = "運動名・手順の説明付きPNGです。印刷してそのまま使えますが、画像内の文字は編集できません。";
     }
 
     // カテゴリチップ・検索バー挙動だけ知らせれば良い（filterは既にサーバー側で完了）。

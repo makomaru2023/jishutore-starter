@@ -7,7 +7,6 @@ import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -108,6 +107,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     const imageUrl = getItemImageUrl(item.previewSrc);
 
     const title = item.titleJa || item.title;
+    const isTextImage = item.category === "text";
 
     // Use unique descriptions from items.json, with fallbacks
     const descriptionText = item.description
@@ -172,9 +172,12 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         {/* Content Section */}
                         <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
                             <div className="mb-6">
-                                <div className="flex items-center gap-2 mb-4">
+                                <div className="mb-4 flex flex-wrap items-center gap-2">
                                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-teal-50 text-teal-600 capitalize">
                                         Free
+                                    </span>
+                                    <span className="inline-block rounded-full bg-slate-100 px-4 py-1.5 text-sm font-bold text-slate-600">
+                                        {isTextImage ? "説明文付きPNG" : "文字なしPNG"}
                                     </span>
                                 </div>
                                 <h1 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight">{title}の自主トレイラスト</h1>
@@ -215,6 +218,16 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     <p className="text-sm text-slate-500 mb-6 font-medium">
                                         会員登録は不要です。すぐにダウンロードしてご利用いただけます。
                                     </p>
+                                    <div className="mb-6 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm leading-relaxed text-slate-600">
+                                        <p>
+                                            ファイル形式：<strong className="font-bold text-slate-800">PNG</strong>
+                                        </p>
+                                        {isTextImage && (
+                                            <p className="mt-1 font-medium text-slate-700">
+                                                画像内の文字は編集できません。
+                                            </p>
+                                        )}
+                                    </div>
                                     <MaterialDownloadButton
                                         href={item.fileHref}
                                         materialName={title}
@@ -225,7 +238,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                         </svg>
-                                        画像をダウンロード
+                                        PNG画像をダウンロード
                                     </MaterialDownloadButton>
                                 </div>
 
