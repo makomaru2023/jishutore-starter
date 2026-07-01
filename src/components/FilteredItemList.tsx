@@ -26,54 +26,6 @@ interface FilteredItemListProps {
     categoryFilter?: CategoryFilter;
 }
 
-type SearchSuggestion = {
-    label: string;
-    query: string;
-};
-
-type SearchSuggestionGroup = {
-    label: string;
-    suggestions: SearchSuggestion[];
-};
-
-const SEARCH_SUGGESTION_GROUPS: SearchSuggestionGroup[] = [
-    {
-        label: '疾患名',
-        suggestions: [
-            { label: '脳卒中', query: '脳卒中' },
-            { label: '腰痛', query: '腰痛' },
-            { label: '膝OA・TKA', query: '膝OA' },
-            { label: '五十肩', query: '五十肩' },
-            { label: 'パーキンソン病', query: 'パーキンソン病' },
-            { label: '大腿骨骨折', query: '大腿骨骨折' },
-            { label: '圧迫骨折', query: '圧迫骨折' },
-        ],
-    },
-    {
-        label: '部位',
-        suggestions: [
-            { label: '上肢', query: '上肢' },
-            { label: '肩', query: '肩' },
-            { label: '手指', query: '手指' },
-            { label: '体幹', query: '体幹' },
-            { label: '股関節', query: '股関節' },
-            { label: '膝', query: '膝' },
-            { label: '足首', query: '足首' },
-            { label: '口腔・嚥下', query: '口腔 嚥下' },
-        ],
-    },
-    {
-        label: '姿勢',
-        suggestions: [
-            { label: '座位', query: '座位' },
-            { label: '立位', query: '立位' },
-            { label: '仰向け', query: '仰向け' },
-            { label: '横向き', query: '横向き' },
-            { label: '四つん這い', query: '四つん這い' },
-        ],
-    },
-];
-
 const SEARCH_ALIASES: Record<string, string[]> = {
     '脳梗塞': ['脳卒中', '片麻痺'],
     '脳出血': ['脳卒中', '片麻痺'],
@@ -113,56 +65,6 @@ function matchesSearch(item: Item, query: string): boolean {
             .map(normalizeSearchText);
         return candidates.some((candidate) => haystack.includes(candidate));
     });
-}
-
-function SearchSuggestions({
-    activeQuery,
-    onSelect,
-}: {
-    activeQuery?: string;
-    onSelect?: (query: string) => void;
-}) {
-    return (
-        <div className="mt-4 space-y-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            {SEARCH_SUGGESTION_GROUPS.map((group) => (
-                <div key={group.label} className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start">
-                    <span className="w-14 flex-none pt-1 text-xs font-bold text-slate-500">
-                        {group.label}
-                    </span>
-                    <div className="flex min-w-0 flex-wrap gap-2">
-                        {group.suggestions.map((suggestion) => {
-                            const isActive = activeQuery === suggestion.query;
-                            const className = `inline-flex min-h-8 items-center justify-center rounded-full border px-3 py-1 text-xs font-bold transition-colors ${
-                                isActive
-                                    ? 'border-teal-500 bg-teal-50 text-teal-700'
-                                    : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700'
-                            }`;
-
-                            return onSelect ? (
-                                <button
-                                    key={suggestion.label}
-                                    type="button"
-                                    onClick={() => onSelect(suggestion.query)}
-                                    aria-pressed={isActive}
-                                    className={className}
-                                >
-                                    {suggestion.label}
-                                </button>
-                            ) : (
-                                <Link
-                                    key={suggestion.label}
-                                    href={`/items?q=${encodeURIComponent(suggestion.query)}`}
-                                    className={className}
-                                >
-                                    {suggestion.label}
-                                </Link>
-                            );
-                        })}
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
 }
 
 // グリッド共通クラス
@@ -293,7 +195,6 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
                         </button>
                     )}
                 </div>
-                <SearchSuggestions activeQuery={searchQuery} onSelect={setSearchQuery} />
                 {(searchQuery || categoryFilter) && (
                     <p className="mt-2 text-sm text-gray-500 text-center">
                         {filteredItems.length} 件見つかりました
@@ -377,7 +278,6 @@ function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: I
                         className="block w-full border-none bg-white py-3.5 pl-12 pr-4 font-medium text-slate-900 placeholder-slate-400 sm:text-base"
                     />
                 </div>
-                <SearchSuggestions />
             </div>
 
             {items.length > 0 ? (
