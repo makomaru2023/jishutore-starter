@@ -136,6 +136,7 @@ const categories: Category[] = [
         title: "立ち上がり・バランス素材",
         description: "立位保持・転倒予防に使いやすいイラスト",
         query: "stand",
+        href: "/items/fall-prevention-exercises/",
         Icon: ScaleIcon,
         tone: "cyan",
     },
@@ -146,6 +147,38 @@ const categories: Category[] = [
         href: "/items/swallowing-exercises/",
         Icon: SmileIcon,
         tone: "blue",
+    },
+    {
+        title: "高齢者の座位体操",
+        description: "椅子に座ってできる運動イラスト",
+        query: "seated-exercises",
+        href: "/items/seated-exercises/",
+        Icon: PersonStandingIcon,
+        tone: "emerald",
+    },
+    {
+        title: "手指リハビリ・巧緻動作",
+        description: "箸・ペグ・つまみ動作の訓練イラスト",
+        query: "hand-rehabilitation",
+        href: "/items/hand-rehabilitation/",
+        Icon: DumbbellIcon,
+        tone: "blue",
+    },
+    {
+        title: "寝返り・起き上がり動作",
+        description: "ベッド上の基本動作と介助説明のイラスト",
+        query: "bed-mobility-exercises",
+        href: "/items/bed-mobility-exercises/",
+        Icon: StretchHorizontalIcon,
+        tone: "cyan",
+    },
+    {
+        title: "脳卒中・片麻痺の自主トレ",
+        description: "上肢・手指・基本動作のリハビリイラスト",
+        query: "stroke-exercises",
+        href: "/items/stroke-exercises/",
+        Icon: ActivityIcon,
+        tone: "emerald",
     },
 ];
 
@@ -159,10 +192,10 @@ export function HomeCategoryNav() {
                         CATEGORY
                     </p>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-3 tracking-tight break-keep">
-                        部位・目的別の<span className="text-blue-600">自主トレイラスト</span>を探す
+                        部位・姿勢・目的別の<span className="text-blue-600">自主トレイラスト</span>を探す
                     </h2>
                     <p className="text-slate-600 font-medium text-sm sm:text-base max-w-2xl mx-auto leading-relaxed break-keep">
-                        上肢・下肢・歩行・バランスなど、患者さんへの説明に使いやすい自主トレイラストをカテゴリ別に探せます。
+                        上肢・下肢・座位体操・疾患別など、患者さんへの説明に使いやすい自主トレイラストをカテゴリ別に探せます。
                     </p>
                 </div>
 
