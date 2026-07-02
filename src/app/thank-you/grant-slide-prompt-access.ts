@@ -7,7 +7,7 @@ import { SLIDE_PROMPT_GENERATOR_PRICE_ID } from "@/lib/products";
 
 const SLIDE_PROMPT_PATH = "/member/slide-prompt-generator";
 const COOKIE_NAME = "slide_prompt_access";
-const MAX_AGE = 60 * 60 * 24 * 30; // 30日（切れたら同じサンクスURLから再付与可能）
+const MAX_AGE = 60 * 60 * 24 * 365; // 1年（切れたら同じサンクスURLまたはログインから再付与可能）
 
 /**
  * 「伝わるプロンプト工房」購入者にアクセス権 Cookie を付与する Server Action。

@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 const BASE_PATH = "/member/slide-prompt-generator";
 const COOKIE_NAME = "slide_prompt_access";
-const MAX_AGE = 60 * 60 * 24 * 30; // 30日
+const MAX_AGE = 60 * 60 * 24 * 365; // 1年
 
 export interface LoginState {
   error: string | null;

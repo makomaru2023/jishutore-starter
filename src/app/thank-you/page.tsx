@@ -439,7 +439,23 @@ function AccessOnlyBody({
                 </button>
             </form>
 
-            {/* 再ログイン用パスワードの案内（30日後のCookie失効後など、念のため） */}
+            {/* 次回のアクセス先（ブックマーク推奨） */}
+            <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/70 p-5">
+                <p className="mb-2 text-xs font-black tracking-widest text-blue-700">
+                    次回からのアクセス先（ブックマーク推奨）
+                </p>
+                <p className="mb-3 text-sm leading-relaxed text-blue-900/80 break-keep">
+                    ページを閉じても、下のボタンからいつでも工房に戻れます。ブラウザに<strong>ブックマーク（お気に入り登録）</strong>しておくと、次回すぐ開けます。
+                </p>
+                <a
+                    href="/member/slide-prompt-generator"
+                    className="flex w-full items-center justify-center gap-2 rounded-full border border-blue-300 bg-white px-6 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-50"
+                >
+                    工房を開く
+                </a>
+            </div>
+
+            {/* 再ログイン用パスワードの案内（1年後のCookie失効後・別端末など、念のため） */}
             {fallbackPassword && (
                 <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
                     <p className="mb-2 text-xs font-black tracking-widest text-slate-600">
