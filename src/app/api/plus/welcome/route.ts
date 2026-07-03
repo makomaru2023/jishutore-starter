@@ -1,7 +1,4 @@
-"use server";
-
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { NextResponse, type NextRequest } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { isPlusPriceObject } from "@/lib/plus-subscription";
 import {
@@ -11,32 +8,38 @@ import {
     normalizeEmail,
 } from "@/lib/plus-auth";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const LP_PATH = "/products/jishutore-plus/";
 
 /**
- * Plus 購入直後、Checkout セッションを検証してセッションCookieを付与し、
- * そのまま資料庫（/plus/library）へ入れる Server Action。
- * 検証に失敗した場合は LP に戻す。
+ * Plus 購入直後のリダイレクト先（Checkout success_url）。
+ * Checkout セッションを検証 → セッションCookieを付与 → 資料庫へ。
+ * ※ Cookie の書き込みは Route Handler でのみ可能なため、ページ描画ではなくここで行う。
  */
-export async function grantPlusAccess(sessionId: string): Promise<void> {
-    if (!sessionId) redirect(LP_PATH);
+export async function GET(req: NextRequest) {
+    const sessionId = req.nextUrl.searchParams.get("session_id") ?? "";
+    const redirectTo = (path: string) => NextResponse.redirect(new URL(path, req.url));
+
+    if (!sessionId) return redirectTo(LP_PATH);
 
     const stripe = getStripe();
-    if (!stripe) redirect(LP_PATH);
+    if (!stripe) return redirectTo(LP_PATH);
 
     // 1. Checkout セッションを取得
     let session;
     try {
         session = await stripe.checkout.sessions.retrieve(sessionId);
     } catch (err) {
-        console.error("grantPlusAccess: retrieve failed", err);
-        redirect(LP_PATH);
+        console.error("plus welcome: retrieve failed", err);
+        return redirectTo(LP_PATH);
     }
 
     // 2. サブスクとして正常に完了しているか
-    if (session.mode !== "subscription") redirect(LP_PATH);
+    if (session.mode !== "subscription") return redirectTo(LP_PATH);
     if (session.status !== "complete" && session.payment_status !== "paid") {
-        redirect(LP_PATH);
+        return redirectTo(LP_PATH);
     }
 
     // 3. 購入された価格が Plus 商品群のものか
@@ -45,30 +48,28 @@ export async function grantPlusAccess(sessionId: string): Promise<void> {
         const items = await stripe.checkout.sessions.listLineItems(session.id, { limit: 5 });
         priceOk = isPlusPriceObject(items.data[0]?.price);
     } catch (err) {
-        console.error("grantPlusAccess: listLineItems failed", err);
-        redirect(LP_PATH);
+        console.error("plus welcome: listLineItems failed", err);
+        return redirectTo(LP_PATH);
     }
-    if (!priceOk) redirect(LP_PATH);
+    if (!priceOk) return redirectTo(LP_PATH);
 
     const customerId =
         typeof session.customer === "string" ? session.customer : session.customer?.id;
-    if (!customerId) redirect(LP_PATH);
+    if (!customerId) return redirectTo(LP_PATH);
 
     const email = session.customer_details?.email
         ? normalizeEmail(session.customer_details.email)
         : "";
 
-    // 4. セッションCookie付与
+    // 4. セッションCookie付与して資料庫へ
     const token = await signSessionToken({ email, cid: customerId });
-    const jar = await cookies();
-    jar.set(PLUS_SESSION_COOKIE, token, {
+    const res = redirectTo("/plus/library/");
+    res.cookies.set(PLUS_SESSION_COOKIE, token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
         path: "/",
         maxAge: PLUS_SESSION_MAX_AGE,
     });
-
-    // 5. 資料庫へ
-    redirect("/plus/library/");
+    return res;
 }

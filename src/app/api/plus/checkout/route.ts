@@ -45,7 +45,7 @@ export async function POST() {
             mode: "subscription",
             line_items: [{ price: picked.priceId, quantity: 1 }],
             allow_promotion_codes: true,
-            success_url: `${SITE_URL}/plus/welcome/?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${SITE_URL}/api/plus/welcome/?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${SITE_URL}/products/jishutore-plus/?canceled=1`,
         });
 
