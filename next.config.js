@@ -1,5 +1,11 @@
 const nextConfig = {
   trailingSlash: true,
+  // Plus 合体DL API (/api/plus/download) が実行時に読む元PPTX一式を、
+  // Vercel の関数バンドルに確実に同梱する（fs 読み込みは自動追跡されないため明示）。
+  outputFileTracingRoot: __dirname,
+  outputFileTracingIncludes: {
+    '/api/plus/download': ['./plus-source/**/*'],
+  },
   // Pin the workspace root to this project so Next.js doesn't mistakenly infer
   // the home directory (where a stray package-lock.json exists) as the root.
   turbopack: {

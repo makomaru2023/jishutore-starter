@@ -20,7 +20,9 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "jose": "^6.1.2",
+    "jszip": "^3.10.1",
     "next": "^16.1.2",
+    "pptx-automizer": "^0.8.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "stripe": "^20.0.0"

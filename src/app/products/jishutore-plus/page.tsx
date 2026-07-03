@@ -1,0 +1,382 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+
+const LINE_URL = "https://lin.ee/79a5bNt";
+
+export const metadata: Metadata = {
+    title: "自主トレ素材庫Plus｜編集できるPowerPoint素材｜月額500円〜",
+    description:
+        "350点以上の自主トレスライドから必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。",
+    alternates: {
+        canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
+    },
+    openGraph: {
+        title: "自主トレ素材庫Plus｜月額500円〜",
+        description:
+            "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替えできます。",
+        url: "https://jishutore-sozaiko.online/products/jishutore-plus/",
+        siteName: "自主トレ素材庫",
+        type: "website",
+        images: [
+            {
+                url: "/plus/previews/ex-001.webp",
+                width: 1280,
+                height: 720,
+                alt: "自主トレ素材庫Plusの収録スライド例",
+            },
+        ],
+    },
+};
+
+const previews = [
+    {
+        src: "/plus/previews/ex-001.webp",
+        title: "肩すくめ運動",
+        caption: "運動方法・回数・目的・注意点を1枚に整理",
+    },
+    {
+        src: "/plus/previews/ex-021.webp",
+        title: "反対の手と膝をタッチ",
+        caption: "体幹やバランス練習に使えるスライド例",
+    },
+    {
+        src: "/plus/previews/ex-051.webp",
+        title: "コイン操作練習",
+        caption: "手指の巧緻動作を説明するスライド例",
+    },
+    {
+        src: "/plus/previews/ex-081.webp",
+        title: "お椀を使って手首の運動",
+        caption: "身近な道具を使った自主トレのスライド例",
+    },
+    {
+        src: "/plus/previews/ex-105.webp",
+        title: "ノルディックウォーキング",
+        caption: "屋外活動まで幅広く選べるスライド例",
+    },
+] as const;
+
+const features = [
+    {
+        title: "350点以上から選べる",
+        body: "上肢・下肢・体幹・姿勢別など、対象者に合う自主トレを探せます。",
+    },
+    {
+        title: "PowerPointで編集できる",
+        body: "説明文や回数、注意点を書き換え、施設名や担当者名も追加できます。",
+    },
+    {
+        title: "必要なページだけ組み合わせる",
+        body: "利用者さんごとにスライドを選び、オリジナルの資料を作れます。",
+    },
+    {
+        title: "説明文・注意点つき",
+        body: "文章をゼロから考える時間を減らし、確認と調整に集中できます。",
+    },
+] as const;
+
+const comparisonRows = [
+    {
+        label: "料金",
+        free: "無料",
+        set: "各980円・買い切り",
+        plus: "先行 月額500円",
+    },
+    {
+        label: "ファイル形式",
+        free: "PNG画像",
+        set: "PowerPoint・PDF",
+        plus: "PowerPoint",
+    },
+    {
+        label: "提供単位",
+        free: "運動イラスト1点ずつ",
+        set: "完成済みの資料セット",
+        plus: "編集できるスライド素材",
+    },
+    {
+        label: "文字の編集",
+        free: "できない",
+        set: "できる",
+        plus: "できる",
+    },
+    {
+        label: "資料の構成",
+        free: "自分で一から作る",
+        set: "完成済みですぐ使える",
+        plus: "必要なページを選んで作る",
+    },
+    {
+        label: "追加素材",
+        free: "無料ページで随時追加",
+        set: "購入したセットを利用",
+        plus: "契約中は追加分も利用可能",
+    },
+    {
+        label: "向いている方",
+        free: "画像だけ使いたい方",
+        set: "完成資料をすぐ使いたい方",
+        plus: "対象者ごとに調整したい方",
+    },
+] as const;
+
+const plans = [
+    {
+        name: "無料素材",
+        description: "PNGイラストを1点ずつ使う",
+        values: comparisonRows.map((row) => ({ label: row.label, value: row.free })),
+        recommended: false,
+    },
+    {
+        name: "買い切り資料セット",
+        description: "完成した資料をそのまま使う",
+        values: comparisonRows.map((row) => ({ label: row.label, value: row.set })),
+        recommended: false,
+    },
+    {
+        name: "自主トレ素材庫Plus",
+        description: "必要なスライドを選んで編集する",
+        values: comparisonRows.map((row) => ({ label: row.label, value: row.plus })),
+        recommended: true,
+    },
+] as const;
+
+export default function JishutorePlusPage() {
+    return (
+        <div className="flex min-h-screen flex-col bg-white">
+            <Header />
+            <main className="min-w-0 flex-1 overflow-x-clip [&_h1]:break-keep [&_h2]:break-keep [&_h3]:break-keep [&_p]:break-keep">
+                <section className="border-b border-blue-100 bg-blue-50/60">
+                    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                        <div className="mx-auto max-w-4xl text-center">
+                            <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                                <span className="rounded-full bg-blue-700 px-4 py-1.5 text-xs font-bold text-white">
+                                    先行モニター募集中
+                                </span>
+                                <span className="rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-bold text-blue-800">
+                                    7月登録は永続500円
+                                </span>
+                            </div>
+                            <h1 className="text-3xl font-black text-slate-950 sm:text-4xl lg:text-5xl">
+                                自主トレ素材庫Plus
+                            </h1>
+                            <p className="mt-4 text-lg font-bold leading-relaxed text-blue-900 sm:text-xl">
+                                350点以上のスライドから、必要な自主トレ資料を自分で作れる
+                            </p>
+                            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+                                説明文・回数・注意点つきのPowerPointスライドを収録。
+                                利用者さんの状態に合わせて選び、文字を編集し、自由に組み替えられる月額サービスです。
+                            </p>
+                            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                                <PlusSubscribeButton
+                                    label="月額500円で申し込む"
+                                    className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                                />
+                                <Link
+                                    href="#comparison"
+                                    className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 sm:w-auto"
+                                >
+                                    無料・買い切りとの違いを見る
+                                </Link>
+                            </div>
+                            <p className="mt-3 text-xs leading-relaxed text-slate-500">
+                                7月中のご登録なら、月額500円のままずっと据え置き（8月からは680円）。カード決済（Stripe）・いつでも解約できます。
+                            </p>
+                            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+                                すでにご契約の方は{" "}
+                                <Link href="/plus/login" className="font-semibold text-blue-600 hover:underline">
+                                    こちらからログイン
+                                </Link>
+                            </p>
+                        </div>
+
+                        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                            {previews.map((preview, index) => (
+                                <div
+                                    key={preview.src}
+                                    className={`${index === previews.length - 1 ? "col-span-2 mx-auto w-1/2 sm:col-span-1 sm:w-full" : ""} min-w-0 overflow-hidden rounded-lg border border-blue-100 bg-white shadow-sm`}
+                                >
+                                    <Image
+                                        src={preview.src}
+                                        alt={`${preview.title}のPowerPointスライド例`}
+                                        width={1280}
+                                        height={720}
+                                        priority={index < 3}
+                                        sizes="(max-width: 639px) 46vw, (max-width: 1023px) 30vw, 190px"
+                                        className="h-auto w-full"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="py-14 sm:py-20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <p className="text-xs font-bold tracking-widest text-blue-700">PLUSでできること</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                                資料づくりを、選んで整える作業に
+                            </h2>
+                            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                                イラストを探し、説明文を考え、レイアウトを整える工程を短縮します。
+                                最後は専門職が確認し、対象者に合う内容へ調整できます。
+                            </p>
+                        </div>
+                        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                            {features.map((feature, index) => (
+                                <article key={feature.title} className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+                                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
+                                        {index + 1}
+                                    </span>
+                                    <h3 className="mt-4 text-base font-black text-slate-900">{feature.title}</h3>
+                                    <p className="mt-2 text-sm leading-6 text-slate-600">{feature.body}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="border-y border-slate-200 bg-slate-50 py-14 sm:py-20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <p className="text-xs font-bold tracking-widest text-blue-700">収録イメージ</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                                こんなスライドを組み合わせられます
+                            </h2>
+                            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                                掲載画像は収録予定スライドの一例です。公開時の内容は、さらに追加・調整する場合があります。
+                            </p>
+                        </div>
+                        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                            {previews.map((preview) => (
+                                <figure key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                                    <Image
+                                        src={preview.src}
+                                        alt={`${preview.title}の収録予定スライド`}
+                                        width={1280}
+                                        height={720}
+                                        sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 390px"
+                                        className="h-auto w-full border-b border-slate-100"
+                                    />
+                                    <figcaption className="p-4">
+                                        <p className="text-sm font-black text-slate-900">{preview.title}</p>
+                                        <p className="mt-1 text-xs leading-5 text-slate-600">{preview.caption}</p>
+                                    </figcaption>
+                                </figure>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section id="comparison" className="scroll-mt-20 py-14 sm:py-20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <p className="text-xs font-bold tracking-widest text-blue-700">プラン比較</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                                使い方に合うものを選べます
+                            </h2>
+                        </div>
+
+                        <div className="mt-10 grid gap-5 md:hidden">
+                            {plans.map((plan) => (
+                                <article
+                                    key={plan.name}
+                                    className={`rounded-lg border bg-white p-5 ${plan.recommended ? "border-blue-400 ring-2 ring-blue-100" : "border-slate-200"}`}
+                                >
+                                    {plan.recommended && (
+                                        <span className="inline-block rounded-full bg-blue-700 px-3 py-1 text-[11px] font-bold text-white">
+                                            自分で資料を作りたい方へ
+                                        </span>
+                                    )}
+                                    <h3 className="mt-3 text-lg font-black text-slate-950">{plan.name}</h3>
+                                    <p className="mt-1 text-sm text-slate-600">{plan.description}</p>
+                                    <dl className="mt-5 divide-y divide-slate-100">
+                                        {plan.values.map((item) => (
+                                            <div key={item.label} className="py-3 first:pt-0">
+                                                <dt className="text-xs font-bold text-blue-700">{item.label}</dt>
+                                                <dd className="mt-1 text-sm leading-6 text-slate-700">{item.value}</dd>
+                                            </div>
+                                        ))}
+                                    </dl>
+                                </article>
+                            ))}
+                        </div>
+
+                        <div className="mt-10 hidden overflow-hidden rounded-lg border border-slate-200 md:block">
+                            <table className="w-full table-fixed border-collapse bg-white text-left">
+                                <thead>
+                                    <tr className="bg-slate-100">
+                                        <th className="w-[18%] p-4 text-sm font-bold text-slate-700">比較項目</th>
+                                        <th className="p-4 text-sm font-black text-slate-900">無料素材</th>
+                                        <th className="p-4 text-sm font-black text-slate-900">買い切り資料セット</th>
+                                        <th className="bg-blue-700 p-4 text-sm font-black text-white">自主トレ素材庫Plus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {comparisonRows.map((row) => (
+                                        <tr key={row.label} className="border-t border-slate-200 align-top">
+                                            <th className="p-4 text-sm font-bold text-slate-700">{row.label}</th>
+                                            <td className="p-4 text-sm leading-6 text-slate-600">{row.free}</td>
+                                            <td className="p-4 text-sm leading-6 text-slate-600">{row.set}</td>
+                                            <td className="bg-blue-50 p-4 text-sm font-bold leading-6 text-blue-950">{row.plus}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="border-t border-blue-100 bg-blue-50 py-14 sm:py-20">
+                    <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+                        <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-bold text-blue-800 ring-1 ring-blue-200">
+                            先行モニター募集中
+                        </span>
+                        <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
+                            7月中の登録なら、ずっと月額500円
+                        </h2>
+                        <p className="mt-3 text-sm font-bold text-slate-700">
+                            8月からは月額680円。素材が増えるたびに価格を改定しますが、既存会員は登録時の価格のまま据え置きです。
+                        </p>
+                        <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                            収録スライドから必要なページを選び、PowerPointで編集・組み替えできます。
+                            カード決済（Stripe）で、いつでも解約できます。
+                        </p>
+                        <div className="mx-auto mt-5 max-w-md rounded-xl border border-blue-100 bg-white p-4 text-left text-xs leading-6 text-slate-600">
+                            <p className="mb-1 font-bold text-slate-800">今後の料金改定の目安</p>
+                            <p>・7月登録：<span className="font-bold text-blue-700">永続 月額500円</span></p>
+                            <p>・8月〜：月額680円</p>
+                            <p>・素材200点到達（9月頃）：月額780円</p>
+                            <p>・素材300点到達（11月頃）：月額980円</p>
+                            <p className="mt-1 text-slate-500">※ 改定はそのつど事前にお知らせします。改定後も、既存会員の価格は上がりません。</p>
+                        </div>
+                        <div className="mt-7 flex justify-center">
+                            <PlusSubscribeButton
+                                label="月額500円で申し込む"
+                                className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                            />
+                        </div>
+                        <p className="mt-4 text-xs leading-relaxed text-slate-500">
+                            まだ迷う方は{" "}
+                            <Link
+                                href={LINE_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-emerald-700 hover:underline"
+                            >
+                                LINEで最新情報を受け取る
+                            </Link>
+                            {" "}こともできます。
+                        </p>
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </div>
+    );
+}
