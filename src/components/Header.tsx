@@ -30,6 +30,10 @@ export function Header() {
                         資料作成ツール
                     </Link>
 
+                    <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
+                        素材庫Plus
+                    </Link>
+
                     <Link href="/sponsor" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
                         スポンサー募集
                     </Link>
@@ -82,6 +86,13 @@ export function Header() {
                             onClick={closeMenu}
                         >
                             資料作成ツール
+                        </Link>
+                        <Link
+                            href="/products/jishutore-plus"
+                            className="block py-3 px-4 text-base font-bold text-teal-200 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                            onClick={closeMenu}
+                        >
+                            素材庫Plus
                         </Link>
                         <Link
                             href="/sponsor"

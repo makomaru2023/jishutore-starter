@@ -107,6 +107,58 @@ export default function Home() {
         {/* Premium PowerPoint資料 Section */}
         <HomePremiumPromo />
 
+        {/* 自主トレ素材庫Plus（月額プラン）Section */}
+        <section className="py-14 sm:py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-blue-100 bg-blue-50/60">
+              <div className="grid gap-8 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
+                <div className="min-w-0">
+                  <div className="mb-3 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-blue-700 px-3 py-1 text-xs font-bold text-white">月額プラン</span>
+                    <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-800">7月登録は永続500円</span>
+                  </div>
+                  <h2 className="break-keep text-2xl font-black text-slate-900 sm:text-3xl">
+                    自主トレ素材庫<span className="text-blue-600">Plus</span>
+                  </h2>
+                  <p className="mt-3 break-keep text-sm leading-7 text-slate-600 sm:text-base">
+                    完成済みのPowerPointスライドから必要なページを選び、文字を編集して自由に組み替え。
+                    利用者さんに合わせた自主トレ資料を、その場で作れる月額サービスです。
+                  </p>
+                  <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
+                    <li>・105本の運動スライド（順次追加）から選べる</li>
+                    <li>・選んで1つのPowerPointにまとめてダウンロード</li>
+                    <li>・7月中のご登録なら、ずっと月額500円（8月〜680円）</li>
+                  </ul>
+                  <div className="mt-6">
+                    <Link
+                      href="/products/jishutore-plus"
+                      className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-black text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-700"
+                    >
+                      Plusの詳細を見る
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {["ex-001", "ex-020", "ex-050", "ex-080"].map((id) => (
+                    <div key={id} className="aspect-video overflow-hidden rounded-lg border border-blue-100 bg-white shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`/plus/previews/${id}.webp`}
+                        alt="自主トレ素材庫Plusの収録スライド例"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* スポンサー枠（広告掲載募集） */}
         <section className="py-12 sm:py-16 bg-slate-50">
           <div className="container mx-auto px-4">
