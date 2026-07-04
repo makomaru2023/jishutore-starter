@@ -3,9 +3,10 @@ import { Footer } from "@/components/Footer";
 import { HomeGallery } from "@/components/HomeGallery";
 import { HomeCategoryNav } from "@/components/HomeCategoryNav";
 import { HomeHowTo } from "@/components/HomeHowTo";
-import { HomePremiumPromo } from "@/components/HomePremiumPromo";
 import { LineHero } from "@/components/LineHero";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
+import { PlusAnnouncementBar } from "@/components/PlusAnnouncementBar";
+import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -19,6 +20,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
+      <PlusAnnouncementBar />
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
@@ -104,56 +106,79 @@ export default function Home() {
         {/* How To Use 3 Steps Section */}
         <HomeHowTo />
 
-        {/* Premium PowerPoint資料 Section */}
-        <HomePremiumPromo />
-
-        {/* 自主トレ素材庫Plus（月額プラン）Section */}
-        <section className="py-14 sm:py-20 bg-white">
+        {/* 有料プラン：3段の価格ラダー（無料 → 買い切り → Plus） */}
+        <section className="bg-white py-14 sm:py-20">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-blue-100 bg-blue-50/60">
-              <div className="grid gap-8 p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
-                <div className="min-w-0">
-                  <div className="mb-3 flex flex-wrap gap-2">
-                    <span className="rounded-full bg-blue-700 px-3 py-1 text-xs font-bold text-white">月額プラン</span>
-                    <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-800">7月登録は永続500円</span>
-                  </div>
-                  <h2 className="break-keep text-2xl font-black text-slate-900 sm:text-3xl">
-                    自主トレ素材庫<span className="text-blue-600">Plus</span>
-                  </h2>
-                  <p className="mt-3 break-keep text-sm leading-7 text-slate-600 sm:text-base">
-                    完成済みのPowerPointスライドから必要なページを選び、文字を編集して自由に組み替え。
-                    利用者さんに合わせた自主トレ資料を、その場で作れる月額サービスです。
-                  </p>
-                  <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
-                    <li>・105本の運動スライド（順次追加）から選べる</li>
-                    <li>・選んで1つのPowerPointにまとめてダウンロード</li>
-                    <li>・7月中のご登録なら、ずっと月額500円（8月〜680円）</li>
-                  </ul>
-                  <div className="mt-6">
-                    <Link
-                      href="/products/jishutore-plus"
-                      className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-black text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-700"
-                    >
-                      Plusの詳細を見る
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  {["ex-001", "ex-020", "ex-050", "ex-080"].map((id) => (
-                    <div key={id} className="aspect-video overflow-hidden rounded-lg border border-blue-100 bg-white shadow-sm">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={`/plus/previews/${id}.webp`}
-                        alt="自主トレ素材庫Plusの収録スライド例"
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-xs font-bold tracking-widest text-blue-700">料金プラン</p>
+              <h2 className="mt-3 break-keep text-2xl font-black text-slate-900 sm:text-3xl">
+                使い方に合わせて選べます
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl break-keep text-sm leading-7 text-slate-600 sm:text-base">
+                無料の画像から、完成した資料セット、選んで編集できる月額プランまで。目的に合わせて選べます。
+              </p>
+            </div>
+            <div className="mx-auto mt-10 grid max-w-5xl gap-5 lg:grid-cols-3 lg:items-stretch">
+              {/* 無料 */}
+              <div className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <p className="text-sm font-black text-slate-500">無料素材</p>
+                <p className="mt-2 text-3xl font-black text-slate-900">¥0</p>
+                <p className="mt-1 text-xs text-slate-500">1枚ずつダウンロード</p>
+                <ul className="mt-5 flex-1 space-y-2 text-sm text-slate-600">
+                  <li>370点以上のPNGイラスト</li>
+                  <li>無料・商用利用OK</li>
+                  <li>登録不要ですぐダウンロード</li>
+                </ul>
+                <Link
+                  href="/items"
+                  className="mt-6 inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-700 transition hover:border-teal-300 hover:text-teal-700"
+                >
+                  無料素材を見る
+                </Link>
+              </div>
+              {/* 買い切り */}
+              <div className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <p className="text-sm font-black text-slate-500">買い切り資料セット</p>
+                <p className="mt-2 text-3xl font-black text-slate-900">
+                  ¥980<span className="text-base font-bold text-slate-500">〜</span>
+                </p>
+                <p className="mt-1 text-xs text-slate-500">完成した資料をそのまま使う</p>
+                <ul className="mt-5 flex-1 space-y-2 text-sm text-slate-600">
+                  <li>PowerPoint＋PDF</li>
+                  <li>完成済みですぐ使える</li>
+                  <li>買い切り（追加費用なし）</li>
+                </ul>
+                <Link
+                  href="/products"
+                  className="mt-6 inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-700"
+                >
+                  資料セットを見る
+                </Link>
+              </div>
+              {/* Plus（おすすめ） */}
+              <div className="relative flex flex-col rounded-2xl border-2 border-blue-500 bg-blue-50/60 p-6 shadow-lg shadow-blue-500/10">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-4 py-1 text-xs font-black text-white">
+                  おすすめ
+                </span>
+                <p className="text-sm font-black text-blue-700">自主トレ素材庫Plus</p>
+                <p className="mt-2 text-3xl font-black text-slate-900">
+                  ¥500<span className="text-base font-bold text-slate-500">/月〜</span>
+                </p>
+                <p className="mt-1 text-xs font-bold text-blue-700">7月登録は永続500円（8月〜680円）</p>
+                <ul className="mt-5 flex-1 space-y-2 text-sm text-slate-700">
+                  <li>{PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）</li>
+                  <li>選んで編集・1つにまとめてダウンロード</li>
+                  <li>いつでも解約OK</li>
+                </ul>
+                <Link
+                  href="/products/jishutore-plus/"
+                  className="mt-6 inline-flex items-center justify-center gap-1.5 rounded-full bg-blue-600 px-6 py-3 text-sm font-black text-white shadow transition hover:bg-blue-700"
+                >
+                  Plusの詳細を見る
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
               </div>
             </div>
           </div>

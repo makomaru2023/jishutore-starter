@@ -4,20 +4,23 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
+const OG_TITLE = "自主トレ素材庫Plus｜月額500円〜";
+const OG_DESCRIPTION =
+    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替えできます。";
+
 export const metadata: Metadata = {
     title: "自主トレ素材庫Plus｜編集できるPowerPoint素材｜月額500円〜",
-    description:
-        "350点以上の自主トレスライドから必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。",
+    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
     openGraph: {
-        title: "自主トレ素材庫Plus｜月額500円〜",
-        description:
-            "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替えできます。",
+        title: OG_TITLE,
+        description: OG_DESCRIPTION,
         url: "https://jishutore-sozaiko.online/products/jishutore-plus/",
         siteName: "自主トレ素材庫",
         type: "website",
@@ -29,6 +32,12 @@ export const metadata: Metadata = {
                 alt: "自主トレ素材庫Plusの収録スライド例",
             },
         ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: OG_TITLE,
+        description: OG_DESCRIPTION,
+        images: ["/plus/previews/ex-001.webp"],
     },
 };
 
@@ -62,7 +71,7 @@ const previews = [
 
 const features = [
     {
-        title: "350点以上から選べる",
+        title: `${PLUS_SLIDE_COUNT}点から選べる（毎月追加中）`,
         body: "上肢・下肢・体幹・姿勢別など、対象者に合う自主トレを探せます。",
     },
     {
@@ -117,6 +126,12 @@ const comparisonRows = [
         plus: "契約中は追加分も利用可能",
     },
     {
+        label: "解約後のファイル利用",
+        free: "―",
+        set: "買い切りなので制限なし",
+        plus: "ダウンロード済みは利用OK",
+    },
+    {
         label: "向いている方",
         free: "画像だけ使いたい方",
         set: "完成資料をすぐ使いたい方",
@@ -145,6 +160,29 @@ const plans = [
     },
 ] as const;
 
+const faqs: { q: string; a: string }[] = [
+    {
+        q: "解約はどうすればできますか？",
+        a: "資料庫の「プラン管理」からいつでも解約できます。解約後も、次回の請求日まではそのままご利用いただけます。",
+    },
+    {
+        q: "解約したら、ダウンロードした資料は使えなくなりますか？",
+        a: "いいえ。すでにダウンロード済みのPowerPointファイルは、解約後もそのままご利用いただけます。ただし、資料庫での再ダウンロードやライブラリへのアクセスはできなくなります。",
+    },
+    {
+        q: "作った資料は商用利用できますか？",
+        a: "購入者ご本人が、患者・利用者さんへの自主トレ指導や家族説明などの目的で、編集してご利用いただけます。ファイル（PowerPoint等）そのものの再配布・転売・共有はできません。詳しくは利用規約をご確認ください。",
+    },
+    {
+        q: "支払い方法は何がありますか？",
+        a: "クレジットカード決済（Stripe）です。決済が完了すると、すぐに資料庫をご利用いただけます。",
+    },
+    {
+        q: "領収書は発行できますか？",
+        a: "Stripeの決済完了メールを領収書としてご利用いただけます。宛名の変更や個別発行が必要な場合は、お問い合わせよりご連絡ください。",
+    },
+];
+
 export default function JishutorePlusPage() {
     return (
         <div className="flex min-h-screen flex-col bg-white">
@@ -165,7 +203,7 @@ export default function JishutorePlusPage() {
                                 自主トレ素材庫Plus
                             </h1>
                             <p className="mt-4 text-lg font-bold leading-relaxed text-blue-900 sm:text-xl">
-                                350点以上のスライドから、必要な自主トレ資料を自分で作れる
+                                {PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から、必要な自主トレ資料を自分で作れる
                             </p>
                             <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
                                 説明文・回数・注意点つきのPowerPointスライドを収録。
@@ -249,7 +287,7 @@ export default function JishutorePlusPage() {
                                 こんなスライドを組み合わせられます
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                掲載画像は収録予定スライドの一例です。公開時の内容は、さらに追加・調整する場合があります。
+                                収録スライドの一例です。スライドは毎月追加されます。
                             </p>
                         </div>
                         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -257,7 +295,7 @@ export default function JishutorePlusPage() {
                                 <figure key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
                                     <Image
                                         src={preview.src}
-                                        alt={`${preview.title}の収録予定スライド`}
+                                        alt={`${preview.title}の収録スライド`}
                                         width={1280}
                                         height={720}
                                         sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 390px"
@@ -329,6 +367,48 @@ export default function JishutorePlusPage() {
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </section>
+
+                <section className="border-t border-slate-200 bg-slate-50 py-14 sm:py-20">
+                    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center">
+                            <p className="text-xs font-bold tracking-widest text-blue-700">FAQ</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                                よくあるご質問
+                            </h2>
+                        </div>
+                        <div className="mt-10 space-y-3">
+                            {faqs.map((faq, idx) => (
+                                <details
+                                    key={faq.q}
+                                    className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition-all open:border-blue-200 open:shadow-md"
+                                    open={idx === 0}
+                                >
+                                    <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-bold text-slate-900 sm:text-base">
+                                        <span className="flex-1">Q. {faq.q}</span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            strokeWidth={2.5}
+                                            stroke="currentColor"
+                                            className="mt-1 h-4 w-4 flex-shrink-0 text-blue-500 transition-transform group-open:rotate-180"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </summary>
+                                    <p className="mt-3 text-sm leading-relaxed text-slate-600">{faq.a}</p>
+                                </details>
+                            ))}
+                        </div>
+                        <p className="mt-6 text-center text-xs text-slate-500">
+                            利用条件の詳細は{" "}
+                            <Link href="/license" className="font-semibold text-blue-600 hover:underline">
+                                利用規約
+                            </Link>
+                            {" "}をご覧ください。
+                        </p>
                     </div>
                 </section>
 
