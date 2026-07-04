@@ -1,0 +1,260 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+export type PlusPreviewItem = {
+    src: string;
+    title: string;
+    caption: string;
+};
+
+type PlusEvidenceSectionsProps = {
+    previews: readonly PlusPreviewItem[];
+    hasLibraryScreen: boolean;
+    hasPptEditingScreen: boolean;
+    hasSample: boolean;
+};
+
+const SAMPLE_DOWNLOAD_PATH = "/images/plus/sample.pptx";
+
+function MissingImage({ label }: { label: string }) {
+    return (
+        <div className="flex aspect-[16/10] w-full items-center justify-center bg-slate-100 px-5 text-center">
+            <p className="text-sm font-bold text-slate-500">{label}の画面イメージを準備中です</p>
+        </div>
+    );
+}
+
+function DownloadVisual({ previews }: { previews: readonly PlusPreviewItem[] }) {
+    return (
+        <div className="grid aspect-[16/10] grid-cols-2 gap-2 bg-slate-100 p-3 sm:p-4">
+            {previews.slice(0, 3).map((preview, index) => (
+                <div
+                    key={preview.src}
+                    className={`${index === 0 ? "col-span-2" : ""} min-w-0 overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm`}
+                >
+                    <Image
+                        src={preview.src}
+                        alt="ダウンロードするPowerPointにまとめられるスライド例"
+                        width={1280}
+                        height={720}
+                        sizes="(max-width: 639px) 82vw, 28vw"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+            ))}
+        </div>
+    );
+}
+
+export function PlusHowItWorks({
+    previews,
+    hasLibraryScreen,
+    hasPptEditingScreen,
+    hasSample,
+}: PlusEvidenceSectionsProps) {
+    const steps = [
+        {
+            number: "01",
+            title: "105点から選ぶ",
+            body: "部位や姿勢から検索し、対象者に合う運動スライドを選択します。",
+            visual: hasLibraryScreen ? (
+                <Image
+                    src="/images/plus/library-screen.png"
+                    alt="自主トレ素材庫Plusのライブラリで運動スライドを選択している画面"
+                    width={1600}
+                    height={1000}
+                    sizes="(max-width: 639px) 92vw, 30vw"
+                    className="aspect-[16/10] h-auto w-full object-contain"
+                />
+            ) : (
+                <MissingImage label="ライブラリ" />
+            ),
+        },
+        {
+            number: "02",
+            title: "1つのPowerPointでダウンロード",
+            body: "選んだスライドを1つのファイルにまとめて、そのまま保存できます。",
+            visual: <DownloadVisual previews={previews} />,
+        },
+        {
+            number: "03",
+            title: "文字を自由に編集して配布",
+            body: "回数・コメント・注意点はすべて編集できます。確認後、印刷や説明に使えます。",
+            visual: hasPptEditingScreen ? (
+                <Image
+                    src="/images/plus/ppt-editing.png"
+                    alt="自主トレ素材庫PlusからダウンロードしたファイルをPowerPointで編集している画面"
+                    width={1600}
+                    height={1000}
+                    sizes="(max-width: 639px) 92vw, 30vw"
+                    className="aspect-[16/10] h-auto w-full object-contain"
+                />
+            ) : (
+                <MissingImage label="PowerPoint編集" />
+            ),
+        },
+    ];
+
+    return (
+        <section className="border-y border-slate-200 bg-slate-50 py-14 sm:py-20">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-3xl text-center">
+                    <p className="text-xs font-bold tracking-widest text-blue-700">HOW TO USE</p>
+                    <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                        選んで、まとめて、編集するだけ
+                    </h2>
+                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                        ライブラリからPowerPointを作り、対象者に合う内容へ整えるまでの流れです。
+                    </p>
+                </div>
+
+                <ol className="mt-10 grid gap-5 lg:grid-cols-3">
+                    {steps.map((step) => (
+                        <li key={step.number} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                            <div className="border-b border-slate-100">{step.visual}</div>
+                            <div className="p-5">
+                                <p className="text-xs font-black tracking-widest text-blue-700">STEP {step.number}</p>
+                                <h3 className="mt-2 text-lg font-black leading-7 text-slate-950">{step.title}</h3>
+                                <p className="mt-2 text-sm leading-7 text-slate-600">{step.body}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ol>
+
+                <div className="mx-auto mt-8 max-w-2xl border-t border-slate-200 pt-8 text-center">
+                    <h3 className="text-lg font-black text-slate-950 sm:text-xl">
+                        まずは無料サンプルで編集感を確かめる
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                        実際のPowerPointを開き、文字や回数を変更してお試しいただけます。
+                    </p>
+                    <div className="mt-5 flex justify-center">
+                        {hasSample ? (
+                            <a
+                                href={SAMPLE_DOWNLOAD_PATH}
+                                download
+                                className="inline-flex w-full items-center justify-center rounded-lg border-2 border-blue-600 bg-white px-6 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 sm:w-auto"
+                            >
+                                無料サンプルをダウンロード
+                            </a>
+                        ) : (
+                            // TODO: public/images/plus/sample.pptx の配置後、上のダウンロードリンクへ自動で切り替わります。
+                            <span
+                                aria-disabled="true"
+                                className="inline-flex w-full cursor-not-allowed items-center justify-center rounded-lg border-2 border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-400 sm:w-auto"
+                            >
+                                無料サンプルを準備中
+                            </span>
+                        )}
+                    </div>
+                    <p className="mt-3 text-xs text-slate-500">スライド3枚入り・会員登録不要</p>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export function PlusPreviewGallery({ previews }: { previews: readonly PlusPreviewItem[] }) {
+    const [activePreview, setActivePreview] = useState<PlusPreviewItem | null>(null);
+
+    useEffect(() => {
+        if (!activePreview) return;
+
+        const previousOverflow = document.body.style.overflow;
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setActivePreview(null);
+        };
+
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [activePreview]);
+
+    return (
+        <section className="py-14 sm:py-20">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-3xl text-center">
+                    <p className="text-xs font-bold tracking-widest text-blue-700">収録イメージ</p>
+                    <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                        こんなスライドを組み合わせられます
+                    </h2>
+                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                        画像を押すと拡大できます。収録スライドは毎月追加されます。
+                    </p>
+                </div>
+
+                <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {previews.map((preview) => (
+                        <figure key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                            <button
+                                type="button"
+                                onClick={() => setActivePreview(preview)}
+                                className="group block w-full cursor-zoom-in border-b border-slate-100 bg-white text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
+                                aria-label={`${preview.title}のスライドを拡大表示`}
+                            >
+                                <Image
+                                    src={preview.src}
+                                    alt={`${preview.title}の収録スライド`}
+                                    width={1280}
+                                    height={720}
+                                    sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 390px"
+                                    className="h-auto w-full transition-transform duration-200 group-hover:scale-[1.02]"
+                                />
+                            </button>
+                            <figcaption className="p-4">
+                                <p className="text-sm font-black text-slate-900">{preview.title}</p>
+                                <p className="mt-1 text-xs leading-5 text-slate-600">{preview.caption}</p>
+                            </figcaption>
+                        </figure>
+                    ))}
+                </div>
+            </div>
+
+            {activePreview && (
+                <div
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${activePreview.title}の拡大画像`}
+                    className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-8"
+                >
+                    <button
+                        type="button"
+                        onClick={() => setActivePreview(null)}
+                        className="absolute inset-0 cursor-default bg-slate-950/85"
+                        aria-label="拡大表示を閉じる"
+                    />
+                    <div className="relative z-10 w-full max-w-6xl overflow-hidden rounded-lg bg-white shadow-2xl">
+                        <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3">
+                            <p className="min-w-0 truncate text-sm font-bold text-slate-900">{activePreview.title}</p>
+                            <button
+                                type="button"
+                                onClick={() => setActivePreview(null)}
+                                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-2xl leading-none text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                                aria-label="閉じる"
+                            >
+                                ×
+                            </button>
+                        </div>
+                        <div className="max-h-[calc(100dvh-7rem)] overflow-auto bg-slate-100 p-2 sm:p-4">
+                            <Image
+                                src={activePreview.src}
+                                alt={`${activePreview.title}の拡大スライド`}
+                                width={1280}
+                                height={720}
+                                sizes="100vw"
+                                priority
+                                className="mx-auto h-auto w-full max-w-[1280px]"
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
+        </section>
+    );
+}

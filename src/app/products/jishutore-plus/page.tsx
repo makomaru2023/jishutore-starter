@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 
@@ -68,6 +71,15 @@ const previews = [
         caption: "屋外活動まで幅広く選べるスライド例",
     },
 ] as const;
+
+const hasPlusAsset = (fileName: string) =>
+    existsSync(join(process.cwd(), "public", "images", "plus", fileName));
+
+const plusEvidenceAssets = {
+    hasLibraryScreen: hasPlusAsset("library-screen.png"),
+    hasPptEditingScreen: hasPlusAsset("ppt-editing.png"),
+    hasSample: hasPlusAsset("sample.pptx"),
+};
 
 const features = [
     {
@@ -279,37 +291,9 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="border-y border-slate-200 bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="mx-auto max-w-3xl text-center">
-                            <p className="text-xs font-bold tracking-widest text-blue-700">収録イメージ</p>
-                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
-                                こんなスライドを組み合わせられます
-                            </h2>
-                            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                収録スライドの一例です。スライドは毎月追加されます。
-                            </p>
-                        </div>
-                        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                            {previews.map((preview) => (
-                                <figure key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                                    <Image
-                                        src={preview.src}
-                                        alt={`${preview.title}の収録スライド`}
-                                        width={1280}
-                                        height={720}
-                                        sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 390px"
-                                        className="h-auto w-full border-b border-slate-100"
-                                    />
-                                    <figcaption className="p-4">
-                                        <p className="text-sm font-black text-slate-900">{preview.title}</p>
-                                        <p className="mt-1 text-xs leading-5 text-slate-600">{preview.caption}</p>
-                                    </figcaption>
-                                </figure>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                <PlusHowItWorks previews={previews} {...plusEvidenceAssets} />
+
+                <PlusPreviewGallery previews={previews} />
 
                 <section id="comparison" className="scroll-mt-20 py-14 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -367,6 +351,23 @@ export default function JishutorePlusPage() {
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </section>
+
+                <section className="border-y border-blue-100 bg-blue-50/60 py-10 sm:py-12">
+                    <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+                        <p className="text-base font-black leading-7 text-slate-950 sm:text-lg">
+                            無料素材370点以上を公開してきた自主トレ素材庫が運営しています
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                            日々の自主トレ指導で使いやすい素材を、継続して制作・公開しています。
+                        </p>
+                        <Link
+                            href="/items/"
+                            className="mt-4 inline-flex items-center justify-center font-bold text-blue-700 hover:underline"
+                        >
+                            無料素材を見る
+                        </Link>
                     </div>
                 </section>
 
