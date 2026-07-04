@@ -110,6 +110,29 @@ export function PlusHowItWorks({
                     </p>
                 </div>
 
+                <div className="mx-auto mt-10 max-w-5xl">
+                    <p className="mb-3 text-center text-sm font-black text-slate-900">実際の操作画面</p>
+                    <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-950 shadow-sm">
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            poster="/images/plus/library-screen.png"
+                            aria-label="自主トレ素材庫Plusで資料を選びPowerPointを作成する操作デモ"
+                            className="block aspect-[400/233] h-auto w-full object-cover"
+                        >
+                            <source src="/images/plus/plus-demo.mp4" type="video/mp4" />
+                            <source src="/images/plus/plus-demo.webm" type="video/webm" />
+                            お使いのブラウザは動画再生に対応していません。
+                        </video>
+                    </div>
+                    <p className="mt-3 text-center text-xs leading-5 text-slate-500">
+                        資料を選び、1つのPowerPointにまとめるまでの流れをご覧いただけます。
+                    </p>
+                </div>
+
                 <ol className="mt-10 grid gap-5 lg:grid-cols-3">
                     {steps.map((step) => (
                         <li key={step.number} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
