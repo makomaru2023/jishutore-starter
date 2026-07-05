@@ -12,8 +12,8 @@ export function getItemsByTier(tier: string): Item[] {
 /**
  * Find an item by id, robust to URL-encoding.
  *
- * Some item ids contain spaces / parentheses (e.g. "Swallowing forehead exercises-premium").
- * During static generation the [id] param can arrive URL-encoded ("...%20..."), which would
+ * Item ids are now all lowercase kebab-case, but the [id] param can still arrive
+ * URL-encoded during static generation, which would
  * fail a strict `item.id === id` comparison and render the "Item Not Found" page. We therefore
  * compare against both the raw and the decoded form.
  */
@@ -32,10 +32,9 @@ const R2_PUBLIC_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
 /**
  * Build a usable R2 image URL from an item's previewSrc.
  *
- * Some previewSrc values contain spaces / parentheses
- * (e.g. "premium/plain/Knee-holding exercise (holding both knees).png").
- * Those characters must be percent-encoded or the browser / next/image cannot load them.
- * Each path segment is encoded individually so the "/" separators are preserved.
+ * previewSrc values are now all kebab-case ASCII, but each path segment is still
+ * encoded defensively (with "/" separators preserved) so an irregular key can never
+ * produce a URL the browser / next/image cannot load.
  */
 export function getItemImageUrl(previewSrc: string): string {
     if (previewSrc.startsWith("https://")) return previewSrc;
