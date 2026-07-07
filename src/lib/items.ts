@@ -28,6 +28,7 @@ export function findItemById(id: string): Item | undefined {
 }
 
 const R2_PUBLIC_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
+const R2_PREVIEW_VERSION = "20260707";
 
 /**
  * Build a usable R2 image URL from an item's previewSrc.
@@ -39,5 +40,5 @@ const R2_PUBLIC_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
 export function getItemImageUrl(previewSrc: string): string {
     if (previewSrc.startsWith("https://")) return previewSrc;
     const encodedPath = previewSrc.split("/").map(encodeURIComponent).join("/");
-    return `${R2_PUBLIC_DOMAIN}/${encodedPath}`;
+    return `${R2_PUBLIC_DOMAIN}/${encodedPath}?v=${R2_PREVIEW_VERSION}`;
 }
