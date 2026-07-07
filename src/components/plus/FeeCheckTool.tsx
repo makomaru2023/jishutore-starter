@@ -264,7 +264,7 @@ export function FeeCheckTool() {
                         </svg>
                     </a>
                     <div className="min-w-0">
-                        <p className="text-base font-black leading-tight text-slate-900 sm:text-lg">報酬算定チェック</p>
+                        <p className="text-base font-black leading-tight text-slate-900 sm:text-lg">診療・介護報酬チェック</p>
                         <p className="hidden truncate text-xs text-slate-500 sm:block">
                             {feeData.domainLabel}の算定要件を、根拠資料つきで自己点検
                         </p>

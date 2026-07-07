@@ -310,7 +310,7 @@ export function PlusLibrary() {
                             href="/plus/fee-check/"
                             className="hidden items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100 sm:flex"
                         >
-                            報酬算定チェック
+                            報酬チェック
                         </a>
                         <button
                             type="button"
@@ -352,7 +352,7 @@ export function PlusLibrary() {
                             href="/plus/fee-check/"
                             className="flex flex-1 items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-black text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
                         >
-                            報酬算定チェック
+                            報酬チェック
                         </a>
                     </div>
                 </nav>
