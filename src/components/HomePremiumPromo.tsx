@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PremiumItemCard } from "./PremiumItemCard";
+import { ProductSelectLink } from "./ProductSelectLink";
 import { premiumItems } from "../../data/premiumItems";
 import { SLIDE_PROMPT_GENERATOR_PRICE_ID } from "@/lib/products";
 
@@ -56,6 +57,34 @@ export function HomePremiumPromo() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                                 </svg>
                             </Link>
+                        </div>
+                    </div>
+
+                    {/* 施設・事業所向け資料パックへの導線 */}
+                    <div className="mt-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/70 to-white p-5 sm:p-6">
+                        <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+                            <div className="min-w-0 flex-1 text-center sm:text-left">
+                                <p className="mb-1 inline-block rounded-full bg-white px-2.5 py-0.5 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                    施設・事業所向け
+                                </p>
+                                <p className="text-sm font-black leading-snug text-slate-900 sm:text-base break-keep">
+                                    デイサービスで使う体操・口腔体操・転倒予防の資料パック
+                                </p>
+                                <p className="mt-1 text-xs text-slate-600 break-keep sm:text-sm">
+                                    施設内で印刷・配布・掲示・職員共有OK。毎日の体操資料をまとめて準備できます。
+                                </p>
+                            </div>
+                            <ProductSelectLink
+                                href="/products/day-service-exercise-pack"
+                                itemName="デイサービス向け 体操・口腔体操・転倒予防資料パック"
+                                location="home_facility"
+                                className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm shadow-blue-600/20 transition-colors hover:bg-blue-500"
+                            >
+                                資料パックを見る
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </ProductSelectLink>
                         </div>
                     </div>
 

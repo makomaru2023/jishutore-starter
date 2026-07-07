@@ -4,6 +4,7 @@ import {
     POSTURE_SELF_TRAINING_PRICE_ID,
     BUNDLE_SELF_TRAINING_PRICE_ID,
     SLIDE_PROMPT_GENERATOR_PRICE_ID,
+    DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
 } from '@/lib/products';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
@@ -31,6 +32,10 @@ const PRODUCTS: Record<string, ProductConfig> = {
     'slide-prompt-generator': {
         priceId: SLIDE_PROMPT_GENERATOR_PRICE_ID,
         cancelPath: '/products/slide-prompt-generator',
+    },
+    'day-service-exercise-pack': {
+        priceId: DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
+        cancelPath: '/products/day-service-exercise-pack',
     },
 };
 

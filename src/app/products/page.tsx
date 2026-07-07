@@ -10,7 +10,9 @@ import {
     POSTURE_SELF_TRAINING_PRICE_ID,
     BUNDLE_SELF_TRAINING_PRICE_ID,
     SLIDE_PROMPT_GENERATOR_PRICE_ID,
+    DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
 } from "@/lib/products";
+import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -111,6 +113,53 @@ const compareRows: CompareRow[] = [
 
 const bundleCheckoutReady = Boolean(BUNDLE_SELF_TRAINING_PRICE_ID);
 const slidePromptCheckoutReady = Boolean(SLIDE_PROMPT_GENERATOR_PRICE_ID);
+const dayServicePackReady = Boolean(DAY_SERVICE_EXERCISE_PACK_PRICE_ID);
+
+const facilityPacks: {
+    name: string;
+    target: string;
+    price: string;
+    description: string;
+    badge: string;
+    href: string | null;
+}[] = [
+    {
+        name: "デイサービス向け 体操・口腔体操・転倒予防 資料パック",
+        target: "デイサービス・通所介護",
+        price: "14,800円",
+        description:
+            "毎日の集団体操・口腔体操・嚥下体操・転倒予防の資料を1つのパックに。施設内で印刷・配布・掲示・職員共有ができます。",
+        badge: dayServicePackReady ? "販売中" : "近日公開",
+        href: "/products/day-service-exercise-pack",
+    },
+    {
+        name: "訪問リハ・訪問看護向け 自主トレ指導資料パック",
+        target: "訪問リハ・訪問看護",
+        price: "準備中",
+        description:
+            "在宅での自主トレ指導に使う、利用者さん・ご家族向けの説明資料をまとめる予定です。",
+        badge: "準備中",
+        href: null,
+    },
+    {
+        name: "老健向け リハ・介護予防・職員研修 資料パック",
+        target: "介護老人保健施設",
+        price: "準備中",
+        description:
+            "リハビリ・介護予防の資料に加え、施設内の勉強会で使える職員向け資料も収録予定です。",
+        badge: "準備中",
+        href: null,
+    },
+    {
+        name: "入所施設向け 生活機能維持 資料パック",
+        target: "入所系施設",
+        price: "準備中",
+        description:
+            "生活機能の維持に向けた運動・ケアの資料をまとめる予定です。",
+        badge: "準備中",
+        href: null,
+    },
+];
 
 export default function ProductsPage() {
     return (
@@ -154,6 +203,36 @@ export default function ProductsPage() {
                                     商品一覧を見る
                                 </Link>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 自主トレ素材庫Plus */}
+                <section className="border-b border-blue-100 bg-blue-50/70 py-8 sm:py-10">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto flex max-w-5xl min-w-0 flex-col items-start gap-5 rounded-xl border border-blue-200 bg-white p-5 shadow-sm sm:p-7 md:flex-row md:items-center md:justify-between">
+                            <div className="min-w-0">
+                                <div className="mb-3 flex flex-wrap items-center gap-2">
+                                    <span className="rounded-full bg-blue-700 px-3 py-1 text-[11px] font-bold text-white">
+                                        近日公開
+                                    </span>
+                                    <span className="rounded-full bg-blue-50 px-3 py-1 text-[11px] font-bold text-blue-800 ring-1 ring-blue-200">
+                                        先行モニター 月額500円
+                                    </span>
+                                </div>
+                                <h2 className="text-xl font-black text-slate-950 sm:text-2xl">
+                                    自主トレ素材庫Plus
+                                </h2>
+                                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                                    {PLUS_SLIDE_COUNT}点のPowerPointスライド（毎月追加中）から必要なページを選び、説明文や注意点を編集して、自分の資料を作れる月額サービスです。
+                                </p>
+                            </div>
+                            <Link
+                                href="/products/jishutore-plus/"
+                                className="inline-flex w-full flex-shrink-0 items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-800 md:w-auto"
+                            >
+                                詳細を見る
+                            </Link>
                         </div>
                     </div>
                 </section>
@@ -628,6 +707,85 @@ export default function ProductsPage() {
                     </div>
                 </section>
                 )}
+
+                {/* 5.7 施設・事業所向け資料パック */}
+                <section id="facility" className="bg-slate-50 py-14 sm:py-20 scroll-mt-20">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-3xl text-center mb-10">
+                            <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                施設・事業所向け
+                            </p>
+                            <h2 className="text-xl sm:text-3xl font-black text-slate-900 mb-3 break-keep">
+                                施設・事業所で使える資料パック
+                            </h2>
+                            <p className="text-sm sm:text-base text-slate-600 leading-relaxed break-keep">
+                                個人向けの資料セットとは別に、<strong className="text-slate-800">施設内利用ライセンス付き</strong>で、印刷・配布・掲示・職員間共有ができる資料パックを準備しています。現場の業務でそのまま使える形でまとめます。
+                            </p>
+                        </div>
+                        <div className="mx-auto grid grid-cols-1 max-w-5xl gap-5 sm:grid-cols-2">
+                            {facilityPacks.map((pack) => {
+                                const isSoon = pack.badge === "近日公開";
+                                const isAvailable = pack.badge === "販売中";
+                                const badgeClass = isAvailable
+                                    ? "bg-blue-600 text-white"
+                                    : isSoon
+                                    ? "bg-amber-100 text-amber-800 border border-amber-200"
+                                    : "bg-slate-100 text-slate-500 border border-slate-200";
+                                return (
+                                    <article
+                                        key={pack.name}
+                                        className="flex min-w-0 flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                                    >
+                                        <div className="mb-3 flex flex-wrap items-center gap-2">
+                                            <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-blue-700">
+                                                {pack.target}
+                                            </span>
+                                            <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-black tracking-wider ${badgeClass}`}>
+                                                {pack.badge}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-base font-black leading-snug text-slate-900 break-keep">
+                                            {pack.name}
+                                        </h3>
+                                        <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 break-keep">
+                                            {pack.description}
+                                        </p>
+                                        <div className="mt-4 flex items-center justify-between gap-3">
+                                            <span className="text-lg font-black text-slate-900 whitespace-nowrap">
+                                                {pack.price}
+                                                {(isAvailable || isSoon) && (
+                                                    <span className="ml-1 text-xs font-bold text-slate-400">施設内利用OK</span>
+                                                )}
+                                            </span>
+                                        </div>
+                                        <div className="mt-5">
+                                            {pack.href ? (
+                                                <ProductSelectLink
+                                                    href={pack.href}
+                                                    itemName={pack.name}
+                                                    location="products_facility"
+                                                    className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm shadow-blue-600/20 transition-all hover:bg-blue-500"
+                                                >
+                                                    {isAvailable ? "詳しく見る" : "内容を見る・先行案内"}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
+                                                    </svg>
+                                                </ProductSelectLink>
+                                            ) : (
+                                                <span className="inline-flex w-full min-h-12 cursor-default items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-bold text-slate-400">
+                                                    準備中
+                                                </span>
+                                            )}
+                                        </div>
+                                    </article>
+                                );
+                            })}
+                        </div>
+                        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-slate-500 leading-relaxed break-keep">
+                            施設内利用ライセンスは、印刷・配布・掲示・職員間での共有ができます。再販売や、資料・素材単体での二次配布はできません。
+                        </p>
+                    </div>
+                </section>
 
                 {/* 6. LINE 無料特典（購入前サンプル位置づけ） */}
                 <section className="bg-white py-14 sm:py-20">

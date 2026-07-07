@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { trackLineClick } from "@/lib/analytics";
+import { trackEvent, trackLineClick } from "@/lib/analytics";
 import { MATERIAL_DOWNLOADED_EVENT } from "@/components/MaterialDownloadButton";
 
 /**
@@ -90,12 +90,13 @@ export function PostDownloadLineToast() {
                     </div>
                     <div className="min-w-0 flex-1">
                         <p className="text-sm font-bold leading-snug text-slate-800">
-                            ダウンロードありがとうございます！🎁
+                            ダウンロードありがとうございます
                         </p>
                         <p className="mt-0.5 text-xs leading-relaxed text-slate-500">
-                            新作素材の通知＆配布資料7点セットはLINEで。
+                            LINEでは月1〜2回、新作素材・無料資料・値上げ前のお知らせだけを送ります。
+                            編集できる資料はPlusでも選べます。
                         </p>
-                        <div className="mt-3 flex items-center gap-2">
+                        <div className="mt-3 flex flex-wrap items-center gap-2">
                             <a
                                 href={LINE_URL}
                                 target="_blank"
@@ -107,7 +108,20 @@ export function PostDownloadLineToast() {
                                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="white">
                                     <path d={LINE_SVG_PATH} />
                                 </svg>
-                                受け取る
+                                LINEで受け取る
+                            </a>
+                            <a
+                                href="/products/jishutore-plus/"
+                                onClick={() =>
+                                    trackEvent("product_cta_click", {
+                                        location: "post_download_toast_plus",
+                                        url: "/products/jishutore-plus/",
+                                        label: "自主トレ素材庫Plus",
+                                    })
+                                }
+                                className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black text-blue-700 transition-colors hover:bg-blue-100"
+                            >
+                                Plusを見る
                             </a>
                             <button
                                 onClick={close}

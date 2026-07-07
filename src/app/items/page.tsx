@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductDualCta } from "@/components/ProductDualCta";
+import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { Metadata } from "next";
@@ -148,6 +149,31 @@ const CATEGORY_META: Record<string, { title: string; description: string; metaTi
     },
 };
 
+const CATEGORY_CANONICALS: Record<string, string> = {
+    shoulder: "/items/upper-limb-exercises/",
+    hip: "/items/lower-limb-exercises/",
+    trunk: "/items/trunk-exercises/",
+    stretch: "/items/stretching-exercises/",
+    walking: "/items/walking-exercises/",
+};
+
+// 用途検索カテゴリ → デイサービス向け資料パック LP への導線コピー。
+// 口腔・嚥下(oral)、立ち上がり・バランス＝転倒予防(stand)、下肢・体操(hip) のときに表示する。
+const FACILITY_CTA: Record<string, { heading: string; body: string }> = {
+    oral: {
+        heading: "口腔体操の資料を、施設でまとめて使いたい方へ",
+        body: "デイサービス向けの口腔体操・嚥下体操・転倒予防の資料を、印刷・配布・掲示できる形でまとめた施設向けパックを準備しています。",
+    },
+    stand: {
+        heading: "転倒予防の体操資料を、施設でまとめて使いたい方へ",
+        body: "デイサービス向けの転倒予防・体操・口腔体操の資料を、印刷・配布・掲示できる形でまとめた施設向けパックを準備しています。",
+    },
+    hip: {
+        heading: "体操・下肢運動の資料を、施設でまとめて使いたい方へ",
+        body: "デイサービス向けの集団体操・転倒予防・口腔体操の資料を、印刷・配布・掲示できる形でまとめた施設向けパックを準備しています。",
+    },
+};
+
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ category?: string; q?: string }> }): Promise<Metadata> {
     const { category, q } = await searchParams;
 
@@ -157,6 +183,12 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
         return {
             title: meta.metaTitle,
             description: meta.metaDescription,
+            alternates: CATEGORY_CANONICALS[q]
+                ? {
+                    canonical:
+                        "https://jishutore-sozaiko.online" + CATEGORY_CANONICALS[q],
+                }
+                : undefined,
         };
     }
 
@@ -216,6 +248,8 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         ? { key: q, label: CATEGORY_KEYWORDS[q].label }
         : undefined;
 
+    const facilityCta = q ? FACILITY_CTA[q] : undefined;
+
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
@@ -233,6 +267,40 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                 <div className="mb-6 max-w-5xl mx-auto">
                     <ProductDualCta />
                 </div>
+
+                {/* 用途検索カテゴリ限定：施設向け資料パックへの導線 */}
+                {facilityCta && (
+                    <div className="mb-6 max-w-5xl mx-auto">
+                        <div className="rounded-2xl border border-blue-200 bg-blue-50/60 p-5 sm:p-6">
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                                <div className="min-w-0 flex-1">
+                                    <p className="mb-1 inline-block rounded-full bg-white px-2.5 py-0.5 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
+                                        施設・事業所向け
+                                    </p>
+                                    <h2 className="text-base sm:text-lg font-black leading-snug text-slate-900 break-keep">
+                                        {facilityCta.heading}
+                                    </h2>
+                                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600 break-keep">
+                                        {facilityCta.body}
+                                    </p>
+                                </div>
+                                <div className="flex-shrink-0">
+                                    <ProductSelectLink
+                                        href="/products/day-service-exercise-pack"
+                                        itemName="デイサービス向け 体操・口腔体操・転倒予防資料パック"
+                                        location="category_facility_cta"
+                                        className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-sm shadow-blue-600/20 transition-all hover:bg-blue-500"
+                                    >
+                                        資料パックを見る
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
+                                        </svg>
+                                    </ProductSelectLink>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* 上部：スポンサー枠（広告主向け） */}
                 <div className="mb-10 max-w-5xl mx-auto">

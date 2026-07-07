@@ -16,9 +16,9 @@ export function ItemDetailLineBanner() {
         <div className="rounded-2xl px-5 py-4" style={{ backgroundColor: "#06C755" }}>
             <div className="flex flex-col gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
                 <div className="min-w-0">
-                    <p className="text-sm font-black text-white">新作素材の追加をLINEでお知らせ</p>
+                    <p className="text-sm font-black text-white">新作素材と無料資料をLINEでお知らせ</p>
                     <p className="mt-0.5 text-xs font-medium text-white/85">
-                        患者さんに渡せる配布資料7点セットも無料でもらえます
+                        月1〜2回、配布資料・新作・値上げ前のお知らせだけを送ります
                     </p>
                 </div>
                 <a

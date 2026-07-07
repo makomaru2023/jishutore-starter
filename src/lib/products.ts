@@ -17,3 +17,10 @@ export const BUNDLE_SELF_TRAINING_PRICE_ID =
 // 「準備中」表示にフォールバックする。
 export const SLIDE_PROMPT_GENERATOR_PRICE_ID =
     process.env.STRIPE_PRICE_ID_SLIDE_PROMPT_GENERATOR;
+
+// デイサービス向け 体操・口腔体操・転倒予防資料パック（施設向け）の Stripe Price ID。
+// 環境変数 STRIPE_PRICE_ID_DAY_SERVICE_EXERCISE_PACK から取得する。
+// 未設定時は undefined。LP は「近日公開」表示のままで、価格IDを設定すると
+// 自動的に購入ボタンが有効化される。
+export const DAY_SERVICE_EXERCISE_PACK_PRICE_ID =
+    process.env.STRIPE_PRICE_ID_DAY_SERVICE_EXERCISE_PACK;

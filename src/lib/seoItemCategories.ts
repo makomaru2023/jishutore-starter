@@ -28,6 +28,208 @@ export type SeoItemCategoryConfig = {
     faqs: SeoCategoryFaq[];
 };
 
+export const upperLimbExercisesCategory: SeoItemCategoryConfig = {
+    slug: "upper-limb-exercises",
+    breadcrumb: "上肢の自主トレ",
+    eyebrow: "PT・OT・患者配布資料向け",
+    title: "上肢・肩・肘・手指の自主トレに使える",
+    accentTitle: "リハビリイラスト",
+    metaTitle: "上肢の自主トレイラスト【無料】肩・肘・手指のリハビリ｜自主トレ素材庫",
+    metaDescription:
+        "上肢、肩、肘、手首、手指の自主トレ・リハビリに使える無料イラスト。PT・OTの患者指導、退院前指導、配布資料に使えます。",
+    intro:
+        "肩、肘、手首、手指の運動や生活動作練習に使える、上肢の自主トレイラストをまとめました。PT・OTの個別指導や患者さんへの配布資料に無料で使えます。",
+    body: [
+        "上肢の自主トレでは、関節の動き、筋力、痛み、日常生活での使い方に応じた運動選びが大切です。イラストを使うと、開始姿勢や手の向きを具体的に共有できます。",
+        "このページでは、肩関節運動、肩甲骨運動、肘や手首の運動、手指課題、リーチ練習などをまとめています。目的に合う素材を選んで資料づくりに活用できます。",
+    ],
+    keywords: [
+        "shoulder", "scapular", "elbow", "arm", "wrist", "hand", "finger",
+        "chopstick", "peg", "reach", "grip", "beanbag", "azuki", "banzai",
+        "pendulum", "wall slide", "wall-slide", "writing", "eating", "spoon",
+        "肩", "肘", "腕", "上肢", "手指", "手のひら", "手首", "タオル握",
+        "バンザイ", "箸", "お手玉", "ペグ", "ダンベル", "棒", "リーチ",
+        "ピンキー", "母指", "対立", "振り子", "ウォールサイド", "書字", "食事", "スプーン",
+    ],
+    matchScope: "core",
+    listTitle: "上肢・肩・肘・手指の自主トレ無料イラスト",
+    listDescription:
+        "肩から手指までの運動を掲載しています。「肩」「肘」「手首」「手指」などで、さらに絞り込めます。",
+    searchLabel: "上肢の自主トレ",
+    safetyNote:
+        "疼痛、腫れ、しびれ、術後の運動制限を確認してください。可動範囲や負荷量は、主治医や担当療法士の方針を優先します。",
+    useCases: [
+        { title: "肩・肘の運動指導", description: "関節運動や筋力訓練の姿勢を視覚的に伝えられます。" },
+        { title: "手指・巧緻動作練習", description: "物をつまむ、握る、操作する課題を選べます。" },
+        { title: "退院後の自主トレ資料", description: "自宅で行う運動を選び、配布資料に活用できます。" },
+    ],
+    faqs: [
+        { question: "上肢の自主トレイラストは無料で使えますか？", answer: "はい。利用ガイドラインの範囲で、患者さんへの説明や配布資料に無料で使えます。" },
+        { question: "肩だけでなく手指の運動もありますか？", answer: "肩・肘・手首に加え、手指運動や巧緻動作に関する素材も掲載しています。" },
+        { question: "OTの自主トレ資料に利用できますか？", answer: "利用できます。対象者の疼痛や運動制限を確認し、内容を個別に調整してください。" },
+    ],
+};
+
+export const lowerLimbExercisesCategory: SeoItemCategoryConfig = {
+    slug: "lower-limb-exercises",
+    breadcrumb: "下肢の自主トレ",
+    eyebrow: "PT・歩行練習・介護予防向け",
+    title: "下肢・股関節・膝・足関節の自主トレに使える",
+    accentTitle: "リハビリイラスト",
+    metaTitle: "下肢の自主トレイラスト【無料】股関節・膝・足関節｜自主トレ素材庫",
+    metaDescription:
+        "下肢、股関節、膝、足関節の自主トレ・筋力訓練に使える無料イラスト。PTの患者指導、介護予防、配布資料に使えます。",
+    intro:
+        "股関節、膝、足関節の運動や下肢筋力訓練に使える、自主トレイラストをまとめました。歩行練習、介護予防、退院後の運動説明に無料で使えます。",
+    body: [
+        "下肢の自主トレは、立ち上がりや歩行などの生活動作につながります。運動姿勢や足の動かし方をイラストで示すと、自宅で見返しやすい資料になります。",
+        "このページでは、股関節運動、膝伸展、足関節運動、スクワット、ブリッジ、かかと上げなどをまとめています。座位、臥位、立位から選べます。",
+    ],
+    keywords: [
+        "hip", "knee", "leg", "thigh", "squat", "heel", "slr", "leg-raise",
+        "quadriceps", "hamstring", "glute", "bridge", "clam", "lunge", "ankle",
+        "foot", "toe", "calf", "kneeling", "aerobike", "air bike", "air-bike",
+        "towel gather", "towel-gather", "膝", "股", "脚", "下肢", "足首", "足関節",
+        "ヒール", "スライド", "SLR", "レッグレイズ", "スクワット", "ブリッジ", "太もも",
+        "クラム", "四頭筋", "お尻", "臀", "ハム", "ヒンジ", "カーフ", "つま先",
+        "かかと", "底背屈", "底屈", "背屈", "セッティング", "エアロバイク", "タオルギャザー", "ギャザー",
+    ],
+    matchScope: "core",
+    listTitle: "下肢・股関節・膝・足関節の自主トレ無料イラスト",
+    listDescription:
+        "座位・臥位・立位で行う下肢運動を掲載しています。「膝」「股関節」「足首」などで絞り込めます。",
+    searchLabel: "下肢の自主トレ",
+    safetyNote:
+        "疼痛、腫れ、転倒リスク、術後の荷重制限を確認してください。立位運動では安定した支持物と見守りを用意します。",
+    useCases: [
+        { title: "下肢筋力の自主トレ", description: "股関節、膝、足関節の運動を目的別に選べます。" },
+        { title: "歩行につながる運動", description: "立ち上がりや歩行に必要な筋力練習の説明に使えます。" },
+        { title: "介護予防・通所リハ", description: "個別指導や小集団の運動資料づくりに活用できます。" },
+    ],
+    faqs: [
+        { question: "下肢の自主トレイラストは無料ですか？", answer: "はい。利用ガイドラインの範囲で、患者さんや利用者さんへの説明に無料で使えます。" },
+        { question: "座ってできる下肢運動もありますか？", answer: "膝伸ばし、足踏み、足関節運動など、椅子に座って行う素材も掲載しています。" },
+        { question: "人工関節術後の指導にも使えますか？", answer: "素材は使えますが、荷重や禁忌動作は術式や主治医の方針に合わせてください。" },
+    ],
+};
+
+export const trunkExercisesCategory: SeoItemCategoryConfig = {
+    slug: "trunk-exercises",
+    breadcrumb: "体幹トレーニング",
+    eyebrow: "姿勢保持・基本動作・自主トレ向け",
+    title: "体幹トレーニング・腹筋・背筋に使える",
+    accentTitle: "自主トレイラスト",
+    metaTitle: "体幹トレーニングの自主トレイラスト【無料】｜自主トレ素材庫",
+    metaDescription:
+        "体幹、腹筋、背筋、骨盤運動、プランクなどの自主トレに使える無料イラスト。リハビリ指導、姿勢改善、患者配布資料に使えます。",
+    intro:
+        "体幹回旋、腹筋・背筋運動、骨盤運動、プランクなど、体幹トレーニングに使えるイラストをまとめました。姿勢保持や基本動作の説明資料に無料で使えます。",
+    body: [
+        "体幹は、座る、立つ、手足を動かすときの土台になります。開始姿勢と動く方向をイラストで示すと、代償動作に注意しながら説明しやすくなります。",
+        "このページでは、臥位や座位での体幹運動、骨盤運動、ブリッジ、プランク、回旋運動などをまとめています。対象者の能力に合わせて選べます。",
+    ],
+    keywords: [
+        "trunk", "core", "plank", "abdomen", "back", "pelvic", "pelvis", "draw-in",
+        "cat-and-dog", "diagonal", "rotation", "side-bridge", "puppy", "spine", "体幹",
+        "腹", "背筋", "骨盤", "ドローイン", "プランク", "ダイアゴナル", "回旋",
+        "キャット", "腰", "サイドブリッジ", "パピーポジション", "腹筋", "脊椎",
+    ],
+    matchScope: "core",
+    listTitle: "体幹トレーニング・腹筋・背筋の無料イラスト",
+    listDescription:
+        "臥位・座位・四つ這いなどの体幹運動を掲載しています。「骨盤」「回旋」「プランク」などで絞り込めます。",
+    searchLabel: "体幹トレーニング",
+    safetyNote:
+        "腰痛、頚部痛、術後の制限、呼吸の止めすぎに注意してください。姿勢保持が難しい場合は負荷を下げ、専門職が確認します。",
+    useCases: [
+        { title: "姿勢保持の練習", description: "座位や立位の土台となる体幹運動を選べます。" },
+        { title: "基本動作への応用", description: "寝返り、起き上がり、立ち上がりにつながる説明に使えます。" },
+        { title: "腰部・骨盤の運動", description: "骨盤運動や体幹回旋などを視覚的に伝えられます。" },
+    ],
+    faqs: [
+        { question: "体幹トレーニングのイラストは無料で使えますか？", answer: "はい。患者さんへの説明や配布資料に、利用ガイドラインの範囲で使えます。" },
+        { question: "高齢者向けの体幹運動もありますか？", answer: "座位や臥位で行う素材もあります。姿勢保持能力に合わせて選んでください。" },
+        { question: "腰痛がある方にも使えますか？", answer: "使えますが、症状や禁忌事項には個人差があります。痛みが増える運動は避け、専門職が確認してください。" },
+    ],
+};
+
+export const stretchingExercisesCategory: SeoItemCategoryConfig = {
+    slug: "stretching-exercises",
+    breadcrumb: "ストレッチ",
+    eyebrow: "柔軟性・関節可動域・自主トレ向け",
+    title: "ストレッチ・柔軟体操に使える",
+    accentTitle: "自主トレイラスト",
+    metaTitle: "ストレッチの自主トレイラスト【無料】部位別に探せる｜自主トレ素材庫",
+    metaDescription:
+        "上肢、下肢、体幹のストレッチ・柔軟体操に使える無料イラスト。ハムストリングス、肩、前腕、下腿など部位別に探せます。",
+    intro:
+        "上肢、下肢、体幹のストレッチや柔軟体操に使えるイラストをまとめました。関節可動域の練習や、自宅で見返す自主トレ資料に無料で使えます。",
+    body: [
+        "ストレッチでは、伸ばす部位、開始姿勢、反動をつけないことなどを具体的に伝える必要があります。イラストを添えると、姿勢と動きを見返しやすくなります。",
+        "このページでは、肩、前腕、体幹、股関節、大腿後面、下腿などのストレッチをまとめています。座位、立位、臥位から選べます。",
+    ],
+    keywords: [
+        "stretch", "flexion-stretch", "extension-stretch", "opening", "doorway",
+        "towel-side-bend", "trunk-extension", "trunk-flexion", "ストレッチ", "伸ばし",
+        "柔軟", "ハムストリング", "胸開き", "ロッキング", "ドアウェイ",
+    ],
+    matchScope: "core",
+    listTitle: "部位別ストレッチ・柔軟体操の無料イラスト",
+    listDescription:
+        "上肢・下肢・体幹のストレッチを掲載しています。部位名や姿勢で、さらに絞り込めます。",
+    searchLabel: "ストレッチ",
+    safetyNote:
+        "反動をつけず、痛みやしびれが出ない範囲で行います。術後や急性期では、主治医や担当療法士の運動制限を優先してください。",
+    useCases: [
+        { title: "自主トレの配布資料", description: "伸ばす部位と姿勢をイラストで伝えられます。" },
+        { title: "運動前後の体操", description: "上肢・下肢・体幹から目的に合う素材を選べます。" },
+        { title: "介護予防・集団体操", description: "椅子に座って行うストレッチも探せます。" },
+    ],
+    faqs: [
+        { question: "ストレッチのイラストは無料で利用できますか？", answer: "はい。利用ガイドラインの範囲で、患者さんへの説明や配布資料に無料で使えます。" },
+        { question: "部位別にストレッチを探せますか？", answer: "肩、体幹、股関節、大腿、下腿など、キーワードでさらに絞り込めます。" },
+        { question: "高齢者の体操資料にも使えますか？", answer: "使えます。姿勢保持能力や疼痛に合わせ、無理のない運動を選んでください。" },
+    ],
+};
+
+export const walkingExercisesCategory: SeoItemCategoryConfig = {
+    slug: "walking-exercises",
+    breadcrumb: "歩行訓練",
+    eyebrow: "PT・歩行指導・退院前指導向け",
+    title: "歩行訓練・杖歩行・歩行器の説明に使える",
+    accentTitle: "リハビリイラスト",
+    metaTitle: "歩行訓練のリハビリイラスト【無料】杖・歩行器｜自主トレ素材庫",
+    metaDescription:
+        "歩行訓練、杖歩行、歩行器、平行棒、トレッドミルに使える無料イラスト。PTの患者指導、退院前指導、家族説明に使えます。",
+    intro:
+        "杖歩行、歩行器、平行棒、トレッドミルなど、歩行訓練の説明に使えるイラストをまとめました。患者さんやご家族への動作説明に無料で使えます。",
+    body: [
+        "歩行訓練では、補助具の使い方、足を出す順序、姿勢、安全確認を具体的に共有することが大切です。イラストは、口頭説明を補う資料として活用できます。",
+        "このページでは、杖歩行、歩行器歩行、平行棒内歩行、トレッドミル、ノルディックウォーキングなどの素材をまとめています。",
+    ],
+    keywords: [
+        "walking", "walk", "cane", "walker", "parallel-bar", "treadmill", "gait",
+        "歩行", "歩", "杖", "歩行器", "平行棒", "トレッドミル", "ノルディック",
+    ],
+    matchScope: "core",
+    listTitle: "歩行訓練・杖・歩行器の無料リハビリイラスト",
+    listDescription:
+        "補助具や歩行練習に関連する素材を掲載しています。「杖」「歩行器」「平行棒」などで絞り込めます。",
+    searchLabel: "歩行訓練",
+    safetyNote:
+        "転倒リスク、補助具の高さ、荷重制限、周囲の環境を確認してください。歩行方法は担当療法士の評価と指導を優先します。",
+    useCases: [
+        { title: "杖・歩行器の使い方", description: "補助具を使う歩行場面を視覚的に伝えられます。" },
+        { title: "退院前の歩行指導", description: "自宅や屋外での移動を説明する資料に使えます。" },
+        { title: "家族・介護職への共有", description: "見守り位置や注意点を追記して共有できます。" },
+    ],
+    faqs: [
+        { question: "歩行訓練のイラストは無料で使えますか？", answer: "はい。利用ガイドラインの範囲で、患者指導や家族説明の資料に使えます。" },
+        { question: "杖や歩行器のイラストもありますか？", answer: "杖歩行、歩行器、平行棒、トレッドミルなどの素材を掲載しています。" },
+        { question: "退院前指導に利用できますか？", answer: "利用できます。実際の補助具、荷重条件、見守り方法に合わせて説明を追加してください。" },
+    ],
+};
+
 export const seatedExercisesCategory: SeoItemCategoryConfig = {
     slug: "seated-exercises",
     breadcrumb: "高齢者の座位体操",
@@ -360,6 +562,11 @@ export const strokeExercisesCategory: SeoItemCategoryConfig = {
 };
 
 export const seoItemCategories = [
+    upperLimbExercisesCategory,
+    lowerLimbExercisesCategory,
+    trunkExercisesCategory,
+    stretchingExercisesCategory,
+    walkingExercisesCategory,
     seatedExercisesCategory,
     handRehabilitationCategory,
     fallPreventionCategory,

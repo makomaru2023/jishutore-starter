@@ -9,7 +9,13 @@ declare global {
     }
 }
 
-export type ProductSelectLocation = 'products_compare' | 'products_bundle' | 'products_cross_link';
+export type ProductSelectLocation =
+    | 'products_compare'
+    | 'products_bundle'
+    | 'products_cross_link'
+    | 'products_facility'
+    | 'category_facility_cta'
+    | 'home_facility';
 
 interface ProductSelectLinkProps {
     href: string;

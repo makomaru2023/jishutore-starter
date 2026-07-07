@@ -128,9 +128,9 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                                 <span className="inline-block">資料を作る方へ</span>
                             </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                <span className="inline-block">自主トレの説明スライドを</span>
-                                <span className="inline-block">まとめたテンプレートも</span>
-                                <span className="inline-block">配布しています。</span>
+                                <span className="inline-block">説明文とレイアウトまで整えた</span>
+                                <span className="inline-block">PowerPoint資料も用意しています。</span>
+                                <span className="inline-block">編集して使いたい方はPlusも選べます。</span>
                             </p>
                         </div>
                     </div>
@@ -139,7 +139,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         onClick={handleClick}
                         className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-all shadow-sm"
                     >
-                        PowerPoint資料の商品一覧を見る
+                        PowerPoint資料・Plusを見る
                         <ArrowIcon className="w-3.5 h-3.5" />
                     </Link>
                 </div>
