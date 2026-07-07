@@ -13,11 +13,11 @@ const LINE_URL = "https://lin.ee/79a5bNt";
 
 const OG_TITLE = "自主トレ素材庫Plus｜月額500円〜";
 const OG_DESCRIPTION =
-    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替えできます。";
+    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替え。報酬算定チェックも順次追加中です。";
 
 export const metadata: Metadata = {
     title: "自主トレ素材庫Plus｜編集できるPowerPoint素材｜月額500円〜",
-    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
+    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。訪問リハ版の報酬算定チェックも追加。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -98,6 +98,10 @@ const features = [
         title: "説明文・注意点つき",
         body: "文章をゼロから考える時間を減らし、確認と調整に集中できます。",
     },
+    {
+        title: "算定要件も自己点検できる",
+        body: "訪問リハ版から、単位数・記録・根拠資料を確認できるツールを追加しました。",
+    },
 ] as const;
 
 const comparisonRows = [
@@ -136,6 +140,12 @@ const comparisonRows = [
         free: "無料ページで随時追加",
         set: "購入したセットを利用",
         plus: "契約中は追加分も利用可能",
+    },
+    {
+        label: "算定要件チェック",
+        free: "―",
+        set: "―",
+        plus: "訪問リハ版から順次追加",
     },
     {
         label: "解約後のファイル利用",
@@ -188,6 +198,10 @@ const faqs: { q: string; a: string }[] = [
     {
         q: "支払い方法は何がありますか？",
         a: "クレジットカード決済（Stripe）です。決済が完了すると、すぐに資料庫をご利用いただけます。",
+    },
+    {
+        q: "報酬算定チェックは何ができますか？",
+        a: "現在は訪問リハビリテーション版のパイロットを収録しています。単位数、算定要件、記録に残すこと、自己点検で見るポイントを、厚生労働省の根拠資料リンクつきで確認できます。",
     },
     {
         q: "月の途中で登録すると損しませんか？",
@@ -281,7 +295,7 @@ export default function JishutorePlusPage() {
                                 最後は専門職が確認し、対象者に合う内容へ調整できます。
                             </p>
                         </div>
-                        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
                             {features.map((feature, index) => (
                                 <article key={feature.title} className="rounded-lg border border-slate-200 bg-slate-50 p-5">
                                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
@@ -291,6 +305,53 @@ export default function JishutorePlusPage() {
                                     <p className="mt-2 text-sm leading-6 text-slate-600">{feature.body}</p>
                                 </article>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="border-y border-slate-200 bg-slate-50 py-14 sm:py-20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
+                            <div>
+                                <p className="text-xs font-bold tracking-widest text-blue-700">NEW CONTENT</p>
+                                <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
+                                    報酬算定チェックもPlusに追加しました
+                                </h2>
+                                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                                    訪問リハビリテーション版から、単位数・算定要件・記録に残すこと・自己点検で見るポイントを整理しています。
+                                    厚生労働省の告示・通知・疑義解釈へたどれる根拠リンクつきです。
+                                </p>
+                                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                                    <Link
+                                        href="/plus/fee-check/"
+                                        className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700"
+                                    >
+                                        会員ページで確認する
+                                    </Link>
+                                    <Link
+                                        href="#faq"
+                                        className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-700"
+                                    >
+                                        よくある質問を見る
+                                    </Link>
+                                </div>
+                                <p className="mt-3 text-xs leading-6 text-slate-500">
+                                    ※ 個別ケースの算定可否を断定するものではありません。実際の請求では原本と保険者・地方厚生局の確認を優先してください。
+                                </p>
+                            </div>
+                            <div className="grid gap-3 sm:grid-cols-2">
+                                {[
+                                    ["単位数・点数", "区分ごとの単位数や点数を表で確認"],
+                                    ["算定要件", "誰が、いつ、何を行う必要があるかを整理"],
+                                    ["記録に残すこと", "計画書・同意・指示・実施記録の抜けを確認"],
+                                    ["根拠資料リンク", "厚生労働省PDFや告示ページへ直接アクセス"],
+                                ].map(([title, body]) => (
+                                    <article key={title} className="rounded-lg border border-blue-100 bg-white p-5 shadow-sm">
+                                        <h3 className="text-base font-black text-blue-950">{title}</h3>
+                                        <p className="mt-2 text-sm leading-6 text-slate-600">{body}</p>
+                                    </article>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -375,7 +436,7 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="border-t border-slate-200 bg-slate-50 py-14 sm:py-20">
+                <section id="faq" className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <p className="text-xs font-bold tracking-widest text-blue-700">FAQ</p>
