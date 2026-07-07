@@ -339,6 +339,23 @@ export function PlusLibrary() {
                         </form>
                     </div>
                 </div>
+                <nav className="border-t border-slate-100 px-4 py-2 sm:hidden" aria-label="Plus内メニュー">
+                    <div className="mx-auto flex max-w-7xl gap-2">
+                        <a
+                            href="/plus/library/"
+                            aria-current="page"
+                            className="flex flex-1 items-center justify-center rounded-full bg-blue-600 px-3 py-2 text-xs font-black text-white"
+                        >
+                            資料庫
+                        </a>
+                        <a
+                            href="/plus/fee-check/"
+                            className="flex flex-1 items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-black text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
+                        >
+                            報酬算定チェック
+                        </a>
+                    </div>
+                </nav>
             </header>
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">
