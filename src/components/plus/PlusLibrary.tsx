@@ -306,6 +306,12 @@ export function PlusLibrary() {
                         </p>
                     </div>
                     <div className="ml-auto flex flex-shrink-0 items-center gap-2">
+                        <a
+                            href="/plus/fee-check/"
+                            className="hidden items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100 sm:flex"
+                        >
+                            報酬算定チェック
+                        </a>
                         <button
                             type="button"
                             onClick={() => setGuideOpen(true)}

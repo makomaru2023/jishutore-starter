@@ -8,13 +8,19 @@ const SLIDE_COOKIE_NAME = "slide_prompt_access";
 
 // --- 自主トレ素材庫Plus 会員ページ ---
 const PLUS_LIBRARY_PATH = "/plus/library";
+const PLUS_FEE_CHECK_PATH = "/plus/fee-check";
 const PLUS_LOGIN_PATH = "/plus/login";
 
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
     // === Plus 資料庫のゲート ===
-    if (pathname === PLUS_LIBRARY_PATH || pathname.startsWith(`${PLUS_LIBRARY_PATH}/`)) {
+    if (
+        pathname === PLUS_LIBRARY_PATH ||
+        pathname.startsWith(`${PLUS_LIBRARY_PATH}/`) ||
+        pathname === PLUS_FEE_CHECK_PATH ||
+        pathname.startsWith(`${PLUS_FEE_CHECK_PATH}/`)
+    ) {
         const token = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
         const session = token ? await verifySessionToken(token) : null;
         if (session) {
@@ -46,5 +52,7 @@ export const config = {
         "/member/slide-prompt-generator/:path*",
         "/plus/library",
         "/plus/library/:path*",
+        "/plus/fee-check",
+        "/plus/fee-check/:path*",
     ],
 };
