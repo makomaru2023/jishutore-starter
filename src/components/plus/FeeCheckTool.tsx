@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import feeDataJson from "@/data/fee-items/homon-riha.json";
 import tsushoRihaDataJson from "@/data/fee-items/tsusho-riha.json";
 import rokenNyushoDataJson from "@/data/fee-items/roken-nyusho.json";
+import homonKangoRihaDataJson from "@/data/fee-items/homon-kango-riha.json";
 
 type FeeInsurance = "care" | "medical";
 type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
@@ -55,7 +56,7 @@ type FeeDomain = {
     items: FeeItem[];
 };
 
-const feeDomains = [feeDataJson, tsushoRihaDataJson, rokenNyushoDataJson] as FeeDomain[];
+const feeDomains = [feeDataJson, tsushoRihaDataJson, rokenNyushoDataJson, homonKangoRihaDataJson] as FeeDomain[];
 type FeeDomainId = FeeDomain["domain"];
 
 const ALL = "all";
