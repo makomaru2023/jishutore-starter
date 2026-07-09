@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import feeDataJson from "@/data/fee-items/homon-riha.json";
 import tsushoRihaDataJson from "@/data/fee-items/tsusho-riha.json";
@@ -101,18 +102,86 @@ const PrintIcon = () => (
     </svg>
 );
 
-const SectionList = ({ title, items }: { title: string; items: string[] }) => (
-    <section className="min-w-0">
-        <h4 className="text-sm font-black text-slate-900">{title}</h4>
-        <ul className="mt-2 space-y-1.5">
-            {items.map((item, index) => (
-                <li key={`${title}-${index}`} className="flex gap-2 text-sm leading-6 text-slate-700">
-                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-500" />
-                    <span>{item}</span>
-                </li>
-            ))}
-        </ul>
-    </section>
+const SectionShell = ({
+    title,
+    children,
+    defaultOpen = false,
+    className = "",
+}: {
+    title: string;
+    children: ReactNode;
+    defaultOpen?: boolean;
+    className?: string;
+}) => (
+    <>
+        <details
+            open={defaultOpen}
+            className={`group rounded-lg border border-slate-200 bg-white p-4 md:hidden print:hidden ${className}`}
+        >
+            <summary className="cursor-pointer list-none text-sm font-black text-slate-900 break-keep marker:hidden">
+                <span className="inline-flex w-full items-center justify-between gap-3">
+                    {title}
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs text-slate-500 group-open:rotate-180">
+                        ˅
+                    </span>
+                </span>
+            </summary>
+            <div className="mt-3">{children}</div>
+        </details>
+        <section className={`hidden rounded-lg border border-slate-200 bg-white p-4 md:block print:block print:border-slate-300 ${className}`}>
+            <h4 className="text-sm font-black text-slate-900 break-keep">{title}</h4>
+            <div className="mt-3">{children}</div>
+        </section>
+    </>
+);
+
+const RequirementsList = ({ items }: { items: string[] }) => (
+    <ol className="max-w-prose list-decimal space-y-2 pl-5">
+        {items.map((item, index) => (
+            <li key={`requirement-${index}`} className="pl-1 text-sm leading-7 text-slate-700">
+                {item}
+            </li>
+        ))}
+    </ol>
+);
+
+const RecordsList = ({ items }: { items: string[] }) => (
+    <ul className="max-w-prose space-y-2">
+        {items.map((item, index) => (
+            <li key={`record-${index}`} className="flex gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm leading-6 text-slate-700">
+                <span className="mt-0.5 flex-shrink-0" aria-hidden="true">
+                    📋
+                </span>
+                <span>{item}</span>
+            </li>
+        ))}
+    </ul>
+);
+
+const AuditList = ({ items }: { items: string[] }) => (
+    <ul className="max-w-prose space-y-2">
+        {items.map((item, index) => (
+            <li key={`audit-${index}`} className="flex gap-2 text-sm leading-6 text-slate-700">
+                <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border border-blue-300 bg-white text-xs font-black text-blue-700">
+                    □
+                </span>
+                <span>{item}</span>
+            </li>
+        ))}
+    </ul>
+);
+
+const PitfallsList = ({ items }: { items: string[] }) => (
+    <ul className="max-w-prose space-y-2">
+        {items.map((item, index) => (
+            <li key={`pitfall-${index}`} className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm leading-6 text-amber-950">
+                <span className="mr-1 font-black" aria-hidden="true">
+                    ⚠
+                </span>
+                {item}
+            </li>
+        ))}
+    </ul>
 );
 
 const FeeCard = ({ item, disclaimer }: { item: FeeItem; disclaimer: string }) => (
@@ -147,32 +216,51 @@ const FeeCard = ({ item, disclaimer }: { item: FeeItem; disclaimer: string }) =>
             </p>
         </div>
 
-        <div className="mt-5 overflow-hidden rounded-lg border border-slate-200">
-            <table className="w-full text-left text-sm">
-                <thead className="bg-slate-100 text-xs font-black text-slate-600">
-                    <tr>
-                        <th className="w-[36%] px-3 py-2">区分</th>
-                        <th className="w-[24%] px-3 py-2">単位数・点数</th>
-                        <th className="px-3 py-2">補足</th>
-                    </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                    {item.units.map((unit, index) => (
-                        <tr key={`${item.id}-unit-${index}`}>
-                            <td className="px-3 py-3 font-bold text-slate-800">{unit.condition}</td>
-                            <td className="px-3 py-3 text-base font-black text-blue-800">{unit.value}</td>
-                            <td className="px-3 py-3 leading-6 text-slate-600">{unit.note || "—"}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+        <div className="mt-5 space-y-4">
+            <SectionShell title="単位数・点数" defaultOpen>
+                <div className="overflow-hidden rounded-lg border border-slate-200">
+                    <table className="w-full text-left text-sm">
+                        <thead className="bg-slate-100 text-xs font-black text-slate-600">
+                            <tr>
+                                <th className="w-[36%] px-3 py-2">区分</th>
+                                <th className="w-[24%] px-3 py-2">単位数・点数</th>
+                                <th className="px-3 py-2">補足</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                            {item.units.map((unit, index) => (
+                                <tr key={`${item.id}-unit-${index}`}>
+                                    <td className="px-3 py-3 font-bold text-slate-800">{unit.condition}</td>
+                                    <td className="px-3 py-3 text-base font-black text-blue-800">{unit.value}</td>
+                                    <td className="px-3 py-3 leading-6 text-slate-600">{unit.note || "—"}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </SectionShell>
 
-        <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            <SectionList title="算定要件" items={item.requirements} />
-            <SectionList title="記録に残すこと" items={item.records} />
-            <SectionList title="自己点検で見るポイント" items={item.auditPoints} />
-            {item.pitfalls && item.pitfalls.length > 0 && <SectionList title="つまずきやすい点" items={item.pitfalls} />}
+            <SectionShell title="算定要件" defaultOpen>
+                <RequirementsList items={item.requirements} />
+            </SectionShell>
+
+            <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm font-black text-blue-900 break-keep">
+                🔒 ここからはPlus限定（記録・自己点検のコア部分）
+            </div>
+
+            <SectionShell title="記録に残すこと" className="border-blue-100 bg-blue-50/40">
+                <RecordsList items={item.records} />
+            </SectionShell>
+
+            <SectionShell title="自己点検で見るポイント" className="border-blue-100 bg-white">
+                <AuditList items={item.auditPoints} />
+            </SectionShell>
+
+            {item.pitfalls && item.pitfalls.length > 0 && (
+                <SectionShell title="つまずきやすい点" className="border-amber-200 bg-amber-50/30">
+                    <PitfallsList items={item.pitfalls} />
+                </SectionShell>
+            )}
         </div>
 
         {(item.relatedQA?.length || item.sources.length) && (
