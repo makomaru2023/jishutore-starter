@@ -8,16 +8,21 @@ import { Header } from "@/components/Header";
 import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
+import homonRihaData from "@/data/fee-items/homon-riha.json";
+import tsushoRihaData from "@/data/fee-items/tsusho-riha.json";
+import rokenNyushoData from "@/data/fee-items/roken-nyusho.json";
+import homonKangoRihaData from "@/data/fee-items/homon-kango-riha.json";
+import kaifukukiRihaData from "@/data/fee-items/kaifukuki-riha.json";
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
 const OG_TITLE = "自主トレ素材庫Plus｜月額500円〜";
 const OG_DESCRIPTION =
-    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替え。診療・介護報酬チェックも順次追加中です。";
+    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替え。診療・介護報酬チェックも一部無料公開に向けて整備中です。";
 
 export const metadata: Metadata = {
     title: "自主トレ素材庫Plus｜編集できるPowerPoint素材｜月額500円〜",
-    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の診療・介護報酬チェックも追加。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
+    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の診療・介護報酬チェック（一部無料公開に向けて整備中）も追加。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -81,6 +86,15 @@ const plusEvidenceAssets = {
     hasSample: hasPlusAsset("sample.pptx"),
 };
 
+const feeDomains = [homonRihaData, tsushoRihaData, rokenNyushoData, homonKangoRihaData, kaifukukiRihaData] as const;
+
+const feeCheckItemCount = feeDomains.reduce((total, domain) => total + domain.items.length, 0);
+
+const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel);
+
+const feeCheckSampleItem = homonRihaData.items.find((item) => item.id === "homon-riha-tanki-shuchu") ?? homonRihaData.items[0];
+const feeCheckSampleUnit = feeCheckSampleItem.units[0];
+
 const features = [
     {
         title: `${PLUS_SLIDE_COUNT}点から選べる（毎月追加中）`,
@@ -143,9 +157,9 @@ const comparisonRows = [
     },
     {
         label: "報酬チェック",
-        free: "―",
+        free: "単位数・算定要件・根拠リンク（一部無料公開予定）",
         set: "―",
-        plus: "訪問リハ・通所リハ・老健・訪問看護・回復期対応",
+        plus: "記録・自己点検ポイント・改定差分・印刷まで全項目",
     },
     {
         label: "解約後のファイル利用",
@@ -201,7 +215,7 @@ const faqs: { q: string; a: string }[] = [
     },
     {
         q: "診療・介護報酬チェックは何ができますか？",
-        a: "訪問リハビリテーション・通所リハビリテーション・介護老人保健施設（老健）・訪問看護からのリハ（理学療法士等訪問）・回復期リハビリテーション病棟の単位数や点数、算定要件、記録に残すことを、厚生労働省の根拠資料リンクつきで確認できます。",
+        a: "訪問リハビリテーション・通所リハビリテーション・介護老人保健施設（老健）・訪問看護からのリハ（理学療法士等訪問）・回復期リハビリテーション病棟の単位数や点数、算定要件、記録に残すこと、自己点検で見るポイントを、厚生労働省の根拠資料リンクつきで確認できます。今後は単位数・算定要件・根拠リンクの一部を無料公開し、記録・自己点検ポイントはPlusで見られる形へ整備予定です。",
     },
     {
         q: "月の途中で登録すると損しませんか？",
@@ -309,28 +323,111 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="border-y border-blue-100 bg-blue-50/50 py-8 sm:py-10">
-                    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <div className="flex flex-col gap-4 rounded-lg border border-blue-100 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+                <section className="border-y border-blue-100 bg-blue-50/60 py-14 sm:py-20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
                             <div className="min-w-0">
-                                <p className="text-[11px] font-bold tracking-widest text-blue-700">NEW</p>
-                                <h2 className="mt-1 text-lg font-black leading-tight text-slate-950 sm:text-xl">
-                                    診療・介護報酬チェックも追加しました
+                                <p className="text-xs font-bold tracking-widest text-blue-700">報酬チェック</p>
+                                <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
+                                    単位数だけでなく、記録と自己点検まで確認できます
                                 </h2>
-                                <p className="mt-2 text-sm leading-6 text-slate-600">
-                                    訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の単位数・点数・記録に残すことを確認できます。
+                                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                                    厚生労働省の告示・通知・疑義解釈を一次資料から整理。
+                                    算定要件に加えて、記録に残すこと、実地指導・自己点検で見られるポイント、
+                                    つまずきやすい点まで同じ形式で確認できます。
+                                </p>
+                                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                                    <div className="rounded-lg border border-blue-100 bg-white p-4">
+                                        <p className="text-xs font-bold text-blue-700">対応分野</p>
+                                        <p className="mt-1 text-2xl font-black text-slate-950">{feeDomains.length}分野</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-500">
+                                            {feeCheckDomainLabels.join("・")}
+                                        </p>
+                                    </div>
+                                    <div className="rounded-lg border border-blue-100 bg-white p-4">
+                                        <p className="text-xs font-bold text-blue-700">収載項目</p>
+                                        <p className="mt-1 text-2xl font-black text-slate-950">{feeCheckItemCount}項目</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-500">
+                                            単位数・算定要件・根拠リンク・記録・自己点検ポイントを整理しています。
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                                    <Link
+                                        href="/plus/fee-check/"
+                                        className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 sm:w-auto"
+                                    >
+                                        会員ページで見る
+                                    </Link>
+                                    <Link
+                                        href="#comparison"
+                                        className="inline-flex w-full items-center justify-center rounded-lg border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
+                                    >
+                                        無料公開予定の範囲を見る
+                                    </Link>
+                                </div>
+                                <p className="mt-4 text-xs leading-6 text-slate-500">
+                                    ※ 個別ケースの可否を断定するものではありません。実際の請求では原本と保険者・地方厚生局の確認を優先してください。
                                 </p>
                             </div>
-                            <Link
-                                href="/plus/fee-check/"
-                                className="inline-flex flex-shrink-0 items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700"
-                            >
-                                会員ページで見る
-                            </Link>
+
+                            <div className="rounded-lg border border-blue-100 bg-white p-4 shadow-sm sm:p-5">
+                                <div className="flex flex-wrap items-center gap-2">
+                                    <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-black text-blue-800">
+                                        介護保険
+                                    </span>
+                                    <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-black text-amber-800">
+                                        加算
+                                    </span>
+                                    <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-black text-slate-600">
+                                        原本確認済
+                                    </span>
+                                </div>
+                                <h3 className="mt-3 text-lg font-black leading-snug text-slate-950">
+                                    {feeCheckSampleItem.name}
+                                </h3>
+                                <div className="mt-4 overflow-hidden rounded-lg border border-slate-200">
+                                    <div className="grid grid-cols-[1fr_110px] border-b border-slate-100 bg-slate-100 text-xs font-black text-slate-600">
+                                        <span className="px-3 py-2">区分</span>
+                                        <span className="px-3 py-2">単位数</span>
+                                    </div>
+                                    <div className="grid grid-cols-[1fr_110px] text-sm">
+                                        <span className="px-3 py-3 font-bold text-slate-800">{feeCheckSampleUnit.condition}</span>
+                                        <span className="px-3 py-3 font-black text-blue-800">{feeCheckSampleUnit.value}</span>
+                                    </div>
+                                </div>
+                                <div className="mt-4 space-y-3">
+                                    <div className="rounded-lg border border-slate-200 bg-white p-3">
+                                        <p className="text-sm font-black text-slate-900">算定要件</p>
+                                        <ol className="mt-2 list-decimal space-y-1.5 pl-5 text-sm leading-6 text-slate-700">
+                                            <li>対象期間と起算日を確認する</li>
+                                            <li>リハビリテーション計画を作成する</li>
+                                        </ol>
+                                    </div>
+                                    <div className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-black text-blue-900">
+                                        🔒 ここからはPlus限定（記録・自己点検のコア部分）
+                                    </div>
+                                    <div className="rounded-lg border border-blue-100 bg-blue-50/40 p-3">
+                                        <p className="text-sm font-black text-slate-900">記録に残すこと</p>
+                                        <p className="mt-2 rounded-md bg-white px-3 py-2 text-sm leading-6 text-slate-700">
+                                            📋 起算日、実施日、計画内容、説明記録を確認できる形で残す。
+                                        </p>
+                                    </div>
+                                    <div className="rounded-lg border border-slate-200 bg-white p-3">
+                                        <p className="text-sm font-black text-slate-900">自己点検で見るポイント</p>
+                                        <p className="mt-2 flex gap-2 text-sm leading-6 text-slate-700">
+                                            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border border-blue-300 bg-white text-xs font-black text-blue-700">
+                                                □
+                                            </span>
+                                            算定期間と実施記録が一致しているか。
+                                        </p>
+                                    </div>
+                                    <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm leading-6 text-amber-950">
+                                        ⚠ 加算名が似ている項目との取り違えに注意。
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p className="mt-3 text-xs leading-6 text-slate-500">
-                            ※ 個別ケースの可否を断定するものではありません。実際の請求では原本と保険者・地方厚生局の確認を優先してください。
-                        </p>
                     </div>
                 </section>
 
