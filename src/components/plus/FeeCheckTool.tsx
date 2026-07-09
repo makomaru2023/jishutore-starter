@@ -2,87 +2,19 @@
 
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
-import feeDataJson from "@/data/fee-items/homon-riha.json";
-import tsushoRihaDataJson from "@/data/fee-items/tsusho-riha.json";
-import rokenNyushoDataJson from "@/data/fee-items/roken-nyusho.json";
-import homonKangoRihaDataJson from "@/data/fee-items/homon-kango-riha.json";
-import kaifukukiRihaDataJson from "@/data/fee-items/kaifukuki-riha.json";
-
-type FeeInsurance = "care" | "medical";
-type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
-
-type FeeUnit = {
-    condition: string;
-    value: string;
-    note?: string;
-};
-
-type FeeSource = {
-    label: string;
-    url: string;
-    page?: string;
-};
-
-type RelatedQA = {
-    label: string;
-    url: string;
-};
-
-type FeeItem = {
-    id: string;
-    insurance: FeeInsurance;
-    category: FeeCategory;
-    name: string;
-    units: FeeUnit[];
-    requirements: string[];
-    records: string[];
-    auditPoints: string[];
-    pitfalls?: string[];
-    relatedQA?: RelatedQA[];
-    sources: FeeSource[];
-    lastVerified: string;
-    changedInLastRevision?: boolean;
-    changeSummary?: string;
-    verificationLevel?: string;
-};
-
-type FeeDomain = {
-    schemaVersion: number;
-    domain: string;
-    domainLabel: string;
-    revision: {
-        care: string;
-        medical: string;
-    };
-    disclaimer: string;
-    items: FeeItem[];
-};
-
-const feeDomains = [feeDataJson, tsushoRihaDataJson, rokenNyushoDataJson, homonKangoRihaDataJson, kaifukukiRihaDataJson] as FeeDomain[];
-type FeeDomainId = FeeDomain["domain"];
+import {
+    categoryLabels,
+    categoryStyles,
+    feeDomains,
+    insuranceLabels,
+    normalizeFeeText,
+    type FeeCategory,
+    type FeeDomainId,
+    type FeeInsurance,
+    type FeeItem,
+} from "@/lib/fee-check";
 
 const ALL = "all";
-
-const insuranceLabels: Record<FeeInsurance, string> = {
-    care: "介護保険",
-    medical: "医療保険",
-};
-
-const categoryLabels: Record<FeeCategory, string> = {
-    kihon: "基本報酬",
-    kasan: "加算",
-    gensan: "減算",
-    rule: "ルール",
-};
-
-const categoryStyles: Record<FeeCategory, string> = {
-    kihon: "border-blue-200 bg-blue-50 text-blue-800",
-    kasan: "border-amber-200 bg-amber-50 text-amber-800",
-    gensan: "border-rose-200 bg-rose-50 text-rose-800",
-    rule: "border-slate-200 bg-slate-100 text-slate-700",
-};
-
-const normalize = (value: string) => value.normalize("NFKC").toLowerCase();
 
 const SearchIcon = () => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5" aria-hidden="true">
@@ -338,13 +270,13 @@ export function FeeCheckTool() {
     };
 
     const filteredItems = useMemo(() => {
-        const q = normalize(query.trim());
+        const q = normalizeFeeText(query.trim());
         return activeFeeData.items.filter((item) => {
             if (insurance !== ALL && item.insurance !== insurance) return false;
             if (category !== ALL && item.category !== category) return false;
             if (changedOnly && !item.changedInLastRevision) return false;
             if (!q) return true;
-            const haystack = normalize(
+            const haystack = normalizeFeeText(
                 [
                     item.name,
                     item.units.map((u) => `${u.condition} ${u.value} ${u.note || ""}`).join(" "),

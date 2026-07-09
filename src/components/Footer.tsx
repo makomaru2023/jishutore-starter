@@ -12,6 +12,9 @@ export function Footer() {
                         <Link href="/products" className="hover:text-white transition-colors">
                             資料セット
                         </Link>
+                        <Link href="/fee-check" className="hover:text-white transition-colors">
+                            報酬チェック
+                        </Link>
                         <Link href="/faq" className="hover:text-white transition-colors">
                             よくあるご質問
                         </Link>

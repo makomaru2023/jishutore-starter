@@ -7,6 +7,7 @@ import { LineHero } from "@/components/LineHero";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { PlusAnnouncementBar } from "@/components/PlusAnnouncementBar";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
+import { feeDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from "@/lib/fee-check";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const feeCheckTotalCount = getFeeCheckTotalCount();
+  const firstSampleDomain = feeDomains[0];
+  const firstSampleId = sampleFeeItems[firstSampleDomain.domain];
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -102,6 +106,54 @@ export default function Home() {
 
         {/* Category Navigation Section */}
         <HomeCategoryNav />
+
+        <section className="bg-white py-14 sm:py-20">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-5xl">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="text-xs font-black tracking-widest text-blue-700">算定要件チェック（無料公開中）</p>
+                  <h2 className="mt-3 break-keep text-2xl font-black text-slate-900 sm:text-3xl">
+                    診療・介護報酬の単位数・要件も確認できます
+                  </h2>
+                  <p className="mt-4 max-w-2xl break-keep text-sm leading-7 text-slate-600 sm:text-base">
+                    訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の
+                    {feeCheckTotalCount}項目を整理しています。
+                    単位数・算定要件・根拠リンクは無料、記録・自己点検ポイントはPlusで確認できます。
+                  </p>
+                </div>
+                <Link
+                  href="/fee-check/"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 text-sm font-black text-white transition hover:bg-blue-800"
+                >
+                  報酬チェックを見る
+                </Link>
+              </div>
+
+              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {feeDomains.map((domain) => (
+                  <Link
+                    key={domain.domain}
+                    href={`/fee-check/${domain.domain}/`}
+                    className="rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-blue-300 hover:bg-blue-50"
+                  >
+                    <p className="break-keep text-sm font-black leading-6 text-slate-900">{domain.domainLabel}</p>
+                    <p className="mt-2 text-xs font-bold text-slate-500">{domain.items.length}項目</p>
+                  </Link>
+                ))}
+              </div>
+
+              {firstSampleId && (
+                <Link
+                  href={getFeeItemUrl(firstSampleDomain.domain, firstSampleId)}
+                  className="mt-5 inline-flex text-sm font-black text-blue-700 hover:underline"
+                >
+                  全文公開サンプルを見る
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
 
         {/* How To Use 3 Steps Section */}
         <HomeHowTo />

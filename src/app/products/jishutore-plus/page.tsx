@@ -8,21 +8,17 @@ import { Header } from "@/components/Header";
 import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
-import homonRihaData from "@/data/fee-items/homon-riha.json";
-import tsushoRihaData from "@/data/fee-items/tsusho-riha.json";
-import rokenNyushoData from "@/data/fee-items/roken-nyusho.json";
-import homonKangoRihaData from "@/data/fee-items/homon-kango-riha.json";
-import kaifukukiRihaData from "@/data/fee-items/kaifukuki-riha.json";
+import { feeDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from "@/lib/fee-check";
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
 const OG_TITLE = "自主トレ素材庫Plus｜月額500円〜";
 const OG_DESCRIPTION =
-    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替え。診療・介護報酬チェックも一部無料公開に向けて整備中です。";
+    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替え。診療・介護報酬チェックも一部無料公開中です。";
 
 export const metadata: Metadata = {
     title: "自主トレ素材庫Plus｜編集できるPowerPoint素材｜月額500円〜",
-    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の診療・介護報酬チェック（一部無料公開に向けて整備中）も追加。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
+    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の診療・介護報酬チェック（一部無料公開中）も追加。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -86,13 +82,13 @@ const plusEvidenceAssets = {
     hasSample: hasPlusAsset("sample.pptx"),
 };
 
-const feeDomains = [homonRihaData, tsushoRihaData, rokenNyushoData, homonKangoRihaData, kaifukukiRihaData] as const;
-
-const feeCheckItemCount = feeDomains.reduce((total, domain) => total + domain.items.length, 0);
+const feeCheckItemCount = getFeeCheckTotalCount();
 
 const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel);
 
-const feeCheckSampleItem = homonRihaData.items.find((item) => item.id === "homon-riha-tanki-shuchu") ?? homonRihaData.items[0];
+const feeCheckSampleDomain = feeDomains.find((domain) => domain.domain === "homon-riha") ?? feeDomains[0];
+const feeCheckSampleItem =
+    feeCheckSampleDomain.items.find((item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain]) ?? feeCheckSampleDomain.items[0];
 const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
 const features = [
@@ -157,7 +153,7 @@ const comparisonRows = [
     },
     {
         label: "報酬チェック",
-        free: "単位数・算定要件・根拠リンク（一部無料公開予定）",
+        free: "単位数・算定要件・根拠リンク（一部無料公開中）",
         set: "―",
         plus: "記録・自己点検ポイント・改定差分・印刷まで全項目",
     },
@@ -215,7 +211,7 @@ const faqs: { q: string; a: string }[] = [
     },
     {
         q: "診療・介護報酬チェックは何ができますか？",
-        a: "訪問リハビリテーション・通所リハビリテーション・介護老人保健施設（老健）・訪問看護からのリハ（理学療法士等訪問）・回復期リハビリテーション病棟の単位数や点数、算定要件、記録に残すこと、自己点検で見るポイントを、厚生労働省の根拠資料リンクつきで確認できます。今後は単位数・算定要件・根拠リンクの一部を無料公開し、記録・自己点検ポイントはPlusで見られる形へ整備予定です。",
+        a: "訪問リハビリテーション・通所リハビリテーション・介護老人保健施設（老健）・訪問看護からのリハ（理学療法士等訪問）・回復期リハビリテーション病棟の単位数や点数、算定要件、根拠資料リンクを一部無料公開しています。記録に残すこと、自己点検で見るポイント、つまずきやすい点はPlusで確認できます。",
     },
     {
         q: "月の途中で登録すると損しませんか？",
@@ -354,16 +350,16 @@ export default function JishutorePlusPage() {
                                 </div>
                                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                                     <Link
-                                        href="/plus/fee-check/"
+                                        href="/fee-check/"
                                         className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 sm:w-auto"
                                     >
-                                        会員ページで見る
+                                        無料版を見る
                                     </Link>
                                     <Link
-                                        href="#comparison"
+                                        href={getFeeItemUrl(feeCheckSampleDomain.domain, feeCheckSampleItem.id)}
                                         className="inline-flex w-full items-center justify-center rounded-lg border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
                                     >
-                                        無料公開予定の範囲を見る
+                                        全文サンプルを見る
                                     </Link>
                                 </div>
                                 <p className="mt-4 text-xs leading-6 text-slate-500">

@@ -14,12 +14,17 @@ const PLUS_LOGIN_PATH = "/plus/login";
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
+    if (pathname === PLUS_FEE_CHECK_PATH || pathname.startsWith(`${PLUS_FEE_CHECK_PATH}/`)) {
+        const feeCheckUrl = req.nextUrl.clone();
+        feeCheckUrl.pathname = pathname.replace(PLUS_FEE_CHECK_PATH, "/fee-check");
+        feeCheckUrl.search = req.nextUrl.search;
+        return NextResponse.redirect(feeCheckUrl, 301);
+    }
+
     // === Plus 資料庫のゲート ===
     if (
         pathname === PLUS_LIBRARY_PATH ||
-        pathname.startsWith(`${PLUS_LIBRARY_PATH}/`) ||
-        pathname === PLUS_FEE_CHECK_PATH ||
-        pathname.startsWith(`${PLUS_FEE_CHECK_PATH}/`)
+        pathname.startsWith(`${PLUS_LIBRARY_PATH}/`)
     ) {
         const token = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
         const session = token ? await verifySessionToken(token) : null;

@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getItems } from '@/lib/items'
+import { feeDomains, getAllFeeItems } from '@/lib/fee-check'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://jishutore-sozaiko.online'
@@ -10,6 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
+    }))
+    const feeDomainUrls = feeDomains.map((domain) => ({
+        url: `${baseUrl}/fee-check/${domain.domain}/`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+    }))
+    const feeItemUrls = getAllFeeItems().map(({ domain, item }) => ({
+        url: `${baseUrl}/fee-check/${domain.domain}/${item.id}/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
     }))
 
     return [
@@ -104,6 +117,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${baseUrl}/fee-check/`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.9,
+        },
+        {
             url: `${baseUrl}/products/day-service-exercise-pack/`,
             lastModified: new Date(),
             changeFrequency: 'weekly' as const,
@@ -116,5 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.5,
         },
         ...itemUrls,
+        ...feeDomainUrls,
+        ...feeItemUrls,
     ]
 }
