@@ -30,6 +30,8 @@ const PRODUCT_NAME_BY_ID: Record<string, string> = {
     "slide-prompt-generator": "伝わるプロンプト工房（スライド画像生成）",
 };
 
+const PURCHASE_SURVEY_URL = "https://forms.gle/NkuUY7tB8kwNZiYh7";
+
 /** アクセス権付与型の商品（ZIPダウンロードではなくサイト内ツールへの入場権） */
 const ACCESS_ONLY_PRODUCT_IDS = new Set(["slide-prompt-generator"]);
 
@@ -315,6 +317,8 @@ function OkBody({
                 </p>
             )}
 
+            <PurchaseSurveyCard />
+
             <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-4">
                 <p className="text-xs leading-relaxed text-amber-800 break-keep">
                     ダウンロードURLの共有、資料データそのものの再配布はご遠慮ください。
@@ -322,6 +326,37 @@ function OkBody({
                 </p>
             </div>
         </>
+    );
+}
+
+function PurchaseSurveyCard() {
+    return (
+        <div className="mt-6 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm shadow-blue-100/60">
+            <p className="text-xs font-black tracking-widest text-blue-700">
+                任意アンケート
+            </p>
+            <h2 className="mt-2 text-lg font-black tracking-tight text-slate-900">
+                使い心地を教えていただけると助かります
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 break-keep">
+                今後の資料改善や新作づくりの参考にするため、購入者向けの簡単なアンケートを用意しています。
+                回答は任意で、1〜2分ほどで終わります。まだ使っていない場合は、実際に使ってからの回答で大丈夫です。
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-slate-500 break-keep">
+                患者さん個人が特定される情報や、個別の医療相談は入力しないでください。
+            </p>
+            <a
+                href={PURCHASE_SURVEY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
+            >
+                使い心地アンケートに回答する
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.3} stroke="currentColor" className="h-4 w-4" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5H19.5M19.5 4.5V10.5M19.5 4.5 10.5 13.5M6 6.75H4.5A1.5 1.5 0 0 0 3 8.25v11.25A1.5 1.5 0 0 0 4.5 21h11.25a1.5 1.5 0 0 0 1.5-1.5V18" />
+                </svg>
+            </a>
+        </div>
     );
 }
 
