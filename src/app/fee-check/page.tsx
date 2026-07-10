@@ -20,10 +20,19 @@ export const metadata: Metadata = {
     },
 };
 
+// これ未満の項目数の分野は「準備中・第1弾公開」として、完成分野と視覚的に区別する。
+const DOMAIN_READY_THRESHOLD = 5;
+
 export default function FeeCheckTopPage() {
     const totalCount = getFeeCheckTotalCount();
     const samples = getSampleFeeItems();
     const domainLabels = feeDomains.map((domain) => domain.domainLabel).join("・");
+    // 完成分野を先に、準備中（項目数が少ない）分野を末尾に並べる。
+    const orderedDomains = [...feeDomains].sort(
+        (a, b) =>
+            Number(a.items.length < DOMAIN_READY_THRESHOLD) -
+            Number(b.items.length < DOMAIN_READY_THRESHOLD),
+    );
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
@@ -69,7 +78,8 @@ export default function FeeCheckTopPage() {
                             </div>
 
                             <div className="mt-6 grid gap-4 md:grid-cols-2">
-                                {feeDomains.map((domain) => {
+                                {orderedDomains.map((domain) => {
+                                    const isPreparing = domain.items.length < DOMAIN_READY_THRESHOLD;
                                     const categoryCounts = domain.items.reduce<Record<string, number>>((counts, item) => {
                                         counts[item.category] = (counts[item.category] ?? 0) + 1;
                                         return counts;
@@ -78,16 +88,33 @@ export default function FeeCheckTopPage() {
                                         <Link
                                             key={domain.domain}
                                             href={getDomainUrl(domain.domain)}
-                                            className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+                                            className={`rounded-lg border p-5 shadow-sm transition hover:shadow-md ${
+                                                isPreparing
+                                                    ? "border-dashed border-slate-300 bg-slate-50 hover:border-slate-400"
+                                                    : "border-slate-200 bg-white hover:border-blue-300"
+                                            }`}
                                         >
                                             <div className="flex items-start justify-between gap-4">
                                                 <div>
-                                                    <h3 className="break-keep text-lg font-black text-slate-950">{domain.domainLabel}</h3>
+                                                    <div className="flex flex-wrap items-center gap-2">
+                                                        <h3 className="break-keep text-lg font-black text-slate-950">{domain.domainLabel}</h3>
+                                                        {isPreparing && (
+                                                            <span className="rounded-full border border-slate-300 bg-white px-2.5 py-0.5 text-xs font-black text-slate-500">
+                                                                準備中・第1弾公開
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                     <p className="mt-2 text-sm leading-6 text-slate-600">
-                                                        {domain.items.length}項目を掲載。単位数・算定要件・根拠資料を確認できます。
+                                                        {isPreparing
+                                                            ? `第1弾として${domain.items.length}項目を公開中。順次追加していきます。`
+                                                            : `${domain.items.length}項目を掲載。単位数・算定要件・根拠資料を確認できます。`}
                                                     </p>
                                                 </div>
-                                                <span className="rounded-full bg-blue-50 px-3 py-1 text-sm font-black text-blue-800">
+                                                <span
+                                                    className={`rounded-full px-3 py-1 text-sm font-black ${
+                                                        isPreparing ? "bg-slate-200 text-slate-500" : "bg-blue-50 text-blue-800"
+                                                    }`}
+                                                >
                                                     {domain.items.length}
                                                 </span>
                                             </div>

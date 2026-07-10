@@ -22,24 +22,16 @@ export function Header() {
                         無料素材
                     </Link>
 
-                    <Link href="/products" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        資料セット
-                    </Link>
-
-                    <Link href="/products/slide-prompt-generator" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        資料作成ツール
-                    </Link>
-
                     <Link href="/fee-check" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
                         報酬チェック
                     </Link>
 
-                    <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
-                        素材庫Plus
+                    <Link href="/products" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
+                        資料セット
                     </Link>
 
-                    <Link href="/sponsor" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        スポンサー募集
+                    <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
+                        素材庫Plus
                     </Link>
 
                     <Link href="/#line" onClick={() => trackLineClick('header')} className="ml-2 px-6 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-1.5 hover:scale-105 hover:shadow-lg hover:shadow-green-500/30" style={{ backgroundColor: '#06C755', color: '#fff' }}>
@@ -78,20 +70,6 @@ export function Header() {
                             無料素材
                         </Link>
                         <Link
-                            href="/products"
-                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
-                            onClick={closeMenu}
-                        >
-                            資料セット
-                        </Link>
-                        <Link
-                            href="/products/slide-prompt-generator"
-                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
-                            onClick={closeMenu}
-                        >
-                            資料作成ツール
-                        </Link>
-                        <Link
                             href="/fee-check"
                             className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
                             onClick={closeMenu}
@@ -99,18 +77,18 @@ export function Header() {
                             報酬チェック
                         </Link>
                         <Link
+                            href="/products"
+                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                            onClick={closeMenu}
+                        >
+                            資料セット
+                        </Link>
+                        <Link
                             href="/products/jishutore-plus"
                             className="block py-3 px-4 text-base font-bold text-teal-200 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
                             onClick={closeMenu}
                         >
                             素材庫Plus
-                        </Link>
-                        <Link
-                            href="/sponsor"
-                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
-                            onClick={closeMenu}
-                        >
-                            スポンサー募集
                         </Link>
                         <Link
                             href="/#line"
