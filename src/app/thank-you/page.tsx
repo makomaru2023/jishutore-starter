@@ -246,7 +246,7 @@ export default async function ThankYouPage({
                                 href="/products"
                                 className="rounded-full border border-slate-200 px-5 py-2.5 text-center text-sm font-bold text-slate-600 transition-colors hover:bg-slate-50"
                             >
-                                資料セットページへ戻る
+                                有料コンテンツ一覧へ戻る
                             </Link>
                         </div>
                     </div>

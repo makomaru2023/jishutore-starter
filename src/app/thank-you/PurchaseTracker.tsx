@@ -12,31 +12,50 @@ interface PurchaseTrackerProps {
 export function PurchaseTracker({ sessionId, productId, productName, value }: PurchaseTrackerProps) {
     useEffect(() => {
         if (!sessionId) return;
-        if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
-
-        // 二重計上の防止：同じ transaction_id では再送信しない。
-        // localStorage に記録し、リロード・再訪問しても発火は1回に保つ。
+        let attempts = 0;
+        let timer: ReturnType<typeof setTimeout> | undefined;
         const key = `purchase_tracked_${sessionId}`;
-        try {
-            if (localStorage.getItem(key)) return;
-            localStorage.setItem(key, '1');
-        } catch {
-            /* storage 不可環境では従来どおり送信（最悪でも稀に二重計上） */
-        }
 
-        window.gtag('event', 'purchase', {
-            transaction_id: sessionId,
-            value,
-            currency: 'JPY',
-            items: [
-                {
-                    item_id: productId,
-                    item_name: productName,
-                    price: value,
-                    quantity: 1,
-                },
-            ],
-        });
+        const sendPurchase = () => {
+            if (typeof window.gtag !== 'function') {
+                attempts += 1;
+                if (attempts < 20) timer = setTimeout(sendPurchase, 250);
+                return;
+            }
+
+            // 二重計上の防止：同じ transaction_id では再送信しない。
+            // GA送信前にタグの準備を待ち、送信後にだけ完了済みとして保存する。
+            try {
+                if (localStorage.getItem(key)) return;
+            } catch {
+                /* storage 不可環境では送信を継続する */
+            }
+
+            window.gtag('event', 'purchase', {
+                transaction_id: sessionId,
+                value,
+                currency: 'JPY',
+                items: [
+                    {
+                        item_id: productId,
+                        item_name: productName,
+                        price: value,
+                        quantity: 1,
+                    },
+                ],
+            });
+
+            try {
+                localStorage.setItem(key, '1');
+            } catch {
+                /* storage 不可環境では稀な二重計上を許容する */
+            }
+        };
+
+        sendPurchase();
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
     }, [sessionId, productId, productName, value]);
 
     return null;

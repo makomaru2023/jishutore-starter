@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FeeCheckGlobalSearch, type FeeCheckSearchEntry } from "@/components/fee-check/FeeCheckGlobalSearch";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import {
@@ -8,6 +9,7 @@ import {
     getDomainUrl,
     getFeeCheckTotalCount,
     getFeeItemUrl,
+    getPublicFeeSearchText,
     getSampleFeeItems,
 } from "@/lib/fee-check";
 
@@ -26,7 +28,19 @@ const DOMAIN_READY_THRESHOLD = 5;
 export default function FeeCheckTopPage() {
     const totalCount = getFeeCheckTotalCount();
     const samples = getSampleFeeItems();
-    const domainLabels = feeDomains.map((domain) => domain.domainLabel).join("・");
+    const searchEntries: FeeCheckSearchEntry[] = feeDomains.flatMap((domain) =>
+        domain.items.map((item) => ({
+            domain: domain.domain,
+            domainLabel: domain.domainLabel,
+            id: item.id,
+            name: item.name,
+            insurance: item.insurance,
+            category: item.category,
+            unitCondition: item.units[0]?.condition ?? "区分なし",
+            unitValue: item.units[0]?.value ?? "—",
+            searchText: getPublicFeeSearchText(item),
+        })),
+    );
     // 完成分野を先に、準備中（項目数が少ない）分野を末尾に並べる。
     const orderedDomains = [...feeDomains].sort(
         (a, b) =>
@@ -46,7 +60,7 @@ export default function FeeCheckTopPage() {
                                 算定要件・単位数を、根拠リンクつきで確認できます
                             </h1>
                             <p className="mx-auto mt-4 max-w-3xl break-keep text-sm leading-7 text-slate-600 sm:text-base">
-                                {domainLabels}の主要項目を整理しています。
+                                介護保険・医療保険の全{feeDomains.length}分野を整理しています。
                                 単位数・算定要件・根拠資料は無料公開中です。
                             </p>
                             <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -63,6 +77,11 @@ export default function FeeCheckTopPage() {
                         </div>
                     </div>
                 </section>
+
+                <FeeCheckGlobalSearch
+                    entries={searchEntries}
+                    domains={feeDomains.map((domain) => ({ id: domain.domain, label: domain.domainLabel }))}
+                />
 
                 <section className="py-10 sm:py-14">
                     <div className="container mx-auto px-4">

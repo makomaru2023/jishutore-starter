@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FeeCheckViewTracker } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -82,6 +83,16 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Header />
+            <FeeCheckViewTracker
+                type="item"
+                params={{
+                    fee_domain: domain.domain,
+                    fee_item_id: item.id,
+                    fee_category: item.category,
+                    is_unlocked: isUnlocked,
+                    is_sample: isSample,
+                }}
+            />
             <main className="flex-1">
                 <div className="container mx-auto px-4 py-8">
                     <div className="mx-auto max-w-5xl">

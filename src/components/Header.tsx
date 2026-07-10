@@ -27,7 +27,7 @@ export function Header() {
                     </Link>
 
                     <Link href="/products" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        資料セット
+                        有料コンテンツ
                     </Link>
 
                     <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
@@ -46,7 +46,9 @@ export function Header() {
                 <button
                     className="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="メニューを開く"
+                    aria-label={isMobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
+                    aria-expanded={isMobileMenuOpen}
+                    aria-controls="mobile-navigation"
                 >
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         {isMobileMenuOpen ? (
@@ -60,7 +62,7 @@ export function Header() {
 
             {/* Mobile Menu Overlay */}
             {isMobileMenuOpen && (
-                <div className="md:hidden border-t border-slate-800 bg-slate-900 shadow-xl absolute w-full left-0">
+                <div id="mobile-navigation" className="md:hidden border-t border-slate-800 bg-slate-900 shadow-xl absolute w-full left-0">
                     <div className="container mx-auto px-4 py-6 space-y-3">
                         <Link
                             href="/items"
@@ -81,7 +83,7 @@ export function Header() {
                             className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
                             onClick={closeMenu}
                         >
-                            資料セット
+                            有料コンテンツ
                         </Link>
                         <Link
                             href="/products/jishutore-plus"

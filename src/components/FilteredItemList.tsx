@@ -15,10 +15,6 @@ export interface CategoryFilter {
 
 interface FilteredItemListProps {
     items: Item[];
-    /** N枚目のカード直後に挿入する単発CTA（旧仕様・互換用） */
-    middleCta?: ReactNode;
-    /** middleCtaを何枚目の後に挿入するか（デフォルト12） */
-    middleCtaAfter?: number;
     /** グリッド内に商品広告カードを一定間隔で挿入するか */
     inlineAds?: boolean;
     /** カテゴリーモード。サーバー側で既に items をフィルタ済みである前提で、
@@ -69,6 +65,8 @@ function matchesSearch(item: Item, query: string): boolean {
 
 // グリッド共通クラス
 const GRID_CLASS = 'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+const INITIAL_VISIBLE_COUNT = 24;
+const LOAD_MORE_COUNT = 24;
 
 // 広告挿入位置（1-indexed: 16枚目の後 → 40枚目の後 → 64枚目の後 → 88枚目の後 …）
 const FIRST_AD_AFTER = 16;
@@ -111,7 +109,7 @@ function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): R
     return out;
 }
 
-function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAds = false, categoryFilter }: FilteredItemListProps) {
+function FilteredItemListInner({ items, inlineAds = false, categoryFilter }: FilteredItemListProps) {
     const searchParams = useSearchParams();
     const urlQuery = categoryFilter ? '' : searchParams.get('q') || '';
     const [searchState, setSearchState] = useState(() => ({
@@ -122,6 +120,19 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
     const setSearchQuery = (value: string) => {
         setSearchState({ source: urlQuery, value });
     };
+    const visibilitySource = [
+        searchQuery,
+        items.length,
+        items[0]?.id ?? '',
+        items[items.length - 1]?.id ?? '',
+    ].join('|');
+    const [visibilityState, setVisibilityState] = useState(() => ({
+        source: visibilitySource,
+        count: INITIAL_VISIBLE_COUNT,
+    }));
+    const visibleCount = visibilityState.source === visibilitySource
+        ? visibilityState.count
+        : INITIAL_VISIBLE_COUNT;
 
     const filteredItems = useMemo(() => {
         // items は既にサーバー側でカテゴリフィルタ済み。
@@ -134,14 +145,14 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
 
     const isManualSearching = !!searchQuery.trim();
 
-    // 旧middleCtaモード: 検索中は出さない（カテゴリーフィルタのみのときは表示）
-    const showMiddleCta = !!middleCta && !isManualSearching && filteredItems.length > middleCtaAfter;
     // 新inlineAdsモード: 手動検索中・件数少のときは出さない
     const showInlineAds = inlineAds && !isManualSearching && filteredItems.length >= INLINE_AD_MIN_ITEMS;
+    const visibleItems = filteredItems.slice(0, visibleCount);
+    const hasMore = visibleCount < filteredItems.length;
 
     const renderedGridChildren = useMemo<ReactNode[]>(
-        () => buildGridChildren(filteredItems, showInlineAds),
-        [filteredItems, showInlineAds],
+        () => buildGridChildren(visibleItems, showInlineAds),
+        [showInlineAds, visibleItems],
     );
 
     return (
@@ -195,40 +206,37 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
                         </button>
                     )}
                 </div>
-                {(searchQuery || categoryFilter) && (
-                    <p className="mt-2 text-sm text-gray-500 text-center">
-                        {filteredItems.length} 件見つかりました
-                    </p>
-                )}
+                <p className="mt-3 text-center text-sm font-bold text-slate-500" aria-live="polite">
+                    {searchQuery || categoryFilter
+                        ? `${filteredItems.length}件見つかりました`
+                        : `全${filteredItems.length}件`}
+                    {filteredItems.length > 0 && `（${Math.min(visibleCount, filteredItems.length)}件を表示中）`}
+                </p>
             </div>
 
             {filteredItems.length > 0 ? (
-                showMiddleCta ? (
-                    <>
-                        {/* 上半分（最初のN枚） */}
-                        <div className={GRID_CLASS}>
-                            {filteredItems.slice(0, middleCtaAfter).map((item) => (
-                                <ItemCard key={item.id} item={item} />
-                            ))}
-                        </div>
-
-                        {/* 中段CTA（旧middleCtaモード） */}
-                        <div className="my-12 max-w-5xl mx-auto">
-                            {middleCta}
-                        </div>
-
-                        {/* 下半分（残り） */}
-                        <div className={GRID_CLASS}>
-                            {filteredItems.slice(middleCtaAfter).map((item) => (
-                                <ItemCard key={item.id} item={item} />
-                            ))}
-                        </div>
-                    </>
-                ) : (
+                <>
                     <div className={GRID_CLASS}>
                         {renderedGridChildren}
                     </div>
-                )
+                    {hasMore && (
+                        <div className="mt-10 flex flex-col items-center gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setVisibilityState({
+                                    source: visibilitySource,
+                                    count: visibleCount + LOAD_MORE_COUNT,
+                                })}
+                                className="inline-flex min-h-12 items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-black text-white transition hover:bg-slate-800"
+                            >
+                                さらに{Math.min(LOAD_MORE_COUNT, filteredItems.length - visibleCount)}件見る
+                            </button>
+                            <p className="text-xs font-bold text-slate-400">
+                                {Math.min(visibleCount, filteredItems.length)} / {filteredItems.length}件
+                            </p>
+                        </div>
+                    )}
+                </>
             ) : (
                 <div className="text-center py-16 text-slate-500 bg-white rounded-3xl border border-slate-100 shadow-sm">
                     <div className="text-4xl mb-4">🔍</div>
@@ -249,7 +257,8 @@ function FilteredItemListInner({ items, middleCta, middleCtaAfter = 12, inlineAd
  * 出力され、LineBanner / Footer より前に並ぶ DOM順を保てる。
  */
 function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: Item[]; inlineAds?: boolean; categoryFilter?: CategoryFilter }) {
-    const children = buildGridChildren(items, inlineAds, 'fb-');
+    const initialItems = items.slice(0, INITIAL_VISIBLE_COUNT);
+    const children = buildGridChildren(initialItems, inlineAds, 'fb-');
 
     return (
         <div>
@@ -278,10 +287,20 @@ function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: I
                         className="block w-full border-none bg-white py-3.5 pl-12 pr-4 font-medium text-slate-900 placeholder-slate-400 sm:text-base"
                     />
                 </div>
+                <p className="mt-3 text-center text-sm font-bold text-slate-500">
+                    全{items.length}件（{initialItems.length}件を表示中）
+                </p>
             </div>
 
             {items.length > 0 ? (
-                <div className={GRID_CLASS}>{children}</div>
+                <>
+                    <div className={GRID_CLASS}>{children}</div>
+                    {items.length > initialItems.length && (
+                        <p className="mt-10 text-center text-sm font-bold text-slate-500">
+                            続きは「さらに見る」から表示できます。
+                        </p>
+                    )}
+                </>
             ) : (
                 <div className="text-center py-16 text-slate-500 bg-white rounded-3xl border border-slate-100 shadow-sm">
                     <div className="text-4xl mb-4">🔍</div>

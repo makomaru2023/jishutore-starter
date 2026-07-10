@@ -11,8 +11,38 @@ const PLUS_LIBRARY_PATH = "/plus/library";
 const PLUS_FEE_CHECK_PATH = "/plus/fee-check";
 const PLUS_LOGIN_PATH = "/plus/login";
 
+function normalizeLegacyItemId(id: string): string {
+    return id
+        .normalize("NFKC")
+        .toLowerCase()
+        .replace(/[’']/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+}
+
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
+
+    // 旧素材URL（大文字・空白・括弧など）を現行kebab-caseへ恒久転送する。
+    // Search Consoleに残る旧URLを404にせず、評価と利用者を新URLへ引き継ぐ。
+    if (pathname.startsWith("/items/")) {
+        const segments = pathname.split("/").filter(Boolean);
+        if (segments.length === 2) {
+            let requestedId = segments[1];
+            try {
+                requestedId = decodeURIComponent(requestedId);
+            } catch {
+                // 不正なエンコードは正規化せず、通常の404処理へ渡す。
+            }
+            const normalizedId = normalizeLegacyItemId(requestedId);
+            if (normalizedId && normalizedId !== requestedId) {
+                const normalizedUrl = req.nextUrl.clone();
+                normalizedUrl.pathname = `/items/${normalizedId}/`;
+                return NextResponse.redirect(normalizedUrl, 308);
+            }
+        }
+        return NextResponse.next();
+    }
 
     if (pathname === PLUS_FEE_CHECK_PATH || pathname.startsWith(`${PLUS_FEE_CHECK_PATH}/`)) {
         const feeCheckUrl = req.nextUrl.clone();
@@ -59,5 +89,6 @@ export const config = {
         "/plus/library/:path*",
         "/plus/fee-check",
         "/plus/fee-check/:path*",
+        "/items/:path*",
     ],
 };

@@ -63,7 +63,8 @@ export async function GET(req: NextRequest) {
 
     // 4. セッションCookie付与して資料庫へ
     const token = await signSessionToken({ email, cid: customerId });
-    const res = redirectTo("/plus/library/");
+    const successPath = `/plus/library/?welcome=1&session_id=${encodeURIComponent(session.id)}`;
+    const res = redirectTo(successPath);
     res.cookies.set(PLUS_SESSION_COOKIE, token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",

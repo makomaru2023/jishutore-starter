@@ -3,9 +3,7 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
-import { ProductDualCta } from "@/components/ProductDualCta";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
-import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { Metadata } from "next";
@@ -264,11 +262,6 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </p>
                 </div>
 
-                {/* 上部：自社商品2LP直リンク（メインCTA） */}
-                <div className="mb-6 max-w-5xl mx-auto">
-                    <ProductDualCta />
-                </div>
-
                 {/* 用途検索カテゴリ限定：施設向け資料パックへの導線 */}
                 {facilityCta && (
                     <div className="mb-6 max-w-5xl mx-auto">
@@ -302,11 +295,6 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                         </div>
                     </div>
                 )}
-
-                {/* 上部：スポンサー枠（広告主向け） */}
-                <div className="mb-10 max-w-5xl mx-auto">
-                    <SponsorAdPlaceholder variant="top" />
-                </div>
 
                 <FilteredItemList
                     items={items}

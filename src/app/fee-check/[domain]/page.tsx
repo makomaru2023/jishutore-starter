@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+    FeeCheckSearchTracker,
+    FeeCheckTrackedLink,
+    FeeCheckViewTracker,
+} from "@/components/fee-check/FeeCheckAnalytics";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import {
@@ -63,6 +68,22 @@ export default async function FeeCheckDomainPage({
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Header />
+            <FeeCheckViewTracker
+                type="domain"
+                params={{ fee_domain: domain.domain, item_count: domain.items.length }}
+            />
+            {(q || category !== ALL) && (
+                <FeeCheckSearchTracker
+                    params={{
+                        search_term: q,
+                        fee_domain: domain.domain,
+                        insurance: ALL,
+                        fee_category: category,
+                        result_count: filteredItems.length,
+                        search_location: "domain",
+                    }}
+                />
+            )}
             <main className="flex-1">
                 <section className="border-b border-blue-100 bg-white py-10">
                     <div className="container mx-auto px-4">
@@ -87,9 +108,9 @@ export default async function FeeCheckDomainPage({
                                         <dd className="mt-1 text-2xl font-black text-blue-950">{domain.items.length}</dd>
                                     </div>
                                     <div className="rounded-lg bg-slate-100 p-3 text-center">
-                                        <dt className="text-xs font-black text-slate-600">原本確認</dt>
+                                        <dt className="text-xs font-black text-slate-600">一次資料確認済</dt>
                                         <dd className="mt-1 text-2xl font-black text-slate-950">
-                                            {domain.items.filter((item) => item.verificationLevel === "genpon").length}
+                                            {domain.items.filter((item) => item.verificationLevel === "genpon").length}/{domain.items.length}
                                         </dd>
                                     </div>
                                 </dl>
@@ -142,12 +163,19 @@ export default async function FeeCheckDomainPage({
                                 </p>
                             </div>
 
-                            <div className="mt-4 grid gap-4">
+                            <div className="mt-4 grid gap-3 lg:grid-cols-2">
                                 {filteredItems.map((item) => (
-                                    <Link
+                                    <FeeCheckTrackedLink
                                         key={item.id}
                                         href={getFeeItemUrl(domain.domain, item.id)}
-                                        className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+                                        event="result"
+                                        params={{
+                                            fee_domain: domain.domain,
+                                            fee_item_id: item.id,
+                                            fee_category: item.category,
+                                            search_location: q || category !== ALL ? "domain_search" : "domain_list",
+                                        }}
+                                        className="flex flex-col rounded-lg border border-slate-200 bg-white p-3 shadow-sm transition hover:border-blue-300 hover:shadow-md sm:p-4"
                                     >
                                         <div className="flex flex-wrap gap-2">
                                             <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-black text-blue-800">
@@ -162,15 +190,17 @@ export default async function FeeCheckDomainPage({
                                                 </span>
                                             )}
                                         </div>
-                                        <h2 className="mt-3 break-keep text-xl font-black leading-snug text-slate-950">{item.name}</h2>
-                                        <p className="mt-2 text-sm leading-6 text-slate-600">
-                                            {item.units[0]?.condition}: <span className="font-black text-blue-800">{item.units[0]?.value}</span>
-                                            {item.units[0]?.note ? ` / ${item.units[0].note}` : ""}
+                                        <h2 className="mt-2 break-keep text-base font-black leading-snug text-slate-950 sm:mt-3 sm:text-lg">{item.name}</h2>
+                                        <p className="mt-2 rounded-md bg-blue-50 px-3 py-2 text-sm leading-6 text-slate-700 sm:mt-3">
+                                            <span className="font-bold">{item.units[0]?.condition}</span>
+                                            <span className="mx-2 text-slate-300">|</span>
+                                            <span className="text-base font-black text-blue-800">{item.units[0]?.value}</span>
                                         </p>
-                                        <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+                                        <p className="mt-2 hidden text-sm leading-6 text-slate-600 sm:line-clamp-2">
                                             {item.requirements[0]}
                                         </p>
-                                    </Link>
+                                        <p className="mt-auto pt-2 text-right text-xs font-black text-blue-700 sm:pt-3 sm:text-sm">詳細を見る →</p>
+                                    </FeeCheckTrackedLink>
                                 ))}
                             </div>
                         </div>

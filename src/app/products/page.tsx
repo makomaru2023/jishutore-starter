@@ -206,7 +206,7 @@ export default function ProductsPage() {
                                         継続課金
                                     </span>
                                     <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-black text-blue-800">
-                                        現在の申込価格で決済
+                                        7月登録は月額500円
                                     </span>
                                 </div>
                                 <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
@@ -217,19 +217,19 @@ export default function ProductsPage() {
                                     説明文や注意点を編集して使える月額サービスです。
                                     新しい素材や報酬チェックも継続して追加します。
                                 </p>
-                                <p className="mt-3 text-xs leading-6 text-slate-500">
-                                    価格はStripeの現在設定に従います。キャンペーン価格の切り替え時も、
-                                    決済導線側の設定を優先します。
+                                <p className="mt-3 text-sm font-bold leading-6 text-blue-800">
+                                    7月中の登録なら月額500円のままずっと据え置きです。
+                                    いつでも解約できます。
                                 </p>
                             </div>
                             <div className="rounded-lg border border-blue-200 bg-white p-4">
-                                <p className="text-xs font-black tracking-widest text-blue-700">収録数</p>
-                                <p className="mt-1 text-3xl font-black text-slate-950">{PLUS_SLIDE_COUNT}点</p>
-                                <p className="mt-1 text-xs font-bold text-slate-500">毎月追加中</p>
+                                <p className="text-xs font-black tracking-widest text-blue-700">7月の登録価格</p>
+                                <p className="mt-1 text-3xl font-black text-slate-950">月額500円</p>
+                                <p className="mt-1 text-xs font-bold text-slate-500">{PLUS_SLIDE_COUNT}点収録・毎月追加中</p>
                                 <div className="mt-4 grid gap-2">
                                     {plusCheckoutReady ? (
                                         <PlusSubscribeButton
-                                            label="申し込みページへ進む"
+                                            label="月額500円で申し込む"
                                             className="inline-flex w-full items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-blue-800"
                                         />
                                     ) : (

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
 import {
     categoryLabels,
@@ -37,8 +37,20 @@ const sectionStyles: Record<LockedListKind, { itemClass: string; marker: string 
 
 function UnitsTable({ item }: { item: FeeItem }) {
     return (
-        <div className="overflow-hidden rounded-lg border border-slate-200">
-            <table className="w-full text-left text-sm">
+        <>
+            <dl className="space-y-3 sm:hidden">
+                {item.units.map((unit, index) => (
+                    <div key={`${item.id}-unit-mobile-${index}`} className="rounded-lg border border-blue-100 bg-blue-50/50 p-4">
+                        <dt className="text-sm font-bold leading-6 text-slate-700">{unit.condition}</dt>
+                        <dd className="mt-1 text-2xl font-black leading-tight text-blue-800">{unit.value}</dd>
+                        {unit.note && (
+                            <p className="mt-2 border-t border-blue-100 pt-2 text-sm leading-6 text-slate-600">{unit.note}</p>
+                        )}
+                    </div>
+                ))}
+            </dl>
+            <div className="hidden overflow-hidden rounded-lg border border-slate-200 sm:block">
+                <table className="w-full text-left text-sm">
                 <thead className="bg-slate-100 text-xs font-black text-slate-600">
                     <tr>
                         <th className="w-[36%] px-3 py-2">区分</th>
@@ -55,8 +67,9 @@ function UnitsTable({ item }: { item: FeeItem }) {
                         </tr>
                     ))}
                 </tbody>
-            </table>
-        </div>
+                </table>
+            </div>
+        </>
     );
 }
 
@@ -124,30 +137,44 @@ function LockedSection({
     );
 }
 
-function RelatedQAList({ items }: { items: RelatedQA[] }) {
+function RelatedQAList({ items, domain, itemId }: { items: RelatedQA[]; domain: string; itemId: string }) {
     return (
         <ul className="space-y-2">
             {items.map((qa, index) => (
                 <li key={`qa-${index}`}>
-                    <a href={qa.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm font-bold leading-6 text-blue-700 hover:underline">
+                    <FeeCheckTrackedLink
+                        href={qa.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        event="source"
+                        params={{ fee_domain: domain, fee_item_id: itemId, source_type: "qa", source_label: qa.label }}
+                        className="inline-flex items-center gap-1 text-sm font-bold leading-6 text-blue-700 hover:underline"
+                    >
                         {qa.label}
                         <ExternalIcon />
-                    </a>
+                    </FeeCheckTrackedLink>
                 </li>
             ))}
         </ul>
     );
 }
 
-function SourcesList({ item }: { item: FeeItem }) {
+function SourcesList({ item, domain }: { item: FeeItem; domain: string }) {
     return (
         <ul className="space-y-3">
             {item.sources.map((source, index) => (
                 <li key={`${item.id}-source-${index}`} className="text-sm leading-6">
-                    <a href={source.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-bold text-blue-700 hover:underline">
+                    <FeeCheckTrackedLink
+                        href={source.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        event="source"
+                        params={{ fee_domain: domain, fee_item_id: item.id, source_type: "primary", source_label: source.label }}
+                        className="inline-flex items-center gap-1 font-bold text-blue-700 hover:underline"
+                    >
                         {source.label}
                         <ExternalIcon />
-                    </a>
+                    </FeeCheckTrackedLink>
                     {source.page && <p className="mt-1 text-xs font-medium text-slate-500">{source.page}</p>}
                 </li>
             ))}
@@ -169,12 +196,22 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
                 「{item.name}」では一部だけ表示しています。全文公開サンプルでは、Plusで見られる表示をそのまま確認できます。
             </p>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                <Link href={sampleHref} className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-50">
+                <FeeCheckTrackedLink
+                    href={sampleHref}
+                    event="result"
+                    params={{ fee_domain: domain.domain, fee_item_id: item.id, result_type: "sample" }}
+                    className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-50"
+                >
                     全文サンプルを見る
-                </Link>
-                <Link href="/products/jishutore-plus/" className="inline-flex items-center justify-center rounded-full bg-blue-700 px-4 py-2 text-sm font-black text-white transition hover:bg-blue-800">
+                </FeeCheckTrackedLink>
+                <FeeCheckTrackedLink
+                    href="/products/jishutore-plus/"
+                    event="plus"
+                    params={{ fee_domain: domain.domain, fee_item_id: item.id, placement: "locked_detail" }}
+                    className="inline-flex items-center justify-center rounded-full bg-blue-700 px-4 py-2 text-sm font-black text-white transition hover:bg-blue-800"
+                >
                     Plusに登録する
-                </Link>
+                </FeeCheckTrackedLink>
             </div>
         </div>
     );
@@ -198,7 +235,7 @@ export function FeeCheckDetailCard({
     };
 }) {
     return (
-        <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm print:border-slate-300 print:shadow-none">
+        <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 print:border-slate-300 print:shadow-none">
             <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
                     <div className="flex flex-wrap gap-2">
@@ -210,7 +247,7 @@ export function FeeCheckDetailCard({
                         </span>
                         {item.verificationLevel === "genpon" && (
                             <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-black text-slate-600">
-                                原本確認済
+                                一次資料確認済
                             </span>
                         )}
                         {isSample && (
@@ -226,7 +263,7 @@ export function FeeCheckDetailCard({
                         {domain.domainLabel} / 確認日: {item.lastVerified}
                     </p>
                 </div>
-                {isUnlocked && <FeeCheckPrintButton />}
+                {isUnlocked && <FeeCheckPrintButton domain={domain.domain} itemId={item.id} />}
             </div>
 
             {isSample && (
@@ -250,8 +287,16 @@ export function FeeCheckDetailCard({
                     <RequirementsList items={item.requirements} />
                 </Section>
 
-                <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm font-black text-blue-900 break-keep">
-                    🔒 ここからはPlus限定（記録・自己点検のコア部分）
+                <div className={`rounded-lg border px-4 py-3 text-sm font-black break-keep ${
+                    isUnlocked
+                        ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                        : "border-blue-100 bg-blue-50 text-blue-900"
+                }`}>
+                    {isUnlocked
+                        ? isSample
+                            ? "🔓 ここからも全文公開中（記録・自己点検の実務項目）"
+                            : "✓ Plus実務チェック（記録・自己点検）"
+                        : "🔒 ここからはPlus限定（記録・自己点検の実務項目）"}
                 </div>
 
                 <LockedSection
@@ -283,14 +328,14 @@ export function FeeCheckDetailCard({
                     <details className="rounded-lg border border-slate-200 bg-slate-50 p-3">
                         <summary className="cursor-pointer text-sm font-black text-slate-800">関連Q&A</summary>
                         <div className="mt-3">
-                            <RelatedQAList items={item.relatedQA} />
+                            <RelatedQAList items={item.relatedQA} domain={domain.domain} itemId={item.id} />
                         </div>
                     </details>
                 )}
                 <details className="rounded-lg border border-slate-200 bg-slate-50 p-3" open>
                     <summary className="cursor-pointer text-sm font-black text-slate-800">根拠資料</summary>
                     <div className="mt-3">
-                        <SourcesList item={item} />
+                        <SourcesList item={item} domain={domain.domain} />
                     </div>
                 </details>
             </div>

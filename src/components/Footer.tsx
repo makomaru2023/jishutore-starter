@@ -10,7 +10,7 @@ export function Footer() {
                             運営者情報
                         </Link>
                         <Link href="/products" className="hover:text-white transition-colors">
-                            資料セット
+                            有料コンテンツ
                         </Link>
                         <Link href="/fee-check" className="hover:text-white transition-colors">
                             報酬チェック

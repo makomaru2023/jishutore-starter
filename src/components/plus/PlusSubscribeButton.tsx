@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * 自主トレ素材庫Plus の申し込みボタン。
@@ -20,6 +21,18 @@ export function PlusSubscribeButton({
         if (loading) return;
         setLoading(true);
         setError(null);
+        const checkoutParams = {
+            currency: "JPY",
+            value: 500,
+            items: [{
+                item_id: "jishutore-plus",
+                item_name: "自主トレ素材庫Plus",
+                price: 500,
+                quantity: 1,
+            }],
+        };
+        trackEvent("checkout_start", checkoutParams);
+        trackEvent("begin_checkout", checkoutParams);
         try {
             const res = await fetch("/api/plus/checkout/", {
                 method: "POST",
