@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
 import { Footer } from "@/components/Footer";
@@ -12,7 +11,7 @@ import {
     getAllFeeItems,
     isSampleFeeItem,
 } from "@/lib/fee-check";
-import { PLUS_SESSION_COOKIE, verifySessionToken } from "@/lib/plus-auth";
+import { hasActivePlusAccess } from "@/lib/plus-access";
 
 export async function generateStaticParams() {
     return getAllFeeItems().map(({ domain, item }) => ({
@@ -48,14 +47,6 @@ export async function generateMetadata({ params }: { params: Promise<{ domain: s
     };
 }
 
-async function hasPlusSession(): Promise<boolean> {
-    const cookieStore = await cookies();
-    const token = cookieStore.get(PLUS_SESSION_COOKIE)?.value;
-    if (!token) return false;
-    const session = await verifySessionToken(token);
-    return Boolean(session);
-}
-
 export default async function FeeCheckDetailPage({ params }: { params: Promise<{ domain: string; id: string }> }) {
     const { domain: domainId, id } = await params;
     const result = getFeeItem(domainId, id);
@@ -63,7 +54,8 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
 
     const { domain, item } = result;
     const isSample = isSampleFeeItem(domain.domain, item.id);
-    const isMember = await hasPlusSession();
+    // サンプルは誰でも全文公開なので、契約確認（Stripe呼び出し）は不要。
+    const isMember = isSample ? false : await hasActivePlusAccess();
     const isUnlocked = isMember || isSample;
     const visibleItem = isUnlocked
         ? item
