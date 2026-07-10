@@ -98,7 +98,7 @@ export function PlusHowItWorks({
     ];
 
     return (
-        <section className="border-y border-slate-200 bg-slate-50 py-14 sm:py-20">
+        <section className="border-y border-slate-200 bg-slate-50 py-10 sm:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
                     <p className="text-xs font-bold tracking-widest text-blue-700">HOW TO USE</p>
@@ -133,14 +133,19 @@ export function PlusHowItWorks({
                     </p>
                 </div>
 
-                <ol className="mt-10 grid gap-5 lg:grid-cols-3">
+                <ol className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
                     {steps.map((step) => (
                         <li key={step.number} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                            <div className="border-b border-slate-100">{step.visual}</div>
-                            <div className="p-5">
-                                <p className="text-xs font-black tracking-widest text-blue-700">STEP {step.number}</p>
-                                <h3 className="mt-2 text-lg font-black leading-7 text-slate-950">{step.title}</h3>
-                                <p className="mt-2 text-sm leading-7 text-slate-600">{step.body}</p>
+                            <div className="hidden border-b border-slate-100 lg:block">{step.visual}</div>
+                            <div className="flex items-start gap-3 p-4 sm:p-5 lg:block">
+                                <p className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-black tracking-tight text-blue-700 lg:h-auto lg:w-auto lg:rounded-none lg:bg-transparent lg:tracking-widest">
+                                    <span className="lg:hidden">{step.number}</span>
+                                    <span className="hidden lg:inline">STEP {step.number}</span>
+                                </p>
+                                <div className="min-w-0">
+                                    <h3 className="text-base font-black leading-6 text-slate-950 sm:text-lg lg:mt-2 lg:leading-7">{step.title}</h3>
+                                    <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:leading-7 lg:mt-2">{step.body}</p>
+                                </div>
                             </div>
                         </li>
                     ))}
@@ -200,7 +205,7 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
     }, [activePreview]);
 
     return (
-        <section className="py-14 sm:py-20">
+        <section className="py-10 sm:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
                     <p className="text-xs font-bold tracking-widest text-blue-700">収録イメージ</p>
@@ -212,9 +217,12 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                     </p>
                 </div>
 
-                <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {previews.map((preview) => (
-                        <figure key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+                    {previews.map((preview, index) => (
+                        <figure
+                            key={preview.src}
+                            className={`${index >= 3 ? "hidden sm:block" : ""} min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm`}
+                        >
                             <button
                                 type="button"
                                 onClick={() => setActivePreview(preview)}

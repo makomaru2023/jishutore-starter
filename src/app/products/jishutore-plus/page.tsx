@@ -273,7 +273,7 @@ export default function JishutorePlusPage() {
                             </p>
                         </div>
 
-                        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                        <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-3 lg:grid-cols-5">
                             {previews.map((preview, index) => (
                                 <div
                                     key={preview.src}
@@ -294,7 +294,7 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="py-14 sm:py-20">
+                <section className="py-10 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-3xl text-center">
                             <p className="text-xs font-bold tracking-widest text-blue-700">PLUSでできること</p>
@@ -306,21 +306,23 @@ export default function JishutorePlusPage() {
                                 最後は専門職が確認し、対象者に合う内容へ調整できます。
                             </p>
                         </div>
-                        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-5">
                             {features.map((feature, index) => (
-                                <article key={feature.title} className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-                                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
+                                <article key={feature.title} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:block sm:p-5">
+                                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
                                         {index + 1}
                                     </span>
-                                    <h3 className="mt-4 text-base font-black text-slate-900">{feature.title}</h3>
-                                    <p className="mt-2 text-sm leading-6 text-slate-600">{feature.body}</p>
+                                    <div className="min-w-0">
+                                        <h3 className="text-base font-black text-slate-900 sm:mt-4">{feature.title}</h3>
+                                        <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:mt-2">{feature.body}</p>
+                                    </div>
                                 </article>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                <section className="border-y border-blue-100 bg-blue-50/60 py-14 sm:py-20">
+                <section className="border-y border-blue-100 bg-blue-50/60 py-10 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
                             <div className="min-w-0">
@@ -377,7 +379,7 @@ export default function JishutorePlusPage() {
                                         加算
                                     </span>
                                     <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-black text-slate-600">
-                                        原本確認済
+                                        一次資料確認済
                                     </span>
                                 </div>
                                 <h3 className="mt-3 text-lg font-black leading-snug text-slate-950">
@@ -432,7 +434,7 @@ export default function JishutorePlusPage() {
 
                 <PlusPreviewGallery previews={previews} />
 
-                <section id="comparison" className="scroll-mt-20 py-14 sm:py-20">
+                <section id="comparison" className="scroll-mt-20 py-10 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-3xl text-center">
                             <p className="text-xs font-bold tracking-widest text-blue-700">プラン比較</p>
@@ -441,11 +443,11 @@ export default function JishutorePlusPage() {
                             </h2>
                         </div>
 
-                        <div className="mt-10 grid gap-5 md:hidden">
+                        <div className="mt-8 grid gap-5 md:hidden">
                             {plans.map((plan) => (
                                 <article
                                     key={plan.name}
-                                    className={`rounded-lg border bg-white p-5 ${plan.recommended ? "border-blue-400 ring-2 ring-blue-100" : "border-slate-200"}`}
+                                    className={`rounded-lg border bg-white p-4 sm:p-5 ${plan.recommended ? "border-blue-400 ring-2 ring-blue-100" : "border-slate-200"}`}
                                 >
                                     {plan.recommended && (
                                         <span className="inline-block rounded-full bg-blue-700 px-3 py-1 text-[11px] font-bold text-white">
@@ -454,9 +456,9 @@ export default function JishutorePlusPage() {
                                     )}
                                     <h3 className="mt-3 text-lg font-black text-slate-950">{plan.name}</h3>
                                     <p className="mt-1 text-sm text-slate-600">{plan.description}</p>
-                                    <dl className="mt-5 divide-y divide-slate-100">
+                                    <dl className="mt-4 divide-y divide-slate-100">
                                         {plan.values.map((item) => (
-                                            <div key={item.label} className="py-3 first:pt-0">
+                                            <div key={item.label} className="py-2.5 first:pt-0">
                                                 <dt className="text-xs font-bold text-blue-700">{item.label}</dt>
                                                 <dd className="mt-1 text-sm leading-6 text-slate-700">{item.value}</dd>
                                             </div>
@@ -508,7 +510,7 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section id="faq" className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-14 sm:py-20">
+                <section id="faq" className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-10 sm:py-20">
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <p className="text-xs font-bold tracking-widest text-blue-700">FAQ</p>
@@ -516,7 +518,7 @@ export default function JishutorePlusPage() {
                                 よくあるご質問
                             </h2>
                         </div>
-                        <div className="mt-10 space-y-3">
+                        <div className="mt-8 space-y-3 sm:mt-10">
                             {faqs.map((faq, idx) => (
                                 <details
                                     key={faq.q}
@@ -550,7 +552,7 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="border-t border-blue-100 bg-blue-50 py-14 sm:py-20">
+                <section className="border-t border-blue-100 bg-blue-50 py-10 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
                         <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-bold text-blue-800 ring-1 ring-blue-200">
                             先行モニター募集中
