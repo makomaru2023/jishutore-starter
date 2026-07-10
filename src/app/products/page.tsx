@@ -7,7 +7,10 @@ import { LineBanner } from "@/components/LineBanner";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
-import { SLIDE_PROMPT_GENERATOR_PRICE_ID } from "@/lib/products";
+import {
+    POSTURE_SELF_TRAINING_PRICE_ID,
+    SLIDE_PROMPT_GENERATOR_PRICE_ID,
+} from "@/lib/products";
 
 export const metadata: Metadata = {
     title: "有料コンテンツ一覧｜自主トレ素材庫",
@@ -19,7 +22,6 @@ export const metadata: Metadata = {
 };
 
 const LINE_URL = "https://lin.ee/79a5bNt";
-const ONE_TIME_LABEL = "買い切り・¥980";
 
 const purposeLinks = [
     {
@@ -44,11 +46,14 @@ type OneTimeProduct = {
     name: string;
     href: string;
     productId: string;
+    price: number;
     target: string;
     summary: string;
     points: string[];
     checkoutReady: boolean;
 };
+
+const YEN = new Intl.NumberFormat("ja-JP");
 
 const oneTimeProducts: OneTimeProduct[] = [
     {
@@ -56,6 +61,7 @@ const oneTimeProducts: OneTimeProduct[] = [
         name: "疾患別自主トレ資料",
         href: "/products/self-training-materials/",
         productId: "self-training-materials-vol01",
+        price: 980,
         target: "疾患名から自主トレ資料を選びたい方向け",
         summary:
             "脳卒中・腰痛・膝OA・術後など、疾患ごとの説明資料をPowerPointとPDFで使えます。",
@@ -63,10 +69,23 @@ const oneTimeProducts: OneTimeProduct[] = [
         checkoutReady: Boolean(process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET),
     },
     {
+        id: "home-elderly-self-training",
+        name: "姿勢別自主トレPowerPointセット",
+        href: "/products/home-elderly-self-training/",
+        productId: "home-elderly-self-training",
+        price: 980,
+        target: "「今できる姿勢」から自主トレを選びたい方向け",
+        summary:
+            "座位・立位・臥位など、対象者の姿勢や動作能力に合わせて選べる自主トレ資料セットです。",
+        points: ["6姿勢カテゴリ", "PowerPoint編集可", "訪問・通所向け"],
+        checkoutReady: Boolean(POSTURE_SELF_TRAINING_PRICE_ID),
+    },
+    {
         id: "slide-prompt-generator",
         name: "伝わるプロンプト工房",
         href: "/products/slide-prompt-generator/",
         productId: "slide-prompt-generator",
+        price: 980,
         target: "患者さん向けの指導文や説明文を作りたい方向け",
         summary:
             "用途・テーマ・枚数を選び、ChatGPTに貼り付けやすい資料作成プロンプトを作れます。",
@@ -91,7 +110,7 @@ function OneTimeProductCard({ product }: { product: OneTimeProduct }) {
         >
             <div className="mb-3 flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">
-                    {ONE_TIME_LABEL}
+                    買い切り・¥{YEN.format(product.price)}
                 </span>
             </div>
             <h3 className="text-lg font-black leading-snug text-slate-950 sm:text-xl">
@@ -121,7 +140,7 @@ function OneTimeProductCard({ product }: { product: OneTimeProduct }) {
                 <CheckoutButton
                     productId={product.productId}
                     productName={product.name}
-                    price={980}
+                    price={product.price}
                     label="購入する"
                     disabled={!product.checkoutReady}
                     className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-blue-700 px-4 py-3 text-sm font-black text-white shadow-sm transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
@@ -252,7 +271,44 @@ export default function ProductsPage() {
                     </div>
                 </section>
 
-                <section className="bg-white py-12 sm:py-16">
+                <section className="border-t border-slate-200 bg-white py-12 sm:py-16">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-5xl">
+                            <div className="mb-6">
+                                <p className="text-xs font-black tracking-widest text-blue-700">施設・事業所向け</p>
+                                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                                    施設・事業所向けパック
+                                </h2>
+                                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+                                    デイサービスなどでそのまま使える資料パックを準備しています。
+                                    販売開始は、LINEで先行してお知らせします。
+                                </p>
+                            </div>
+                            <article className="flex flex-col rounded-lg border border-slate-200 bg-slate-50 p-5 sm:p-6">
+                                <div className="mb-3 flex flex-wrap items-center gap-2">
+                                    <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-black text-slate-500">
+                                        準備中
+                                    </span>
+                                </div>
+                                <h3 className="text-lg font-black leading-snug text-slate-950 sm:text-xl">
+                                    デイサービス向け 体操・口腔体操・転倒予防資料パック
+                                </h3>
+                                <p className="mt-3 text-sm leading-7 text-slate-600">
+                                    集団体操・口腔体操・転倒予防・記録表などを1パックにまとめた、施設向けの資料集です。
+                                </p>
+                                <Link
+                                    href="/products/day-service-exercise-pack/"
+                                    className="mt-5 inline-flex min-h-12 w-fit items-center justify-center gap-1.5 rounded-full border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-700 transition hover:bg-blue-50"
+                                >
+                                    内容を見る
+                                    <ArrowIcon className="h-3.5 w-3.5" />
+                                </Link>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="border-t border-slate-200 bg-white py-12 sm:py-16">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-5xl">
                             <div className="mb-5 text-center">
