@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
     title: "診療・介護報酬チェック｜算定要件・単位数を無料で確認｜自主トレ素材庫",
     description:
-        "訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の算定要件、単位数・点数、根拠資料リンクを無料公開。記録・自己点検ポイントは自主トレ素材庫Plusで確認できます。",
+        "訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟・地域包括ケア病棟・急性期一般病棟の算定要件、単位数・点数、根拠資料リンクを無料公開。記録・自己点検ポイントは自主トレ素材庫Plusで確認できます。",
     alternates: {
         canonical: "https://jishutore-sozaiko.online/fee-check/",
     },
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 export default function FeeCheckTopPage() {
     const totalCount = getFeeCheckTotalCount();
     const samples = getSampleFeeItems();
+    const domainLabels = feeDomains.map((domain) => domain.domainLabel).join("・");
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
@@ -36,7 +37,7 @@ export default function FeeCheckTopPage() {
                                 算定要件・単位数を、根拠リンクつきで確認できます
                             </h1>
                             <p className="mx-auto mt-4 max-w-3xl break-keep text-sm leading-7 text-slate-600 sm:text-base">
-                                訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の主要項目を整理しています。
+                                {domainLabels}の主要項目を整理しています。
                                 単位数・算定要件・根拠資料は無料公開中です。
                             </p>
                             <div className="mt-6 flex flex-wrap justify-center gap-3">

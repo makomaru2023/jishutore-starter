@@ -21,6 +21,7 @@ export default function Home() {
   const feeCheckTotalCount = getFeeCheckTotalCount();
   const firstSampleDomain = feeDomains[0];
   const firstSampleId = sampleFeeItems[firstSampleDomain.domain];
+  const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel).join("・");
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -117,8 +118,7 @@ export default function Home() {
                     診療・介護報酬の単位数・要件も確認できます
                   </h2>
                   <p className="mt-4 max-w-2xl break-keep text-sm leading-7 text-slate-600 sm:text-base">
-                    訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟の
-                    {feeCheckTotalCount}項目を整理しています。
+                    {feeCheckDomainLabels}の{feeCheckTotalCount}項目を整理しています。
                     単位数・算定要件・根拠リンクは無料、記録・自己点検ポイントはPlusで確認できます。
                   </p>
                 </div>
@@ -130,7 +130,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {feeDomains.map((domain) => (
                   <Link
                     key={domain.domain}

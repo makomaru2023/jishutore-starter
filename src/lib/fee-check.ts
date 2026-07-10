@@ -3,6 +3,8 @@ import tsushoRihaData from "@/data/fee-items/tsusho-riha.json";
 import rokenNyushoData from "@/data/fee-items/roken-nyusho.json";
 import homonKangoRihaData from "@/data/fee-items/homon-kango-riha.json";
 import kaifukukiRihaData from "@/data/fee-items/kaifukuki-riha.json";
+import chiikiHokatsuCareData from "@/data/fee-items/chiiki-hokatsu-care.json";
+import kyuseikiData from "@/data/fee-items/kyuseiki.json";
 
 export type FeeInsurance = "care" | "medical";
 export type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
@@ -60,6 +62,8 @@ export const feeDomains = [
     rokenNyushoData,
     homonKangoRihaData,
     kaifukukiRihaData,
+    chiikiHokatsuCareData,
+    kyuseikiData,
 ] as FeeDomain[];
 
 export type FeeDomainId = (typeof feeDomains)[number]["domain"];
@@ -89,6 +93,8 @@ export const sampleFeeItems: Record<string, string> = {
     "roken-nyusho": "roken-nyusho-tanki-shuchu-reha",
     "homon-kango-riha": "homon-kango-riha-riha-shokei-gensan",
     "kaifukuki-riha": "kaifukuki-riha-kihon",
+    "chiiki-hokatsu-care": "chiiki-hokatsu-care-kihon",
+    "kyuseiki": "kyuseiki-ippan-nyuin-kihon",
 };
 
 export const normalizeFeeText = (value: string) => value.normalize("NFKC").toLowerCase();
