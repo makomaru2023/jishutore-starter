@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FREE_MATERIAL_COUNT } from '@/constants/content-counts';
 
 /**
  * バリアント設計：
@@ -36,7 +37,7 @@ const PRESETS: Record<SponsorAdVariant, PresetConfig> = {
         label: 'スポンサー枠',
         title: 'リハビリ・介護現場へ広告掲載できます',
         description:
-            '370点以上の無料素材を探すリハビリ職・介護職に、サービスや取り組みを紹介できます。',
+            `${FREE_MATERIAL_COUNT}点の無料素材を探すリハビリ職・介護職に、サービスや取り組みを紹介できます。`,
         buttonLabel: '掲載プランを見る',
     },
 };

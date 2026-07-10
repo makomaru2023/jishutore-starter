@@ -2,27 +2,28 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
 
 export const metadata: Metadata = {
-  title: "自主トレイラスト無料素材集｜リハビリ職向け370点以上｜自主トレ素材庫",
-  description: "PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど370点以上すべて無料・商用OK。患者配布資料がすぐ作れます。登録不要でダウンロード可能。",
+  title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
+  description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど${FREE_MATERIAL_COUNT}点すべて無料・商用OK。患者配布資料がすぐ作れます。登録不要でダウンロード可能。`,
   metadataBase: new URL('https://jishutore-sozaiko.online'),
   alternates: {
     canonical: './',
   },
   openGraph: {
-    title: "自主トレイラスト無料素材集｜リハビリ職向け370点以上｜自主トレ素材庫",
-    description: "PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど370点以上すべて無料・商用OK。患者配布資料がすぐ作れます。",
+    title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
+    description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど${FREE_MATERIAL_COUNT}点すべて無料・商用OK。患者配布資料がすぐ作れます。`,
     siteName: "自主トレ素材庫",
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "自主トレイラスト無料素材集｜リハビリ職向け370点以上｜自主トレ素材庫",
-    description: "PT・OT・STのための自主トレイラスト素材サイト。370点以上すべて無料・商用OK。登録不要でダウンロード可能。",
+    title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
+    description: `PT・OT・STのための自主トレイラスト素材サイト。${FREE_MATERIAL_COUNT}点すべて無料・商用OK。登録不要でダウンロード可能。`,
   },
   verification: {
     google: [

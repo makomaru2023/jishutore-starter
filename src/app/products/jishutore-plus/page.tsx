@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { feeDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from "@/lib/fee-check";
 
@@ -493,7 +494,7 @@ export default function JishutorePlusPage() {
                 <section className="border-y border-blue-100 bg-blue-50/60 py-10 sm:py-12">
                     <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
                         <p className="text-base font-black leading-7 text-slate-950 sm:text-lg">
-                            無料素材370点以上を公開してきた自主トレ素材庫が運営しています
+                            無料素材{FREE_MATERIAL_COUNT}点を公開してきた自主トレ素材庫が運営しています
                         </p>
                         <p className="mt-2 text-sm leading-6 text-slate-600">
                             日々の自主トレ指導で使いやすい素材を、継続して制作・公開しています。

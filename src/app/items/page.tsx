@@ -7,6 +7,7 @@ import { ProductDualCta } from "@/components/ProductDualCta";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
+import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { Metadata } from "next";
 
 // カテゴリキーワード（ローマ字）→ フィルタ用キーワードのマッピング
@@ -205,8 +206,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     }
 
     return {
-        title: "自主トレイラスト素材一覧（全370点以上）｜無料ダウンロード｜自主トレ素材庫",
-        description: "スクワット・ブリッジ・ストレッチ・歩行訓練など370点以上の自主トレイラストを無料ダウンロード。上肢・下肢・体幹・嚥下など部位別に検索可能。文字あり・文字なしの2タイプ。商用利用OK。",
+        title: `自主トレイラスト素材一覧（全${FREE_MATERIAL_COUNT}点）｜無料ダウンロード｜自主トレ素材庫`,
+        description: `スクワット・ブリッジ・ストレッチ・歩行訓練など${FREE_MATERIAL_COUNT}点の自主トレ素材を無料ダウンロード。上肢・下肢・体幹・嚥下など部位別に検索可能。文字あり・文字なしの2タイプ。商用利用OK。`,
     };
 }
 
@@ -216,7 +217,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
     let items = allItems;
     let title = "自主トレイラスト素材一覧";
-    let description = "スクワット・ブリッジ・ストレッチなど、370点以上の自主トレイラストを、無料でダウンロードできます。";
+    let description = `スクワット・ブリッジ・ストレッチなど、${FREE_MATERIAL_COUNT}点の自主トレ素材を、無料でダウンロードできます。`;
 
     // ローマ字カテゴリ（?q=shoulder 等）優先。サーバー側で複数キーワードORフィルタを実行し、
     // SSR時点で素材一覧がHTMLに出るようにする（Suspense fallback空問題の解消）。

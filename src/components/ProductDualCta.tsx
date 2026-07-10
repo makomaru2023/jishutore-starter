@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { FREE_MATERIAL_COUNT } from '@/constants/content-counts';
 import { PRODUCT_AD_CONFIG, ProductAdType, trackProductAdClick } from './ProductInlineAd';
 
 const ArrowIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
@@ -27,7 +28,7 @@ export function ProductDualCta() {
                         無料イラストだけでは、説明資料づくりに時間がかかる方へ
                     </h2>
                     <p className="mx-auto max-w-2xl text-sm font-medium leading-relaxed text-slate-600 break-keep">
-                        自主トレ素材庫では、370点以上の無料イラストに加えて、患者さんにそのまま渡しやすいPowerPoint資料セットも用意しています。疾患名から選べる資料と、今できる姿勢から選べる資料を用途に合わせて使い分けできます。
+                        自主トレ素材庫では、{FREE_MATERIAL_COUNT}点の無料素材に加えて、患者さんにそのまま渡しやすいPowerPoint資料セットも用意しています。疾患名から選べる資料と、今できる姿勢から選べる資料を用途に合わせて使い分けできます。
                     </p>
                 </div>
 
@@ -61,7 +62,7 @@ export function ProductDualCta() {
 
                 {/* 2点まとめ買いの補助訴求 */}
                 <Link
-                    href="/products#bundle"
+                    href="/products"
                     onClick={() => trackProductAdClick('condition', 'items_top_bundle_cta')}
                     className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-amber-50/40 px-4 py-3 transition-colors hover:bg-amber-50"
                 >
@@ -70,8 +71,7 @@ export function ProductDualCta() {
                             ★ 両方使いたい方へ
                         </p>
                         <p className="mt-0.5 text-xs font-bold text-slate-800 sm:text-sm break-keep">
-                            2点まとめ買いセット <span className="text-amber-700">1,480円</span>
-                            <span className="ml-1 text-[11px] font-medium text-slate-500">（通常1,960円・480円お得）</span>
+                            Plusや買い切り資料は有料コンテンツ一覧で確認できます
                         </p>
                     </div>
                     <ArrowIcon className="h-3.5 w-3.5 flex-shrink-0 text-amber-700" />
