@@ -80,7 +80,7 @@ export function FeeCheckGlobalSearch({
     };
 
     return (
-        <section className="border-b border-blue-100 bg-blue-50/50 py-8 sm:py-10">
+        <section id="fee-check-search" className="scroll-mt-20 border-b border-blue-100 bg-blue-50/50 py-8 sm:py-10">
             <div className="container mx-auto px-4">
                 <div className="mx-auto max-w-5xl rounded-xl border border-blue-200 bg-white p-4 shadow-sm sm:p-6">
                     <div className="mb-4">
