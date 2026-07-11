@@ -134,6 +134,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${baseUrl}/fee-check/editorial-policy/`,
+            lastModified: new Date('2026-07-12T00:00:00+09:00'),
+            changeFrequency: 'monthly' as const,
+            priority: 0.65,
+        },
+        {
             url: `${baseUrl}/products/day-service-exercise-pack/`,
             lastModified: staticUpdatedAt,
             changeFrequency: 'weekly' as const,

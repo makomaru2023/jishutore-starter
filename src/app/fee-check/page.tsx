@@ -74,6 +74,12 @@ export default function FeeCheckTopPage() {
                                     全文サンプルあり
                                 </span>
                             </div>
+                            <p className="mt-5 text-xs font-bold leading-6 text-slate-500">
+                                作業療法士が運営し、厚生労働省等の一次資料を基準に作成しています。
+                                <Link href="/fee-check/editorial-policy/" className="ml-2 text-blue-700 hover:underline">
+                                    編集方針・確認方法を見る
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </section>

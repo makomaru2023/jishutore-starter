@@ -64,10 +64,20 @@ export default async function FeeCheckDomainPage({
         return getPublicFeeSearchText(item).includes(normalizedQuery);
     });
     const sampleId = sampleFeeItems[domain.domain];
+    const pageUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "報酬チェック", item: "https://jishutore-sozaiko.online/fee-check/" },
+            { "@type": "ListItem", position: 2, name: domain.domainLabel, item: pageUrl },
+        ],
+    };
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Header />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
             <FeeCheckViewTracker
                 type="domain"
                 params={{ fee_domain: domain.domain, item_count: domain.items.length }}
@@ -100,6 +110,12 @@ export default async function FeeCheckDomainPage({
                                     <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
                                         単位数・算定要件・根拠資料リンクは無料で確認できます。
                                         記録に残すこと、自己点検で見るポイントはPlusで表示します。
+                                    </p>
+                                    <p className="mt-3 text-xs font-bold leading-6 text-slate-500">
+                                        作業療法士が運営・一次資料を基準に作成しています。
+                                        <Link href="/fee-check/editorial-policy/" className="ml-2 text-blue-700 hover:underline">
+                                            編集方針・確認方法
+                                        </Link>
                                     </p>
                                 </div>
                                 <dl className="grid grid-cols-2 gap-2">

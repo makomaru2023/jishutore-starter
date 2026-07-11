@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
 import {
@@ -416,6 +417,29 @@ export function FeeCheckDetailCard({
                     </div>
                 </details>
             </div>
+
+            <section className="mt-5 rounded-lg border border-slate-200 bg-slate-50 p-4" aria-label="情報の作成・確認方法">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                        <h2 className="text-sm font-black text-slate-900">情報の作成・確認について</h2>
+                        <p className="mt-2 text-xs leading-6 text-slate-600">
+                            作成・公開責任：作業療法士が運営する自主トレ素材庫。厚生労働省等の一次資料を基準に整理し、資料リンクと確認日（{item.lastVerified}）を掲載しています。
+                        </p>
+                    </div>
+                    <div className="flex shrink-0 flex-wrap gap-x-4 gap-y-2 text-xs font-black">
+                        <FeeCheckTrackedLink
+                            href="/fee-check/editorial-policy/"
+                            event="source"
+                            params={{ fee_domain: domain.domain, fee_item_id: item.id, source_type: "editorial_policy", source_label: "編集方針・確認方法" }}
+                            className="text-blue-700 hover:underline"
+                        >
+                            編集方針・確認方法
+                        </FeeCheckTrackedLink>
+                        <Link href="/about/" className="text-blue-700 hover:underline">運営者情報</Link>
+                        <Link href="/contact/" className="text-blue-700 hover:underline">訂正を連絡</Link>
+                    </div>
+                </div>
+            </section>
 
             <p className="mt-4 rounded-md bg-slate-50 p-3 text-xs leading-5 text-slate-500">
                 {domain.disclaimer}

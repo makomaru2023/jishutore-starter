@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import {
     getFeeDescription,
+    getDomainUrl,
     getFeeItem,
     getFeeItemUrl,
     getAllFeeItems,
@@ -79,10 +80,41 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
     const relatedItems = domain.items
         .filter((entry) => entry.id !== item.id && entry.category === item.category)
         .slice(0, 4);
+    const pageUrl = `https://jishutore-sozaiko.online${getFeeItemUrl(domain.domain, item.id)}`;
+    const domainUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "報酬チェック", item: "https://jishutore-sozaiko.online/fee-check/" },
+            { "@type": "ListItem", position: 2, name: domain.domainLabel, item: domainUrl },
+            { "@type": "ListItem", position: 3, name: item.name, item: pageUrl },
+        ],
+    };
+    const articleJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: `${item.name}の算定要件・単位数（${domain.domainLabel}）`,
+        description: getFeeDescription(item, domain),
+        dateModified: item.lastVerified,
+        author: {
+            "@type": "Person",
+            name: "トロル",
+            jobTitle: "作業療法士",
+            url: "https://jishutore-sozaiko.online/about/",
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "自主トレ素材庫",
+            url: "https://jishutore-sozaiko.online/",
+        },
+        mainEntityOfPage: pageUrl,
+    };
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Header />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, articleJsonLd]) }} />
             <FeeCheckViewTracker
                 type="item"
                 params={{
