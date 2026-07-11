@@ -42,6 +42,8 @@ export type FeeItem = {
     changedInLastRevision?: boolean;
     changeSummary?: string;
     verificationLevel?: string;
+    /** 告示上は存在するが現時点では算定できない項目（例：対象感染症が未指定の新興感染症等施設療養費）。赤バッジで警告する */
+    currentlyNotClaimable?: boolean;
 };
 
 export type FeeDomain = {

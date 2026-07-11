@@ -178,6 +178,11 @@ export default async function FeeCheckDomainPage({
                                         className="flex flex-col rounded-lg border border-slate-200 bg-white p-3 shadow-sm transition hover:border-blue-300 hover:shadow-md sm:p-4"
                                     >
                                         <div className="flex flex-wrap gap-2">
+                                            {item.currentlyNotClaimable && (
+                                                <span className="rounded-full border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-black text-amber-800">
+                                                    現在算定不可
+                                                </span>
+                                            )}
                                             <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-black text-blue-800">
                                                 {insuranceLabels[item.insurance]}
                                             </span>

@@ -239,6 +239,11 @@ export function FeeCheckDetailCard({
             <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
                     <div className="flex flex-wrap gap-2">
+                        {item.currentlyNotClaimable && (
+                            <span className="rounded-full border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-black text-amber-800">
+                                現在算定不可
+                            </span>
+                        )}
                         <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-black text-blue-800">
                             {insuranceLabels[item.insurance]}
                         </span>
