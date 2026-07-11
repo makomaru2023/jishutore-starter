@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
     title: "有料コンテンツ一覧｜自主トレ素材庫",
     description:
-        "自主トレ素材庫Plus、疾患別自主トレ資料、伝わるプロンプト工房を目的別に選べる一覧ページです。継続課金と買い切りを比較せず、使いたい目的から探せます。",
+        "自主トレ資料の作成と診療・介護報酬チェックに使える自主トレ素材庫Plus、疾患別自主トレ資料、伝わるプロンプト工房を目的別に選べる一覧ページです。",
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/",
     },
@@ -25,7 +25,7 @@ const LINE_URL = "https://lin.ee/79a5bNt";
 
 const purposeLinks = [
     {
-        purpose: "毎月新しい素材を使いたい",
+        purpose: "自主トレ資料の作成と報酬確認を効率化したい",
         label: "Plusを見る",
         href: "#plus",
     },
@@ -212,11 +212,25 @@ export default function ProductsPage() {
                                 <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
                                     自主トレ素材庫Plus
                                 </h2>
-                                <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
-                                    {PLUS_SLIDE_COUNT}点のPowerPointスライドから必要なページを選び、
-                                    説明文や注意点を編集して使える月額サービスです。
-                                    新しい素材や報酬チェックも継続して追加します。
+                                <p className="mt-3 text-base font-black leading-7 text-slate-900 sm:text-lg">
+                                    資料づくりと、診療・介護報酬の確認をひとつに。
                                 </p>
+                                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                                    <div className="rounded-lg border border-blue-200 bg-white p-4">
+                                        <p className="text-xs font-black tracking-wider text-blue-700">自主トレ資料</p>
+                                        <p className="mt-1 text-sm font-black text-slate-950">選んで編集できるスライド</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-600">
+                                            {PLUS_SLIDE_COUNT}点から必要なページを選び、説明文や注意点を対象者に合わせて編集できます。
+                                        </p>
+                                    </div>
+                                    <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
+                                        <p className="text-xs font-black tracking-wider text-emerald-700">報酬チェック</p>
+                                        <p className="mt-1 text-sm font-black text-slate-950">算定要件から自己点検まで</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-600">
+                                            診療・介護報酬の単位数、記録に残すこと、見落としやすい点を確認できます。
+                                        </p>
+                                    </div>
+                                </div>
                                 <p className="mt-3 text-sm font-bold leading-6 text-blue-800">
                                     7月中の登録なら月額500円のままずっと据え置きです。
                                     いつでも解約できます。
@@ -225,7 +239,9 @@ export default function ProductsPage() {
                             <div className="rounded-lg border border-blue-200 bg-white p-4">
                                 <p className="text-xs font-black tracking-widest text-blue-700">7月の登録価格</p>
                                 <p className="mt-1 text-3xl font-black text-slate-950">月額500円</p>
-                                <p className="mt-1 text-xs font-bold text-slate-500">{PLUS_SLIDE_COUNT}点収録・毎月追加中</p>
+                                <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
+                                    資料{PLUS_SLIDE_COUNT}点＋報酬チェック<br />どちらも利用できます
+                                </p>
                                 <div className="mt-4 grid gap-2">
                                     {plusCheckoutReady ? (
                                         <PlusSubscribeButton
