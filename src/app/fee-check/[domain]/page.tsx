@@ -16,6 +16,7 @@ import {
     getFeeDomain,
     getFeeItemUrl,
     getPublicFeeSearchText,
+    hasComboCheck,
     insuranceLabels,
     normalizeFeeText,
     sampleFeeItems,
@@ -225,6 +226,24 @@ export default async function FeeCheckDomainPage({
                                 ))}
                             </div>
                         </div>
+
+                        {hasComboCheck(domain.domain) && (
+                            <div className="mt-8 rounded-lg border border-blue-200 bg-blue-50/60 p-5 sm:p-6">
+                                <p className="text-xs font-bold tracking-widest text-blue-700">PLUS限定ツール</p>
+                                <h2 className="mt-2 text-lg font-black text-slate-950 sm:text-xl">
+                                    この加算、一緒に算定できる？をまとめてチェック
+                                </h2>
+                                <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
+                                    自施設で算定している（予定の）加算にチェックを入れると、その組み合わせに含まれる「一緒に算定できない」規定を、根拠リンクつきで表示します。返戻の原因になりやすい組み合わせの自己点検に。
+                                </p>
+                                <Link
+                                    href="/plus/fee-check-combo/"
+                                    className="mt-4 inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700"
+                                >
+                                    加算の組み合わせチェックを使う（Plus）
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 </section>
             </main>

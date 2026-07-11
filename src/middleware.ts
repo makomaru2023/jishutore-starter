@@ -9,6 +9,7 @@ const SLIDE_COOKIE_NAME = "slide_prompt_access";
 // --- 自主トレ素材庫Plus 会員ページ ---
 const PLUS_LIBRARY_PATH = "/plus/library";
 const PLUS_FEE_CHECK_PATH = "/plus/fee-check";
+const PLUS_FEE_CHECK_COMBO_PATH = "/plus/fee-check-combo";
 const PLUS_LOGIN_PATH = "/plus/login";
 
 function normalizeLegacyItemId(id: string): string {
@@ -51,6 +52,22 @@ export async function middleware(req: NextRequest) {
         return NextResponse.redirect(feeCheckUrl, 301);
     }
 
+    // === Plus 加算の組み合わせチェックのゲート ===
+    if (
+        pathname === PLUS_FEE_CHECK_COMBO_PATH ||
+        pathname.startsWith(`${PLUS_FEE_CHECK_COMBO_PATH}/`)
+    ) {
+        const token = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
+        const session = token ? await verifySessionToken(token) : null;
+        if (session) {
+            return NextResponse.next();
+        }
+        const loginUrl = req.nextUrl.clone();
+        loginUrl.pathname = PLUS_LOGIN_PATH;
+        loginUrl.search = "";
+        return NextResponse.redirect(loginUrl);
+    }
+
     // === Plus 資料庫のゲート ===
     if (
         pathname === PLUS_LIBRARY_PATH ||
@@ -89,6 +106,8 @@ export const config = {
         "/plus/library/:path*",
         "/plus/fee-check",
         "/plus/fee-check/:path*",
+        "/plus/fee-check-combo",
+        "/plus/fee-check-combo/:path*",
         "/items/:path*",
     ],
 };

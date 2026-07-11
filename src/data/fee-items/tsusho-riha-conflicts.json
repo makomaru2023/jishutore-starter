@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "domain": "tsusho-riha",
+  "domainLabel": "通所リハビリテーション",
+  "note": "通所リハの併算定不可・条件付き・選択制の関係。各項目は既存エントリで告示第19号等を原本確認（genpon）した記述の再構成。要確認のものは収載しない。",
+  "pairs": [
+    {
+      "type": "exclusive",
+      "a": "tsusho-riha-kokuu-kinou-kojo",
+      "b": "tsusho-riha-rehamane",
+      "note": "リハビリテーションマネジメント加算(ハ)を算定している場合、口腔機能向上加算(Ⅰ)及び(Ⅱ)ロは算定しない（(Ⅱ)イは可）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注18"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "tsusho-riha-eiyo-assessment",
+      "b": "tsusho-riha-rehamane",
+      "note": "リハビリテーションマネジメント加算(ハ)を算定している場合、栄養アセスメント加算は算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注15"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-riha-eiyo-assessment",
+      "b": "tsusho-riha-eiyo-kaizen",
+      "condition": "栄養改善加算に係る栄養改善サービスを受けている間、及びそのサービスが終了した日の属する月",
+      "note": "その期間は栄養アセスメント加算を算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注15"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-riha-kokueiyo-screening",
+      "b": "tsusho-riha-eiyo-assessment",
+      "condition": "口腔・栄養スクリーニング加算(Ⅰ)の算定日が属する月に栄養アセスメント加算を算定している場合",
+      "note": "その場合は口腔・栄養スクリーニング加算(Ⅰ)を算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注17"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-riha-kokueiyo-screening",
+      "b": "tsusho-riha-eiyo-kaizen",
+      "condition": "口腔・栄養スクリーニング加算(Ⅰ)の算定日が属する月に、栄養改善サービスを受けている間又は終了月である場合",
+      "note": "その場合は口腔・栄養スクリーニング加算(Ⅰ)を算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注17"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-riha-kokueiyo-screening",
+      "b": "tsusho-riha-kokuu-kinou-kojo",
+      "condition": "口腔・栄養スクリーニング加算(Ⅰ)の算定日が属する月に、口腔機能向上サービスを受けている間又は終了月である場合",
+      "note": "その場合は口腔・栄養スクリーニング加算(Ⅰ)を算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注17"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "variantChoices": [
+    {
+      "id": "tsusho-riha-kokueiyo-screening",
+      "note": "口腔・栄養スクリーニング加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注17"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-riha-kokuu-kinou-kojo",
+      "note": "口腔機能向上加算(Ⅰ)、(Ⅱ)イ、(Ⅱ)ロは併算定しない（いずれか一つ）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注18"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import homonKangoRihaData from "@/data/fee-items/homon-kango-riha.json";
 import kaifukukiRihaData from "@/data/fee-items/kaifukuki-riha.json";
 import chiikiHokatsuCareData from "@/data/fee-items/chiiki-hokatsu-care.json";
 import kyuseikiData from "@/data/fee-items/kyuseiki.json";
+import tsushoRihaConflictsData from "@/data/fee-items/tsusho-riha-conflicts.json";
 
 export type FeeInsurance = "care" | "medical";
 export type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
@@ -24,6 +25,37 @@ export type FeeSource = {
 export type RelatedQA = {
     label: string;
     url: string;
+};
+
+// --- 加算の組み合わせチェック（併算定・条件付き・区分選択制） ---
+export type FeeConflictType = "exclusive" | "conditional";
+
+export type FeeConflictPair = {
+    type: FeeConflictType;
+    a: string;
+    b: string;
+    condition?: string;
+    note: string;
+    sources: FeeSource[];
+    lastVerified: string;
+    verificationLevel?: string;
+};
+
+export type FeeVariantChoice = {
+    id: string;
+    note: string;
+    sources: FeeSource[];
+    lastVerified: string;
+    verificationLevel?: string;
+};
+
+export type FeeConflictSet = {
+    schemaVersion: number;
+    domain: string;
+    domainLabel: string;
+    note?: string;
+    pairs: FeeConflictPair[];
+    variantChoices: FeeVariantChoice[];
 };
 
 export type FeeItem = {
@@ -165,4 +197,26 @@ export function truncateText(value: string, maxLength: number): string {
     const normalized = value.replace(/\s+/g, " ").trim();
     if (normalized.length <= maxLength) return normalized;
     return `${normalized.slice(0, maxLength - 1)}…`;
+}
+
+// --- 加算の組み合わせチェック ---
+// conflicts ファイルを持つ分野のみを対象にする（現在は通所リハがパイロット）。
+const feeConflictSets = [tsushoRihaConflictsData] as FeeConflictSet[];
+
+export function getFeeConflictSet(domainId: string): FeeConflictSet | undefined {
+    return feeConflictSets.find((set) => set.domain === domainId);
+}
+
+// 組み合わせチェックに対応している分野（conflicts があり、かつ本体データも存在する）。
+export function getComboDomains(): Array<{ domain: FeeDomain; conflicts: FeeConflictSet }> {
+    return feeConflictSets
+        .map((conflicts) => {
+            const domain = getFeeDomain(conflicts.domain);
+            return domain ? { domain, conflicts } : null;
+        })
+        .filter((entry): entry is { domain: FeeDomain; conflicts: FeeConflictSet } => entry !== null);
+}
+
+export function hasComboCheck(domainId: string): boolean {
+    return feeConflictSets.some((set) => set.domain === domainId);
 }
