@@ -6,7 +6,9 @@ import { LineBanner } from "@/components/LineBanner";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { seoItemCategories } from "@/lib/seoItemCategories";
 import { Metadata } from "next";
+import Link from "next/link";
 
 // カテゴリキーワード（ローマ字）→ フィルタ用キーワードのマッピング
 // FilteredItemList が title / titleJa / fileName 中にいずれか1ワードを含めばヒット扱い
@@ -173,6 +175,11 @@ const FACILITY_CTA: Record<string, { heading: string; body: string }> = {
     },
 };
 
+const ITEM_CATEGORY_LINKS = [
+    ...seoItemCategories.map(({ slug, breadcrumb }) => ({ slug, breadcrumb })),
+    { slug: "swallowing-exercises", breadcrumb: "口腔・嚥下" },
+];
+
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ category?: string; q?: string }> }): Promise<Metadata> {
     const { category, q } = await searchParams;
 
@@ -261,6 +268,37 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                         {description}
                     </p>
                 </div>
+
+                <nav
+                    aria-label="素材カテゴリ"
+                    className="mx-auto mb-8 max-w-5xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+                >
+                    <div className="mb-3 flex items-center justify-between gap-3">
+                        <h2 className="text-sm font-black text-slate-900 sm:text-base">
+                            部位・用途から探す
+                        </h2>
+                        <Link
+                            href="/items/"
+                            className="shrink-0 text-xs font-bold text-teal-700 transition-colors hover:text-teal-500"
+                        >
+                            すべて表示
+                        </Link>
+                    </div>
+                    <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
+                        {ITEM_CATEGORY_LINKS.map((itemCategory) => (
+                            <Link
+                                key={itemCategory.slug}
+                                href={`/items/${itemCategory.slug}/`}
+                                className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-700 transition-colors hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700 sm:text-sm"
+                            >
+                                {itemCategory.breadcrumb}
+                            </Link>
+                        ))}
+                    </div>
+                    <p className="mt-2 text-xs leading-relaxed text-slate-500 sm:hidden">
+                        横にスワイプすると、ほかのカテゴリも選べます。
+                    </p>
+                </nav>
 
                 {/* 用途検索カテゴリ限定：施設向け資料パックへの導線 */}
                 {facilityCta && (

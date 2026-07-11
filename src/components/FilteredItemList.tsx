@@ -64,7 +64,7 @@ function matchesSearch(item: Item, query: string): boolean {
 }
 
 // グリッド共通クラス
-const GRID_CLASS = 'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+const GRID_CLASS = 'grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4';
 const INITIAL_VISIBLE_COUNT = 24;
 const LOAD_MORE_COUNT = 24;
 
