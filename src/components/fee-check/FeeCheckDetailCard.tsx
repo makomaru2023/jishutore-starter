@@ -217,6 +217,83 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
     );
 }
 
+function ContextualPlusGuide({
+    domain,
+    item,
+    isUnlocked,
+    isSample,
+}: {
+    domain: FeeDomain;
+    item: FeeItem;
+    isUnlocked: boolean;
+    isSample: boolean;
+}) {
+    if (isUnlocked && !isSample) {
+        return (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-black text-emerald-900 break-keep">
+                ✓ Plus実務チェック（記録・自己点検）
+            </div>
+        );
+    }
+
+    const sample = getSampleFeeItems().find((entry) => entry.domain.domain === domain.domain);
+    const sampleHref = sample ? getFeeItemUrl(sample.domain.domain, sample.item.id) : "/fee-check/";
+
+    return (
+        <aside className={`overflow-hidden rounded-xl border p-4 print:hidden sm:p-5 ${
+            isSample
+                ? "border-emerald-200 bg-gradient-to-r from-emerald-50 to-blue-50"
+                : "border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50"
+        }`}>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0">
+                    <span className={`inline-flex rounded-full px-3 py-1 text-xs font-black ${
+                        isSample ? "bg-emerald-700 text-white" : "bg-blue-700 text-white"
+                    }`}>
+                        {isSample ? "Plus表示を体験中" : "ここからは自主トレ素材庫Plus"}
+                    </span>
+                    <h2 className="mt-3 text-lg font-black leading-snug text-slate-950">
+                        {isSample
+                            ? "ここから先が、Plusで全項目に表示される実務チェックです"
+                            : "有料版では、記録・自己点検・つまずきまで確認できます"}
+                    </h2>
+                    <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                        {isSample
+                            ? "この全文サンプルでは、記録に残すこと、自己点検ポイント、つまずきやすい点をすべて公開しています。"
+                            : `「${item.name}」の無料表示は各項目の一部まで。Plusでは実務チェックの全文と関連Q&A、改定差分、印刷表示を利用できます。`}
+                    </p>
+                </div>
+                <FeeCheckTrackedLink
+                    href="/products/jishutore-plus/"
+                    event="plus"
+                    params={{ fee_domain: domain.domain, fee_item_id: item.id, placement: isSample ? "sample_mid_detail" : "locked_mid_detail" }}
+                    className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-blue-700 px-5 py-2.5 text-sm font-black text-white shadow-sm transition hover:bg-blue-800"
+                >
+                    Plusの内容・料金を見る
+                </FeeCheckTrackedLink>
+            </div>
+            <div className="mt-4 grid gap-2 text-xs font-bold text-slate-700 sm:grid-cols-3">
+                {["記録に残すこと", "自己点検で見るポイント", "つまずきやすい点・関連Q&A"].map((label) => (
+                    <div key={label} className="flex items-center gap-2 rounded-lg border border-white bg-white/80 px-3 py-2.5">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-100 text-[11px] text-blue-700" aria-hidden="true">✓</span>
+                        <span>{label}</span>
+                    </div>
+                ))}
+            </div>
+            {!isSample && (
+                <FeeCheckTrackedLink
+                    href={sampleHref}
+                    event="result"
+                    params={{ fee_domain: domain.domain, fee_item_id: item.id, result_type: "sample_mid_detail" }}
+                    className="mt-3 inline-flex text-xs font-black text-blue-700 hover:underline"
+                >
+                    先に全文公開サンプルで確認する →
+                </FeeCheckTrackedLink>
+            )}
+        </aside>
+    );
+}
+
 export function FeeCheckDetailCard({
     domain,
     item,
@@ -292,17 +369,12 @@ export function FeeCheckDetailCard({
                     <RequirementsList items={item.requirements} />
                 </Section>
 
-                <div className={`rounded-lg border px-4 py-3 text-sm font-black break-keep ${
-                    isUnlocked
-                        ? "border-emerald-200 bg-emerald-50 text-emerald-900"
-                        : "border-blue-100 bg-blue-50 text-blue-900"
-                }`}>
-                    {isUnlocked
-                        ? isSample
-                            ? "🔓 ここからも全文公開中（記録・自己点検の実務項目）"
-                            : "✓ Plus実務チェック（記録・自己点検）"
-                        : "🔒 ここからはPlus限定（記録・自己点検の実務項目）"}
-                </div>
+                <ContextualPlusGuide
+                    domain={domain}
+                    item={item}
+                    isUnlocked={isUnlocked}
+                    isSample={isSample}
+                />
 
                 <LockedSection
                     title="記録に残すこと"
