@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": "tsusho-riha",
   "domainLabel": "通所リハビリテーション",
-  "note": "通所リハの併算定不可・条件付き・選択制の関係。各項目は既存エントリで告示第19号等を原本確認（genpon）した記述の再構成。要確認のものは収載しない。",
+  "note": "通所リハの併算定不可・条件付き・区分選択制の関係。既存エントリで告示第19号等を原本確認（genpon）した記述の再構成。要確認は収載しない。",
   "pairs": [
     {
       "type": "exclusive",
@@ -29,6 +29,66 @@
           "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
           "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
           "page": "7 通所リハビリテーション費 注15"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "tsusho-riha-tanki-shuchu-kobetsu",
+      "b": "tsusho-riha-ninchisho-tanki-shuchu",
+      "note": "短期集中個別リハビリテーション実施加算と認知症短期集中リハビリテーション実施加算は併算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注11"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "tsusho-riha-tanki-shuchu-kobetsu",
+      "b": "tsusho-riha-seikatsu-koui-kojo",
+      "note": "短期集中個別リハビリテーション実施加算と生活行為向上リハビリテーション実施加算は併算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注11"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "tsusho-riha-ninchisho-tanki-shuchu",
+      "b": "tsusho-riha-seikatsu-koui-kojo",
+      "note": "認知症短期集中リハビリテーション実施加算と生活行為向上リハビリテーション実施加算は併算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注13"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "tsusho-riha-doitsu-tatemono-gensan",
+      "b": "tsusho-riha-sogei-gensan",
+      "note": "同一建物減算の対象となっている利用者には、送迎を行わない場合の減算を重複して適用しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注23"
         }
       ],
       "lastVerified": "2026-07-08",
@@ -101,6 +161,45 @@
   ],
   "variantChoices": [
     {
+      "id": "tsusho-riha-rehamane",
+      "note": "リハビリテーションマネジメント加算(イ)(ロ)(ハ)は併算定しない（いずれか一つ）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注10"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-riha-ninchisho-tanki-shuchu",
+      "note": "認知症短期集中リハビリテーション実施加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注12"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-riha-nyuyoku-kaijo",
+      "note": "入浴介助加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 注9"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
       "id": "tsusho-riha-kokueiyo-screening",
       "note": "口腔・栄養スクリーニング加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
       "sources": [
@@ -121,6 +220,32 @@
           "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
           "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
           "page": "7 通所リハビリテーション費 注18"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-riha-service-taisei-kyoka",
+      "note": "サービス提供体制強化加算(Ⅰ)(Ⅱ)(Ⅲ)は併算定しない（いずれか一つ）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 ホ サービス提供体制強化加算"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-riha-shogu-kaizen",
+      "note": "介護職員等処遇改善加算の各区分（(Ⅰ)イ〜(Ⅳ)）は併算定しない（いずれか一つ）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=2",
+          "page": "7 通所リハビリテーション費 ヘ 介護職員等処遇改善加算"
         }
       ],
       "lastVerified": "2026-07-08",
