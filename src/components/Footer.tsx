@@ -30,9 +30,6 @@ export function Footer() {
                         <Link href="/contact" className="hover:text-white transition-colors">
                             お問合せ
                         </Link>
-                        <Link href="/sponsor" className="hover:text-white transition-colors">
-                            広告掲載・スポンサー募集
-                        </Link>
                     </div>
                     <div className="text-sm font-bold text-slate-500 flex items-center gap-2">
                         © {new Date().getFullYear()} 自主トレ素材庫

@@ -8,7 +8,7 @@ declare global {
     }
 }
 
-export type ProductAdType = 'condition' | 'posture';
+export type ProductAdType = 'condition' | 'plus' | 'posture';
 
 interface ProductAdConfig {
     label: string;
@@ -16,6 +16,7 @@ interface ProductAdConfig {
     description: string;
     href: string;
     price: string;
+    priceNote: string;
     buttonLabel: string;
     note: string;
     itemName: string;
@@ -28,10 +29,23 @@ export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
         description:
             '脳卒中・腰痛・膝OA・術後など、疾患ごとの自主トレ説明を時短したい方向け。無料イラストを1枚ずつ貼る時間がない方に、編集できる資料セットを用意しています。',
         href: '/products/self-training-materials/',
-        price: '980円・買い切り',
+        price: '¥980',
+        priceNote: '買い切り',
         buttonLabel: '疾患別セットを見る',
         note: 'PowerPoint編集OK・PDF印刷用つき',
         itemName: '疾患別自主トレ資料セット',
+    },
+    plus: {
+        label: '自主トレ素材庫Plus',
+        title: '資料作成と診療・介護報酬チェックを、ひとつのサービスで',
+        description:
+            '105点の編集できるPowerPointスライドと、全7分野・124項目の診療・介護報酬チェックを利用できます。記録・自己点検・つまずきやすい点まで確認したい方へ。',
+        href: '/products/jishutore-plus/',
+        price: '月額¥500',
+        priceNote: '7月登録は据え置き',
+        buttonLabel: 'Plusの内容を見る',
+        note: 'PowerPoint編集＋診療・介護報酬の実務チェック',
+        itemName: '自主トレ素材庫Plus',
     },
     posture: {
         label: '資料セット',
@@ -39,14 +53,15 @@ export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
         description:
             '座位・立位・臥位など、利用者さんの状態に合わせて運動を選びたい方向け。訪問リハ・通所リハ・在宅高齢者の自主トレ指導に使いやすい資料セットです。',
         href: '/products/home-elderly-self-training/',
-        price: '980円・買い切り',
+        price: '¥980',
+        priceNote: '買い切り',
         buttonLabel: '姿勢別セットを見る',
         note: 'PowerPoint編集OK・PDF印刷用つき',
         itemName: '姿勢別自主トレ指導資料セット',
     },
 };
 
-export type ProductAdLocation = 'items_inline_ad' | 'items_top_cta' | 'items_top_bundle_cta';
+export type ProductAdLocation = 'items_inline_ad' | 'item_detail_bottom_ad' | 'items_top_cta' | 'items_top_bundle_cta';
 
 export function trackProductAdClick(type: ProductAdType, location: ProductAdLocation) {
     if (typeof window === 'undefined') return;
@@ -71,13 +86,14 @@ const ArrowIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
 
 interface ProductInlineAdProps {
     type: ProductAdType;
+    location?: ProductAdLocation;
 }
 
 /**
  * /items/ グリッド内に挿入する自社商品広告カード。
  * グリッドのカラム数によらず1行全体を専有する（col-span-full）。
  */
-export function ProductInlineAd({ type }: ProductInlineAdProps) {
+export function ProductInlineAd({ type, location = 'items_inline_ad' }: ProductInlineAdProps) {
     const cfg = PRODUCT_AD_CONFIG[type];
 
     return (
@@ -90,8 +106,8 @@ export function ProductInlineAd({ type }: ProductInlineAdProps) {
                             {cfg.label}
                         </span>
                         <div className="flex items-baseline gap-1.5">
-                            <span className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">¥980</span>
-                            <span className="text-xs font-bold text-slate-400">買い切り</span>
+                            <span className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">{cfg.price}</span>
+                            <span className="text-xs font-bold text-slate-400">{cfg.priceNote}</span>
                         </div>
                     </div>
 
@@ -112,7 +128,7 @@ export function ProductInlineAd({ type }: ProductInlineAdProps) {
                     <div className="md:flex-shrink-0">
                         <Link
                             href={cfg.href}
-                            onClick={() => trackProductAdClick(type, 'items_inline_ad')}
+                            onClick={() => trackProductAdClick(type, location)}
                             className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-sm shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-md sm:w-auto"
                         >
                             {cfg.buttonLabel}

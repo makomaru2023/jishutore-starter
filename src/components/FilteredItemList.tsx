@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
 import { ProductInlineAd, ProductAdType } from '@/components/ProductInlineAd';
-import { SponsorAdPlaceholder } from '@/components/SponsorAdPlaceholder';
 
 export interface CategoryFilter {
     key: string;
@@ -68,42 +67,42 @@ const GRID_CLASS = 'grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-
 const INITIAL_VISIBLE_COUNT = 24;
 const LOAD_MORE_COUNT = 24;
 
-// 広告挿入位置（1-indexed: 16枚目の後 → 40枚目の後 → 64枚目の後 → 88枚目の後 …）
+// 初回表示では16枚目の後に広告を出す。
+// 追加表示では、25枚目・49枚目・73枚目…の直前に広告を入れ、
+// 「さらに24件見る」を押した位置で自社サービスを案内してから素材を続ける。
 const FIRST_AD_AFTER = 16;
-const AD_INTERVAL = 24;
 // 検索結果がこの枚数以下のときはインライン広告を出さない
 const INLINE_AD_MIN_ITEMS = 12;
 // 広告のあとに残るカードがこの枚数未満なら、その広告は省く（末尾広告の防止）
 const TRAILING_GUARD = 4;
 
-type InlineSlotType = ProductAdType | 'sponsor';
-// 表示順：疾患別 → スポンサー → 姿勢別 → 疾患別 → スポンサー → 姿勢別 …
-const AD_TYPE_ORDER: InlineSlotType[] = ['condition', 'sponsor', 'posture'];
+// 表示順：疾患別資料 → Plus → 姿勢別資料 → 繰り返し
+const AD_TYPE_ORDER: ProductAdType[] = ['condition', 'plus', 'posture'];
 
 /** items の配列から、widget広告を一定間隔で挟んだ ReactNode[] を作る純関数。 */
 function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): ReactNode[] {
     const out: ReactNode[] = [];
-    let adCount = 0;
+    const canShowAds = inlineAds && items.length >= INLINE_AD_MIN_ITEMS;
+
     items.forEach((item, i) => {
+        // 追加表示分の先頭に自社広告を挿入する。初回24件だけのときは表示されない。
+        if (canShowAds && i > 0 && i % LOAD_MORE_COUNT === 0) {
+            const remaining = items.length - i;
+            if (remaining >= TRAILING_GUARD) {
+                const type = AD_TYPE_ORDER[(i / LOAD_MORE_COUNT) % AD_TYPE_ORDER.length] ?? 'condition';
+                out.push(<ProductInlineAd key={`${keyPrefix}ad-batch-${i}-${type}`} type={type} />);
+            }
+        }
+
         out.push(<ItemCard key={item.id} item={item} />);
-        if (!inlineAds || items.length < INLINE_AD_MIN_ITEMS) return;
+
+        if (!canShowAds) return;
         const pos = i + 1; // 1-indexed
-        const nextAdPos = FIRST_AD_AFTER + AD_INTERVAL * adCount;
-        if (pos === nextAdPos) {
+        if (pos === FIRST_AD_AFTER) {
             const remaining = items.length - pos;
             if (remaining >= TRAILING_GUARD) {
-                const type = AD_TYPE_ORDER[adCount % AD_TYPE_ORDER.length];
-                if (type === 'sponsor') {
-                    out.push(
-                        <div key={`${keyPrefix}ad-${adCount}-sponsor`} className="col-span-full">
-                            <SponsorAdPlaceholder variant="inline" />
-                        </div>
-                    );
-                } else {
-                    out.push(<ProductInlineAd key={`${keyPrefix}ad-${adCount}-${type}`} type={type} />);
-                }
+                out.push(<ProductInlineAd key={`${keyPrefix}ad-initial-condition`} type="condition" />);
             }
-            adCount += 1;
         }
     });
     return out;

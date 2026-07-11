@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductCta } from "@/components/ProductCta";
-import { SponsorAdPlaceholder } from "@/components/SponsorAdPlaceholder";
+import { ProductInlineAd } from "@/components/ProductInlineAd";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
@@ -240,9 +240,9 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
                     </div>
 
-                    {/* 素材詳細ページ用スポンサー枠（フッターより上） */}
+                    {/* 素材詳細ページ下部：自主トレ素材庫Plusへの導線 */}
                     <div className="mt-16 max-w-5xl mx-auto">
-                        <SponsorAdPlaceholder variant="compact" />
+                        <ProductInlineAd type="plus" location="item_detail_bottom_ad" />
                     </div>
 
                     {/* LINE友だち追加バナー */}
