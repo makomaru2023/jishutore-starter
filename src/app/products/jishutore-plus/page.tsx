@@ -13,13 +13,13 @@ import { feeDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
-const OG_TITLE = "自主トレ素材庫Plus｜月額500円〜";
+const OG_TITLE = "自主トレ素材庫Plus｜資料作成＋診療・介護報酬チェック｜月額500円〜";
 const OG_DESCRIPTION =
-    "説明文・注意点つきの自主トレスライドを、PowerPointで自由に編集・組み替え。診療・介護報酬チェックも一部無料公開中です。";
+    "編集できる自主トレスライドと、診療・介護報酬の記録・自己点検まで確認できるチェックツールを、ひとつの月額サービスで利用できます。";
 
 export const metadata: Metadata = {
-    title: "自主トレ素材庫Plus｜編集できるPowerPoint素材｜月額500円〜",
-    description: `${PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から必要なページを選び、PowerPointで編集・組み替えできる月額サービスです。訪問リハ・通所リハ・老健・訪問看護からのリハ・回復期リハ病棟・地域包括ケア病棟・急性期一般病棟の診療・介護報酬チェック（一部無料公開中）も追加。7月登録は永続月額500円（8月〜680円、以降は素材点数に応じて改定）。既存会員は据え置き。`,
+    title: "自主トレ素材庫Plus｜資料作成＋診療・介護報酬チェック｜月額500円〜",
+    description: `${PLUS_SLIDE_COUNT}点の編集できるPowerPoint運動スライドと、全${feeDomains.length}分野・${getFeeCheckTotalCount()}項目の診療・介護報酬チェックを利用できる月額サービスです。資料作成に加え、記録に残すこと・自己点検ポイント・つまずきやすい点まで確認できます。7月登録は永続月額500円（8月〜680円）。`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -94,24 +94,20 @@ const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
 const features = [
     {
-        title: `${PLUS_SLIDE_COUNT}点から選べる（毎月追加中）`,
-        body: "上肢・下肢・体幹・姿勢別など、対象者に合う自主トレを探せます。",
+        title: `${PLUS_SLIDE_COUNT}点のPowerPointスライド`,
+        body: "説明文・回数・注意点つき。文字や施設名を書き換えて使えます。",
     },
     {
-        title: "PowerPointで編集できる",
-        body: "説明文や回数、注意点を書き換え、施設名や担当者名も追加できます。",
+        title: "対象者ごとに選んで組み替え",
+        body: "必要なページだけを選び、状態や目標に合う自主トレ資料を作れます。",
     },
     {
-        title: "必要なページだけ組み合わせる",
-        body: "利用者さんごとにスライドを選び、オリジナルの資料を作れます。",
+        title: `診療・介護報酬を全${feeDomains.length}分野から確認`,
+        body: `${feeCheckItemCount}項目の単位数・点数・算定要件・一次資料リンクを整理しています。`,
     },
     {
-        title: "説明文・注意点つき",
-        body: "文章をゼロから考える時間を減らし、確認と調整に集中できます。",
-    },
-    {
-        title: "診療・介護報酬も確認できる",
-        body: `${feeCheckDomainLabels.join("・")}の単位数・点数・記録・根拠資料を確認できるツールを追加しました。`,
+        title: "記録・自己点検まで確認",
+        body: "記録に残すこと、つまずきやすい点、関連Q&A、改定差分まで確認できます。",
     },
 ] as const;
 
@@ -168,7 +164,7 @@ const comparisonRows = [
         label: "向いている方",
         free: "画像だけ使いたい方",
         set: "完成資料をすぐ使いたい方",
-        plus: "対象者ごとに調整したい方",
+        plus: "資料作成と報酬確認を効率化したい方",
     },
 ] as const;
 
@@ -187,7 +183,7 @@ const plans = [
     },
     {
         name: "自主トレ素材庫Plus",
-        description: "必要なスライドを選んで編集する",
+        description: "資料作成と報酬チェックをまとめて使う",
         values: comparisonRows.map((row) => ({ label: row.label, value: row.plus })),
         recommended: true,
     },
@@ -244,11 +240,11 @@ export default function JishutorePlusPage() {
                                 自主トレ素材庫Plus
                             </h1>
                             <p className="mt-4 text-lg font-bold leading-relaxed text-blue-900 sm:text-xl">
-                                {PLUS_SLIDE_COUNT}点の運動スライド（毎月追加中）から、必要な自主トレ資料を自分で作れる
+                                自主トレ資料づくりと、診療・介護報酬の確認を、ひとつのサービスで
                             </p>
                             <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
-                                説明文・回数・注意点つきのPowerPointスライドを収録。
-                                利用者さんの状態に合わせて選び、文字を編集し、自由に組み替えられる月額サービスです。
+                                {PLUS_SLIDE_COUNT}点の編集できるPowerPointスライドに加え、全{feeDomains.length}分野・{feeCheckItemCount}項目の報酬チェックを収録。
+                                資料作成から、算定要件・記録・自己点検の確認まで支えます。
                             </p>
                             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                                 <PlusSubscribeButton
@@ -273,23 +269,71 @@ export default function JishutorePlusPage() {
                             </p>
                         </div>
 
-                        <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-3 lg:grid-cols-5">
-                            {previews.map((preview, index) => (
-                                <div
-                                    key={preview.src}
-                                    className={`${index === previews.length - 1 ? "col-span-2 mx-auto w-1/2 sm:col-span-1 sm:w-full" : ""} min-w-0 overflow-hidden rounded-lg border border-blue-100 bg-white shadow-sm`}
-                                >
-                                    <Image
-                                        src={preview.src}
-                                        alt={`${preview.title}のPowerPointスライド例`}
-                                        width={1280}
-                                        height={720}
-                                        priority={index < 3}
-                                        sizes="(max-width: 639px) 46vw, (max-width: 1023px) 30vw, 190px"
-                                        className="h-auto w-full"
-                                    />
+                        <div className="mx-auto mt-8 grid max-w-5xl gap-4 text-left sm:mt-10 lg:grid-cols-2">
+                            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm sm:p-5">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div>
+                                        <p className="text-xs font-black text-blue-700">資料作成</p>
+                                        <h2 className="mt-1 text-lg font-black text-slate-950">編集できる自主トレスライド</h2>
+                                    </div>
+                                    <span className="shrink-0 rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-800">
+                                        {PLUS_SLIDE_COUNT}点
+                                    </span>
                                 </div>
-                            ))}
+                                <div className="mt-4 grid grid-cols-3 gap-2">
+                                    {[previews[0], previews[2], previews[4]].map((preview, index) => (
+                                        <div key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-100 bg-slate-50">
+                                            <Image
+                                                src={preview.src}
+                                                alt={`${preview.title}のPowerPointスライド例`}
+                                                width={1280}
+                                                height={720}
+                                                priority={index < 2}
+                                                sizes="(max-width: 1023px) 29vw, 155px"
+                                                className="h-auto w-full"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className="mt-3 text-xs font-bold leading-5 text-slate-600">
+                                    説明文・回数・注意点を編集し、必要なページだけ組み合わせられます。
+                                </p>
+                            </div>
+
+                            <div className="rounded-2xl border border-indigo-200 bg-white p-4 shadow-sm sm:p-5">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div>
+                                        <p className="text-xs font-black text-indigo-700">診療・介護報酬チェック</p>
+                                        <h2 className="mt-1 text-lg font-black text-slate-950">算定要件から記録・自己点検まで</h2>
+                                    </div>
+                                    <span className="shrink-0 rounded-full bg-indigo-50 px-3 py-1 text-xs font-black text-indigo-800">
+                                        {feeCheckItemCount}項目
+                                    </span>
+                                </div>
+                                <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+                                    {[
+                                        ["単位数・点数", "無料公開"],
+                                        ["記録・自己点検", "Plus限定"],
+                                        ["根拠・関連Q&A", "一次資料つき"],
+                                    ].map(([label, note]) => (
+                                        <div key={label} className="rounded-lg border border-indigo-100 bg-indigo-50/60 px-2 py-3">
+                                            <p className="text-xs font-black leading-5 text-slate-900">{label}</p>
+                                            <p className="mt-1 text-[10px] font-bold text-indigo-700">{note}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="mt-3 flex items-center justify-between gap-3">
+                                    <p className="text-xs font-bold leading-5 text-slate-600">
+                                        全{feeDomains.length}分野を横断して確認できます。
+                                    </p>
+                                    <Link
+                                        href={getFeeItemUrl(feeCheckSampleDomain.domain, feeCheckSampleItem.id)}
+                                        className="shrink-0 text-xs font-black text-indigo-700 hover:underline"
+                                    >
+                                        全文サンプル →
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -299,14 +343,14 @@ export default function JishutorePlusPage() {
                         <div className="mx-auto max-w-3xl text-center">
                             <p className="text-xs font-bold tracking-widest text-blue-700">PLUSでできること</p>
                             <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
-                                資料づくりを、選んで整える作業に
+                                資料づくりと報酬確認を、ひとつのサービスで
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                イラストを探し、説明文を考え、レイアウトを整える工程を短縮します。
-                                最後は専門職が確認し、対象者に合う内容へ調整できます。
+                                対象者に合わせた自主トレ資料の作成と、算定要件・記録・自己点検の確認。
+                                日々の実務で時間のかかる2つの作業を支えます。
                             </p>
                         </div>
-                        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-5">
+                        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
                             {features.map((feature, index) => (
                                 <article key={feature.title} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:block sm:p-5">
                                     <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
@@ -451,7 +495,7 @@ export default function JishutorePlusPage() {
                                 >
                                     {plan.recommended && (
                                         <span className="inline-block rounded-full bg-blue-700 px-3 py-1 text-[11px] font-bold text-white">
-                                            自分で資料を作りたい方へ
+                                            資料作成＋報酬確認を使いたい方へ
                                         </span>
                                     )}
                                     <h3 className="mt-3 text-lg font-black text-slate-950">{plan.name}</h3>
@@ -564,7 +608,7 @@ export default function JishutorePlusPage() {
                             8月からは月額680円。素材が増えるたびに価格を改定しますが、既存会員は登録時の価格のまま据え置きです。
                         </p>
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                            収録スライドから必要なページを選び、PowerPointで編集・組み替えできます。
+                            収録スライドをPowerPointで編集・組み替えでき、診療・介護報酬の記録・自己点検ポイントも確認できます。
                             カード決済（Stripe）で、いつでも解約できます。
                         </p>
                         <div className="mx-auto mt-5 max-w-md rounded-xl border border-blue-100 bg-white p-4 text-left text-xs leading-6 text-slate-600">
