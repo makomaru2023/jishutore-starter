@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "domain": "roken-nyusho",
+  "domainLabel": "老健・入所リハ",
+  "note": "老健・入所リハの併算定不可・区分選択制の関係。既存エントリで告示第21号等を原本確認（genpon）した記述の再構成。要確認は収載しない。基本報酬区分（イ(4)/ロ(4)＝在宅強化型等）に依存する算定制限や注7（栄養管理）関係は、加算どうしの関係ではないためここでは扱わない。",
+  "pairs": [
+    {
+      "type": "exclusive",
+      "a": "roken-nyusho-eiyo-management-kyoka",
+      "b": "roken-nyusho-taisho-eiyo-joho-renkei",
+      "note": "栄養マネジメント強化加算を算定している場合、退所時栄養情報連携加算は算定しない。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス ニ 退所時栄養情報連携加算"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "roken-nyusho-keiko-ikou",
+      "b": "roken-nyusho-keiko-iji",
+      "note": "経口移行加算を算定している場合、経口維持加算(Ⅰ)は算定しない。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス ル 経口維持加算"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "roken-nyusho-gaihaku",
+      "b": "roken-nyusho-shikoteki-taisho",
+      "note": "外泊時費用を算定する場合、試行的退所時費用は算定しない（同時に算定できない）。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス 注15"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "roken-nyusho-ninchisho-tanki-shuchu-reha",
+      "b": "roken-nyusho-jakunensei-ninchisho",
+      "note": "認知症短期集中リハビリテーション実施加算を算定している場合、若年性認知症入所者受入加算は算定しない。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス 注13"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "roken-nyusho-ninchisho-senmon-care",
+      "b": "roken-nyusho-ninchisho-team-care",
+      "note": "認知症専門ケア加算と認知症チームケア推進加算は、いずれか一方のみ算定する（併算定不可）。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ツ 認知症チームケア推進加算"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "variantChoices": [
+    {
+      "id": "roken-nyusho-tanki-shuchu-reha",
+      "note": "短期集中リハビリテーション実施加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス 注10"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-ninchisho-tanki-shuchu-reha",
+      "note": "認知症短期集中リハビリテーション実施加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス 注11"
+        }
+      ],
+      "lastVerified": "2026-07-08",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-rehamane-keikakusho-joho",
+      "note": "リハビリテーションマネジメント計画書情報加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ナ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-kagakuteki-kaigo",
+      "note": "科学的介護推進体制加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ヰ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-jokuso-management",
+      "note": "褥瘡マネジメント加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ラ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-haisetsu-shien",
+      "note": "排せつ支援加算(Ⅰ)(Ⅱ)(Ⅲ)はいずれか一つのみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ム"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-seisansei-kojo",
+      "note": "生産性向上推進体制加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ヤ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-service-taisei-kyoka",
+      "note": "サービス提供体制強化加算(Ⅰ)(Ⅱ)(Ⅲ)はいずれか一つのみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス マ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-shogu-kaizen",
+      "note": "介護職員等処遇改善加算の各区分（(Ⅰ)イ〜(Ⅳ)）はいずれか一つのみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=2",
+          "page": "2 介護保健施設サービス ケ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-shoki",
+      "note": "初期加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス ハ"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-nyusho-zengo-homon-shido",
+      "note": "入所前後訪問指導加算(Ⅰ)と(Ⅱ)はいずれか一方のみ算定する。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス ヘ 入所前後訪問指導加算"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-koku-eisei-kanri",
+      "note": "口腔衛生管理加算(Ⅰ)と(Ⅱ)は、いずれかを算定している場合は他方を算定しない。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス ヲ 口腔衛生管理加算"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "roken-nyusho-taishoji-shien",
+      "note": "退所時等支援等加算のうち入退所前連携加算(Ⅰ)と(Ⅱ)は、入所者1人につき1回限度で、(Ⅰ)算定時は(Ⅱ)を算定しない。",
+      "sources": [
+        {
+          "label": "指定施設サービス等に要する費用の額の算定に関する基準（平成12年厚生省告示第21号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0255&dataType=0&pageNo=1",
+          "page": "2 介護保健施設サービス ト 退所時等支援等加算、注22"
+        }
+      ],
+      "lastVerified": "2026-07-09",
+      "verificationLevel": "genpon"
+    }
+  ]
+}
