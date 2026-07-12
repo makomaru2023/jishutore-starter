@@ -7,12 +7,14 @@ import {
     type FeeConflictPair,
     type FeeDomain,
     type FeeItem,
+    type FeeRequiresRule,
 } from "@/lib/fee-check";
 
 type ComboDomain = { domain: FeeDomain; conflicts: FeeConflictSet };
 
 type TriggeredPair = FeeConflictPair & { aName: string; bName: string };
 type TriggeredVariant = { id: string; name: string; note: string; sources: FeeConflictSet["variantChoices"][number]["sources"] };
+type TriggeredRequire = FeeRequiresRule & { name: string; missingNames: string[] };
 
 const STORAGE_KEY = "fee-combo-selection-v1";
 const CATEGORY_ORDER: FeeItem["category"][] = ["kihon", "kasan", "gensan", "rule"];
@@ -92,11 +94,12 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
     const clear = () => setSelected((prev) => ({ ...prev, [domainId]: [] }));
 
     // 衝突検知
-    const { exclusive, conditional, variants } = useMemo(() => {
+    const { exclusive, conditional, variants, requires } = useMemo(() => {
         const ex: TriggeredPair[] = [];
         const cond: TriggeredPair[] = [];
         const vars: TriggeredVariant[] = [];
-        if (!active) return { exclusive: ex, conditional: cond, variants: vars };
+        const reqs: TriggeredRequire[] = [];
+        if (!active) return { exclusive: ex, conditional: cond, variants: vars, requires: reqs };
         for (const pair of active.conflicts.pairs) {
             if (selectedIds.has(pair.a) && selectedIds.has(pair.b)) {
                 const t: TriggeredPair = { ...pair, aName: nameOf.get(pair.a) ?? pair.a, bName: nameOf.get(pair.b) ?? pair.b };
@@ -107,10 +110,26 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
         for (const v of active.conflicts.variantChoices) {
             if (selectedIds.has(v.id)) vars.push({ id: v.id, name: nameOf.get(v.id) ?? v.id, note: v.note, sources: v.sources });
         }
-        return { exclusive: ex, conditional: cond, variants: vars };
+        // 前提加算：チェック済みの加算に前提があり、その前提が未選択なら警告
+        for (const rule of active.conflicts.requires ?? []) {
+            if (!selectedIds.has(rule.id)) continue;
+            const anyOf = rule.requiresAnyOf ?? [];
+            const allOf = rule.requiresAllOf ?? [];
+            const anyMissing = anyOf.length > 0 && !anyOf.some((id) => selectedIds.has(id));
+            const allMissing = allOf.filter((id) => !selectedIds.has(id));
+            if (anyMissing || allMissing.length > 0) {
+                const missing = anyMissing ? anyOf : allMissing;
+                reqs.push({
+                    ...rule,
+                    name: nameOf.get(rule.id) ?? rule.id,
+                    missingNames: missing.map((id) => nameOf.get(id) ?? id),
+                });
+            }
+        }
+        return { exclusive: ex, conditional: cond, variants: vars, requires: reqs };
     }, [active, selectedIds, nameOf]);
 
-    const total = exclusive.length + conditional.length + variants.length;
+    const total = exclusive.length + conditional.length + variants.length + requires.length;
 
     if (!active) return null;
 
@@ -193,13 +212,13 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
 
                     {selectedIds.size === 0 && (
                         <p className="mt-3 text-sm leading-6 text-slate-500">
-                            左のリストで、算定している（予定の）加算にチェックを入れてください。組み合わせに含まれる併算定不可・条件付き・区分選択制の規定を表示します。
+                            左のリストで、算定している（予定の）加算にチェックを入れてください。組み合わせに含まれる併算定不可・条件付き・区分選択制・前提加算の規定を表示します。
                         </p>
                     )}
 
                     {selectedIds.size > 0 && total === 0 && (
                         <p className="mt-3 text-sm leading-6 text-slate-600">
-                            チェックした組み合わせについて、収録している併算定不可・条件付き・区分選択制の規定は見つかりませんでした。ただし、これは算定できることを保証するものではありません（下の注意書きをご確認ください）。
+                            チェックした組み合わせについて、収録している併算定不可・条件付き・区分選択制・前提加算の規定は見つかりませんでした。ただし、これは算定できることを保証するものではありません（下の注意書きをご確認ください）。
                         </p>
                     )}
 
@@ -214,6 +233,28 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
                                 <SourceLinks sources={p.sources} />
                             </div>
                         ))}
+                        {requires.map((r, i) =>
+                            r.severity === "required" ? (
+                                <div key={`req-${i}`} className="rounded-md border border-red-300 bg-red-50 p-3">
+                                    <p className="text-xs font-black text-red-700">🔴 前提の加算が未選択</p>
+                                    <p className="mt-1 text-sm font-bold leading-6 text-slate-900">
+                                        {r.name} には前提があります：{r.missingNames.join("・")} が未選択です
+                                    </p>
+                                    <p className="mt-1 text-sm leading-6 text-slate-700">{r.note}</p>
+                                    <SourceLinks sources={r.sources} />
+                                </div>
+                            ) : (
+                                <div key={`req-${i}`} className="rounded-md border border-amber-300 bg-amber-50 p-3">
+                                    <p className="text-xs font-black text-amber-800">🟡 前提の確認（区分による）</p>
+                                    <p className="mt-1 text-sm font-bold leading-6 text-slate-900">
+                                        {r.name} の前提：{r.missingNames.join("・")} が未選択です
+                                    </p>
+                                    {r.condition && <p className="mt-1 text-sm leading-6 text-amber-900">対象：{r.condition}</p>}
+                                    <p className="mt-1 text-sm leading-6 text-slate-700">{r.note}</p>
+                                    <SourceLinks sources={r.sources} />
+                                </div>
+                            )
+                        )}
                         {conditional.map((p, i) => (
                             <div key={`cond-${i}`} className="rounded-md border border-amber-300 bg-amber-50 p-3">
                                 <p className="text-xs font-black text-amber-800">🟡 条件付き注意</p>
@@ -237,7 +278,7 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
 
                     {/* 免責文（常設） */}
                     <div className="mt-4 rounded-md border border-slate-200 bg-white p-3 text-xs leading-5 text-slate-500">
-                        このチェックは、厚生労働省の告示・通知に明記された併算定不可・選択制の規定だけを検出します。
+                        このチェックは、厚生労働省の告示・通知に明記された併算定不可・選択制・前提となる加算の規定だけを検出します。
                         <span className="font-bold text-slate-600">表示されない組み合わせが「算定できる」ことを保証するものではありません。</span>
                         施設基準・対象者の要件・算定期間などの条件は各項目のページで確認してください。
                         実際の算定・請求にあたっては必ず原本（告示・通知）を確認し、判断に迷う場合は保険者・地方厚生局にお問い合わせください。

@@ -251,5 +251,38 @@
       "lastVerified": "2026-07-08",
       "verificationLevel": "genpon"
     }
+  ],
+  "requires": [
+    {
+      "id": "tsusho-riha-seikatsu-koui-kojo",
+      "requiresAnyOf": ["tsusho-riha-rehamane"],
+      "severity": "required",
+      "note": "生活行為向上リハビリテーション実施加算は、通所リハビリテーション費におけるリハビリテーションマネジメント加算(イ)(ロ)(ハ)のいずれかを算定していることが要件。リハビリテーションマネジメント加算なしでの算定は返戻の原因になり得る。",
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "28 通所リハビリテーション費における生活行為向上リハビリテーション実施加算の基準 ニ"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-riha-ninchisho-tanki-shuchu",
+      "requiresAnyOf": ["tsusho-riha-rehamane"],
+      "severity": "conditional",
+      "condition": "認知症短期集中リハビリテーション実施加算(Ⅱ)で算定する場合",
+      "note": "加算(Ⅱ)は、リハビリテーションマネジメント加算(イ)(ロ)(ハ)のいずれかを算定していることが要件。加算(Ⅰ)（1週2日限度の個別リハ）にはこの前提はない。",
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "27 通所リハビリテーション費における認知症短期集中リハビリテーション実施加算の基準 ロ(3)"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
   ]
 }

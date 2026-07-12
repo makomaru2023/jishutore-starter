@@ -50,6 +50,21 @@ export type FeeVariantChoice = {
     verificationLevel?: string;
 };
 
+// 前提加算（Aを算定するにはBの算定が必要）。requiresAnyOf＝いずれか1つでよい、
+// requiresAllOf＝すべて必要。severity: required＝加算全体の要件（赤）、
+// conditional＝特定の区分だけの要件（黄・condition に区分を明記）。
+export type FeeRequiresRule = {
+    id: string;
+    requiresAnyOf?: string[];
+    requiresAllOf?: string[];
+    severity: "required" | "conditional";
+    condition?: string;
+    note: string;
+    sources: FeeSource[];
+    lastVerified: string;
+    verificationLevel?: string;
+};
+
 export type FeeConflictSet = {
     schemaVersion: number;
     domain: string;
@@ -57,6 +72,7 @@ export type FeeConflictSet = {
     note?: string;
     pairs: FeeConflictPair[];
     variantChoices: FeeVariantChoice[];
+    requires?: FeeRequiresRule[];
 };
 
 export type FeeItem = {

@@ -250,5 +250,23 @@
       "lastVerified": "2026-07-09",
       "verificationLevel": "genpon"
     }
+  ],
+  "requires": [
+    {
+      "id": "roken-nyusho-rehamane-keikakusho-joho",
+      "requiresAllOf": ["roken-nyusho-koku-eisei-kanri", "roken-nyusho-eiyo-management-kyoka"],
+      "severity": "conditional",
+      "condition": "リハビリテーションマネジメント計画書情報加算(Ⅰ)で算定する場合",
+      "note": "加算(Ⅰ)は、口腔衛生管理加算(Ⅱ)及び栄養マネジメント強化加算を算定していることが要件（口腔衛生管理加算は(Ⅱ)の区分であることが必要）。加算(Ⅱ)にはこの前提はない。",
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=3",
+          "page": "92の2 介護保健施設サービスにおけるリハビリテーションマネジメント計画書情報加算の基準 イ(3)"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
   ]
 }

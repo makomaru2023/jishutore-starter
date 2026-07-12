@@ -10,7 +10,7 @@ import { hasActivePlusAccess } from "@/lib/plus-access";
 export const metadata: Metadata = {
     title: "加算の組み合わせチェック｜自主トレ素材庫Plus",
     description:
-        "算定中の加算にチェックを入れると、その組み合わせに含まれる併算定不可・条件付き・区分選択制の規定を、根拠リンクつきで確認できるPlus会員向けツールです。",
+        "算定中の加算にチェックを入れると、その組み合わせに含まれる併算定不可・条件付き・区分選択制・前提加算の規定を、根拠リンクつきで確認できるPlus会員向けツールです。",
     robots: { index: false, follow: false },
 };
 
@@ -32,7 +32,7 @@ export default async function FeeCheckComboPage() {
                         <p className="text-xs font-bold tracking-widest text-blue-700">PLUS限定ツール</p>
                         <h1 className="mt-2 text-2xl font-black text-slate-950 sm:text-3xl">加算の組み合わせチェック</h1>
                         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
-                            算定している（予定の）加算にチェックを入れると、その組み合わせに含まれる「一緒に算定できない」規定を、根拠リンクつきで表示します。
+                            算定している（予定の）加算にチェックを入れると、その組み合わせに含まれる「一緒に算定できない」規定や「前提となる加算が足りない」状態を、根拠リンクつきで表示します。
                             返戻の原因になりやすい組み合わせの自己点検にお使いください。
                         </p>
                         <p className="mt-2 text-xs leading-6 text-slate-500">
