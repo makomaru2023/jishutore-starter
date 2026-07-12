@@ -2,6 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import {
+    PLUS_PROMO_BADGE_TEXT,
+    PLUS_PROMO_IS_ACTIVE,
+    PLUS_PROMO_NEXT_PRICE_YEN,
+} from "@/constants/plus-pricing";
 
 /**
  * トップ最上部の細い告知バー（Plus先行モニターの価格告知）。
@@ -9,7 +14,7 @@ import { useState } from "react";
  */
 export function PlusAnnouncementBar() {
     const [open, setOpen] = useState(true);
-    if (!open) return null;
+    if (!open || !PLUS_PROMO_IS_ACTIVE) return null;
 
     return (
         <div className="relative bg-blue-700 text-white">
@@ -17,9 +22,9 @@ export function PlusAnnouncementBar() {
                 href="/products/jishutore-plus/"
                 className="flex items-center justify-center gap-1.5 px-9 py-2 text-center text-xs font-bold leading-tight transition-colors hover:bg-blue-800 sm:text-sm"
             >
-                <span className="sm:hidden">7月中の登録は永続500円｜素材庫Plus</span>
+                <span className="sm:hidden">{PLUS_PROMO_BADGE_TEXT}｜素材庫Plus</span>
                 <span className="hidden sm:inline">
-                    7月中の登録は永続500円 → 8月から680円 ｜ 自主トレ素材庫Plus
+                    {PLUS_PROMO_BADGE_TEXT} → 8月から{PLUS_PROMO_NEXT_PRICE_YEN}円 ｜ 自主トレ素材庫Plus
                 </span>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

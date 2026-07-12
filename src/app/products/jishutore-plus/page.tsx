@@ -7,19 +7,28 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
+import {
+    PLUS_PROMO_BADGE_TEXT,
+    PLUS_PROMO_CURRENT_PRICE_YEN,
+    PLUS_PROMO_DEADLINE_LABEL,
+    PLUS_PROMO_IS_ACTIVE,
+    PLUS_PROMO_NEXT_PRICE_YEN,
+    PLUS_PROMO_PRICE_NOTE,
+} from "@/constants/plus-pricing";
 import { feeDomains, getComboDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from "@/lib/fee-check";
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
-const OG_TITLE = "自主トレ素材庫Plus｜資料作成＋診療・介護報酬チェック｜月額500円〜";
+const OG_TITLE = `自主トレ素材庫Plus｜資料作成＋診療・介護報酬チェック｜月額${PLUS_PROMO_CURRENT_PRICE_YEN}円〜`;
 const OG_DESCRIPTION =
     "編集できる自主トレスライドと、診療・介護報酬の記録・自己点検まで確認できるチェックツールを、ひとつの月額サービスで利用できます。";
 
 export const metadata: Metadata = {
-    title: "自主トレ素材庫Plus｜資料作成＋診療・介護報酬チェック｜月額500円〜",
-    description: `${PLUS_SLIDE_COUNT}点の編集できるPowerPoint運動スライドと、全${feeDomains.length}分野・${getFeeCheckTotalCount()}項目の診療・介護報酬チェックを利用できる月額サービスです。資料作成に加え、記録に残すこと・自己点検ポイント・つまずきやすい点まで確認できます。7月登録は永続月額500円（8月〜680円）。`,
+    title: OG_TITLE,
+    description: `${PLUS_SLIDE_COUNT}点の編集できるPowerPoint運動スライドと、全${feeDomains.length}分野・${getFeeCheckTotalCount()}項目の診療・介護報酬チェックを利用できる月額サービスです。資料作成に加え、記録に残すこと・自己点検ポイント・つまずきやすい点まで確認できます。${PLUS_PROMO_PRICE_NOTE}`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -117,7 +126,7 @@ const comparisonRows = [
         label: "料金",
         free: "無料",
         set: "各980円・買い切り",
-        plus: "先行 月額500円",
+        plus: `先行 月額${PLUS_PROMO_CURRENT_PRICE_YEN}円`,
     },
     {
         label: "ファイル形式",
@@ -229,14 +238,16 @@ export default function JishutorePlusPage() {
                 <section className="border-b border-blue-100 bg-blue-50/60">
                     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
                         <div className="mx-auto max-w-4xl text-center">
-                            <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
-                                <span className="rounded-full bg-blue-700 px-4 py-1.5 text-xs font-bold text-white">
-                                    先行モニター募集中
-                                </span>
-                                <span className="rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-bold text-blue-800">
-                                    7月登録は永続500円
-                                </span>
-                            </div>
+                            {PLUS_PROMO_IS_ACTIVE && (
+                                <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                                    <span className="rounded-full bg-blue-700 px-4 py-1.5 text-xs font-bold text-white">
+                                        先行モニター募集中
+                                    </span>
+                                    <span className="rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-xs font-black text-amber-900">
+                                        {PLUS_PROMO_BADGE_TEXT}
+                                    </span>
+                                </div>
+                            )}
                             <h1 className="text-3xl font-black text-slate-950 sm:text-4xl lg:text-5xl">
                                 自主トレ素材庫Plus
                             </h1>
@@ -249,7 +260,7 @@ export default function JishutorePlusPage() {
                             </p>
                             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                                 <PlusSubscribeButton
-                                    label="月額500円で申し込む"
+                                    label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
                                     className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                                 />
                                 <Link
@@ -259,9 +270,11 @@ export default function JishutorePlusPage() {
                                     無料・買い切りとの違いを見る
                                 </Link>
                             </div>
-                            <p className="mt-3 text-xs leading-relaxed text-slate-500">
-                                7月中のご登録なら、月額500円のままずっと据え置き（8月からは680円）。カード決済（Stripe）・いつでも解約できます。
-                            </p>
+                            {PLUS_PROMO_IS_ACTIVE && (
+                                <p className="mt-3 text-xs leading-relaxed text-slate-500">
+                                    {PLUS_PROMO_PRICE_NOTE} カード決済（Stripe）・いつでも解約できます。
+                                </p>
+                            )}
                             <p className="mt-1 text-xs leading-relaxed text-slate-500">
                                 すでにご契約の方は{" "}
                                 <Link href="/plus/login" className="font-semibold text-blue-600 hover:underline">
@@ -612,43 +625,54 @@ export default function JishutorePlusPage() {
 
                 <section className="border-t border-blue-100 bg-blue-50 py-10 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-                        <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-bold text-blue-800 ring-1 ring-blue-200">
-                            先行モニター募集中
-                        </span>
-                        <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
-                            7月中の登録なら、ずっと月額500円
-                        </h2>
-                        <p className="mt-3 text-sm font-bold text-slate-700">
-                            8月からは月額680円。素材が増えるたびに価格を改定しますが、既存会員は登録時の価格のまま据え置きです。
-                        </p>
+                        {PLUS_PROMO_IS_ACTIVE ? (
+                            <>
+                                <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-bold text-blue-800 ring-1 ring-blue-200">
+                                    先行モニター募集中
+                                </span>
+                                <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
+                                    {PLUS_PROMO_DEADLINE_LABEL}の登録なら、ずっと月額{PLUS_PROMO_CURRENT_PRICE_YEN}円
+                                </h2>
+                                <p className="mt-3 text-sm font-bold text-slate-700">
+                                    8月からは月額{PLUS_PROMO_NEXT_PRICE_YEN}円。素材が増えるたびに価格を改定しますが、既存会員は登録時の価格のまま据え置きです。
+                                </p>
+                            </>
+                        ) : (
+                            <h2 className="text-2xl font-black text-slate-950 sm:text-3xl">
+                                自主トレ素材庫Plusを利用する
+                            </h2>
+                        )}
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
                             収録スライドをPowerPointで編集・組み替えでき、診療・介護報酬の記録・自己点検ポイントも確認できます。
                             カード決済（Stripe）で、いつでも解約できます。
                         </p>
-                        <div className="mx-auto mt-5 max-w-md rounded-xl border border-blue-100 bg-white p-4 text-left text-xs leading-6 text-slate-600">
-                            <p className="mb-1 font-bold text-slate-800">今後の料金改定の目安</p>
-                            <p>・7月登録：<span className="font-bold text-blue-700">永続 月額500円</span></p>
-                            <p>・8月〜：月額680円</p>
-                            <p>・素材200点到達（9月頃）：月額780円</p>
-                            <p>・素材300点到達（11月頃）：月額980円</p>
-                            <p className="mt-1 text-slate-500">※ 改定はそのつど事前にお知らせします。改定後も、既存会員の価格は上がりません。</p>
-                        </div>
+                        {PLUS_PROMO_IS_ACTIVE && (
+                            <div className="mx-auto mt-5 max-w-md rounded-xl border border-blue-100 bg-white p-4 text-left text-xs leading-6 text-slate-600">
+                                <p className="mb-1 font-bold text-slate-800">今後の料金改定の目安</p>
+                                <p>・{PLUS_PROMO_DEADLINE_LABEL}の登録：<span className="font-bold text-blue-700">永続 月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</span></p>
+                                <p>・8月〜：月額{PLUS_PROMO_NEXT_PRICE_YEN}円</p>
+                                <p>・素材200点到達（9月頃）：月額780円</p>
+                                <p>・素材300点到達（11月頃）：月額980円</p>
+                                <p className="mt-1 text-slate-500">※ 改定はそのつど事前にお知らせします。改定後も、既存会員の価格は上がりません。</p>
+                            </div>
+                        )}
                         <div className="mt-7 flex justify-center">
                             <PlusSubscribeButton
-                                label="月額500円で申し込む"
+                                label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
                                 className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                             />
                         </div>
                         <p className="mt-4 text-xs leading-relaxed text-slate-500">
                             まだ迷う方は{" "}
-                            <Link
+                            <TrackedLineLink
                                 href={LINE_URL}
+                                placement="plus_page_footer"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="font-semibold text-emerald-700 hover:underline"
                             >
                                 LINEで最新情報を受け取る
-                            </Link>
+                            </TrackedLineLink>
                             {" "}こともできます。
                         </p>
                     </div>

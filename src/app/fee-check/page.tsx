@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FeeCheckGlobalSearch, type FeeCheckSearchEntry } from "@/components/fee-check/FeeCheckGlobalSearch";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PLUS_PROMO_BADGE_TEXT, PLUS_PROMO_IS_ACTIVE } from "@/constants/plus-pricing";
 import {
     categoryLabels,
     feeDomains,
@@ -221,6 +222,11 @@ export default function FeeCheckTopPage() {
                                             ✓
                                         </span>
                                     </div>
+                                    {PLUS_PROMO_IS_ACTIVE && (
+                                        <p className="relative mt-4 rounded-lg border border-amber-200 bg-amber-300 px-3 py-2 text-center text-xs font-black text-amber-950">
+                                            {PLUS_PROMO_BADGE_TEXT}
+                                        </p>
+                                    )}
                                     <p className="relative mt-3 text-sm leading-6 text-blue-100">
                                         無料公開の内容に加えて、記録漏れや見落としを減らす確認項目まで見られます。
                                     </p>

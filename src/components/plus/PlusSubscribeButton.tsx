@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
 
 /**
  * 自主トレ素材庫Plus の申し込みボタン。
  * クリックで /api/plus/checkout/ を呼び、Stripe の決済ページへ遷移する。
  */
 export function PlusSubscribeButton({
-    label = "月額500円で申し込む",
+    label = `月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`,
     className,
 }: {
     label?: string;

@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LineBanner } from "@/components/LineBanner";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
 import {
@@ -333,14 +334,15 @@ export default function ProductsPage() {
                                     新作やアップデートのお知らせはLINEで受け取れます。
                                     迷う場合は、まず無料特典から雰囲気を確認できます。
                                 </p>
-                                <a
+                                <TrackedLineLink
                                     href={LINE_URL}
+                                    placement="products_page"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-black text-white transition hover:bg-slate-800"
                                 >
                                     LINEで案内を受け取る
-                                </a>
+                                </TrackedLineLink>
                             </div>
                             <LineBanner />
                         </div>
