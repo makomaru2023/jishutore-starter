@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "domain": "kaifukuki-riha",
+  "domainLabel": "回復期リハビリテーション病棟",
+  "note": "回復期リハ病棟の収載済み項目について、令和8年度医科診療報酬点数表の告示本文で原文確認（genpon）した組み合わせ。基本入院料の区分によって生じる算定可否や、施設基準上の届出要件は患者単位の加算組み合わせと区別し、単純な併算定不可・前提加算にはしない。",
+  "pairs": [
+    {
+      "type": "conditional",
+      "a": "kaifukuki-riha-taiinmae-homon-shido",
+      "b": "kaifukuki-riha-sogo-keikaku-hyoka",
+      "condition": "リハビリテーション総合計画評価料に、H003-2注3の入院時訪問指導加算を加算する場合",
+      "note": "B007退院前訪問指導料を算定する場合、入院時訪問指導加算は算定できない。リハビリテーション総合計画評価料1・2そのものとの併算定不可ではない。",
+      "sources": [
+        {
+          "label": "医科診療報酬点数表（令和8年厚生労働省告示）現行版",
+          "url": "https://www.mhlw.go.jp/content/12400000/001686842.pdf",
+          "page": "PDF p.127 B007 退院前訪問指導料、PDF p.236-237 H003-2 注3"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "variantChoices": [
+    {
+      "id": "kaifukuki-riha-sogo-keikaku-hyoka",
+      "note": "リハビリテーション総合計画評価料1と2は患者の予定する介護リハビリテーション利用等に応じて区分を選ぶ。同じ月に両区分を重複算定しない。",
+      "sources": [
+        {
+          "label": "医科診療報酬点数表（令和8年厚生労働省告示）現行版",
+          "url": "https://www.mhlw.go.jp/content/12400000/001686842.pdf",
+          "page": "PDF p.236-237 H003-2 注1・注2"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "kaifukuki-riha-sesshoku-enge-kaifuku",
+      "note": "摂食嚥下機能回復体制加算は届出区分に応じて1〜3のいずれかを算定する。回復期リハビリテーション病棟入院料の患者は、療養病棟入院料1・2の患者に限る加算3の対象外となるため、検討対象は加算1又は2。",
+      "sources": [
+        {
+          "label": "医科診療報酬点数表（令和8年厚生労働省告示）現行版",
+          "url": "https://www.mhlw.go.jp/content/12400000/001686842.pdf",
+          "page": "PDF p.237 H004 注3"
+        },
+        {
+          "label": "令和8年度診療報酬改定関連通知及び官報掲載事項の一部訂正について（令和8年4月2日事務連絡）別添7",
+          "url": "https://www.mhlw.go.jp/content/12400000/001698334.pdf",
+          "page": "PDF p.351 別表第一 H004 注3（算定回数の訂正）"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "requires": []
+}
