@@ -9,7 +9,7 @@ import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEviden
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
-import { feeDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from "@/lib/fee-check";
+import { feeDomains, getComboDomains, getFeeCheckTotalCount, getFeeItemUrl, sampleFeeItems } from "@/lib/fee-check";
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
@@ -84,6 +84,7 @@ const plusEvidenceAssets = {
 };
 
 const feeCheckItemCount = getFeeCheckTotalCount();
+const feeComboDomainCount = getComboDomains().length;
 
 const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel);
 
@@ -106,8 +107,8 @@ const features = [
         body: `${feeCheckItemCount}項目の単位数・点数・算定要件・一次資料リンクを整理しています。`,
     },
     {
-        title: "記録・自己点検まで確認",
-        body: "記録に残すこと、つまずきやすい点、関連Q&A、改定差分まで確認できます。",
+        title: "記録・自己点検・組み合わせ確認",
+        body: `記録やつまずきやすい点に加え、規定がある${feeComboDomainCount}分野では加算の組み合わせも確認できます。`,
     },
 ] as const;
 
@@ -152,7 +153,7 @@ const comparisonRows = [
         label: "報酬チェック",
         free: "単位数・算定要件・根拠リンク（一部無料公開中）",
         set: "―",
-        plus: "記録・自己点検ポイント・改定差分・印刷まで全項目",
+        plus: `記録・自己点検・改定差分・加算の組み合わせ確認（${feeComboDomainCount}分野）`,
     },
     {
         label: "解約後のファイル利用",
@@ -379,7 +380,7 @@ export default function JishutorePlusPage() {
                                     算定要件に加えて、記録に残すこと、実地指導・自己点検で見られるポイント、
                                     つまずきやすい点まで同じ形式で確認できます。
                                 </p>
-                                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                                <div className="mt-5 grid gap-3 sm:grid-cols-3">
                                     <div className="rounded-lg border border-blue-100 bg-white p-4">
                                         <p className="text-xs font-bold text-blue-700">対応分野</p>
                                         <p className="mt-1 text-2xl font-black text-slate-950">{feeDomains.length}分野</p>
@@ -392,6 +393,13 @@ export default function JishutorePlusPage() {
                                         <p className="mt-1 text-2xl font-black text-slate-950">{feeCheckItemCount}項目</p>
                                         <p className="mt-2 text-xs leading-5 text-slate-500">
                                             単位数・算定要件・根拠リンク・記録・自己点検ポイントを整理しています。
+                                        </p>
+                                    </div>
+                                    <div className="rounded-lg border border-blue-100 bg-white p-4">
+                                        <p className="text-xs font-bold text-blue-700">加算の組み合わせ</p>
+                                        <p className="mt-1 text-2xl font-black text-slate-950">{feeComboDomainCount}分野</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-500">
+                                            併算定不可・条件付き・区分選択制・前提加算を根拠リンクつきで確認できます。
                                         </p>
                                     </div>
                                 </div>
@@ -407,6 +415,12 @@ export default function JishutorePlusPage() {
                                         className="inline-flex w-full items-center justify-center rounded-lg border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
                                     >
                                         全文サンプルを見る
+                                    </Link>
+                                    <Link
+                                        href="/plus/fee-check-combo/"
+                                        className="inline-flex w-full items-center justify-center rounded-lg border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50 sm:w-auto"
+                                    >
+                                        組み合わせチェックを使う
                                     </Link>
                                 </div>
                                 <p className="mt-4 text-xs leading-6 text-slate-500">
