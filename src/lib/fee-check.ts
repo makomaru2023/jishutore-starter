@@ -7,6 +7,7 @@ import chiikiHokatsuCareData from "@/data/fee-items/chiiki-hokatsu-care.json";
 import kyuseikiData from "@/data/fee-items/kyuseiki.json";
 import tsushoRihaConflictsData from "@/data/fee-items/tsusho-riha-conflicts.json";
 import rokenNyushoConflictsData from "@/data/fee-items/roken-nyusho-conflicts.json";
+import homonRihaConflictsData from "@/data/fee-items/homon-riha-conflicts.json";
 
 export type FeeInsurance = "care" | "medical";
 export type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
@@ -217,8 +218,8 @@ export function truncateText(value: string, maxLength: number): string {
 }
 
 // --- 加算の組み合わせチェック ---
-// conflicts ファイルを持つ分野のみを対象にする（現在は通所リハがパイロット）。
-const feeConflictSets = [tsushoRihaConflictsData, rokenNyushoConflictsData] as FeeConflictSet[];
+// conflicts ファイルを持つ分野のみを対象にする。
+const feeConflictSets = [tsushoRihaConflictsData, rokenNyushoConflictsData, homonRihaConflictsData] as FeeConflictSet[];
 
 export function getFeeConflictSet(domainId: string): FeeConflictSet | undefined {
     return feeConflictSets.find((set) => set.domain === domainId);

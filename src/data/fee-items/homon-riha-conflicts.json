@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "domain": "homon-riha",
+  "domainLabel": "訪問リハビリテーション",
+  "note": "訪問リハの併算定不可・区分選択制の関係。告示第19号の現行溶け込み版で原文確認（genpon）した関係のみ収載。要確認、他サービスとの分野横断関係、基本報酬の算定可否は扱わない。requires（前提加算）は該当なし。",
+  "pairs": [
+    {
+      "type": "exclusive",
+      "a": "homon-riha-tanki-shuchu",
+      "b": "homon-riha-ninchi-tanki-shuchu",
+      "note": "短期集中リハビリテーション実施加算を算定している場合、認知症短期集中リハビリテーション実施加算は算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "4 訪問リハビリテーション費 注10"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "variantChoices": [
+    {
+      "id": "homon-riha-rehamane",
+      "note": "リハビリテーションマネジメント加算(イ)と(ロ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "4 訪問リハビリテーション費 注9"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "homon-riha-service-taisei-kyoka",
+      "note": "サービス提供体制強化加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "4 訪問リハビリテーション費 ニ サービス提供体制強化加算"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "requires": []
+}
