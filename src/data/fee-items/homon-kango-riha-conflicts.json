@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "domain": "homon-kango-riha",
+  "domainLabel": "訪問看護からのリハビリ（理学療法士等訪問）",
+  "note": "訪問看護費のうち、収載済み項目どうしの併算定不可・区分選択制を、告示第19号の現行溶け込み版で原文確認（genpon）したデータ。要確認、他事業所・他サービスとの重複、基本報酬の算定可否は扱わない。理学療法士等訪問の8単位減算は複数の施設基準で判定するため、単純なrequiresにはしない。",
+  "pairs": [
+    {
+      "type": "exclusive",
+      "a": "homon-kango-riha-shokai-kasan",
+      "b": "homon-kango-riha-taiin-kyodo-shido",
+      "note": "初回加算を算定する場合、退院時共同指導加算は算定しない。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "3 訪問看護費 ホ 退院時共同指導加算"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "variantChoices": [
+    {
+      "id": "homon-kango-riha-kinkyuji-kasan",
+      "note": "緊急時訪問看護加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "3 訪問看護費 注12"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "homon-kango-riha-tokubetsu-kanri-kasan",
+      "note": "特別管理加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "3 訪問看護費 注13"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "homon-kango-riha-shokai-kasan",
+      "note": "初回加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "3 訪問看護費 ニ 初回加算 注1・注2"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "homon-kango-riha-taisei-kyoka-kasan",
+      "note": "看護体制強化加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "3 訪問看護費 ト 看護体制強化加算"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "homon-kango-riha-service-taisei-kyoka",
+      "note": "サービス提供体制強化加算(Ⅰ)と(Ⅱ)は併算定しない（どちらか一方）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "3 訪問看護費 リ サービス提供体制強化加算"
+        }
+      ],
+      "lastVerified": "2026-07-12",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "requires": []
+}
