@@ -24,11 +24,11 @@ export function PlusSubscribeButton({
         setError(null);
         const checkoutParams = {
             currency: "JPY",
-            value: 500,
+            value: PLUS_PROMO_CURRENT_PRICE_YEN,
             items: [{
                 item_id: "jishutore-plus",
                 item_name: "自主トレ素材庫Plus",
-                price: 500,
+                price: PLUS_PROMO_CURRENT_PRICE_YEN,
                 quantity: 1,
             }],
         };

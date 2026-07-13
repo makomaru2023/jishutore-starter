@@ -22,9 +22,9 @@ import { feeDomains, getComboDomains, getFeeCheckTotalCount, getFeeItemUrl, samp
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
-const OG_TITLE = `自主トレ素材庫Plus｜資料作成＋診療・介護報酬チェック｜月額${PLUS_PROMO_CURRENT_PRICE_YEN}円〜`;
+const OG_TITLE = `資料づくりと報酬確認の「探す時間」を減らす｜自主トレ素材庫Plus`;
 const OG_DESCRIPTION =
-    "編集できる自主トレスライドと、診療・介護報酬の記録・自己点検まで確認できるチェックツールを、ひとつの月額サービスで利用できます。";
+    "PT・OT・ST向け。編集できる自主トレスライドと、診療・介護報酬の記録・自己点検をひとつの月額サービスで確認できます。";
 
 export const metadata: Metadata = {
     title: OG_TITLE,
@@ -102,22 +102,18 @@ const feeCheckSampleItem =
     feeCheckSampleDomain.items.find((item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain]) ?? feeCheckSampleDomain.items[0];
 const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
-const features = [
+const workflows = [
     {
-        title: `${PLUS_SLIDE_COUNT}点のPowerPointスライド`,
-        body: "説明文・回数・注意点つき。文字や施設名を書き換えて使えます。",
+        label: "患者・利用者さんへの資料づくり",
+        before: ["素材を探してPowerPointに貼る", "説明文・回数・注意点を毎回整える"],
+        plus: [`${PLUS_SLIDE_COUNT}点から必要なページを選ぶ`, "1つのPowerPointにまとめ、個別部分だけ編集する"],
+        outcome: "対象者に合わせた資料を、印刷・説明まで進めやすくなります。",
     },
     {
-        title: "対象者ごとに選んで組み替え",
-        body: "必要なページだけを選び、状態や目標に合う自主トレ資料を作れます。",
-    },
-    {
-        title: `診療・介護報酬を全${feeDomains.length}分野から確認`,
-        body: `${feeCheckItemCount}項目の単位数・点数・算定要件・一次資料リンクを整理しています。`,
-    },
-    {
-        title: "記録・自己点検・組み合わせ確認",
-        body: `記録やつまずきやすい点に加え、全${feeComboDomainCount}分野から加算の組み合わせを確認できます。`,
+        label: "算定・記録・自己点検の確認",
+        before: ["告示・通知・Q&Aを行き来して探す", "算定要件と記録項目を別々に確認する"],
+        plus: [`全${feeDomains.length}分野・${feeCheckItemCount}項目を同じ形式で確認する`, "根拠資料を開き、記録・自己点検まで照らし合わせる"],
+        outcome: "制度情報を確認する入口をひとつにまとめられます。",
     },
 ] as const;
 
@@ -178,24 +174,41 @@ const comparisonRows = [
     },
 ] as const;
 
+const mobileComparisonLabels = new Set([
+    "料金",
+    "提供単位",
+    "文字の編集",
+    "資料の構成",
+    "報酬チェック",
+    "解約後のファイル利用",
+    "向いている方",
+]);
+const compactMobileComparisonLabels = new Set(["料金", "資料の構成", "向いている方"]);
+
 const plans = [
+    {
+        name: "自主トレ素材庫Plus",
+        description: "資料作成と報酬チェックをまとめて使う",
+        values: comparisonRows.filter((row) => mobileComparisonLabels.has(row.label)).map((row) => ({ label: row.label, value: row.plus })),
+        recommended: true,
+        href: "",
+        cta: "",
+    },
     {
         name: "無料素材",
         description: "PNGイラストを1点ずつ使う",
-        values: comparisonRows.map((row) => ({ label: row.label, value: row.free })),
+        values: comparisonRows.filter((row) => compactMobileComparisonLabels.has(row.label)).map((row) => ({ label: row.label, value: row.free })),
         recommended: false,
+        href: "/items/",
+        cta: "無料素材を見る",
     },
     {
         name: "買い切り資料セット",
         description: "完成した資料をそのまま使う",
-        values: comparisonRows.map((row) => ({ label: row.label, value: row.set })),
+        values: comparisonRows.filter((row) => compactMobileComparisonLabels.has(row.label)).map((row) => ({ label: row.label, value: row.set })),
         recommended: false,
-    },
-    {
-        name: "自主トレ素材庫Plus",
-        description: "資料作成と報酬チェックをまとめて使う",
-        values: comparisonRows.map((row) => ({ label: row.label, value: row.plus })),
-        recommended: true,
+        href: "/products/",
+        cta: "買い切り資料を見る",
     },
 ] as const;
 
@@ -232,50 +245,49 @@ const faqs: { q: string; a: string }[] = [
 
 export default function JishutorePlusPage() {
     return (
-        <div className="flex min-h-screen flex-col bg-white">
+        <div className="flex min-h-screen flex-col bg-white pb-20 sm:pb-0">
             <Header />
             <main className="min-w-0 flex-1 overflow-x-clip [&_h1]:break-keep [&_h2]:break-keep [&_h3]:break-keep [&_p]:break-keep">
-                <section className="border-b border-blue-100 bg-blue-50/60">
-                    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-                        <div className="mx-auto max-w-4xl text-center">
+                <section className="border-b border-blue-100 bg-gradient-to-b from-blue-50 via-blue-50/60 to-white">
+                    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:px-8 lg:py-16">
+                        <div className="text-center lg:text-left">
                             {PLUS_PROMO_IS_ACTIVE && (
-                                <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                                <div className="mb-4 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                                     <span className="rounded-full bg-blue-700 px-4 py-1.5 text-xs font-bold text-white">
-                                        先行モニター募集中
+                                        先行価格
                                     </span>
                                     <span className="rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-xs font-black text-amber-900">
                                         {PLUS_PROMO_BADGE_TEXT}
                                     </span>
                                 </div>
                             )}
-                            <h1 className="text-3xl font-black text-slate-950 sm:text-4xl lg:text-5xl">
-                                自主トレ素材庫Plus
+                            <p className="text-xs font-black tracking-widest text-blue-700">PT・OT・ST向け｜自主トレ素材庫Plus</p>
+                            <h1 className="mt-3 text-3xl font-black leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                                自主トレ資料づくりと<br />報酬確認の「探す時間」を減らす
                             </h1>
-                            <p className="mt-4 text-lg font-bold leading-relaxed text-blue-900 sm:text-xl">
-                                自主トレ資料づくりと、診療・介護報酬の確認を、ひとつのサービスで
+                            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base lg:mx-0">
+                                必要なスライドを選び、1つのPowerPointにまとめて編集。
+                                算定要件・記録・自己点検も、一次資料へのリンクつきで確認できます。
                             </p>
-                            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
-                                {PLUS_SLIDE_COUNT}点の編集できるPowerPointスライドに加え、全{feeDomains.length}分野・{feeCheckItemCount}項目の報酬チェックを収録。
-                                資料作成から、算定要件・記録・自己点検の確認まで支えます。
-                            </p>
-                            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
                                 <PlusSubscribeButton
-                                    label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
+                                    label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で始める`}
                                     className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                                 />
                                 <Link
-                                    href="#comparison"
+                                    href="#how-it-works"
                                     className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 sm:w-auto"
                                 >
-                                    無料・買い切りとの違いを見る
+                                    1分で使い方を見る
                                 </Link>
                             </div>
-                            {PLUS_PROMO_IS_ACTIVE && (
-                                <p className="mt-3 text-xs leading-relaxed text-slate-500">
-                                    {PLUS_PROMO_PRICE_NOTE} カード決済（Stripe）・いつでも解約できます。
-                                </p>
-                            )}
-                            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+                            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-bold text-slate-600 lg:justify-start">
+                                <span>✓ いつでも解約</span>
+                                <span>✓ ダウンロード済み資料は解約後も利用可</span>
+                                <span>✓ カード決済</span>
+                            </div>
+                            {PLUS_PROMO_IS_ACTIVE && <p className="mt-3 text-xs leading-relaxed text-slate-500">{PLUS_PROMO_DEADLINE_LABEL}月額{PLUS_PROMO_CURRENT_PRICE_YEN}円。登録中はこの価格のまま据え置きです。</p>}
+                            <p className="mt-2 text-xs leading-relaxed text-slate-500">
                                 すでにご契約の方は{" "}
                                 <Link href="/plus/login" className="font-semibold text-blue-600 hover:underline">
                                     こちらからログイン
@@ -283,97 +295,69 @@ export default function JishutorePlusPage() {
                             </p>
                         </div>
 
-                        <div className="mx-auto mt-8 grid max-w-5xl gap-4 text-left sm:mt-10 lg:grid-cols-2">
-                            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm sm:p-5">
-                                <div className="flex items-center justify-between gap-3">
-                                    <div>
-                                        <p className="text-xs font-black text-blue-700">資料作成</p>
-                                        <h2 className="mt-1 text-lg font-black text-slate-950">編集できる自主トレスライド</h2>
-                                    </div>
-                                    <span className="shrink-0 rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-800">
-                                        {PLUS_SLIDE_COUNT}点
-                                    </span>
+                        <div className="mx-auto w-full max-w-2xl">
+                            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-blue-950/10 sm:p-3">
+                                <div className="mb-2 flex items-center gap-1.5 px-1">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
+                                    <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
+                                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
                                 </div>
-                                <div className="mt-4 grid grid-cols-3 gap-2">
-                                    {[previews[0], previews[2], previews[4]].map((preview, index) => (
-                                        <div key={preview.src} className="min-w-0 overflow-hidden rounded-lg border border-slate-100 bg-slate-50">
-                                            <Image
-                                                src={preview.src}
-                                                alt={`${preview.title}のPowerPointスライド例`}
-                                                width={1280}
-                                                height={720}
-                                                priority={index < 2}
-                                                sizes="(max-width: 1023px) 29vw, 155px"
-                                                className="h-auto w-full"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                                <p className="mt-3 text-xs font-bold leading-5 text-slate-600">
-                                    説明文・回数・注意点を編集し、必要なページだけ組み合わせられます。
-                                </p>
+                                <Image
+                                    src="/images/plus/library-screen.png"
+                                    alt="自主トレ素材庫Plusで必要な運動スライドを選んでいる画面"
+                                    width={1600}
+                                    height={1000}
+                                    priority
+                                    sizes="(max-width: 1023px) 92vw, 560px"
+                                    className="h-auto w-full rounded-lg border border-slate-100"
+                                />
                             </div>
-
-                            <div className="rounded-2xl border border-indigo-200 bg-white p-4 shadow-sm sm:p-5">
-                                <div className="flex items-center justify-between gap-3">
-                                    <div>
-                                        <p className="text-xs font-black text-indigo-700">診療・介護報酬チェック</p>
-                                        <h2 className="mt-1 text-lg font-black text-slate-950">算定要件から記録・自己点検まで</h2>
-                                    </div>
-                                    <span className="shrink-0 rounded-full bg-indigo-50 px-3 py-1 text-xs font-black text-indigo-800">
-                                        {feeCheckItemCount}項目
-                                    </span>
+                            <div className="relative mx-3 -mt-5 grid gap-2 sm:mx-6 sm:grid-cols-2">
+                                <div className="rounded-xl border border-blue-100 bg-white p-3 shadow-lg">
+                                    <p className="text-xs font-black text-blue-700">資料作成</p>
+                                    <p className="mt-1 text-sm font-black text-slate-950">{PLUS_SLIDE_COUNT}点から選んで編集</p>
                                 </div>
-                                <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                                    {[
-                                        ["単位数・点数", "無料公開"],
-                                        ["記録・自己点検", "Plus限定"],
-                                        ["根拠・関連Q&A", "一次資料つき"],
-                                    ].map(([label, note]) => (
-                                        <div key={label} className="rounded-lg border border-indigo-100 bg-indigo-50/60 px-2 py-3">
-                                            <p className="text-xs font-black leading-5 text-slate-900">{label}</p>
-                                            <p className="mt-1 text-[10px] font-bold text-indigo-700">{note}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="mt-3 flex items-center justify-between gap-3">
-                                    <p className="text-xs font-bold leading-5 text-slate-600">
-                                        全{feeDomains.length}分野を横断して確認できます。
-                                    </p>
-                                    <Link
-                                        href={getFeeItemUrl(feeCheckSampleDomain.domain, feeCheckSampleItem.id)}
-                                        className="shrink-0 text-xs font-black text-indigo-700 hover:underline"
-                                    >
-                                        全文サンプル →
-                                    </Link>
+                                <div className="rounded-xl border border-indigo-100 bg-white p-3 shadow-lg">
+                                    <p className="text-xs font-black text-indigo-700">報酬確認</p>
+                                    <p className="mt-1 text-sm font-black text-slate-950">{feeCheckItemCount}項目を一次資料つきで</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <PlusHowItWorks previews={previews} {...plusEvidenceAssets} />
+
                 <section className="py-10 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-3xl text-center">
-                            <p className="text-xs font-bold tracking-widest text-blue-700">PLUSでできること</p>
+                            <p className="text-xs font-bold tracking-widest text-blue-700">BEFORE / PLUS</p>
                             <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
-                                資料づくりと報酬確認を、ひとつのサービスで
+                                患者対応と制度確認、2つの仕事をひとつに
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                対象者に合わせた自主トレ資料の作成と、算定要件・記録・自己点検の確認。
-                                日々の実務で時間のかかる2つの作業を支えます。
+                                資料を作る日も、算定や記録を確認する日も、探す入口をPlusにまとめられます。
                             </p>
                         </div>
-                        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
-                            {features.map((feature, index) => (
-                                <article key={feature.title} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:block sm:p-5">
-                                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
-                                        {index + 1}
-                                    </span>
-                                    <div className="min-w-0">
-                                        <h3 className="text-base font-black text-slate-900 sm:mt-4">{feature.title}</h3>
-                                        <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:mt-2">{feature.body}</p>
+                        <div className="mx-auto mt-8 grid max-w-5xl gap-5 sm:mt-10 lg:grid-cols-2">
+                            {workflows.map((workflow) => (
+                                <article key={workflow.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+                                    <h3 className="text-lg font-black text-slate-950">{workflow.label}</h3>
+                                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                                        <div className="rounded-xl bg-slate-100 p-4">
+                                            <p className="text-xs font-black text-slate-500">これまでは</p>
+                                            <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-600">
+                                                {workflow.before.map((item) => <li key={item}>・{item}</li>)}
+                                            </ul>
+                                        </div>
+                                        <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
+                                            <p className="text-xs font-black text-blue-700">Plusなら</p>
+                                            <ul className="mt-2 space-y-2 text-sm font-bold leading-6 text-blue-950">
+                                                {workflow.plus.map((item) => <li key={item}>✓ {item}</li>)}
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <p className="mt-4 text-sm font-bold leading-6 text-slate-700">{workflow.outcome}</p>
                                 </article>
                             ))}
                         </div>
@@ -501,7 +485,18 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <PlusHowItWorks previews={previews} {...plusEvidenceAssets} />
+                <section className="border-b border-blue-100 bg-blue-700 py-8 text-white">
+                    <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-5 px-4 text-center sm:px-6 lg:flex-row lg:text-left">
+                        <div>
+                            <p className="text-lg font-black">資料作成も報酬確認も、月額{PLUS_PROMO_CURRENT_PRICE_YEN}円で</p>
+                            <p className="mt-1 text-sm leading-6 text-blue-100">いつでも解約でき、ダウンロード済みのPowerPointは解約後も使えます。</p>
+                        </div>
+                        <PlusSubscribeButton
+                            label="自主トレ素材庫Plusを始める"
+                            className="inline-flex w-full items-center justify-center rounded-lg bg-white px-7 py-3.5 text-sm font-black text-blue-700 shadow-sm transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                        />
+                    </div>
+                </section>
 
                 <PlusPreviewGallery previews={previews} />
 
@@ -535,6 +530,18 @@ export default function JishutorePlusPage() {
                                             </div>
                                         ))}
                                     </dl>
+                                    <div className="mt-5">
+                                        {plan.recommended ? (
+                                            <PlusSubscribeButton
+                                                label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で始める`}
+                                                className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                                            />
+                                        ) : (
+                                            <Link href={plan.href} className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-bold text-slate-700 hover:border-blue-300 hover:text-blue-700">
+                                                {plan.cta}
+                                            </Link>
+                                        )}
+                                    </div>
                                 </article>
                             ))}
                         </div>
@@ -564,20 +571,32 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="border-y border-blue-100 bg-blue-50/60 py-10 sm:py-12">
-                    <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-                        <p className="text-base font-black leading-7 text-slate-950 sm:text-lg">
-                            無料素材{FREE_MATERIAL_COUNT}点を公開してきた自主トレ素材庫が運営しています
-                        </p>
-                        <p className="mt-2 text-sm leading-6 text-slate-600">
-                            日々の自主トレ指導で使いやすい素材を、継続して制作・公開しています。
-                        </p>
-                        <Link
-                            href="/items/"
-                            className="mt-4 inline-flex items-center justify-center font-bold text-blue-700 hover:underline"
-                        >
-                            無料素材を見る
-                        </Link>
+                <section className="border-y border-blue-100 bg-blue-50/60 py-10 sm:py-16">
+                    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <p className="text-xs font-bold tracking-widest text-blue-700">運営と確認体制</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">作業療法士が、実務で使いやすい形に整理しています</h2>
+                        </div>
+                        <div className="mt-8 grid gap-4 md:grid-cols-3">
+                            <article className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                                <p className="text-2xl font-black text-blue-700">{FREE_MATERIAL_COUNT}点</p>
+                                <h3 className="mt-2 font-black text-slate-950">無料素材を継続公開</h3>
+                                <p className="mt-2 text-sm leading-6 text-slate-600">自主トレ指導で使いやすい素材を、作業療法士の視点で制作しています。</p>
+                                <Link href="/about/" className="mt-4 inline-flex text-sm font-bold text-blue-700 hover:underline">運営者について →</Link>
+                            </article>
+                            <article className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                                <p className="text-2xl font-black text-blue-700">3枚</p>
+                                <h3 className="mt-2 font-black text-slate-950">実物のPowerPointを試せる</h3>
+                                <p className="mt-2 text-sm leading-6 text-slate-600">文字・回数・施設名を編集できるか、登録前に確認できます。</p>
+                                <a href="/images/plus/sample.pptx" download className="mt-4 inline-flex text-sm font-bold text-blue-700 hover:underline">無料サンプルを開く →</a>
+                            </article>
+                            <article className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                                <p className="text-2xl font-black text-blue-700">一次資料</p>
+                                <h3 className="mt-2 font-black text-slate-950">根拠と確認方法を公開</h3>
+                                <p className="mt-2 text-sm leading-6 text-slate-600">厚生労働省等の告示・通知・疑義解釈を基準に、確認日と根拠リンクを掲載します。</p>
+                                <Link href="/fee-check/editorial-policy/" className="mt-4 inline-flex text-sm font-bold text-blue-700 hover:underline">編集方針を見る →</Link>
+                            </article>
+                        </div>
                     </div>
                 </section>
 
@@ -628,13 +647,13 @@ export default function JishutorePlusPage() {
                         {PLUS_PROMO_IS_ACTIVE ? (
                             <>
                                 <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-bold text-blue-800 ring-1 ring-blue-200">
-                                    先行モニター募集中
+                                    先行価格
                                 </span>
                                 <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
                                     {PLUS_PROMO_DEADLINE_LABEL}の登録なら、ずっと月額{PLUS_PROMO_CURRENT_PRICE_YEN}円
                                 </h2>
                                 <p className="mt-3 text-sm font-bold text-slate-700">
-                                    8月からは月額{PLUS_PROMO_NEXT_PRICE_YEN}円。素材が増えるたびに価格を改定しますが、既存会員は登録時の価格のまま据え置きです。
+                                    8月以降の新規登録は月額{PLUS_PROMO_NEXT_PRICE_YEN}円。既存会員は登録時の価格のままです。
                                 </p>
                             </>
                         ) : (
@@ -646,16 +665,7 @@ export default function JishutorePlusPage() {
                             収録スライドをPowerPointで編集・組み替えでき、診療・介護報酬の記録・自己点検ポイントも確認できます。
                             カード決済（Stripe）で、いつでも解約できます。
                         </p>
-                        {PLUS_PROMO_IS_ACTIVE && (
-                            <div className="mx-auto mt-5 max-w-md rounded-xl border border-blue-100 bg-white p-4 text-left text-xs leading-6 text-slate-600">
-                                <p className="mb-1 font-bold text-slate-800">今後の料金改定の目安</p>
-                                <p>・{PLUS_PROMO_DEADLINE_LABEL}の登録：<span className="font-bold text-blue-700">永続 月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</span></p>
-                                <p>・8月〜：月額{PLUS_PROMO_NEXT_PRICE_YEN}円</p>
-                                <p>・素材200点到達（9月頃）：月額780円</p>
-                                <p>・素材300点到達（11月頃）：月額980円</p>
-                                <p className="mt-1 text-slate-500">※ 改定はそのつど事前にお知らせします。改定後も、既存会員の価格は上がりません。</p>
-                            </div>
-                        )}
+                        {PLUS_PROMO_IS_ACTIVE && <p className="mx-auto mt-5 max-w-xl rounded-xl border border-blue-100 bg-white px-4 py-3 text-xs leading-6 text-slate-600">{PLUS_PROMO_DEADLINE_LABEL}に登録すると、月額{PLUS_PROMO_CURRENT_PRICE_YEN}円のまま利用できます。料金改定後も、登録中の価格は上がりません。</p>}
                         <div className="mt-7 flex justify-center">
                             <PlusSubscribeButton
                                 label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
@@ -678,6 +688,18 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
             </main>
+            <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-4px_18px_rgba(15,23,42,0.12)] backdrop-blur sm:hidden">
+                <div className="mx-auto flex max-w-md items-center gap-3">
+                    <div className="shrink-0">
+                        <p className="text-[10px] font-bold text-slate-500">先行価格</p>
+                        <p className="text-sm font-black text-slate-950">月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</p>
+                    </div>
+                    <PlusSubscribeButton
+                        label="Plusを始める"
+                        className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-black text-white disabled:cursor-not-allowed disabled:opacity-60"
+                    />
+                </div>
+            </div>
             <Footer />
         </div>
     );

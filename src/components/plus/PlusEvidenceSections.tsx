@@ -98,15 +98,15 @@ export function PlusHowItWorks({
     ];
 
     return (
-        <section className="border-y border-slate-200 bg-slate-50 py-10 sm:py-20">
+        <section id="how-it-works" className="scroll-mt-20 border-y border-slate-200 bg-slate-50 py-10 sm:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
                     <p className="text-xs font-bold tracking-widest text-blue-700">HOW TO USE</p>
                     <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
-                        選んで、まとめて、編集するだけ
+                        3ステップで、対象者に合う資料ができる
                     </h2>
                     <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                        ライブラリからPowerPointを作り、対象者に合う内容へ整えるまでの流れです。
+                        探して貼り付ける作業を減らし、必要なページを選ぶところから始められます。
                     </p>
                 </div>
 
@@ -162,7 +162,7 @@ export function PlusHowItWorks({
                         {hasSample ? (
                             <a
                                 href={SAMPLE_DOWNLOAD_PATH}
-                                download
+                                download="自主トレ素材庫Plus_無料サンプル.pptx"
                                 className="inline-flex w-full items-center justify-center rounded-lg border-2 border-blue-600 bg-white px-6 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 sm:w-auto"
                             >
                                 無料サンプルをダウンロード
@@ -177,7 +177,7 @@ export function PlusHowItWorks({
                             </span>
                         )}
                     </div>
-                    <p className="mt-3 text-xs text-slate-500">スライド3枚入り・会員登録不要</p>
+                    <p className="mt-3 text-xs text-slate-500">スライド3枚入り・会員登録不要・文字や回数を編集できます</p>
                 </div>
             </div>
         </section>
@@ -221,7 +221,7 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                     {previews.map((preview, index) => (
                         <figure
                             key={preview.src}
-                            className={`${index >= 3 ? "hidden sm:block" : ""} min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm`}
+                            className={`${index >= 2 ? "hidden sm:block" : ""} min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm`}
                         >
                             <button
                                 type="button"
