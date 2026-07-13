@@ -117,7 +117,7 @@ const features = [
     },
     {
         title: "記録・自己点検・組み合わせ確認",
-        body: `記録やつまずきやすい点に加え、規定がある${feeComboDomainCount}分野では加算の組み合わせも確認できます。`,
+        body: `記録やつまずきやすい点に加え、全${feeComboDomainCount}分野から加算の組み合わせを確認できます。`,
     },
 ] as const;
 

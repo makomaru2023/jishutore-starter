@@ -11,6 +11,7 @@ import homonRihaConflictsData from "@/data/fee-items/homon-riha-conflicts.json";
 import homonKangoRihaConflictsData from "@/data/fee-items/homon-kango-riha-conflicts.json";
 import kaifukukiRihaConflictsData from "@/data/fee-items/kaifukuki-riha-conflicts.json";
 import chiikiHokatsuCareConflictsData from "@/data/fee-items/chiiki-hokatsu-care-conflicts.json";
+import kyuseikiConflictsData from "@/data/fee-items/kyuseiki-conflicts.json";
 
 export type FeeInsurance = "care" | "medical";
 export type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
@@ -229,6 +230,7 @@ const feeConflictSets = [
     homonKangoRihaConflictsData,
     kaifukukiRihaConflictsData,
     chiikiHokatsuCareConflictsData,
+    kyuseikiConflictsData,
 ] as FeeConflictSet[];
 
 export function getFeeConflictSet(domainId: string): FeeConflictSet | undefined {

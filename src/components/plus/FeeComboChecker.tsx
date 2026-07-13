@@ -130,6 +130,10 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
     }, [active, selectedIds, nameOf]);
 
     const total = exclusive.length + conditional.length + variants.length + requires.length;
+    const activeHasRules =
+        active.conflicts.pairs.length > 0 ||
+        active.conflicts.variantChoices.length > 0 ||
+        (active.conflicts.requires?.length ?? 0) > 0;
 
     if (!active) return null;
 
@@ -166,6 +170,13 @@ export function FeeComboChecker({ domains }: { domains: ComboDomain[] }) {
                         </button>
                     )}
                 </div>
+
+                {!activeHasRules && active.conflicts.note && (
+                    <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-950">
+                        <p className="font-black">この分野の検出対象について</p>
+                        <p className="mt-1">{active.conflicts.note}</p>
+                    </div>
+                )}
 
                 <div className="mt-3 space-y-4">
                     {CATEGORY_ORDER.filter((c) => itemsByCategory.has(c)).map((cat) => (
