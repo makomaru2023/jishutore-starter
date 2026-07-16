@@ -14,105 +14,17 @@ import kaifukukiRihaConflictsData from "@/data/fee-items/kaifukuki-riha-conflict
 import chiikiHokatsuCareConflictsData from "@/data/fee-items/chiiki-hokatsu-care-conflicts.json";
 import kyuseikiConflictsData from "@/data/fee-items/kyuseiki-conflicts.json";
 import tsushoKaigoConflictsData from "@/data/fee-items/tsusho-kaigo-conflicts.json";
+import { FEE_CHECK_DOMAIN_COUNT, FEE_CHECK_ITEM_COUNT, assertPublicCount } from "@/constants/public-counts";
 
-export type FeeInsurance = "care" | "medical";
-export type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
-
-export type FeeUnit = {
-    condition: string;
-    value: string;
-    note?: string;
-};
-
-export type FeeSource = {
-    label: string;
-    url: string;
-    page?: string;
-};
-
-export type RelatedQA = {
-    label: string;
-    url: string;
-};
-
-// --- 加算の組み合わせチェック（併算定・条件付き・区分選択制） ---
-export type FeeConflictType = "exclusive" | "conditional";
-
-export type FeeConflictPair = {
-    type: FeeConflictType;
-    a: string;
-    b: string;
-    condition?: string;
-    note: string;
-    sources: FeeSource[];
-    lastVerified: string;
-    verificationLevel?: string;
-};
-
-export type FeeVariantChoice = {
-    id: string;
-    note: string;
-    sources: FeeSource[];
-    lastVerified: string;
-    verificationLevel?: string;
-};
-
-// 前提加算（Aを算定するにはBの算定が必要）。requiresAnyOf＝いずれか1つでよい、
-// requiresAllOf＝すべて必要。severity: required＝加算全体の要件（赤）、
-// conditional＝特定の区分だけの要件（黄・condition に区分を明記）。
-export type FeeRequiresRule = {
-    id: string;
-    requiresAnyOf?: string[];
-    requiresAllOf?: string[];
-    severity: "required" | "conditional";
-    condition?: string;
-    note: string;
-    sources: FeeSource[];
-    lastVerified: string;
-    verificationLevel?: string;
-};
-
-export type FeeConflictSet = {
-    schemaVersion: number;
-    domain: string;
-    domainLabel: string;
-    note?: string;
-    pairs: FeeConflictPair[];
-    variantChoices: FeeVariantChoice[];
-    requires?: FeeRequiresRule[];
-};
-
-export type FeeItem = {
-    id: string;
-    insurance: FeeInsurance;
-    category: FeeCategory;
-    name: string;
-    units: FeeUnit[];
-    requirements: string[];
-    records: string[];
-    auditPoints: string[];
-    pitfalls?: string[];
-    relatedQA?: RelatedQA[];
-    sources: FeeSource[];
-    lastVerified: string;
-    changedInLastRevision?: boolean;
-    changeSummary?: string;
-    verificationLevel?: string;
-    /** 告示上は存在するが現時点では算定できない項目（例：対象感染症が未指定の新興感染症等施設療養費）。赤バッジで警告する */
-    currentlyNotClaimable?: boolean;
-};
-
-export type FeeDomain = {
-    schemaVersion: number;
-    domain: string;
-    domainLabel: string;
-    revision: {
-        care: string;
-        medical: string;
-    };
-    disclaimer: string;
-    items: FeeItem[];
-};
+// 型・ラベル・純粋関数は fee-check-shared.ts に置く（クライアントから安全に import するため）。
+// ここでは再エクスポートして、サーバー側の既存の import パスを維持する。
+export * from "@/lib/fee-check-shared";
+import {
+    type FeeDomain,
+    type FeeItem,
+    type FeeConflictSet,
+    sampleFeeItems,
+} from "@/lib/fee-check-shared";
 
 export const feeDomains = [
     homonRihaData,
@@ -126,38 +38,6 @@ export const feeDomains = [
 ] as FeeDomain[];
 
 export type FeeDomainId = (typeof feeDomains)[number]["domain"];
-
-export const insuranceLabels: Record<FeeInsurance, string> = {
-    care: "介護保険",
-    medical: "医療保険",
-};
-
-export const categoryLabels: Record<FeeCategory, string> = {
-    kihon: "基本報酬",
-    kasan: "加算",
-    gensan: "減算",
-    rule: "ルール",
-};
-
-export const categoryStyles: Record<FeeCategory, string> = {
-    kihon: "border-blue-200 bg-blue-50 text-blue-800",
-    kasan: "border-amber-200 bg-amber-50 text-amber-800",
-    gensan: "border-rose-200 bg-rose-50 text-rose-800",
-    rule: "border-slate-200 bg-slate-100 text-slate-700",
-};
-
-export const sampleFeeItems: Record<string, string> = {
-    "homon-riha": "homon-riha-tanki-shuchu",
-    "tsusho-riha": "tsusho-riha-rehamane",
-    "roken-nyusho": "roken-nyusho-tanki-shuchu-reha",
-    "homon-kango-riha": "homon-kango-riha-riha-shokei-gensan",
-    "kaifukuki-riha": "kaifukuki-riha-kihon",
-    "chiiki-hokatsu-care": "chiiki-hokatsu-care-kihon",
-    "kyuseiki": "kyuseiki-ippan-nyuin-kihon",
-    "tsusho-kaigo": "tsusho-kaigo-kobetsu-kinou",
-};
-
-export const normalizeFeeText = (value: string) => value.normalize("NFKC").toLowerCase();
 
 export function getFeeDomain(domainId: string): FeeDomain | undefined {
     return feeDomains.find((domain) => domain.domain === domainId);
@@ -177,17 +57,10 @@ export function getFeeCheckTotalCount(): number {
     return feeDomains.reduce((total, domain) => total + domain.items.length, 0);
 }
 
-export function getFeeItemUrl(domainId: string, itemId: string): string {
-    return `/fee-check/${domainId}/${itemId}/`;
-}
-
-export function getDomainUrl(domainId: string): string {
-    return `/fee-check/${domainId}/`;
-}
-
-export function isSampleFeeItem(domainId: string, itemId: string): boolean {
-    return sampleFeeItems[domainId] === itemId;
-}
+// 公開コピー（クライアント側は数値定数を参照する）が実データとズレたままにならないよう、
+// ビルド時に検証する。ズレていればここでビルドが落ちる。
+assertPublicCount("報酬チェックの分野数", feeDomains.length, FEE_CHECK_DOMAIN_COUNT);
+assertPublicCount("報酬チェックの項目数", getFeeCheckTotalCount(), FEE_CHECK_ITEM_COUNT);
 
 export function getSampleFeeItems(): Array<{ domain: FeeDomain; item: FeeItem }> {
     return feeDomains.flatMap((domain) => {
@@ -195,34 +68,6 @@ export function getSampleFeeItems(): Array<{ domain: FeeDomain; item: FeeItem }>
         const item = domain.items.find((entry) => entry.id === sampleId);
         return item ? [{ domain, item }] : [];
     });
-}
-
-export function getPublicFeeSearchText(item: FeeItem): string {
-    return normalizeFeeText(
-        [
-            item.name,
-            insuranceLabels[item.insurance],
-            categoryLabels[item.category],
-            item.units.map((unit) => `${unit.condition} ${unit.value} ${unit.note || ""}`).join(" "),
-            item.requirements.join(" "),
-            item.sources.map((source) => source.label).join(" "),
-            item.lastVerified,
-        ].join(" ")
-    );
-}
-
-export function getFeeDescription(item: FeeItem, domain: FeeDomain): string {
-    const firstRequirement = item.requirements[0] ?? "";
-    const firstUnit = item.units[0] ? `${item.units[0].condition}は${item.units[0].value}` : "";
-    const sourceNote = "根拠となる厚労省告示・通知へのリンクつき。";
-    const body = [firstUnit, firstRequirement].filter(Boolean).join("。");
-    return truncateText(`${item.name}（${domain.domainLabel}）の算定要件・単位数を確認できます。${body}。${sourceNote}`, 150);
-}
-
-export function truncateText(value: string, maxLength: number): string {
-    const normalized = value.replace(/\s+/g, " ").trim();
-    if (normalized.length <= maxLength) return normalized;
-    return `${normalized.slice(0, maxLength - 1)}…`;
 }
 
 // --- 加算の組み合わせチェック ---

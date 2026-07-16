@@ -10,7 +10,7 @@ import {
     normalizeFeeText,
     type FeeCategory,
     type FeeInsurance,
-} from "@/lib/fee-check";
+} from "@/lib/fee-check-shared";
 import { trackFeeCheckSearch } from "@/lib/analytics";
 
 const ALL = "all";

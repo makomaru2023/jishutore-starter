@@ -8,7 +8,7 @@ import {
     type FeeDomain,
     type FeeItem,
     type FeeRequiresRule,
-} from "@/lib/fee-check";
+} from "@/lib/fee-check-shared";
 
 type ComboDomain = { domain: FeeDomain; conflicts: FeeConflictSet };
 
