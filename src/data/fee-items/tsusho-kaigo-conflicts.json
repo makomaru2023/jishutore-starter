@@ -16,7 +16,7 @@
           "page": "6 通所介護費 注16"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -32,7 +32,7 @@
           "page": "6 通所介護費 注12"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -47,7 +47,55 @@
           "page": "6 通所介護費 注17"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-kaigo-eiyo-assessment",
+      "b": "tsusho-kaigo-kokueiyo-screening",
+      "condition": "栄養アセスメント加算を算定している間",
+      "note": "栄養アセスメント加算を算定している月は、口腔・栄養スクリーニング加算(Ⅰ)は算定できない。口腔のみのスクリーニングとして(Ⅱ)を算定できる場合がある（告示95号 十九の二(4)(一)・ロ）。",
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "十九の二 口腔・栄養スクリーニング加算の基準 イ(4)(一)・ロ"
+        }
+      ],
+      "lastVerified": "2026-07-16",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-kaigo-eiyo-kaizen",
+      "b": "tsusho-kaigo-kokueiyo-screening",
+      "condition": "栄養改善サービスを受けている間及び終了した日の属する月",
+      "note": "栄養改善サービスを受けている間と終了月は、口腔・栄養スクリーニング加算(Ⅰ)は算定できない（スクリーニングの結果、栄養改善サービスが開始された月は除く）。口腔のみの(Ⅱ)を算定できる場合がある。",
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "十九の二 口腔・栄養スクリーニング加算の基準 イ(4)(一)・ロ"
+        }
+      ],
+      "lastVerified": "2026-07-16",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-kaigo-kokuu-kinou-kojo",
+      "b": "tsusho-kaigo-kokueiyo-screening",
+      "condition": "口腔機能向上サービスを受けている間及び終了した日の属する月",
+      "note": "口腔機能向上サービスを受けている間と終了月は、口腔・栄養スクリーニング加算(Ⅰ)は算定できない（スクリーニングの結果、口腔機能向上サービスが開始された月は除く）。栄養のみの(Ⅱ)を算定できる場合がある。",
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "十九の二 口腔・栄養スクリーニング加算の基準 イ(4)(二)・ロ"
+        }
+      ],
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     }
   ],
@@ -62,7 +110,7 @@
           "page": "6 通所介護費 注10"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -75,7 +123,7 @@
           "page": "6 通所介護費 注13"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -88,7 +136,7 @@
           "page": "6 通所介護費 注12"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -101,7 +149,7 @@
           "page": "6 通所介護費 注14"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -114,7 +162,7 @@
           "page": "6 通所介護費 注19"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -127,7 +175,7 @@
           "page": "6 通所介護費 注20"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -140,7 +188,7 @@
           "page": "6 通所介護費 ニ"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     },
     {
@@ -153,7 +201,7 @@
           "page": "6 通所介護費 ホ"
         }
       ],
-      "lastVerified": "2026-07-13",
+      "lastVerified": "2026-07-16",
       "verificationLevel": "genpon"
     }
   ],
