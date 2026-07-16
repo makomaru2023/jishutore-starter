@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "domain": "tsusho-kaigo",
+  "domainLabel": "通所介護（デイサービス）",
+  "note": "通所介護の併算定不可・区分選択制の関係。告示第19号「6 通所介護費」等を一次確認（genpon）したもののみ収載。要確認は収載しない。",
+  "pairs": [
+    {
+      "type": "exclusive",
+      "a": "tsusho-kaigo-ninchisho",
+      "b": "tsusho-kaigo-jakunensei-ninchisho",
+      "note": "認知症加算を算定している場合、若年性認知症利用者受入加算は算定しない（同一利用者について重複算定不可）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注16"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "conditional",
+      "a": "tsusho-kaigo-seikatsu-kinou-renkei",
+      "b": "tsusho-kaigo-kobetsu-kinou",
+      "condition": "個別機能訓練加算（注13）を算定している場合",
+      "note": "個別機能訓練加算を算定している場合、生活機能向上連携加算(Ⅰ)は算定せず、(Ⅱ)は1月につき100単位となる（注12ただし書き）。両者を併用するときは区分・単位数に注意。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注12"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "type": "exclusive",
+      "a": "tsusho-kaigo-eiyo-assessment",
+      "b": "tsusho-kaigo-eiyo-kaizen",
+      "note": "栄養アセスメント加算は、栄養改善加算に係る栄養改善サービスを受けている間及び当該サービスが終了した日の属する月は算定しない（注17ただし書き）。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注17"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "variantChoices": [
+    {
+      "id": "tsusho-kaigo-nyuyoku-kaijo",
+      "note": "入浴介助加算(Ⅰ)と(Ⅱ)は併算定不可。どちらか一方を算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注10"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kobetsu-kinou",
+      "note": "個別機能訓練加算(Ⅰ)イを算定している場合、(Ⅰ)ロは算定しない（注13ただし書き）。(Ⅰ)イと(Ⅰ)ロはどちらか一方。なお(Ⅱ)は(Ⅰ)イ又はロへの上乗せ。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注13"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-seikatsu-kinou-renkei",
+      "note": "生活機能向上連携加算(Ⅰ)と(Ⅱ)は併算定不可。どちらか一方を算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注12"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-adl-iji",
+      "note": "ADL維持等加算(Ⅰ)と(Ⅱ)は併算定不可。どちらか一方を算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注14"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kokueiyo-screening",
+      "note": "口腔・栄養スクリーニング加算(Ⅰ)と(Ⅱ)は併算定不可。どちらか一方を算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注19"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kokuu-kinou-kojo",
+      "note": "口腔機能向上加算(Ⅰ)と(Ⅱ)は併算定不可。どちらか一方を算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注20"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-service-taisei-kyoka",
+      "note": "サービス提供体制強化加算(Ⅰ)(Ⅱ)(Ⅲ)は併算定不可。いずれか一つを算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 ニ"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-shogu-kaizen",
+      "note": "介護職員等処遇改善加算の各区分は併算定不可。いずれか一つを算定する。",
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 ホ"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "verificationLevel": "genpon"
+    }
+  ],
+  "requires": []
+}

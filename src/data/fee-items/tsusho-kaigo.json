@@ -1,0 +1,1114 @@
+{
+  "schemaVersion": 1,
+  "domain": "tsusho-kaigo",
+  "domainLabel": "通所介護（デイサービス）",
+  "revision": {
+    "care": "令和6年度介護報酬改定（2024-06施行）＋令和8年度期中改定（介護職員等処遇改善加算の拡充・2026-06施行）。次回全面改定は2027年度",
+    "medical": "対象外。通所介護は介護保険サービスとして整理する"
+  },
+  "disclaimer": "このページは厚生労働省の告示・通知・疑義解釈をもとに、リハビリ専門職・機能訓練指導員の自己点検用に整理したものです。正確性には最大限配慮していますが、内容を保証するものではありません。実際の算定・請求にあたっては必ず原本（告示・通知）を確認し、判断に迷う場合は保険者・地方厚生局にお問い合わせください。",
+  "items": [
+    {
+      "id": "tsusho-kaigo-kihon",
+      "insurance": "care",
+      "category": "kihon",
+      "name": "通所介護費（基本報酬）",
+      "units": [
+        {
+          "condition": "通常規模型／所要時間3時間以上4時間未満／要介護1〜5",
+          "value": "370・423・479・533・588単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "通常規模型／所要時間4時間以上5時間未満／要介護1〜5",
+          "value": "388・444・502・560・617単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "通常規模型／所要時間5時間以上6時間未満／要介護1〜5",
+          "value": "570・673・777・880・984単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "通常規模型／所要時間6時間以上7時間未満／要介護1〜5",
+          "value": "584・689・796・901・1,008単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "通常規模型／所要時間7時間以上8時間未満／要介護1〜5",
+          "value": "658・777・900・1,023・1,148単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "通常規模型／所要時間8時間以上9時間未満／要介護1〜5",
+          "value": "669・791・915・1,041・1,168単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "大規模型(Ⅰ)／所要時間5時間以上6時間未満／要介護1〜5",
+          "value": "544・643・743・840・940単位",
+          "note": "要介護1から順。他の所要時間区分は告示参照。"
+        },
+        {
+          "condition": "大規模型(Ⅰ)／所要時間7時間以上8時間未満／要介護1〜5",
+          "value": "629・744・861・980・1,097単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "大規模型(Ⅱ)／所要時間5時間以上6時間未満／要介護1〜5",
+          "value": "525・620・715・812・907単位",
+          "note": "要介護1から順。他の所要時間区分は告示参照。"
+        },
+        {
+          "condition": "大規模型(Ⅱ)／所要時間7時間以上8時間未満／要介護1〜5",
+          "value": "607・716・830・946・1,059単位",
+          "note": "要介護1から順に記載。"
+        },
+        {
+          "condition": "所要時間2時間以上3時間未満の場合",
+          "value": "各区分(2)の所定単位数の100分の70",
+          "note": "注4。心身の状況等によりやむを得ず短時間となる場合。"
+        }
+      ],
+      "requirements": [
+        "事業所の規模区分（通常規模型・大規模型(Ⅰ)・大規模型(Ⅱ)）は、前年度の1月あたり平均利用延人員数により判定する。",
+        "所要時間は、実際に要した時間ではなく通所介護計画に位置づけられた内容の標準的な時間で算定する。",
+        "要介護度に応じた単位数を算定する。"
+      ],
+      "records": [
+        "通所介護計画（所要時間・提供内容）。",
+        "前年度の平均利用延人員数がわかる記録（規模区分の根拠）。",
+        "送迎・サービス提供の実績記録。"
+      ],
+      "auditPoints": [
+        "規模区分の判定根拠が記録上明確か。",
+        "計画上の所要時間区分と実際の提供が乖離していないか。"
+      ],
+      "pitfalls": [
+        "実際の提供時間が計画上の区分を恒常的に下回っていないか注意。",
+        "大規模型の区分判定を怠って通常規模型で算定していないか。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 イ・ロ・ハ／注4"
+        },
+        {
+          "label": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（平成12年厚生省告示第27号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+          "page": "通所介護費の算定方法"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-teiin-jinin-gensan",
+      "insurance": "care",
+      "category": "gensan",
+      "name": "定員超過利用・人員基準欠如時の減算",
+      "units": [
+        {
+          "condition": "利用者数が運営基準上の利用定員を超える場合",
+          "value": "所定単位数の100分の70",
+          "note": "定員超過利用に該当する月から。"
+        },
+        {
+          "condition": "看護・介護職員又は生活相談員の員数が基準に満たない場合",
+          "value": "所定単位数の100分の70",
+          "note": "人員基準欠如に該当する月の翌月から。"
+        }
+      ],
+      "requirements": [
+        "利用定員は運営規程で定めた数を基準とする。",
+        "人員基準欠如は、看護職員・介護職員・生活相談員の員数が基準に達しない場合に生じる。"
+      ],
+      "records": [
+        "日々の利用者数の記録。",
+        "職員配置の勤務実績（勤務形態一覧表）。"
+      ],
+      "auditPoints": [
+        "定員超過・人員欠如の該当月と減算開始月がずれていないか。"
+      ],
+      "pitfalls": [
+        "一時的な定員超過でも該当月は減算対象になり得る点に注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "厚生労働大臣が定める利用者等の数の基準及び看護職員等の員数の基準並びに通所介護費等の算定方法（平成12年厚生省告示第27号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0261&dataType=0&pageNo=1",
+          "page": "通所介護費等の算定方法（定員超過・人員基準欠如）"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-encho",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "延長加算（所要時間9時間以上の延長）",
+      "units": [
+        {
+          "condition": "9時間以上10時間未満",
+          "value": "50単位/日",
+          "note": ""
+        },
+        {
+          "condition": "10時間以上11時間未満",
+          "value": "100単位/日",
+          "note": ""
+        },
+        {
+          "condition": "11時間以上12時間未満",
+          "value": "150単位/日",
+          "note": ""
+        },
+        {
+          "condition": "12時間以上13時間未満",
+          "value": "200単位/日",
+          "note": ""
+        },
+        {
+          "condition": "13時間以上14時間未満",
+          "value": "250単位/日",
+          "note": ""
+        }
+      ],
+      "requirements": [
+        "日常生活上の世話を行った後に引き続き所要時間8時間以上9時間未満の指定通所介護を行った場合、又は所要時間8時間以上9時間未満の指定通所介護を行った後に引き続き日常生活上の世話を行った場合が対象。",
+        "通所介護の所要時間と、その前後に行った日常生活上の世話の所要時間を通算した時間が9時間以上となった場合に、区分に応じて加算する。",
+        "届出（電子情報処理組織を使用する方法による都道府県知事への届出）を行っていること。"
+      ],
+      "records": [
+        "延長時間帯の開始・終了時刻の記録。",
+        "延長時間帯に行った日常生活上の世話の内容。"
+      ],
+      "auditPoints": [
+        "8時間以上9時間未満の本体サービスを実際に提供しているか。",
+        "延長時間の記録が実態と一致しているか。"
+      ],
+      "pitfalls": [
+        "本体の所要時間区分が8-9時間未満に達していないのに延長加算を算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注6"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-nyuyoku-kaijo",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "入浴介助加算",
+      "units": [
+        {
+          "condition": "入浴介助加算(Ⅰ)",
+          "value": "40単位/日",
+          "note": ""
+        },
+        {
+          "condition": "入浴介助加算(Ⅱ)",
+          "value": "55単位/日",
+          "note": "(Ⅰ)との同時算定不可。どちらか一方。"
+        }
+      ],
+      "requirements": [
+        "(Ⅰ)：入浴介助を適切に行うことができる人員・設備を有し、入浴介助に関する研修を受けた者が介助を行う。",
+        "(Ⅱ)：医師・理学療法士・作業療法士・介護福祉士・介護支援専門員・機能訓練指導員等が利用者の居宅を訪問し、浴室での動作と浴室環境を評価する。",
+        "(Ⅱ)：評価に基づき個別の入浴計画を作成し、利用者の居宅の状況に近い環境で入浴介助を行う。",
+        "(Ⅱ)：利用者が自身で又は家族・訪問介護員等の介助により入浴できるようになることを目的とする。"
+      ],
+      "records": [
+        "(Ⅱ)：居宅訪問による浴室動作・環境の評価記録。",
+        "(Ⅱ)：個別の入浴計画。",
+        "入浴介助の実施記録。"
+      ],
+      "auditPoints": [
+        "(Ⅱ)の居宅訪問・評価・計画のプロセスが記録で確認できるか。",
+        "(Ⅰ)と(Ⅱ)を同月に重複算定していないか。"
+      ],
+      "pitfalls": [
+        "(Ⅱ)を算定しながら居宅訪問・評価を行っていない場合は返戻リスク。",
+        "研修（(Ⅰ)）の実施記録がないまま算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注10"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 ⑻ 入浴介助加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-chujudisha-care",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "中重度者ケア体制加算",
+      "units": [
+        {
+          "condition": "中重度者ケア体制加算",
+          "value": "45単位/日",
+          "note": "事業所を利用する利用者全員に算定できる。"
+        }
+      ],
+      "requirements": [
+        "指定基準上の看護・介護職員の員数に加え、看護職員又は介護職員を常勤換算方法で一定数以上配置する。",
+        "前年度又は算定日が属する月の前3月の要介護3以上の利用者割合が30％以上であること。",
+        "サービス提供時間帯を通じて専ら通所介護の提供に当たる看護職員を1名以上配置する。"
+      ],
+      "records": [
+        "職員配置の勤務実績。",
+        "要介護3以上の利用者割合の算定根拠。",
+        "中重度者に対するケア計画・実施記録。"
+      ],
+      "auditPoints": [
+        "要介護3以上の割合30％以上の要件を継続して満たしているか。",
+        "看護職員の配置が要件を満たしているか。"
+      ],
+      "pitfalls": [
+        "利用者割合が要件を下回った場合の算定継続に注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注11"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 ⑼ 中重度者ケア体制加算について"
+        },
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "通所介護の中重度者ケア体制加算に係る基準"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-seikatsu-kinou-renkei",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "生活機能向上連携加算",
+      "units": [
+        {
+          "condition": "生活機能向上連携加算(Ⅰ)",
+          "value": "100単位/月",
+          "note": "3月に1回を限度。個別機能訓練加算を算定している場合は算定しない。"
+        },
+        {
+          "condition": "生活機能向上連携加算(Ⅱ)",
+          "value": "200単位/月",
+          "note": "個別機能訓練加算を算定している場合は1月につき100単位。"
+        }
+      ],
+      "requirements": [
+        "(Ⅰ)：外部の指定訪問リハ・指定通所リハ事業所又はリハを実施している医療提供施設の理学療法士・作業療法士・言語聴覚士又は医師の助言に基づき、機能訓練指導員等が共同してアセスメント・評価・個別機能訓練計画を作成する。",
+        "(Ⅰ)：理学療法士等はICT等を活用した助言でも可（利用者宅への訪問を要しない）。",
+        "(Ⅱ)：理学療法士等が利用者の居宅等を訪問し、機能訓練指導員等と共同でアセスメント・評価を行い、個別機能訓練計画を作成する。"
+      ],
+      "records": [
+        "外部リハ専門職との連携・助言の記録。",
+        "共同で作成した個別機能訓練計画。",
+        "3月ごとの評価・見直し記録。"
+      ],
+      "auditPoints": [
+        "連携先のリハ専門職の資格・所属が要件を満たすか。",
+        "(Ⅰ)は3月に1回の限度を超えていないか。"
+      ],
+      "pitfalls": [
+        "外部リハ専門職の関与の記録がないまま算定しない。",
+        "個別機能訓練加算との併算定時の単位数（(Ⅱ)は100単位）に注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注12"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 ⑽ 生活機能向上連携加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kobetsu-kinou",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "個別機能訓練加算",
+      "units": [
+        {
+          "condition": "個別機能訓練加算(Ⅰ)イ",
+          "value": "56単位/日",
+          "note": ""
+        },
+        {
+          "condition": "個別機能訓練加算(Ⅰ)ロ",
+          "value": "76単位/日",
+          "note": "(Ⅰ)イに加えてさらに専従の機能訓練指導員を1名以上配置。"
+        },
+        {
+          "condition": "個別機能訓練加算(Ⅱ)",
+          "value": "20単位/月",
+          "note": "(Ⅰ)イ又はロを算定し、LIFEへデータ提出・活用する場合に上乗せ。"
+        }
+      ],
+      "requirements": [
+        "専ら機能訓練を実施する理学療法士・作業療法士・言語聴覚士・看護職員・柔道整復師・あん摩マッサージ指圧師・はり師・きゅう師（機能訓練指導員）を配置する。",
+        "(Ⅰ)ロ：(Ⅰ)イの機能訓練指導員に加えて、指定通所介護を行う時間帯を通じて専従の機能訓練指導員を1名以上配置する。",
+        "居宅を訪問し、利用者の居宅での生活状況（ADL・IADL等）を確認したうえで、多職種協働で個別機能訓練計画を作成する。",
+        "計画に基づき計画的に機能訓練を行い、3月ごとに1回以上、利用者の居宅を訪問して進捗を評価し計画を見直す。",
+        "(Ⅱ)：個別機能訓練計画の内容等をLIFEに提出し、フィードバックを活用する。"
+      ],
+      "records": [
+        "個別機能訓練計画（別紙様式3-3を参考）。",
+        "居宅訪問による生活状況の評価記録（興味・関心チェックシート等）。",
+        "機能訓練の実施記録・担当者。",
+        "(Ⅱ)：LIFEへの提出記録。"
+      ],
+      "auditPoints": [
+        "専従の機能訓練指導員の配置が要件を満たすか。",
+        "居宅訪問と3月ごとの評価・計画見直しが実施されているか。",
+        "(Ⅱ)のLIFE提出・活用が行われているか。"
+      ],
+      "pitfalls": [
+        "集団体操のみで個別機能訓練計画・個別実施の記録がない場合は注意。",
+        "居宅訪問を省略したまま算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注13"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 ⑾ 個別機能訓練加算について"
+        },
+        {
+          "label": "リハビリテーション・個別機能訓練、栄養、口腔の実施及び一体的取組について",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227996.pdf",
+          "page": "第二 個別機能訓練加算に関する事務処理手順例及び様式例"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-adl-iji",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "ADL維持等加算",
+      "units": [
+        {
+          "condition": "ADL維持等加算(Ⅰ)",
+          "value": "30単位/月",
+          "note": ""
+        },
+        {
+          "condition": "ADL維持等加算(Ⅱ)",
+          "value": "60単位/月",
+          "note": "(Ⅰ)との同時算定不可。ADL利得の要件が(Ⅰ)より高い。"
+        }
+      ],
+      "requirements": [
+        "ADLの評価は、一定の研修を受けた者がBarthel Indexを用いて行う。",
+        "評価対象利用者のADL値をLIFEを用いて厚生労働省に提出する。",
+        "評価対象期間の初月と6月目（等）のADL値を測定し、調整済みADL利得が基準を満たすこと（(Ⅰ)と(Ⅱ)で基準が異なる）。"
+      ],
+      "records": [
+        "Barthel Indexによる評価記録。",
+        "LIFEへのADL値提出記録。",
+        "評価対象者の抽出基準・ADL利得の算定根拠。"
+      ],
+      "auditPoints": [
+        "評価者が所定の研修を受けているか。",
+        "ADL利得の算定が要件どおりか。",
+        "(Ⅰ)と(Ⅱ)を重複算定していないか。"
+      ],
+      "pitfalls": [
+        "Barthel Index以外の指標で評価しない。",
+        "LIFE提出を怠ると算定できない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注14"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 ⑿ ADL維持等加算について"
+        },
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "ADL維持等加算に係る基準"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-ninchisho",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "認知症加算",
+      "units": [
+        {
+          "condition": "認知症加算",
+          "value": "60単位/日",
+          "note": "共生型通所介護費を算定していない場合。中重度者ケア体制加算と併算定可。"
+        }
+      ],
+      "requirements": [
+        "指定基準上の員数に加え、看護職員又は介護職員を常勤換算方法で一定数以上配置する。",
+        "前年度又は前3月の日常生活自立度Ⅲ以上の利用者割合が15％以上であること。",
+        "サービス提供時間帯を通じて専ら通所介護の提供に当たる看護職員又は介護職員を1名以上配置する。",
+        "認知症介護の指導に係る研修等を修了した者を1名以上配置する。"
+      ],
+      "records": [
+        "職員配置の勤務実績。",
+        "認知症日常生活自立度Ⅲ以上の利用者割合の算定根拠。",
+        "認知症研修修了者の配置記録。"
+      ],
+      "auditPoints": [
+        "自立度Ⅲ以上の割合15％以上の要件を満たしているか。",
+        "認知症研修修了者が配置されているか。"
+      ],
+      "pitfalls": [
+        "対象者割合が要件を下回った場合の算定継続に注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注15"
+        },
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "通所介護の認知症加算に係る基準"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-jakunensei-ninchisho",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "若年性認知症利用者受入加算",
+      "units": [
+        {
+          "condition": "若年性認知症利用者受入加算",
+          "value": "60単位/日",
+          "note": "認知症加算を算定している場合は算定しない。"
+        }
+      ],
+      "requirements": [
+        "受け入れた若年性認知症の利用者ごとに個別の担当者を定める。",
+        "利用者の特性やニーズに応じたサービスを提供する。"
+      ],
+      "records": [
+        "若年性認知症利用者の担当者を定めた記録。",
+        "個別の支援内容の記録。"
+      ],
+      "auditPoints": [
+        "利用者ごとの担当者設定が行われているか。",
+        "認知症加算との併算定になっていないか。"
+      ],
+      "pitfalls": [
+        "認知症加算と同一利用者で重複算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注16"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 ⒂ 若年性認知症利用者受入加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-eiyo-assessment",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "栄養アセスメント加算",
+      "units": [
+        {
+          "condition": "栄養アセスメント加算",
+          "value": "50単位/月",
+          "note": "栄養改善加算・口腔・栄養スクリーニング加算(Ⅰ)との併算定不可。"
+        }
+      ],
+      "requirements": [
+        "当該事業所の職員として、又は外部との連携により管理栄養士を1名以上配置する。",
+        "利用者ごとに、多職種が共同して栄養アセスメントを実施し、その結果を利用者・家族に説明し相談等に応じる。",
+        "利用者ごとの栄養状態等の情報をLIFEに提出し、フィードバックを活用する。"
+      ],
+      "records": [
+        "栄養アセスメントの実施記録。",
+        "管理栄養士の配置・連携の記録。",
+        "LIFEへの提出記録。"
+      ],
+      "auditPoints": [
+        "管理栄養士の関与が確認できるか。",
+        "LIFE提出・活用が行われているか。"
+      ],
+      "pitfalls": [
+        "栄養改善加算・口腔栄養スクリーニング加算(Ⅰ)と重複算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注17"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 栄養アセスメント加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-eiyo-kaizen",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "栄養改善加算",
+      "units": [
+        {
+          "condition": "栄養改善加算",
+          "value": "200単位/回",
+          "note": "原則3月以内、1月に2回を限度。"
+        }
+      ],
+      "requirements": [
+        "管理栄養士を1名以上配置する（外部連携も可）。",
+        "低栄養状態にある又はそのおそれのある利用者（BMI18.5未満、1〜6月で3％以上の体重減少、血清アルブミン3.5g/dl以下、食事摂取量不良（75％以下）等）に対して行う。",
+        "利用者ごとに栄養ケア計画を作成し、栄養改善サービスを提供、定期的に評価する。",
+        "おおむね3月ごとに栄養状態を評価し、必要に応じ計画を見直す。"
+      ],
+      "records": [
+        "栄養スクリーニング・アセスメント記録。",
+        "栄養ケア計画。",
+        "栄養改善サービスの提供・評価記録。"
+      ],
+      "auditPoints": [
+        "対象者の低栄養リスク該当が記録上明確か。",
+        "3月・月2回の限度を超えていないか。"
+      ],
+      "pitfalls": [
+        "対象者要件（低栄養リスク）の記録がないまま算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注18"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 栄養改善加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kokueiyo-screening",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "口腔・栄養スクリーニング加算",
+      "units": [
+        {
+          "condition": "口腔・栄養スクリーニング加算(Ⅰ)",
+          "value": "20単位/回",
+          "note": "6月に1回を限度。口腔・栄養の両方をスクリーニング。"
+        },
+        {
+          "condition": "口腔・栄養スクリーニング加算(Ⅱ)",
+          "value": "5単位/回",
+          "note": "6月に1回を限度。栄養アセスメント加算・栄養改善加算・口腔機能向上加算を算定しているため一方のみ実施する場合。"
+        }
+      ],
+      "requirements": [
+        "利用者ごとに、口腔の健康状態のスクリーニングと栄養状態のスクリーニングを行う。",
+        "スクリーニングで確認した情報を介護支援専門員に提供する。",
+        "(Ⅰ)は口腔・栄養の両方、(Ⅱ)は事業所の体制等により一方のみ実施する場合に算定する。"
+      ],
+      "records": [
+        "口腔・栄養スクリーニングの実施記録。",
+        "介護支援専門員への情報提供記録。"
+      ],
+      "auditPoints": [
+        "6月に1回の限度を超えていないか。",
+        "(Ⅰ)と(Ⅱ)の区分が適切か。"
+      ],
+      "pitfalls": [
+        "情報を介護支援専門員へ提供した記録がないまま算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注19"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 口腔・栄養スクリーニング加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kokuu-kinou-kojo",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "口腔機能向上加算",
+      "units": [
+        {
+          "condition": "口腔機能向上加算(Ⅰ)",
+          "value": "150単位/回",
+          "note": "原則3月以内、1月に2回を限度。"
+        },
+        {
+          "condition": "口腔機能向上加算(Ⅱ)",
+          "value": "160単位/回",
+          "note": "原則3月以内、1月に2回を限度。(Ⅰ)に加えLIFE提出・活用。"
+        }
+      ],
+      "requirements": [
+        "言語聴覚士・歯科衛生士又は看護職員を1名以上配置する。",
+        "口腔機能が低下している又はそのおそれのある利用者に対し、口腔機能改善管理指導計画を作成する。",
+        "計画に基づき口腔機能向上サービスを提供し、定期的に評価する。",
+        "(Ⅱ)：利用者ごとの口腔機能の情報をLIFEに提出し、フィードバックを活用する。"
+      ],
+      "records": [
+        "口腔機能改善管理指導計画。",
+        "口腔機能向上サービスの提供・評価記録。",
+        "(Ⅱ)：LIFEへの提出記録。"
+      ],
+      "auditPoints": [
+        "対象者の口腔機能低下リスク該当が記録上明確か。",
+        "3月・月2回の限度を超えていないか。"
+      ],
+      "pitfalls": [
+        "対象者要件の記録がないまま算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注20"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 口腔機能向上加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-kagakuteki-kaigo",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "科学的介護推進体制加算",
+      "units": [
+        {
+          "condition": "科学的介護推進体制加算",
+          "value": "40単位/月",
+          "note": "原則として利用者全員を対象に算定できる。"
+        }
+      ],
+      "requirements": [
+        "利用者ごとの心身の状況等（ADL、栄養、口腔・嚥下、認知症等）の情報をLIFEに提出する。",
+        "提出情報のフィードバックを活用し、通所介護計画の見直し等、サービスの質の向上に活用する。"
+      ],
+      "records": [
+        "LIFEへの提出記録（提出項目・提出日）。",
+        "フィードバックを活用したPDCAの記録。"
+      ],
+      "auditPoints": [
+        "LIFE提出が定期的に行われているか。",
+        "フィードバックの活用が記録で確認できるか。"
+      ],
+      "pitfalls": [
+        "データ提出のみでフィードバック活用の記録がない場合は注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注21"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 科学的介護推進体制加算について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-doitsu-tatemono-gensan",
+      "insurance": "care",
+      "category": "gensan",
+      "name": "同一建物居住者等に対する減算",
+      "units": [
+        {
+          "condition": "事業所と同一建物に居住する者又は同一建物から通う者",
+          "value": "94単位/日を減算",
+          "note": "送迎が必要と認められる利用者を除く。"
+        }
+      ],
+      "requirements": [
+        "「同一建物」とは、事業所と構造上又は外形上一体的な建築物（同一敷地内の別棟や道路を挟んで隣接する場合は該当しない）。",
+        "建物の管理・運営法人が事業者と異なる場合も該当する。"
+      ],
+      "records": [
+        "利用者の居住地と事業所の位置関係がわかる記録。"
+      ],
+      "auditPoints": [
+        "同一建物の判定が要件どおりか。",
+        "減算対象者への94単位減算が漏れていないか。"
+      ],
+      "pitfalls": [
+        "同一建物居住者への減算漏れは返還リスク。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注23"
+        },
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
+          "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
+          "page": "7 通所介護費 同一建物に居住する利用者に通所介護を行う場合について"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-sogei-gensan",
+      "insurance": "care",
+      "category": "gensan",
+      "name": "送迎を行わない場合の減算",
+      "units": [
+        {
+          "condition": "利用者に対して送迎を行わない場合",
+          "value": "片道につき47単位を減算",
+          "note": "利用者宅と事業所間の送迎を行わない場合。"
+        }
+      ],
+      "requirements": [
+        "利用者の居宅と事業所間の送迎を行わない場合に、片道ごとに減算する。",
+        "利用者が自ら通う場合や家族等が送迎する場合が対象。"
+      ],
+      "records": [
+        "送迎の実施状況の記録。"
+      ],
+      "auditPoints": [
+        "送迎を行わなかった片道分の減算が計上されているか。"
+      ],
+      "pitfalls": [
+        "送迎未実施分の減算漏れに注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注24"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-service-taisei-kyoka",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "サービス提供体制強化加算",
+      "units": [
+        {
+          "condition": "サービス提供体制強化加算(Ⅰ)",
+          "value": "22単位/回",
+          "note": ""
+        },
+        {
+          "condition": "サービス提供体制強化加算(Ⅱ)",
+          "value": "18単位/回",
+          "note": ""
+        },
+        {
+          "condition": "サービス提供体制強化加算(Ⅲ)",
+          "value": "6単位/回",
+          "note": ""
+        }
+      ],
+      "requirements": [
+        "(Ⅰ)〜(Ⅲ)のいずれか一つを算定する。介護福祉士の割合や勤続年数の要件で区分が分かれる。",
+        "(Ⅰ)：介護福祉士70％以上、又は勤続10年以上の介護福祉士25％以上等。",
+        "(Ⅱ)：介護福祉士50％以上。(Ⅲ)：介護福祉士40％以上、又は勤続7年以上の者30％以上等。"
+      ],
+      "records": [
+        "職員の資格・勤続年数がわかる記録。",
+        "介護福祉士等の割合の算定根拠。"
+      ],
+      "auditPoints": [
+        "割合の算定期間・方法が要件どおりか。"
+      ],
+      "pitfalls": [
+        "区分の要件（割合・勤続年数）を満たさないまま上位区分で算定しない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 ニ"
+        },
+        {
+          "label": "厚生労働大臣が定める基準（平成27年厚生労働省告示第95号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab4584&dataType=0&pageNo=1",
+          "page": "サービス提供体制強化加算に係る基準"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-shogu-kaizen",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "介護職員等処遇改善加算",
+      "units": [
+        {
+          "condition": "介護職員等処遇改善加算(Ⅰ)イ",
+          "value": "イからニまでにより算定した単位数の1000分の111",
+          "note": "令和8年度期中改定で拡充。"
+        },
+        {
+          "condition": "介護職員等処遇改善加算(Ⅰ)ロ",
+          "value": "イからニまでにより算定した単位数の1000分の120",
+          "note": ""
+        },
+        {
+          "condition": "介護職員等処遇改善加算(Ⅱ)イ",
+          "value": "イからニまでにより算定した単位数の1000分の109",
+          "note": ""
+        },
+        {
+          "condition": "介護職員等処遇改善加算(Ⅱ)ロ",
+          "value": "イからニまでにより算定した単位数の1000分の118",
+          "note": "いずれかの区分を算定している場合、その他の区分は算定しない。"
+        }
+      ],
+      "requirements": [
+        "賃金改善・キャリアパス・職場環境等要件を満たし、区分に応じた加算率を算定する。",
+        "処遇改善計画書の作成・届出、実績報告を行う。",
+        "令和8年度期中改定（2026-06施行）で加算率が引き上げられている。"
+      ],
+      "records": [
+        "処遇改善計画書・実績報告書。",
+        "賃金改善の実施記録。"
+      ],
+      "auditPoints": [
+        "算定区分の要件（キャリアパス・職場環境等）を満たしているか。",
+        "R8改定後の加算率で算定しているか。"
+      ],
+      "pitfalls": [
+        "旧率のまま算定していないか（R8拡充の反映）。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 ホ"
+        },
+        {
+          "label": "厚生労働省 令和8年度介護報酬改定・処遇改善加算の拡充（概要資料）",
+          "url": "https://www.mhlw.go.jp/shogu-kaizen/download/5_R8_houshuu_kaitei.pdf",
+          "page": "令和8年度介護報酬改定・処遇改善加算の拡充"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": true,
+      "changeSummary": "令和8年度期中改定（2026-06施行）で介護職員等処遇改善加算の加算率が拡充された。",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-gyakutai-gensan",
+      "insurance": "care",
+      "category": "gensan",
+      "name": "高齢者虐待防止措置未実施減算",
+      "units": [
+        {
+          "condition": "虐待防止措置が講じられていない場合",
+          "value": "所定単位数の100分の1に相当する単位数を減算",
+          "note": ""
+        }
+      ],
+      "requirements": [
+        "虐待防止のための委員会の開催、指針の整備、研修の実施、担当者の設置等の措置を講じる。",
+        "これらの措置が講じられていない場合に減算する。"
+      ],
+      "records": [
+        "虐待防止委員会の記録。",
+        "指針・研修・担当者設置の記録。"
+      ],
+      "auditPoints": [
+        "虐待防止措置が要件どおり継続実施されているか。"
+      ],
+      "pitfalls": [
+        "委員会・研修等の未実施は減算対象。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注2"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-bcp-gensan",
+      "insurance": "care",
+      "category": "gensan",
+      "name": "業務継続計画未策定減算",
+      "units": [
+        {
+          "condition": "業務継続計画が策定されていない等の場合",
+          "value": "所定単位数の100分の1に相当する単位数を減算",
+          "note": ""
+        }
+      ],
+      "requirements": [
+        "感染症や災害の発生時に業務を継続するための計画（BCP）を策定する。",
+        "計画に従い、必要な研修・訓練を定期的に実施する。",
+        "計画未策定又は研修・訓練未実施の場合に減算する。"
+      ],
+      "records": [
+        "業務継続計画（BCP）。",
+        "研修・訓練の実施記録。"
+      ],
+      "auditPoints": [
+        "BCPの策定と研修・訓練の実施が確認できるか。"
+      ],
+      "pitfalls": [
+        "計画はあっても研修・訓練が未実施だと減算対象になり得る。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注3"
+        }
+      ],
+      "lastVerified": "2026-07-13",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    }
+  ]
+}

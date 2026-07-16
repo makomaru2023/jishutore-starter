@@ -5,6 +5,7 @@ import homonKangoRihaData from "@/data/fee-items/homon-kango-riha.json";
 import kaifukukiRihaData from "@/data/fee-items/kaifukuki-riha.json";
 import chiikiHokatsuCareData from "@/data/fee-items/chiiki-hokatsu-care.json";
 import kyuseikiData from "@/data/fee-items/kyuseiki.json";
+import tsushoKaigoData from "@/data/fee-items/tsusho-kaigo.json";
 import tsushoRihaConflictsData from "@/data/fee-items/tsusho-riha-conflicts.json";
 import rokenNyushoConflictsData from "@/data/fee-items/roken-nyusho-conflicts.json";
 import homonRihaConflictsData from "@/data/fee-items/homon-riha-conflicts.json";
@@ -12,6 +13,7 @@ import homonKangoRihaConflictsData from "@/data/fee-items/homon-kango-riha-confl
 import kaifukukiRihaConflictsData from "@/data/fee-items/kaifukuki-riha-conflicts.json";
 import chiikiHokatsuCareConflictsData from "@/data/fee-items/chiiki-hokatsu-care-conflicts.json";
 import kyuseikiConflictsData from "@/data/fee-items/kyuseiki-conflicts.json";
+import tsushoKaigoConflictsData from "@/data/fee-items/tsusho-kaigo-conflicts.json";
 
 export type FeeInsurance = "care" | "medical";
 export type FeeCategory = "kihon" | "kasan" | "gensan" | "rule";
@@ -120,6 +122,7 @@ export const feeDomains = [
     kaifukukiRihaData,
     chiikiHokatsuCareData,
     kyuseikiData,
+    tsushoKaigoData,
 ] as FeeDomain[];
 
 export type FeeDomainId = (typeof feeDomains)[number]["domain"];
@@ -151,6 +154,7 @@ export const sampleFeeItems: Record<string, string> = {
     "kaifukuki-riha": "kaifukuki-riha-kihon",
     "chiiki-hokatsu-care": "chiiki-hokatsu-care-kihon",
     "kyuseiki": "kyuseiki-ippan-nyuin-kihon",
+    "tsusho-kaigo": "tsusho-kaigo-kobetsu-kinou",
 };
 
 export const normalizeFeeText = (value: string) => value.normalize("NFKC").toLowerCase();
@@ -231,6 +235,7 @@ const feeConflictSets = [
     kaifukukiRihaConflictsData,
     chiikiHokatsuCareConflictsData,
     kyuseikiConflictsData,
+    tsushoKaigoConflictsData,
 ] as FeeConflictSet[];
 
 export function getFeeConflictSet(domainId: string): FeeConflictSet | undefined {

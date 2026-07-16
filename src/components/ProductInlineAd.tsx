@@ -39,7 +39,7 @@ export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
         label: '自主トレ素材庫Plus',
         title: '資料作成と診療・介護報酬チェックを、ひとつのサービスで',
         description:
-            '105点の編集できるPowerPointスライドと、全7分野・124項目の診療・介護報酬チェックを利用できます。記録・自己点検・つまずきやすい点まで確認したい方へ。',
+            '105点の編集できるPowerPointスライドと、全8分野・145項目の診療・介護報酬チェックを利用できます。記録・自己点検・つまずきやすい点まで確認したい方へ。',
         href: '/products/jishutore-plus/',
         price: '月額¥500',
         priceNote: '7月登録は据え置き',
