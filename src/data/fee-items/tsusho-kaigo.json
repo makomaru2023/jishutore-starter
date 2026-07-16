@@ -151,6 +151,88 @@
       "verificationLevel": "genpon"
     },
     {
+      "id": "tsusho-kaigo-kansen-saigai",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "感染症又は災害による利用者数減少時の加算（3％加算）",
+      "units": [
+        {
+          "condition": "当該月の利用者数の実績が、前年度の月平均の利用者数より100分の5以上減少している場合",
+          "value": "1回につき所定単位数の100分の3を加算",
+          "note": "利用者数が減少した月の翌々月から3月以内。届出制。"
+        }
+      ],
+      "requirements": [
+        "感染症又は災害（厚生労働大臣が認めるものに限る）の発生を理由とする利用者数の減少が生じていること。",
+        "当該月の利用者数の実績が、当該月の前年度における月平均の利用者数より100分の5以上減少していること。",
+        "届出を行い、利用者数が減少した月の翌々月から3月以内に限り加算する。",
+        "経営改善に時間を要すること等の特別の事情があると認められる場合は、加算期間が終了した月の翌月から3月以内に限り、引き続き加算できる。"
+      ],
+      "records": [
+        "利用者数の実績と前年度月平均の比較資料。",
+        "届出の控え。",
+        "延長する場合は特別の事情の記録。"
+      ],
+      "auditPoints": [
+        "減少の理由が厚生労働大臣が認める感染症・災害に該当するか。",
+        "加算期間（翌々月から3月・延長3月）を超えていないか。"
+      ],
+      "pitfalls": [
+        "恒常的な利用者減少は対象にならない（対象は大臣が認める感染症・災害に限る）。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注5"
+        }
+      ],
+      "lastVerified": "2026-07-16",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-chusankan-teikyo",
+      "insurance": "care",
+      "category": "kasan",
+      "name": "中山間地域等に居住する者へのサービス提供加算",
+      "units": [
+        {
+          "condition": "厚生労働大臣が定める地域に居住する利用者に、通常の事業の実施地域を越えて指定通所介護を行った場合",
+          "value": "1日につき所定単位数の100分の5を加算",
+          "note": ""
+        }
+      ],
+      "requirements": [
+        "通所介護従業者が、別に厚生労働大臣が定める地域（中山間地域等）に居住している利用者に対して行うこと。",
+        "通常の事業の実施地域（運営規程に定めた地域）を越えて指定通所介護を行った場合に算定する。"
+      ],
+      "records": [
+        "利用者の居住地が対象地域に該当することの根拠。",
+        "運営規程に定めた通常の事業の実施地域。"
+      ],
+      "auditPoints": [
+        "対象地域への該当と、実施地域を越えた提供の両方が記録で確認できるか。"
+      ],
+      "pitfalls": [
+        "通常の事業の実施地域内に居住する利用者には算定できない。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注9"
+        }
+      ],
+      "lastVerified": "2026-07-16",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
       "id": "tsusho-kaigo-encho",
       "insurance": "care",
       "category": "kasan",
@@ -876,6 +958,43 @@
           "label": "指定居宅サービスに要する費用の額の算定に関する基準の制定に伴う実施上の留意事項について（老企第36号）",
           "url": "https://www.mhlw.go.jp/content/12300000/001227887.pdf",
           "page": "7 通所介護費 科学的介護推進体制加算について"
+        }
+      ],
+      "lastVerified": "2026-07-16",
+      "changedInLastRevision": false,
+      "changeSummary": "",
+      "verificationLevel": "genpon"
+    },
+    {
+      "id": "tsusho-kaigo-tanki-nyusho-rule",
+      "insurance": "care",
+      "category": "rule",
+      "name": "短期入所等の利用中は通所介護費を算定しない",
+      "units": [
+        {
+          "condition": "短期入所生活介護・短期入所療養介護・特定施設入居者生活介護・小規模多機能型居宅介護・認知症対応型共同生活介護・地域密着型特定施設入居者生活介護・地域密着型介護老人福祉施設入所者生活介護・複合型サービスを受けている間",
+          "value": "通所介護費は算定しない",
+          "note": ""
+        }
+      ],
+      "requirements": [
+        "利用者が短期入所生活介護等の上記サービスを受けている間は、通所介護費を算定できない。"
+      ],
+      "records": [
+        "他サービスの利用状況の確認記録（介護支援専門員からの情報共有等）。"
+      ],
+      "auditPoints": [
+        "ショートステイ等の利用期間と通所介護の請求日が重なっていないか。"
+      ],
+      "pitfalls": [
+        "ショートステイ利用中のデイサービス請求は返戻の定番。月途中の利用開始日・終了日の重なりに注意。"
+      ],
+      "relatedQA": [],
+      "sources": [
+        {
+          "label": "指定居宅サービスに要する費用の額の算定に関する基準（平成12年厚生省告示第19号）現行溶け込み版",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa0253&dataType=0&pageNo=1",
+          "page": "6 通所介護費 注22"
         }
       ],
       "lastVerified": "2026-07-16",
