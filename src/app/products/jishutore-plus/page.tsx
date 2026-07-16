@@ -9,6 +9,7 @@ import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEviden
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { Testimonials } from "@/components/Testimonials";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import {
     PLUS_PROMO_BADGE_TEXT,
@@ -599,6 +600,9 @@ export default function JishutorePlusPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* 掲載許諾つきの声が0件のあいだは何も表示しない */}
+                <Testimonials product="plus" />
 
                 <section id="faq" className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-10 sm:py-20">
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

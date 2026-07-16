@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Testimonials } from "@/components/Testimonials";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
@@ -588,6 +589,9 @@ export default function SelfTrainingMaterialsPage() {
                         </ol>
                     </div>
                 </section>
+
+                {/* 掲載許諾つきの声が0件のあいだは何も表示しない */}
+                <Testimonials product="condition" />
 
                 {/* K. FAQ */}
                 <section className="bg-white py-14 sm:py-20">
