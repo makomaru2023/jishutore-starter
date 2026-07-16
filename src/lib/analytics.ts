@@ -30,6 +30,11 @@ export function trackLineClick(placement: string): void {
     trackEvent("line_click", { placement });
 }
 
+/** note 導線クリック。placement で設置場所を区別する */
+export function trackNoteClick(placement: string): void {
+    trackEvent("note_click", { placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;

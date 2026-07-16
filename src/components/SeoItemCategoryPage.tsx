@@ -4,44 +4,18 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FilteredItemList } from "@/components/FilteredItemList";
 import { LineBanner } from "@/components/LineBanner";
+import { ProductCta } from "@/components/ProductCta";
+import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { getItems } from "@/lib/items";
 import {
     seoItemCategories,
     type SeoItemCategoryConfig,
 } from "@/lib/seoItemCategories";
-import type { Item } from "@/types";
+import { getSeoCategoryItems } from "@/lib/seoCategoryMatching";
 
 const BASE_URL = "https://jishutore-sozaiko.online";
 
-function normalize(value: string): string {
-    return value.normalize("NFKC").toLowerCase();
-}
-
-function getItemSearchText(
-    item: Item,
-    scope: SeoItemCategoryConfig["matchScope"],
-): string {
-    const fields = [item.title, item.titleJa, item.fileName];
-
-    if (scope === "content" || scope === "all") {
-        fields.push(item.description);
-    }
-
-    if (scope === "all") {
-        fields.push(item.exercisePoint, item.targetCondition, item.difficulty);
-    }
-
-    return normalize(fields.filter(Boolean).join(" "));
-}
-
-export function getSeoCategoryItems(config: SeoItemCategoryConfig): Item[] {
-    const keywords = config.keywords.map(normalize);
-    return getItems().filter((item) => {
-        const searchText = getItemSearchText(item, config.matchScope);
-        return keywords.some((keyword) => searchText.includes(keyword));
-    });
-}
+export { getSeoCategoryItems };
 
 export function createSeoCategoryMetadata(
     config: SeoItemCategoryConfig,
@@ -316,6 +290,12 @@ export function SeoItemCategoryPage({
                 </section>
 
                 <div className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 lg:px-8">
+                    <div className="mb-6">
+                        <ProductCta location="items_bottom_cta" variant="compact" />
+                    </div>
+                    <div className="mb-6">
+                        <RepeatVisitBanner placement="category_bottom" />
+                    </div>
                     <LineBanner />
                 </div>
             </main>

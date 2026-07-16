@@ -3,6 +3,8 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
+import { ProductCta } from "@/components/ProductCta";
+import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
@@ -211,8 +213,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     }
 
     return {
-        title: `自主トレイラスト素材一覧（全${FREE_MATERIAL_COUNT}点）｜無料ダウンロード｜自主トレ素材庫`,
-        description: `スクワット・ブリッジ・ストレッチ・歩行訓練など${FREE_MATERIAL_COUNT}点の自主トレ素材を無料ダウンロード。上肢・下肢・体幹・嚥下など部位別に検索可能。文字あり・文字なしの2タイプ。商用利用OK。`,
+        title: `自主トレイラスト素材 全${FREE_MATERIAL_COUNT}点【無料・商用OK・登録不要】｜自主トレ素材庫`,
+        description: `スクワット・ブリッジ・嚥下体操など自主トレイラスト${FREE_MATERIAL_COUNT}点をすべて無料ダウンロード。登録不要・商用OK・クレジット表記不要。印刷してそのまま患者さんに渡せます。部位・疾患・姿勢で検索でき、文字あり・文字なしの2タイプ。`,
     };
 }
 
@@ -267,6 +269,21 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     <p className="mx-auto max-w-2xl text-base sm:text-lg text-slate-500 font-medium break-keep">
                         {description}
                     </p>
+                    <div className="mt-5 flex flex-wrap justify-center gap-2">
+                        {[
+                            "無料ダウンロード",
+                            "商用利用OK",
+                            "登録不要",
+                            "クレジット表記不要",
+                        ].map((label) => (
+                            <span
+                                key={label}
+                                className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-700"
+                            >
+                                {label}
+                            </span>
+                        ))}
+                    </div>
                 </div>
 
                 <nav
@@ -340,8 +357,18 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     categoryFilter={categoryFilter}
                 />
 
-                {/* 下部：LINE無料特典 */}
+                {/* 下部：有料資料への導線 */}
                 <div className="mt-16 max-w-5xl mx-auto">
+                    <ProductCta location="items_bottom_cta" variant="compact" />
+                </div>
+
+                {/* 下部：ブックマーク・新着通知（リピーター化導線） */}
+                <div className="mt-6 max-w-5xl mx-auto">
+                    <RepeatVisitBanner placement="items_bottom" />
+                </div>
+
+                {/* 下部：LINE無料特典 */}
+                <div className="mt-6 max-w-5xl mx-auto">
                     <LineBanner />
                 </div>
             </main>

@@ -9,6 +9,14 @@ export function Footer() {
                         <Link href="/about" className="hover:text-white transition-colors">
                             運営者情報
                         </Link>
+                        <a
+                            href="https://note.com/jisyutore"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-white transition-colors"
+                        >
+                            運営者のnote
+                        </a>
                         <Link href="/products" className="hover:text-white transition-colors">
                             有料コンテンツ
                         </Link>

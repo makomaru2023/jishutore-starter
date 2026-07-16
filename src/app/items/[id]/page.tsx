@@ -7,6 +7,8 @@ import { ProductInlineAd } from "@/components/ProductInlineAd";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
+import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
+import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -101,6 +103,9 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     const targetConditionText = item.targetCondition
         || "脳血管疾患、整形外科疾患、廃用症候群など、リハビリや予防体操が必要な方に広くご活用いただけます。身体機能評価を行った上で適用をご判断ください。";
 
+    // 素材が属する部位・用途カテゴリ（/items/<slug>/ への内部リンクに使う）
+    const itemCategories = getCategoriesForItem(item);
+
     // JSON-LD structured data for SEO
     const jsonLd = {
         "@context": "https://schema.org",
@@ -111,6 +116,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
         "license": "https://jishutore-sozaiko.online/license/",
         "acquireLicensePage": "https://jishutore-sozaiko.online/license/",
         "creditText": "自主トレ素材庫",
+        "keywords": [title, ...itemCategories.map((c) => c.breadcrumb)].join(", "),
         "creator": {
             "@type": "Organization",
             "name": "自主トレ素材庫",
@@ -240,15 +246,75 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
                     </div>
 
-                    {/* 素材詳細ページ下部：自主トレ素材庫Plusへの導線 */}
-                    <div className="mt-16 max-w-5xl mx-auto">
-                        <ProductInlineAd type="plus" location="item_detail_bottom_ad" />
-                    </div>
+                    {/* 素材情報：部位カテゴリ・難易度・形式・利用条件（AI・検索向けのテキスト情報） */}
+                    <section className="border-t border-slate-100 px-8 py-8 md:px-12">
+                        <h2 className="mb-5 text-lg font-black text-slate-900">この素材の情報</h2>
+                        <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                            {itemCategories.length > 0 && (
+                                <div className="sm:col-span-2">
+                                    <dt className="mb-2 text-xs font-bold tracking-wider text-slate-400">
+                                        部位・用途カテゴリ
+                                    </dt>
+                                    <dd className="flex flex-wrap gap-2">
+                                        {itemCategories.map((category) => (
+                                            <Link
+                                                key={category.slug}
+                                                href={`/items/${category.slug}/`}
+                                                className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-bold text-slate-700 transition-colors hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700"
+                                            >
+                                                {category.breadcrumb}
+                                            </Link>
+                                        ))}
+                                    </dd>
+                                </div>
+                            )}
+                            {item.difficulty && (
+                                <div>
+                                    <dt className="mb-1 text-xs font-bold tracking-wider text-slate-400">
+                                        難易度のめやす
+                                    </dt>
+                                    <dd className="text-sm font-medium leading-relaxed text-slate-700">
+                                        {item.difficulty}
+                                    </dd>
+                                </div>
+                            )}
+                            <div>
+                                <dt className="mb-1 text-xs font-bold tracking-wider text-slate-400">
+                                    ファイル形式
+                                </dt>
+                                <dd className="text-sm font-medium leading-relaxed text-slate-700">
+                                    PNG画像（{isTextImage ? "運動名・説明文入り。画像内の文字は編集できません" : "文字なし。資料に貼って自由に説明を追加できます"}）
+                                </dd>
+                            </div>
+                            <div className="sm:col-span-2">
+                                <dt className="mb-1 text-xs font-bold tracking-wider text-slate-400">
+                                    利用条件
+                                </dt>
+                                <dd className="text-sm font-medium leading-relaxed text-slate-700 break-keep">
+                                    無料・商用利用OK・クレジット表記不要・会員登録不要。医療機関・介護施設での患者指導資料、退院前指導、訪問リハビリ・通所リハビリの配布資料にそのまま使えます。素材データそのものの再配布・転売はできません。詳しくは
+                                    <Link href="/license/" className="mx-0.5 font-bold text-teal-700 underline decoration-teal-300 underline-offset-2 hover:text-teal-500">
+                                        利用規約・ガイドライン
+                                    </Link>
+                                    をご確認ください。
+                                </dd>
+                            </div>
+                        </dl>
+                    </section>
+                </div>
 
-                    {/* LINE友だち追加バナー */}
-                    <div className="mt-12 max-w-5xl mx-auto">
-                        <LineBanner />
-                    </div>
+                {/* ブックマーク・新着通知（リピーター化導線） */}
+                <div className="mt-8 max-w-5xl mx-auto">
+                    <RepeatVisitBanner placement="item_detail_bottom" variant="compact" />
+                </div>
+
+                {/* 素材詳細ページ下部：自主トレ素材庫Plusへの導線 */}
+                <div className="mt-8 max-w-5xl mx-auto">
+                    <ProductInlineAd type="plus" location="item_detail_bottom_ad" />
+                </div>
+
+                {/* LINE友だち追加バナー */}
+                <div className="mt-8 max-w-5xl mx-auto">
+                    <LineBanner />
                 </div>
             </main>
             <Footer />

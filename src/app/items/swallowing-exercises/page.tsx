@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FilteredItemList } from "@/components/FilteredItemList";
 import { LineBanner } from "@/components/LineBanner";
+import { ProductCta } from "@/components/ProductCta";
+import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { getItems } from "@/lib/items";
 import type { Item } from "@/types";
@@ -273,6 +275,12 @@ export default function SwallowingExercisesPage() {
                 </section>
 
                 <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+                    <div className="mb-6">
+                        <ProductCta location="items_bottom_cta" variant="compact" />
+                    </div>
+                    <div className="mb-6">
+                        <RepeatVisitBanner placement="category_bottom" />
+                    </div>
                     <LineBanner />
                 </div>
             </main>
