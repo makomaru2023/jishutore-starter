@@ -103,18 +103,36 @@ const feeCheckSampleItem =
     feeCheckSampleDomain.items.find((item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain]) ?? feeCheckSampleDomain.items[0];
 const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
-const workflows = [
+// 「資料作成」と「報酬確認」は別の仕事に見えるが、実際は同じ利用者さんの同じ流れの中にある。
+// その一連を1本の線として見せるための構成（2機能の並列表示をやめた）。
+const plusFlow = [
     {
-        label: "患者・利用者さんへの資料づくり",
-        before: ["素材を探してPowerPointに貼る", "説明文・回数・注意点を毎回整える"],
-        plus: [`${PLUS_SLIDE_COUNT}点から必要なページを選ぶ`, "1つのPowerPointにまとめ、個別部分だけ編集する"],
-        outcome: "対象者に合わせた資料を、印刷・説明まで進めやすくなります。",
+        step: "01",
+        phase: "担当が決まったら",
+        title: "算定要件を確かめる",
+        body: "個別機能訓練加算などの算定要件と単位数を、根拠の告示・通知へのリンクつきで確認します。",
+        tool: `報酬チェック｜全${feeDomains.length}分野・${feeCheckItemCount}項目`,
     },
     {
-        label: "算定・記録・自己点検の確認",
-        before: ["告示・通知・Q&Aを行き来して探す", "算定要件と記録項目を別々に確認する"],
-        plus: [`全${feeDomains.length}分野・${feeCheckItemCount}項目を同じ形式で確認する`, "根拠資料を開き、記録・自己点検まで照らし合わせる"],
-        outcome: "制度情報を確認する入口をひとつにまとめられます。",
+        step: "02",
+        phase: "指導の準備",
+        title: "資料を選んで作る",
+        body: `${PLUS_SLIDE_COUNT}点から必要なページを選び、1つのPowerPointにまとめます。回数や注意点は編集できます。`,
+        tool: `資料庫｜スライド${PLUS_SLIDE_COUNT}点`,
+    },
+    {
+        step: "03",
+        phase: "実施したあと",
+        title: "記録することを確かめる",
+        body: "加算ごとに「記録に残すこと」を整理しています。計画書・実施記録のどこに何を残すかが分かります。",
+        tool: "記録に残すこと｜Plus限定",
+    },
+    {
+        step: "04",
+        phase: "請求の前に",
+        title: "取りこぼしを点検する",
+        body: "併算定できない組み合わせや、前提になる加算の抜けを表示します。自己点検にも使えます。",
+        tool: `組み合わせチェック｜${feeComboDomainCount}分野`,
     },
 ] as const;
 
@@ -332,36 +350,56 @@ export default function JishutorePlusPage() {
                 <section className="py-10 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-3xl text-center">
-                            <p className="text-xs font-bold tracking-widest text-blue-700">BEFORE / PLUS</p>
-                            <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
-                                患者対応と制度確認、2つの仕事をひとつに
+                            <p className="text-xs font-bold tracking-widest text-blue-700">1人の利用者さんに、ぜんぶついてくる</p>
+                            <h2 className="mt-3 text-2xl font-black leading-snug text-slate-950 jp-heading sm:text-3xl">
+                                資料を作る日と、算定を確かめる日は、別の日ではありません
                             </h2>
-                            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                資料を作る日も、算定や記録を確認する日も、探す入口をPlusにまとめられます。
+                            <p className="mt-4 text-sm leading-7 text-slate-600 jp-text ![word-break:normal] sm:text-base">
+                                担当が決まってから請求までは、ひと続きの仕事です。Plusは、その流れで必要になるものをまとめています。
                             </p>
                         </div>
-                        <div className="mx-auto mt-8 grid max-w-5xl gap-5 sm:mt-10 lg:grid-cols-2">
-                            {workflows.map((workflow) => (
-                                <article key={workflow.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-                                    <h3 className="text-lg font-black text-slate-950">{workflow.label}</h3>
-                                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                                        <div className="rounded-xl bg-slate-100 p-4">
-                                            <p className="text-xs font-black text-slate-500">これまでは</p>
-                                            <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-600">
-                                                {workflow.before.map((item) => <li key={item}>・{item}</li>)}
-                                            </ul>
+                        <ol className="mx-auto mt-8 grid max-w-6xl gap-4 sm:mt-10 lg:grid-cols-4">
+                            {plusFlow.map((flow, idx) => (
+                                <li key={flow.step} className="relative flex">
+                                    <article className="flex w-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                                        <div className="flex items-center gap-2">
+                                            <span className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-blue-700 text-xs font-black text-white">
+                                                {flow.step}
+                                            </span>
+                                            <span className="text-xs font-black text-blue-700">{flow.phase}</span>
                                         </div>
-                                        <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
-                                            <p className="text-xs font-black text-blue-700">Plusなら</p>
-                                            <ul className="mt-2 space-y-2 text-sm font-bold leading-6 text-blue-950">
-                                                {workflow.plus.map((item) => <li key={item}>✓ {item}</li>)}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p className="mt-4 text-sm font-bold leading-6 text-slate-700">{workflow.outcome}</p>
-                                </article>
+                                        {/*
+                                          * ![word-break:normal] は、この <main> に付いている [&_h3]:break-keep /
+                                          * [&_p]:break-keep（子孫の見出し・段落すべてに word-break:keep-all を強制する）を
+                                          * 打ち消すためのもの。カード幅が狭いので keep-all のままだと改行機会が無くなり、
+                                          * 「リハビリテーシ／ョン」のような語中での強制分断や、句点の行頭送りが起きる。
+                                          * 折り返しは globals.css の方針どおり jp-heading / jp-text に任せる。
+                                          */}
+                                        <h3 className="mt-3 text-base font-black leading-snug text-slate-950 jp-heading ![word-break:normal]">
+                                            {flow.title}
+                                        </h3>
+                                        <p className="mt-2 flex-1 text-sm leading-6 text-slate-600 jp-text ![word-break:normal]">{flow.body}</p>
+                                        <p className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-black text-blue-800 jp-text">
+                                            {flow.tool}
+                                        </p>
+                                    </article>
+                                    {/* 流れをつなぐ矢印。最後の1枚には出さない */}
+                                    {idx < plusFlow.length - 1 && (
+                                        <span
+                                            aria-hidden="true"
+                                            className="absolute left-1/2 top-full z-10 -translate-x-1/2 text-blue-300 lg:left-auto lg:right-0 lg:top-1/2 lg:translate-x-1/2 lg:-translate-y-1/2"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 rotate-90 lg:rotate-0">
+                                                <path d="M13.5 4.5 21 12l-7.5 7.5-1.06-1.06 5.69-5.69H3v-1.5h15.13l-5.69-5.69z" />
+                                            </svg>
+                                        </span>
+                                    )}
+                                </li>
                             ))}
-                        </div>
+                        </ol>
+                        <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center text-sm font-bold leading-7 text-slate-700 jp-text ![word-break:normal] sm:text-base">
+                            資料づくりと報酬確認を別々に持つと、同じ利用者さんのことを2か所で調べ直すことになります。Plusは、この4つを同じ月額のなかに置いています。
+                        </p>
                     </div>
                 </section>
 
