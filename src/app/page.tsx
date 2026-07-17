@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LineHero } from "@/components/LineHero";
+import { PopularItemsSection } from "@/components/PopularItemsSection";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { feeDomains, getDomainUrl, getFeeCheckTotalCount } from "@/lib/fee-check";
 
@@ -77,6 +78,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <PopularItemsSection />
 
         <section className="bg-white py-12 sm:py-16">
           <div className="container mx-auto px-4">
