@@ -224,7 +224,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
     let items = allItems;
     let title = "自主トレイラスト素材一覧";
-    let description = `スクワット・ブリッジ・ストレッチなど、${FREE_MATERIAL_COUNT}点の自主トレ素材を、無料でダウンロードできます。`;
+    let description = `スクワット・ブリッジ・ストレッチなど、${FREE_MATERIAL_COUNT}点の自主トレ素材を無料でダウンロードできます。文字なし版と、運動名・説明つきの文字あり版の2タイプから選べます。`;
 
     // ローマ字カテゴリ（?q=shoulder 等）優先。サーバー側で複数キーワードORフィルタを実行し、
     // SSR時点で素材一覧がHTMLに出るようにする（Suspense fallback空問題の解消）。
@@ -257,6 +257,20 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         : undefined;
 
     const facilityCta = q ? FACILITY_CTA[q] : undefined;
+    const activeItemType = category === "plain" || category === "text" ? category : "all";
+    const itemTypeCounts = allItems.reduce(
+        (counts, item) => {
+            if (item.category === "plain") counts.plain += 1;
+            if (item.category === "text") counts.text += 1;
+            return counts;
+        },
+        { plain: 0, text: 0 },
+    );
+    const itemTypeTabs = [
+        { key: "all", label: "すべて", href: "/items/", count: allItems.length },
+        { key: "plain", label: "文字なし", href: "/items?category=plain", count: itemTypeCounts.plain },
+        { key: "text", label: "文字あり", href: "/items?category=text", count: itemTypeCounts.text },
+    ] as const;
 
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -285,6 +299,46 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                         ))}
                     </div>
                 </div>
+
+                {!q && (
+                    <nav
+                        aria-label="素材タイプ"
+                        className="mx-auto mb-8 max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+                    >
+                        <p className="mb-3 break-keep text-center text-sm leading-relaxed text-slate-600">
+                            同じ運動のイラストに、文字なし版と文字あり版（運動名・説明つき）の2タイプがあります。
+                        </p>
+                        <div className="grid grid-cols-3 gap-1.5 rounded-xl bg-slate-100 p-1 sm:gap-2">
+                            {itemTypeTabs.map((tab) => {
+                                const isActive = activeItemType === tab.key;
+
+                                return (
+                                    <Link
+                                        key={tab.key}
+                                        href={tab.href}
+                                        aria-current={isActive ? "page" : undefined}
+                                        className={`flex min-w-0 flex-col items-center justify-center rounded-lg px-1.5 py-2.5 text-center transition sm:px-4 ${
+                                            isActive
+                                                ? "bg-teal-700 text-white shadow-sm"
+                                                : "text-slate-600 hover:bg-white hover:text-teal-700"
+                                        }`}
+                                    >
+                                        <span className="whitespace-nowrap text-xs font-black sm:text-sm">
+                                            {tab.label}
+                                        </span>
+                                        <span
+                                            className={`mt-0.5 whitespace-nowrap text-[10px] font-bold sm:text-xs ${
+                                                isActive ? "text-teal-50" : "text-slate-700"
+                                            }`}
+                                        >
+                                            {tab.count}点
+                                        </span>
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </nav>
+                )}
 
                 <nav
                     aria-label="素材カテゴリ"

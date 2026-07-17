@@ -28,7 +28,9 @@ export function ItemCard({ item }: ItemCardProps) {
             </div>
             <div className="flex flex-1 flex-col p-3 sm:p-6">
                 <div className="mb-2 flex flex-wrap items-center gap-1.5 text-[10px] font-bold sm:mb-3 sm:gap-2 sm:text-xs">
-                    <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600 sm:px-3">
+                    <span className={`whitespace-nowrap rounded-full px-2 py-1 sm:px-3 ${
+                        isTextImage ? "bg-blue-50 text-blue-700" : "bg-slate-100 text-slate-600"
+                    }`}>
                         {isTextImage ? "説明文付きPNG" : "文字なしPNG"}
                     </span>
                     <span className="rounded-full bg-teal-50 px-2 py-1 text-teal-600 sm:px-3">

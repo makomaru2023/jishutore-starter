@@ -9,6 +9,7 @@ import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
+import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -92,6 +93,17 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
     const title = item.titleJa || item.title;
     const isTextImage = item.category === "text";
+    const pairedItemId = isTextImage
+        ? item.id.endsWith("-text")
+            ? item.id.slice(0, -"-text".length)
+            : undefined
+        : `${item.id}-text`;
+    const pairedCandidate = pairedItemId ? findItemById(pairedItemId) : undefined;
+    const pairedItem = pairedCandidate && pairedCandidate.category !== item.category
+        ? pairedCandidate
+        : undefined;
+    const pairedTitle = pairedItem ? pairedItem.titleJa || pairedItem.title : "";
+    const pairedImageUrl = pairedItem ? getItemImageUrl(pairedItem.previewSrc) : "";
 
     // Use unique descriptions from items.json, with fallbacks
     const descriptionText = item.description
@@ -230,7 +242,45 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     </MaterialDownloadButton>
                                 </div>
 
-                                {/* 新作通知＆配布資料7点セットのLINE導線（ダウンロードボタン直下） */}
+                                {pairedItem && (
+                                    <Link
+                                        href={`/items/${pairedItem.id}`}
+                                        className="group flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-50/60 p-3 transition hover:border-blue-300 hover:bg-blue-50 hover:shadow-sm"
+                                    >
+                                        <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-white">
+                                            <Image
+                                                src={pairedImageUrl}
+                                                alt=""
+                                                fill
+                                                sizes="80px"
+                                                className="object-contain p-1.5"
+                                            />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="break-keep text-xs font-bold leading-relaxed text-blue-700">
+                                                {isTextImage
+                                                    ? "この素材には文字なし版（自由に文字を入れられる）もあります"
+                                                    : "この素材には文字あり版（運動名・説明つき）もあります"}
+                                            </p>
+                                            <p className="mt-1 line-clamp-2 break-keep text-sm font-bold text-slate-900 transition-colors group-hover:text-blue-700">
+                                                {pairedTitle}
+                                            </p>
+                                        </div>
+                                        <svg
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            strokeWidth={2.5}
+                                            stroke="currentColor"
+                                            className="h-5 w-5 shrink-0 text-blue-500 transition-transform group-hover:translate-x-0.5"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m9 18 6-6-6-6" />
+                                        </svg>
+                                    </Link>
+                                )}
+
+                                {/* 新作通知＆配布資料7点セットのLINE導線 */}
                                 <ItemDetailLineBanner />
 
                                 {/* 有料商品（PowerPoint資料セット）への導線 */}
