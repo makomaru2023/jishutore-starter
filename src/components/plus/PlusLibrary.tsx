@@ -491,66 +491,66 @@ export function PlusLibrary() {
                                     const meta = CATEGORY_META[it.category];
                                     const locked = atCap && !selected;
                                     return (
-                                        <div
+                                        <article
                                             key={it.id}
-                                            role="button"
-                                            tabIndex={0}
-                                            onClick={() => toggle(it.id)}
-                                            onKeyDown={(e) => {
-                                                if (e.key === "Enter" || e.key === " ") {
-                                                    e.preventDefault();
-                                                    toggle(it.id);
-                                                }
-                                            }}
-                                            aria-pressed={selected}
-                                            className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border bg-white text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 ${
+                                            className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-white text-left transition-all ${
                                                 selected
                                                     ? "border-blue-500 shadow-md ring-1 ring-blue-500"
                                                     : "border-slate-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md"
                                             } ${locked ? "opacity-60" : ""}`}
                                         >
-                                            <div className="relative aspect-[16/9] w-full border-b border-slate-100 bg-white">
-                                                <Image
-                                                    src={it.thumbnail}
-                                                    alt={it.title}
-                                                    fill
-                                                    sizes="(min-width: 1280px) 25vw, (min-width: 640px) 33vw, 50vw"
-                                                    className="object-contain p-2"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        setPreviewItem(it);
-                                                    }}
-                                                    aria-label={`${it.title}の中身を見る`}
-                                                    className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-slate-900/60 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-sm transition hover:bg-slate-900/80"
-                                                >
-                                                    <EyeIcon />
-                                                    中身を見る
-                                                </button>
-                                                <span
-                                                    className={`absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full border-2 transition ${
-                                                        selected
-                                                            ? "border-blue-600 bg-blue-600 text-white"
-                                                            : "border-slate-300 bg-white/80 text-transparent"
-                                                    }`}
-                                                >
-                                                    <CheckIcon className="h-4 w-4" />
-                                                </span>
-                                            </div>
-                                            <div className="flex flex-1 flex-col p-3.5">
-                                                <h3 className="line-clamp-2 text-sm font-bold leading-snug text-slate-900 jp-heading">
-                                                    {it.title}
-                                                </h3>
-                                                <span
-                                                    className="mt-2 inline-block w-fit rounded-full px-2 py-0.5 text-[11px] font-bold"
-                                                    style={{ backgroundColor: meta.chipBg, color: meta.chipText }}
-                                                >
-                                                    {it.category}
-                                                </span>
-                                            </div>
-                                        </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => toggle(it.id)}
+                                                aria-pressed={selected}
+                                                aria-label={`${it.title}を${selected ? "選択解除" : "選択"}`}
+                                                className="flex flex-1 cursor-pointer flex-col text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-400"
+                                            >
+                                                <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-slate-100 bg-white">
+                                                    <Image
+                                                        src={`/plus/previews/${it.id}.webp`}
+                                                        alt={`${it.title} の完成スライド`}
+                                                        fill
+                                                        sizes="(min-width: 1280px) 300px, (min-width: 1024px) 32vw, (min-width: 640px) 50vw, 100vw"
+                                                        className="object-contain"
+                                                    />
+                                                </div>
+                                                <div className="flex flex-1 flex-col p-3.5">
+                                                    <div className="flex items-start gap-2">
+                                                        <h3 className="line-clamp-2 min-w-0 flex-1 text-sm font-bold leading-snug text-slate-900 jp-heading">
+                                                            {it.title}
+                                                        </h3>
+                                                        <span
+                                                            aria-hidden="true"
+                                                            className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 transition ${
+                                                                selected
+                                                                    ? "border-blue-600 bg-blue-600 text-white"
+                                                                    : "border-slate-300 bg-white text-transparent"
+                                                            }`}
+                                                        >
+                                                            <CheckIcon className="h-4 w-4" />
+                                                        </span>
+                                                    </div>
+                                                    <div className="mt-auto pr-28 pt-2">
+                                                        <span
+                                                            className="inline-block w-fit rounded-full px-2 py-0.5 text-[11px] font-bold"
+                                                            style={{ backgroundColor: meta.chipBg, color: meta.chipText }}
+                                                        >
+                                                            {it.category}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setPreviewItem(it)}
+                                                aria-label={`${it.title} の完成スライドを拡大表示`}
+                                                className="absolute bottom-3 right-3 z-10 flex items-center gap-1 rounded-full bg-white px-2 py-1 text-[11px] font-bold text-slate-500 transition hover:bg-slate-100 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                                            >
+                                                <EyeIcon />
+                                                拡大して見る
+                                            </button>
+                                        </article>
                                     );
                                 })}
                             </div>

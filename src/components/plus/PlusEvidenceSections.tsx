@@ -28,23 +28,41 @@ function MissingImage({ label }: { label: string }) {
 }
 
 function DownloadVisual({ previews }: { previews: readonly PlusPreviewItem[] }) {
+    const [primaryPreview, ...secondaryPreviews] = previews.slice(0, 3);
+
+    if (!primaryPreview) {
+        return <MissingImage label="PowerPoint" />;
+    }
+
     return (
-        <div className="grid aspect-[16/10] grid-cols-2 gap-2 bg-slate-100 p-3 sm:p-4">
-            {previews.slice(0, 3).map((preview, index) => (
-                <div
-                    key={preview.src}
-                    className={`${index === 0 ? "col-span-2" : ""} min-w-0 overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm`}
-                >
-                    <Image
-                        src={preview.src}
-                        alt="ダウンロードするPowerPointにまとめられるスライド例"
-                        width={1200}
-                        height={675}
-                        sizes="(max-width: 639px) 82vw, 28vw"
-                        className="h-full w-full object-cover"
-                    />
-                </div>
-            ))}
+        <div className="grid aspect-[16/10] grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] gap-2 bg-slate-100 p-3 sm:gap-3 sm:p-4">
+            <div className="min-w-0 self-center overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm">
+                <Image
+                    src={primaryPreview.src}
+                    alt={`${primaryPreview.title}のPowerPoint完成スライド例`}
+                    width={1200}
+                    height={675}
+                    sizes="(max-width: 639px) 55vw, (max-width: 1023px) 48vw, 30vw"
+                    className="h-auto w-full object-contain"
+                />
+            </div>
+            <div className="flex min-w-0 flex-col justify-center gap-2 sm:gap-3">
+                {secondaryPreviews.map((preview) => (
+                    <div
+                        key={preview.src}
+                        className="min-w-0 overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm"
+                    >
+                        <Image
+                            src={preview.src}
+                            alt={`${preview.title}のPowerPoint完成スライド例`}
+                            width={1200}
+                            height={675}
+                            sizes="(max-width: 639px) 34vw, (max-width: 1023px) 30vw, 19vw"
+                            className="h-auto w-full object-contain"
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
@@ -62,12 +80,12 @@ export function PlusHowItWorks({
             body: "部位やキーワードから検索し、対象者に合う運動スライドを選択します。",
             visual: hasLibraryScreen ? (
                 <Image
-                    src="/images/plus/library-screen.png"
+                    src="/images/plus/library-screen.jpg"
                     alt="自主トレ素材庫Plusのライブラリで運動スライドを選択している画面"
-                    width={1600}
-                    height={1000}
-                    sizes="(max-width: 639px) 92vw, 30vw"
-                    className="aspect-[16/10] h-auto w-full object-contain"
+                    width={1265}
+                    height={645}
+                    sizes="(max-width: 639px) 92vw, (max-width: 1023px) 90vw, 640px"
+                    className="h-auto w-full object-contain"
                 />
             ) : (
                 <MissingImage label="ライブラリ" />
@@ -86,11 +104,11 @@ export function PlusHowItWorks({
             visual: hasPptEditingScreen ? (
                 <Image
                     src="/images/plus/ppt-editing.png"
-                    alt="自主トレ素材庫PlusからダウンロードしたファイルをPowerPointで編集している画面"
-                    width={1600}
-                    height={1000}
-                    sizes="(max-width: 639px) 92vw, 30vw"
-                    className="aspect-[16/10] h-auto w-full object-contain"
+                    alt="自主トレ素材庫Plusの実際の収録スライドで回数を編集するPowerPoint画面イメージ"
+                    width={1280}
+                    height={720}
+                    sizes="(max-width: 639px) 92vw, (max-width: 1023px) 90vw, 490px"
+                    className="h-auto w-full object-contain"
                 />
             ) : (
                 <MissingImage label="PowerPoint編集" />
@@ -103,43 +121,33 @@ export function PlusHowItWorks({
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
                     <p className="text-xs font-bold tracking-widest text-blue-700">HOW TO USE</p>
-                    <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                    <h2 className="jp-heading mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
                         3ステップで、対象者に合う資料ができる
                     </h2>
-                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                    <p className="jp-text mt-4 text-sm leading-7 text-slate-600 sm:text-base">
                         探して貼り付ける作業を減らし、必要なページを選ぶところから始められます。
                     </p>
                 </div>
 
-                <div className="mx-auto mt-10 max-w-5xl">
-                    <p className="mb-3 text-center text-sm font-black text-slate-900">実際の操作画面</p>
-                    <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-950 shadow-sm">
-                        <Image
-                            src="/images/plus/library-screen.png"
-                            alt="自主トレ素材庫Plusで187点の資料から選んでいるライブラリ画面"
-                            width={1600}
-                            height={1000}
-                            sizes="(max-width: 1023px) 92vw, 1024px"
-                            className="block h-auto w-full object-contain"
-                        />
-                    </div>
-                    <p className="mt-3 text-center text-xs leading-5 text-slate-500">
-                        部位やキーワードで絞り込み、必要な資料を選べるライブラリ画面です。
-                    </p>
-                </div>
-
-                <ol className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
+                <ol className="mx-auto mt-8 grid max-w-5xl gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-2">
                     {steps.map((step) => (
-                        <li key={step.number} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                            <div className="hidden border-b border-slate-100 lg:block">{step.visual}</div>
-                            <div className="flex items-start gap-3 p-4 sm:p-5 lg:block">
+                        <li
+                            key={step.number}
+                            className={`${step.number === "01" ? "lg:col-span-2 lg:grid lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)]" : ""} min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm`}
+                        >
+                            <div
+                                className={`${step.number === "01" ? "lg:border-b-0 lg:border-r" : ""} border-b border-slate-100`}
+                            >
+                                {step.visual}
+                            </div>
+                            <div className="flex items-start gap-3 p-4 sm:p-5 lg:block lg:self-center lg:p-6">
                                 <p className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-black tracking-tight text-blue-700 lg:h-auto lg:w-auto lg:rounded-none lg:bg-transparent lg:tracking-widest">
                                     <span className="lg:hidden">{step.number}</span>
                                     <span className="hidden lg:inline">STEP {step.number}</span>
                                 </p>
                                 <div className="min-w-0">
-                                    <h3 className="text-base font-black leading-6 text-slate-950 sm:text-lg lg:mt-2 lg:leading-7">{step.title}</h3>
-                                    <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:leading-7 lg:mt-2">{step.body}</p>
+                                    <h3 className="jp-heading text-base font-black leading-6 text-slate-950 sm:text-lg lg:mt-2 lg:leading-7">{step.title}</h3>
+                                    <p className="jp-text mt-1.5 text-sm leading-6 text-slate-600 sm:leading-7 lg:mt-2">{step.body}</p>
                                 </div>
                             </div>
                         </li>
@@ -147,10 +155,10 @@ export function PlusHowItWorks({
                 </ol>
 
                 <div className="mx-auto mt-8 max-w-2xl border-t border-slate-200 pt-8 text-center">
-                    <h3 className="text-lg font-black text-slate-950 sm:text-xl">
+                    <h3 className="jp-heading text-lg font-black text-slate-950 sm:text-xl">
                         まずは無料サンプルで編集感を確かめる
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                    <p className="jp-text mt-2 text-sm leading-6 text-slate-600">
                         実際のPowerPointを開き、文字や回数を変更してお試しいただけます。
                     </p>
                     <div className="mt-5 flex justify-center">

@@ -88,9 +88,8 @@ const hasPlusAsset = (fileName: string) =>
     existsSync(join(process.cwd(), "public", "images", "plus", fileName));
 
 const plusEvidenceAssets = {
-    hasLibraryScreen: hasPlusAsset("library-screen.png"),
-    // 旧形式の編集画面は、187点版の撮り直しが完了するまでLPには表示しない。
-    hasPptEditingScreen: false,
+    hasLibraryScreen: hasPlusAsset("library-screen.jpg"),
+    hasPptEditingScreen: hasPlusAsset("ppt-editing.png"),
     hasSample: hasPlusAsset("sample.pptx"),
 };
 
@@ -323,10 +322,10 @@ export default function JishutorePlusPage() {
                                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
                                 </div>
                                 <Image
-                                    src="/images/plus/library-screen.png"
+                                    src="/images/plus/library-screen.jpg"
                                     alt="自主トレ素材庫Plusで必要な運動スライドを選んでいる画面"
-                                    width={1600}
-                                    height={1000}
+                                    width={1265}
+                                    height={645}
                                     priority
                                     sizes="(max-width: 1023px) 92vw, 560px"
                                     className="h-auto w-full rounded-lg border border-slate-100"
