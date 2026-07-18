@@ -43,12 +43,15 @@ export function PopularItemsSection() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <p className="text-xs font-black tracking-widest text-blue-700">人気の素材</p>
-            <h2 className="mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
-              よくダウンロードされているイラスト
+            <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
+              <span className="inline-block sm:whitespace-nowrap">よくダウンロード</span>
+              <span className="inline-block sm:whitespace-nowrap">されているイラスト</span>
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-              運動名と説明つきの文字あり版なので、印刷してそのまま患者さんに渡せます。
-              文字を自由に入れられる文字なし版も、各素材ページからダウンロードできます。
+            <p className="jp-text mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+              <span className="inline-block">運動名と説明つきの文字あり版なので、</span>
+              <span className="inline-block">印刷してそのまま患者さんに渡せます。</span>
+              <span className="inline-block">文字を自由に入れられる文字なし版も、</span>
+              <span className="inline-block">各素材ページからダウンロードできます。</span>
             </p>
           </div>
 

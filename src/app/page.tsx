@@ -41,23 +41,28 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
-      <main className="flex-1 [&_h1]:break-keep [&_h2]:break-keep [&_h3]:break-keep [&_p]:break-keep">
+      <main className="flex-1">
         <section className="bg-slate-900 py-16 sm:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl text-center">
               <p className="inline-block rounded-full border border-slate-700 bg-slate-800 px-4 py-1.5 text-xs font-bold tracking-widest text-teal-300 sm:text-sm">
                 PT・OT・ST向け 自主トレ素材サイト
               </p>
-              <h1 className="mt-6 text-3xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
-                自主トレ資料、毎回ゼロから作っていませんか？
+              <h1 className="jp-heading mt-6 text-3xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+                <span className="inline-block sm:whitespace-nowrap">自主トレ資料、</span>
+                <span className="inline-block sm:whitespace-nowrap">毎回ゼロから</span>
+                <span className="inline-block sm:whitespace-nowrap">作っていませんか？</span>
               </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-base font-bold leading-8 text-slate-200 sm:text-xl">
-                患者さんに渡せる自主トレ資料を、もっと短時間で。
-                リハビリ職向けのイラスト素材と資料をまとめています。
+              <p className="jp-text mx-auto mt-5 max-w-2xl text-base font-bold leading-8 text-slate-200 sm:text-xl">
+                <span className="inline-block">患者さんに渡せる自主トレ資料を、</span>
+                <span className="inline-block">もっと短時間で。</span>
+                <span className="inline-block">リハビリ職向けのイラスト素材と</span>
+                <span className="inline-block">資料をまとめています。</span>
               </p>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-                スクワット・ブリッジ・ストレッチ・歩行練習など、
-                {FREE_MATERIAL_COUNT}点の素材を無料でダウンロードできます。
+              <p className="jp-text mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+                <span className="inline-block">スクワット・ブリッジ・ストレッチ・</span>
+                <span className="inline-block">歩行練習など、{FREE_MATERIAL_COUNT}点の素材を</span>
+                <span className="inline-block">無料でダウンロードできます。</span>
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <Link
@@ -87,12 +92,15 @@ export default function Home() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="text-xs font-black tracking-widest text-teal-600">無料素材</p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
-                    検索やカテゴリから、必要な素材を探せます
+                  <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
+                    <span className="inline-block sm:whitespace-nowrap">検索やカテゴリから、</span>
+                    <span className="inline-block sm:whitespace-nowrap">必要な素材を探せます</span>
                   </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-                    文字なし・文字ありのPNG素材を、登録なしで使えます。
-                    まずは一覧から、必要な運動を探してください。
+                  <p className="jp-text mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+                    <span className="inline-block">文字なし・文字ありのPNG素材を、</span>
+                    <span className="inline-block">登録なしで使えます。</span>
+                    <span className="inline-block">まずは一覧から、</span>
+                    <span className="inline-block">必要な運動を探してください。</span>
                   </p>
                 </div>
                 <Link
@@ -123,10 +131,10 @@ export default function Home() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="text-xs font-black tracking-widest text-blue-700">診療・介護報酬チェック</p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
+                  <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
                     算定要件と単位数を、根拠リンクつきで確認できます
                   </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+                  <p className="jp-text mt-3 max-w-2xl text-sm leading-7 text-slate-600">
                     単位数・算定要件・根拠資料リンクは、登録なしで無料で見られます。
                     記録・自己点検ポイントは自主トレ素材庫Plusで確認できます。
                   </p>
@@ -153,7 +161,7 @@ export default function Home() {
                   </Link>
                 ))}
               </div>
-              <p className="mt-4 text-xs leading-6 text-slate-500">
+              <p className="jp-text mt-4 text-xs leading-6 text-slate-500">
                 全{feeTotalCount}項目を公開中。各分野から1項目は、Plus表示のまま全文を無料で読めます。
               </p>
             </div>
@@ -166,10 +174,10 @@ export default function Home() {
               <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_240px] md:items-center">
                 <div>
                   <p className="text-xs font-black tracking-widest text-blue-700">有料コンテンツ</p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
+                  <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
                     Plusと買い切り資料があります
                   </h2>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="jp-text mt-3 text-sm leading-7 text-slate-600">
                     毎月追加される素材を使いたい方にはPlus。
                     必要な資料やツールだけ使いたい方には買い切りコンテンツを用意しています。
                   </p>

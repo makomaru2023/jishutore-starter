@@ -11,6 +11,41 @@ import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { seoItemCategories } from "@/lib/seoItemCategories";
 import { Metadata } from "next";
 import Link from "next/link";
+import type { ReactNode } from "react";
+
+const PROTECTED_JAPANESE_PHRASES = new Set([
+    "自主トレ",
+    "イラスト",
+    "素材一覧",
+    "トレーニング",
+    "ストレッチ",
+    "リハビリ",
+    "バランス",
+    "口腔フレイル",
+]);
+const JAPANESE_WORD_SEGMENTER = new Intl.Segmenter("ja", { granularity: "word" });
+
+function protectJapanesePhrases(text: string): ReactNode {
+    return text
+        .split(/(自主トレ|イラスト|素材一覧|トレーニング|ストレッチ|リハビリ|バランス|口腔フレイル)/)
+        .map((part, index) =>
+            PROTECTED_JAPANESE_PHRASES.has(part) ? (
+                <span key={`${part}-${index}`} className="inline-block sm:whitespace-nowrap">
+                    {part}
+                </span>
+            ) : part,
+        );
+}
+
+function wrapJapaneseWords(text: string): ReactNode {
+    return Array.from(JAPANESE_WORD_SEGMENTER.segment(text), ({ segment, isWordLike }, index) =>
+        isWordLike ? (
+            <span key={`${segment}-${index}`} className="inline-block">
+                {segment}
+            </span>
+        ) : segment,
+    );
+}
 
 // カテゴリキーワード（ローマ字）→ フィルタ用キーワードのマッピング
 // FilteredItemList が title / titleJa / fileName 中にいずれか1ワードを含めばヒット扱い
@@ -224,7 +259,17 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
 
     let items = allItems;
     let title = "自主トレイラスト素材一覧";
-    let description = `スクワット・ブリッジ・ストレッチなど、${FREE_MATERIAL_COUNT}点の自主トレ素材を無料でダウンロードできます。文字なし版と、運動名・説明つきの文字あり版の2タイプから選べます。`;
+    let description: ReactNode = (
+        <>
+            <span className="inline-block sm:whitespace-nowrap">スクワット・ブリッジ・</span>
+            <span className="inline-block sm:whitespace-nowrap">ストレッチなど、</span>
+            <span className="inline-block sm:whitespace-nowrap">{FREE_MATERIAL_COUNT}点の自主トレ素材を</span>
+            <span className="inline-block sm:whitespace-nowrap">無料でダウンロードできます。</span>
+            <span className="inline-block sm:whitespace-nowrap">文字なし版と、</span>
+            <span className="inline-block sm:whitespace-nowrap">運動名・説明つきの文字あり版の</span>
+            <span className="inline-block sm:whitespace-nowrap">2タイプから選べます。</span>
+        </>
+    );
 
     // ローマ字カテゴリ（?q=shoulder 等）優先。サーバー側で複数キーワードORフィルタを実行し、
     // SSR時点で素材一覧がHTMLに出るようにする（Suspense fallback空問題の解消）。
@@ -239,16 +284,29 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         });
         if (CATEGORY_META[q]) {
             title = CATEGORY_META[q].title;
-            description = CATEGORY_META[q].description;
+            description = wrapJapaneseWords(CATEGORY_META[q].description);
         }
     } else if (category === 'plain') {
         items = allItems.filter(item => item.category === 'plain');
         title = "自主トレイラスト一覧（文字なし）";
-        description = "文字が入っていないシンプルなイラスト素材です。自由にテキストを追加して使えます。";
+        description = (
+            <>
+                <span className="inline-block sm:whitespace-nowrap">文字が入っていない</span>
+                <span className="inline-block sm:whitespace-nowrap">シンプルなイラスト素材です。</span>
+                <span className="inline-block sm:whitespace-nowrap">自由にテキストを追加して</span>
+                <span className="inline-block sm:whitespace-nowrap">使えます。</span>
+            </>
+        );
     } else if (category === 'text') {
         items = allItems.filter(item => item.category === 'text');
         title = "自主トレイラスト一覧（文字あり）";
-        description = "運動名・手順の説明付きPNGです。印刷してそのまま使えますが、画像内の文字は編集できません。";
+        description = (
+            <>
+                <span className="inline-block sm:whitespace-nowrap">運動名・手順の説明付きPNGです。</span>
+                <span className="inline-block sm:whitespace-nowrap">印刷してそのまま使えますが、</span>
+                <span className="inline-block sm:whitespace-nowrap">画像内の文字は編集できません。</span>
+            </>
+        );
     }
 
     // カテゴリチップ・検索バー挙動だけ知らせれば良い（filterは既にサーバー側で完了）。
@@ -277,10 +335,10 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
             <Header />
             <main className="container mx-auto px-4 py-12 flex-1">
                 <div className="mb-10 text-center">
-                    <h1 className="mb-4 text-3xl font-black text-slate-900 sm:text-4xl tracking-tight">
-                        {title}
+                    <h1 className="jp-heading mb-4 text-[1.75rem] font-black text-slate-900 sm:text-4xl tracking-tight">
+                        {protectJapanesePhrases(title)}
                     </h1>
-                    <p className="mx-auto max-w-2xl text-base sm:text-lg text-slate-500 font-medium break-keep">
+                    <p className="jp-text mx-auto max-w-2xl text-base sm:text-lg text-slate-500 font-medium">
                         {description}
                     </p>
                     <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -305,8 +363,10 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                         aria-label="素材タイプ"
                         className="mx-auto mb-8 max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
                     >
-                        <p className="mb-3 break-keep text-center text-sm leading-relaxed text-slate-600">
-                            同じ運動のイラストに、文字なし版と文字あり版（運動名・説明つき）の2タイプがあります。
+                        <p className="jp-text mb-3 text-center text-sm leading-relaxed text-slate-600">
+                            同じ運動のイラストに、文字なし版と
+                            <span className="inline-block sm:whitespace-nowrap">文字あり版（運動名・説明つき）</span>
+                            の<span className="inline-block sm:whitespace-nowrap">2タイプがあります。</span>
                         </p>
                         <div className="grid grid-cols-3 gap-1.5 rounded-xl bg-slate-100 p-1 sm:gap-2">
                             {itemTypeTabs.map((tab) => {
@@ -345,7 +405,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     className="mx-auto mb-8 max-w-5xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
                 >
                     <div className="mb-3 flex items-center justify-between gap-3">
-                        <h2 className="text-sm font-black text-slate-900 sm:text-base">
+                        <h2 className="whitespace-nowrap text-sm font-black text-slate-900 sm:text-base">
                             部位・用途から探す
                         </h2>
                         <Link
@@ -380,10 +440,10 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                                     <p className="mb-1 inline-block rounded-full bg-white px-2.5 py-0.5 text-[11px] font-black tracking-widest text-blue-700 border border-blue-100">
                                         施設・事業所向け
                                     </p>
-                                    <h2 className="text-base sm:text-lg font-black leading-snug text-slate-900 break-keep">
+                                    <h2 className="jp-heading text-base sm:text-lg font-black leading-snug text-slate-900">
                                         {facilityCta.heading}
                                     </h2>
-                                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600 break-keep">
+                                    <p className="jp-text mt-1.5 text-sm leading-relaxed text-slate-600">
                                         {facilityCta.body}
                                     </p>
                                 </div>

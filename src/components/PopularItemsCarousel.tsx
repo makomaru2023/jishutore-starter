@@ -120,7 +120,7 @@ export function PopularItemsCarousel({ items }: PopularItemsCarouselProps) {
                       </span>
                     </div>
                     <div className="flex min-h-16 items-center justify-center bg-blue-600 px-3 py-2.5">
-                      <h3 className="line-clamp-2 break-keep text-center text-sm font-black leading-5 text-white sm:text-base sm:leading-6">
+                      <h3 className="jp-heading line-clamp-2 text-center text-sm font-black leading-5 text-white sm:text-base sm:leading-6">
                         {displayTitle}
                       </h3>
                     </div>
