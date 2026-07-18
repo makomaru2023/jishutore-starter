@@ -90,46 +90,45 @@ export function PopularItemsCarousel({ items }: PopularItemsCarouselProps) {
     <div aria-label="人気のイラスト" aria-roledescription="カルーセル" role="region">
       <div className="-my-3 overflow-hidden py-3" ref={emblaRef}>
         <div className="-ml-3 flex touch-pan-y">
-          {items.map((item, index) => (
-            <div
-              aria-label={`${index + 1} / ${items.length}`}
-              aria-roledescription="スライド"
-              className="min-w-0 flex-[0_0_80%] pl-3 sm:flex-[0_0_46%] lg:flex-[0_0_25%] xl:flex-[0_0_23%]"
-              key={item.id}
-              role="group"
-            >
-              <Link
-                aria-label={`${item.titleJa}の素材を見る`}
-                className="group block h-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
-                href={`/items/${item.id}`}
+          {items.map((item, index) => {
+            const displayTitle = item.titleJa.replace(/【文字あり】$/, '');
+
+            return (
+              <div
+                aria-label={`${index + 1} / ${items.length}`}
+                aria-roledescription="スライド"
+                className="min-w-0 flex-[0_0_80%] pl-3 sm:flex-[0_0_46%] lg:flex-[0_0_25%] xl:flex-[0_0_23%]"
+                key={item.id}
+                role="group"
               >
-                <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-lg">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
-                    <Image
-                      alt={item.titleJa}
-                      className="object-contain p-3 pb-12 transition-transform duration-300 group-hover:scale-[1.03] sm:pb-14"
-                      fill
-                      sizes="(max-width: 639px) 80vw, (max-width: 1023px) 46vw, (max-width: 1279px) 25vw, 23vw"
-                      src={item.imageUrl}
-                    />
-                    <span className="absolute right-2.5 top-2.5 rounded-full bg-blue-600 px-2.5 py-1 text-xs font-black text-white shadow-sm">
-                      人気
-                    </span>
-                    <div className="absolute inset-x-0 bottom-0 bg-blue-600/75 px-3 py-2.5">
-                      <p className="line-clamp-2 break-keep text-center text-sm font-black leading-5 text-white sm:text-base sm:leading-6">
-                        {item.titleJa}
-                      </p>
+                <Link
+                  aria-label={`${item.titleJa}の素材を見る`}
+                  className="group block h-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+                  href={`/items/${item.id}`}
+                >
+                  <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-lg">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
+                      <Image
+                        alt={item.titleJa}
+                        className="object-contain p-3 transition-transform duration-300 group-hover:scale-[1.03]"
+                        fill
+                        sizes="(max-width: 639px) 80vw, (max-width: 1023px) 46vw, (max-width: 1279px) 25vw, 23vw"
+                        src={item.imageUrl}
+                      />
+                      <span className="absolute right-2.5 top-2.5 rounded-full bg-blue-600 px-2.5 py-1 text-xs font-black text-white shadow-sm">
+                        人気
+                      </span>
                     </div>
-                  </div>
-                  <div className="flex flex-1 items-start p-4">
-                    <h3 className="line-clamp-2 break-keep text-sm font-black leading-6 text-slate-900 transition-colors group-hover:text-blue-700 sm:text-base">
-                      {item.titleJa}
-                    </h3>
-                  </div>
-                </article>
-              </Link>
-            </div>
-          ))}
+                    <div className="flex min-h-16 items-center justify-center bg-blue-600 px-3 py-2.5">
+                      <h3 className="line-clamp-2 break-keep text-center text-sm font-black leading-5 text-white sm:text-base sm:leading-6">
+                        {displayTitle}
+                      </h3>
+                    </div>
+                  </article>
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
 

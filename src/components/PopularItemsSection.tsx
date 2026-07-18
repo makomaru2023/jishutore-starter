@@ -4,16 +4,16 @@ import { getItemImageUrl, getItems } from '@/lib/items';
 import { PopularItemsCarousel, type PopularCarouselItem } from './PopularItemsCarousel';
 
 const POPULAR_ITEM_IDS = [
-  'squat-premium',
-  'draw-in-premium',
-  'ankle-dorsiflexion-and-plantarflexion-premium',
-  'scapular-retraction-exercise-premium',
-  'cane-walking-premium',
-  'air-bike-premium',
-  'hip-lift-premium',
-  'chest-opening-with-stretch-pole-premium',
-  'heel-raise-premium',
-  'cat-and-dog-premium',
+  'squat-premium-text',
+  'draw-in-premium-text',
+  'ankle-dorsiflexion-and-plantarflexion-premium-text',
+  'scapular-retraction-exercise-premium-text',
+  'cane-walking-premium-text',
+  'air-bike-premium-text',
+  'hip-lift-premium-text',
+  'chest-opening-with-stretch-pole-premium-text',
+  'heel-raise-premium-text',
+  'cat-and-dog-premium-text',
 ] as const;
 
 function getPopularItems(): PopularCarouselItem[] {
@@ -47,8 +47,8 @@ export function PopularItemsSection() {
               よくダウンロードされているイラスト
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-              現場でよく選ばれている自主トレイラストを、ダウンロード実績順にまとめました。
-              気になるカードから、素材の詳細を確認できます。
+              運動名と説明つきの文字あり版なので、印刷してそのまま患者さんに渡せます。
+              文字を自由に入れられる文字なし版も、各素材ページからダウンロードできます。
             </p>
           </div>
 
