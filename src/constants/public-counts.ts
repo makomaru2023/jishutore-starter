@@ -12,7 +12,7 @@
  */
 export const FEE_CHECK_DOMAIN_COUNT = 8;
 export const FEE_CHECK_ITEM_COUNT = 148;
-export const PLUS_SLIDE_COUNT_PUBLIC = 105;
+export const PLUS_SLIDE_COUNT_PUBLIC = 187;
 
 /**
  * 公開コピー用の定数と実データ件数のズレを検出する。サーバー側モジュールの
