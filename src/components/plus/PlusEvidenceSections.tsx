@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { PLUS_SLIDE_COUNT_PUBLIC } from "@/constants/public-counts";
 
 export type PlusPreviewItem = {
     src: string;
@@ -37,8 +38,8 @@ function DownloadVisual({ previews }: { previews: readonly PlusPreviewItem[] }) 
                     <Image
                         src={preview.src}
                         alt="ダウンロードするPowerPointにまとめられるスライド例"
-                        width={1280}
-                        height={720}
+                        width={1200}
+                        height={675}
                         sizes="(max-width: 639px) 82vw, 28vw"
                         className="h-full w-full object-cover"
                     />
@@ -57,8 +58,8 @@ export function PlusHowItWorks({
     const steps = [
         {
             number: "01",
-            title: "105点から選ぶ",
-            body: "部位や姿勢から検索し、対象者に合う運動スライドを選択します。",
+            title: `${PLUS_SLIDE_COUNT_PUBLIC}点から選ぶ`,
+            body: "部位やキーワードから検索し、対象者に合う運動スライドを選択します。",
             visual: hasLibraryScreen ? (
                 <Image
                     src="/images/plus/library-screen.png"
@@ -81,7 +82,7 @@ export function PlusHowItWorks({
         {
             number: "03",
             title: "文字を自由に編集して配布",
-            body: "回数・コメント・注意点はすべて編集できます。確認後、印刷や説明に使えます。",
+            body: "回数・運動のポイントはすべて編集できます。確認後、印刷や説明に使えます。",
             visual: hasPptEditingScreen ? (
                 <Image
                     src="/images/plus/ppt-editing.png"
@@ -113,23 +114,17 @@ export function PlusHowItWorks({
                 <div className="mx-auto mt-10 max-w-5xl">
                     <p className="mb-3 text-center text-sm font-black text-slate-900">実際の操作画面</p>
                     <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-950 shadow-sm">
-                        <video
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
-                            poster="/images/plus/library-screen.png"
-                            aria-label="自主トレ素材庫Plusで資料を選びPowerPointを作成する操作デモ"
-                            className="block aspect-[400/233] h-auto w-full object-cover"
-                        >
-                            <source src="/images/plus/plus-demo.mp4" type="video/mp4" />
-                            <source src="/images/plus/plus-demo.webm" type="video/webm" />
-                            お使いのブラウザは動画再生に対応していません。
-                        </video>
+                        <Image
+                            src="/images/plus/library-screen.png"
+                            alt="自主トレ素材庫Plusで187点の資料から選んでいるライブラリ画面"
+                            width={1600}
+                            height={1000}
+                            sizes="(max-width: 1023px) 92vw, 1024px"
+                            className="block h-auto w-full object-contain"
+                        />
                     </div>
                     <p className="mt-3 text-center text-xs leading-5 text-slate-500">
-                        資料を選び、1つのPowerPointにまとめるまでの流れをご覧いただけます。
+                        部位やキーワードで絞り込み、必要な資料を選べるライブラリ画面です。
                     </p>
                 </div>
 
@@ -232,8 +227,8 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                                 <Image
                                     src={preview.src}
                                     alt={`${preview.title}の収録スライド`}
-                                    width={1280}
-                                    height={720}
+                                    width={1200}
+                                    height={675}
                                     sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 390px"
                                     className="h-auto w-full transition-transform duration-200 group-hover:scale-[1.02]"
                                 />
@@ -276,11 +271,11 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                             <Image
                                 src={activePreview.src}
                                 alt={`${activePreview.title}の拡大スライド`}
-                                width={1280}
-                                height={720}
+                                width={1200}
+                                height={675}
                                 sizes="100vw"
                                 priority
-                                className="mx-auto h-auto w-full max-w-[1280px]"
+                                className="mx-auto h-auto w-full max-w-[1200px]"
                             />
                         </div>
                     </div>

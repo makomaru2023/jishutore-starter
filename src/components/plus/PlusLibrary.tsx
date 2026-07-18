@@ -72,7 +72,7 @@ const GUIDE_STEPS = [
     "必要な自主トレ資料を探す（カテゴリ・キーワードで絞り込み）",
     "患者さん・利用者さんに合わせて、最大10件まで選ぶ",
     "「PowerPointでダウンロード」で1つのファイルにまとめて受け取る",
-    "PowerPointを開いて、回数や注意点を編集する",
+    "PowerPointを開いて、回数や運動のポイントを編集する",
     "印刷して、患者さん・利用者さんに配布する",
 ];
 
@@ -669,7 +669,7 @@ export function PlusLibrary() {
                             </div>
 
                             <p className="rounded-lg bg-slate-50 px-3 py-2 text-[11px] leading-relaxed text-slate-500 jp-text">
-                                ※ これがダウンロードされる完成スライドです。PowerPointで回数や注意点を編集して印刷できます。
+                                ※ これがダウンロードされる完成スライドです。PowerPointで回数や運動のポイントを編集して印刷できます。
                             </p>
 
                             <div className="mt-4 flex gap-2">

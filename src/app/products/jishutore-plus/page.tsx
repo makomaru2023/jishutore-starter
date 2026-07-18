@@ -41,10 +41,10 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "/plus/previews/ex-001.webp",
-                width: 1280,
-                height: 720,
-                alt: "自主トレ素材庫Plusの収録スライド例",
+                url: "/plus/previews/shoulder-raise.webp",
+                width: 1200,
+                height: 675,
+                alt: "肩挙上運動のPowerPointスライド例",
             },
         ],
     },
@@ -52,35 +52,35 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: OG_TITLE,
         description: OG_DESCRIPTION,
-        images: ["/plus/previews/ex-001.webp"],
+        images: ["/plus/previews/shoulder-raise.webp"],
     },
 };
 
 const previews = [
     {
-        src: "/plus/previews/ex-001.webp",
-        title: "肩すくめ運動",
-        caption: "運動方法・回数・目的・注意点を1枚に整理",
+        src: "/plus/previews/shoulder-raise.webp",
+        title: "肩挙上運動",
+        caption: "イラスト・回数・運動のポイントを1枚に。文字は編集できます",
     },
     {
-        src: "/plus/previews/ex-021.webp",
-        title: "反対の手と膝をタッチ",
-        caption: "体幹やバランス練習に使えるスライド例",
+        src: "/plus/previews/sit-to-stand-using-chair.webp",
+        title: "イスからの立ち座り",
+        caption: "よく使う下肢運動も、回数やポイントを自由に編集できます",
     },
     {
-        src: "/plus/previews/ex-051.webp",
-        title: "コイン操作練習",
-        caption: "手指の巧緻動作を説明するスライド例",
+        src: "/plus/previews/draw-in.webp",
+        title: "ドローイン",
+        caption: "体幹運動のイラストとポイントを、編集できるPowerPointで収録",
     },
     {
-        src: "/plus/previews/ex-081.webp",
-        title: "お椀を使って手首の運動",
-        caption: "身近な道具を使った自主トレのスライド例",
+        src: "/plus/previews/single-leg-stand.webp",
+        title: "片足立ち",
+        caption: "バランス運動も、対象者に合わせて回数やポイントを編集できます",
     },
     {
-        src: "/plus/previews/ex-105.webp",
-        title: "ノルディックウォーキング",
-        caption: "屋外活動まで幅広く選べるスライド例",
+        src: "/plus/previews/patakara-exercise.webp",
+        title: "パタカラ体操",
+        caption: "口腔体操のイラストとポイントも、編集できるPowerPointで収録",
     },
 ] as const;
 
@@ -89,7 +89,8 @@ const hasPlusAsset = (fileName: string) =>
 
 const plusEvidenceAssets = {
     hasLibraryScreen: hasPlusAsset("library-screen.png"),
-    hasPptEditingScreen: hasPlusAsset("ppt-editing.png"),
+    // 旧形式の編集画面は、187点版の撮り直しが完了するまでLPには表示しない。
+    hasPptEditingScreen: false,
     hasSample: hasPlusAsset("sample.pptx"),
 };
 
@@ -117,7 +118,7 @@ const plusFlow = [
         step: "02",
         phase: "指導の準備",
         title: "資料を選んで作る",
-        body: `${PLUS_SLIDE_COUNT}点から必要なページを選び、1つのPowerPointにまとめます。回数や注意点は編集できます。`,
+        body: `${PLUS_SLIDE_COUNT}点から必要なページを選び、1つのPowerPointにまとめます。回数や運動のポイントは編集できます。`,
         tool: `資料庫｜スライド${PLUS_SLIDE_COUNT}点`,
     },
     {
@@ -626,7 +627,7 @@ export default function JishutorePlusPage() {
                             <article className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
                                 <p className="text-2xl font-black text-blue-700">3枚</p>
                                 <h3 className="mt-2 font-black text-slate-950">実物のPowerPointを試せる</h3>
-                                <p className="mt-2 text-sm leading-6 text-slate-600">文字・回数・施設名を編集できるか、登録前に確認できます。</p>
+                                <p className="mt-2 text-sm leading-6 text-slate-600">回数・運動のポイントを編集できるか、登録前に確認できます。</p>
                                 <a href="/images/plus/sample.pptx" download className="mt-4 inline-flex text-sm font-bold text-blue-700 hover:underline">無料サンプルを開く →</a>
                             </article>
                             <article className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
