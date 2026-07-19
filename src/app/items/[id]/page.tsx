@@ -2,13 +2,11 @@ import { getItems, findItemById, getItemImageUrl } from "@/lib/items";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
-import { ProductCta } from "@/components/ProductCta";
-import { ProductInlineAd } from "@/components/ProductInlineAd";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
-import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
+import { ItemDetailPlusCta } from "@/components/ItemDetailPlusCta";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
+import { findPlusForFreeItem } from "@/lib/plus-match";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -118,6 +116,11 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     // 素材が属する部位・用途カテゴリ（/items/<slug>/ への内部リンクに使う）
     const itemCategories = getCategoriesForItem(item);
 
+    // この素材に対応するPlusスライド。無料PNG → 編集できるスライドの文脈連動CTAに使う。
+    const plusMatch = findPlusForFreeItem(item.id);
+    // CTA見出し用に【文字あり】等のタグを除いた表示名（例: 杖歩き）
+    const ctaTitle = title.replace(/【[^】]*】/g, "").trim() || title;
+
     // JSON-LD structured data for SEO
     const jsonLd = {
         "@context": "https://schema.org",
@@ -147,7 +150,8 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                 <div className="mx-auto max-w-5xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="md:flex">
                         {/* Image Section with Watermark Protection */}
-                        <div className="md:w-1/2 bg-slate-50 relative aspect-[4/3] md:aspect-auto flex items-center justify-center overflow-hidden p-6 md:p-10 border-r border-slate-100">
+                        {/* PCでは上ぞろえ（md:self-start）で画像を上部に固定。以前は本文カラムに合わせて縦に引き伸ばされ、画像が中央＝下に沈んでいた。 */}
+                        <div className="md:w-1/2 bg-slate-50 relative aspect-[4/3] overflow-hidden p-6 md:p-10 md:self-start">
                             {/* 
                                 Protection Mechanism:
                                 1. The real image is set as a background image on a div.
@@ -170,7 +174,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
+                        <div className="p-8 md:p-12 md:w-1/2 flex flex-col">
                             <div className="mb-6">
                                 <div className="mb-4 flex flex-wrap items-center gap-2">
                                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-teal-50 text-teal-600 capitalize">
@@ -184,35 +188,11 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                 <p className="text-slate-400 text-sm font-medium">素材ID: {item.id}</p>
                             </div>
 
-                            <div className="prose text-slate-600 mb-8 font-medium leading-relaxed max-w-none">
-                                <p className="mb-6">
-                                    {descriptionText}
-                                </p>
+                            <p className="mb-8 font-medium leading-relaxed text-slate-600">
+                                {descriptionText}
+                            </p>
 
-                                {/* SEO and informational text blocks */}
-                                <div className="bg-slate-50 p-5 md:p-6 rounded-2xl border border-slate-100 space-y-5">
-                                    <div>
-                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                                            </svg>
-                                            運動のポイント
-                                        </h2>
-                                        <p className="text-sm text-slate-700">{exercisePointText}</p>
-                                    </div>
-                                    <div>
-                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                                            </svg>
-                                            対象疾患・推奨される方
-                                        </h2>
-                                        <p className="text-sm text-slate-700">{targetConditionText}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mt-auto space-y-6">
+                            <div className="space-y-6">
                                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                                     <h3 className="font-bold text-slate-900 mb-2">ダウンロード（完全無料）</h3>
                                     <p className="text-sm text-slate-500 mb-6 font-medium">
@@ -280,11 +260,34 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     </Link>
                                 )}
 
-                                {/* 新作通知＆配布資料7点セットのLINE導線 */}
-                                <ItemDetailLineBanner />
+                                {/* 主役の有料導線：この素材の編集できるスライド版（Plus）。買い切りはカード内に副導線として1行だけ添える */}
+                                <ItemDetailPlusCta
+                                    itemTitle={ctaTitle}
+                                    itemSlug={item.id}
+                                    plusReps={plusMatch?.reps}
+                                />
 
-                                {/* 有料商品（PowerPoint資料セット）への導線 */}
-                                <ProductCta location="item_detail_cta" variant="inline" />
+                                {/* 運動のポイント・対象疾患（SEO・詳細情報）はダウンロード導線の下に配置。「画像→DL」を最短にするため本文上部から移動 */}
+                                <div className="bg-slate-50 p-5 md:p-6 rounded-2xl border border-slate-100 space-y-5">
+                                    <div>
+                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                            </svg>
+                                            運動のポイント
+                                        </h2>
+                                        <p className="text-sm text-slate-700">{exercisePointText}</p>
+                                    </div>
+                                    <div>
+                                        <h2 className="text-sm font-bold text-teal-600 flex items-center gap-2 mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                            </svg>
+                                            対象疾患・推奨される方
+                                        </h2>
+                                        <p className="text-sm text-slate-700">{targetConditionText}</p>
+                                    </div>
+                                </div>
 
                                 <Link href="/items" className="flex items-center justify-center gap-2 text-slate-500 hover:text-teal-500 font-bold transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
@@ -352,17 +355,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                     </section>
                 </div>
 
-                {/* ブックマーク・新着通知（リピーター化導線） */}
-                <div className="mt-8 max-w-5xl mx-auto">
-                    <RepeatVisitBanner placement="item_detail_bottom" variant="compact" />
-                </div>
-
-                {/* 素材詳細ページ下部：自主トレ素材庫Plusへの導線 */}
-                <div className="mt-8 max-w-5xl mx-auto">
-                    <ProductInlineAd type="plus" location="item_detail_bottom_ad" />
-                </div>
-
-                {/* LINE友だち追加バナー */}
+                {/* 素材詳細ページの唯一のナーチャ導線：LINE（配布資料7点セット・新作通知） */}
                 <div className="mt-8 max-w-5xl mx-auto">
                     <LineBanner />
                 </div>
