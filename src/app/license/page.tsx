@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
 
 export default function LicensePage() {
     return (
@@ -81,6 +82,34 @@ export default function LicensePage() {
                                         <li>Webサイト、SNS、ブログ、動画などへの掲載</li>
                                         <li>商用利用（有料セミナーの資料、有料noteの挿絵など）</li>
                                     </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* 4. 施設・法人での利用 */}
+                        <section>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+                                4. 施設・法人でのご利用について
+                            </h2>
+                            <div className="space-y-4">
+                                <p>
+                                    無料素材は、施設内での掲示・配布を含め、セクション3の利用条件の範囲内であれば、法人・商用でも無料でご利用いただけます。
+                                </p>
+                                <p>
+                                    有料商品（資料セット・自主トレ素材庫Plus）は、現行どおり購入者ご本人によるご利用に限ります。
+                                </p>
+                                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                                    <p>
+                                        施設・チームでの複数名利用や請求書払いによる提供は現在準備中です。
+                                        ご希望の場合は、ご要望・ご相談をお聞かせください。
+                                    </p>
+                                    <TrackedB2bContactLink
+                                        href="/contact"
+                                        placement="license_page"
+                                        className="mt-4 inline-flex font-semibold text-blue-700 hover:text-blue-900 hover:underline"
+                                    >
+                                        施設・法人利用について相談する &rarr;
+                                    </TrackedB2bContactLink>
                                 </div>
                             </div>
                         </section>

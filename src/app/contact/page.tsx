@@ -1,5 +1,14 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
+
+const B2B_CONTACT_SUBJECT = "【施設利用のご相談】";
+const B2B_CONTACT_BODY = `・施設名：
+・施設種別（通所介護・訪問看護ST・病院・クリニック等）：
+・リハ職／機能訓練指導員のおおよその人数：
+・ご利用を検討中の内容（自主トレ資料・報酬チェック など）：
+・ご質問・ご要望：`;
+const B2B_CONTACT_MAILTO = `mailto:smart.rehabili@gmail.com?subject=${encodeURIComponent(B2B_CONTACT_SUBJECT)}&body=${encodeURIComponent(B2B_CONTACT_BODY)}`;
 
 export default function ContactPage() {
     return (
@@ -26,6 +35,23 @@ export default function ContactPage() {
                                 >
                                     smart.rehabili@gmail.com
                                 </a>
+                            </div>
+
+                            <div className="pt-6 border-t border-gray-100">
+                                <h2 className="text-lg font-semibold text-gray-900 mb-2">
+                                    施設・法人でのご利用を検討中の方へ
+                                </h2>
+                                <p className="text-gray-600 mb-4">
+                                    施設・チームでの複数名利用や請求書払いについて、ご要望・ご相談を受け付けています。
+                                    施設向けの提供形態は現在準備中です。
+                                </p>
+                                <TrackedB2bContactLink
+                                    href={B2B_CONTACT_MAILTO}
+                                    placement="contact_page"
+                                    className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-base font-medium rounded-md text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors"
+                                >
+                                    施設・法人利用について相談する
+                                </TrackedB2bContactLink>
                             </div>
 
                             <div className="pt-6 border-t border-gray-100">

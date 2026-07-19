@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { existsSync } from "node:fs";
@@ -7,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PlusHowItWorks, PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { Testimonials } from "@/components/Testimonials";
@@ -231,7 +233,7 @@ const plans = [
     },
 ] as const;
 
-const faqs: { q: string; a: string }[] = [
+const faqs: { q: string; a: ReactNode }[] = [
     {
         q: "解約はどうすればできますか？",
         a: "資料庫の「プラン管理」からいつでも解約できます。解約後も、次回の請求日まではそのままご利用いただけます。",
@@ -243,6 +245,22 @@ const faqs: { q: string; a: string }[] = [
     {
         q: "作った資料は商用利用できますか？",
         a: "購入者ご本人が、患者・利用者さんへの自主トレ指導や家族説明などの目的で、編集してご利用いただけます。ファイル（PowerPoint等）そのものの再配布・転売・共有はできません。詳しくは利用規約をご確認ください。",
+    },
+    {
+        q: "施設やチームでの複数名利用はできますか？",
+        a: (
+            <>
+                現在は、購入者ご本人にご利用いただく個人向けプランのみです。施設・チームでの複数名利用や請求書払いによる提供は準備中で、ご要望・ご相談を
+                <TrackedB2bContactLink
+                    href="/contact"
+                    placement="plus_lp_faq"
+                    className="font-semibold text-blue-700 hover:underline"
+                >
+                    お問い合わせページ
+                </TrackedB2bContactLink>
+                より受け付けています。
+            </>
+        ),
     },
     {
         q: "支払い方法は何がありますか？",

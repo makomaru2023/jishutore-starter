@@ -35,6 +35,11 @@ export function trackNoteClick(placement: string): void {
     trackEvent("note_click", { placement });
 }
 
+/** 施設・法人利用相談の導線クリック。placement で設置場所を区別する */
+export function trackB2bContactClick(placement: string): void {
+    trackEvent("b2b_contact_click", { placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;
