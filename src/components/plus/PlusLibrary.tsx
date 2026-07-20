@@ -9,6 +9,7 @@ import {
     MAX_SELECTION,
     type PlusItem,
 } from "@/data/plus-items";
+import { PlusDeckDownloads } from "./PlusDeckDownloads";
 
 /* ───────── アイコン（線画・絵文字不使用） ───────── */
 const ic = "h-5 w-5";
@@ -359,6 +360,7 @@ export function PlusLibrary() {
             </header>
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">
+                <PlusDeckDownloads />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
                     {/* ───────── 左：フィルタ＋カード一覧 ───────── */}
                     <div className="min-w-0">

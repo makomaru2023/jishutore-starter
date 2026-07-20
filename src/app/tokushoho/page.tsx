@@ -66,12 +66,23 @@ export default function TokushohoPage() {
 
                         <section>
                             <h2 className="text-lg font-bold text-gray-900 mb-2">お支払い時期</h2>
-                            <p>ご注文確定時にクレジットカードでの決済が完了します。</p>
+                            <p>
+                                【買い切り商品】ご注文確定時にクレジットカードでの決済が完了します。<br />
+                                【月額サービス（自主トレ素材庫Plus）】初回はご登録時に決済され、以降はご登録日を基準に1か月ごとに自動で決済されます。
+                            </p>
                         </section>
 
                         <section>
                             <h2 className="text-lg font-bold text-gray-900 mb-2">引渡し時期</h2>
-                            <p>決済完了後、即時にダウンロード可能です。</p>
+                            <p>決済完了後、即時にダウンロード・ご利用可能です。</p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-lg font-bold text-gray-900 mb-2">月額サービスの解約</h2>
+                            <p>
+                                自主トレ素材庫Plusは、会員ページの「プラン管理」からいつでも解約できます。<br />
+                                解約後も次回請求日まではご利用いただけます。期間途中の解約による日割り返金は行っておりません。
+                            </p>
                         </section>
 
                         <section>

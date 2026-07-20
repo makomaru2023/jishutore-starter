@@ -10,9 +10,11 @@ export const PLUS_PROMO_CURRENT_PRICE_YEN = parsePrice(
     process.env.NEXT_PUBLIC_PLUS_PROMO_CURRENT_PRICE_YEN,
     500,
 );
+// 2026-08-01 の全部入り刷新後の新規価格。Vercel の NEXT_PUBLIC_PLUS_PROMO_NEXT_PRICE_YEN が
+// 設定されている場合はそちらが優先されるため、切替時は環境変数側も 980 に揃えること。
 export const PLUS_PROMO_NEXT_PRICE_YEN = parsePrice(
     process.env.NEXT_PUBLIC_PLUS_PROMO_NEXT_PRICE_YEN,
-    680,
+    980,
 );
 
 export const formatYen = (value: number) => `¥${value.toLocaleString("ja-JP")}`;

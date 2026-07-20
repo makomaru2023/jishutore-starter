@@ -11,13 +11,12 @@ declare global {
 }
 
 // Plusの価格・遷移先は広告コピーの単一ソース（PRODUCT_AD_CONFIG）を再利用し、
-// 値上げ（8月〜¥680 等）の更新漏れを防ぐ。
+// 値上げ（8月〜¥980 等）の更新漏れを防ぐ。
 const PLUS_HREF = PRODUCT_AD_CONFIG.plus.href;
 const PLUS_PRICE = PRODUCT_AD_CONFIG.plus.price;
 const PLUS_PRICE_NOTE = PRODUCT_AD_CONFIG.plus.priceNote;
-const BUY_ONCE_HREF = '/products/';
 
-type PlusCtaClick = 'plus_primary' | 'buyonce_secondary';
+type PlusCtaClick = 'plus_primary';
 
 function trackClick(target: PlusCtaClick, itemSlug: string) {
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
@@ -112,15 +111,7 @@ export function ItemDetailPlusCta({ itemTitle, itemSlug, plusReps }: ItemDetailP
                 </p>
 
                 <p className="mt-4 border-t border-slate-100 pt-4 text-center text-xs leading-relaxed text-slate-500">
-                    単発でよければ、疾患別・姿勢別の
-                    <Link
-                        href={BUY_ONCE_HREF}
-                        onClick={() => trackClick('buyonce_secondary', itemSlug)}
-                        className="mx-0.5 font-bold text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-500"
-                    >
-                        買い切り資料（¥980）
-                    </Link>
-                    もあります。
+                    疾患別・姿勢別の完成デッキと「伝わるプロンプト工房」も、Plusにすべて収録されています。
                 </p>
             </div>
         </section>

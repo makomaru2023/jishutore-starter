@@ -31,7 +31,7 @@ const OG_DESCRIPTION =
 
 export const metadata: Metadata = {
     title: OG_TITLE,
-    description: `${PLUS_SLIDE_COUNT}点の編集できるPowerPoint運動スライドと、全${feeDomains.length}分野・${getFeeCheckTotalCount()}項目の診療・介護報酬チェックを利用できる月額サービスです。資料作成に加え、記録に残すこと・自己点検ポイント・つまずきやすい点まで確認できます。${PLUS_PROMO_PRICE_NOTE}`,
+    description: `${PLUS_SLIDE_COUNT}点の編集できるPowerPoint運動スライドと、全${feeDomains.length}分野・${getFeeCheckTotalCount()}項目の診療・介護報酬チェックを利用できる月額サービスです。疾患別・姿勢別の完成デッキと会員専用ツール「伝わるプロンプト工房」も収録。資料作成に加え、記録に残すこと・自己点検ポイント・つまずきやすい点まで確認できます。${PLUS_PROMO_PRICE_NOTE}`,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -119,8 +119,8 @@ const plusFlow = [
         step: "02",
         phase: "指導の準備",
         title: "資料を選んで作る",
-        body: `${PLUS_SLIDE_COUNT}点から必要なページを選び、1つのPowerPointにまとめます。回数や運動のポイントは編集できます。`,
-        tool: `資料庫｜スライド${PLUS_SLIDE_COUNT}点`,
+        body: `${PLUS_SLIDE_COUNT}点から必要なページを選び、1つのPowerPointにまとめます。急ぐ日は疾患別・姿勢別の完成デッキをそのまま使えます。`,
+        tool: `資料庫｜スライド${PLUS_SLIDE_COUNT}点＋完成デッキ`,
     },
     {
         step: "03",
@@ -142,55 +142,46 @@ const comparisonRows = [
     {
         label: "料金",
         free: "無料",
-        set: "各980円・買い切り",
         plus: `先行 月額${PLUS_PROMO_CURRENT_PRICE_YEN}円`,
     },
     {
         label: "ファイル形式",
         free: "PNG画像",
-        set: "PowerPoint・PDF",
         plus: "PowerPoint",
     },
     {
         label: "提供単位",
         free: "運動イラスト1点ずつ",
-        set: "完成済みの資料セット",
-        plus: "編集できるスライド素材",
+        plus: "編集できるスライド素材＋完成デッキ",
     },
     {
         label: "文字の編集",
         free: "できない",
-        set: "できる",
         plus: "できる",
     },
     {
         label: "資料の構成",
         free: "自分で一から作る",
-        set: "完成済みですぐ使える",
-        plus: "必要なページを選んで作る",
+        plus: "選んで作る／完成デッキをそのまま使う",
     },
     {
         label: "追加素材",
         free: "無料ページで随時追加",
-        set: "購入したセットを利用",
         plus: "契約中は追加分も利用可能",
     },
     {
         label: "報酬チェック",
         free: "単位数・算定要件・根拠リンク（一部無料公開中）",
-        set: "―",
         plus: `記録・自己点検・改定差分・加算の組み合わせ確認（${feeComboDomainCount}分野）`,
     },
     {
         label: "解約後のファイル利用",
         free: "―",
-        set: "買い切りなので制限なし",
         plus: "ダウンロード済みは利用OK",
     },
     {
         label: "向いている方",
         free: "画像だけ使いたい方",
-        set: "完成資料をすぐ使いたい方",
         plus: "資料作成と報酬確認を効率化したい方",
     },
 ] as const;
@@ -223,14 +214,6 @@ const plans = [
         href: "/items/",
         cta: "無料素材を見る",
     },
-    {
-        name: "買い切り資料セット",
-        description: "完成した資料をそのまま使う",
-        values: comparisonRows.filter((row) => compactMobileComparisonLabels.has(row.label)).map((row) => ({ label: row.label, value: row.set })),
-        recommended: false,
-        href: "/products/",
-        cta: "買い切り資料を見る",
-    },
 ] as const;
 
 const faqs: { q: string; a: ReactNode }[] = [
@@ -245,6 +228,10 @@ const faqs: { q: string; a: ReactNode }[] = [
     {
         q: "作った資料は商用利用できますか？",
         a: "購入者ご本人が、患者・利用者さんへの自主トレ指導や家族説明などの目的で、編集してご利用いただけます。ファイル（PowerPoint等）そのものの再配布・転売・共有はできません。詳しくは利用規約をご確認ください。",
+    },
+    {
+        q: "以前販売していた買い切りセットやプロンプト工房はどうなりましたか？",
+        a: "すべてPlusに収録し、個別販売は終了しました。会員ページ（資料庫）から追加料金なしでご利用いただけます。過去にご購入いただいた方は、これまでどおり購入分をご利用いただけます。",
     },
     {
         q: "施設やチームでの複数名利用はできますか？",
@@ -304,7 +291,8 @@ export default function JishutorePlusPage() {
                             </h1>
                             <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base lg:mx-0">
                                 必要なスライドを選び、1つのPowerPointにまとめて編集。
-                                算定要件・記録・自己点検も、一次資料へのリンクつきで確認できます。
+                                疾患別・姿勢別の完成デッキ、スライド画像づくりのツール、
+                                算定要件・記録・自己点検の確認まで、この月額ひとつに全部入りです。
                             </p>
                             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
                                 <PlusSubscribeButton
@@ -349,7 +337,7 @@ export default function JishutorePlusPage() {
                                     className="h-auto w-full rounded-lg border border-slate-100"
                                 />
                             </div>
-                            <div className="relative mx-3 -mt-5 grid gap-2 sm:mx-6 sm:grid-cols-2">
+                            <div className="relative mx-3 -mt-5 grid grid-cols-2 gap-2 sm:mx-6">
                                 <div className="rounded-xl border border-blue-100 bg-white p-3 shadow-lg">
                                     <p className="text-xs font-black text-blue-700">資料作成</p>
                                     <p className="mt-1 text-sm font-black text-slate-950">{PLUS_SLIDE_COUNT}点から選んで編集</p>
@@ -357,6 +345,14 @@ export default function JishutorePlusPage() {
                                 <div className="rounded-xl border border-indigo-100 bg-white p-3 shadow-lg">
                                     <p className="text-xs font-black text-indigo-700">報酬確認</p>
                                     <p className="mt-1 text-sm font-black text-slate-950">{feeCheckItemCount}項目を一次資料つきで</p>
+                                </div>
+                                <div className="rounded-xl border border-emerald-100 bg-white p-3 shadow-lg">
+                                    <p className="text-xs font-black text-emerald-700">完成デッキ</p>
+                                    <p className="mt-1 text-sm font-black text-slate-950">疾患別9本＋姿勢別セット</p>
+                                </div>
+                                <div className="rounded-xl border border-sky-100 bg-white p-3 shadow-lg">
+                                    <p className="text-xs font-black text-sky-700">会員ツール</p>
+                                    <p className="mt-1 text-sm font-black text-slate-950">伝わるプロンプト工房</p>
                                 </div>
                             </div>
                         </div>
@@ -418,6 +414,56 @@ export default function JishutorePlusPage() {
                         <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center text-sm font-bold leading-7 text-slate-700 jp-text ![word-break:normal] sm:text-base">
                             資料づくりと報酬確認を別々に持つと、同じ利用者さんのことを2か所で調べ直すことになります。Plusは、この4つを同じ月額のなかに置いています。
                         </p>
+                    </div>
+                </section>
+
+                <section className="border-t border-blue-100 bg-white py-10 sm:py-16">
+                    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <p className="text-xs font-bold tracking-widest text-blue-700">全部入りリニューアル</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-950 jp-heading sm:text-3xl">
+                                個別販売していた商品も、すべてPlusに収録しました
+                            </h2>
+                            <p className="mt-4 text-sm leading-7 text-slate-600 jp-text sm:text-base">
+                                これまで980円ずつ個別販売していたセット・ツール（合計2,940円分）を、追加料金なしでご利用いただけます。
+                            </p>
+                        </div>
+                        <ul className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2">
+                            {[
+                                {
+                                    title: `編集できる運動スライド ${PLUS_SLIDE_COUNT}点`,
+                                    note: "必要なページを選んで、1つのPowerPointに",
+                                },
+                                {
+                                    title: `診療・介護報酬チェック 全${feeDomains.length}分野`,
+                                    note: `${feeCheckItemCount}項目。記録・自己点検・組み合わせ確認`,
+                                },
+                                {
+                                    title: "疾患別 完成デッキ 9本セット",
+                                    note: "退院前・訪問リハでそのまま使える（旧・個別販売980円）",
+                                },
+                                {
+                                    title: "姿勢別 完成デッキセット",
+                                    note: "今できる姿勢から選べる（旧・個別販売980円）",
+                                },
+                                {
+                                    title: "伝わるプロンプト工房",
+                                    note: "ChatGPT用スライド画像プロンプト作成ツール（旧・個別販売980円）",
+                                },
+                            ].map((item) => (
+                                <li key={item.title} className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                                    <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} className="h-3.5 w-3.5" aria-hidden="true">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <div className="min-w-0">
+                                        <p className="text-sm font-black leading-snug text-slate-950 jp-heading ![word-break:normal]">{item.title}</p>
+                                        <p className="mt-1 text-xs leading-relaxed text-slate-500 jp-text ![word-break:normal]">{item.note}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </section>
 
@@ -609,7 +655,6 @@ export default function JishutorePlusPage() {
                                     <tr className="bg-slate-100">
                                         <th className="w-[18%] p-4 text-sm font-bold text-slate-700">比較項目</th>
                                         <th className="p-4 text-sm font-black text-slate-900">無料素材</th>
-                                        <th className="p-4 text-sm font-black text-slate-900">買い切り資料セット</th>
                                         <th className="bg-blue-700 p-4 text-sm font-black text-white">自主トレ素材庫Plus</th>
                                     </tr>
                                 </thead>
@@ -618,7 +663,6 @@ export default function JishutorePlusPage() {
                                         <tr key={row.label} className="border-t border-slate-200 align-top">
                                             <th className="p-4 text-sm font-bold text-slate-700">{row.label}</th>
                                             <td className="p-4 text-sm leading-6 text-slate-600">{row.free}</td>
-                                            <td className="p-4 text-sm leading-6 text-slate-600">{row.set}</td>
                                             <td className="bg-blue-50 p-4 text-sm font-bold leading-6 text-blue-950">{row.plus}</td>
                                         </tr>
                                     ))}

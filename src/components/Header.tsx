@@ -26,10 +26,6 @@ export function Header() {
                         報酬チェック
                     </Link>
 
-                    <Link href="/products" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
-                        有料コンテンツ
-                    </Link>
-
                     <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
                         素材庫Plus
                     </Link>
@@ -77,13 +73,6 @@ export function Header() {
                             onClick={closeMenu}
                         >
                             報酬チェック
-                        </Link>
-                        <Link
-                            href="/products"
-                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
-                            onClick={closeMenu}
-                        >
-                            有料コンテンツ
                         </Link>
                         <Link
                             href="/products/jishutore-plus"

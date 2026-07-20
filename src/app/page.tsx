@@ -175,11 +175,11 @@ export default function Home() {
                 <div>
                   <p className="text-xs font-black tracking-widest text-blue-700">有料コンテンツ</p>
                   <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
-                    Plusと買い切り資料があります
+                    有料は「Plus」ひとつだけ
                   </h2>
                   <p className="jp-text mt-3 text-sm leading-7 text-slate-600">
-                    毎月追加される素材を使いたい方にはPlus。
-                    必要な資料やツールだけ使いたい方には買い切りコンテンツを用意しています。
+                    編集できるスライド素材、疾患別・姿勢別の完成デッキ、資料づくりのツール、
+                    報酬チェックまで、全部入りの月額サービスです。
                   </p>
                 </div>
                 <Link

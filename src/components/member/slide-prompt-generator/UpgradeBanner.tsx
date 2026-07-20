@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { UPGRADE_BANNER_ID, UPGRADE_URL } from "./planConfig";
+import {
+    PLUS_PROMO_CURRENT_PRICE_YEN,
+    PLUS_PROMO_IS_ACTIVE,
+    PLUS_PROMO_PRICE_NOTE,
+} from "@/constants/plus-pricing";
 
 /**
- * 無料版から有料版（980円買い切り）への案内バナー。
+ * 無料版から自主トレ素材庫Plus（全部入り月額）への案内バナー。
  * 無料版ページ下部、およびロック項目クリック時のスクロール先として使う。
  */
 export function UpgradeBanner() {
@@ -10,7 +15,7 @@ export function UpgradeBanner() {
         "テンプレート8種すべて使える",
         "ビジュアルスタイル10種すべて使える",
         "スライド10枚まで作れる",
-        "今後追加される機能・テンプレも利用可",
+        "編集できるスライド素材・完成デッキ・報酬チェックも全部入り",
     ];
 
     return (
@@ -26,7 +31,7 @@ export function UpgradeBanner() {
                     すべてのテンプレートとスタイルを使うには
                 </h2>
                 <p className="mb-5 text-sm leading-relaxed text-slate-600 break-keep">
-                    有料版（買い切り）にアップグレードすると、すべての機能を制限なくご利用いただけます。
+                    自主トレ素材庫Plusに登録すると、フル版のすべての機能を制限なくご利用いただけます。
                 </p>
 
                 <ul className="mb-6 space-y-2">
@@ -61,19 +66,19 @@ export function UpgradeBanner() {
                     <div>
                         <p className="flex items-baseline gap-1">
                             <span className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-                                ¥980
+                                月額¥{PLUS_PROMO_CURRENT_PRICE_YEN}
                             </span>
                             <span className="text-sm font-bold text-slate-500">（税込）</span>
                         </p>
-                        <p className="mt-1 text-xs font-bold text-slate-500">
-                            買い切り・追加課金なし
+                        <p className="mt-1 text-xs font-bold text-slate-500 break-keep">
+                            {PLUS_PROMO_IS_ACTIVE ? PLUS_PROMO_PRICE_NOTE : "いつでも解約できます"}
                         </p>
                     </div>
                     <Link
                         href={UPGRADE_URL}
                         className="inline-flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-full bg-sky-600 px-6 py-3 text-sm font-black text-white shadow-md shadow-sky-600/25 transition-colors hover:bg-sky-700 sm:w-auto"
                     >
-                        有料版を見る
+                        Plusを見る
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

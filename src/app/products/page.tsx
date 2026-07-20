@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckoutButton } from "@/components/CheckoutButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LineBanner } from "@/components/LineBanner";
@@ -9,14 +8,16 @@ import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
 import {
-    POSTURE_SELF_TRAINING_PRICE_ID,
-    SLIDE_PROMPT_GENERATOR_PRICE_ID,
-} from "@/lib/products";
+    PLUS_PROMO_BADGE_TEXT,
+    PLUS_PROMO_CURRENT_PRICE_YEN,
+    PLUS_PROMO_IS_ACTIVE,
+    PLUS_PROMO_PRICE_NOTE,
+} from "@/constants/plus-pricing";
 
 export const metadata: Metadata = {
-    title: "有料コンテンツ一覧｜自主トレ素材庫",
+    title: "有料コンテンツ｜自主トレ素材庫",
     description:
-        "自主トレ資料の作成と診療・介護報酬チェックに使える自主トレ素材庫Plus、疾患別自主トレ資料、伝わるプロンプト工房を目的別に選べる一覧ページです。",
+        "有料コンテンツは「自主トレ素材庫Plus」ひとつ。編集できる運動スライド、疾患別・姿勢別の完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックが全部入りの月額サービスです。",
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/",
     },
@@ -24,130 +25,18 @@ export const metadata: Metadata = {
 
 const LINE_URL = "https://lin.ee/79a5bNt";
 
-const purposeLinks = [
-    {
-        purpose: "自主トレ資料の作成と報酬確認を効率化したい",
-        label: "Plusを見る",
-        href: "#plus",
-    },
-    {
-        purpose: "特定の疾患の資料が今すぐ欲しい",
-        label: "疾患別資料を見る",
-        href: "#self-training-materials",
-    },
-    {
-        purpose: "患者さんに伝わる指導文を作りたい",
-        label: "プロンプト工房を見る",
-        href: "#slide-prompt-generator",
-    },
+// 旧・個別販売商品。Plus収録済み（各ページは収録のお知らせとして残している）
+const mergedProducts = [
+    { name: "疾患別自主トレ資料（9本セット）", href: "/products/self-training-materials/" },
+    { name: "姿勢別自主トレPowerPointセット", href: "/products/home-elderly-self-training/" },
+    { name: "伝わるプロンプト工房", href: "/products/slide-prompt-generator/" },
 ] as const;
-
-type OneTimeProduct = {
-    id: string;
-    name: string;
-    href: string;
-    productId: string;
-    price: number;
-    target: string;
-    summary: string;
-    points: string[];
-    checkoutReady: boolean;
-};
-
-const YEN = new Intl.NumberFormat("ja-JP");
-
-const oneTimeProducts: OneTimeProduct[] = [
-    {
-        id: "self-training-materials",
-        name: "疾患別自主トレ資料",
-        href: "/products/self-training-materials/",
-        productId: "self-training-materials-vol01",
-        price: 980,
-        target: "疾患名から自主トレ資料を選びたい方向け",
-        summary:
-            "脳卒中・腰痛・膝OA・術後など、疾患ごとの説明資料をPowerPointとPDFで使えます。",
-        points: ["9疾患収録", "PowerPoint編集可", "PDF版つき"],
-        checkoutReady: Boolean(process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET),
-    },
-    {
-        id: "home-elderly-self-training",
-        name: "姿勢別自主トレPowerPointセット",
-        href: "/products/home-elderly-self-training/",
-        productId: "home-elderly-self-training",
-        price: 980,
-        target: "「今できる姿勢」から自主トレを選びたい方向け",
-        summary:
-            "座位・立位・臥位など、対象者の姿勢や動作能力に合わせて選べる自主トレ資料セットです。",
-        points: ["6姿勢カテゴリ", "PowerPoint編集可", "訪問・通所向け"],
-        checkoutReady: Boolean(POSTURE_SELF_TRAINING_PRICE_ID),
-    },
-    {
-        id: "slide-prompt-generator",
-        name: "伝わるプロンプト工房",
-        href: "/products/slide-prompt-generator/",
-        productId: "slide-prompt-generator",
-        price: 980,
-        target: "患者さん向けの指導文や説明文を作りたい方向け",
-        summary:
-            "用途・テーマ・枚数を選び、ChatGPTに貼り付けやすい資料作成プロンプトを作れます。",
-        points: ["ブラウザで完結", "用途別テンプレ", "永久アクセス"],
-        checkoutReady: Boolean(SLIDE_PROMPT_GENERATOR_PRICE_ID),
-    },
-];
 
 function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
         </svg>
-    );
-}
-
-function OneTimeProductCard({ product }: { product: OneTimeProduct }) {
-    return (
-        <article
-            id={product.id}
-            className="flex scroll-mt-24 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
-        >
-            <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">
-                    買い切り・¥{YEN.format(product.price)}
-                </span>
-            </div>
-            <h3 className="text-lg font-black leading-snug text-slate-950 sm:text-xl">
-                {product.name}
-            </h3>
-            <p className="mt-2 text-sm font-bold leading-6 text-slate-700">
-                {product.target}
-            </p>
-            <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                {product.summary}
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-                {product.points.map((point) => (
-                    <li key={point} className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-600">
-                        {point}
-                    </li>
-                ))}
-            </ul>
-            <div className="mt-5 grid gap-2 sm:grid-cols-2">
-                <Link
-                    href={product.href}
-                    className="inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full border border-blue-200 bg-white px-4 py-3 text-sm font-black text-blue-700 transition hover:bg-blue-50"
-                >
-                    詳細を見る
-                    <ArrowIcon className="h-3.5 w-3.5" />
-                </Link>
-                <CheckoutButton
-                    productId={product.productId}
-                    productName={product.name}
-                    price={product.price}
-                    label="購入する"
-                    disabled={!product.checkoutReady}
-                    className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-blue-700 px-4 py-3 text-sm font-black text-white shadow-sm transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
-                />
-            </div>
-        </article>
     );
 }
 
@@ -163,37 +52,12 @@ export default function ProductsPage() {
                         <div className="mx-auto max-w-3xl text-center">
                             <p className="text-xs font-black tracking-widest text-blue-700">有料コンテンツ</p>
                             <h1 className="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
-                                有料コンテンツ一覧
+                                有料は「Plus」ひとつだけ
                             </h1>
                             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                                毎月使う素材、今すぐ使う資料、指導文づくり。
-                                目的に合わせて選べます。
+                                スライド素材・完成デッキ・作成ツール・報酬チェックを、ひとつの月額にまとめました。
+                                どれを買うか迷う必要はありません。
                             </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="border-b border-slate-200 bg-slate-50 py-8 sm:py-10">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-5xl">
-                            <h2 className="text-lg font-black text-slate-950">目的から選ぶ</h2>
-                            <div className="mt-4 grid gap-3 md:grid-cols-3">
-                                {purposeLinks.map((item) => (
-                                    <Link
-                                        key={item.href}
-                                        href={item.href}
-                                        className="flex min-h-28 flex-col justify-between rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:border-blue-300 hover:bg-blue-50"
-                                    >
-                                        <span className="text-sm font-black leading-6 text-slate-900">
-                                            {item.purpose}
-                                        </span>
-                                        <span className="mt-3 inline-flex items-center gap-1 text-sm font-black text-blue-700">
-                                            {item.label}
-                                            <ArrowIcon className="h-3.5 w-3.5" />
-                                        </span>
-                                    </Link>
-                                ))}
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -204,11 +68,13 @@ export default function ProductsPage() {
                             <div>
                                 <div className="flex flex-wrap gap-2">
                                     <span className="rounded-full bg-blue-700 px-3 py-1 text-xs font-black text-white">
-                                        継続課金
+                                        全部入り
                                     </span>
-                                    <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-black text-blue-800">
-                                        7月登録は月額500円
-                                    </span>
+                                    {PLUS_PROMO_IS_ACTIVE && (
+                                        <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-black text-amber-900">
+                                            {PLUS_PROMO_BADGE_TEXT}
+                                        </span>
+                                    )}
                                 </div>
                                 <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
                                     自主トレ素材庫Plus
@@ -231,22 +97,40 @@ export default function ProductsPage() {
                                             診療・介護報酬の単位数、記録に残すこと、見落としやすい点を確認できます。
                                         </p>
                                     </div>
+                                    <div className="rounded-lg border border-blue-200 bg-white p-4">
+                                        <p className="text-xs font-black tracking-wider text-blue-700">完成デッキ</p>
+                                        <p className="mt-1 text-sm font-black text-slate-950">疾患別9本＋姿勢別セット</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-600">
+                                            退院前・訪問リハでそのまま使える完成済みPowerPointをZIPでダウンロードできます。
+                                        </p>
+                                    </div>
+                                    <div className="rounded-lg border border-blue-200 bg-white p-4">
+                                        <p className="text-xs font-black tracking-wider text-blue-700">会員ツール</p>
+                                        <p className="mt-1 text-sm font-black text-slate-950">伝わるプロンプト工房</p>
+                                        <p className="mt-2 text-xs leading-5 text-slate-600">
+                                            ChatGPTに貼るだけでスライド画像を量産できるプロンプトを作成できます。
+                                        </p>
+                                    </div>
                                 </div>
-                                <p className="mt-3 text-sm font-bold leading-6 text-blue-800">
-                                    7月中の登録なら月額500円のままずっと据え置きです。
-                                    いつでも解約できます。
-                                </p>
+                                {PLUS_PROMO_IS_ACTIVE && (
+                                    <p className="mt-3 text-sm font-bold leading-6 text-blue-800">
+                                        {PLUS_PROMO_PRICE_NOTE}
+                                        いつでも解約できます。
+                                    </p>
+                                )}
                             </div>
                             <div className="rounded-lg border border-blue-200 bg-white p-4">
-                                <p className="text-xs font-black tracking-widest text-blue-700">7月の登録価格</p>
-                                <p className="mt-1 text-3xl font-black text-slate-950">月額500円</p>
+                                <p className="text-xs font-black tracking-widest text-blue-700">
+                                    {PLUS_PROMO_IS_ACTIVE ? "先行価格" : "料金"}
+                                </p>
+                                <p className="mt-1 text-3xl font-black text-slate-950">月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</p>
                                 <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
-                                    資料{PLUS_SLIDE_COUNT}点＋報酬チェック<br />どちらも利用できます
+                                    スライド{PLUS_SLIDE_COUNT}点＋完成デッキ＋ツール＋報酬チェック<br />すべて利用できます
                                 </p>
                                 <div className="mt-4 grid gap-2">
                                     {plusCheckoutReady ? (
                                         <PlusSubscribeButton
-                                            label="月額500円で申し込む"
+                                            label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
                                             className="inline-flex w-full items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-blue-800"
                                         />
                                     ) : (
@@ -263,27 +147,24 @@ export default function ProductsPage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                <section className="bg-slate-50 py-12 sm:py-16">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-5xl">
-                            <div className="mb-6">
-                                <p className="text-xs font-black tracking-widest text-blue-700">買い切り</p>
-                                <h2 className="mt-2 text-2xl font-black text-slate-950">
-                                    必要なものだけ購入する
-                                </h2>
-                                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-                                    追加課金なしで使える単品コンテンツです。
-                                    資料そのものが欲しい場合と、指導文づくりを助けたい場合で選べます。
-                                </p>
-                            </div>
-                            <div className="grid gap-5 md:grid-cols-2">
-                                {oneTimeProducts.map((product) => (
-                                    <OneTimeProductCard key={product.id} product={product} />
+                        <div className="mx-auto mt-6 max-w-5xl rounded-lg border border-slate-200 bg-white p-5">
+                            <p className="text-sm font-black text-slate-900">個別販売していた商品はPlusに収録されました</p>
+                            <p className="mt-2 text-xs leading-6 text-slate-600">
+                                以下の商品の個別販売は終了しました。ご購入済みの方は、これまでどおり購入分をご利用いただけます。
+                            </p>
+                            <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                                {mergedProducts.map((product) => (
+                                    <li key={product.href}>
+                                        <Link
+                                            href={product.href}
+                                            className="text-xs font-bold text-blue-700 underline underline-offset-2 hover:text-blue-500"
+                                        >
+                                            {product.name}
+                                        </Link>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </section>
@@ -329,7 +210,7 @@ export default function ProductsPage() {
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-5xl">
                             <div className="mb-5 text-center">
-                                <h2 className="text-2xl font-black text-slate-950">どれが合うかわからない方へ</h2>
+                                <h2 className="text-2xl font-black text-slate-950">まだ迷う方へ</h2>
                                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">
                                     新作やアップデートのお知らせはLINEで受け取れます。
                                     迷う場合は、まず無料特典から雰囲気を確認できます。

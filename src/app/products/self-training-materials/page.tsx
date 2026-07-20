@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Testimonials } from "@/components/Testimonials";
 import { LineBanner } from "@/components/LineBanner";
-import { CheckoutButton } from "@/components/CheckoutButton";
+import { PlusMergedCta } from "@/components/PlusMergedCta";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import { Metadata } from "next";
@@ -10,11 +10,11 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "退院前・訪問リハでそのまま使える 疾患別自主トレPowerPoint 9本セット｜自主トレ素材庫",
     description:
-        "脳卒中・腰痛・膝OA・圧迫骨折後・パーキンソン病など、疾患別に編集できるPowerPoint資料9本セット。980円の買い切り、印刷配布OK。退院前指導・訪問リハ・家族説明に。",
+        "脳卒中・腰痛・膝OA・圧迫骨折後・パーキンソン病など、疾患別に編集できるPowerPoint資料9本セット。現在は自主トレ素材庫Plusに収録されています。退院前指導・訪問リハ・家族説明に。",
     openGraph: {
         title: "疾患別自主トレPowerPoint 9本セット｜自主トレ素材庫",
         description:
-            "9 疾患の自主トレ資料（PPTX）が 980 円の買い切り。患者さんへの説明、家族説明、退院前指導に。",
+            "9疾患の自主トレ資料（PPTX）。現在は自主トレ素材庫Plusに収録。患者さんへの説明、家族説明、退院前指導に。",
         images: ["/products/self-training-materials/og.jpg"],
     },
     twitter: {
@@ -23,12 +23,9 @@ export const metadata: Metadata = {
     },
 };
 
-const PRODUCT_ID = "self-training-materials-vol01";
-const PRODUCT_NAME = "疾患別自主トレPowerPoint9本セット";
-const PRICE = 980;
 
 const HERO_BADGES = [
-    "980円・買い切り",
+    "Plusに収録",
     "PowerPoint形式",
     "編集OK",
     "印刷配布OK",
@@ -171,12 +168,6 @@ const FAQS: { q: string; a: string }[] = [
     },
 ];
 
-const HERO_CHECKOUT_CLASS =
-    "flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-black text-white shadow-lg shadow-blue-600/30 transition-all hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-600/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
-
-const SECTION_CHECKOUT_CLASS =
-    "flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-black text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
-
 // 日本語本文用：単語が途中で切れにくくする
 // word-break:keep-all で日本語の単語が途中で切れにくくする。
 // 句読点で改行されるのが基本。line-break:strict で「、」「。」「？」等の行頭禁則を守る。
@@ -219,6 +210,7 @@ export default function SelfTrainingMaterialsPage() {
     return (
         <div className="min-h-screen bg-white flex flex-col overflow-x-hidden">
             <Header />
+            <PlusMergedCta variant="banner" />
             <main className="flex-1">
                 {/* A. ファーストビュー */}
                 <section className="relative bg-gradient-to-b from-blue-50 via-white to-white pt-12 pb-16 sm:pt-16 sm:pb-20">
@@ -250,19 +242,11 @@ export default function SelfTrainingMaterialsPage() {
                                 ))}
                             </div>
 
-                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 max-w-md sm:max-w-none mx-auto">
-                                <div className="w-full sm:w-auto">
-                                    <CheckoutButton
-                                        productId={PRODUCT_ID}
-                                        productName={PRODUCT_NAME}
-                                        price={PRICE}
-                                        label="980円で購入する"
-                                        className={HERO_CHECKOUT_CLASS}
-                                    />
-                                </div>
+                            <div className="flex flex-col items-stretch justify-center gap-3 pt-2 max-w-md mx-auto">
+                                <PlusMergedCta />
                                 <a
                                     href="#contents"
-                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-blue-200 bg-white px-8 py-4 text-base font-bold text-blue-700 transition-all hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-blue-200 bg-white px-8 py-4 text-base font-bold text-blue-700 transition-all hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
                                 >
                                     収録内容を見る
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-4 w-4">
@@ -270,9 +254,6 @@ export default function SelfTrainingMaterialsPage() {
                                     </svg>
                                 </a>
                             </div>
-                            <p className={`text-xs text-slate-500 ${JP_TEXT}`}>
-                                サイト内のStripeで決済 / 決済完了後にダウンロード案内が表示されます
-                            </p>
                         </div>
                     </div>
                 </section>
@@ -548,17 +529,7 @@ export default function SelfTrainingMaterialsPage() {
                             </ul>
 
                             <div className="mt-7">
-                                <CheckoutButton
-                                    productId={PRODUCT_ID}
-                                    productName={PRODUCT_NAME}
-                                    price={PRICE}
-                                    label="980円で購入する"
-                                    className={SECTION_CHECKOUT_CLASS}
-                                />
-                                <p className={`mt-3 text-center text-xs text-slate-500 leading-relaxed ${JP_TEXT}`}>
-                                    Stripeの決済画面に移動します。
-                                    決済完了後、ダウンロードページへ自動で戻ります。
-                                </p>
+                                <PlusMergedCta />
                             </div>
                         </div>
                     </div>
@@ -657,16 +628,7 @@ export default function SelfTrainingMaterialsPage() {
                         </p>
 
                         <div className="mt-8 mx-auto max-w-md">
-                            <CheckoutButton
-                                productId={PRODUCT_ID}
-                                productName={PRODUCT_NAME}
-                                price={PRICE}
-                                label="980円で購入する"
-                                className={SECTION_CHECKOUT_CLASS}
-                            />
-                            <p className={`mt-3 text-xs text-slate-500 leading-relaxed ${JP_TEXT}`}>
-                                Stripe決済 / 買い切り / 編集・印刷OK
-                            </p>
+                            <PlusMergedCta />
                         </div>
                     </div>
                 </section>

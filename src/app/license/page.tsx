@@ -35,6 +35,12 @@ export default function LicensePage() {
                         <section>
                             <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">2. 有料資料セット（資料セット商品）</h2>
                             <div className="space-y-4">
+                                <p className="rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm">
+                                    資料セット（疾患別・姿勢別）の個別販売は終了し、現在は
+                                    <Link href="/products/jishutore-plus" className="text-blue-600 hover:underline mx-0.5">自主トレ素材庫Plus</Link>
+                                    に収録されています。Plusの会員ページからダウンロードしたファイルにも、本セクションと同じ利用条件・禁止事項が適用されます。
+                                    過去に個別購入いただいた方は、引き続き同条件でご利用いただけます。
+                                </p>
                                 <p>
                                     <Link href="/products" className="text-blue-600 hover:underline">資料セット</Link>
                                     （疾患別自主トレ資料セット 等）でご購入いただいた PPTX・PDF・素材ファイルは、購入者ご本人による次の用途でのみご利用いただけます。

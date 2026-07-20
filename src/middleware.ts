@@ -93,6 +93,11 @@ export async function middleware(req: NextRequest) {
     if (expected && cookieValue === expected) {
         return NextResponse.next();
     }
+    // Plus会員もツールを利用できる（全部入り化）。契約の有効性はページ側で確認する。
+    const plusToken = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
+    if (plusToken && (await verifySessionToken(plusToken))) {
+        return NextResponse.next();
+    }
     const loginUrl = req.nextUrl.clone();
     loginUrl.pathname = SLIDE_LOGIN_PATH;
     loginUrl.search = "";
