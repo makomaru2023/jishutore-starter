@@ -10,6 +10,7 @@ import {
     type PlusItem,
 } from "@/data/plus-items";
 import { PlusDeckDownloads } from "./PlusDeckDownloads";
+import { PlusWelcomeGuide } from "./PlusWelcomeGuide";
 
 /* ───────── アイコン（線画・絵文字不使用） ───────── */
 const ic = "h-5 w-5";
@@ -82,9 +83,11 @@ const ALL = "すべて" as const;
 export function PlusLibrary({
     feeDomainCount,
     feeItemCount,
+    showWelcomeGuide,
 }: {
     feeDomainCount: number;
     feeItemCount: number;
+    showWelcomeGuide: boolean;
 }) {
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [activeCategory, setActiveCategory] = useState<string>(ALL);
@@ -366,6 +369,7 @@ export function PlusLibrary({
             </header>
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">
+                <PlusWelcomeGuide show={showWelcomeGuide} />
                 <PlusDeckDownloads feeDomainCount={feeDomainCount} feeItemCount={feeItemCount} />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
                     {/* ───────── 左：フィルタ＋カード一覧 ───────── */}

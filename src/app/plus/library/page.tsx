@@ -27,6 +27,7 @@ export default async function PlusLibraryPage({
     }
     const { welcome, session_id } = await searchParams;
     let purchaseAmount = 0;
+    let isVerifiedWelcome = false;
     if (welcome === "1" && session_id) {
         try {
             const stripe = getStripe();
@@ -38,6 +39,7 @@ export default async function PlusLibraryPage({
                     (session.status === "complete" || session.payment_status === "paid") &&
                     isPlusPriceObject(lineItems.data[0]?.price)
                 ) {
+                    isVerifiedWelcome = true;
                     purchaseAmount = session.amount_total ?? 0;
                 }
             }
@@ -59,6 +61,7 @@ export default async function PlusLibraryPage({
             <PlusLibrary
                 feeDomainCount={feeDomains.length}
                 feeItemCount={getFeeCheckTotalCount()}
+                showWelcomeGuide={isVerifiedWelcome}
             />
         </>
     );

@@ -53,6 +53,11 @@ export function trackPlusResourceClick(resource: string, placement: string): voi
     trackEvent("plus_resource_click", { resource, placement });
 }
 
+/** サイト共通のPlus会員ページ導線クリック。 */
+export function trackPlusMemberLinkClick(placement: "header" | "footer"): void {
+    trackEvent("plus_member_link_click", { placement });
+}
+
 /** Plus会員版の報酬チェックハブ表示。 */
 export function trackPlusFeeHubView(
     initialTab: "items" | "combo",
