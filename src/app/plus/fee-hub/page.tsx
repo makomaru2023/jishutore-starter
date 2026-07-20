@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { FeeComboChecker } from "@/components/plus/FeeComboChecker";
 import { FeeCheckTool } from "@/components/plus/FeeCheckTool";
+import { PlusPlanManagementButton } from "@/components/plus/PlusPlanManagementButton";
 import {
     FeeHubNavigation,
     type FeeHubTab,
@@ -38,7 +39,7 @@ export default async function PlusFeeHubPage({
     return (
         <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-slate-50 print:bg-white">
             <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur print:hidden">
-                <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-3 sm:px-6">
+                <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 sm:flex-nowrap sm:gap-3 sm:px-6">
                     <Link href="/plus/library/" className="flex min-w-0 items-center gap-2.5" aria-label="自主トレ素材庫Plus 資料庫へ">
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-700 text-xs font-black text-white shadow-sm">
                             P+
@@ -50,18 +51,23 @@ export default async function PlusFeeHubPage({
                             <p className="hidden truncate text-xs text-slate-500 sm:block">会員専用ツール</p>
                         </div>
                     </Link>
-                    <nav className="ml-auto flex shrink-0 items-center gap-1.5 text-xs font-bold" aria-label="会員メニュー">
+                    <nav
+                        className="order-3 mt-2 grid w-full grid-cols-3 gap-1.5 border-t border-slate-100 pt-2 text-xs font-bold sm:order-none sm:ml-auto sm:mt-0 sm:flex sm:w-auto sm:shrink-0 sm:border-0 sm:pt-0"
+                        aria-label="会員メニュー"
+                    >
                         <Link
                             href="/plus/library/"
-                            className="inline-flex min-h-10 items-center rounded-full border border-blue-200 bg-blue-50 px-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
+                            className="inline-flex min-h-10 items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-2.5 text-center text-blue-700 transition hover:border-blue-300 hover:bg-blue-100 sm:px-3"
                         >
-                            <span className="sm:hidden">資料庫</span>
-                            <span className="hidden sm:inline">資料庫へ戻る</span>
+                            資料庫へ戻る
                         </Link>
+                        <PlusPlanManagementButton className="inline-flex min-h-10 items-center justify-center rounded-full border border-slate-200 bg-white px-2.5 text-slate-600 transition hover:border-blue-300 hover:text-blue-700 disabled:opacity-60 sm:px-3">
+                            プラン管理
+                        </PlusPlanManagementButton>
                         <form action="/api/plus/auth/logout/" method="post">
                             <button
                                 type="submit"
-                                className="min-h-10 rounded-full border border-slate-200 bg-white px-3 text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
+                                className="min-h-10 w-full rounded-full border border-slate-200 bg-white px-2.5 text-slate-500 transition hover:border-slate-300 hover:text-slate-700 sm:w-auto sm:px-3"
                             >
                                 ログアウト
                             </button>
@@ -74,30 +80,12 @@ export default async function PlusFeeHubPage({
                 <section className="border-b border-blue-100 bg-gradient-to-b from-blue-50 to-white print:hidden">
                     <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-10">
                         <p className="text-xs font-black tracking-[0.18em] text-blue-700">PLUS会員専用</p>
-                        <div className="mt-2 grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
-                            <div>
-                                <h1 className="break-keep text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
-                                    診療・介護報酬チェック 会員版
-                                </h1>
-                                <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
-                                    算定要件、記録に残すこと、自己点検、加算の組み合わせを、会員専用の1ページから確認できます。
-                                </p>
-                            </div>
-                            <dl className="grid grid-cols-3 gap-2">
-                                <div className="rounded-xl border border-blue-100 bg-white p-3 text-center shadow-sm">
-                                    <dt className="text-[11px] font-black text-slate-500">対応分野</dt>
-                                    <dd className="mt-1 text-xl font-black text-blue-800">{feeDomains.length}</dd>
-                                </div>
-                                <div className="rounded-xl border border-blue-100 bg-white p-3 text-center shadow-sm">
-                                    <dt className="text-[11px] font-black text-slate-500">収録項目</dt>
-                                    <dd className="mt-1 text-xl font-black text-blue-800">{itemCount}</dd>
-                                </div>
-                                <div className="rounded-xl border border-blue-100 bg-white p-3 text-center shadow-sm">
-                                    <dt className="text-[11px] font-black text-slate-500">会員機能</dt>
-                                    <dd className="mt-1 text-xl font-black text-blue-800">2</dd>
-                                </div>
-                            </dl>
-                        </div>
+                        <h1 className="mt-2 break-keep text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
+                            診療・介護報酬チェック 会員版
+                        </h1>
+                        <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+                            算定要件、記録に残すこと、自己点検、加算の組み合わせを、会員専用の1ページから確認できます。
+                        </p>
                     </div>
                 </section>
 

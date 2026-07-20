@@ -10,6 +10,7 @@ import {
     type PlusItem,
 } from "@/data/plus-items";
 import { PlusDeckDownloads } from "./PlusDeckDownloads";
+import { PlusPlanManagementButton } from "./PlusPlanManagementButton";
 import { PlusWelcomeGuide } from "./PlusWelcomeGuide";
 
 /* ───────── アイコン（線画・絵文字不使用） ───────── */
@@ -180,29 +181,6 @@ export function PlusLibrary({
         }
     }, [selectedItems, zipping]);
 
-    // Stripe カスタマーポータル（プラン管理・解約）へ遷移する。
-    const [portalLoading, setPortalLoading] = useState(false);
-    const handlePortal = useCallback(async () => {
-        if (portalLoading) return;
-        setPortalLoading(true);
-        try {
-            const res = await fetch("/api/plus/portal/", { method: "POST" });
-            if (res.status === 401) {
-                window.location.href = "/plus/login";
-                return;
-            }
-            const data = await res.json().catch(() => ({}));
-            if (data?.url) {
-                window.location.href = data.url;
-                return;
-            }
-        } catch {
-            // 失敗時は何もしない（ボタンを戻す）
-        } finally {
-            setPortalLoading(false);
-        }
-    }, [portalLoading]);
-
     const chips = [ALL, ...PLUS_CATEGORIES];
 
     /* ───────── 右パネルの中身（PCサイドバー / モバイルシート共通） ───────── */
@@ -331,14 +309,11 @@ export function PlusLibrary({
                             <span className="hidden sm:inline">使い方ガイド</span>
                             <span className="sm:hidden">ガイド</span>
                         </button>
-                        <button
-                            type="button"
-                            onClick={handlePortal}
-                            disabled={portalLoading}
+                        <PlusPlanManagementButton
                             className="hidden items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-blue-300 hover:text-blue-700 disabled:opacity-60 sm:flex"
                         >
-                            {portalLoading ? "…" : "プラン管理"}
-                        </button>
+                            プラン管理
+                        </PlusPlanManagementButton>
                         <form action="/api/plus/auth/logout/" method="post">
                             <button
                                 type="submit"
