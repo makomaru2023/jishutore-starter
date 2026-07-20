@@ -216,7 +216,7 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                         こんなスライドを組み合わせられます
                     </h2>
                     <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                        画像を押すと拡大できます。収録スライドは毎月追加されます。
+                        画像を押すと拡大できます。収録スライドは継続して追加しています。
                     </p>
                 </div>
 
