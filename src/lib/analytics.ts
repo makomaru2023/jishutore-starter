@@ -40,6 +40,19 @@ export function trackB2bContactClick(placement: string): void {
     trackEvent("b2b_contact_click", { placement });
 }
 
+/** Plus LPの申込導線クリック。actionで決済開始と料金欄への移動を分ける。 */
+export function trackPlusCtaClick(
+    placement: string,
+    action: "checkout" | "scroll_to_pricing" = "checkout",
+): void {
+    trackEvent("plus_cta_click", { placement, action });
+}
+
+/** Plus LPから無料で試せる資料・機能を開いた操作。 */
+export function trackPlusResourceClick(resource: string, placement: string): void {
+    trackEvent("plus_resource_click", { resource, placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;

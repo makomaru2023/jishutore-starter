@@ -282,7 +282,6 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                                 width={1200}
                                 height={675}
                                 sizes="100vw"
-                                priority
                                 className="mx-auto h-auto w-full max-w-[1200px]"
                             />
                         </div>

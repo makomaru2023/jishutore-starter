@@ -1,17 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { trackEvent } from "@/lib/analytics";
-import { PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
+import { trackEvent, trackPlusCtaClick } from "@/lib/analytics";
+import {
+    formatYen,
+    PLUS_PROMO_CURRENT_PRICE_YEN,
+} from "@/constants/plus-pricing";
 
 /**
  * 自主トレ素材庫Plus の申し込みボタン。
  * クリックで /api/plus/checkout/ を呼び、Stripe の決済ページへ遷移する。
  */
 export function PlusSubscribeButton({
-    label = `月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`,
+    placement,
+    label = `月額${formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}で申し込む`,
     className,
 }: {
+    placement: string;
     label?: string;
     className?: string;
 }) {
@@ -25,6 +30,7 @@ export function PlusSubscribeButton({
         const checkoutParams = {
             currency: "JPY",
             value: PLUS_PROMO_CURRENT_PRICE_YEN,
+            placement,
             items: [{
                 item_id: "jishutore-plus",
                 item_name: "自主トレ素材庫Plus",
@@ -32,6 +38,7 @@ export function PlusSubscribeButton({
                 quantity: 1,
             }],
         };
+        trackPlusCtaClick(placement);
         trackEvent("checkout_start", checkoutParams);
         trackEvent("begin_checkout", checkoutParams);
         try {

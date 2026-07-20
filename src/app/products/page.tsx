@@ -130,6 +130,7 @@ export default function ProductsPage() {
                                 <div className="mt-4 grid gap-2">
                                     {plusCheckoutReady ? (
                                         <PlusSubscribeButton
+                                            placement="products_index_plus_card"
                                             label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
                                             className="inline-flex w-full items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-blue-800"
                                         />

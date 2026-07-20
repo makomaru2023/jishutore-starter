@@ -5,12 +5,19 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
+import { PlusPromoCountdown } from "@/components/plus/PlusPromoCountdown";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { TrackedPlusResourceLink } from "@/components/plus/TrackedPlusResourceLink";
 import { Testimonials } from "@/components/Testimonials";
 import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
+import {
+    PLUS_PROOF_LINE_FRIENDS,
+    PLUS_PROOF_TOTAL_DL,
+} from "@/constants/plus-proof";
+import { PLUS_ROADMAP } from "@/constants/plus-roadmap";
 import {
     formatYen,
     PLUS_PROMO_BADGE_TEXT,
@@ -31,7 +38,7 @@ import {
 const LINE_URL = "https://lin.ee/79a5bNt";
 const currentPriceLabel = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
 const nextPriceLabel = formatYen(PLUS_PROMO_NEXT_PRICE_YEN);
-const formerStandalonePriceLabel = formatYen(PLUS_PROMO_NEXT_PRICE_YEN);
+const dailyPriceLabel = formatYen(Math.ceil(PLUS_PROMO_CURRENT_PRICE_YEN / 30));
 const pricingMetadata = PLUS_PROMO_IS_ACTIVE
     ? PLUS_PROMO_PRICE_NOTE
     : `月額${currentPriceLabel}で利用できます。`;
@@ -52,20 +59,11 @@ export const metadata: Metadata = {
         url: "https://jishutore-sozaiko.online/products/jishutore-plus/",
         siteName: "自主トレ素材庫",
         type: "website",
-        images: [
-            {
-                url: "/plus/previews/shoulder-raise.webp",
-                width: 1200,
-                height: 675,
-                alt: "自主トレ素材庫Plusに収録される肩挙上運動スライド",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: OG_TITLE,
         description: OG_DESCRIPTION,
-        images: ["/plus/previews/shoulder-raise.webp"],
     },
 };
 
@@ -106,6 +104,25 @@ const feeCheckSampleItem =
         (item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain],
     ) ?? feeCheckSampleDomain.items[0];
 const feeCheckSampleUnit = feeCheckSampleItem.units[0];
+
+const proofItems = [
+    {
+        value: `${FREE_MATERIAL_COUNT.toLocaleString("ja-JP")}点`,
+        label: "無料素材を公開中",
+    },
+    ...(PLUS_PROOF_TOTAL_DL === null
+        ? []
+        : [{
+            value: `${PLUS_PROOF_TOTAL_DL.toLocaleString("ja-JP")}DL`,
+            label: "累計ダウンロード",
+        }]),
+    ...(PLUS_PROOF_LINE_FRIENDS === null
+        ? []
+        : [{
+            value: `${PLUS_PROOF_LINE_FRIENDS.toLocaleString("ja-JP")}人`,
+            label: "LINEで情報を受け取る方",
+        }]),
+];
 
 const pillars = [
     {
@@ -238,7 +255,7 @@ const comparisonRows = [
     },
 ] as const;
 
-const faqs: { q: string; a: ReactNode }[] = [
+const faqs: { q: string; a: ReactNode; id?: string }[] = [
     {
         q: "解約はどうすればできますか？",
         a: "資料庫の「プラン管理」からいつでも解約できます。解約後も、次回の請求日まではそのままご利用いただけます。",
@@ -246,6 +263,42 @@ const faqs: { q: string; a: ReactNode }[] = [
     {
         q: "解約したら、ダウンロードした資料は使えなくなりますか？",
         a: "いいえ。すでにダウンロード済みのPowerPointファイルは、解約後もそのままご利用いただけます。ただし、資料庫での再ダウンロードや会員ページへのアクセスはできなくなります。",
+    },
+    {
+        q: "PowerPointを持っていなくても使えますか？",
+        a: (
+            <>
+                {"編集にはデスクトップ版PowerPointを推奨しています。無料のPowerPoint for the webやGoogleスライドでも開けますが、レイアウトやフォントが崩れる場合があります。"}
+                <TrackedPlusResourceLink
+                    href="/images/plus/sample.pptx"
+                    download
+                    resource="powerpoint_sample"
+                    placement="plus_lp_faq_powerpoint"
+                    className="ml-1 font-semibold text-blue-700 underline decoration-blue-200 underline-offset-2 hover:decoration-blue-600"
+                >
+                    無料サンプル（3枚入り）
+                </TrackedPlusResourceLink>
+                {"で、お使いの環境で編集できるか登録前にご確認ください。"}
+            </>
+        ),
+    },
+    {
+        q: "スマホやタブレットだけでも使えますか？",
+        a: (
+            <>
+                {"会員ページの閲覧とファイルのダウンロードは可能です。PowerPointの編集はPCを推奨しています。印刷は、端末へ保存したPDFなどをコンビニのネットプリントで出力する方法もあります。まずは"}
+                <TrackedPlusResourceLink
+                    href="/images/plus/sample.pptx"
+                    download
+                    resource="powerpoint_sample"
+                    placement="plus_lp_faq_mobile"
+                    className="mx-1 font-semibold text-blue-700 underline decoration-blue-200 underline-offset-2 hover:decoration-blue-600"
+                >
+                    無料サンプル
+                </TrackedPlusResourceLink>
+                {"で、お使いの端末から開けるかご確認ください。"}
+            </>
+        ),
     },
     {
         q: "作った資料は商用利用できますか？",
@@ -284,6 +337,7 @@ const faqs: { q: string; a: ReactNode }[] = [
         a: "いいえ。月初起算ではなく、登録日を基準に1か月ごとに料金が発生します。月末までの短い期間だけで1か月分が請求されることはありません。",
     },
     {
+        id: "faq-receipt",
         q: "領収書は発行できますか？",
         a: "Stripeの決済完了メールを領収書としてご利用いただけます。宛名の変更や個別発行が必要な場合は、お問い合わせよりご連絡ください。",
     },
@@ -339,6 +393,35 @@ function PillarLabel({ number }: { number: string }) {
     );
 }
 
+function MidPageCta({ placement }: { placement: string }) {
+    return (
+        <section className="border-y border-blue-100 bg-blue-50/70 py-6" aria-label="自主トレ素材庫Plusへのお申し込み">
+            <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-center sm:px-6 lg:flex-row lg:justify-between lg:px-8 lg:text-left">
+                <div>
+                    <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+                        <p className="text-lg font-black text-slate-950">
+                            4つ全部入りで、月額<span className="text-blue-700">{currentPriceLabel}</span>
+                        </p>
+                        {PLUS_PROMO_IS_ACTIVE && (
+                            <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-[11px] font-black text-amber-950">
+                                登録時価格のまま据え置き
+                            </span>
+                        )}
+                    </div>
+                    <p className="mt-1 text-xs font-bold leading-5 text-slate-600">
+                        いつでも解約・ダウンロード済みは解約後も利用できます
+                    </p>
+                </div>
+                <PlusSubscribeButton
+                    placement={placement}
+                    label={`月額${currentPriceLabel}で始める`}
+                    className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-7 py-3.5 text-sm font-black text-white shadow-md shadow-blue-700/20 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                />
+            </div>
+        </section>
+    );
+}
+
 export default function JishutorePlusPage() {
     return (
         <div className="flex min-h-screen flex-col bg-white pb-20 sm:pb-0">
@@ -355,6 +438,7 @@ export default function JishutorePlusPage() {
                                 {PLUS_PROMO_IS_ACTIVE && (
                                     <span className="rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-xs font-black text-amber-900">
                                         {PLUS_PROMO_BADGE_TEXT}
+                                        <PlusPromoCountdown prefix="・" />
                                     </span>
                                 )}
                             </div>
@@ -366,8 +450,7 @@ export default function JishutorePlusPage() {
                                 <span className="mt-2 block text-blue-700">4つが、全部入り。</span>
                             </h1>
                             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base lg:mx-0">
-                                編集できる運動スライド、完成デッキ、伝わるプロンプト工房、
-                                診療・介護報酬チェック。どれを買うか迷わず、すべて同じ会員ページから使えます。
+                                編集できる運動スライド、完成デッキ、伝わるプロンプト工房、診療・介護報酬チェック。どれを買うか迷わず、すべて同じ会員ページから使えます。
                             </p>
 
                             <div className="mx-auto mt-7 max-w-xl rounded-2xl border border-blue-200 bg-white/90 p-4 text-left shadow-lg shadow-blue-950/5 lg:mx-0">
@@ -396,6 +479,7 @@ export default function JishutorePlusPage() {
 
                             <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                                 <PlusSubscribeButton
+                                    placement="plus_lp_hero"
                                     label={`月額${currentPriceLabel}で始める`}
                                     className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-8 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                                 />
@@ -446,6 +530,17 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
+                <section className="border-b border-slate-200 bg-white" aria-label="自主トレ素材庫の公開実績">
+                    <div className="mx-auto flex max-w-5xl flex-wrap items-stretch justify-center gap-3 px-4 py-5 sm:px-6">
+                        {proofItems.map((item) => (
+                            <div key={item.label} className="min-w-40 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-center sm:max-w-72 sm:px-9">
+                                <p className="text-xl font-black tracking-tight text-blue-700 sm:text-2xl">{item.value}</p>
+                                <p className="mt-1 text-[11px] font-bold text-slate-500 sm:text-xs">{item.label}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 <section id="included" className="scroll-mt-20 bg-slate-950 py-12 text-white sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-3xl text-center">
@@ -454,8 +549,7 @@ export default function JishutorePlusPage() {
                                 4つとも、追加料金なしで使えます
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
-                                個別販売していた完成デッキとツール、合計2,940円分もPlusへ収録。
-                                有料商品はPlusひとつにまとめました。
+                                個別販売していた完成デッキとツール、合計2,940円分もPlusへ収録。有料商品はPlusひとつにまとめました。
                             </p>
                         </div>
                         <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -481,8 +575,7 @@ export default function JishutorePlusPage() {
                                 編集できる運動スライド
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                無料イラストの「文字あり」全点と1対1で対応する、16:9のPowerPointです。
-                                イラストを全面に配置し、黄色の回数バッジと下部のポイント2行を読みやすく整理しています。
+                                無料イラストの「文字あり」全点と1対1で対応する、16:9のPowerPointです。イラストを全面に配置し、黄色の回数バッジと下部のポイント2行を読みやすく整理しています。
                             </p>
                             <ul className="mt-6 space-y-3">
                                 <FeatureCheck>{PLUS_SLIDE_COUNT}点を収録し、継続して追加</FeatureCheck>
@@ -490,13 +583,33 @@ export default function JishutorePlusPage() {
                                 <FeatureCheck>回数バッジとポイントは、編集できるテキストボックス</FeatureCheck>
                                 <FeatureCheck>対象者に合わせて編集し、そのまま印刷・説明に使用</FeatureCheck>
                             </ul>
-                            <a
+                            {PLUS_ROADMAP.length > 0 && (
+                                <div className="mt-6 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4">
+                                    <p className="text-sm font-black text-indigo-950">今後の追加予定</p>
+                                    <div className="mt-3 space-y-3">
+                                        {PLUS_ROADMAP.map((item) => (
+                                            <div key={item.label} className="rounded-xl border border-indigo-100 bg-white p-3">
+                                                <div className="flex flex-wrap items-center justify-between gap-2">
+                                                    <p className="text-xs font-black text-indigo-800">{item.label}</p>
+                                                    {item.count !== undefined && (
+                                                        <span className="text-[11px] font-bold text-slate-500">{item.count}点を予定</span>
+                                                    )}
+                                                </div>
+                                                <p className="mt-1 text-xs leading-5 text-slate-600">{item.topics.join("・")}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                            <TrackedPlusResourceLink
                                 href="/images/plus/sample.pptx"
                                 download
+                                resource="powerpoint_sample"
+                                placement="plus_lp_editable_slides"
                                 className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-black text-blue-800 transition hover:border-blue-300 hover:bg-blue-100 sm:w-auto"
                             >
                                 3枚入りのPowerPointを無料で試す
-                            </a>
+                            </TrackedPlusResourceLink>
                         </div>
                         <div className="grid grid-cols-2 gap-3 rounded-3xl bg-blue-50 p-3 sm:gap-4 sm:p-5">
                             {previews.slice(0, 4).map((preview, index) => (
@@ -531,13 +644,12 @@ export default function JishutorePlusPage() {
                                     そのまま印刷して使える完成デッキ
                                 </h2>
                                 <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                    急ぐ日は、構成済みの資料を開いて必要な部分だけ調整できます。
-                                    退院前指導や訪問リハなど、準備を一から始めたくない場面に使えます。
+                                    急ぐ日は、構成済みの資料を開いて必要な部分だけ調整できます。退院前指導や訪問リハなど、準備を一から始めたくない場面に使えます。
                                 </p>
                                 <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
                                     <p className="text-sm font-black text-amber-950">旧・個別販売の商品も収録</p>
                                     <p className="mt-1 text-xs leading-6 text-amber-900">
-                                        2つの完成デッキは、それぞれ旧・個別販売 {formerStandalonePriceLabel}。Plusでは追加料金なしです。
+                                        2つの完成デッキは旧・個別販売の商品です。Plusでは追加料金なしで利用できます。
                                     </p>
                                 </div>
                             </div>
@@ -589,6 +701,8 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
+                <MidPageCta placement="plus_lp_mid_completed_decks" />
+
                 <section id="prompt-workshop" className="scroll-mt-20 py-12 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
@@ -598,8 +712,7 @@ export default function JishutorePlusPage() {
                                     伝わるプロンプト工房
                                 </h2>
                                 <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                    ChatGPTに貼り付けるスライド画像生成プロンプトを、会員専用Webツールで組み立てます。
-                                    毎回ゼロから文章を考えず、場面と見た目を選んで使えます。
+                                    ChatGPTに貼り付けるスライド画像生成プロンプトを、会員専用Webツールで組み立てます。毎回ゼロから文章を考えず、場面と見た目を選んで使えます。
                                 </p>
                                 <div className="mt-7 space-y-3">
                                     {promptWorkshopFlow.map((item) => (
@@ -619,7 +732,7 @@ export default function JishutorePlusPage() {
                                     生成AIの出力には誤りが含まれる場合があります。医療・介護現場で使う前に、内容と表現を必ず確認してください。
                                 </div>
                                 <p className="mt-4 text-xs font-bold text-slate-500">
-                                    旧・個別販売 {formerStandalonePriceLabel}。現在はPlusだけで利用できます。
+                                    旧・個別販売の商品です。現在はPlusだけで利用できます。
                                 </p>
                             </div>
 
@@ -664,8 +777,7 @@ export default function JishutorePlusPage() {
                                     診療・介護報酬チェック
                                 </h2>
                                 <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                    全{feeDomains.length}分野・{feeCheckItemCount}項目の単位数、算定要件、根拠リンクを整理。
-                                    Plusでは、記録に残すこと、自己点検で見るポイント、つまずきやすい点まで確認できます。
+                                    全{feeDomains.length}分野・{feeCheckItemCount}項目の単位数、算定要件、根拠リンクを整理。Plusでは、記録に残すこと、自己点検で見るポイント、つまずきやすい点まで確認できます。
                                 </p>
                                 <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
                                     <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
@@ -685,9 +797,14 @@ export default function JishutorePlusPage() {
                                     対応分野：{feeCheckDomainLabels.join("・")}
                                 </p>
                                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                                    <Link href="/fee-check/" className="inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800">
+                                    <TrackedPlusResourceLink
+                                        href="/fee-check/"
+                                        resource="fee_check_free"
+                                        placement="plus_lp_fee_check_feature"
+                                        className="inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800"
+                                    >
                                         無料版を見る
-                                    </Link>
+                                    </TrackedPlusResourceLink>
                                     <Link href={getFeeItemUrl(feeCheckSampleDomain.domain, feeCheckSampleItem.id)} className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-50">
                                         全文サンプルを見る
                                     </Link>
@@ -765,7 +882,9 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
-                <section className="border-y border-slate-200 bg-slate-50 py-12 sm:py-20">
+                <MidPageCta placement="plus_lp_mid_workflow" />
+
+                <section id="free-samples" className="scroll-mt-20 border-y border-slate-200 bg-slate-50 py-12 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionIntro
                             eyebrow="登録前に確認"
@@ -779,9 +898,15 @@ export default function JishutorePlusPage() {
                                 <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
                                     実際と同じ形式の3枚入り。回数とポイントを編集できるか確認できます。
                                 </p>
-                                <a href="/images/plus/sample.pptx" download className="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800">
+                                <TrackedPlusResourceLink
+                                    href="/images/plus/sample.pptx"
+                                    download
+                                    resource="powerpoint_sample"
+                                    placement="plus_lp_free_trial"
+                                    className="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800"
+                                >
                                     無料サンプルをダウンロード
-                                </a>
+                                </TrackedPlusResourceLink>
                             </article>
                             <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                                 <span className="text-3xl font-black text-blue-200">02</span>
@@ -789,9 +914,14 @@ export default function JishutorePlusPage() {
                                 <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
                                     単位数・算定要件・根拠リンクを一部公開。Plus限定の全文サンプルも1項目確認できます。
                                 </p>
-                                <Link href="/fee-check/" className="mt-5 inline-flex items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-100">
+                                <TrackedPlusResourceLink
+                                    href="/fee-check/"
+                                    resource="fee_check_free"
+                                    placement="plus_lp_free_trial"
+                                    className="mt-5 inline-flex items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-100"
+                                >
                                     無料版を開く
-                                </Link>
+                                </TrackedPlusResourceLink>
                             </article>
                             <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                                 <span className="text-3xl font-black text-blue-200">03</span>
@@ -817,6 +947,9 @@ export default function JishutorePlusPage() {
                             <p className="mt-4 text-sm leading-7 text-blue-100 sm:text-base">
                                 登録日を基準に1か月ごとの課金です。いつでも解約でき、ダウンロード済みのPowerPointと完成デッキは解約後も使えます。
                             </p>
+                            <p className="mt-5 rounded-2xl border border-blue-400/60 bg-blue-800/50 px-4 py-3 text-sm font-bold leading-6 text-white">
+                                旧・個別販売の完成デッキ2本＋プロンプト工房、合計2,940円分を含みます。
+                            </p>
                             <ul className="mt-6 space-y-2 text-sm font-bold text-white">
                                 <li>✓ クレジットカード決済</li>
                                 <li>✓ 登録後すぐに会員ページを利用</li>
@@ -829,6 +962,7 @@ export default function JishutorePlusPage() {
                                 <>
                                     <span className="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-black text-amber-950">
                                         {PLUS_PROMO_DEADLINE_LABEL}の登録が対象
+                                        <PlusPromoCountdown prefix="・" />
                                     </span>
                                     <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
                                         <div className="rounded-2xl border-2 border-blue-600 bg-blue-50 p-4 text-center">
@@ -856,12 +990,22 @@ export default function JishutorePlusPage() {
                                     </p>
                                 </>
                             )}
+                            <div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-center">
+                                <p className="text-xs font-bold text-slate-600">30日換算なら</p>
+                                <p className="mt-1 text-xl font-black text-blue-800">1日あたり約{dailyPriceLabel}</p>
+                            </div>
                             <div className="mt-6">
                                 <PlusSubscribeButton
+                                    placement="plus_lp_pricing"
                                     label={`月額${currentPriceLabel}で申し込む`}
                                     className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-8 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
                                 />
                             </div>
+                            <p className="mt-3 text-center text-xs font-bold text-slate-600">
+                                <Link href="#faq-receipt" className="text-blue-700 underline decoration-blue-200 underline-offset-2 hover:decoration-blue-600">
+                                    領収書発行可（経費精算にも使えます）
+                                </Link>
+                            </p>
                             <p className="mt-3 text-center text-[11px] leading-5 text-slate-500">
                                 Stripeの安全な決済画面へ移動します。いつでも解約できます。
                             </p>
@@ -891,6 +1035,7 @@ export default function JishutorePlusPage() {
                                 </dl>
                                 <div className="mt-5">
                                     <PlusSubscribeButton
+                                        placement="plus_lp_comparison_mobile"
                                         label={`月額${currentPriceLabel}で始める`}
                                         className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-6 py-3.5 text-sm font-black text-white transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
                                     />
@@ -977,7 +1122,12 @@ export default function JishutorePlusPage() {
                         />
                         <div className="mt-9 space-y-3">
                             {faqs.map((faq, index) => (
-                                <details key={faq.q} className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm open:border-blue-200 open:shadow-md" open={index === 0}>
+                                <details
+                                    key={faq.q}
+                                    id={faq.id}
+                                    className="group scroll-mt-24 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm open:border-blue-200 open:shadow-md"
+                                    open={index === 0 || faq.id === "faq-receipt"}
+                                >
                                     <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-sm font-black leading-6 text-slate-950 sm:text-base">
                                         <span className="flex-1">Q. {faq.q}</span>
                                         <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-lg font-bold text-blue-700 transition-transform group-open:rotate-45">＋</span>
@@ -1014,6 +1164,7 @@ export default function JishutorePlusPage() {
                         )}
                         <div className="mt-7 flex justify-center">
                             <PlusSubscribeButton
+                                placement="plus_lp_final"
                                 label={`月額${currentPriceLabel}で申し込む`}
                                 className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-9 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                             />
@@ -1038,10 +1189,16 @@ export default function JishutorePlusPage() {
             <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-4px_18px_rgba(15,23,42,0.12)] backdrop-blur sm:hidden">
                 <div className="mx-auto flex max-w-md items-center gap-3">
                     <div className="shrink-0">
-                        {PLUS_PROMO_IS_ACTIVE && <p className="text-[10px] font-black text-amber-700">{PLUS_PROMO_DEADLINE_LABEL}</p>}
+                        {PLUS_PROMO_IS_ACTIVE && (
+                            <p className="whitespace-nowrap text-[10px] font-black text-amber-700">
+                                {PLUS_PROMO_DEADLINE_LABEL}
+                                <PlusPromoCountdown prefix="・" />
+                            </p>
+                        )}
                         <p className="text-sm font-black text-slate-950">月額{currentPriceLabel}</p>
                     </div>
                     <PlusSubscribeButton
+                        placement="plus_lp_mobile_sticky"
                         label="Plusを始める"
                         className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white disabled:cursor-not-allowed disabled:opacity-60"
                     />
