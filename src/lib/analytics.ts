@@ -53,6 +53,40 @@ export function trackPlusResourceClick(resource: string, placement: string): voi
     trackEvent("plus_resource_click", { resource, placement });
 }
 
+/** Plus会員版の報酬チェックハブ表示。 */
+export function trackPlusFeeHubView(
+    initialTab: "items" | "combo",
+    domainCount: number,
+    itemCount: number,
+): void {
+    trackEvent("plus_fee_hub_view", {
+        initial_tab: initialTab,
+        domain_count: domainCount,
+        item_count: itemCount,
+    });
+}
+
+/** Plus会員版の報酬チェックハブ内タブ切り替え。 */
+export function trackPlusFeeHubTabChange(
+    tab: "items" | "combo",
+    previousTab: "items" | "combo",
+): void {
+    trackEvent("plus_fee_hub_tab_change", { tab, previous_tab: previousTab });
+}
+
+/** 資料庫の「完成デッキ＆会員ツール」カードクリック。 */
+export function trackPlusToolCardClick(toolId: string): void {
+    trackEvent("plus_tool_card_click", {
+        tool_id: toolId,
+        placement: "plus_library_tools",
+    });
+}
+
+/** 無料報酬チェック画面から会員版ハブへ戻る導線。 */
+export function trackPlusFeeHubBannerClick(placement: string): void {
+    trackEvent("plus_fee_hub_banner_click", { placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;

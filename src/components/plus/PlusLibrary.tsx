@@ -79,7 +79,13 @@ const GUIDE_STEPS = [
 
 const ALL = "すべて" as const;
 
-export function PlusLibrary() {
+export function PlusLibrary({
+    feeDomainCount,
+    feeItemCount,
+}: {
+    feeDomainCount: number;
+    feeItemCount: number;
+}) {
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [activeCategory, setActiveCategory] = useState<string>(ALL);
     const [query, setQuery] = useState("");
@@ -308,7 +314,7 @@ export function PlusLibrary() {
                     </div>
                     <div className="ml-auto flex flex-shrink-0 items-center gap-2">
                         <a
-                            href="/plus/fee-check/"
+                            href="/plus/fee-hub/"
                             className="hidden items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100 sm:flex"
                         >
                             報酬チェック
@@ -350,7 +356,7 @@ export function PlusLibrary() {
                             資料庫
                         </a>
                         <a
-                            href="/plus/fee-check/"
+                            href="/plus/fee-hub/"
                             className="flex flex-1 items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-black text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
                         >
                             報酬チェック
@@ -360,7 +366,7 @@ export function PlusLibrary() {
             </header>
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">
-                <PlusDeckDownloads />
+                <PlusDeckDownloads feeDomainCount={feeDomainCount} feeItemCount={feeItemCount} />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
                     {/* ───────── 左：フィルタ＋カード一覧 ───────── */}
                     <div className="min-w-0">

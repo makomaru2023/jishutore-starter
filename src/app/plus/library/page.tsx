@@ -5,6 +5,7 @@ import { hasActivePlusAccess } from "@/lib/plus-access";
 import { PurchaseTracker } from "@/app/thank-you/PurchaseTracker";
 import { getStripe } from "@/lib/stripe";
 import { isPlusPriceObject } from "@/lib/plus-subscription";
+import { feeDomains, getFeeCheckTotalCount } from "@/lib/fee-check";
 
 export const metadata: Metadata = {
     title: "資料を選ぶ｜自主トレ素材庫Plus",
@@ -55,7 +56,10 @@ export default async function PlusLibraryPage({
                     value={purchaseAmount}
                 />
             )}
-            <PlusLibrary />
+            <PlusLibrary
+                feeDomainCount={feeDomains.length}
+                feeItemCount={getFeeCheckTotalCount()}
+            />
         </>
     );
 }
