@@ -18,9 +18,6 @@ export function Footer() {
                         >
                             運営者のnote
                         </a>
-                        <Link href="/products" className="hover:text-white transition-colors">
-                            有料コンテンツ
-                        </Link>
                         <TrackedPlusMemberLink
                             placement="footer"
                             className="transition-colors hover:text-white"

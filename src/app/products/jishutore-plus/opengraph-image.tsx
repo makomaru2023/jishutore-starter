@@ -7,7 +7,7 @@ import {
     PLUS_PROMO_NEXT_PRICE_YEN,
 } from "@/constants/plus-pricing";
 
-export const alt = "有料はこれひとつ。4つが全部入り。自主トレ素材庫Plus";
+export const alt = "資料づくりも、算定確認も、これひとつ。自主トレ素材庫Plus";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -60,11 +60,11 @@ export default function PlusOpenGraphImage() {
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", fontSize: 62, fontWeight: 900, letterSpacing: "-2px" }}>
-                        有料は、これひとつ。
+                    <div style={{ display: "flex", fontSize: 54, fontWeight: 900, letterSpacing: "-2px" }}>
+                        資料づくりも、算定確認も、
                     </div>
                     <div style={{ color: "#1d4ed8", display: "flex", fontSize: 74, fontWeight: 900, letterSpacing: "-3px", marginTop: 4 }}>
-                        4つが、全部入り。
+                        これひとつ。
                     </div>
                 </div>
 

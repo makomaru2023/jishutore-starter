@@ -39,17 +39,14 @@ const LINE_URL = "https://lin.ee/79a5bNt";
 const currentPriceLabel = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
 const nextPriceLabel = formatYen(PLUS_PROMO_NEXT_PRICE_YEN);
 const dailyPriceLabel = formatYen(Math.ceil(PLUS_PROMO_CURRENT_PRICE_YEN / 30));
-const pricingMetadata = PLUS_PROMO_IS_ACTIVE
-    ? PLUS_PROMO_PRICE_NOTE
-    : `月額${currentPriceLabel}で利用できます。`;
 
-const OG_TITLE = "有料はこれひとつ。4つが全部入り｜自主トレ素材庫Plus";
-const OG_DESCRIPTION =
-    "PT・OT・ST向け。編集できる運動スライド、完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックをまとめた月額サービスです。";
+const OG_TITLE = "資料づくりも算定確認もこれひとつ｜自主トレ素材庫Plus";
+const HERO_DESCRIPTION = `編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料を選んでダウンロード。診療・介護報酬のチェックまで、同じ会員ページで終わります。`;
+const OG_DESCRIPTION = HERO_DESCRIPTION;
 
 export const metadata: Metadata = {
     title: OG_TITLE,
-    description: `${PLUS_SLIDE_COUNT}点の編集できるPowerPoint運動スライド、疾患別・姿勢別の完成デッキ、会員専用の伝わるプロンプト工房、全${feeDomains.length}分野・${getFeeCheckTotalCount()}項目の診療・介護報酬チェックが全部入り。${pricingMetadata}`,
+    description: OG_DESCRIPTION,
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
     },
@@ -92,6 +89,25 @@ const previews = [
         src: "/plus/previews/patakara-exercise.webp",
         title: "パタカラ体操",
         caption: "口腔体操を含む無料イラストの文字あり版と、1対1で対応しています",
+    },
+] as const;
+
+const heroSlides = [
+    {
+        src: "/plus/previews/shoulder-raise.webp",
+        title: "肩挙上運動",
+        className: "left-[1%] top-[19%] z-10 w-[58%] -rotate-3 sm:top-[17%] sm:w-[60%] sm:-rotate-6",
+    },
+    {
+        src: "/plus/previews/sit-to-stand-using-chair.webp",
+        title: "イスからの立ち座り",
+        className: "left-1/2 top-[4%] z-30 w-[62%] -translate-x-1/2 sm:w-[66%]",
+        priority: true,
+    },
+    {
+        src: "/plus/previews/single-leg-stand.webp",
+        title: "片足立ち",
+        className: "right-[1%] top-[19%] z-20 w-[58%] rotate-3 sm:top-[17%] sm:w-[60%] sm:rotate-6",
     },
 ] as const;
 
@@ -445,12 +461,12 @@ export default function JishutorePlusPage() {
                             <p className="mt-5 text-xs font-black tracking-[0.18em] text-blue-700">
                                 自主トレ素材庫Plus
                             </p>
-                            <h1 className="mt-3 text-4xl font-black leading-[1.12] tracking-tight text-slate-950 sm:text-5xl">
-                                有料は、これひとつ。
-                                <span className="mt-2 block text-blue-700">4つが、全部入り。</span>
+                            <h1 className="mt-3 text-4xl font-black leading-[1.12] tracking-tight text-slate-950 sm:text-5xl xl:text-[2.875rem]">
+                                <span className="block xl:whitespace-nowrap">資料づくりも、算定確認も、</span>
+                                <span className="mt-2 block text-blue-700">これひとつ。</span>
                             </h1>
                             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base lg:mx-0">
-                                編集できる運動スライド、完成デッキ、伝わるプロンプト工房、診療・介護報酬チェック。どれを買うか迷わず、すべて同じ会員ページから使えます。
+                                {HERO_DESCRIPTION}
                             </p>
 
                             <div className="mx-auto mt-7 max-w-xl rounded-2xl border border-blue-200 bg-white/90 p-4 text-left shadow-lg shadow-blue-950/5 lg:mx-0">
@@ -504,27 +520,44 @@ export default function JishutorePlusPage() {
                         </div>
 
                         <div className="mx-auto w-full max-w-2xl">
-                            <div className="overflow-hidden rounded-3xl border border-white/80 bg-white p-2 shadow-2xl shadow-blue-950/15 sm:p-3">
-                                <div className="flex items-center justify-between gap-3 px-2 pb-2 pt-1">
-                                    <div className="flex gap-1.5" aria-hidden="true">
-                                        <span className="h-2.5 w-2.5 rounded-full bg-rose-300" />
-                                        <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
-                                        <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
+                            <div className="relative aspect-[16/9] w-full" aria-label="Plusに収録している実物スライドの例">
+                                <div className="absolute inset-x-[13%] top-[2%] z-0 overflow-hidden rounded-2xl border border-white/80 bg-white p-1.5 opacity-45 shadow-xl sm:p-2" aria-hidden="true">
+                                    <div className="flex items-center justify-between gap-3 px-1.5 pb-1.5">
+                                        <div className="flex gap-1">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+                                            <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+                                        </div>
+                                        <span className="text-[8px] font-black tracking-wider text-slate-400">PLUS LIBRARY</span>
                                     </div>
-                                    <span className="text-[10px] font-black tracking-wider text-slate-400">PLUS LIBRARY</span>
+                                    <Image
+                                        src="/images/plus/library-screen.jpg"
+                                        alt=""
+                                        width={1265}
+                                        height={645}
+                                        sizes="(max-width: 639px) 74vw, (max-width: 1023px) 68vw, 460px"
+                                        className="h-auto w-full rounded-xl border border-slate-100"
+                                    />
                                 </div>
-                                <Image
-                                    src="/images/plus/library-screen.jpg"
-                                    alt="自主トレ素材庫Plusの会員ページで運動スライドを選んでいる実際の画面"
-                                    width={1265}
-                                    height={645}
-                                    priority
-                                    sizes="(max-width: 1023px) 92vw, 620px"
-                                    className="h-auto w-full rounded-2xl border border-slate-100"
-                                />
+                                {heroSlides.map((slide) => (
+                                    <figure
+                                        key={slide.src}
+                                        className={`absolute overflow-hidden rounded-xl border border-white/90 bg-white p-1 shadow-2xl shadow-blue-950/20 sm:rounded-2xl sm:p-2 ${slide.className}`}
+                                    >
+                                        <Image
+                                            src={slide.src}
+                                            alt={`${slide.title}の実物スライド`}
+                                            width={1200}
+                                            height={675}
+                                            priority={"priority" in slide && slide.priority}
+                                            sizes="(max-width: 639px) 58vw, (max-width: 1023px) 56vw, 410px"
+                                            className="h-auto w-full rounded-lg"
+                                        />
+                                    </figure>
+                                ))}
                             </div>
                             <p className="mt-3 text-center text-xs font-bold text-slate-500">
-                                実際の会員ページ。スライド・完成デッキ・ツールへ、ここからアクセスできます。
+                                実物の16:9スライド。回数バッジとポイントは編集できます
                             </p>
                         </div>
                     </div>
@@ -1152,7 +1185,7 @@ export default function JishutorePlusPage() {
                             </span>
                         )}
                         <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-4xl">
-                            有料はPlusひとつ。4つ全部入りです。
+                            資料づくりも、算定確認も、これひとつ。
                         </h2>
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
                             編集できる運動スライド、完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックを、同じ月額で利用できます。
