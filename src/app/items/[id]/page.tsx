@@ -118,6 +118,12 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
     // この素材に対応するPlusスライド。無料PNG → 編集できるスライドの文脈連動CTAに使う。
     const plusMatch = findPlusForFreeItem(item.id);
+    const plusPreview = plusMatch
+        ? {
+            src: `/plus/previews/${plusMatch.id}.webp`,
+            title: plusMatch.title,
+        }
+        : undefined;
     // CTA見出し用に【文字あり】等のタグを除いた表示名（例: 杖歩き）
     const ctaTitle = title.replace(/【[^】]*】/g, "").trim() || title;
 
@@ -265,6 +271,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     itemTitle={ctaTitle}
                                     itemSlug={item.id}
                                     plusReps={plusMatch?.reps}
+                                    plusPreview={plusPreview}
                                 />
 
                                 {/* 運動のポイント・対象疾患（SEO・詳細情報）はダウンロード導線の下に配置。「画像→DL」を最短にするため本文上部から移動 */}
