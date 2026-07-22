@@ -153,11 +153,11 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <main className="container mx-auto px-4 py-12 flex-1">
-                <div className="mx-auto max-w-5xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+                <div className="mx-auto max-w-6xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="md:flex">
                         {/* Image Section with Watermark Protection */}
                         {/* PCでは上ぞろえ（md:self-start）で画像を上部に固定。以前は本文カラムに合わせて縦に引き伸ばされ、画像が中央＝下に沈んでいた。 */}
-                        <div className="md:w-1/2 bg-slate-50 relative aspect-[4/3] overflow-hidden p-6 md:p-10 md:self-start">
+                        <div className="md:w-1/2 bg-slate-50 relative aspect-[4/3] md:aspect-video overflow-hidden p-6 md:p-10 md:self-start">
                             {/* 
                                 Protection Mechanism:
                                 1. The real image is set as a background image on a div.
