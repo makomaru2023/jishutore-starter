@@ -511,51 +511,30 @@ export default function DayServiceExercisePackPage() {
                     </div>
                 </section>
 
-                {/* 回遊（個人向け・プロンプト工房） */}
+                {/* 回遊（現在販売中のPlusのみ） */}
                 <section className="bg-slate-50 py-12 sm:py-16 border-t border-slate-100">
                     <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
                         <p className="mb-5 text-center text-xs font-black tracking-widest text-slate-500">
                             今すぐ使えるものをお探しの方へ
                         </p>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <Link
-                                href="/products"
-                                className="group flex flex-col rounded-3xl border border-blue-100 bg-white px-6 py-7 shadow-sm transition-all hover:border-blue-300 hover:shadow-md"
-                            >
-                                <p className="mb-1 text-[11px] font-bold tracking-widest text-blue-700">個人向け・980円〜</p>
-                                <h3 className={`mb-2 text-lg font-black leading-snug text-slate-900 ${JP_TEXT}`}>
-                                    疾患別・姿勢別の資料セット
-                                </h3>
-                                <p className={`text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                    {jp("退院前指導や訪問リハで、患者さんにそのまま渡せる自主トレ資料です。今すぐダウンロードして使えます。")}
-                                </p>
-                                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 group-hover:gap-2.5 transition-all">
-                                    資料セットを見る
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
-                                    </svg>
-                                </span>
-                            </Link>
-
-                            <Link
-                                href="/products/slide-prompt-generator"
-                                className="group flex flex-col rounded-3xl border border-blue-100 bg-white px-6 py-7 shadow-sm transition-all hover:border-blue-300 hover:shadow-md"
-                            >
-                                <p className="mb-1 text-[11px] font-bold tracking-widest text-blue-700">AIで自作したい方へ</p>
-                                <h3 className={`mb-2 text-lg font-black leading-snug text-slate-900 ${JP_TEXT}`}>
-                                    伝わるプロンプト工房
-                                </h3>
-                                <p className={`text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                    {jp("用途を選ぶだけで、ChatGPTにそのまま貼れる資料づくりのプロンプトが完成します。勉強会や利用者説明の資料に。")}
-                                </p>
-                                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 group-hover:gap-2.5 transition-all">
-                                    プロンプト工房を見る
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
-                                    </svg>
-                                </span>
-                            </Link>
-                        </div>
+                        <Link
+                            href="/products/jishutore-plus/"
+                            className="group mx-auto flex min-w-0 max-w-2xl flex-col rounded-3xl border border-blue-100 bg-white px-6 py-7 shadow-sm transition-all hover:border-blue-300 hover:shadow-md"
+                        >
+                            <p className="mb-1 text-[11px] font-bold tracking-widest text-blue-700">自主トレ素材庫Plus</p>
+                            <h3 className={`mb-2 text-lg font-black leading-snug text-slate-900 ${JP_TEXT}`}>
+                                資料づくりも、算定確認も、Plusひとつで
+                            </h3>
+                            <p className={`text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
+                                {jp("編集できる運動スライド、疾患別・姿勢別の完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックを利用できます。")}
+                            </p>
+                            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 transition-all group-hover:gap-2.5">
+                                Plusの内容を見る
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
+                                </svg>
+                            </span>
+                        </Link>
                     </div>
                 </section>
             </main>

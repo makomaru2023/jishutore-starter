@@ -116,12 +116,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/products/self-training-materials/`,
-            lastModified: staticUpdatedAt,
-            changeFrequency: 'weekly' as const,
-            priority: 0.95,
-        },
-        {
             url: `${baseUrl}/products/jishutore-plus/`,
             lastModified: staticUpdatedAt,
             changeFrequency: 'weekly' as const,
@@ -143,18 +137,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/products/day-service-exercise-pack/`,
             lastModified: staticUpdatedAt,
             changeFrequency: 'weekly' as const,
-            priority: 0.85,
-        },
-        {
-            url: `${baseUrl}/products/home-elderly-self-training/`,
-            lastModified: staticUpdatedAt,
-            changeFrequency: 'monthly' as const,
-            priority: 0.85,
-        },
-        {
-            url: `${baseUrl}/products/slide-prompt-generator/`,
-            lastModified: staticUpdatedAt,
-            changeFrequency: 'monthly' as const,
             priority: 0.85,
         },
         {

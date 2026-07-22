@@ -60,8 +60,7 @@ export default function LicensePage() {
                                     </ul>
                                 </div>
                                 <p className="text-sm text-gray-600">
-                                    商品ページに記載の利用範囲・禁止事項も併せてご確認ください：
-                                    <Link href="/products/self-training-materials" className="text-blue-600 hover:underline ml-1">疾患別自主トレ資料セット</Link>
+                                    過去に個別購入いただいた資料にも、上記の利用範囲・禁止事項が適用されます。
                                 </p>
                             </div>
                         </section>

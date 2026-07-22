@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { PRODUCT_AD_CONFIG } from './ProductInlineAd';
 
 declare global {
     interface Window {
@@ -8,8 +9,9 @@ declare global {
     }
 }
 
-const PRODUCT_URL = "/products";
-const LABEL = "PowerPoint資料一覧";
+const PLUS_CONFIG = PRODUCT_AD_CONFIG.plus;
+const PRODUCT_URL = PLUS_CONFIG.href;
+const LABEL = PLUS_CONFIG.itemName;
 
 export type ProductCtaLocation =
     | 'items_top_cta'
@@ -62,18 +64,15 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-blue-700 mb-0.5">
-                                <span className="inline-block">資料作成の時間を</span>
-                                <span className="inline-block">減らしたい方へ</span>
+                                自主トレ素材庫Plus
                             </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                <span className="inline-block">自主トレの説明文・構成・</span>
-                                <span className="inline-block">スライドデザインまで</span>
-                                <span className="inline-block">整えた資料も用意しています。</span>
+                                編集できる運動スライド、完成デッキ、資料づくりのツール、報酬チェックをひとつの月額で利用できます。
                             </p>
                         </div>
                         <div className="flex items-center justify-end sm:flex-shrink-0">
-                            <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-blue-200 text-blue-600 text-sm font-bold group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all whitespace-nowrap">
-                                PowerPoint資料の商品一覧を見る
+                            <span className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-blue-200 bg-white px-4 py-2 text-center text-sm font-bold leading-5 text-blue-600 transition-all group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white">
+                                Plusの内容を見る
                                 <ArrowIcon className="w-3.5 h-3.5" />
                             </span>
                         </div>
@@ -89,21 +88,17 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
             <section className="w-full">
                 <div className="rounded-2xl border border-slate-200 bg-white px-6 py-6 sm:py-7 text-center">
                     <p className="text-sm sm:text-base font-bold text-slate-700 mb-1.5">
-                        <span className="inline-block">資料作成の時間を</span>
-                        <span className="inline-block">減らしたい方へ</span>
+                        資料づくりも、算定確認も、Plusひとつで
                     </p>
                     <p className="text-xs sm:text-sm text-slate-500 font-medium mb-4 leading-relaxed">
-                        <span className="inline-block">時間をかけずに</span>
-                        <span className="inline-block">完成度の高い資料を作りたい方は、</span>
-                        <span className="inline-block">PowerPoint資料も</span>
-                        <span className="inline-block">ご検討ください。</span>
+                        編集できるスライドと完成デッキ、会員ツール、報酬チェックを利用できます。
                     </p>
                     <Link
                         href={PRODUCT_URL}
                         onClick={handleClick}
                         className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white text-sm font-bold transition-all"
                     >
-                        商品一覧を見る
+                        Plusの内容を見る
                         <ArrowIcon className="w-3.5 h-3.5" />
                     </Link>
                 </div>
@@ -124,13 +119,10 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-blue-700 mb-1">
-                                <span className="inline-block">このイラストを使って</span>
-                                <span className="inline-block">資料を作る方へ</span>
+                                この素材を編集できるスライドで使いたい方へ
                             </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                <span className="inline-block">説明文とレイアウトまで整えた</span>
-                                <span className="inline-block">PowerPoint資料も用意しています。</span>
-                                <span className="inline-block">編集して使いたい方はPlusも選べます。</span>
+                                Plusなら、編集できるPowerPointスライドと完成デッキをダウンロードできます。
                             </p>
                         </div>
                     </div>
@@ -139,7 +131,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         onClick={handleClick}
                         className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-all shadow-sm"
                     >
-                        PowerPoint資料・Plusを見る
+                        Plusの内容を見る
                         <ArrowIcon className="w-3.5 h-3.5" />
                     </Link>
                 </div>
@@ -157,30 +149,23 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                 <div className="relative px-6 py-8 sm:px-10 sm:py-10 md:flex md:items-center md:gap-10">
                     <div className="flex md:flex-col md:items-start items-center gap-3 md:gap-2 md:w-48 md:flex-shrink-0 mb-5 md:mb-0">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold border border-blue-100">
-                            資料セット
+                            自主トレ素材庫Plus
                         </span>
-                        <div className="flex items-baseline gap-1">
-                            <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">¥980</span>
-                            <span className="text-xs font-bold text-slate-400">買い切り</span>
+                        <div className="flex flex-wrap items-baseline gap-1">
+                            <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{PLUS_CONFIG.price}</span>
+                            <span className="text-xs font-bold text-slate-400">{PLUS_CONFIG.priceNote}</span>
                         </div>
                     </div>
 
                     <div className="flex-1 text-center md:text-left">
                         <p className="text-xs sm:text-sm font-bold text-blue-600 mb-2 tracking-wide">
-                            <span className="inline-block">無料イラストだけでは、</span>
-                            <span className="inline-block">説明資料づくりに時間がかかる方へ</span>
+                            資料づくりも、算定確認も、ひとつのサービスで
                         </p>
                         <h3 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 leading-snug mb-3">
-                            <span className="inline-block">自主トレの説明文・構成・</span>
-                            <span className="inline-block">スライドデザインまで</span>
-                            <span className="inline-block">整えた資料を</span>
-                            <span className="inline-block"><span className="text-blue-600">980円</span>で。</span>
+                            編集できる資料と実務ツールを、Plusひとつで。
                         </h3>
                         <p className="text-sm text-slate-500 font-medium leading-relaxed">
-                            <span className="inline-block">患者さんへの説明、</span>
-                            <span className="inline-block">家族指導、</span>
-                            <span className="inline-block">施設内資料づくりに使いやすい</span>
-                            <span className="inline-block">買い切り資料セットです。</span>
+                            {PLUS_CONFIG.description}
                         </p>
                     </div>
 
@@ -188,13 +173,13 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         <Link
                             href={PRODUCT_URL}
                             onClick={handleClick}
-                            className="inline-flex w-full md:w-auto items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base transition-all shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 hover:scale-[1.02] whitespace-nowrap"
+                            className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-center text-base font-bold leading-6 text-white shadow-md shadow-blue-600/20 transition-all hover:scale-[1.02] hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 md:w-auto"
                         >
-                            商品一覧を見る
+                            Plusの内容を見る
                             <ArrowIcon className="w-4 h-4" />
                         </Link>
                         <p className="text-[11px] text-slate-400 mt-2 text-center md:text-right font-medium">
-                            ※ サイト内の商品ページが開きます
+                            ※ Plusの詳しい内容を確認できます
                         </p>
                     </div>
                 </div>

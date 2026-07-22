@@ -9,7 +9,7 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
     if (variant === "subtle") {
         return (
             <Link
-                href="/products"
+                href="/products/jishutore-plus/"
                 className="group flex items-center gap-4 px-5 py-4 bg-white border border-slate-200 rounded-2xl hover:border-teal-300 hover:shadow-md transition-all"
             >
                 <div className="shrink-0 w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
@@ -30,10 +30,10 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
                 </div>
                 <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold text-teal-600 tracking-wide mb-0.5">
-                        POWERPOINT資料
+                        自主トレ素材庫Plus
                     </p>
                     <p className="text-sm font-black text-slate-900 leading-snug group-hover:text-teal-600 transition-colors">
-                        完成済みの自主トレ資料もあります
+                        編集できる資料と報酬チェックが全部入り
                     </p>
                 </div>
                 <span className="shrink-0 inline-flex items-center gap-1 text-xs font-black text-slate-700 group-hover:text-teal-600 whitespace-nowrap">
@@ -59,7 +59,7 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
 
     return (
         <Link
-            href="/products"
+            href="/products/jishutore-plus/"
             className="group block bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-teal-400/50 transition-all"
         >
             <div className="relative px-6 py-6 sm:px-10 sm:py-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
@@ -84,18 +84,18 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
 
                 <div className="flex-1 relative z-10">
                     <p className="text-xs font-bold text-teal-300 tracking-widest mb-1">
-                        POWERPOINT資料
+                        自主トレ素材庫Plus
                     </p>
                     <h3 className="text-lg sm:text-xl font-black text-white leading-tight mb-1">
-                        作るのが大変なときは、完成済み資料を。
+                        資料づくりも、算定確認も、Plusひとつで。
                     </h3>
                     <p className="text-sm text-slate-300 leading-relaxed">
-                        疾患別・姿勢別のPowerPoint資料セットをご用意しています。編集も自由です。
+                        編集できる運動スライド、完成デッキ、会員ツール、報酬チェックを同じ月額で利用できます。
                     </p>
                 </div>
 
                 <span className="relative z-10 shrink-0 inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-teal-500 group-hover:bg-teal-400 text-white font-black text-sm whitespace-nowrap shadow-lg shadow-teal-500/30 transition-all">
-                    資料を見る
+                    Plusを見る
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
