@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { PLUS_SLIDE_COUNT_PUBLIC } from "@/constants/public-counts";
 
 export type PlusPreviewItem = {
@@ -189,6 +189,8 @@ export function PlusHowItWorks({
 
 export function PlusPreviewGallery({ previews }: { previews: readonly PlusPreviewItem[] }) {
     const [activePreview, setActivePreview] = useState<PlusPreviewItem | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const trackRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         if (!activePreview) return;
@@ -207,24 +209,68 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
         };
     }, [activePreview]);
 
+    const scrollToSlide = useCallback((index: number) => {
+        const track = trackRef.current;
+        if (!track) return;
+        const slide = track.children[index] as HTMLElement | undefined;
+        if (!slide) return;
+        track.scrollTo({
+            left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
+            behavior: "smooth",
+        });
+    }, []);
+
+    const getNearestIndex = useCallback(() => {
+        const track = trackRef.current;
+        if (!track) return 0;
+        const trackCenter = track.scrollLeft + track.clientWidth / 2;
+        let nearestIndex = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+        for (let index = 0; index < track.children.length; index += 1) {
+            const slide = track.children[index] as HTMLElement;
+            const distance = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - trackCenter);
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                nearestIndex = index;
+            }
+        }
+        return nearestIndex;
+    }, []);
+
+    const handleTrackScroll = useCallback(() => {
+        setActiveIndex(getNearestIndex());
+    }, [getNearestIndex]);
+
     return (
-        <section className="py-10 sm:py-20">
+        <section className="overflow-hidden py-10 sm:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
                     <p className="text-xs font-bold tracking-widest text-blue-700">収録イメージ</p>
-                    <h2 className="mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
-                        こんなスライドを組み合わせられます
+                    <h2 className="jp-heading mt-3 text-2xl font-black text-slate-950 sm:text-3xl">
+                        PowerPointで編集して、このまま渡せます
                     </h2>
-                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                        画像を押すと拡大できます。収録スライドは継続して追加しています。
+                    <p className="jp-text mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                        収録{PLUS_SLIDE_COUNT_PUBLIC}点はすべて、この形式の文字入りスライドです。回数バッジやポイントの文言をその方に合わせて書き換えて、印刷するだけでお渡しいただけます。
+                    </p>
+                    <p className="mt-2 text-xs text-slate-500">
+                        左右にスワイプでご覧いただけます。画像を押すと拡大します。
                     </p>
                 </div>
+            </div>
 
-                <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="relative mt-8 sm:mt-10">
+                <div
+                    ref={trackRef}
+                    onScroll={handleTrackScroll}
+                    role="region"
+                    aria-label="収録スライドのプレビュー一覧"
+                    tabIndex={0}
+                    className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-[7.5vw] pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600 sm:gap-6 sm:px-[calc(50vw-280px)] lg:px-[calc(50vw-320px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                >
                     {previews.map((preview, index) => (
                         <figure
                             key={preview.src}
-                            className={`${index >= 2 ? "hidden sm:block" : ""} min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm`}
+                            className={`w-[85vw] flex-shrink-0 snap-center overflow-hidden rounded-lg border bg-white shadow-sm transition-colors duration-300 sm:w-[560px] lg:w-[640px] ${activeIndex === index ? "border-blue-300" : "border-slate-200"}`}
                         >
                             <button
                                 type="button"
@@ -237,8 +283,8 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                                     alt={`${preview.title}の収録スライド`}
                                     width={1200}
                                     height={675}
-                                    sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 390px"
-                                    className="h-auto w-full transition-transform duration-200 group-hover:scale-[1.02]"
+                                    sizes="(max-width: 639px) 85vw, (max-width: 1023px) 560px, 640px"
+                                    className="h-auto w-full transition-transform duration-200 group-hover:scale-[1.01]"
                                 />
                             </button>
                             <figcaption className="p-4">
@@ -248,6 +294,45 @@ export function PlusPreviewGallery({ previews }: { previews: readonly PlusPrevie
                         </figure>
                     ))}
                 </div>
+
+                <button
+                    type="button"
+                    onClick={() => scrollToSlide(Math.max(0, getNearestIndex() - 1))}
+                    disabled={activeIndex === 0}
+                    aria-label="前のスライドを見る"
+                    className="absolute left-3 top-[38%] z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-slate-700 shadow-md transition hover:bg-white hover:text-slate-950 disabled:cursor-default disabled:opacity-35 sm:flex lg:left-6"
+                >
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <button
+                    type="button"
+                    onClick={() => scrollToSlide(Math.min(previews.length - 1, getNearestIndex() + 1))}
+                    disabled={activeIndex === previews.length - 1}
+                    aria-label="次のスライドを見る"
+                    className="absolute right-3 top-[38%] z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-slate-700 shadow-md transition hover:bg-white hover:text-slate-950 disabled:cursor-default disabled:opacity-35 sm:flex lg:right-6"
+                >
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                        <path d="M9 6l6 6-6 6" />
+                    </svg>
+                </button>
+
+                <div className="mt-5 flex items-center justify-center gap-2">
+                    {previews.map((preview, index) => (
+                        <button
+                            key={preview.src}
+                            type="button"
+                            onClick={() => scrollToSlide(index)}
+                            aria-label={`${index + 1}枚目（${preview.title}）を表示`}
+                            aria-current={activeIndex === index ? "true" : undefined}
+                            className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === index ? "w-6 bg-blue-600" : "w-2.5 bg-slate-300 hover:bg-slate-400"}`}
+                        />
+                    ))}
+                </div>
+                <p className="mt-3 text-center text-xs text-slate-500">
+                    {activeIndex + 1} / {previews.length}　・　収録スライドは継続して追加しています
+                </p>
             </div>
 
             {activePreview && (

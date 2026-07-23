@@ -86,9 +86,34 @@ const previews = [
         caption: "バランス運動の回数やポイントも、編集可能なテキストです",
     },
     {
+        src: "/plus/previews/chair-squat.webp",
+        title: "椅子スクワット",
+        caption: "負荷の目安や注意点を、その方の体力に合わせて書き換えられます",
+    },
+    {
+        src: "/plus/previews/cane-walking.webp",
+        title: "杖歩行",
+        caption: "歩行練習の指導用スライドも収録。注意点を生活環境に合わせて編集できます",
+    },
+    {
+        src: "/plus/previews/ankle-pump.webp",
+        title: "足首の底背屈運動",
+        caption: "術後・ベッドサイドの定番運動も、そのまま説明用に使えます",
+    },
+    {
+        src: "/plus/previews/towel-wringing.webp",
+        title: "タオル絞り",
+        caption: "上肢・手指の生活動作トレーニングも収録。自宅練習の指導にそのまま渡せます",
+    },
+    {
         src: "/plus/previews/patakara-exercise.webp",
         title: "パタカラ体操",
         caption: "口腔体操を含む無料イラストの文字あり版と、1対1で対応しています",
+    },
+    {
+        src: "/plus/previews/swallowing-forehead-exercises.webp",
+        title: "嚥下おでこ体操",
+        caption: "嚥下体操も同じ形式で収録。言語聴覚士の自主トレ指導にも使えます",
     },
 ] as const;
 
