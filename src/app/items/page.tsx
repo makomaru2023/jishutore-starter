@@ -3,6 +3,7 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
+import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
@@ -337,6 +338,13 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                             </span>
                         ))}
                     </div>
+                </div>
+
+                <div className="mx-auto mb-8 max-w-5xl">
+                    <PlusRealPreviewBand
+                        variant="band"
+                        location="items_top_cta"
+                    />
                 </div>
 
                 {!q && (

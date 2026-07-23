@@ -4,6 +4,8 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LineHero } from "@/components/LineHero";
 import { PopularItemsSection } from "@/components/PopularItemsSection";
+import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
+import { TrackedProductCtaLink } from "@/components/TrackedProductCtaLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { feeDomains, getDomainUrl, getFeeCheckTotalCount } from "@/lib/fee-check";
 
@@ -72,13 +74,13 @@ export default function Home() {
                   無料素材を見る
                   <ArrowIcon className="h-5 w-5" />
                 </Link>
-                <Link
-                  href="/products"
+                <TrackedProductCtaLink
+                  location="home_hero_cta"
                   className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-slate-600 bg-white/10 px-8 py-4 text-base font-black text-white transition hover:bg-white/15"
                 >
-                  有料コンテンツを見る
+                  素材庫Plusを見る
                   <ArrowIcon className="h-5 w-5" />
-                </Link>
+                </TrackedProductCtaLink>
               </div>
             </div>
           </div>
@@ -170,26 +172,11 @@ export default function Home() {
 
         <section className="bg-slate-50 py-12 sm:py-16">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-5xl rounded-lg border border-blue-100 bg-white p-5 shadow-sm sm:p-7">
-              <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_240px] md:items-center">
-                <div>
-                  <p className="text-xs font-black tracking-widest text-blue-700">有料コンテンツ</p>
-                  <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
-                    有料は「Plus」ひとつだけ
-                  </h2>
-                  <p className="jp-text mt-3 text-sm leading-7 text-slate-600">
-                    編集できるスライド素材、疾患別・姿勢別の完成デッキ、資料づくりのツール、
-                    報酬チェックまで、全部入りの月額サービスです。
-                  </p>
-                </div>
-                <Link
-                  href="/products"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-sm font-black text-white transition hover:bg-blue-800"
-                >
-                  一覧を見る
-                  <ArrowIcon />
-                </Link>
-              </div>
+            <div className="mx-auto max-w-5xl">
+              <PlusRealPreviewBand
+                variant="rich"
+                location="home_plus_band"
+              />
             </div>
           </div>
         </section>
