@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { PlusPreviewGallery } from "@/components/plus/PlusEvidenceSections";
 import { PlusPromoCountdown } from "@/components/plus/PlusPromoCountdown";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { PlusYearlyOption } from "@/components/plus/PlusYearlyOption";
 import { TrackedPlusResourceLink } from "@/components/plus/TrackedPlusResourceLink";
 import { Testimonials } from "@/components/Testimonials";
 import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
@@ -1059,6 +1060,7 @@ export default function JishutorePlusPage() {
                                     className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-8 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
                                 />
                             </div>
+                            <PlusYearlyOption placement="plus_lp_pricing_yearly" />
                             <p className="mt-3 text-center text-xs font-bold text-slate-600">
                                 <Link href="#faq-receipt" className="text-blue-700 underline decoration-blue-200 underline-offset-2 hover:decoration-blue-600">
                                     領収書発行可（経費精算にも使えます）

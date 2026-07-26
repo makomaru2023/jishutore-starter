@@ -22,5 +22,44 @@ export const PLUS_PROMO_NEXT_PRICE_YEN = parsePrice(
 
 export const formatYen = (value: number) => `¥${value.toLocaleString("ja-JP")}`;
 
+/**
+ * 年払いプラン（2026-08-01 の¥980切り替えと同時に開始予定）。
+ *
+ * 既定は「無効」。Vercel で以下2つを設定したときだけ表示・購入できる。
+ *   NEXT_PUBLIC_PLUS_YEARLY_ACTIVE=true   … UI に年払いを出す
+ *   STRIPE_PRICE_ID_PLUS_CURRENT_YEARLY   … 年額の Stripe 価格ID（サーバー側）
+ * どちらか片方だけでは売れないので、必ず両方をセットで切り替えること。
+ */
+export const PLUS_YEARLY_IS_ACTIVE = process.env.NEXT_PUBLIC_PLUS_YEARLY_ACTIVE === "true";
+export const PLUS_YEARLY_PRICE_YEN = parsePrice(
+    process.env.NEXT_PUBLIC_PLUS_YEARLY_PRICE_YEN,
+    9800,
+);
+
+/**
+ * 年払いの「お得さ」を出すときの比較元になる月額。
+ * キャンペーン中は終了後価格（¥980）、終了後は現在価格を使う。
+ * 年払いはキャンペーン終了と同時に出す前提なので、どちらでも¥980になる。
+ */
+export const PLUS_YEARLY_BASE_MONTHLY_YEN = PLUS_PROMO_IS_ACTIVE
+    ? PLUS_PROMO_NEXT_PRICE_YEN
+    : PLUS_PROMO_CURRENT_PRICE_YEN;
+/** 月払いで1年払った場合の総額（¥980 × 12 = ¥11,760）。 */
+export const PLUS_YEARLY_LIST_YEN = PLUS_YEARLY_BASE_MONTHLY_YEN * 12;
+/** 年払いにした場合の差額（¥1,960）。 */
+export const PLUS_YEARLY_SAVING_YEN = Math.max(PLUS_YEARLY_LIST_YEN - PLUS_YEARLY_PRICE_YEN, 0);
+/** 差額が月額の何か月分か（切り捨て。¥1,960 なら 2か月分）。 */
+export const PLUS_YEARLY_SAVING_MONTHS = Math.floor(
+    PLUS_YEARLY_SAVING_YEN / PLUS_YEARLY_BASE_MONTHLY_YEN,
+);
+/** 年払いを月割りした実質月額（¥817）。 */
+export const PLUS_YEARLY_MONTHLY_EQUIVALENT_YEN = Math.round(PLUS_YEARLY_PRICE_YEN / 12);
+
+export const PLUS_YEARLY_SAVING_LABEL =
+    PLUS_YEARLY_SAVING_MONTHS > 0
+        ? `${PLUS_YEARLY_SAVING_MONTHS}か月分お得`
+        : `${formatYen(PLUS_YEARLY_SAVING_YEN)}お得`;
+export const PLUS_YEARLY_NOTE = `年払い${formatYen(PLUS_YEARLY_PRICE_YEN)}は、月払い1年分${formatYen(PLUS_YEARLY_LIST_YEN)}より${formatYen(PLUS_YEARLY_SAVING_YEN)}（${PLUS_YEARLY_SAVING_LABEL}）安く、実質月額${formatYen(PLUS_YEARLY_MONTHLY_EQUIVALENT_YEN)}です。`;
+
 export const PLUS_PROMO_BADGE_TEXT = `${PLUS_PROMO_DEADLINE_LABEL}の登録で月額${formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}のまま永久据え置き`;
 export const PLUS_PROMO_PRICE_NOTE = `${PLUS_PROMO_DEADLINE_LABEL}に登録した方は月額${formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}のまま据え置きです。8月以降の新規登録は月額${formatYen(PLUS_PROMO_NEXT_PRICE_YEN)}になります。`;

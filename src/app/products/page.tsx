@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LineBanner } from "@/components/LineBanner";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { PlusYearlyOption } from "@/components/plus/PlusYearlyOption";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
@@ -132,6 +133,12 @@ export default function ProductsPage() {
                                         詳細を見る
                                     </Link>
                                 </div>
+                                {plusCheckoutReady && (
+                                    <PlusYearlyOption
+                                        placement="products_index_plus_card_yearly"
+                                        className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-3 text-center"
+                                    />
+                                )}
                             </div>
                         </div>
 
