@@ -1,25 +1,56 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
     formatYen,
-    PLUS_YEARLY_IS_ACTIVE,
+    PLUS_YEARLY_FORCE_OFF,
+    PLUS_YEARLY_FORCE_ON,
     PLUS_YEARLY_LIST_YEN,
     PLUS_YEARLY_MONTHLY_EQUIVALENT_YEN,
     PLUS_YEARLY_PRICE_YEN,
     PLUS_YEARLY_SAVING_LABEL,
+    PLUS_YEARLY_START_ISO,
 } from "@/constants/plus-pricing";
+import { shouldShowPlusYearly } from "@/lib/plus-yearly";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 
 /**
  * 月払いCTAの下に置く年払いの選択肢。
- * NEXT_PUBLIC_PLUS_YEARLY_ACTIVE=true のときだけ表示される（既定は非表示）。
+ *
+ * 2026-08-01 00:00 JST を過ぎると自動で表示される（環境変数の切り替え不要）。
+ * 日付判定はマウント後に行うため、開始前は静的HTMLにも一切含まれない。
+ * isPurchasable は年額の価格IDが設定済みかをサーバー側から受け取る。
  */
 export function PlusYearlyOption({
     placement,
+    isPurchasable,
     className,
 }: {
     placement: string;
+    isPurchasable: boolean;
     className?: string;
 }) {
-    if (!PLUS_YEARLY_IS_ACTIVE) return null;
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const update = () => {
+            setVisible(
+                shouldShowPlusYearly({
+                    nowMs: Date.now(),
+                    startIso: PLUS_YEARLY_START_ISO,
+                    isPurchasable,
+                    forceOn: PLUS_YEARLY_FORCE_ON,
+                    forceOff: PLUS_YEARLY_FORCE_OFF,
+                }),
+            );
+        };
+
+        update();
+        const timerId = window.setInterval(update, 60_000);
+        return () => window.clearInterval(timerId);
+    }, [isPurchasable]);
+
+    if (!visible) return null;
 
     return (
         <div

@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { LineBanner } from "@/components/LineBanner";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { PlusYearlyOption } from "@/components/plus/PlusYearlyOption";
+import { isPlusYearlyAvailable } from "@/lib/plus-subscription";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
@@ -136,6 +137,7 @@ export default function ProductsPage() {
                                 {plusCheckoutReady && (
                                     <PlusYearlyOption
                                         placement="products_index_plus_card_yearly"
+                                        isPurchasable={isPlusYearlyAvailable()}
                                         className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-3 text-center"
                                     />
                                 )}

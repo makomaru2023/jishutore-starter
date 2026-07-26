@@ -23,14 +23,24 @@ export const PLUS_PROMO_NEXT_PRICE_YEN = parsePrice(
 export const formatYen = (value: number) => `¥${value.toLocaleString("ja-JP")}`;
 
 /**
- * 年払いプラン（2026-08-01 の¥980切り替えと同時に開始予定）。
+ * 年払いプラン（2026-08-01 の¥980切り替えと同時に開始）。
  *
- * 既定は「無効」。Vercel で以下2つを設定したときだけ表示・購入できる。
- *   NEXT_PUBLIC_PLUS_YEARLY_ACTIVE=true   … UI に年払いを出す
- *   STRIPE_PRICE_ID_PLUS_CURRENT_YEARLY   … 年額の Stripe 価格ID（サーバー側）
- * どちらか片方だけでは売れないので、必ず両方をセットで切り替えること。
+ * 表示は「開始日時を過ぎたら自動でON」。手動でのフラグ切り替えは不要。
+ * ただし年額の Stripe 価格ID（STRIPE_PRICE_ID_PLUS_CURRENT_YEARLY）が
+ * 未設定の間は開始日を過ぎても表示しない ＝ 押すと503になるボタンを出さない。
+ * 実際の判定は shouldShowPlusYearly()（@/lib/plus-yearly）で行う。
  */
-export const PLUS_YEARLY_IS_ACTIVE = process.env.NEXT_PUBLIC_PLUS_YEARLY_ACTIVE === "true";
+export const PLUS_YEARLY_START_ISO =
+    process.env.NEXT_PUBLIC_PLUS_YEARLY_START_ISO?.trim() || "2026-08-01T00:00:00+09:00";
+
+/**
+ * 表示タイミングの手動オーバーライド（通常は未設定でよい）。
+ *   "true"  … 開始日を待たず即表示（動作確認用）
+ *   "false" … 開始日を過ぎても表示しない（緊急停止）
+ */
+const PLUS_YEARLY_OVERRIDE = process.env.NEXT_PUBLIC_PLUS_YEARLY_ACTIVE?.trim();
+export const PLUS_YEARLY_FORCE_ON = PLUS_YEARLY_OVERRIDE === "true";
+export const PLUS_YEARLY_FORCE_OFF = PLUS_YEARLY_OVERRIDE === "false";
 export const PLUS_YEARLY_PRICE_YEN = parsePrice(
     process.env.NEXT_PUBLIC_PLUS_YEARLY_PRICE_YEN,
     9800,
