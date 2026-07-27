@@ -92,6 +92,11 @@ export function trackPlusFeeHubBannerClick(placement: string): void {
     trackEvent("plus_fee_hub_banner_click", { placement });
 }
 
+/** 会員向け購入者アンケートの導線クリック。 */
+export function trackPlusSurveyClick(placement: string): void {
+    trackEvent("plus_survey_click", { placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;

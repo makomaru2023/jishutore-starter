@@ -11,6 +11,7 @@ import {
 } from "@/data/plus-items";
 import { PlusDeckDownloads } from "./PlusDeckDownloads";
 import { PlusPlanManagementButton } from "./PlusPlanManagementButton";
+import { PlusSurveyBanner } from "./PlusSurveyBanner";
 import { PlusWelcomeGuide } from "./PlusWelcomeGuide";
 
 /* ───────── アイコン（線画・絵文字不使用） ───────── */
@@ -344,6 +345,8 @@ export function PlusLibrary({
             </header>
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">
+                {/* 購入直後（welcome表示中）は案内が重なるので出さない */}
+                <PlusSurveyBanner show={!showWelcomeGuide} />
                 <PlusWelcomeGuide show={showWelcomeGuide} />
                 <PlusDeckDownloads feeDomainCount={feeDomainCount} feeItemCount={feeItemCount} />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
