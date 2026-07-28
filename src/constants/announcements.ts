@@ -1,4 +1,6 @@
-export type AnnouncementKind = "material" | "feature" | "fix";
+import { PLUS_SURVEY_URL } from "@/constants/plus-survey";
+
+export type AnnouncementKind = "material" | "feature" | "fix" | "request";
 
 /** どの画面に出すか。無料サイトとPlus会員ページで出し分ける。 */
 export type AnnouncementAudience = "public" | "plus";
@@ -9,8 +11,10 @@ export type Announcement = {
     kind: AnnouncementKind;
     title: string;
     body?: string;
-    /** 詳細への内部リンク。省略するとリンクなしで表示する。 */
+    /** リンク先。http始まりなら外部リンクとして別タブで開く。省略するとリンクなし。 */
     href?: string;
+    /** 日付に関係なく先頭へ固定する。募集中のお願いなど、流れて欲しくないものに使う。 */
+    pinned?: boolean;
     audience: readonly AnnouncementAudience[];
 };
 
@@ -18,6 +22,7 @@ export const ANNOUNCEMENT_KIND_LABEL: Record<AnnouncementKind, string> = {
     material: "素材追加",
     feature: "新機能",
     fix: "改善",
+    request: "お願い",
 };
 
 /**
@@ -44,6 +49,15 @@ export const ANNOUNCEMENT_KIND_LABEL: Record<AnnouncementKind, string> = {
  * 現在の収録数を示す表示が対象で、この更新履歴には適用しない）。
  */
 export const ANNOUNCEMENTS: readonly Announcement[] = [
+    {
+        date: "2026-07-28",
+        kind: "request",
+        title: "アンケートにご協力ください（3分・回答は任意です）",
+        body: "今後の資料追加や機能の優先順位を決める参考にさせていただきます。",
+        href: PLUS_SURVEY_URL,
+        pinned: true,
+        audience: ["plus"],
+    },
     {
         date: "2026-07-22",
         kind: "fix",
@@ -91,16 +105,17 @@ export const ANNOUNCEMENTS: readonly Announcement[] = [
 ];
 
 /**
- * 指定した画面向けのお知らせを、新しい順で返す。
- * 手書き運用で並び順がずれても表示が崩れないよう、ここで日付ソートし直す。
+ * 指定した画面向けのお知らせを、固定 → 新しい順で返す。
+ * 手書き運用で並び順がずれても表示が崩れないよう、ここでソートし直す。
  */
 export function getAnnouncements(
     audience: AnnouncementAudience,
     limit?: number,
 ): readonly Announcement[] {
-    const filtered = ANNOUNCEMENTS.filter((a) => a.audience.includes(audience)).sort(
-        (a, b) => b.date.localeCompare(a.date),
-    );
+    const filtered = ANNOUNCEMENTS.filter((a) => a.audience.includes(audience)).sort((a, b) => {
+        if (Boolean(a.pinned) !== Boolean(b.pinned)) return a.pinned ? -1 : 1;
+        return b.date.localeCompare(a.date);
+    });
     return typeof limit === "number" ? filtered.slice(0, limit) : filtered;
 }
 

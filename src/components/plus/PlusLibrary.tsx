@@ -11,7 +11,6 @@ import {
 } from "@/data/plus-items";
 import { PlusDeckDownloads } from "./PlusDeckDownloads";
 import { PlusPlanManagementButton } from "./PlusPlanManagementButton";
-import { PlusSurveyBanner } from "./PlusSurveyBanner";
 import { PlusUpdateHistory } from "./PlusUpdateHistory";
 import { PlusWelcomeGuide } from "./PlusWelcomeGuide";
 
@@ -347,8 +346,6 @@ export function PlusLibrary({
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">
                 <PlusUpdateHistory />
-                {/* 購入直後（welcome表示中）は案内が重なるので出さない */}
-                <PlusSurveyBanner show={!showWelcomeGuide} />
                 <PlusWelcomeGuide show={showWelcomeGuide} />
                 <PlusDeckDownloads feeDomainCount={feeDomainCount} feeItemCount={feeItemCount} />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
