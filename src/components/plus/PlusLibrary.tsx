@@ -12,6 +12,7 @@ import {
 import { PlusDeckDownloads } from "./PlusDeckDownloads";
 import { PlusPlanManagementButton } from "./PlusPlanManagementButton";
 import { PlusSurveyBanner } from "./PlusSurveyBanner";
+import { PlusUpdateHistory } from "./PlusUpdateHistory";
 import { PlusWelcomeGuide } from "./PlusWelcomeGuide";
 
 /* ───────── アイコン（線画・絵文字不使用） ───────── */
@@ -349,6 +350,7 @@ export function PlusLibrary({
                 <PlusSurveyBanner show={!showWelcomeGuide} />
                 <PlusWelcomeGuide show={showWelcomeGuide} />
                 <PlusDeckDownloads feeDomainCount={feeDomainCount} feeItemCount={feeItemCount} />
+                <PlusUpdateHistory />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
                     {/* ───────── 左：フィルタ＋カード一覧 ───────── */}
                     <div className="min-w-0">
