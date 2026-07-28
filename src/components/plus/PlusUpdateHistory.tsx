@@ -12,11 +12,11 @@ const INITIAL_COUNT = 3;
 
 /**
  * バッジの色。区分ごとに変えず1色でそろえる（区分は文字で読み分けられるため、
- * 色を分けるより見出しの赤に統一したほうが一覧が静かに見える）。
+ * 色を分けるより見出しと同色にそろえたほうが一覧が静かに見える）。
  * ここを変えれば全バッジの色が変わる。
  */
-const BADGE_CLASS = "bg-red-700 text-white";
-const HEADING_CLASS = "text-red-700";
+const BADGE_CLASS = "bg-blue-700 text-white";
+const HEADING_CLASS = "text-blue-700";
 
 const ChevronRight = () => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3.5 w-3.5" aria-hidden="true">
@@ -40,7 +40,7 @@ export function PlusUpdateHistory() {
     return (
         <section
             aria-labelledby="plus-topics-title"
-            className="mb-5 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+            className="mb-5 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm sm:p-5"
         >
             <div className="mb-3 text-center">
                 <h2
@@ -78,7 +78,7 @@ export function PlusUpdateHistory() {
                             {a.href ? (
                                 <a
                                     href={a.href}
-                                    className="text-sm font-bold text-slate-800 underline underline-offset-2 transition hover:text-red-700"
+                                    className="text-sm font-bold text-slate-800 underline underline-offset-2 transition hover:text-blue-700"
                                 >
                                     {a.title}
                                 </a>
@@ -98,7 +98,7 @@ export function PlusUpdateHistory() {
                     <button
                         type="button"
                         onClick={() => setExpanded(true)}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 transition hover:text-red-700"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 transition hover:text-blue-700"
                     >
                         過去のお知らせをすべて見る（あと{hiddenCount}件）
                         <ChevronRight />

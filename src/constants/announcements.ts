@@ -21,6 +21,18 @@ export const ANNOUNCEMENT_KIND_LABEL: Record<AnnouncementKind, string> = {
 };
 
 /**
+ * TODO（2026-08-19以降・無料サイトのトップページを次に改修するとき）:
+ * **トップページにもTOPICSを追加するか検討する。**
+ *
+ * 現時点で入れていないのは、2026-07-26にトップ・素材一覧・カテゴリへ設置した
+ * Plus実物導線（PlusRealPreviewBand）の効果を計測中で、同じページに要素を足すと
+ * LP到達率の変化がどちらの効果なのか切り分けられなくなるため。計測の判定は8/9頃。
+ *
+ * 実装するときは、下の配列の `audience: "public"` のエントリを
+ * PlusUpdateHistory と同じ見せ方で表示すればよい（データと getAnnouncements() は共用済み）。
+ */
+
+/**
  * サイトの更新履歴。**新しい順に、先頭へ足していく。**
  *
  * 素材データ（items.json）に追加日を持たせていないため、ここは手書きで運用する。
