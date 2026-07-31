@@ -10,9 +10,16 @@ export const PLUS_PROMO_CURRENT_PRICE_YEN = parsePrice(
     process.env.NEXT_PUBLIC_PLUS_PROMO_CURRENT_PRICE_YEN,
     500,
 );
+/**
+ * 先行価格の終了後（8月1日〜）に新規登録へ適用する月額。
+ * ★980円が正。2026-07-25のメール・LINE・Threads告知で「8月1日からの新規登録は
+ *   月額980円」と明言済み。7月中旬まで680円の計画だったが、買い切り3商品（各980円）を
+ *   Plusへ収録する「全部入り」化に伴い7/21頃に980円へ変更された。
+ *   既定値を変えるときは告知済みの金額と必ず突き合わせること。
+ */
 export const PLUS_PROMO_NEXT_PRICE_YEN = parsePrice(
     process.env.NEXT_PUBLIC_PLUS_PROMO_NEXT_PRICE_YEN,
-    680,
+    980,
 );
 
 /**
