@@ -7,6 +7,11 @@ import { LineBanner } from "@/components/LineBanner";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
+import {
+    PLUS_DISPLAY_PRICE_YEN,
+    PLUS_PROMO_DEADLINE_LABEL,
+    PLUS_PROMO_IS_ACTIVE,
+} from "@/constants/plus-pricing";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
 import {
     POSTURE_SELF_TRAINING_PRICE_ID,
@@ -207,7 +212,9 @@ export default function ProductsPage() {
                                         継続課金
                                     </span>
                                     <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-black text-blue-800">
-                                        7月登録は月額500円
+                                        {PLUS_PROMO_IS_ACTIVE
+                                            ? `${PLUS_PROMO_DEADLINE_LABEL}は月額${PLUS_DISPLAY_PRICE_YEN}円`
+                                            : `月額${PLUS_DISPLAY_PRICE_YEN}円`}
                                     </span>
                                 </div>
                                 <h2 className="mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
@@ -233,20 +240,24 @@ export default function ProductsPage() {
                                     </div>
                                 </div>
                                 <p className="mt-3 text-sm font-bold leading-6 text-blue-800">
-                                    7月中の登録なら月額500円のままずっと据え置きです。
+                                    {PLUS_PROMO_IS_ACTIVE
+                                        ? `${PLUS_PROMO_DEADLINE_LABEL}の登録なら月額${PLUS_DISPLAY_PRICE_YEN}円のままずっと据え置きです。`
+                                        : "登録中は月額料金がずっと据え置きです。"}
                                     いつでも解約できます。
                                 </p>
                             </div>
                             <div className="rounded-lg border border-blue-200 bg-white p-4">
-                                <p className="text-xs font-black tracking-widest text-blue-700">7月の登録価格</p>
-                                <p className="mt-1 text-3xl font-black text-slate-950">月額500円</p>
+                                <p className="text-xs font-black tracking-widest text-blue-700">
+                                    {PLUS_PROMO_IS_ACTIVE ? `${PLUS_PROMO_DEADLINE_LABEL}の登録価格` : "月額料金"}
+                                </p>
+                                <p className="mt-1 text-3xl font-black text-slate-950">月額{PLUS_DISPLAY_PRICE_YEN}円</p>
                                 <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
                                     資料{PLUS_SLIDE_COUNT}点＋報酬チェック<br />どちらも利用できます
                                 </p>
                                 <div className="mt-4 grid gap-2">
                                     {plusCheckoutReady ? (
                                         <PlusSubscribeButton
-                                            label="月額500円で申し込む"
+                                            label={`月額${PLUS_DISPLAY_PRICE_YEN}円で申し込む`}
                                             className="inline-flex w-full items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-blue-800"
                                         />
                                     ) : (

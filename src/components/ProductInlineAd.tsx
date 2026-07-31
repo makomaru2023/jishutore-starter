@@ -2,6 +2,12 @@
 
 import Link from 'next/link';
 import {
+    formatYen,
+    PLUS_DISPLAY_PRICE_YEN,
+    PLUS_PROMO_DEADLINE_LABEL,
+    PLUS_PROMO_IS_ACTIVE,
+} from '@/constants/plus-pricing';
+import {
     FEE_CHECK_DOMAIN_COUNT,
     FEE_CHECK_ITEM_COUNT,
     PLUS_SLIDE_COUNT_PUBLIC,
@@ -46,8 +52,10 @@ export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
         description:
             `${PLUS_SLIDE_COUNT_PUBLIC}点の編集できるPowerPointスライドと、全${FEE_CHECK_DOMAIN_COUNT}分野・${FEE_CHECK_ITEM_COUNT}項目の診療・介護報酬チェックを利用できます。記録・自己点検・つまずきやすい点まで確認したい方へ。`,
         href: '/products/jishutore-plus/',
-        price: '月額¥500',
-        priceNote: '7月登録は据え置き',
+        price: `月額${formatYen(PLUS_DISPLAY_PRICE_YEN)}`,
+        priceNote: PLUS_PROMO_IS_ACTIVE
+            ? `${PLUS_PROMO_DEADLINE_LABEL}の登録は据え置き`
+            : '登録中は据え置き',
         buttonLabel: 'Plusの内容を見る',
         note: 'PowerPoint編集＋診療・介護報酬の実務チェック',
         itemName: '自主トレ素材庫Plus',

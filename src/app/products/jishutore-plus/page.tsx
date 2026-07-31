@@ -14,6 +14,7 @@ import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { Testimonials } from "@/components/Testimonials";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import {
+    PLUS_DISPLAY_PRICE_YEN,
     PLUS_PROMO_BADGE_TEXT,
     PLUS_PROMO_CURRENT_PRICE_YEN,
     PLUS_PROMO_DEADLINE_LABEL,
@@ -143,7 +144,9 @@ const comparisonRows = [
         label: "料金",
         free: "無料",
         set: "各980円・買い切り",
-        plus: `先行 月額${PLUS_PROMO_CURRENT_PRICE_YEN}円`,
+        plus: PLUS_PROMO_IS_ACTIVE
+            ? `先行 月額${PLUS_DISPLAY_PRICE_YEN}円`
+            : `月額${PLUS_DISPLAY_PRICE_YEN}円`,
     },
     {
         label: "ファイル形式",
@@ -308,7 +311,7 @@ export default function JishutorePlusPage() {
                             </p>
                             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
                                 <PlusSubscribeButton
-                                    label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で始める`}
+                                    label={`月額${PLUS_DISPLAY_PRICE_YEN}円で始める`}
                                     className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                                 />
                                 <Link
@@ -545,7 +548,7 @@ export default function JishutorePlusPage() {
                 <section className="border-b border-blue-100 bg-blue-700 py-8 text-white">
                     <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-5 px-4 text-center sm:px-6 lg:flex-row lg:text-left">
                         <div>
-                            <p className="text-lg font-black">資料作成も報酬確認も、月額{PLUS_PROMO_CURRENT_PRICE_YEN}円で</p>
+                            <p className="text-lg font-black">資料作成も報酬確認も、月額{PLUS_DISPLAY_PRICE_YEN}円で</p>
                             <p className="mt-1 text-sm leading-6 text-blue-100">いつでも解約でき、ダウンロード済みのPowerPointは解約後も使えます。</p>
                         </div>
                         <PlusSubscribeButton
@@ -590,7 +593,7 @@ export default function JishutorePlusPage() {
                                     <div className="mt-5">
                                         {plan.recommended ? (
                                             <PlusSubscribeButton
-                                                label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で始める`}
+                                                label={`月額${PLUS_DISPLAY_PRICE_YEN}円で始める`}
                                                 className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
                                             />
                                         ) : (
@@ -728,7 +731,7 @@ export default function JishutorePlusPage() {
                         {PLUS_PROMO_IS_ACTIVE && <p className="mx-auto mt-5 max-w-xl rounded-xl border border-blue-100 bg-white px-4 py-3 text-xs leading-6 text-slate-600">{PLUS_PROMO_DEADLINE_LABEL}に登録すると、月額{PLUS_PROMO_CURRENT_PRICE_YEN}円のまま利用できます。料金改定後も、登録中の価格は上がりません。</p>}
                         <div className="mt-7 flex justify-center">
                             <PlusSubscribeButton
-                                label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
+                                label={`月額${PLUS_DISPLAY_PRICE_YEN}円で申し込む`}
                                 className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                             />
                         </div>
@@ -751,8 +754,8 @@ export default function JishutorePlusPage() {
             <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-4px_18px_rgba(15,23,42,0.12)] backdrop-blur sm:hidden">
                 <div className="mx-auto flex max-w-md items-center gap-3">
                     <div className="shrink-0">
-                        <p className="text-[10px] font-bold text-slate-500">先行価格</p>
-                        <p className="text-sm font-black text-slate-950">月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</p>
+                        {PLUS_PROMO_IS_ACTIVE && <p className="text-[10px] font-bold text-slate-500">先行価格</p>}
+                        <p className="text-sm font-black text-slate-950">月額{PLUS_DISPLAY_PRICE_YEN}円</p>
                     </div>
                     <PlusSubscribeButton
                         label="Plusを始める"
