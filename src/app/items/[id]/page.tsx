@@ -115,6 +115,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
     // 素材が属する部位・用途カテゴリ（/items/<slug>/ への内部リンクに使う）
     const itemCategories = getCategoriesForItem(item);
+    const primaryCategory = itemCategories[0];
 
     // この素材に対応するPlusスライド。無料PNG → 編集できるスライドの文脈連動CTAに使う。
     const plusMatch = findPlusForFreeItem(item.id);
@@ -128,22 +129,56 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
     const ctaTitle = title.replace(/【[^】]*】/g, "").trim() || title;
 
     // JSON-LD structured data for SEO
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "ImageObject",
-        "name": `${title}の自主トレイラスト`,
-        "description": descriptionText,
-        "contentUrl": imageUrl,
-        "license": "https://jishutore-sozaiko.online/license/",
-        "acquireLicensePage": "https://jishutore-sozaiko.online/license/",
-        "creditText": "自主トレ素材庫",
-        "keywords": [title, ...itemCategories.map((c) => c.breadcrumb)].join(", "),
-        "creator": {
-            "@type": "Organization",
-            "name": "自主トレ素材庫",
-            "url": "https://jishutore-sozaiko.online"
+    const jsonLd = [
+        {
+            "@context": "https://schema.org",
+            "@type": "ImageObject",
+            "name": `${title}の自主トレイラスト`,
+            "description": descriptionText,
+            "contentUrl": imageUrl,
+            "license": "https://jishutore-sozaiko.online/license/",
+            "acquireLicensePage": "https://jishutore-sozaiko.online/license/",
+            "creditText": "自主トレ素材庫",
+            "keywords": [title, ...itemCategories.map((c) => c.breadcrumb)].join(", "),
+            "creator": {
+                "@type": "Organization",
+                "name": "自主トレ素材庫",
+                "url": "https://jishutore-sozaiko.online"
+            },
         },
-    };
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "ホーム",
+                    "item": "https://jishutore-sozaiko.online/",
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "無料素材",
+                    "item": "https://jishutore-sozaiko.online/items/",
+                },
+                ...(primaryCategory
+                    ? [{
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": primaryCategory.breadcrumb,
+                        "item": `https://jishutore-sozaiko.online/items/${primaryCategory.slug}/`,
+                    }]
+                    : []),
+                {
+                    "@type": "ListItem",
+                    "position": primaryCategory ? 4 : 3,
+                    "name": title,
+                    "item": `https://jishutore-sozaiko.online/items/${item.id}/`,
+                },
+            ],
+        },
+    ];
 
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -153,6 +188,44 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <main className="container mx-auto px-4 py-12 flex-1">
+                <nav
+                    aria-label="パンくずリスト"
+                    className="mx-auto mb-6 max-w-6xl text-sm text-slate-500"
+                >
+                    <Link
+                        href="/"
+                        className="transition-colors hover:text-blue-700"
+                    >
+                        ホーム
+                    </Link>
+                    <span className="mx-2" aria-hidden="true">
+                        /
+                    </span>
+                    <Link
+                        href="/items/"
+                        className="transition-colors hover:text-blue-700"
+                    >
+                        無料素材
+                    </Link>
+                    {primaryCategory && (
+                        <>
+                            <span className="mx-2" aria-hidden="true">
+                                /
+                            </span>
+                            <Link
+                                href={`/items/${primaryCategory.slug}/`}
+                                className="transition-colors hover:text-blue-700"
+                            >
+                                {primaryCategory.breadcrumb}
+                            </Link>
+                        </>
+                    )}
+                    <span className="mx-2" aria-hidden="true">
+                        /
+                    </span>
+                    <span className="text-slate-700">{title}</span>
+                </nav>
+
                 <div className="mx-auto max-w-6xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="md:flex">
                         {/* Image Section with Watermark Protection */}
