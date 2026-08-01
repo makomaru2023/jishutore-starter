@@ -6,8 +6,8 @@ import { normalizeEmail } from "@/lib/plus-auth";
  * 自主トレ素材庫Plus のサブスク制御（Stripe が真実の情報源）。
  *
  * 料金は「現在価格を環境変数で切り替える」方式。
- *   2026年7月登録 = ¥500（先行） / 2026年8月1日〜 = ¥980（全部入り一本化後の新規価格）
- * 契約ごとに価格がロックされるため、既存会員は登録時の価格のまま永久据え置き。
+ *   7月登録 = ¥500（据え置き）/ 8月〜の新規 = 月額¥980・年払い¥9,800。
+ * 以後も改定時は新規のみ新価格で、既存会員は登録時価格のまま。
  *
  * - 新規に売る価格 = 環境変数 STRIPE_PRICE_ID_PLUS_CURRENT（月払い）と
  *   STRIPE_PRICE_ID_PLUS_CURRENT_YEARLY（年払い）の2本だけ。
@@ -24,7 +24,7 @@ export function isPlusPlan(value: unknown): value is PlusPlan {
     return value === "monthly" || value === "yearly";
 }
 
-/** 現在、新規登録者に適用する月払いの価格ID（例：7月は¥500）。 */
+/** 現在、新規登録者に適用する月払いの価格ID。 */
 export const PLUS_CURRENT_PRICE =
     process.env.STRIPE_PRICE_ID_PLUS_CURRENT ||
     process.env.STRIPE_PRICE_ID_PLUS_FOUNDING || // 旧設定からのフォールバック
