@@ -59,6 +59,22 @@ export const ANNOUNCEMENTS: readonly Announcement[] = [
         audience: ["plus"],
     },
     {
+        date: "2026-08-01",
+        kind: "material",
+        title: "Plusの収録スライドを227点に増やしました（+40点）",
+        body: "口腔・呼吸の体操、入浴や更衣などのADL動作、二重課題、運動中止の目安といった指導用の40点を、そのまま編集できるPowerPoint形式で追加しました。",
+        href: "/plus/library/",
+        audience: ["plus"],
+    },
+    {
+        date: "2026-07-31",
+        kind: "material",
+        title: "無料素材を40種（80点）追加しました",
+        body: "口腔・嚥下、呼吸、ADL動作、バランス・歩行、二重課題、リスク管理の指導用イラストです。",
+        href: "/items/",
+        audience: ["public", "plus"],
+    },
+    {
         date: "2026-07-22",
         kind: "fix",
         title: "素材のタイトルと説明文を一括で見直しました",

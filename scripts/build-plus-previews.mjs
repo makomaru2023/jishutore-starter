@@ -6,7 +6,7 @@ import { mkdir, readdir } from "node:fs/promises";
 import sharp from "sharp";
 import { tsImport } from "tsx/esm/api";
 
-const EXPECTED_ITEM_COUNT = 187;
+const EXPECTED_ITEM_COUNT = 227;
 const OUTPUT_WIDTH = 1200;
 const OUTPUT_HEIGHT = 675;
 const WEBP_QUALITY = 85;
