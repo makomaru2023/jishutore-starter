@@ -40,6 +40,63 @@ export function trackB2bContactClick(placement: string): void {
     trackEvent("b2b_contact_click", { placement });
 }
 
+/** Plus LPの申込導線クリック。actionで決済開始と料金欄への移動を分ける。 */
+export function trackPlusCtaClick(
+    placement: string,
+    action: "checkout" | "scroll_to_pricing" = "checkout",
+): void {
+    trackEvent("plus_cta_click", { placement, action });
+}
+
+/** Plus LPから無料で試せる資料・機能を開いた操作。 */
+export function trackPlusResourceClick(resource: string, placement: string): void {
+    trackEvent("plus_resource_click", { resource, placement });
+}
+
+/** サイト共通のPlus会員ページ導線クリック。 */
+export function trackPlusMemberLinkClick(placement: "header" | "footer"): void {
+    trackEvent("plus_member_link_click", { placement });
+}
+
+/** Plus会員版の報酬チェックハブ表示。 */
+export function trackPlusFeeHubView(
+    initialTab: "items" | "combo",
+    domainCount: number,
+    itemCount: number,
+): void {
+    trackEvent("plus_fee_hub_view", {
+        initial_tab: initialTab,
+        domain_count: domainCount,
+        item_count: itemCount,
+    });
+}
+
+/** Plus会員版の報酬チェックハブ内タブ切り替え。 */
+export function trackPlusFeeHubTabChange(
+    tab: "items" | "combo",
+    previousTab: "items" | "combo",
+): void {
+    trackEvent("plus_fee_hub_tab_change", { tab, previous_tab: previousTab });
+}
+
+/** 資料庫の「完成デッキ＆会員ツール」カードクリック。 */
+export function trackPlusToolCardClick(toolId: string): void {
+    trackEvent("plus_tool_card_click", {
+        tool_id: toolId,
+        placement: "plus_library_tools",
+    });
+}
+
+/** 無料報酬チェック画面から会員版ハブへ戻る導線。 */
+export function trackPlusFeeHubBannerClick(placement: string): void {
+    trackEvent("plus_fee_hub_banner_click", { placement });
+}
+
+/** 会員向け購入者アンケートの導線クリック。 */
+export function trackPlusSurveyClick(placement: string): void {
+    trackEvent("plus_survey_click", { placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;

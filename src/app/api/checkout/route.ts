@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe, isStripeConfigured } from '@/lib/stripe';
-import {
-    POSTURE_SELF_TRAINING_PRICE_ID,
-    BUNDLE_SELF_TRAINING_PRICE_ID,
-    SLIDE_PROMPT_GENERATOR_PRICE_ID,
-    DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
-} from '@/lib/products';
+import { DAY_SERVICE_EXERCISE_PACK_PRICE_ID } from '@/lib/products';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
@@ -16,23 +11,9 @@ type ProductConfig = {
     cancelPath: string;
 };
 
+// 2026-07 Plus全部入り化に伴い、個人向け買い切り（疾患別・姿勢別・バンドル・プロンプト工房）は
+// 販売終了。既存購入者の再ダウンロード（/api/download）とサンクスページは影響を受けない。
 const PRODUCTS: Record<string, ProductConfig> = {
-    'self-training-materials-vol01': {
-        priceId: process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET,
-        cancelPath: '/products/self-training-materials',
-    },
-    'home-elderly-self-training': {
-        priceId: POSTURE_SELF_TRAINING_PRICE_ID,
-        cancelPath: '/products/home-elderly-self-training',
-    },
-    'bundle-self-training-set': {
-        priceId: BUNDLE_SELF_TRAINING_PRICE_ID,
-        cancelPath: '/products',
-    },
-    'slide-prompt-generator': {
-        priceId: SLIDE_PROMPT_GENERATOR_PRICE_ID,
-        cancelPath: '/products/slide-prompt-generator',
-    },
     'day-service-exercise-pack': {
         priceId: DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
         cancelPath: '/products/day-service-exercise-pack',

@@ -5,6 +5,7 @@ import { hasActivePlusAccess } from "@/lib/plus-access";
 import { PurchaseTracker } from "@/app/thank-you/PurchaseTracker";
 import { getStripe } from "@/lib/stripe";
 import { isPlusPriceObject } from "@/lib/plus-subscription";
+import { feeDomains, getFeeCheckTotalCount } from "@/lib/fee-check";
 
 export const metadata: Metadata = {
     title: "資料を選ぶ｜自主トレ素材庫Plus",
@@ -26,6 +27,7 @@ export default async function PlusLibraryPage({
     }
     const { welcome, session_id } = await searchParams;
     let purchaseAmount = 0;
+    let isVerifiedWelcome = false;
     if (welcome === "1" && session_id) {
         try {
             const stripe = getStripe();
@@ -37,6 +39,7 @@ export default async function PlusLibraryPage({
                     (session.status === "complete" || session.payment_status === "paid") &&
                     isPlusPriceObject(lineItems.data[0]?.price)
                 ) {
+                    isVerifiedWelcome = true;
                     purchaseAmount = session.amount_total ?? 0;
                 }
             }
@@ -55,7 +58,11 @@ export default async function PlusLibraryPage({
                     value={purchaseAmount}
                 />
             )}
-            <PlusLibrary />
+            <PlusLibrary
+                feeDomainCount={feeDomains.length}
+                feeItemCount={getFeeCheckTotalCount()}
+                showWelcomeGuide={isVerifiedWelcome}
+            />
         </>
     );
 }

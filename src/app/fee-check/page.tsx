@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FeeCheckGlobalSearch, type FeeCheckSearchEntry } from "@/components/fee-check/FeeCheckGlobalSearch";
+import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PLUS_PROMO_BADGE_TEXT, PLUS_PROMO_IS_ACTIVE } from "@/constants/plus-pricing";
@@ -13,6 +14,7 @@ import {
     getPublicFeeSearchText,
     getSampleFeeItems,
 } from "@/lib/fee-check";
+import { hasActivePlusAccess } from "@/lib/plus-access";
 
 export const metadata: Metadata = {
     title: "診療・介護報酬チェック｜算定要件・単位数を無料で確認｜自主トレ素材庫",
@@ -26,7 +28,8 @@ export const metadata: Metadata = {
 // これ未満の項目数の分野は「準備中・第1弾公開」として、完成分野と視覚的に区別する。
 const DOMAIN_READY_THRESHOLD = 5;
 
-export default function FeeCheckTopPage() {
+export default async function FeeCheckTopPage() {
+    const isMember = await hasActivePlusAccess();
     const totalCount = getFeeCheckTotalCount();
     const samples = getSampleFeeItems();
     const searchEntries: FeeCheckSearchEntry[] = feeDomains.flatMap((domain) =>
@@ -52,6 +55,12 @@ export default function FeeCheckTopPage() {
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Header />
+            {isMember && (
+                <FeeCheckMemberHubBanner
+                    domainCount={feeDomains.length}
+                    placement="fee_check_top_member_banner"
+                />
+            )}
             <main className="flex-1">
                 <section className="border-b border-blue-100 bg-white py-12 sm:py-16">
                     <div className="container mx-auto px-4">

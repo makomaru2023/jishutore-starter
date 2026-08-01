@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { TrackedPlusMemberLink } from '@/components/TrackedPlusMemberLink';
 
 export function HeaderDropdown() {
     const [isOpen, setIsOpen] = useState(false);
@@ -67,6 +68,13 @@ export function HeaderDropdown() {
                     >
                         Premium素材
                     </Link>
+                    <TrackedPlusMemberLink
+                        placement="header"
+                        className="block border-t border-gray-100 px-4 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50 hover:text-blue-600"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        会員ページ
+                    </TrackedPlusMemberLink>
                 </div>
             )}
         </div>

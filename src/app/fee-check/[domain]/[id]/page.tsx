@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FeeCheckViewTracker } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
+import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import {
@@ -12,6 +13,7 @@ import {
     getFeeItemUrl,
     getAllFeeItems,
     isSampleFeeItem,
+    feeDomains,
 } from "@/lib/fee-check";
 import { hasActivePlusAccess } from "@/lib/plus-access";
 
@@ -56,8 +58,7 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
 
     const { domain, item } = result;
     const isSample = isSampleFeeItem(domain.domain, item.id);
-    // サンプルは誰でも全文公開なので、契約確認（Stripe呼び出し）は不要。
-    const isMember = isSample ? false : await hasActivePlusAccess();
+    const isMember = await hasActivePlusAccess();
     const isUnlocked = isMember || isSample;
     const visibleItem = isUnlocked
         ? item
@@ -114,6 +115,12 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
             <Header />
+            {isMember && (
+                <FeeCheckMemberHubBanner
+                    domainCount={feeDomains.length}
+                    placement="fee_check_detail_member_banner"
+                />
+            )}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, articleJsonLd]) }} />
             <FeeCheckViewTracker
                 type="item"

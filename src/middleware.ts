@@ -8,9 +8,19 @@ const SLIDE_COOKIE_NAME = "slide_prompt_access";
 
 // --- 自主トレ素材庫Plus 会員ページ ---
 const PLUS_LIBRARY_PATH = "/plus/library";
+const PLUS_FEE_HUB_PATH = "/plus/fee-hub";
 const PLUS_FEE_CHECK_PATH = "/plus/fee-check";
 const PLUS_FEE_CHECK_COMBO_PATH = "/plus/fee-check-combo";
 const PLUS_LOGIN_PATH = "/plus/login";
+
+function matchesPath(pathname: string, basePath: string): boolean {
+    return pathname === basePath || pathname.startsWith(`${basePath}/`);
+}
+
+async function getPlusSession(req: NextRequest) {
+    const token = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
+    return token ? await verifySessionToken(token) : null;
+}
 
 function normalizeLegacyItemId(id: string): string {
     return id
@@ -45,43 +55,47 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     }
 
-    if (pathname === PLUS_FEE_CHECK_PATH || pathname.startsWith(`${PLUS_FEE_CHECK_PATH}/`)) {
+    // === 旧・加算組み合わせページを会員ハブへ集約 ===
+    if (matchesPath(pathname, PLUS_FEE_CHECK_COMBO_PATH)) {
+        const session = await getPlusSession(req);
+        if (session) {
+            const feeHubUrl = req.nextUrl.clone();
+            feeHubUrl.pathname = `${PLUS_FEE_HUB_PATH}/`;
+            feeHubUrl.searchParams.set("tab", "combo");
+            return NextResponse.redirect(feeHubUrl, 302);
+        }
+        const loginUrl = req.nextUrl.clone();
+        loginUrl.pathname = `${PLUS_LOGIN_PATH}/`;
+        loginUrl.search = "";
+        return NextResponse.redirect(loginUrl, 302);
+    }
+
+    // === 旧・会員報酬チェックURLの互換転送 ===
+    // 過去の301キャッシュを避けるため、新しい会員画面は /plus/fee-hub/ に置く。
+    if (matchesPath(pathname, PLUS_FEE_CHECK_PATH)) {
+        const session = await getPlusSession(req);
         const feeCheckUrl = req.nextUrl.clone();
-        feeCheckUrl.pathname = pathname.replace(PLUS_FEE_CHECK_PATH, "/fee-check");
-        feeCheckUrl.search = req.nextUrl.search;
-        return NextResponse.redirect(feeCheckUrl, 301);
+        if (session) {
+            feeCheckUrl.pathname = `${PLUS_FEE_HUB_PATH}/`;
+        } else {
+            feeCheckUrl.pathname = pathname.replace(PLUS_FEE_CHECK_PATH, "/fee-check");
+        }
+        return NextResponse.redirect(feeCheckUrl, 302);
     }
 
-    // === Plus 加算の組み合わせチェックのゲート ===
+    // === Plus 資料庫・会員報酬チェックハブのゲート ===
     if (
-        pathname === PLUS_FEE_CHECK_COMBO_PATH ||
-        pathname.startsWith(`${PLUS_FEE_CHECK_COMBO_PATH}/`)
+        matchesPath(pathname, PLUS_LIBRARY_PATH) ||
+        matchesPath(pathname, PLUS_FEE_HUB_PATH)
     ) {
-        const token = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
-        const session = token ? await verifySessionToken(token) : null;
+        const session = await getPlusSession(req);
         if (session) {
             return NextResponse.next();
         }
         const loginUrl = req.nextUrl.clone();
-        loginUrl.pathname = PLUS_LOGIN_PATH;
+        loginUrl.pathname = `${PLUS_LOGIN_PATH}/`;
         loginUrl.search = "";
-        return NextResponse.redirect(loginUrl);
-    }
-
-    // === Plus 資料庫のゲート ===
-    if (
-        pathname === PLUS_LIBRARY_PATH ||
-        pathname.startsWith(`${PLUS_LIBRARY_PATH}/`)
-    ) {
-        const token = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
-        const session = token ? await verifySessionToken(token) : null;
-        if (session) {
-            return NextResponse.next();
-        }
-        const loginUrl = req.nextUrl.clone();
-        loginUrl.pathname = PLUS_LOGIN_PATH;
-        loginUrl.search = "";
-        return NextResponse.redirect(loginUrl);
+        return NextResponse.redirect(loginUrl, 302);
     }
 
     // === 伝わるプロンプト工房のゲート（既存） ===
@@ -91,6 +105,11 @@ export async function middleware(req: NextRequest) {
     const cookieValue = req.cookies.get(SLIDE_COOKIE_NAME)?.value;
     const expected = process.env.SLIDE_PROMPT_COOKIE_VALUE;
     if (expected && cookieValue === expected) {
+        return NextResponse.next();
+    }
+    // Plus会員もツールを利用できる（全部入り化）。契約の有効性はページ側で確認する。
+    const plusToken = req.cookies.get(PLUS_SESSION_COOKIE)?.value;
+    if (plusToken && (await verifySessionToken(plusToken))) {
         return NextResponse.next();
     }
     const loginUrl = req.nextUrl.clone();
@@ -104,6 +123,8 @@ export const config = {
         "/member/slide-prompt-generator/:path*",
         "/plus/library",
         "/plus/library/:path*",
+        "/plus/fee-hub",
+        "/plus/fee-hub/:path*",
         "/plus/fee-check",
         "/plus/fee-check/:path*",
         "/plus/fee-check-combo",

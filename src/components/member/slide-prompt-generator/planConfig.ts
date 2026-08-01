@@ -30,10 +30,9 @@ export const PLAN_CONFIGS: Record<Plan, PlanConfig> = {
 };
 
 /**
- * 無料版から有料版へのアップグレード遷移先。
- * 有料版の商品LP（伝わるプロンプト工房・980円買い切り）。
+ * 無料版からPlusへのアップグレード遷移先。
  */
-export const UPGRADE_URL = "/products/slide-prompt-generator/";
+export const UPGRADE_URL = "/products/jishutore-plus/";
 
 /** ロック項目クリック時にスクロールするアップセルバナーの id */
 export const UPGRADE_BANNER_ID = "upgrade-banner";

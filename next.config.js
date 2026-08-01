@@ -46,13 +46,28 @@ const nextConfig = {
       },
       {
         source: '/premium',
-        destination: '/products/self-training-materials',
+        destination: '/products/jishutore-plus',
         permanent: true,
       },
       {
-        // 旧プロンプトメーカーURL → 新商品LPへ 301
+        source: '/products/self-training-materials',
+        destination: '/products/jishutore-plus',
+        permanent: true,
+      },
+      {
+        source: '/products/home-elderly-self-training',
+        destination: '/products/jishutore-plus',
+        permanent: true,
+      },
+      {
+        source: '/products/slide-prompt-generator',
+        destination: '/products/jishutore-plus',
+        permanent: true,
+      },
+      {
+        // 旧プロンプトメーカーURL → Plus LPへ 301
         source: '/ai-prompt-maker',
-        destination: '/products/slide-prompt-generator',
+        destination: '/products/jishutore-plus',
         permanent: true,
       },
     ];

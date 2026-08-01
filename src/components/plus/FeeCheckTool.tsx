@@ -5,14 +5,13 @@ import { useMemo, useState } from "react";
 import {
     categoryLabels,
     categoryStyles,
-    feeDomains,
     insuranceLabels,
     normalizeFeeText,
     type FeeCategory,
-    type FeeDomainId,
+    type FeeDomain,
     type FeeInsurance,
     type FeeItem,
-} from "@/lib/fee-check";
+} from "@/lib/fee-check-shared";
 
 const ALL = "all";
 
@@ -177,7 +176,7 @@ const FeeCard = ({ item, disclaimer }: { item: FeeItem; disclaimer: string }) =>
             </SectionShell>
 
             <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm font-black text-blue-900 break-keep">
-                🔒 ここからはPlus限定（記録・自己点検のコア部分）
+                Plus会員版の実務チェック（記録・自己点検のコア部分）
             </div>
 
             <SectionShell title="記録に残すこと" className="border-blue-100 bg-blue-50/40">
@@ -245,16 +244,16 @@ const FeeCard = ({ item, disclaimer }: { item: FeeItem; disclaimer: string }) =>
     </article>
 );
 
-export function FeeCheckTool() {
-    const [activeDomainId, setActiveDomainId] = useState<FeeDomainId>(feeDomains[0].domain);
+export function FeeCheckTool({ domains }: { domains: FeeDomain[] }) {
+    const [activeDomainId, setActiveDomainId] = useState(domains[0].domain);
     const [query, setQuery] = useState("");
     const [insurance, setInsurance] = useState<FeeInsurance | typeof ALL>(ALL);
     const [category, setCategory] = useState<FeeCategory | typeof ALL>(ALL);
     const [changedOnly, setChangedOnly] = useState(false);
 
     const activeFeeData = useMemo(
-        () => feeDomains.find((domain) => domain.domain === activeDomainId) ?? feeDomains[0],
-        [activeDomainId]
+        () => domains.find((domain) => domain.domain === activeDomainId) ?? domains[0],
+        [activeDomainId, domains]
     );
 
     const availableInsurances = useMemo(
@@ -262,7 +261,7 @@ export function FeeCheckTool() {
         [activeFeeData]
     );
 
-    const handleDomainChange = (domainId: FeeDomainId) => {
+    const handleDomainChange = (domainId: string) => {
         setActiveDomainId(domainId);
         setInsurance(ALL);
         setCategory(ALL);
@@ -298,49 +297,15 @@ export function FeeCheckTool() {
     }, [activeFeeData]);
 
     return (
-        <div className="min-h-screen bg-slate-50 print:bg-white">
-            <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur print:static print:border-slate-300">
-                <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3 sm:px-6">
-                    <a href="/plus/library/" className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-700 text-white shadow-sm" aria-label="Plus資料庫へ">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5" aria-hidden="true">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 12h16M4 6h16M4 18h10" />
-                        </svg>
-                    </a>
-                    <div className="min-w-0">
-                        <p className="text-base font-black leading-tight text-slate-900 sm:text-lg">診療・介護報酬チェック</p>
-                        <p className="hidden truncate text-xs text-slate-500 sm:block">
-                            {activeFeeData.domainLabel}の算定要件を、根拠資料つきで自己点検
-                        </p>
-                    </div>
-                    <nav className="ml-auto flex items-center gap-2 text-xs font-bold print:hidden">
-                        <a href="/plus/library/" className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-600 transition hover:border-blue-300 hover:text-blue-700">
-                            資料庫
-                        </a>
-                        <button
-                            type="button"
-                            onClick={() => window.print()}
-                            className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-600 transition hover:border-blue-300 hover:text-blue-700 sm:flex"
-                        >
-                            <PrintIcon />
-                            印刷
-                        </button>
-                        <form action="/api/plus/auth/logout/" method="post">
-                            <button type="submit" className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-500 transition hover:border-slate-300 hover:text-slate-700">
-                                ログアウト
-                            </button>
-                        </form>
-                    </nav>
-                </div>
-            </header>
-
-            <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 print:px-0">
+        <div className="bg-slate-50 print:bg-white">
+            <div className="mx-auto w-full max-w-7xl print:px-0">
                 <section className="rounded-lg border border-blue-100 bg-white p-5 shadow-sm print:border-slate-300 print:shadow-none">
                     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
                         <div>
                             <p className="text-sm font-black text-blue-700">自主トレ素材庫Plus</p>
-                            <h1 className="mt-2 text-2xl font-black leading-tight text-slate-950 sm:text-3xl jp-heading">
+                            <h2 className="mt-2 text-2xl font-black leading-tight text-slate-950 sm:text-3xl jp-heading">
                                 {activeFeeData.domainLabel}の算定要件を確認する
-                            </h1>
+                            </h2>
                             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
                                 単位数・算定要件・記録に残すこと・自己点検で見るポイントを、同じ型で確認できます。
                                 厚生労働省の告示・通知・疑義解釈へのリンクも各項目にまとめています。
@@ -371,13 +336,13 @@ export function FeeCheckTool() {
                 </section>
 
                 <section className="mt-5 rounded-lg border border-slate-200 bg-white p-4 shadow-sm print:hidden">
-                    <div className="mb-3 flex flex-wrap gap-2">
-                        {feeDomains.map((domain) => (
+                    <div className="-mx-1 mb-3 flex gap-2 overflow-x-auto px-1 pb-1" role="group" aria-label="確認する分野">
+                        {domains.map((domain) => (
                             <button
                                 key={domain.domain}
                                 type="button"
                                 onClick={() => handleDomainChange(domain.domain)}
-                                className={`rounded-full border px-3 py-2 text-sm font-black transition ${
+                                className={`shrink-0 rounded-full border px-3 py-2 text-sm font-black transition ${
                                     activeFeeData.domain === domain.domain
                                         ? "border-blue-700 bg-blue-700 text-white"
                                         : "border-slate-200 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700"
@@ -398,6 +363,7 @@ export function FeeCheckTool() {
                                 type="search"
                                 value={query}
                                 onChange={(event) => setQuery(event.target.value)}
+                                aria-label="報酬項目を検索"
                                 placeholder="名称・要件・記録内容で検索"
                                 className="h-11 w-full rounded-md border border-slate-200 bg-white pl-10 pr-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
                             />
@@ -439,24 +405,34 @@ export function FeeCheckTool() {
                     </div>
                 </section>
 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                     <p className="text-sm font-bold text-slate-500">
                         表示中 <span className="text-slate-900">{filteredItems.length}</span> / {activeFeeData.items.length}項目
                     </p>
-                    {(query || insurance !== ALL || category !== ALL || changedOnly) && (
+                    <div className="flex items-center gap-3 print:hidden">
+                        {(query || insurance !== ALL || category !== ALL || changedOnly) && (
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setQuery("");
+                                    setInsurance(ALL);
+                                    setCategory(ALL);
+                                    setChangedOnly(false);
+                                }}
+                                className="text-sm font-bold text-blue-700 hover:underline"
+                            >
+                                絞り込みを解除
+                            </button>
+                        )}
                         <button
                             type="button"
-                            onClick={() => {
-                                setQuery("");
-                                setInsurance(ALL);
-                                setCategory(ALL);
-                                setChangedOnly(false);
-                            }}
-                            className="text-sm font-bold text-blue-700 hover:underline print:hidden"
+                            onClick={() => window.print()}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-blue-300 hover:text-blue-700"
                         >
-                            絞り込みを解除
+                            <PrintIcon />
+                            印刷
                         </button>
-                    )}
+                    </div>
                 </div>
 
                 <div className="mt-4 space-y-4">
@@ -468,7 +444,7 @@ export function FeeCheckTool() {
                         filteredItems.map((item) => <FeeCard key={item.id} item={item} disclaimer={activeFeeData.disclaimer} />)
                     )}
                 </div>
-            </main>
+            </div>
         </div>
     );
 }

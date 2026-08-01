@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FilteredItemList } from "@/components/FilteredItemList";
 import { LineBanner } from "@/components/LineBanner";
+import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
@@ -224,6 +225,13 @@ export function SeoItemCategoryPage({
                                 関連する{items.length}点を掲載しています。
                                 {config.listDescription}
                             </p>
+                        </div>
+
+                        <div className="mb-6 sm:mb-8">
+                            <PlusRealPreviewBand
+                                variant="band"
+                                location="category_plus_band"
+                            />
                         </div>
 
                         <FilteredItemList

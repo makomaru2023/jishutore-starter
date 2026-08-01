@@ -26,7 +26,7 @@ const tokutenRow1: TokutenItem[] = [
 const tokutenRow2: TokutenItem[] = [
     { label: "お薬・リハビリ記録ノート", preview: "/line-tokuten/previews/medicine-rehab-record-weekly.jpg", ready: true },
     { label: "退院後の生活Q&A集", preview: "/line-tokuten/previews/post-discharge-qa.jpg", ready: true },
-    { label: "腰痛 自主トレメニュー（資料セットサンプル）", preview: "/line-tokuten/previews/low-back-pain-jishutore.jpg", ready: true },
+    { label: "腰痛 自主トレメニュー（Plus収録サンプル）", preview: "/line-tokuten/previews/low-back-pain-jishutore.jpg", ready: true },
 ];
 
 function LineIcon({ className }: { className: string }) {

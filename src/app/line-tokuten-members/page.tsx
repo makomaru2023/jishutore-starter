@@ -71,8 +71,8 @@ const tokutenList: Tokuten[] = [
     },
     {
         icon: "🦵",
-        title: "腰痛 自主トレメニュー（資料セットサンプル）",
-        description: "「疾患別自主トレ資料セット」（¥980）から腰痛編 1 冊（全 12 ページ）を丸ごとお試しでプレゼント。気に入っていただけたら、残り 8 疾患入りの資料セットもどうぞ。",
+        title: "腰痛 自主トレメニュー（Plus収録サンプル）",
+        description: "自主トレ素材庫Plusに収録している疾患別完成デッキから、腰痛編1冊（全12ページ）を無料サンプルとしてお試しいただけます。",
         files: [
             { label: "PDF（印刷用）", href: "/line-tokuten/low-back-pain-jishutore.pdf" },
             { label: "PowerPoint（編集用）", href: "/line-tokuten/low-back-pain-jishutore.pptx" },

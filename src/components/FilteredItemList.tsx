@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
-import { ProductInlineAd, ProductAdType } from '@/components/ProductInlineAd';
+import { ProductInlineAd } from '@/components/ProductInlineAd';
 
 export interface CategoryFilter {
     key: string;
@@ -76,9 +76,6 @@ const INLINE_AD_MIN_ITEMS = 12;
 // 広告のあとに残るカードがこの枚数未満なら、その広告は省く（末尾広告の防止）
 const TRAILING_GUARD = 4;
 
-// 表示順：疾患別資料 → Plus → 姿勢別資料 → 繰り返し
-const AD_TYPE_ORDER: ProductAdType[] = ['condition', 'plus', 'posture'];
-
 /** items の配列から、widget広告を一定間隔で挟んだ ReactNode[] を作る純関数。 */
 function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): ReactNode[] {
     const out: ReactNode[] = [];
@@ -89,8 +86,7 @@ function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): R
         if (canShowAds && i > 0 && i % LOAD_MORE_COUNT === 0) {
             const remaining = items.length - i;
             if (remaining >= TRAILING_GUARD) {
-                const type = AD_TYPE_ORDER[(i / LOAD_MORE_COUNT) % AD_TYPE_ORDER.length] ?? 'condition';
-                out.push(<ProductInlineAd key={`${keyPrefix}ad-batch-${i}-${type}`} type={type} />);
+                out.push(<ProductInlineAd key={`${keyPrefix}ad-batch-${i}-plus`} type="plus" />);
             }
         }
 
@@ -101,7 +97,7 @@ function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): R
         if (pos === FIRST_AD_AFTER) {
             const remaining = items.length - pos;
             if (remaining >= TRAILING_GUARD) {
-                out.push(<ProductInlineAd key={`${keyPrefix}ad-initial-condition`} type="condition" />);
+                out.push(<ProductInlineAd key={`${keyPrefix}ad-initial-plus`} type="plus" />);
             }
         }
     });

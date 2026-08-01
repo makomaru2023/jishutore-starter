@@ -5,21 +5,37 @@ import { normalizeEmail } from "@/lib/plus-auth";
 /**
  * 自主トレ素材庫Plus のサブスク制御（Stripe が真実の情報源）。
  *
- * 料金は「時期・素材点数のマイルストーンで現在価格を切り替える」方式。
- *   7月登録 = ¥500 / 8月〜 = ¥680 / 200点到達 = ¥780 / 300点到達 = ¥980
+ * 料金は「現在価格を環境変数で切り替える」方式。
+ *   2026年7月登録 = ¥500（先行） / 2026年8月1日〜 = ¥980（全部入り一本化後の新規価格）
  * 契約ごとに価格がロックされるため、既存会員は登録時の価格のまま永久据え置き。
  *
- * - 新規に売る価格 = 環境変数 STRIPE_PRICE_ID_PLUS_CURRENT の1本だけ。
+ * - 新規に売る価格 = 環境変数 STRIPE_PRICE_ID_PLUS_CURRENT（月払い）と
+ *   STRIPE_PRICE_ID_PLUS_CURRENT_YEARLY（年払い）の2本だけ。
  *   値上げのたびにこの環境変数を新しい価格IDに差し替える（コード変更不要）。
  * - 会員かどうかの判定 = 「Plus商品群（STRIPE_PRODUCT_IDS_PLUS）に属する価格の
- *   有効サブスクを持っているか」。過去/未来どの価格帯の会員でも通る。
+ *   有効サブスクを持っているか」。月払い/年払い・過去/未来どの価格帯の会員でも通る。
+ *   ＝ 年額価格は必ず既存の Plus 商品配下に作ること（別商品にすると会員判定から漏れる）。
  */
 
-/** 現在、新規登録者に適用する価格ID（例：7月は¥500）。 */
+/** 申し込みプラン。年払いは価格IDが設定されている場合のみ選べる。 */
+export type PlusPlan = "monthly" | "yearly";
+
+export function isPlusPlan(value: unknown): value is PlusPlan {
+    return value === "monthly" || value === "yearly";
+}
+
+/** 現在、新規登録者に適用する月払いの価格ID（例：7月は¥500）。 */
 export const PLUS_CURRENT_PRICE =
     process.env.STRIPE_PRICE_ID_PLUS_CURRENT ||
     process.env.STRIPE_PRICE_ID_PLUS_FOUNDING || // 旧設定からのフォールバック
     undefined;
+
+/** 現在、新規登録者に適用する年払いの価格ID（未設定なら年払いは売らない）。 */
+export const PLUS_CURRENT_PRICE_YEARLY =
+    process.env.STRIPE_PRICE_ID_PLUS_CURRENT_YEARLY || undefined;
+
+/** 年払いが購入可能か（サーバー側の実態）。 */
+export const isPlusYearlyAvailable = () => Boolean(PLUS_CURRENT_PRICE_YEARLY);
 
 /** アクセスを許可する契約ステータス（支払い遅延中も猶予として許可）。 */
 const ACTIVE_STATUSES = new Set(["active", "trialing", "past_due"]);
@@ -47,10 +63,16 @@ export function isPlusPriceObject(price: Stripe.Price | null | undefined): boole
     return pid ? PLUS_PRODUCT_IDS.has(pid) : false;
 }
 
-/** 新規登録者に割り当てる価格を返す（現在価格1本）。 */
-export async function pickPlusPrice(): Promise<{ priceId: string } | null> {
-    if (!PLUS_CURRENT_PRICE) return null;
-    return { priceId: PLUS_CURRENT_PRICE };
+/**
+ * 新規登録者に割り当てる価格を返す（プランごとに現在価格1本）。
+ * 年払いを指定されても価格IDが未設定なら null を返す（月払いへの黙った差し替えはしない）。
+ */
+export async function pickPlusPrice(
+    plan: PlusPlan = "monthly",
+): Promise<{ priceId: string; plan: PlusPlan } | null> {
+    const priceId = plan === "yearly" ? PLUS_CURRENT_PRICE_YEARLY : PLUS_CURRENT_PRICE;
+    if (!priceId) return null;
+    return { priceId, plan };
 }
 
 export interface ActivePlusSubscription {

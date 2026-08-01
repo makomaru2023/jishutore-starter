@@ -5,15 +5,9 @@ import { Testimonials } from "@/components/Testimonials";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
-import { CheckoutButton } from "@/components/CheckoutButton";
+import { PlusMergedCta } from "@/components/PlusMergedCta";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
-import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
-
-const PRODUCT_ID = "home-elderly-self-training";
-const PRODUCT_NAME = "姿勢別自主トレPowerPointセット";
-const PRICE = 980;
-const CHECKOUT_READY = Boolean(POSTURE_SELF_TRAINING_PRICE_ID);
 
 // 本文用：英単語（PowerPoint/PDF/Stripe など）は途中で切らず、日本語は自然に折り返す。
 const JP_TEXT = "jp-text";
@@ -23,7 +17,7 @@ const JP_HEADING = "jp-heading";
 export const metadata: Metadata = {
     title: "今できる姿勢から選べる 姿勢別自主トレPowerPointセット｜自主トレ素材庫",
     description:
-        "座位・立位・臥位など、対象者の「今できる姿勢」から選べる自主トレ資料セット。訪問リハ・通所リハ・退院前指導で使いやすいPowerPoint資料です。編集OK・印刷配布OK。",
+        "座位・立位・臥位など、対象者の「今できる姿勢」から選べる自主トレ資料セット。現在は自主トレ素材庫Plusに収録されています。訪問リハ・通所リハ・退院前指導で使いやすいPowerPoint資料です。",
     alternates: {
         canonical:
             "https://jishutore-sozaiko.online/products/home-elderly-self-training/",
@@ -53,7 +47,7 @@ const HERO_BADGES = [
     "訪問リハ・通所リハ向け",
     "PowerPoint編集OK",
     "PDF印刷OK",
-    "買い切り",
+    "Plusに収録",
 ];
 
 const PAIN_POINTS = [
@@ -183,9 +177,6 @@ const FAQS = [
     },
 ];
 
-const CHECKOUT_CLASS =
-    "flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-4 text-center text-base font-black text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
-
 function SectionHeading({
     title,
     kicker,
@@ -234,21 +225,8 @@ function CheckList({ items }: { items: string[] }) {
     );
 }
 
-function ProductCheckoutButton({
-    label = "980円で購入する",
-}: {
-    label?: string;
-}) {
-    return (
-        <CheckoutButton
-            productId={PRODUCT_ID}
-            productName={PRODUCT_NAME}
-            price={PRICE}
-            label={label}
-            disabled={!CHECKOUT_READY}
-            className={CHECKOUT_CLASS}
-        />
-    );
+function ProductCheckoutButton() {
+    return <PlusMergedCta />;
 }
 
 function ComparisonSection() {
@@ -355,6 +333,7 @@ export default function HomeElderlySelfTrainingPage() {
     return (
         <div className="flex min-h-screen flex-col overflow-x-hidden bg-white">
             <Header />
+            <PlusMergedCta variant="banner" />
             <main className="flex-1">
                 <section className="bg-gradient-to-b from-blue-50 via-white to-white py-12 sm:py-16 lg:py-20">
                     <div className="mx-auto grid grid-cols-1 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8">
@@ -546,9 +525,9 @@ export default function HomeElderlySelfTrainingPage() {
                 <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                         <div className="rounded-3xl border border-blue-100 bg-blue-50 p-6 text-center shadow-sm sm:p-10">
-                            <p className="text-xs font-black tracking-widest text-blue-600">PRICE</p>
-                            <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-5xl">980円</h2>
-                            <p className="mt-2 text-sm font-bold text-slate-600">税込・買い切り</p>
+                            <p className="text-xs font-black tracking-widest text-blue-600">PLUSに収録</p>
+                            <h2 className="mt-3 text-2xl font-black text-slate-900 sm:text-4xl">自主トレ素材庫Plusで利用できます</h2>
+                            <p className="mt-2 text-sm font-bold text-slate-600">個別販売は終了しました</p>
                             <div className="mt-5 flex flex-wrap justify-center gap-2">
                                 {["PowerPoint形式", "PDF印刷用", "編集OK", "印刷配布OK", "追加料金なし"].map((item) => (
                                     <span key={item} className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-blue-700 shadow-sm">
@@ -568,12 +547,12 @@ export default function HomeElderlySelfTrainingPage() {
 
                 <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading kicker="FLOW" title="購入後の流れ" />
+                        <SectionHeading kicker="FLOW" title="利用までの流れ" />
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                             {[
-                                ["1", "サイト内でStripe決済"],
-                                ["2", "決済完了後、ダウンロードページへ移動"],
-                                ["3", "PowerPoint資料・PDF資料をダウンロードして使用"],
+                                ["1", "自主トレ素材庫Plusに登録"],
+                                ["2", "会員ページ（資料庫）を開く"],
+                                ["3", "完成デッキをZIPでダウンロードして使用"],
                             ].map(([step, text]) => (
                                 <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                                     <span className="text-sm font-black text-blue-600">STEP {step}</span>

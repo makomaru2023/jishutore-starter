@@ -44,6 +44,19 @@ export default function SlidePromptLoginPage() {
           </div>
 
           <LoginForm />
+
+          <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-4 text-left">
+            <p className="text-xs font-black text-blue-800">自主トレ素材庫Plus会員の方へ</p>
+            <p className="mt-1 text-xs font-medium leading-relaxed text-blue-900/70">
+              パスワードは不要です。Plusにログインすると、会員ページ（資料庫）からそのままこのツールをご利用いただけます。
+            </p>
+            <a
+              href="/plus/login/"
+              className="mt-2 inline-flex text-xs font-black text-blue-700 underline underline-offset-2 hover:text-blue-500"
+            >
+              Plusログインへ
+            </a>
+          </div>
           </div>
         </div>
       </main>

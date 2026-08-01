@@ -1,8 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FREE_MATERIAL_COUNT } from '@/constants/content-counts';
-import { PRODUCT_AD_CONFIG, ProductAdType, trackProductAdClick } from './ProductInlineAd';
+import { PRODUCT_AD_CONFIG, trackProductAdClick } from './ProductInlineAd';
 
 const ArrowIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
@@ -11,77 +10,34 @@ const ArrowIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
 );
 
 /**
- * /items/ ページ上部の有料商品導線。
- * 疾患別LP・姿勢別LPへ直接飛ばす2CTA構成。
+ * /items/ ページ上部で使えるPlus専用導線。
+ * 旧・疾患別／姿勢別商品の再掲を防ぐため、リンク先とコピーをPlusに統一する。
  */
 export function ProductDualCta() {
-    const order: ProductAdType[] = ['condition', 'posture'];
+    const cfg = PRODUCT_AD_CONFIG.plus;
 
     return (
-        <section className="w-full">
+        <section className="w-full min-w-0">
             <div className="rounded-3xl border border-blue-100 bg-white px-5 py-6 shadow-sm sm:px-8 sm:py-8">
-                <div className="mb-5 text-center sm:mb-6">
-                    <p className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-[11px] font-bold tracking-wider text-blue-700">
-                        POWERPOINT 資料セット（980円・買い切り）
+                <div className="mx-auto max-w-2xl text-center">
+                    <p className="mb-2 inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-[11px] font-bold tracking-wider text-blue-700">
+                        自主トレ素材庫Plus
                     </p>
-                    <h2 className="mb-2 text-lg font-black leading-snug text-slate-900 sm:text-xl">
-                        無料イラストだけでは、説明資料づくりに時間がかかる方へ
+                    <h2 className="text-lg font-black leading-snug text-slate-900 sm:text-xl">
+                        資料づくりも、算定確認も、Plusひとつで
                     </h2>
-                    <p className="mx-auto max-w-2xl text-sm font-medium leading-relaxed text-slate-600 break-keep">
-                        自主トレ素材庫では、{FREE_MATERIAL_COUNT}点の無料素材に加えて、患者さんにそのまま渡しやすいPowerPoint資料セットも用意しています。疾患名から選べる資料と、今できる姿勢から選べる資料を用途に合わせて使い分けできます。
+                    <p className="jp-text mt-2 text-sm font-medium leading-relaxed text-slate-600">
+                        {cfg.description}
                     </p>
-                </div>
-
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-                    {order.map((type) => {
-                        const cfg = PRODUCT_AD_CONFIG[type];
-                        return (
-                            <Link
-                                key={type}
-                                href={cfg.href}
-                                onClick={() => trackProductAdClick(type, 'items_top_cta')}
-                                className="group flex min-w-0 items-center justify-between gap-3 rounded-2xl border border-blue-100 bg-blue-50/40 px-4 py-4 transition-all hover:border-blue-200 hover:bg-blue-50 sm:px-5 sm:py-5"
-                            >
-                                <div className="min-w-0 flex-1">
-                                    <p className="text-[11px] font-bold tracking-wider text-blue-600">
-                                        {type === 'condition' ? '疾患名から選ぶ' : '姿勢から選ぶ'}
-                                    </p>
-                                    <p className="mt-1 text-sm font-black leading-snug text-slate-900 sm:text-base">
-                                        {cfg.buttonLabel}
-                                    </p>
-                                </div>
-                                <ArrowIcon className="h-4 w-4 flex-shrink-0 text-blue-600 transition-transform group-hover:translate-x-0.5" />
-                            </Link>
-                        );
-                    })}
-                </div>
-
-                <p className="mt-3 text-center text-[11px] font-medium text-slate-400">
-                    どちらも無料イラストはそのまま使えます
-                </p>
-
-                {/* 2点まとめ買いの補助訴求 */}
-                <Link
-                    href="/products"
-                    onClick={() => trackProductAdClick('condition', 'items_top_bundle_cta')}
-                    className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-amber-50/40 px-4 py-3 transition-colors hover:bg-amber-50"
-                >
-                    <div className="min-w-0 flex-1">
-                        <p className="text-[11px] font-black tracking-widest text-amber-800">
-                            ★ 両方使いたい方へ
-                        </p>
-                        <p className="mt-0.5 text-xs font-bold text-slate-800 sm:text-sm break-keep">
-                            Plusや買い切り資料は有料コンテンツ一覧で確認できます
-                        </p>
-                    </div>
-                    <ArrowIcon className="h-3.5 w-3.5 flex-shrink-0 text-amber-700" />
-                </Link>
-
-                <p className="mt-3 text-center text-[11px] text-slate-400">
-                    <Link href="/products" className="underline decoration-dotted underline-offset-2 hover:text-blue-600">
-                        すべての商品を見る
+                    <Link
+                        href={cfg.href}
+                        onClick={() => trackProductAdClick('plus', 'items_top_cta')}
+                        className="mt-5 inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-center text-sm font-bold leading-5 text-white transition hover:bg-blue-500"
+                    >
+                        {cfg.buttonLabel}
+                        <ArrowIcon className="h-4 w-4 flex-shrink-0" />
                     </Link>
-                </p>
+                </div>
             </div>
         </section>
     );

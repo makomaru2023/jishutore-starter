@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedPlusMemberLink } from "@/components/TrackedPlusMemberLink";
 
 export function Footer() {
     return (
@@ -17,9 +18,12 @@ export function Footer() {
                         >
                             運営者のnote
                         </a>
-                        <Link href="/products" className="hover:text-white transition-colors">
-                            有料コンテンツ
-                        </Link>
+                        <TrackedPlusMemberLink
+                            placement="footer"
+                            className="transition-colors hover:text-white"
+                        >
+                            会員ログイン
+                        </TrackedPlusMemberLink>
                         <Link href="/fee-check" className="hover:text-white transition-colors">
                             報酬チェック
                         </Link>

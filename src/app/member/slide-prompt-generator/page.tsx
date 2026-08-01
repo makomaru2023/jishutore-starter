@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SlidePromptGenerator } from "@/components/member/slide-prompt-generator/SlidePromptGenerator";
+import { hasActivePlusAccess } from "@/lib/plus-access";
 
 export const metadata: Metadata = {
   title: "伝わるプロンプト工房｜自主トレ素材庫",
@@ -10,7 +13,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function SlidePromptGeneratorPage() {
+export default async function SlidePromptGeneratorPage() {
+  // 買い切り購入者（パスワードCookie）は従来どおり。Plus会員はStripeの有効契約まで確認する
+  // （middlewareはJWT署名しか見ないため、解約者はここで弾く）。
+  const expected = process.env.SLIDE_PROMPT_COOKIE_VALUE;
+  const slideCookie = (await cookies()).get("slide_prompt_access")?.value;
+  const isPurchaser = Boolean(expected) && slideCookie === expected;
+  if (!isPurchaser && !(await hasActivePlusAccess())) {
+    redirect("/member/slide-prompt-generator/login/");
+  }
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -22,7 +33,7 @@ export default function SlidePromptGeneratorPage() {
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                   <path d="M10 1.5 12.5 7l5.5.5-4.2 3.7 1.3 5.4L10 13.8 4.9 16.6l1.3-5.4L2 7.5 7.5 7 10 1.5Z" />
                 </svg>
-                購入者専用ツール
+                会員専用ツール
               </p>
               <h1 className="flex max-w-3xl flex-wrap gap-x-3 text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
                 <span className="inline-block">伝わる</span>

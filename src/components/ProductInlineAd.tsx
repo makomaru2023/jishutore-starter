@@ -2,16 +2,14 @@
 
 import Link from 'next/link';
 import {
-    formatYen,
-    PLUS_DISPLAY_PRICE_YEN,
-    PLUS_PROMO_DEADLINE_LABEL,
-    PLUS_PROMO_IS_ACTIVE,
-} from '@/constants/plus-pricing';
-import {
     FEE_CHECK_DOMAIN_COUNT,
     FEE_CHECK_ITEM_COUNT,
     PLUS_SLIDE_COUNT_PUBLIC,
 } from '@/constants/public-counts';
+import {
+    formatYen,
+    PLUS_PROMO_CURRENT_PRICE_YEN,
+} from '@/constants/plus-pricing';
 
 declare global {
     interface Window {
@@ -19,7 +17,7 @@ declare global {
     }
 }
 
-export type ProductAdType = 'condition' | 'plus' | 'posture';
+export type ProductAdType = 'plus';
 
 interface ProductAdConfig {
     label: string;
@@ -34,43 +32,17 @@ interface ProductAdConfig {
 }
 
 export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
-    condition: {
-        label: '資料セット',
-        title: '疾患別に使えるPowerPoint資料もあります',
-        description:
-            '脳卒中・腰痛・膝OA・術後など、疾患ごとの自主トレ説明を時短したい方向け。無料イラストを1枚ずつ貼る時間がない方に、編集できる資料セットを用意しています。',
-        href: '/products/self-training-materials/',
-        price: '¥980',
-        priceNote: '買い切り',
-        buttonLabel: '疾患別セットを見る',
-        note: 'PowerPoint編集OK・PDF印刷用つき',
-        itemName: '疾患別自主トレ資料セット',
-    },
     plus: {
         label: '自主トレ素材庫Plus',
-        title: '資料作成と診療・介護報酬チェックを、ひとつのサービスで',
+        title: '資料づくりも、算定確認も、Plusひとつで',
         description:
-            `${PLUS_SLIDE_COUNT_PUBLIC}点の編集できるPowerPointスライドと、全${FEE_CHECK_DOMAIN_COUNT}分野・${FEE_CHECK_ITEM_COUNT}項目の診療・介護報酬チェックを利用できます。記録・自己点検・つまずきやすい点まで確認したい方へ。`,
+            `${PLUS_SLIDE_COUNT_PUBLIC}点の編集できる運動スライド、疾患別・姿勢別の完成デッキ、伝わるプロンプト工房、全${FEE_CHECK_DOMAIN_COUNT}分野・${FEE_CHECK_ITEM_COUNT}項目の診療・介護報酬チェックを利用できます。`,
         href: '/products/jishutore-plus/',
-        price: `月額${formatYen(PLUS_DISPLAY_PRICE_YEN)}`,
-        priceNote: PLUS_PROMO_IS_ACTIVE
-            ? `${PLUS_PROMO_DEADLINE_LABEL}の登録は据え置き`
-            : '登録中は据え置き',
+        price: `月額${formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}`,
+        priceNote: 'いつでも解約OK',
         buttonLabel: 'Plusの内容を見る',
-        note: 'PowerPoint編集＋診療・介護報酬の実務チェック',
+        note: 'PowerPoint編集・完成デッキ・会員ツール・報酬チェック',
         itemName: '自主トレ素材庫Plus',
-    },
-    posture: {
-        label: '資料セット',
-        title: '今できる姿勢から選べる資料もあります',
-        description:
-            '座位・立位・臥位など、利用者さんの状態に合わせて運動を選びたい方向け。訪問リハ・通所リハ・在宅高齢者の自主トレ指導に使いやすい資料セットです。',
-        href: '/products/home-elderly-self-training/',
-        price: '¥980',
-        priceNote: '買い切り',
-        buttonLabel: '姿勢別セットを見る',
-        note: 'PowerPoint編集OK・PDF印刷用つき',
-        itemName: '姿勢別自主トレ指導資料セット',
     },
 };
 
@@ -110,17 +82,17 @@ export function ProductInlineAd({ type, location = 'items_inline_ad' }: ProductI
     const cfg = PRODUCT_AD_CONFIG[type];
 
     return (
-        <div className="col-span-full">
-            <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-white shadow-sm hover:shadow-md transition-shadow">
+        <div className="col-span-full min-w-0 max-w-full">
+            <div className="min-w-0 max-w-full rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-white shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex flex-col gap-5 px-5 py-6 sm:px-7 sm:py-7 md:flex-row md:items-center md:gap-8">
                     {/* 左ブロック: ラベル＋価格 */}
-                    <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-2 md:w-44 md:flex-shrink-0">
+                    <div className="flex min-w-0 flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3 md:w-44 md:flex-shrink-0 md:flex-col md:items-start md:gap-2">
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
                             {cfg.label}
                         </span>
-                        <div className="flex items-baseline gap-1.5">
+                        <div className="flex min-w-0 flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
                             <span className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">{cfg.price}</span>
-                            <span className="text-xs font-bold text-slate-400">{cfg.priceNote}</span>
+                            <span className="text-xs font-bold leading-5 text-slate-400">{cfg.priceNote}</span>
                         </div>
                     </div>
 
@@ -129,7 +101,7 @@ export function ProductInlineAd({ type, location = 'items_inline_ad' }: ProductI
                         <h3 className="mb-2 text-base font-black leading-snug text-slate-900 sm:text-lg">
                             {cfg.title}
                         </h3>
-                        <p className="text-sm font-medium leading-relaxed text-slate-600 break-keep">
+                        <p className="jp-text text-sm font-medium leading-relaxed text-slate-600">
                             {cfg.description}
                         </p>
                         <p className="mt-2 text-xs font-bold text-slate-500">
@@ -142,7 +114,7 @@ export function ProductInlineAd({ type, location = 'items_inline_ad' }: ProductI
                         <Link
                             href={cfg.href}
                             onClick={() => trackProductAdClick(type, location)}
-                            className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-sm shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-md sm:w-auto"
+                            className="inline-flex max-w-full w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-center text-sm font-bold leading-5 text-white shadow-sm shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-md sm:w-auto sm:whitespace-nowrap"
                         >
                             {cfg.buttonLabel}
                             <ArrowIcon className="h-4 w-4" />
