@@ -350,7 +350,8 @@ export function PlusLibrary({
                 <PlusDeckDownloads feeDomainCount={feeDomainCount} feeItemCount={feeItemCount} />
                 <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-6">
                     {/* ───────── 左：フィルタ＋カード一覧 ───────── */}
-                    <div className="min-w-0">
+                    {/* id は TOPICS の「資料が増えました」から一覧へ飛ばすためのアンカー */}
+                    <div id="plus-slides" className="min-w-0 scroll-mt-24">
                         {/* カテゴリチップ＋検索 */}
                         <div className="mb-4 space-y-3">
                             <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">

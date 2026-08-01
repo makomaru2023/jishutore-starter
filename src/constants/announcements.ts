@@ -63,7 +63,8 @@ export const ANNOUNCEMENTS: readonly Announcement[] = [
         kind: "material",
         title: "Plusの収録スライドを227点に増やしました（+40点）",
         body: "口腔・呼吸の体操、入浴や更衣などのADL動作、二重課題、運動中止の目安といった指導用の40点を、そのまま編集できるPowerPoint形式で追加しました。",
-        href: "/plus/library/",
+        // 同じページ内の資料一覧へ飛ばす（TOPICSは資料庫の最上部にあるため）
+        href: "/plus/library/#plus-slides",
         audience: ["plus"],
     },
     {
