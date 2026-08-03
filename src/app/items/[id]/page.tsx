@@ -45,12 +45,26 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const imageUrl = getItemImageUrl(item.previewSrc);
     const absoluteImageUrl = new URL(imageUrl, 'https://jishutore-sozaiko.online').toString();
 
-    // SEO-optimized title and description
-    const pageTitle = `${title}のイラスト【無料・商用OK】｜自主トレ素材庫`;
+    // 文字あり版は titleJa に既に【文字あり】が入っているため、検索結果用の
+    // タイトルからは外して組み直す（重ねると全角34字超で末尾が切られる）。
+    // 文字あり/文字なしはほぼ同内容の2ページなので、検索結果で選べるよう
+    // 「説明文つき」かどうかで見出しを分ける。
+    const isTextVariant = item.id.endsWith("-premium-text");
+    const baseTitle = title.replace(/【文字あり】/g, "").trim();
+
+    // 「無料」は検索語に含まれることが多いので、切られない前方に置く。
+    const pageTitle = isTextVariant
+        ? `${baseTitle}のイラスト｜無料・説明文つき｜自主トレ素材庫`
+        : `${baseTitle}のイラスト｜無料・商用OK｜自主トレ素材庫`;
+
+    // 説明文は前半80字ほどしか表示されないため、差別化要素を先頭に置く。
+    const leadDescription = isTextVariant
+        ? `${baseTitle}の自主トレイラスト（回数・ポイントの説明文つき）を無料ダウンロード。印刷してそのまま患者さんにお渡しできます。`
+        : `${baseTitle}の自主トレイラストを無料ダウンロード。商用OK・登録不要のPNGです。`;
 
     const metaDescription = item.description
-        ? `${title}の自主トレイラストを無料ダウンロード。${item.description}リハビリ指導・患者配布資料にそのまま使えます。商用利用OK・登録不要。`
-        : `${title}の自主トレイラストを無料ダウンロード。PT・OT・STの指導資料・患者配布用にそのまま使えます。商用利用OK・登録不要。`;
+        ? `${leadDescription}${item.description}`
+        : `${leadDescription}PT・OT・STの指導資料・患者配布用にそのままお使いいただけます。`;
 
     return {
         title: pageTitle,
