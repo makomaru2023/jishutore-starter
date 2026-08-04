@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen:items:csv": "tsx scripts/items-from-csv.ts"
+    "gen:items:csv": "tsx scripts/items-from-csv.ts",
+    "indexnow": "tsx scripts/indexnow.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.937.0",
