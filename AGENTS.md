@@ -189,12 +189,14 @@ R2 関連スクリプトの実行に必要。`.env.local` に設定済み（Git 
 `package.json` の `scripts`:
 - `dev` / `build` / `start` / `lint`
 - `gen:items:csv` → `tsx scripts/items-from-csv.ts`
+- `indexnow` → `tsx scripts/indexnow.ts`
 
 `scripts/` 内の各ファイル:
 
 | スクリプト | 内容 | 現状 |
 |---|---|---|
 | `list-recent-r2.ts` | R2の最近のキー20件を表示 | **使う**（新規キー確認） |
+| `indexnow.ts` | Bing/YahooへURL更新を即時通知（IndexNow） | **使う**（新素材の本番反映後に `npm run indexnow -- --items <ID...>`）。鍵は `public/<鍵>.txt` と対で管理。変更のないURLの再送は避ける |
 | `list-r2.ts` | R2の全オブジェクト表示 | 使う（全件確認） |
 | `items-from-csv.ts` | `data/items-basic-plain-text.csv` → `items.json` 生成 | **注意**：実行すると items.json を**上書き**し、`description` 等の手書きメタデータが消える。通常は使わない |
 | `sync-items-from-r2.ts` | R2を走査して items.json を自動生成 | 同上の理由で通常使わない（メタデータが消える） |
