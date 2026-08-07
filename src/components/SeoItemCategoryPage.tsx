@@ -13,6 +13,7 @@ import {
     type SeoItemCategoryConfig,
 } from "@/lib/seoItemCategories";
 import { getSeoCategoryItems } from "@/lib/seoCategoryMatching";
+import { getItemImageUrl } from "@/lib/items";
 
 const BASE_URL = "https://jishutore-sozaiko.online";
 
@@ -22,6 +23,16 @@ export function createSeoCategoryMetadata(
     config: SeoItemCategoryConfig,
 ): Metadata {
     const pageUrl = BASE_URL + "/items/" + config.slug + "/";
+
+    // OGP画像：カテゴリの代表イラスト（文字なし版を優先）を使う。
+    // 素材が無い場合のみサイト既定のOGP画像へフォールバック。
+    const categoryItems = getSeoCategoryItems(config);
+    const ogItem =
+        categoryItems.find((item) => !item.id.endsWith("-premium-text")) ??
+        categoryItems[0];
+    const ogImage = ogItem
+        ? getItemImageUrl(ogItem.previewSrc)
+        : BASE_URL + "/opengraph-image.png";
 
     return {
         title: config.metaTitle,
@@ -34,11 +45,13 @@ export function createSeoCategoryMetadata(
             description: config.metaDescription,
             url: pageUrl,
             type: "website",
+            images: [ogImage],
         },
         twitter: {
             card: "summary_large_image",
             title: config.metaTitle,
             description: config.metaDescription,
+            images: [ogImage],
         },
     };
 }
