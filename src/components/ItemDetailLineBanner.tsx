@@ -16,9 +16,11 @@ export function ItemDetailLineBanner() {
         <div className="rounded-2xl px-5 py-4" style={{ backgroundColor: "#06C755" }}>
             <div className="flex flex-col gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
                 <div className="min-w-0">
-                    <p className="text-sm font-black text-white">新作素材と無料資料をLINEでお知らせ</p>
-                    <p className="mt-0.5 text-xs font-medium text-white/85">
-                        月1〜2回、配布資料・新作・値上げ前のお知らせだけを送ります
+                    <p className="text-sm font-black text-white">
+                        患者さんに渡せる資料7点セットを無料配布
+                    </p>
+                    <p className="mt-0.5 break-keep text-xs font-medium text-white/85">
+                        チェックシート・記録ノート・退院後のQ&amp;A集など。お知らせは月1〜2回だけです
                     </p>
                 </div>
                 <a
@@ -32,7 +34,7 @@ export function ItemDetailLineBanner() {
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="#06C755">
                         <path d={LINE_SVG_PATH} />
                     </svg>
-                    LINEで受け取る（無料）
+                    7点セットを受け取る
                 </a>
             </div>
         </div>

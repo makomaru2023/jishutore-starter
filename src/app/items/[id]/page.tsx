@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailPlusCta } from "@/components/ItemDetailPlusCta";
+import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
 import { findPlusForFreeItem } from "@/lib/plus-match";
@@ -360,6 +361,11 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     plusReps={plusMatch?.reps}
                                     plusPreview={plusPreview}
                                 />
+
+                                {/* 無料のLINE導線はPlus CTAの直下に置く。ダウンロードした人の視界に入る位置で、
+                                    かつ有料導線より後ろ（無料オファーが先に出ると有料側を食うため）。
+                                    ページ最下部のLineBanner（フル版）まで到達しない層をここで拾う。 */}
+                                <ItemDetailLineBanner />
 
                                 {/* 運動のポイント・対象疾患（SEO・詳細情報）はダウンロード導線の下に配置。「画像→DL」を最短にするため本文上部から移動 */}
                                 <div className="bg-slate-50 p-5 md:p-6 rounded-2xl border border-slate-100 space-y-5">

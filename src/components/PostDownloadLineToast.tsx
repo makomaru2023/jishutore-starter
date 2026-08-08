@@ -93,8 +93,8 @@ export function PostDownloadLineToast() {
                             ダウンロードありがとうございます
                         </p>
                         <p className="mt-0.5 text-xs leading-relaxed text-slate-500">
-                            LINEでは月1〜2回、新作素材・無料資料・値上げ前のお知らせだけを送ります。
-                            編集できる資料はPlusでも選べます。
+                            患者さんにそのまま渡せる<strong className="font-black text-slate-700">資料7点セット</strong>を、LINEで無料配布しています。
+                            チェックシート・記録ノート・退院後のQ&amp;A集など。お知らせは月1〜2回だけです。
                         </p>
                         <div className="mt-3 flex flex-wrap items-center gap-2">
                             <a
@@ -108,7 +108,7 @@ export function PostDownloadLineToast() {
                                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="white">
                                     <path d={LINE_SVG_PATH} />
                                 </svg>
-                                LINEで受け取る
+                                7点セットを受け取る
                             </a>
                             <a
                                 href="/products/jishutore-plus/"
@@ -121,7 +121,7 @@ export function PostDownloadLineToast() {
                                 }
                                 className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black text-blue-700 transition-colors hover:bg-blue-100"
                             >
-                                Plusを見る
+                                編集できる版を見る
                             </a>
                             <button
                                 onClick={close}
