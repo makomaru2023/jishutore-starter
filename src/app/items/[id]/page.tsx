@@ -205,7 +205,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
             <main className="container mx-auto px-4 py-12 flex-1">
                 <nav
                     aria-label="パンくずリスト"
-                    className="mx-auto mb-6 max-w-6xl text-sm text-slate-500"
+                    className="mx-auto mb-6 max-w-4xl text-sm text-slate-500"
                 >
                     <Link
                         href="/"
@@ -241,11 +241,15 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                     <span className="text-slate-700">{title}</span>
                 </nav>
 
-                <div className="mx-auto max-w-6xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div className="md:flex">
+                <div className="mx-auto max-w-4xl bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+                    <div>
                         {/* Image Section with Watermark Protection */}
-                        {/* PCでは上ぞろえ（md:self-start）で画像を上部に固定。以前は本文カラムに合わせて縦に引き伸ばされ、画像が中央＝下に沈んでいた。 */}
-                        <div className="md:w-1/2 bg-slate-50 relative aspect-[4/3] md:aspect-video overflow-hidden p-6 md:p-10 md:self-start">
+                        {/* 2026-08-09：左右2カラムをやめ、画像を上・本文を下の1カラムに変更。
+                            旧レイアウトは画像を md:self-start で上部に固定していたため、
+                            本文（Plus CTA・LINE・運動のポイント）が右半分だけに縦長く伸び、
+                            左カラムに900px近い空白ができていた。
+                            画像は高さ固定＋bg-contain なので、縦横比に関わらず収まる。 */}
+                        <div className="relative h-[260px] overflow-hidden bg-slate-50 p-6 sm:h-[320px] md:h-[380px] md:p-10">
                             {/* 
                                 Protection Mechanism:
                                 1. The real image is set as a background image on a div.
@@ -268,7 +272,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-8 md:p-12 md:w-1/2 flex flex-col">
+                        <div className="flex flex-col p-8 md:p-12">
                             <div className="mb-6">
                                 <div className="mb-4 flex flex-wrap items-center gap-2">
                                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold bg-teal-50 text-teal-600 capitalize">
@@ -456,7 +460,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                 </div>
 
                 {/* 素材詳細ページの唯一のナーチャ導線：LINE（配布資料7点セット・新作通知） */}
-                <div className="mt-8 max-w-5xl mx-auto">
+                <div className="mt-8 max-w-4xl mx-auto">
                     <LineBanner />
                 </div>
             </main>
