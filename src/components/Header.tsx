@@ -9,6 +9,7 @@ import {
 } from "@/constants/plus-pricing";
 import { trackLineClick, trackPlusCtaClick } from "@/lib/analytics";
 import { TrackedPlusMemberLink } from "@/components/TrackedPlusMemberLink";
+import { PlusAnnouncementBar } from "@/components/PlusAnnouncementBar";
 
 const plusPriceLabel = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
 
@@ -22,6 +23,11 @@ export function Header() {
     const closeMenu = () => setIsMobileMenuOpen(false);
 
     return (
+        <>
+            {/* 全ページ最上部の告知バー。Headerに同梱することで27ページ分の個別設置が要らない。
+                Plus LP上では出さない（すでに料金が書いてあるページなので邪魔になるだけ）。
+                sticky な <header> の外に置くので、スクロールすると流れて消える。 */}
+            {!isPlusProductPage && <PlusAnnouncementBar />}
         <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900 text-white shadow-md">
             <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
                 <Link href="/" className="flex items-center gap-2 group">
@@ -145,5 +151,6 @@ export function Header() {
                 </div>
             )}
         </header>
+        </>
     );
 }
