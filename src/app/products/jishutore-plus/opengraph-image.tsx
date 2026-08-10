@@ -7,15 +7,15 @@ import {
     PLUS_PROMO_NEXT_PRICE_YEN,
 } from "@/constants/plus-pricing";
 
-export const alt = "資料づくりも、算定確認も、これひとつ。自主トレ素材庫Plus";
+export const alt = "算定確認も、資料づくりも、これひとつ。自主トレ素材庫Plus";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const includedItems = [
+    "診療・介護報酬チェック",
     "編集できる運動スライド",
     "疾患別・姿勢別の完成デッキ",
     "伝わるプロンプト工房",
-    "診療・介護報酬チェック",
 ];
 
 export default function PlusOpenGraphImage() {
@@ -61,7 +61,7 @@ export default function PlusOpenGraphImage() {
 
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <div style={{ display: "flex", fontSize: 54, fontWeight: 900, letterSpacing: "-2px" }}>
-                        資料づくりも、算定確認も、
+                        算定確認も、資料づくりも、
                     </div>
                     <div style={{ color: "#1d4ed8", display: "flex", fontSize: 74, fontWeight: 900, letterSpacing: "-3px", marginTop: 4 }}>
                         これひとつ。
@@ -100,7 +100,7 @@ export default function PlusOpenGraphImage() {
                     }}
                 >
                     <div style={{ display: "flex", fontSize: 21, fontWeight: 700 }}>
-                        PT・OT・ST個人向け
+                        リハ・介護現場の個人向け
                     </div>
                     <div style={{ alignItems: "baseline", display: "flex", gap: 14 }}>
                         <div style={{ display: "flex", fontSize: 35, fontWeight: 900 }}>

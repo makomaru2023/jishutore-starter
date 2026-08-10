@@ -42,8 +42,18 @@ const currentPriceLabel = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
 const nextPriceLabel = formatYen(PLUS_PROMO_NEXT_PRICE_YEN);
 const dailyPriceLabel = formatYen(Math.ceil(PLUS_PROMO_CURRENT_PRICE_YEN / 30));
 
-const OG_TITLE = "資料づくりも算定確認もこれひとつ｜自主トレ素材庫Plus";
-const HERO_DESCRIPTION = `編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料を選んでダウンロード。診療・介護報酬のチェックまで、同じ会員ページで終わります。`;
+const feeCheckItemCount = getFeeCheckTotalCount();
+const feeComboDomainCount = getComboDomains().length;
+const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel);
+const feeCheckSampleDomain = feeDomains.find((domain) => domain.domain === "homon-riha") ?? feeDomains[0];
+const feeCheckSampleItem =
+    feeCheckSampleDomain.items.find(
+        (item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain],
+    ) ?? feeCheckSampleDomain.items[0];
+const feeCheckSampleUnit = feeCheckSampleItem.units[0];
+
+const OG_TITLE = "算定確認も資料づくりもこれひとつ｜自主トレ素材庫Plus";
+const HERO_DESCRIPTION = `全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数から「記録に残すこと」まで確認できます。編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料もすぐ用意できます。`;
 const OG_DESCRIPTION = HERO_DESCRIPTION;
 
 export const metadata: Metadata = {
@@ -131,22 +141,7 @@ const heroSlides = [
         className: "left-1/2 top-[4%] z-30 w-[62%] -translate-x-1/2 sm:w-[66%]",
         priority: true,
     },
-    {
-        src: "/plus/previews/single-leg-stand.webp",
-        title: "片足立ち",
-        className: "right-[1%] top-[19%] z-20 w-[58%] rotate-3 sm:top-[17%] sm:w-[60%] sm:rotate-6",
-    },
 ] as const;
-
-const feeCheckItemCount = getFeeCheckTotalCount();
-const feeComboDomainCount = getComboDomains().length;
-const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel);
-const feeCheckSampleDomain = feeDomains.find((domain) => domain.domain === "homon-riha") ?? feeDomains[0];
-const feeCheckSampleItem =
-    feeCheckSampleDomain.items.find(
-        (item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain],
-    ) ?? feeCheckSampleDomain.items[0];
-const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
 const proofItems = [
     {
@@ -476,7 +471,7 @@ export default function JishutorePlusPage() {
                         <div className="text-center lg:text-left">
                             <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                                 <span className="rounded-full bg-slate-950 px-4 py-1.5 text-xs font-black text-white">
-                                    PT・OT・ST個人向け
+                                    リハ・介護現場の個人向け
                                 </span>
                                 {PLUS_PROMO_IS_ACTIVE && (
                                     <span className="rounded-full border border-amber-300 bg-amber-50 px-4 py-1.5 text-xs font-black text-amber-900">
@@ -489,7 +484,7 @@ export default function JishutorePlusPage() {
                                 自主トレ素材庫Plus
                             </p>
                             <h1 className="mt-3 text-4xl font-black leading-[1.12] tracking-tight text-slate-950 sm:text-5xl xl:text-[2.875rem]">
-                                <span className="block xl:whitespace-nowrap">資料づくりも、算定確認も、</span>
+                                <span className="block xl:whitespace-nowrap">算定確認も、資料づくりも、</span>
                                 <span className="mt-2 block text-blue-700">これひとつ。</span>
                             </h1>
                             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base lg:mx-0">
@@ -526,11 +521,19 @@ export default function JishutorePlusPage() {
                                     label={`月額${currentPriceLabel}で始める`}
                                     className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-8 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                                 />
+                            </div>
+                            <div className="mt-3 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                                 <Link
-                                    href="#included"
-                                    className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-7 py-4 text-sm font-black text-slate-700 transition hover:border-blue-300 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
+                                    href="#fee-check-feature"
+                                    className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-black text-slate-700 transition hover:border-blue-300 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
                                 >
-                                    4つの収録内容を見る
+                                    報酬チェックの中身を見る
+                                </Link>
+                                <Link
+                                    href="#editable-slides"
+                                    className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-black text-slate-700 transition hover:border-blue-300 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
+                                >
+                                    スライドの中身を見る
                                 </Link>
                             </div>
                             <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-bold text-slate-600 lg:justify-start">
@@ -547,7 +550,7 @@ export default function JishutorePlusPage() {
                         </div>
 
                         <div className="mx-auto w-full max-w-2xl">
-                            <div className="relative aspect-[16/9] w-full" aria-label="Plusに収録している実物スライドの例">
+                            <div className="relative aspect-[16/9] w-full" aria-label="Plusに収録している実物スライドと報酬チェックの例">
                                 <div className="absolute inset-x-[13%] top-[2%] z-0 overflow-hidden rounded-2xl border border-white/80 bg-white p-1.5 opacity-45 shadow-xl sm:p-2" aria-hidden="true">
                                     <div className="flex items-center justify-between gap-3 px-1.5 pb-1.5">
                                         <div className="flex gap-1">
@@ -582,9 +585,42 @@ export default function JishutorePlusPage() {
                                         />
                                     </figure>
                                 ))}
+                                <div className="absolute right-0 top-[17%] z-40 w-[60%] rotate-3 overflow-hidden rounded-xl border border-white/90 bg-white p-1 shadow-2xl shadow-blue-950/25 sm:top-[15%] sm:rounded-2xl sm:p-2">
+                                    <div className="overflow-hidden rounded-lg border border-blue-100">
+                                        <div className="flex items-center justify-between gap-2 bg-slate-950 px-2.5 py-1.5 sm:px-3 sm:py-2">
+                                            <p className="truncate text-[9px] font-black text-white sm:text-[11px]">
+                                                {feeCheckSampleItem.name}
+                                            </p>
+                                            <span className="shrink-0 rounded-full bg-blue-100 px-1.5 py-0.5 text-[8px] font-black text-blue-900 sm:text-[9px]">
+                                                報酬チェック
+                                            </span>
+                                        </div>
+                                        <div className="bg-white p-2 sm:p-3">
+                                            <div className="flex items-center justify-between gap-2 rounded-md border border-slate-200 bg-slate-50 px-2 py-1.5">
+                                                <span className="truncate text-[9px] font-bold text-slate-600 sm:text-[11px]">
+                                                    {feeCheckSampleUnit.condition}
+                                                </span>
+                                                <span className="shrink-0 text-[10px] font-black text-blue-800 sm:text-xs">
+                                                    {feeCheckSampleUnit.value}
+                                                </span>
+                                            </div>
+                                            <div className="mt-1.5 rounded-md border border-blue-100 bg-blue-50/80 p-2">
+                                                <div className="flex flex-wrap items-center gap-1.5">
+                                                    <p className="text-[9px] font-black text-blue-950 sm:text-[11px]">記録に残すこと</p>
+                                                    <span className="rounded-full bg-blue-700 px-1.5 py-0.5 text-[8px] font-black text-white sm:text-[9px]">
+                                                        🔒 Plus
+                                                    </span>
+                                                </div>
+                                                <p className="mt-1 line-clamp-2 text-[9px] leading-4 text-slate-700 sm:text-[11px] sm:leading-5">
+                                                    {feeCheckSampleItem.records[0]}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <p className="mt-3 text-center text-xs font-bold text-slate-500">
-                                実物の16:9スライド。回数バッジとポイントは編集できます
+                                実物のスライドと報酬チェックの画面。どちらも同じ月額に含まれます
                             </p>
                         </div>
                     </div>
@@ -1216,10 +1252,10 @@ export default function JishutorePlusPage() {
                             </span>
                         )}
                         <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-4xl">
-                            資料づくりも、算定確認も、これひとつ。
+                            算定確認も、資料づくりも、これひとつ。
                         </h2>
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                            編集できる運動スライド、完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックを、同じ月額で利用できます。
+                            診療・介護報酬チェック、編集できる運動スライド、完成デッキ、伝わるプロンプト工房を、同じ月額で利用できます。
                         </p>
                         {PLUS_PROMO_IS_ACTIVE && (
                             <p className="mx-auto mt-5 max-w-2xl rounded-2xl border border-blue-100 bg-white px-4 py-3 text-sm font-bold leading-6 text-slate-700 shadow-sm">
