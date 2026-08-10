@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
+import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
 import {
     categoryLabels,
     categoryStyles,
@@ -190,11 +191,14 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
 
     return (
         <div className="rounded-lg border border-blue-200 bg-white p-4 print:hidden">
+            {/* 2026-08-10：機能の羅列だと44秒で帰る層に届かないため、
+                「算定できるか」の先にある「記録で困らないか」に接続する言い方へ。 */}
             <p className="text-sm font-black text-slate-900 break-keep">
-                記録・自己点検ポイントまで見るにはPlus登録が必要です。
+                算定要件はここまで無料です。「記録に何を残すか」まで見られるのがPlusです。
             </p>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-                「{item.name}」では一部だけ表示しています。全文公開サンプルでは、Plusで見られる表示をそのまま確認できます。
+            <p className="mt-2 text-sm leading-6 text-slate-600 break-keep">
+                実地指導や監査で確認される記録・自己点検ポイントを、{item.name}を含む全項目に載せています。
+                まず全文サンプルで、実際の表示を確かめられます。
             </p>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <FeeCheckTrackedLink
@@ -211,7 +215,7 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
                     params={{ fee_domain: domain.domain, fee_item_id: item.id, placement: "locked_detail" }}
                     className="inline-flex items-center justify-center rounded-full bg-blue-700 px-4 py-2 text-sm font-black text-white transition hover:bg-blue-800"
                 >
-                    Plusに登録する
+                    Plusに登録する（月額{formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}）
                 </FeeCheckTrackedLink>
             </div>
         </div>
@@ -253,15 +257,15 @@ function ContextualPlusGuide({
                     }`}>
                         {isSample ? "Plus表示を体験中" : "ここからは自主トレ素材庫Plus"}
                     </span>
-                    <h2 className="mt-3 text-lg font-black leading-snug text-slate-950">
+                    <h2 className="mt-3 break-keep text-lg font-black leading-snug text-slate-950">
                         {isSample
                             ? "ここから先が、Plusで全項目に表示される実務チェックです"
-                            : "有料版では、記録・自己点検・つまずきまで確認できます"}
+                            : "算定できるかの先にある、「記録で困らないか」まで確認できます"}
                     </h2>
-                    <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                    <p className="mt-2 max-w-2xl break-keep text-sm leading-6 text-slate-600">
                         {isSample
                             ? "この全文サンプルでは、記録に残すこと、自己点検ポイント、つまずきやすい点をすべて公開しています。"
-                            : `「${item.name}」の無料表示は各項目の一部まで。Plusでは実務チェックの全文と関連Q&A、改定差分、印刷表示を利用できます。`}
+                            : `単位数と算定要件は無料のままです。Plusでは「${item.name}」で記録に残すこと、実地指導で見られるポイント、つまずきやすい点まで表示されます。`}
                     </p>
                 </div>
                 <FeeCheckTrackedLink
@@ -270,7 +274,7 @@ function ContextualPlusGuide({
                     params={{ fee_domain: domain.domain, fee_item_id: item.id, placement: isSample ? "sample_mid_detail" : "locked_mid_detail" }}
                     className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-blue-700 px-5 py-2.5 text-sm font-black text-white shadow-sm transition hover:bg-blue-800"
                 >
-                    Plusの内容・料金を見る
+                    Plusを見る（月額{formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}）
                 </FeeCheckTrackedLink>
             </div>
             <div className="mt-4 grid gap-2 text-xs font-bold text-slate-700 sm:grid-cols-3">

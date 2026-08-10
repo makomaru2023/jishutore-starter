@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
-import { PLUS_SLIDE_COUNT_PUBLIC } from "@/constants/public-counts";
+import { FEE_CHECK_ITEM_COUNT, PLUS_SLIDE_COUNT_PUBLIC } from "@/constants/public-counts";
 import { trackEvent } from "@/lib/analytics";
 
 const PLUS_URL = "/products/jishutore-plus/";
@@ -23,7 +24,13 @@ const PLUS_URL = "/products/jishutore-plus/";
  *   状態を持たない実装のほうが素直だと判断した。
  */
 export function PlusAnnouncementBar() {
+    const pathname = usePathname();
     const price = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
+
+    // 報酬チェック配下では訴求を切り替える。
+    // 2026-08-10：来訪者の46%が報酬チェック目当てで、加算を調べに来た人に
+    // 「編集できるスライド227点」を先に見せても刺さらないため。
+    const isFeeCheck = pathname.startsWith("/fee-check");
 
     return (
         <div className="bg-blue-700 text-white">
@@ -31,7 +38,7 @@ export function PlusAnnouncementBar() {
                 href={PLUS_URL}
                 onClick={() =>
                     trackEvent("product_cta_click", {
-                        location: "announcement_bar",
+                        location: isFeeCheck ? "announcement_bar_fee_check" : "announcement_bar",
                         url: PLUS_URL,
                         label: "自主トレ素材庫Plus",
                     })
@@ -39,10 +46,14 @@ export function PlusAnnouncementBar() {
                 className="flex items-center justify-center gap-1.5 px-4 py-2 text-center text-xs font-bold leading-tight transition-colors hover:bg-blue-800 sm:text-sm"
             >
                 <span className="break-keep sm:hidden">
-                    素材庫Plusは月額{price}｜スライド{PLUS_SLIDE_COUNT_PUBLIC}点
+                    {isFeeCheck
+                        ? `記録・自己点検まで見るならPlus（月額${price}）`
+                        : `素材庫Plusは月額${price}｜スライド${PLUS_SLIDE_COUNT_PUBLIC}点`}
                 </span>
                 <span className="hidden break-keep sm:inline">
-                    自主トレ素材庫Plus｜編集できるスライド{PLUS_SLIDE_COUNT_PUBLIC}点と報酬チェックが月額{price}
+                    {isFeeCheck
+                        ? `全${FEE_CHECK_ITEM_COUNT}項目の「記録に残すこと・自己点検ポイント」まで見られるのは自主トレ素材庫Plus（月額${price}）`
+                        : `自主トレ素材庫Plus｜編集できるスライド${PLUS_SLIDE_COUNT_PUBLIC}点と報酬チェックが月額${price}`}
                 </span>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
