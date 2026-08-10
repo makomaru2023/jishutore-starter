@@ -45,7 +45,8 @@ const dailyPriceLabel = formatYen(Math.ceil(PLUS_PROMO_CURRENT_PRICE_YEN / 30));
 const feeCheckItemCount = getFeeCheckTotalCount();
 const feeComboDomainCount = getComboDomains().length;
 const feeCheckDomainLabels = feeDomains.map((domain) => domain.domainLabel);
-const feeCheckSampleDomain = feeDomains.find((domain) => domain.domain === "homon-riha") ?? feeDomains[0];
+// 報酬チェック利用者の約6割が老健・入所のため、LPの収載例も老健に合わせる。
+const feeCheckSampleDomain = feeDomains.find((domain) => domain.domain === "roken-nyusho") ?? feeDomains[0];
 const feeCheckSampleItem =
     feeCheckSampleDomain.items.find(
         (item) => item.id === sampleFeeItems[feeCheckSampleDomain.domain],
@@ -162,30 +163,36 @@ const proofItems = [
         }]),
 ];
 
+const feeCheckUseCases = [
+    "実地指導・自己点検の前に",
+    "新しい加算を取るか検討するとき",
+    "担当が変わって要件を確認するとき",
+] as const;
+
 const pillars = [
     {
         number: "01",
+        title: "診療・介護報酬チェック",
+        summary: `全${feeDomains.length}分野・${feeCheckItemCount}項目を、一次資料へのリンクつきで整理しています。`,
+        detail: `組み合わせ確認は${feeComboDomainCount}分野に対応`,
+    },
+    {
+        number: "02",
         title: "編集できる運動スライド",
         summary: `${PLUS_SLIDE_COUNT}点から最大10点を選び、1つのPowerPointにまとめられます。`,
         detail: "回数とポイントを対象者ごとに調整",
     },
     {
-        number: "02",
+        number: "03",
         title: "そのまま使える完成デッキ",
         summary: "疾患別9本と姿勢別6種を、会員ページからZIPでダウンロードできます。",
         detail: "退院前指導や訪問リハの準備に",
     },
     {
-        number: "03",
+        number: "04",
         title: "伝わるプロンプト工房",
         summary: "ChatGPTに貼るスライド画像生成プロンプトを、選択式で組み立てます。",
         detail: "テンプレ8種・スタイル10種",
-    },
-    {
-        number: "04",
-        title: "診療・介護報酬チェック",
-        summary: `全${feeDomains.length}分野・${feeCheckItemCount}項目を、一次資料へのリンクつきで整理しています。`,
-        detail: `組み合わせ確認は${feeComboDomainCount}分野に対応`,
     },
 ] as const;
 
@@ -663,10 +670,114 @@ export default function JishutorePlusPage() {
                     </div>
                 </section>
 
+                <section id="fee-check-feature" className="scroll-mt-20 border-y border-blue-100 bg-blue-50/70 py-12 sm:py-20">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="grid gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
+                            <div>
+                                <PillarLabel number="01" />
+                                <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-3xl lg:text-4xl">
+                                    診療・介護報酬チェック
+                                </h2>
+                                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                                    単位数と算定要件だけでなく、「記録に残すこと」「自己点検で見るポイント」「つまずきやすい点」まで、全{feeDomains.length}分野・{feeCheckItemCount}項目で確認できます。改定と疑義解釈は毎月点検し、各ページに確認日を載せています。
+                                </p>
+                                <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                                    <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
+                                        <p className="text-2xl font-black text-blue-800">{feeDomains.length}</p>
+                                        <p className="mt-1 text-[11px] font-bold text-slate-500">対応分野</p>
+                                    </div>
+                                    <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
+                                        <p className="text-2xl font-black text-blue-800">{feeCheckItemCount}</p>
+                                        <p className="mt-1 text-[11px] font-bold text-slate-500">収載項目</p>
+                                    </div>
+                                    <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
+                                        <p className="text-2xl font-black text-blue-800">{feeComboDomainCount}</p>
+                                        <p className="mt-1 text-[11px] font-bold text-slate-500">組み合わせ対応</p>
+                                    </div>
+                                </div>
+                                <ul className="mt-4 flex flex-wrap gap-2">
+                                    {feeCheckUseCases.map((useCase) => (
+                                        <li key={useCase} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-bold text-blue-900">
+                                            {useCase}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="mt-4 text-xs leading-6 text-slate-500">
+                                    対応分野：{feeCheckDomainLabels.join("・")}
+                                </p>
+                                <div className="mt-6">
+                                    <PlusSubscribeButton
+                                        placement="plus_lp_fee_check_feature"
+                                        label={`月額${currentPriceLabel}で全項目を見る`}
+                                        className="inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-8 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                                    />
+                                </div>
+                                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                                    <TrackedPlusResourceLink
+                                        href="/fee-check/"
+                                        resource="fee_check_free"
+                                        placement="plus_lp_fee_check_feature"
+                                        className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-50"
+                                    >
+                                        無料版を見る
+                                    </TrackedPlusResourceLink>
+                                    <Link href={getFeeItemUrl(feeCheckSampleDomain.domain, feeCheckSampleItem.id)} className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-50">
+                                        全文サンプルを見る
+                                    </Link>
+                                    <Link href="/plus/fee-check-combo/" className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-50">
+                                        組み合わせチェック
+                                    </Link>
+                                </div>
+                                <p className="mt-5 text-xs leading-6 text-slate-500">
+                                    ※ 個別ケースの算定可否を断定するものではありません。実際の請求では、原本と保険者・地方厚生局への確認を優先してください。
+                                </p>
+                            </div>
+
+                            <article className="overflow-hidden rounded-3xl border border-blue-200 bg-white shadow-xl shadow-blue-950/5">
+                                <div className="border-b border-slate-100 bg-slate-950 px-5 py-4 text-white sm:px-6">
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        <span className="rounded-full bg-blue-100 px-2.5 py-1 text-[11px] font-black text-blue-900">実際の収載例</span>
+                                        <span className="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] font-bold text-slate-200">一次資料確認済み</span>
+                                    </div>
+                                    <h3 className="mt-3 text-lg font-black leading-snug">{feeCheckSampleItem.name}</h3>
+                                </div>
+                                <div className="p-4 sm:p-6">
+                                    <div className="grid grid-cols-[minmax(0,1fr)_auto] overflow-hidden rounded-xl border border-slate-200 text-sm">
+                                        <span className="bg-slate-50 px-3 py-3 font-bold text-slate-700">{feeCheckSampleUnit.condition}</span>
+                                        <span className="border-l border-slate-200 bg-blue-50 px-4 py-3 font-black text-blue-900">{feeCheckSampleUnit.value}</span>
+                                    </div>
+                                    <div className="mt-4 rounded-xl border border-slate-200 p-4">
+                                        <p className="text-sm font-black text-slate-950">算定要件</p>
+                                        <p className="mt-2 text-sm leading-6 text-slate-600">{feeCheckSampleItem.requirements[0]}</p>
+                                    </div>
+                                    <div className="my-4 rounded-xl bg-blue-700 px-4 py-3 text-sm font-black text-white">
+                                        Plusでは、この先の実務確認まで表示
+                                    </div>
+                                    <div className="grid gap-3 sm:grid-cols-2">
+                                        <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-4">
+                                            <p className="text-sm font-black text-blue-950">記録に残すこと</p>
+                                            <p className="mt-2 text-sm leading-6 text-slate-700">{feeCheckSampleItem.records[0]}</p>
+                                        </div>
+                                        <div className="rounded-xl border border-blue-100 bg-white p-4">
+                                            <p className="text-sm font-black text-blue-950">自己点検で見るポイント</p>
+                                            <p className="mt-2 text-sm leading-6 text-slate-700">{feeCheckSampleItem.auditPoints[0]}</p>
+                                        </div>
+                                    </div>
+                                    {feeCheckSampleItem.pitfalls?.[0] && (
+                                        <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
+                                            <strong className="font-black">つまずきやすい点：</strong>{feeCheckSampleItem.pitfalls[0]}
+                                        </p>
+                                    )}
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="editable-slides" className="scroll-mt-20 py-12 sm:py-20">
                     <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:px-8">
                         <div>
-                            <PillarLabel number="01" />
+                            <PillarLabel number="02" />
                             <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-3xl lg:text-4xl">
                                 編集できる運動スライド
                             </h2>
@@ -735,7 +846,7 @@ export default function JishutorePlusPage() {
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start">
                             <div className="lg:sticky lg:top-24">
-                                <PillarLabel number="02" />
+                                <PillarLabel number="03" />
                                 <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-3xl lg:text-4xl">
                                     そのまま印刷して使える完成デッキ
                                 </h2>
@@ -803,7 +914,7 @@ export default function JishutorePlusPage() {
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
                             <div>
-                                <PillarLabel number="03" />
+                                <PillarLabel number="04" />
                                 <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-3xl lg:text-4xl">
                                     伝わるプロンプト工房
                                 </h2>
@@ -860,96 +971,6 @@ export default function JishutorePlusPage() {
                                     </figcaption>
                                 </figure>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="fee-check-feature" className="scroll-mt-20 border-y border-blue-100 bg-blue-50/70 py-12 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="grid gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
-                            <div>
-                                <PillarLabel number="04" />
-                                <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-3xl lg:text-4xl">
-                                    診療・介護報酬チェック
-                                </h2>
-                                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                    全{feeDomains.length}分野・{feeCheckItemCount}項目の単位数、算定要件、根拠リンクを整理。Plusでは、記録に残すこと、自己点検で見るポイント、つまずきやすい点まで確認できます。
-                                </p>
-                                <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
-                                    <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
-                                        <p className="text-2xl font-black text-blue-800">{feeDomains.length}</p>
-                                        <p className="mt-1 text-[11px] font-bold text-slate-500">対応分野</p>
-                                    </div>
-                                    <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
-                                        <p className="text-2xl font-black text-blue-800">{feeCheckItemCount}</p>
-                                        <p className="mt-1 text-[11px] font-bold text-slate-500">収載項目</p>
-                                    </div>
-                                    <div className="rounded-2xl border border-blue-100 bg-white p-3 text-center sm:p-4">
-                                        <p className="text-2xl font-black text-blue-800">{feeComboDomainCount}</p>
-                                        <p className="mt-1 text-[11px] font-bold text-slate-500">組み合わせ対応</p>
-                                    </div>
-                                </div>
-                                <p className="mt-4 text-xs leading-6 text-slate-500">
-                                    対応分野：{feeCheckDomainLabels.join("・")}
-                                </p>
-                                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                                    <TrackedPlusResourceLink
-                                        href="/fee-check/"
-                                        resource="fee_check_free"
-                                        placement="plus_lp_fee_check_feature"
-                                        className="inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800"
-                                    >
-                                        無料版を見る
-                                    </TrackedPlusResourceLink>
-                                    <Link href={getFeeItemUrl(feeCheckSampleDomain.domain, feeCheckSampleItem.id)} className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-50">
-                                        全文サンプルを見る
-                                    </Link>
-                                    <Link href="/plus/fee-check-combo/" className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-white px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-50">
-                                        組み合わせチェック
-                                    </Link>
-                                </div>
-                                <p className="mt-5 text-xs leading-6 text-slate-500">
-                                    ※ 個別ケースの算定可否を断定するものではありません。実際の請求では、原本と保険者・地方厚生局への確認を優先してください。
-                                </p>
-                            </div>
-
-                            <article className="overflow-hidden rounded-3xl border border-blue-200 bg-white shadow-xl shadow-blue-950/5">
-                                <div className="border-b border-slate-100 bg-slate-950 px-5 py-4 text-white sm:px-6">
-                                    <div className="flex flex-wrap items-center gap-2">
-                                        <span className="rounded-full bg-blue-100 px-2.5 py-1 text-[11px] font-black text-blue-900">実際の収載例</span>
-                                        <span className="rounded-full border border-slate-600 px-2.5 py-1 text-[11px] font-bold text-slate-200">一次資料確認済み</span>
-                                    </div>
-                                    <h3 className="mt-3 text-lg font-black leading-snug">{feeCheckSampleItem.name}</h3>
-                                </div>
-                                <div className="p-4 sm:p-6">
-                                    <div className="grid grid-cols-[minmax(0,1fr)_auto] overflow-hidden rounded-xl border border-slate-200 text-sm">
-                                        <span className="bg-slate-50 px-3 py-3 font-bold text-slate-700">{feeCheckSampleUnit.condition}</span>
-                                        <span className="border-l border-slate-200 bg-blue-50 px-4 py-3 font-black text-blue-900">{feeCheckSampleUnit.value}</span>
-                                    </div>
-                                    <div className="mt-4 rounded-xl border border-slate-200 p-4">
-                                        <p className="text-sm font-black text-slate-950">算定要件</p>
-                                        <p className="mt-2 text-sm leading-6 text-slate-600">{feeCheckSampleItem.requirements[0]}</p>
-                                    </div>
-                                    <div className="my-4 rounded-xl bg-blue-700 px-4 py-3 text-sm font-black text-white">
-                                        Plusでは、この先の実務確認まで表示
-                                    </div>
-                                    <div className="grid gap-3 sm:grid-cols-2">
-                                        <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-4">
-                                            <p className="text-sm font-black text-blue-950">記録に残すこと</p>
-                                            <p className="mt-2 text-sm leading-6 text-slate-700">{feeCheckSampleItem.records[0]}</p>
-                                        </div>
-                                        <div className="rounded-xl border border-blue-100 bg-white p-4">
-                                            <p className="text-sm font-black text-blue-950">自己点検で見るポイント</p>
-                                            <p className="mt-2 text-sm leading-6 text-slate-700">{feeCheckSampleItem.auditPoints[0]}</p>
-                                        </div>
-                                    </div>
-                                    {feeCheckSampleItem.pitfalls?.[0] && (
-                                        <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
-                                            <strong className="font-black">つまずきやすい点：</strong>{feeCheckSampleItem.pitfalls[0]}
-                                        </p>
-                                    )}
-                                </div>
-                            </article>
                         </div>
                     </div>
                 </section>
