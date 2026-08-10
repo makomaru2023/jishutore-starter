@@ -161,6 +161,10 @@ const proofItems = [
             value: `${PLUS_PROOF_LINE_FRIENDS.toLocaleString("ja-JP")}人`,
             label: "LINEで情報を受け取る方",
         }]),
+    {
+        value: `${feeCheckItemCount}項目`,
+        label: `報酬チェック収載（${feeDomains.length}分野）`,
+    },
 ];
 
 const feeCheckUseCases = [
@@ -266,7 +270,12 @@ const comparisonRows = [
     {
         label: "使える内容",
         free: "運動イラストを1点ずつ",
-        plus: "運動スライド・完成デッキ・作成ツール・報酬チェック",
+        plus: "報酬チェック・運動スライド・完成デッキ・作成ツール",
+    },
+    {
+        label: "報酬チェック",
+        free: "単位数・算定要件・根拠リンクを一部公開",
+        plus: `記録・自己点検・つまずきやすい点・組み合わせ確認（${feeComboDomainCount}分野）`,
     },
     {
         label: "ファイル形式",
@@ -289,11 +298,6 @@ const comparisonRows = [
         plus: "会員ページから利用できる",
     },
     {
-        label: "報酬チェック",
-        free: "単位数・算定要件・根拠リンクを一部公開",
-        plus: `記録・自己点検・つまずきやすい点・組み合わせ確認（${feeComboDomainCount}分野）`,
-    },
-    {
         label: "解約後",
         free: "―",
         plus: "ダウンロード済みファイルはそのまま利用できる",
@@ -304,6 +308,14 @@ const faqs: { q: string; a: ReactNode; id?: string }[] = [
     {
         q: "解約はどうすればできますか？",
         a: "資料庫の「プラン管理」からいつでも解約できます。解約後も、次回の請求日まではそのままご利用いただけます。",
+    },
+    {
+        q: "診療・介護報酬チェックは何ができますか？",
+        a: `${feeCheckDomainLabels.join("・")}の単位数や点数、算定要件、根拠資料リンクを一部無料公開しています。記録に残すこと、自己点検で見るポイント、つまずきやすい点、加算の組み合わせはPlusで確認できます。`,
+    },
+    {
+        q: "報酬改定や新しい疑義解釈には対応していますか？",
+        a: "毎月、改定・疑義解釈・官報訂正の有無を点検して反映しています。各ページに確認日を載せているので、いつ時点の情報かを確かめられます。",
     },
     {
         q: "解約したら、ダウンロードした資料は使えなくなりますか？",
@@ -372,10 +384,6 @@ const faqs: { q: string; a: ReactNode; id?: string }[] = [
     {
         q: "支払い方法は何がありますか？",
         a: "クレジットカード決済（Stripe）です。決済が完了すると、すぐに会員ページをご利用いただけます。",
-    },
-    {
-        q: "診療・介護報酬チェックは何ができますか？",
-        a: `${feeCheckDomainLabels.join("・")}の単位数や点数、算定要件、根拠資料リンクを一部無料公開しています。記録に残すこと、自己点検で見るポイント、つまずきやすい点、加算の組み合わせはPlusで確認できます。`,
     },
     {
         q: "月の途中で登録すると損しませんか？",
@@ -1006,11 +1014,26 @@ export default function JishutorePlusPage() {
                         <SectionIntro
                             eyebrow="登録前に確認"
                             title="まずは無料で、実物と中身を試せます"
-                            description="PowerPointの編集感、報酬チェックの情報量、無料イラストの使い勝手を先に確かめてください。"
+                            description="報酬チェックの情報量、PowerPointの編集感、無料イラストの使い勝手を先に確かめてください。"
                         />
                         <div className="mt-9 grid gap-5 md:grid-cols-3">
                             <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                                 <span className="text-3xl font-black text-blue-200">01</span>
+                                <h3 className="mt-4 text-lg font-black text-slate-950">報酬チェック無料版</h3>
+                                <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
+                                    単位数・算定要件・根拠リンクを一部公開。Plus限定の全文サンプルも1項目確認できます。
+                                </p>
+                                <TrackedPlusResourceLink
+                                    href="/fee-check/"
+                                    resource="fee_check_free"
+                                    placement="plus_lp_free_trial"
+                                    className="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800"
+                                >
+                                    無料版を開く
+                                </TrackedPlusResourceLink>
+                            </article>
+                            <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                                <span className="text-3xl font-black text-blue-200">02</span>
                                 <h3 className="mt-4 text-lg font-black text-slate-950">PowerPointサンプル</h3>
                                 <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
                                     実際と同じ形式の3枚入り。回数とポイントを編集できるか確認できます。
@@ -1020,24 +1043,9 @@ export default function JishutorePlusPage() {
                                     download
                                     resource="powerpoint_sample"
                                     placement="plus_lp_free_trial"
-                                    className="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800"
-                                >
-                                    無料サンプルをダウンロード
-                                </TrackedPlusResourceLink>
-                            </article>
-                            <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                                <span className="text-3xl font-black text-blue-200">02</span>
-                                <h3 className="mt-4 text-lg font-black text-slate-950">報酬チェック無料版</h3>
-                                <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
-                                    単位数・算定要件・根拠リンクを一部公開。Plus限定の全文サンプルも1項目確認できます。
-                                </p>
-                                <TrackedPlusResourceLink
-                                    href="/fee-check/"
-                                    resource="fee_check_free"
-                                    placement="plus_lp_free_trial"
                                     className="mt-5 inline-flex items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-black text-blue-800 transition hover:bg-blue-100"
                                 >
-                                    無料版を開く
+                                    無料サンプルをダウンロード
                                 </TrackedPlusResourceLink>
                             </article>
                             <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -1065,6 +1073,9 @@ export default function JishutorePlusPage() {
                                 登録日を基準に1か月ごとの課金です。いつでも解約でき、ダウンロード済みのPowerPointと完成デッキは解約後も使えます。
                             </p>
                             <p className="mt-5 rounded-2xl border border-blue-400/60 bg-blue-800/50 px-4 py-3 text-sm font-bold leading-6 text-white">
+                                報酬チェックの全項目表示も、この料金に含まれます。
+                            </p>
+                            <p className="mt-3 rounded-2xl border border-blue-400/60 bg-blue-800/50 px-4 py-3 text-sm font-bold leading-6 text-white">
                                 旧・個別販売の完成デッキ2本＋プロンプト工房、合計2,940円分を含みます。
                             </p>
                             <ul className="mt-6 space-y-2 text-sm font-bold text-white">
