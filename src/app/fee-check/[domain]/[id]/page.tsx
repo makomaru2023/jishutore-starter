@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FeeCheckViewTracker } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
+import { FeeCheckDomainCta } from "@/components/fee-check/FeeCheckDomainCta";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -169,6 +170,15 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                                 </div>
                             </section>
                         )}
+
+                        {/* 1問1答で離脱している層に「この分野には他にもある」と伝える導線。
+                            詳細を読み終えた直後に置くのが狙い（2026-08-10の分析）。 */}
+                        <FeeCheckDomainCta
+                            domain={domain.domain}
+                            domainLabel={domain.domainLabel}
+                            href={getDomainUrl(domain.domain)}
+                            itemCount={domain.items.length}
+                        />
                     </div>
                 </div>
             </main>
