@@ -350,7 +350,21 @@ export function FeeCheckDetailCard({
                         {domain.domainLabel} / 確認日: {item.lastVerified}
                     </p>
                 </div>
-                {isUnlocked && <FeeCheckPrintButton domain={domain.domain} itemId={item.id} />}
+                {isUnlocked ? (
+                    <FeeCheckPrintButton domain={domain.domain} itemId={item.id} />
+                ) : (
+                    /* 非会員にも同じ位置に鍵つきで見せる。「印刷できる」こと自体が
+                       Plusの価値なので、存在ごと隠すと伝わらない（2026-08-11）。 */
+                    <FeeCheckTrackedLink
+                        href="/products/jishutore-plus/"
+                        event="plus"
+                        params={{ fee_domain: domain.domain, fee_item_id: item.id, placement: "locked_print_button" }}
+                        className="inline-flex shrink-0 items-center justify-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-black text-slate-500 transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 print:hidden"
+                    >
+                        <span aria-hidden="true">🔒</span>
+                        印刷（Plus）
+                    </FeeCheckTrackedLink>
+                )}
             </div>
 
             {isSample && (
