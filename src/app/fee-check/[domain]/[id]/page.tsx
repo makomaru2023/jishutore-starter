@@ -7,6 +7,7 @@ import { FeeCheckDomainCta } from "@/components/fee-check/FeeCheckDomainCta";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
 import {
     getFeeDescription,
     getDomainUrl,
@@ -82,6 +83,14 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
     const relatedItems = domain.items
         .filter((entry) => entry.id !== item.id && entry.category === item.category)
         .slice(0, 4);
+    const latestKaiteiWatch = getLatestKaiteiWatch();
+    const kaiteiWatch = latestKaiteiWatch
+        ? {
+            title: latestKaiteiWatch.title,
+            href: getColumnUrl(latestKaiteiWatch.slug),
+            updatedAt: latestKaiteiWatch.updatedAt,
+        }
+        : undefined;
     const pageUrl = `https://jishutore-sozaiko.online${getFeeItemUrl(domain.domain, item.id)}`;
     const domainUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
     const breadcrumbJsonLd = {
@@ -152,6 +161,7 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             isUnlocked={isUnlocked}
                             isSample={isSample}
                             hiddenCounts={hiddenCounts}
+                            kaiteiWatch={kaiteiWatch}
                         />
 
                         {relatedItems.length > 0 && (

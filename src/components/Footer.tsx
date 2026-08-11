@@ -27,6 +27,9 @@ export function Footer() {
                         <Link href="/fee-check" className="hover:text-white transition-colors">
                             報酬チェック
                         </Link>
+                        <Link href="/column/" className="hover:text-white transition-colors">
+                            コラム
+                        </Link>
                         <Link href="/fee-check/editorial-policy/" className="hover:text-white transition-colors">
                             報酬チェック編集方針
                         </Link>

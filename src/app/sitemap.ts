@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getItems } from '@/lib/items'
+import { getColumnArticles, getColumnUrl } from '@/lib/column'
 import { feeDomains, getAllFeeItems } from '@/lib/fee-check'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -34,6 +35,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const feeCheckUpdatedAt = new Date(
         allFeeItems.reduce(
             (latest, { item }) => item.lastVerified > latest ? item.lastVerified : latest,
+            '2026-01-01',
+        ),
+    )
+
+    const columnArticles = getColumnArticles()
+    const columnUrls = columnArticles.map((article) => ({
+        url: `${baseUrl}${getColumnUrl(article.slug)}`,
+        lastModified: new Date(article.updatedAt),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }))
+    // 一覧の更新日は、最新記事の更新日と同じにする（新着順で並べているため）
+    const columnIndexUpdatedAt = new Date(
+        columnArticles.reduce(
+            (latest, article) => article.updatedAt > latest ? article.updatedAt : latest,
             '2026-01-01',
         ),
     )
@@ -161,6 +177,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly' as const,
             priority: 0.5,
         },
+        {
+            url: `${baseUrl}/column/`,
+            lastModified: columnIndexUpdatedAt,
+            changeFrequency: 'weekly' as const,
+            priority: 0.8,
+        },
+        ...columnUrls,
         ...itemUrls,
         ...feeDomainUrls,
         ...feeItemUrls,

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 384" width="800" height="384">
+  <rect width="800" height="384" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <!-- 訪問できる期間の3ブロック -->
+    <rect x="80" y="46" width="220" height="88" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="190" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">入所予定日の</text>
+    <text x="190" y="106" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">前30日以内</text>
+
+    <rect x="330" y="46" width="140" height="88" rx="10" fill="#1565C0"/>
+    <text x="400" y="82" text-anchor="middle" font-size="15" font-weight="bold" fill="#BBDEFB">入所日</text>
+    <text x="400" y="108" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">この日を基準に</text>
+
+    <rect x="500" y="46" width="220" height="88" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="610" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">または入所した日から</text>
+    <text x="610" y="106" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">7日以内</text>
+
+    <!-- ブロック間の矢印 -->
+    <path d="M304 90 L326 90" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M326 90 l-8 -5 v10 z" fill="#94A3B8"/>
+    <path d="M474 90 L496 90" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M496 90 l-8 -5 v10 z" fill="#94A3B8"/>
+
+    <!-- 期間全体をくくるブラケット -->
+    <path d="M80 150 v10 H720 v-10" fill="none" stroke="#1565C0" stroke-width="2"/>
+    <path d="M400 160 v14" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="196" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">この期間に、退所後に生活する居宅を訪問する</text>
+
+    <!-- 訪問してやること -->
+    <path d="M400 208 v18" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 230 l-6 -10 h12 z" fill="#94A3B8"/>
+    <rect x="80" y="238" width="640" height="66" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="264" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">訪問したうえで</text>
+    <text x="400" y="290" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">退所を目的とした施設サービス計画の策定 ＋ 診療方針の決定</text>
+
+    <!-- 加算(2)で追加になるもの -->
+    <rect x="80" y="312" width="640" height="62" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="336" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">加算(Ⅱ)は、さらにこの2つまで作ります</text>
+    <text x="400" y="360" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">「生活機能の具体的な改善目標」と「退所後の生活に係る支援計画」</text>
+  </g>
+</svg>

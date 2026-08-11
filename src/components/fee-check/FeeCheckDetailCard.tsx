@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { KaiteiWatchInlineLink, type KaiteiWatchLinkTarget } from "@/components/column/KaiteiWatchLink";
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
 import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
@@ -309,6 +310,7 @@ export function FeeCheckDetailCard({
     isUnlocked,
     isSample,
     hiddenCounts,
+    kaiteiWatch,
 }: {
     domain: FeeDomain;
     item: FeeItem;
@@ -319,6 +321,8 @@ export function FeeCheckDetailCard({
         auditPoints: number;
         pitfalls: number;
     };
+    /** 最新の改定ウォッチ記事。確認日の近くに出す（毎月点検している証拠を見せる場所） */
+    kaiteiWatch?: KaiteiWatchLinkTarget;
 }) {
     return (
         <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 print:border-slate-300 print:shadow-none">
@@ -353,6 +357,7 @@ export function FeeCheckDetailCard({
                     <p className="mt-2 text-sm font-bold text-slate-500">
                         {domain.domainLabel} / 確認日: {item.lastVerified}
                     </p>
+                    <KaiteiWatchInlineLink target={kaiteiWatch} />
                 </div>
                 {isUnlocked ? (
                     <FeeCheckPrintButton domain={domain.domain} itemId={item.id} />

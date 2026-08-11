@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ColumnCard } from "@/components/column/ColumnCard";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LineHero } from "@/components/LineHero";
@@ -7,6 +8,7 @@ import { PopularItemsSection } from "@/components/PopularItemsSection";
 import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { TrackedProductCtaLink } from "@/components/TrackedProductCtaLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { getColumnArticles } from "@/lib/column";
 import { feeDomains, getDomainUrl, getFeeCheckTotalCount } from "@/lib/fee-check";
 
 // 5項目以上そろった分野だけをトップページのタイルに出す（準備中分野は /fee-check 側で案内）。
@@ -40,6 +42,7 @@ export default function Home() {
   const readyFeeDomains = feeDomains.filter(
     (domain) => domain.items.length >= FEE_DOMAIN_READY_THRESHOLD,
   );
+  const latestColumnArticles = getColumnArticles().slice(0, 3);
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -169,6 +172,38 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {latestColumnArticles.length > 0 && (
+          <section className="border-t border-slate-200 bg-slate-50 py-12 sm:py-16">
+            <div className="container mx-auto px-4">
+              <div className="mx-auto max-w-5xl">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="text-xs font-black tracking-widest text-blue-700">新着コラム</p>
+                    <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
+                      加算と記録の実務を、現場の手順で
+                    </h2>
+                    <p className="jp-text mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+                      算定の流れと記録の残し方、毎月の改定ウォッチを書いています。
+                    </p>
+                  </div>
+                  <Link
+                    href="/column/"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-black text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
+                  >
+                    コラム一覧を見る
+                    <ArrowIcon />
+                  </Link>
+                </div>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {latestColumnArticles.map((article) => (
+                    <ColumnCard key={article.slug} article={article} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="bg-slate-50 py-12 sm:py-16">
           <div className="container mx-auto px-4">

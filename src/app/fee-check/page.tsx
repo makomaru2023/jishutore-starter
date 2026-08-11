@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { KaiteiWatchHubLink } from "@/components/column/KaiteiWatchLink";
 import { FeeCheckGlobalSearch, type FeeCheckSearchEntry } from "@/components/fee-check/FeeCheckGlobalSearch";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PLUS_PROMO_BADGE_TEXT, PLUS_PROMO_IS_ACTIVE } from "@/constants/plus-pricing";
+import { getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
 import {
     categoryLabels,
     feeDomains,
@@ -48,6 +50,14 @@ export default async function FeeCheckTopPage() {
             searchText: getPublicFeeSearchText(item),
         })),
     );
+    const latestKaiteiWatch = getLatestKaiteiWatch();
+    const kaiteiWatchTarget = latestKaiteiWatch
+        ? {
+            title: latestKaiteiWatch.title,
+            href: getColumnUrl(latestKaiteiWatch.slug),
+            updatedAt: latestKaiteiWatch.updatedAt,
+        }
+        : undefined;
     // 完成分野を先に、準備中（項目数が少ない）分野を末尾に並べる。
     const orderedDomains = [...feeDomains].sort(
         (a, b) =>
@@ -93,6 +103,7 @@ export default async function FeeCheckTopPage() {
                                     編集方針・確認方法を見る
                                 </Link>
                             </p>
+                            <KaiteiWatchHubLink target={kaiteiWatchTarget} />
                         </div>
                     </div>
                 </section>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 292" width="800" height="292">
+  <rect width="800" height="292" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">毎月やっている点検の流れ</text>
+
+    <!-- ステップ1 -->
+    <rect x="22" y="50" width="170" height="128" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="107" cy="82" r="17" fill="#1565C0"/>
+    <text x="107" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="107" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">厚労省の3つの</text>
+    <text x="107" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">改定ポータルを見る</text>
+
+    <!-- ステップ2 -->
+    <rect x="216" y="50" width="170" height="128" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="301" cy="82" r="17" fill="#1565C0"/>
+    <text x="301" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="301" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">前回の確認以降に</text>
+    <text x="301" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">出た資料を拾う</text>
+
+    <!-- ステップ3 -->
+    <rect x="410" y="50" width="170" height="128" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="495" cy="82" r="17" fill="#1565C0"/>
+    <text x="495" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="495" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">掲載中の全項目と</text>
+    <text x="495" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">突き合わせる</text>
+
+    <!-- ステップ4 -->
+    <rect x="604" y="50" width="170" height="128" rx="10" fill="#1565C0"/>
+    <circle cx="689" cy="82" r="17" fill="#FFFFFF"/>
+    <text x="689" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565C0">4</text>
+    <text x="689" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">該当箇所を直して</text>
+    <text x="689" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">確認日を更新する</text>
+
+    <!-- 矢印 -->
+    <path d="M194 114 L212 114" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M212 114 l-8 -5 v10 z" fill="#94A3B8"/>
+    <path d="M388 114 L406 114" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M406 114 l-8 -5 v10 z" fill="#94A3B8"/>
+    <path d="M582 114 L600 114" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M600 114 l-8 -5 v10 z" fill="#94A3B8"/>
+
+    <!-- 変更なしも記録する -->
+    <rect x="22" y="204" width="752" height="62" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="398" y="232" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">変更がなかった分野も「点検して変更なし」として残します。</text>
+    <text x="398" y="254" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">見ていないのか、見て変わらなかったのかを区別するためです。</text>
+  </g>
+</svg>
