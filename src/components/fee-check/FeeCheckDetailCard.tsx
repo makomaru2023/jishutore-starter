@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
 import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
+import { FEE_CHECK_ITEM_COUNT } from "@/constants/public-counts";
 import {
     categoryLabels,
     categoryStyles,
@@ -131,8 +132,10 @@ function LockedSection({
         <Section title={title} className={kind === "pitfalls" ? "border-amber-200 bg-amber-50/30" : "border-blue-100 bg-blue-50/30"}>
             <LockedTextList items={items} kind={kind} />
             {!isUnlocked && hiddenCount > 0 && (
-                <div className="mt-3 rounded-md border border-dashed border-blue-200 bg-white px-3 py-3 text-sm font-black text-blue-800">
-                    🔒 あと{hiddenCount}件はPlusで確認できます。
+                /* 1項目あたりのロック差分（記録2件など）が薄く見える問題への対策。
+                   「この項目であと何件」ではなく「全項目でこの欄が開く」と伝える（2026-08-11）。 */
+                <div className="mt-3 rounded-md border border-dashed border-blue-200 bg-white px-3 py-3 text-sm font-black leading-6 text-blue-800 break-keep">
+                    🔒 あと{hiddenCount}件。Plusでは全{FEE_CHECK_ITEM_COUNT}項目でこの欄がすべて開きます（改定は毎月点検）。
                 </div>
             )}
         </Section>
@@ -199,6 +202,7 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
             <p className="mt-2 text-sm leading-6 text-slate-600 break-keep">
                 実地指導や監査で確認される記録・自己点検ポイントを、{item.name}を含む全項目に載せています。
                 まず全文サンプルで、実際の表示を確かめられます。
+                改定・疑義解釈は毎月点検し、各ページの確認日を更新しています。
             </p>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <FeeCheckTrackedLink
