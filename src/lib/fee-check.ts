@@ -23,6 +23,7 @@ import {
     type FeeDomain,
     type FeeItem,
     type FeeConflictSet,
+    additionalSampleFeeItems,
     sampleFeeItems,
 } from "@/lib/fee-check-shared";
 
@@ -62,12 +63,41 @@ export function getFeeCheckTotalCount(): number {
 assertPublicCount("報酬チェックの分野数", feeDomains.length, FEE_CHECK_DOMAIN_COUNT);
 assertPublicCount("報酬チェックの項目数", getFeeCheckTotalCount(), FEE_CHECK_ITEM_COUNT);
 
+/**
+ * 主サンプル（各分野1件）。★戻り値を変えないこと。
+ * LockedCta / ContextualPlusGuide の「全文サンプルを見る」リンク先がこれを使っている。
+ */
 export function getSampleFeeItems(): Array<{ domain: FeeDomain; item: FeeItem }> {
     return feeDomains.flatMap((domain) => {
         const sampleId = sampleFeeItems[domain.domain];
         const item = domain.items.find((entry) => entry.id === sampleId);
         return item ? [{ domain, item }] : [];
     });
+}
+
+/** 追加の全文公開サンプル（ハブの一覧に主サンプルと並べて出す）。 */
+export function getAdditionalSampleFeeItems(): Array<{ domain: FeeDomain; item: FeeItem }> {
+    return feeDomains.flatMap((domain) => {
+        const ids = additionalSampleFeeItems[domain.domain] ?? [];
+        return ids.flatMap((id) => {
+            const item = domain.items.find((entry) => entry.id === id);
+            return item ? [{ domain, item }] : [];
+        });
+    });
+}
+
+// データ側のIDミスに早く気づくため、存在しないIDが指定されていたらビルドを落とす。
+// （サンプル指定は手書きなので、項目IDのリネームで静かに壊れるのを防ぐ）
+for (const [domainId, ids] of Object.entries(additionalSampleFeeItems)) {
+    const domain = getFeeDomain(domainId);
+    if (!domain) {
+        throw new Error(`[fee-check] additionalSampleFeeItems に未知の分野 "${domainId}" が指定されています。`);
+    }
+    for (const id of ids) {
+        if (!domain.items.some((item) => item.id === id)) {
+            throw new Error(`[fee-check] additionalSampleFeeItems の "${domainId}" に未知の項目ID "${id}" が指定されています。`);
+        }
+    }
 }
 
 // --- 加算の組み合わせチェック ---

@@ -12,6 +12,7 @@ import {
     getFeeCheckTotalCount,
     getFeeItemUrl,
     getPublicFeeSearchText,
+    getAdditionalSampleFeeItems,
     getSampleFeeItems,
 } from "@/lib/fee-check";
 import { hasActivePlusAccess } from "@/lib/plus-access";
@@ -31,7 +32,9 @@ const DOMAIN_READY_THRESHOLD = 5;
 export default async function FeeCheckTopPage() {
     const isMember = await hasActivePlusAccess();
     const totalCount = getFeeCheckTotalCount();
-    const samples = getSampleFeeItems();
+    // 主サンプル（各分野1件）＋追加サンプル。追加分は記録・自己点検が厚い項目で、
+    // 「記録に何を残すか」のデモとして主サンプルより効く（2026-08-11）。
+    const samples = [...getSampleFeeItems(), ...getAdditionalSampleFeeItems()];
     const searchEntries: FeeCheckSearchEntry[] = feeDomains.flatMap((domain) =>
         domain.items.map((item) => ({
             domain: domain.domain,
@@ -275,11 +278,11 @@ export default async function FeeCheckTopPage() {
                                             まずは全文サンプルで、Plus表示を体験
                                         </h3>
                                         <p className="mt-2 max-w-2xl text-sm leading-6 text-emerald-950/80">
-                                            各分野から1項目ずつ、記録・自己点検・つまずきやすい点まで全文公開しています。
+                                            全{feeDomains.length}分野から、記録・自己点検・つまずきやすい点まで全文公開している項目です。登録なしでそのまま読めます。
                                         </p>
                                     </div>
                                     <p className="shrink-0 text-xs font-black text-emerald-800">
-                                        全{samples.length}分野のサンプル
+                                        全{samples.length}項目のサンプル
                                     </p>
                                 </div>
                                 <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

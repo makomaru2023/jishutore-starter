@@ -19,7 +19,7 @@ import {
     hasComboCheck,
     insuranceLabels,
     normalizeFeeText,
-    sampleFeeItems,
+    isSampleFeeItem,
     type FeeCategory,
 } from "@/lib/fee-check";
 
@@ -75,7 +75,6 @@ export default async function FeeCheckDomainPage({
         if (!normalizedQuery) return true;
         return getPublicFeeSearchText(item).includes(normalizedQuery);
     });
-    const sampleId = sampleFeeItems[domain.domain];
     const pageUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
     const breadcrumbJsonLd = {
         "@context": "https://schema.org",
@@ -217,7 +216,7 @@ export default async function FeeCheckDomainPage({
                                             <span className={`rounded-full border px-2.5 py-1 text-xs font-black ${categoryStyles[item.category as FeeCategory]}`}>
                                                 {categoryLabels[item.category]}
                                             </span>
-                                            {item.id === sampleId && (
+                                            {isSampleFeeItem(domain.domain, item.id) && (
                                                 <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-black text-emerald-800">
                                                     全文公開サンプル
                                                 </span>

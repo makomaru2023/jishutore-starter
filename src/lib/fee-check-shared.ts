@@ -128,7 +128,12 @@ export const categoryStyles: Record<FeeCategory, string> = {
     rule: "border-slate-200 bg-slate-100 text-slate-700",
 };
 
-/** 分野ごとの「全文公開サンプル」。1エントリだけ Plus 表示を無料で見せる。 */
+/**
+ * 分野ごとの「主サンプル」。各分野1エントリだけ Plus 表示を無料で見せる。
+ *
+ * ★張り替えないこと。既存サンプルURLの公開内容が縮むのを避けるため、
+ * 手厚い項目を見せたいときは additionalSampleFeeItems に足す（2026-08-11の方針）。
+ */
 export const sampleFeeItems: Record<string, string> = {
     "homon-riha": "homon-riha-tanki-shuchu",
     "tsusho-riha": "tsusho-riha-rehamane",
@@ -138,6 +143,25 @@ export const sampleFeeItems: Record<string, string> = {
     "chiiki-hokatsu-care": "chiiki-hokatsu-care-kihon",
     "kyuseiki": "kyuseiki-ippan-nyuin-kihon",
     "tsusho-kaigo": "tsusho-kaigo-kobetsu-kinou",
+};
+
+/**
+ * 追加の全文公開サンプル（2026-08-11・`plan/企画書_報酬チェック価値の見せ方3点.md` §1）。
+ *
+ * 狙い：主サンプルが薄い分野（訪問リハの短期集中＝スコア6）だと「記録に何を残すか」の
+ * デモにならないため、記録・自己点検・つまずきが厚い項目を追加で開ける。
+ *
+ * ★全文公開は主8件＋追加5件＝13件／148項目（約9%）に収める。ここを増やすときは
+ * `plan/仕様メモ_報酬チェック_フリーミアム公開.md` の公開範囲と突き合わせること。
+ */
+export const additionalSampleFeeItems: Record<string, string[]> = {
+    "roken-nyusho": [
+        "roken-nyusho-nyusho-zengo-homon-shido", // アクセス単独1位
+        "roken-nyusho-kihon", // 老健は流入6割のため2件目を許容
+    ],
+    "kaifukuki-riha": ["kaifukuki-riha-keikakusho-kiroku"], // 「記録に何を残すか」の看板デモ
+    "homon-riha": ["homon-riha-rehamane"], // 主サンプルが最も薄いため補強
+    "homon-kango-riha": ["homon-kango-riha-kihon"], // 基本報酬で検索母数が大きい
 };
 
 export const normalizeFeeText = (value: string) => value.normalize("NFKC").toLowerCase();
@@ -150,8 +174,19 @@ export function getDomainUrl(domainId: string): string {
     return `/fee-check/${domainId}/`;
 }
 
-export function isSampleFeeItem(domainId: string, itemId: string): boolean {
+/** 主サンプルか（LockedCta の「全文サンプルを見る」リンク先の判定に使う）。 */
+export function isMainSampleFeeItem(domainId: string, itemId: string): boolean {
     return sampleFeeItems[domainId] === itemId;
+}
+
+/**
+ * 全文公開サンプルか（主・追加の両方）。
+ * ★この関数が true を返すページは isUnlocked 扱いになり、records / auditPoints /
+ * pitfalls / relatedQA がそのまま公開される。追加はデータ採点のうえで慎重に。
+ */
+export function isSampleFeeItem(domainId: string, itemId: string): boolean {
+    return isMainSampleFeeItem(domainId, itemId)
+        || (additionalSampleFeeItems[domainId]?.includes(itemId) ?? false);
 }
 
 export function truncateText(value: string, maxLength: number): string {
