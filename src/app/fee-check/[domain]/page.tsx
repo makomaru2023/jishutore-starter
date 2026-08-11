@@ -38,11 +38,22 @@ export async function generateMetadata({ params }: { params: Promise<{ domain: s
         return { title: "報酬チェック項目が見つかりません｜自主トレ素材庫" };
     }
 
+    const title = `${domain.domainLabel}の算定要件・単位数一覧｜自主トレ素材庫`;
+    const description = `${domain.domainLabel}の報酬チェック項目を一覧で確認できます。単位数・算定要件・根拠資料リンクは無料公開、記録・自己点検ポイントはPlusで確認できます。`;
+    const pageUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
+
     return {
-        title: `${domain.domainLabel}の算定要件・単位数一覧｜自主トレ素材庫`,
-        description: `${domain.domainLabel}の報酬チェック項目を一覧で確認できます。単位数・算定要件・根拠資料リンクは無料公開、記録・自己点検ポイントはPlusで確認できます。`,
+        title,
+        description,
         alternates: {
-            canonical: `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`,
+            canonical: pageUrl,
+        },
+        openGraph: {
+            title,
+            description,
+            url: pageUrl,
+            siteName: "自主トレ素材庫",
+            type: "website",
         },
     };
 }

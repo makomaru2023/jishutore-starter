@@ -23,12 +23,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'weekly' as const,
         priority: 0.85,
     }))
-    const feeItemUrls = getAllFeeItems().map(({ domain, item }) => ({
+    const allFeeItems = getAllFeeItems()
+    const feeItemUrls = allFeeItems.map(({ domain, item }) => ({
         url: `${baseUrl}/fee-check/${domain.domain}/${item.id}/`,
         lastModified: new Date(item.lastVerified),
         changeFrequency: 'monthly' as const,
         priority: 0.75,
     }))
+    // ハブは全項目の最新確認日を更新日とする（分野ページと同じ考え方）
+    const feeCheckUpdatedAt = new Date(
+        allFeeItems.reduce(
+            (latest, { item }) => item.lastVerified > latest ? item.lastVerified : latest,
+            '2026-01-01',
+        ),
+    )
 
     return [
         {
@@ -123,7 +131,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${baseUrl}/fee-check/`,
-            lastModified: staticUpdatedAt,
+            lastModified: feeCheckUpdatedAt,
             changeFrequency: 'weekly' as const,
             priority: 0.9,
         },
