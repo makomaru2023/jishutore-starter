@@ -55,7 +55,9 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     }
 
-    // === 旧・加算組み合わせページを会員ハブへ集約 ===
+    // === 加算組み合わせ：会員は会員ハブへ、非会員は説明ページを表示 ===
+    // 以前は非会員をログイン画面へ直行させていたが、「何の機能か分からないまま
+    // メールアドレスを求められる」状態だったため、説明ページを見せる（2026-08-12）。
     if (matchesPath(pathname, PLUS_FEE_CHECK_COMBO_PATH)) {
         const session = await getPlusSession(req);
         if (session) {
@@ -64,10 +66,7 @@ export async function middleware(req: NextRequest) {
             feeHubUrl.searchParams.set("tab", "combo");
             return NextResponse.redirect(feeHubUrl, 302);
         }
-        const loginUrl = req.nextUrl.clone();
-        loginUrl.pathname = `${PLUS_LOGIN_PATH}/`;
-        loginUrl.search = "";
-        return NextResponse.redirect(loginUrl, 302);
+        return NextResponse.next();
     }
 
     // === 旧・会員報酬チェックURLの互換転送 ===

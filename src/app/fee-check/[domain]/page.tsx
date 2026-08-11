@@ -246,8 +246,10 @@ export default async function FeeCheckDomainPage({
                                 <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                                     自施設で算定している（予定の）加算にチェックを入れると、併算定不可・条件付き・区分選択制・前提加算の規定を、根拠リンクつきで表示します。返戻の原因になりやすい組み合わせの自己点検に。
                                 </p>
+                                {/* 非会員が大半の無料ページなので、会員ハブ（＝非会員はログイン画面へ飛ぶ）
+                                    ではなく説明ページへ送る。会員は middleware がハブへ転送する。 */}
                                 <Link
-                                    href="/plus/fee-hub/?tab=combo"
+                                    href="/plus/fee-check-combo/"
                                     className="mt-4 inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700"
                                 >
                                     加算の組み合わせチェックを使う（Plus）

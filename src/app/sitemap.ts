@@ -142,6 +142,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.65,
         },
         {
+            // 非会員向けの組み合わせチェック説明ページ（会員はmiddlewareでハブへ転送）。
+            // 「併算定 できない」系のクエリの受け皿になりうるので載せる。
+            url: `${baseUrl}/plus/fee-check-combo/`,
+            lastModified: new Date('2026-08-12T00:00:00+09:00'),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        },
+        {
             url: `${baseUrl}/products/day-service-exercise-pack/`,
             lastModified: staticUpdatedAt,
             changeFrequency: 'weekly' as const,
