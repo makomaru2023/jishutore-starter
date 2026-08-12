@@ -183,8 +183,10 @@ for (const article of articles) {
     }
 
     // description は検索結果に出る。長すぎると切られ、短すぎると答えを先出しできない。
-    if (article.description.length < 80 || article.description.length > 160) {
-        fail(slug, `description は80〜160字にします（現在 ${article.description.length}字）。`);
+    // ★下限は編集ガイド§6の120字。当初80字にしていたら14本中12本が100字前後で素通りし、
+    // 検索語のバリエーションを載せる面積が取れていなかった（2026-08-12に全件を書き直した）。
+    if (article.description.length < 120 || article.description.length > 160) {
+        fail(slug, `description は120〜160字にします（現在 ${article.description.length}字）。`);
     }
     if (article.takeaways.length < 2 || article.takeaways.length > 4) {
         fail(slug, `「この記事でわかること」は2〜4点にします（現在 ${article.takeaways.length}点）。`);
