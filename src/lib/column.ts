@@ -19,14 +19,18 @@ import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
 import { article as benkyokaiShiryoMaeNiKimeru } from "@/data/column/articles/benkyokai-shiryo-mae-ni-kimeru";
 import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
+import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
+import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
+import { article as kokujiTsuchiGigikaishakuChigai } from "@/data/column/articles/kokuji-tsuchi-gigikaishaku-chigai";
 import { article as ninchishoTankiShuchuRihaTsusho } from "@/data/column/articles/ninchisho-tanki-shuchu-riha-tsusho";
 import { article as nyushoZengoHomonShidoJitsumu } from "@/data/column/articles/nyusho-zengo-homon-shido-jitsumu";
 import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/riha-keikakusho-setsumei-tejun";
 import { article as rokenShokiKasanKubun } from "@/data/column/articles/roken-shoki-kasan-kubun";
 import { article as rokenTaishojiShienKasan } from "@/data/column/articles/roken-taishoji-shien-kasan";
+import { article as santeiYoukenToShisetsuKijun } from "@/data/column/articles/santei-youken-to-shisetsu-kijun";
 
-export type ColumnCategory = "fee-practice" | "kaitei-watch" | "shiryo";
+export type ColumnCategory = "fee-practice" | "kaitei-watch" | "seido-yomikata" | "shiryo";
 
 /** 記事末尾のCTA。1記事につき1つだけ（詰め込まない・企画書§4）。 */
 export type ColumnCtaId = "plus" | "free-items";
@@ -70,12 +74,16 @@ export type ColumnArticle = {
 export const columnCategoryLabels: Record<ColumnCategory, string> = {
     "fee-practice": "加算と記録の実務",
     "kaitei-watch": "改定ウォッチ",
+    // 個別の加算ではなく、制度の資料そのものの読み方を扱う回。
+    // 「聞きにくいけれど誰も教えてくれない」ところを引き受ける枠。
+    "seido-yomikata": "制度の読み方",
     shiryo: "資料づくりのコツ",
 };
 
 export const columnCategoryStyles: Record<ColumnCategory, string> = {
     "fee-practice": "border-blue-200 bg-blue-50 text-blue-800",
     "kaitei-watch": "border-amber-200 bg-amber-50 text-amber-800",
+    "seido-yomikata": "border-violet-200 bg-violet-50 text-violet-800",
     shiryo: "border-emerald-200 bg-emerald-50 text-emerald-800",
 };
 
@@ -85,6 +93,11 @@ export const columnCategoryStyles: Record<ColumnCategory, string> = {
  */
 const articles: ColumnArticle[] = [
     kaiteiWatch202608,
+    // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
+    kokujiTsuchiGigikaishakuChigai,
+    santeiYoukenToShisetsuKijun,
+    kanpoTeiseiToWa,
+    kaiteiJohoDokoWoMiru,
     rokenShokiKasanKubun,
     homonRihaShinryoMijisshiGensan,
     nyushoZengoHomonShidoJitsumu,

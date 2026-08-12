@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 452" width="800" height="452">
+  <rect width="800" height="452" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">4種類の資料は、決めていることが違う</text>
+
+    <!-- 省令 -->
+    <rect x="40" y="52" width="720" height="72" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="58" y="68" width="86" height="26" rx="13" fill="#475569"/>
+    <text x="101" y="87" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">省令</text>
+    <text x="160" y="87" font-size="16" font-weight="bold" fill="#0F172A">サービスそのもののルール</text>
+    <text x="160" y="110" font-size="13" font-weight="bold" fill="#475569">人員・設備・運営の基準。例：老健の人員、施設及び設備並びに運営に関する基準</text>
+
+    <!-- 告示 -->
+    <rect x="40" y="136" width="720" height="98" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="58" y="152" width="86" height="26" rx="13" fill="#1565C0"/>
+    <text x="101" y="171" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">告示</text>
+    <text x="160" y="171" font-size="16" font-weight="bold" fill="#0F172A">単位数・点数と、算定の要件</text>
+    <text x="160" y="196" font-size="13" font-weight="bold" fill="#475569">「いくらか」を決める告示と、「どんな要件か」を決める告示は別々にある</text>
+    <text x="160" y="218" font-size="13" font-weight="bold" fill="#475569">数え方の根っこはここ。当サイトの出典でも最も多い</text>
+
+    <!-- 通知 -->
+    <rect x="40" y="246" width="720" height="72" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="58" y="262" width="86" height="26" rx="13" fill="#1565C0"/>
+    <text x="101" y="281" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">通知</text>
+    <text x="160" y="281" font-size="16" font-weight="bold" fill="#0F172A">告示をどう読むか（解釈と運用）</text>
+    <text x="160" y="304" font-size="13" font-weight="bold" fill="#475569">実施上の留意事項について。告示だけでは分からない中身はここに書かれている</text>
+
+    <!-- 疑義解釈 -->
+    <rect x="40" y="330" width="720" height="72" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <rect x="58" y="346" width="86" height="26" rx="13" fill="#B45309"/>
+    <text x="101" y="365" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">疑義解釈</text>
+    <text x="160" y="365" font-size="16" font-weight="bold" fill="#78350F">個別の「これはどうなる？」への回答</text>
+    <text x="160" y="388" font-size="13" font-weight="bold" fill="#78350F">事務連絡として出る。あとから前の回答が修正されることがある</text>
+
+    <text x="400" y="432" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">迷ったら、上から順にさかのぼる。疑義解釈だけで判断しない。</text>
+  </g>
+</svg>

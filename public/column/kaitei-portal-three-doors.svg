@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 404" width="800" height="404">
+  <rect width="800" height="404" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">見に行く入口は3つだけ</text>
+
+    <!-- 1 -->
+    <rect x="22" y="54" width="240" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="142" cy="86" r="17" fill="#1565C0"/>
+    <text x="142" y="92" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="142" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">前回の全面改定</text>
+    <text x="142" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">（介護報酬）</text>
+    <text x="142" y="178" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">Q&amp;Aが不定期に積み上がる</text>
+
+    <!-- 2 -->
+    <rect x="280" y="54" width="240" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="400" cy="86" r="17" fill="#1565C0"/>
+    <text x="400" y="92" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="400" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">期中の改定</text>
+    <text x="400" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">（介護報酬）</text>
+    <text x="400" y="178" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">処遇改善など、間の年の変更</text>
+
+    <!-- 3 -->
+    <rect x="538" y="54" width="240" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="658" cy="86" r="17" fill="#1565C0"/>
+    <text x="658" y="92" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="658" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">今年度の改定</text>
+    <text x="658" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">（診療報酬）</text>
+    <text x="658" y="178" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">疑義解釈と官報訂正が続く</text>
+
+    <!-- 見る順番 -->
+    <rect x="22" y="224" width="756" height="76" rx="10" fill="#1565C0"/>
+    <text x="400" y="252" text-anchor="middle" font-size="15" font-weight="bold" fill="#BBDEFB">毎回やること</text>
+    <text x="400" y="280" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">前回いつ見たかを控えておき、それ以降に出たものだけ拾う</text>
+
+    <!-- 注意 -->
+    <rect x="22" y="314" width="756" height="76" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="342" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">介護報酬と診療報酬では、改定の周期も資料の置き場所も違う。</text>
+    <text x="400" y="368" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">自分に関係あるのがどれかを、先に決めておく。</text>
+  </g>
+</svg>

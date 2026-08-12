@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 424" width="800" height="424">
+  <rect width="800" height="424" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ「告示」でも、手元のPDFが最新とは限らない</text>
+
+    <!-- もとの告示 -->
+    <rect x="40" y="54" width="230" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="155" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">改定のときに出る</text>
+    <text x="155" y="112" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">もとの告示</text>
+
+    <path d="M274 96 L296 96" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M296 96 l-8 -5 v10 z" fill="#94A3B8"/>
+
+    <!-- 訂正 -->
+    <rect x="300" y="54" width="230" height="84" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="415" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">あとから何度も出る</text>
+    <text x="415" y="112" text-anchor="middle" font-size="17" font-weight="bold" fill="#78350F">官報掲載事項の一部訂正</text>
+
+    <path d="M534 96 L556 96" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M556 96 l-8 -5 v10 z" fill="#94A3B8"/>
+
+    <!-- 本当の中身 -->
+    <rect x="560" y="54" width="200" height="84" rx="10" fill="#1565C0"/>
+    <text x="660" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#BBDEFB">この2つを足したものが</text>
+    <text x="660" y="112" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">いま有効な中身</text>
+
+    <!-- 落とし穴 -->
+    <rect x="40" y="164" width="720" height="112" rx="10" fill="#FFEBEE" stroke="#C62828" stroke-width="2"/>
+    <text x="400" y="192" text-anchor="middle" font-size="15" font-weight="bold" fill="#B71C1C">ところが</text>
+    <text x="400" y="222" text-anchor="middle" font-size="17" font-weight="bold" fill="#B71C1C">厚労省サイトの点数表PDFにも、法令データベースの溶け込み版にも、</text>
+    <text x="400" y="248" text-anchor="middle" font-size="17" font-weight="bold" fill="#B71C1C">訂正が反映されていないことがある</text>
+
+    <!-- 探し方 -->
+    <rect x="40" y="292" width="720" height="112" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="320" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">訂正の見つけ方</text>
+    <text x="400" y="348" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">改定ポータルに並ぶ事務連絡を開き、別添の「いちばん最後」まで送る。</text>
+    <text x="400" y="374" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">本数は増えていくので、覚えずに毎回ポータルで数え直す。</text>
+  </g>
+</svg>

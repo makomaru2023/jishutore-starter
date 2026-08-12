@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 412" width="800" height="412">
+  <rect width="800" height="412" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">見ている対象が違う</text>
+
+    <!-- 施設基準 -->
+    <rect x="40" y="54" width="350" height="176" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="60" y="72" width="106" height="28" rx="14" fill="#1565C0"/>
+    <text x="113" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">施設基準</text>
+    <text x="215" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">「うちの事業所は</text>
+    <text x="215" y="152" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">やれる体制か」</text>
+    <text x="215" y="184" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">人の配置、部門の設置、研修。</text>
+    <text x="215" y="206" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">満たしたら届け出て、以後ずっと効く</text>
+
+    <!-- 算定要件 -->
+    <rect x="410" y="54" width="350" height="176" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="430" y="72" width="106" height="28" rx="14" fill="#1565C0"/>
+    <text x="483" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">算定要件</text>
+    <text x="585" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">「この人に、この月に</text>
+    <text x="585" y="152" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">算定していいか」</text>
+    <text x="585" y="184" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">対象者、実施した内容、回数、時期。</text>
+    <text x="585" y="206" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">利用者ごと・月ごとに毎回みる</text>
+
+    <text x="400" y="152" text-anchor="middle" font-size="24" font-weight="bold" fill="#94A3B8">×</text>
+
+    <path d="M400 234 v18" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 256 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <rect x="40" y="264" width="720" height="58" rx="10" fill="#1565C0"/>
+    <text x="400" y="300" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">両方そろって、はじめて算定できる</text>
+
+    <rect x="40" y="336" width="720" height="56" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="362" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">つまずきやすいのは、施設基準を満たしているのに届出を出していないとき。</text>
+    <text x="400" y="382" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">実務はできているのに、算定だけができない状態になる。</text>
+  </g>
+</svg>
