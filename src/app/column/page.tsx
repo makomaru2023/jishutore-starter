@@ -12,17 +12,21 @@ import {
 const ALL = "all";
 const PAGE_URL = "https://jishutore-sozaiko.online/column/";
 
+// ★metadata は画面の見出しと違い、検索語を落とすと拾われなくなる。
+// 見出しからテーマを外しても、ここには扱っているテーマを残しておくこと。
+const INDEX_TITLE = "コラム｜リハビリ専門職の実務メモ｜自主トレ素材庫";
+
 export const metadata: Metadata = {
-    title: "コラム｜加算と記録の実務、改定ウォッチ｜自主トレ素材庫",
+    title: INDEX_TITLE,
     description:
-        "リハビリ専門職向けのコラムです。加算の算定の流れと記録の残し方、毎月の報酬改定・疑義解釈ウォッチ、資料づくりのコツを、作業療法士が一次資料を確認しながら書いています。",
+        "リハビリ専門職向けのコラムです。加算の算定の流れと記録の残し方、毎月の報酬改定・疑義解釈ウォッチ、告示や通知の読み方、資料づくりのコツを、作業療法士が一次資料を確認しながら書いています。",
     alternates: {
         canonical: PAGE_URL,
     },
     openGraph: {
-        title: "コラム｜加算と記録の実務、改定ウォッチ｜自主トレ素材庫",
+        title: INDEX_TITLE,
         description:
-            "加算の算定の流れと記録、毎月の報酬改定・疑義解釈ウォッチ、資料づくりのコツをまとめています。",
+            "加算の算定の流れと記録、毎月の報酬改定・疑義解釈ウォッチ、告示や通知の読み方、資料づくりのコツをまとめています。",
         url: PAGE_URL,
         siteName: "自主トレ素材庫",
         type: "website",
@@ -69,14 +73,17 @@ export default async function ColumnIndexPage({
                 <section className="border-b border-blue-100 bg-white py-10 sm:py-14">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-5xl">
-                            <p className="text-sm font-black tracking-[0.35em] text-blue-700">COLUMN</p>
+                            <p className="text-sm font-black tracking-[0.25em] text-blue-700">コラム</p>
                             <span className="mt-3 block h-px w-12 bg-blue-200" aria-hidden="true" />
                             <h1 className="jp-heading mt-4 text-3xl font-black leading-relaxed text-slate-950 sm:text-4xl">
-                                加算と記録の実務を、現場の手順で書いています
+                                現場で迷いやすいところを、ひとつずつ
                             </h1>
+                            {/* ★一覧は着地ページなので、説明文はトップのように削らず短くして残す。
+                                テーマを列挙せず「作業療法士が書いている」だけにしてあるのは、
+                                制度以外の記事が増えても書き換えずに済ませるため。 */}
                             <p className="jp-text mt-4 max-w-3xl text-sm leading-8 text-slate-600 sm:text-base">
-                                作業療法士が、厚生労働省の告示・通知・疑義解釈を確認しながら書いているコラムです。
-                                算定の流れと記録の残し方、毎月の改定ウォッチ、資料づくりのコツを扱います。
+                                リハビリの現場で働く作業療法士が書いているコラムです。
+                                制度のことは、厚生労働省の告示・通知・疑義解釈を確認したうえで書いています。
                                 単位数などの数字は、根拠リンクつきの
                                 <Link href="/fee-check/" className="mx-1 text-blue-700 hover:underline">
                                     報酬チェック
