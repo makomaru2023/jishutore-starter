@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 428" width="800" height="428">
+  <rect width="800" height="428" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">退所の「行き先」と「場面」で、見るものが変わる</text>
+
+    <!-- 退所前 -->
+    <rect x="40" y="52" width="720" height="80" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="60" y="68" width="96" height="26" rx="13" fill="#1565C0"/>
+    <text x="108" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">退所より前</text>
+    <text x="400" y="118" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">居宅介護支援事業者と連携して、退所後の利用方針を決めておく</text>
+
+    <!-- 行き先で分かれる -->
+    <text x="400" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">退所するとき、行き先で分かれる</text>
+
+    <rect x="40" y="172" width="232" height="118" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="156" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">居宅へ帰る</text>
+    <text x="156" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">退所後の主治医へ</text>
+    <text x="156" y="252" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">情報を提供して紹介</text>
+    <text x="156" y="276" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">社会福祉施設等でも同じ</text>
+
+    <rect x="284" y="172" width="232" height="118" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">医療機関へ入院</text>
+    <text x="400" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">その医療機関へ</text>
+    <text x="400" y="252" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">情報を提供して紹介</text>
+    <text x="400" y="276" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">居宅へ帰る場合とは別枠</text>
+
+    <rect x="528" y="172" width="232" height="118" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="644" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">まず試しに帰る</text>
+    <text x="644" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">試行的な退所のときに</text>
+    <text x="644" y="252" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">療養上の指導を行う</text>
+    <text x="644" y="276" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">最初の月から3か月の間</text>
+
+    <!-- 退所時に別で見るもの -->
+    <rect x="40" y="306" width="720" height="56" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="340" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">退所時に訪問看護が必要と医師が認めたら、指示書の交付も別に見る</text>
+
+    <!-- 注意 -->
+    <rect x="40" y="376" width="720" height="42" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="403" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">イ(4)・ロ(4)を算定している老健では、この加算群は算定しない</text>
+  </g>
+</svg>

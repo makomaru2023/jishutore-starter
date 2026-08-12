@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">スライドを開く前に、この3つを紙に書く</text>
+
+    <!-- 1 -->
+    <rect x="40" y="52" width="720" height="80" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="80" cy="92" r="19" fill="#1565C0"/>
+    <text x="80" y="99" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="114" y="86" font-size="17" font-weight="bold" fill="#0F172A">誰に話すのか</text>
+    <text x="114" y="112" font-size="14" font-weight="bold" fill="#475569">新人か、ベテランか、他職種か。同じ内容でも前提が違う</text>
+
+    <!-- 2 -->
+    <rect x="40" y="144" width="720" height="80" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="80" cy="184" r="19" fill="#1565C0"/>
+    <text x="80" y="191" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="114" y="178" font-size="17" font-weight="bold" fill="#0F172A">終わったあと、何をしてほしいのか（ひとつだけ）</text>
+    <text x="114" y="204" font-size="14" font-weight="bold" fill="#475569">「明日から記録にこの一行を足す」くらい具体的にする</text>
+
+    <!-- 3 -->
+    <rect x="40" y="236" width="720" height="80" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="80" cy="276" r="19" fill="#1565C0"/>
+    <text x="80" y="283" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="114" y="270" font-size="17" font-weight="bold" fill="#0F172A">何分もらえるのか</text>
+    <text x="114" y="296" font-size="14" font-weight="bold" fill="#475569">15分なら伝えられるのは1つ。枚数はここから決まる</text>
+
+    <!-- 結論 -->
+    <rect x="40" y="330" width="720" height="52" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="362" text-anchor="middle" font-size="16" font-weight="bold" fill="#78350F">3つが決まっていないまま作り始めると、資料は必ず厚くなる</text>
+  </g>
+</svg>

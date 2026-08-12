@@ -16,10 +16,15 @@ import { getFeeItem } from "@/lib/fee-check";
 import { getItems } from "@/lib/items";
 
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
+import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
+import { article as benkyokaiShiryoMaeNiKimeru } from "@/data/column/articles/benkyokai-shiryo-mae-ni-kimeru";
+import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as ninchishoTankiShuchuRihaTsusho } from "@/data/column/articles/ninchisho-tanki-shuchu-riha-tsusho";
 import { article as nyushoZengoHomonShidoJitsumu } from "@/data/column/articles/nyusho-zengo-homon-shido-jitsumu";
 import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/riha-keikakusho-setsumei-tejun";
+import { article as rokenShokiKasanKubun } from "@/data/column/articles/roken-shoki-kasan-kubun";
+import { article as rokenTaishojiShienKasan } from "@/data/column/articles/roken-taishoji-shien-kasan";
 
 export type ColumnCategory = "fee-practice" | "kaitei-watch" | "shiryo";
 
@@ -80,10 +85,15 @@ export const columnCategoryStyles: Record<ColumnCategory, string> = {
  */
 const articles: ColumnArticle[] = [
     kaiteiWatch202608,
+    rokenShokiKasanKubun,
+    homonRihaShinryoMijisshiGensan,
     nyushoZengoHomonShidoJitsumu,
+    rokenTaishojiShienKasan,
     rihaKeikakushoSetsumeiTejun,
     ninchishoTankiShuchuRihaTsusho,
+    bcpMisakuteiGensan,
     anzenTaisakuTaiseiKasan,
+    benkyokaiShiryoMaeNiKimeru,
 ];
 
 export function getColumnUrl(slug: string): string {

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 412" width="800" height="412">
+  <rect width="800" height="412" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">初期加算(Ⅰ)は、2つがそろって初めて算定できる</text>
+
+    <!-- 条件A：施設側 -->
+    <rect x="40" y="52" width="350" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="60" y="70" width="120" height="26" rx="13" fill="#1565C0"/>
+    <text x="120" y="89" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">施設側の体制</text>
+    <text x="215" y="122" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">空床情報を、地域の医療機関へ</text>
+    <text x="215" y="146" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">定期的に共有している</text>
+    <text x="215" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">（ネットワーク経由、または</text>
+    <text x="215" y="194" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">サイト公表＋入退院支援部門へ共有）</text>
+
+    <!-- 条件B：入所者側 -->
+    <rect x="410" y="52" width="350" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="430" y="70" width="140" height="26" rx="13" fill="#1565C0"/>
+    <text x="500" y="89" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">その入所者の経路</text>
+    <text x="585" y="122" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">急性期医療を担う医療機関の</text>
+    <text x="585" y="146" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">一般病棟から</text>
+    <text x="585" y="176" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">入院後30日以内に退院して入所</text>
+
+    <!-- かけ算 -->
+    <text x="400" y="134" text-anchor="middle" font-size="26" font-weight="bold" fill="#94A3B8">×</text>
+
+    <path d="M400 206 v18" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 228 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <!-- 結論 -->
+    <rect x="40" y="236" width="720" height="58" rx="10" fill="#1565C0"/>
+    <text x="400" y="272" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">初期加算(Ⅰ)　／　どちらか欠けたら初期加算(Ⅱ)</text>
+
+    <!-- 注意 -->
+    <rect x="40" y="308" width="720" height="76" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="334" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">見落としやすいところ</text>
+    <text x="400" y="358" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">「急性期医療を担う医療機関の一般病棟」には、令和8年度改定で新設された</text>
+    <text x="400" y="378" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">急性期病院一般入院基本料の病棟も含まれる</text>
+  </g>
+</svg>

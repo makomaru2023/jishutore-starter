@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 452" width="800" height="452">
+  <rect width="800" height="452" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <!-- 出発点 -->
+    <rect x="170" y="26" width="460" height="56" rx="10" fill="#1565C0"/>
+    <text x="400" y="61" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">事業所の医師が、計画作成に係る診療を行えない</text>
+
+    <path d="M400 84 v18" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 106 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <!-- 分岐1 -->
+    <rect x="130" y="114" width="540" height="52" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+    <text x="400" y="146" text-anchor="middle" font-size="16" font-weight="bold" fill="#1B5E20">退院後1か月以内の訪問リハなら、この減算は行わない</text>
+
+    <path d="M400 168 v18" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 190 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <!-- 分岐2 -->
+    <rect x="130" y="198" width="540" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="224" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">それ以外は、次の2つがそろえば減算しない</text>
+    <text x="400" y="248" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">別紙様式2-2-1で十分な情報提供を受けている</text>
+    <text x="400" y="268" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">＋ 相手の医師の「適切な研修の修了等」を確認し計画書に記載</text>
+
+    <path d="M400 276 v18" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 298 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <!-- 結果 -->
+    <rect x="130" y="306" width="540" height="50" rx="10" fill="#FFEBEE" stroke="#C62828" stroke-width="2"/>
+    <text x="400" y="337" text-anchor="middle" font-size="16" font-weight="bold" fill="#B71C1C">そろわなければ、1回につき所定の単位数を減算</text>
+
+    <!-- 補足 -->
+    <rect x="40" y="376" width="720" height="56" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="400" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">「適切な研修の修了等」＝情報提供月から前36月で合計6単位以上。</text>
+    <text x="400" y="420" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">応用研修の全単位までは必要なく、令和9年3月31日までの取得予定でもよい。</text>
+  </g>
+</svg>

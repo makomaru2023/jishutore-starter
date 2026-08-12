@@ -16,6 +16,7 @@ import {
     getColumnArticles,
     getColumnUrl,
     resolveColumnRelatedFeeItems,
+    type ColumnCategory,
     type ColumnCtaId,
 } from "@/lib/column";
 
@@ -60,6 +61,20 @@ export async function generateMetadata({
         },
     };
 }
+
+/**
+ * 免責文。カテゴリごとに出し分ける。
+ * ★資料づくり（shiryo）は告示にもとづく記事ではないので、制度記事の免責をそのまま出すと
+ * 事実と違う。あわせて「法定研修対応」と読ませない書き方にしている（CLAUDE.md の注意）。
+ */
+const DISCLAIMER: Record<ColumnCategory, string> = {
+    "fee-practice":
+        "この記事は、厚生労働省の告示・通知・疑義解釈をもとに、リハビリ専門職の自己点検用に整理したものです。個別ケースの算定可否を判断するものではありません。実際の請求にあたっては原本を確認し、判断に迷う場合は保険者・地方厚生局への確認を優先してください。また、掲載内容は医療行為の代替となるものではありません。",
+    "kaitei-watch":
+        "この記事は、厚生労働省の告示・通知・疑義解釈をもとに、掲載内容の点検結果を記録したものです。網羅性を保証するものではなく、個別ケースの算定可否を判断するものでもありません。実際の請求にあたっては原本を確認し、判断に迷う場合は保険者・地方厚生局への確認を優先してください。",
+    shiryo:
+        "この記事は、施設内の勉強会・研修づくりの進め方について、作業療法士としての経験をもとに整理したものです。法定研修の要件を満たすことを保証するものではありません。実施が必要な研修の種類・回数・内容は、指定基準や自治体の通知を確認してください。また、掲載内容は医療行為の代替となるものではありません。",
+};
 
 /** CTAの文言。記事側で書き分けず、種類ごとに1つに揃える（詰め込み防止）。 */
 const CTA_COPY: Record<ColumnCtaId, { heading: string; body: string; buttonLabel: string }> = {
@@ -211,10 +226,7 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                             />
 
                             <p className="jp-text mt-10 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs leading-6 text-slate-500 sm:p-5">
-                                この記事は、厚生労働省の告示・通知・疑義解釈をもとに、リハビリ専門職の自己点検用に整理したものです。
-                                個別ケースの算定可否を判断するものではありません。
-                                実際の請求にあたっては原本を確認し、判断に迷う場合は保険者・地方厚生局への確認を優先してください。
-                                また、掲載内容は医療行為の代替となるものではありません。
+                                {DISCLAIMER[article.category]}
                             </p>
                         </article>
 
