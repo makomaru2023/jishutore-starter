@@ -42,6 +42,12 @@ export type ColumnArticle = {
     publishedAt: string;
     /** YYYY-MM-DD。sitemap の lastModified と JSON-LD の dateModified に使う */
     updatedAt: string;
+    /**
+     * 記事冒頭のアイキャッチ画像（任意）。`public/column/` に置いた画像を指す。
+     * ファイル名は kebab-case の ASCII。alt は「何が描かれているか」を書く。
+     * ★場面イラスト用。数字や要件を伝える図解は本文の Figure（SVG）で扱うこと。
+     */
+    hero?: { src: string; alt: string; width: number; height: number };
     /** 「この記事でわかること」。3点が基本 */
     takeaways: string[];
     /** 関連する報酬チェック。3件まで。ビルド時に実在チェックする */
@@ -156,6 +162,18 @@ for (const article of articles) {
     for (const itemId of article.relatedItems ?? []) {
         if (!itemIds.has(itemId)) {
             fail(slug, `relatedItems に存在しない素材IDが指定されています: ${itemId}`);
+        }
+    }
+
+    if (article.hero) {
+        if (!article.hero.src.startsWith("/column/")) {
+            fail(slug, `hero.src は /column/ 配下にします（現在 "${article.hero.src}"）。`);
+        }
+        if (!/^\/column\/[a-z0-9-]+\.(svg|png|jpg|webp)$/.test(article.hero.src)) {
+            fail(slug, `hero.src のファイル名は kebab-case の ASCII にします（現在 "${article.hero.src}"）。`);
+        }
+        if (article.hero.alt.length < 10) {
+            fail(slug, "hero.alt は何が描かれているか分かる説明文にします。");
         }
     }
 }

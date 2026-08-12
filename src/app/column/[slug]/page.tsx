@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ColumnCard } from "@/components/column/ColumnCard";
@@ -161,6 +162,19 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                                     作業療法士・トロル
                                 </p>
                             </header>
+
+                            {article.hero && (
+                                <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+                                    <Image
+                                        src={article.hero.src}
+                                        alt={article.hero.alt}
+                                        width={article.hero.width}
+                                        height={article.hero.height}
+                                        className="h-auto w-full"
+                                        priority
+                                    />
+                                </div>
+                            )}
 
                             <div className={`mx-auto ${COLUMN_TEXT_WIDTH}`}>
                                 <section className="mt-7 rounded-xl border border-blue-200 bg-blue-50/70 p-5">
