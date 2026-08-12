@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 388" width="800" height="388">
+  <rect width="800" height="388" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <!-- 説明できる人 -->
+    <rect x="160" y="26" width="480" height="66" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="50" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">説明できるのは</text>
+    <text x="400" y="76" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">計画の作成に関与した 医師・PT・OT・ST</text>
+
+    <path d="M400 94 v20" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M400 118 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <!-- 説明と同意 -->
+    <rect x="160" y="124" width="480" height="56" rx="10" fill="#1565C0"/>
+    <text x="400" y="160" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">利用者又はその家族に説明し、同意を得る</text>
+
+    <!-- 分岐 -->
+    <path d="M400 182 v16 H215 v14" stroke="#94A3B8" stroke-width="2" fill="none"/>
+    <path d="M215 214 l-6 -10 h12 z" fill="#94A3B8"/>
+    <path d="M400 182 v16 H585 v14" stroke="#94A3B8" stroke-width="2" fill="none"/>
+    <path d="M585 214 l-6 -10 h12 z" fill="#94A3B8"/>
+
+    <!-- 左：PT/OT/STが説明したとき -->
+    <rect x="40" y="220" width="350" height="112" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="215" y="250" text-anchor="middle" font-size="15" font-weight="bold" fill="#92400E">説明したのが PT・OT・ST のとき</text>
+    <text x="215" y="284" text-anchor="middle" font-size="17" font-weight="bold" fill="#78350F">説明した内容等を</text>
+    <text x="215" y="310" text-anchor="middle" font-size="17" font-weight="bold" fill="#78350F">医師へ報告する</text>
+
+    <!-- 右：医師が説明したとき -->
+    <rect x="410" y="220" width="350" height="112" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="585" y="250" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">説明したのが 事業所の医師 のとき</text>
+    <text x="585" y="284" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">リハマネ加算に</text>
+    <text x="585" y="310" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">上乗せがつく</text>
+
+    <text x="400" y="366" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">通所リハビリテーション費のリハビリテーションマネジメント加算の基準による</text>
+  </g>
+</svg>

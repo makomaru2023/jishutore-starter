@@ -70,7 +70,7 @@ const CTA_COPY: Record<ColumnCtaId, { heading: string; body: string; buttonLabel
     },
     "free-items": {
         heading: "説明に使えるイラストを探している方へ",
-        body: `自主トレのイラスト素材を${FREE_MATERIAL_COUNT}点、無料で配布しています。訪問時の説明資料や、退所後の自主トレ表づくりにそのまま使えます。`,
+        body: `自主トレのイラスト素材を${FREE_MATERIAL_COUNT}点、無料で配布しています。説明用のプリントづくりや、宿題として渡す自主トレ表にそのまま使えます。`,
         buttonLabel: "無料素材を見る",
     },
 };

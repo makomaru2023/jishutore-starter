@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 424" width="800" height="424">
+  <rect width="800" height="424" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <!-- 共通の期間 -->
+    <rect x="40" y="30" width="720" height="56" rx="10" fill="#1565C0"/>
+    <text x="400" y="54" text-anchor="middle" font-size="13" font-weight="bold" fill="#BBDEFB">(Ⅰ)(Ⅱ)に共通</text>
+    <text x="400" y="76" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">退院（所）日・通所開始日から起算して3か月以内</text>
+
+    <!-- 加算(1) -->
+    <rect x="40" y="108" width="350" height="196" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="215" y="140" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">加算(Ⅰ)</text>
+    <rect x="120" y="152" width="190" height="30" rx="15" fill="#1565C0"/>
+    <text x="215" y="173" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">日ごとに数える</text>
+    <text x="215" y="216" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">1週間に2日まで</text>
+    <text x="215" y="244" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">個別にリハビリを実施</text>
+
+    <!-- 加算(2) -->
+    <rect x="410" y="108" width="350" height="196" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="585" y="140" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">加算(Ⅱ)</text>
+    <rect x="490" y="152" width="190" height="30" rx="15" fill="#1565C0"/>
+    <text x="585" y="173" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">月ごとに数える</text>
+    <text x="585" y="216" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">1月に4回以上</text>
+    <text x="585" y="244" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">リハマネ加算(イ)(ロ)(ハ)が前提</text>
+    <text x="585" y="272" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">計画に頻度・場所・時間を記載</text>
+
+    <!-- 対象者 -->
+    <rect x="40" y="326" width="720" height="66" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="352" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400E">対象になる方</text>
+    <text x="400" y="376" text-anchor="middle" font-size="16" font-weight="bold" fill="#78350F">認知症と医師が判断し、リハビリで生活機能の改善が見込まれる方</text>
+  </g>
+</svg>

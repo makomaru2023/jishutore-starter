@@ -15,8 +15,11 @@ import type { ComponentType } from "react";
 import { getFeeItem } from "@/lib/fee-check";
 import { getItems } from "@/lib/items";
 
+import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
+import { article as ninchishoTankiShuchuRihaTsusho } from "@/data/column/articles/ninchisho-tanki-shuchu-riha-tsusho";
 import { article as nyushoZengoHomonShidoJitsumu } from "@/data/column/articles/nyusho-zengo-homon-shido-jitsumu";
+import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/riha-keikakusho-setsumei-tejun";
 
 export type ColumnCategory = "fee-practice" | "kaitei-watch" | "shiryo";
 
@@ -71,20 +74,35 @@ export const columnCategoryStyles: Record<ColumnCategory, string> = {
     shiryo: "border-emerald-200 bg-emerald-50 text-emerald-800",
 };
 
-/** 新着順（publishedAt の降順）で並べる前の、登録順の記事一覧。 */
-const articles: ColumnArticle[] = [kaiteiWatch202608, nyushoZengoHomonShidoJitsumu];
+/**
+ * 記事の一覧。**この配列の順番が、公開日が同じ記事どうしの表示順になる**。
+ * 見せたい順に並べること（先頭ほど上に出る）。
+ */
+const articles: ColumnArticle[] = [
+    kaiteiWatch202608,
+    nyushoZengoHomonShidoJitsumu,
+    rihaKeikakushoSetsumeiTejun,
+    ninchishoTankiShuchuRihaTsusho,
+    anzenTaisakuTaiseiKasan,
+];
 
 export function getColumnUrl(slug: string): string {
     return `/column/${slug}/`;
 }
 
-/** 新着順（publishedAt の降順・同日なら slug 順）。 */
+/**
+ * 新着順（publishedAt の降順）。同じ公開日の記事は `articles` の並び順を保つ。
+ * slug のアルファベット順にすると、まとめて公開した月の並びが意味を持たなくなるため。
+ */
 export function getColumnArticles(): ColumnArticle[] {
-    return [...articles].sort((a, b) =>
-        a.publishedAt === b.publishedAt
-            ? a.slug.localeCompare(b.slug)
-            : b.publishedAt.localeCompare(a.publishedAt),
-    );
+    return articles
+        .map((article, index) => ({ article, index }))
+        .sort((a, b) =>
+            a.article.publishedAt === b.article.publishedAt
+                ? a.index - b.index
+                : b.article.publishedAt.localeCompare(a.article.publishedAt),
+        )
+        .map(({ article }) => article);
 }
 
 export function getColumnArticle(slug: string): ColumnArticle | undefined {
