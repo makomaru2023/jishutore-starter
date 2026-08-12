@@ -94,7 +94,9 @@ export function Figure({
     height: number;
 }) {
     return (
-        <figure className="mt-7">
+        // 図解は読む文章より広く見せる。記事カード側に余白がある lg 以上でだけ左右にはみ出す
+        // （それ未満の幅ではみ出すとカードから溢れる）。
+        <figure className="mt-7 lg:-mx-12">
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3 sm:p-4">
                 <Image
                     src={src}
@@ -114,7 +116,7 @@ export function Figure({
 /** 表（改定ウォッチの「確認した資料」など）。横スクロールで潰れないようにする。 */
 export function Table({ head, rows }: { head: string[]; rows: ReactNode[][] }) {
     return (
-        <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200">
+        <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200 lg:-mx-12">
             <table className="w-full min-w-[520px] border-collapse bg-white text-left text-sm">
                 <thead>
                     <tr className="bg-slate-50">

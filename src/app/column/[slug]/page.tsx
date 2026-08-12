@@ -20,6 +20,12 @@ import {
 
 const SITE_URL = "https://jishutore-sozaiko.online";
 
+/**
+ * 読む文章の最大幅（44rem＝704px）。記事カード側は 54rem（本文領域800px）なので、
+ * 図解と表は ColumnProse 側で `lg:-mx-12` して 800px まで広げられる。
+ */
+const COLUMN_TEXT_WIDTH = "max-w-[44rem]";
+
 export async function generateStaticParams() {
     return getColumnArticles().map((article) => ({ slug: article.slug }));
 }
@@ -119,8 +125,10 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                 dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbJsonLd, articleJsonLd]) }}
             />
             <main className="flex-1">
+                {/* 記事カードは 54rem（本文領域800px）。タイトルと図解はこの幅いっぱいを使い、
+                    読む文章だけ COLUMN_TEXT_WIDTH に絞る。日本語は1行45字を超えると読みにくいため。 */}
                 <div className="container mx-auto px-4 py-8 sm:py-10">
-                    <div className="mx-auto max-w-3xl">
+                    <div className="mx-auto max-w-[54rem]">
                         <nav className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-500">
                             <Link href="/column/" className="text-blue-700 hover:underline">
                                 コラム
@@ -142,7 +150,7 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                                     {columnCategoryLabels[article.category]}
                                 </span>
                                 {/* 日本語の太字は文字の高さが行送りを上回るため、
-                                    3行に折り返す長いタイトルでも重ならないよう leading-relaxed にする */}
+                                    折り返しても行が重ならないよう leading-relaxed にする */}
                                 <h1 className="jp-heading mt-4 text-2xl font-black leading-relaxed text-slate-950 sm:text-3xl">
                                     {article.title}
                                 </h1>
@@ -154,27 +162,29 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                                 </p>
                             </header>
 
-                            <section className="mt-7 rounded-xl border border-blue-200 bg-blue-50/70 p-5">
-                                <h2 className="jp-heading text-base font-black text-blue-950">この記事でわかること</h2>
-                                <ul className="mt-3 space-y-2">
-                                    {article.takeaways.map((takeaway) => (
-                                        <li
-                                            key={takeaway}
-                                            className="jp-text flex gap-2.5 text-sm font-bold leading-7 text-slate-800"
-                                        >
-                                            <span
-                                                className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs text-white"
-                                                aria-hidden="true"
+                            <div className={`mx-auto ${COLUMN_TEXT_WIDTH}`}>
+                                <section className="mt-7 rounded-xl border border-blue-200 bg-blue-50/70 p-5">
+                                    <h2 className="jp-heading text-base font-black text-blue-950">この記事でわかること</h2>
+                                    <ul className="mt-3 space-y-2">
+                                        {article.takeaways.map((takeaway) => (
+                                            <li
+                                                key={takeaway}
+                                                className="jp-text flex gap-2.5 text-sm font-bold leading-7 text-slate-800"
                                             >
-                                                ✓
-                                            </span>
-                                            <span>{takeaway}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </section>
+                                                <span
+                                                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs text-white"
+                                                    aria-hidden="true"
+                                                >
+                                                    ✓
+                                                </span>
+                                                <span>{takeaway}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </section>
 
-                            <Body />
+                                <Body />
+                            </div>
 
                             <ColumnRelatedFeeItems slug={article.slug} entries={relatedFeeItems} />
 

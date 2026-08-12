@@ -69,8 +69,9 @@ export default async function ColumnIndexPage({
                 <section className="border-b border-blue-100 bg-white py-10 sm:py-14">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-5xl">
-                            <p className="text-xs font-black tracking-widest text-blue-700">コラム</p>
-                            <h1 className="jp-heading mt-3 text-3xl font-black leading-relaxed text-slate-950 sm:text-4xl">
+                            <p className="text-sm font-black tracking-[0.35em] text-blue-700">COLUMN</p>
+                            <span className="mt-3 block h-px w-12 bg-blue-200" aria-hidden="true" />
+                            <h1 className="jp-heading mt-4 text-3xl font-black leading-relaxed text-slate-950 sm:text-4xl">
                                 加算と記録の実務を、現場の手順で書いています
                             </h1>
                             <p className="jp-text mt-4 max-w-3xl text-sm leading-8 text-slate-600 sm:text-base">

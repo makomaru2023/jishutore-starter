@@ -177,16 +177,26 @@ export default function Home() {
           <section className="border-t border-slate-200 bg-slate-50 py-12 sm:py-16">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <p className="text-xs font-black tracking-widest text-blue-700">新着コラム</p>
-                    <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950 sm:text-3xl">
-                      加算と記録の実務を、現場の手順で
-                    </h2>
-                    <p className="jp-text mt-3 max-w-2xl text-sm leading-7 text-slate-600">
-                      算定の流れと記録の残し方、毎月の改定ウォッチを書いています。
-                    </p>
-                  </div>
+                {/* 読み物の枠だと分かるよう、誌名のように COLUMN を立てて中央に置く。
+                    一覧への導線は記事カードの下（＝いくつか見たあと）に置くこと。
+                    見出しの横に置くと、スマホでは記事より先に出てしまう。 */}
+                <div className="text-center">
+                  <p className="text-sm font-black tracking-[0.35em] text-blue-700">COLUMN</p>
+                  <span className="mx-auto mt-3 block h-px w-12 bg-blue-200" aria-hidden="true" />
+                  <h2 className="jp-heading mt-4 text-2xl font-black text-slate-950 sm:text-3xl">
+                    加算と記録の実務を、現場の手順で
+                  </h2>
+                  <p className="jp-text mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+                    算定の流れと記録の残し方、毎月の改定ウォッチを書いています。
+                    作業療法士が、厚生労働省の一次資料を確認しながら書いています。
+                  </p>
+                </div>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {latestColumnArticles.map((article) => (
+                    <ColumnCard key={article.slug} article={article} />
+                  ))}
+                </div>
+                <div className="mt-8 flex justify-center">
                   <Link
                     href="/column/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-black text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
@@ -194,11 +204,6 @@ export default function Home() {
                     コラム一覧を見る
                     <ArrowIcon />
                   </Link>
-                </div>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {latestColumnArticles.map((article) => (
-                    <ColumnCard key={article.slug} article={article} />
-                  ))}
                 </div>
               </div>
             </div>
