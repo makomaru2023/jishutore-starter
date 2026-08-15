@@ -7,7 +7,7 @@ import { FeeCheckDomainCta } from "@/components/fee-check/FeeCheckDomainCta";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
+import { getColumnsByFeeItem, getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
 import {
     getFeeDescription,
     getDomainUrl,
@@ -91,6 +91,11 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
             updatedAt: latestKaiteiWatch.updatedAt,
         }
         : undefined;
+    // この項目を図解しているコラム記事。算定要件の直後に出す（企画書_コラムの部分公開とPlus導線 §3-9）。
+    // 記事側の relatedFeeItems を逆から引いているだけなので、項目データには何も足していない。
+    const relatedColumns = getColumnsByFeeItem(domain.domain, item.id)
+        .slice(0, 2)
+        .map((article) => ({ title: article.title, href: getColumnUrl(article.slug) }));
     const pageUrl = `https://jishutore-sozaiko.online${getFeeItemUrl(domain.domain, item.id)}`;
     const domainUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
     const breadcrumbJsonLd = {
@@ -162,6 +167,7 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             isSample={isSample}
                             hiddenCounts={hiddenCounts}
                             kaiteiWatch={kaiteiWatch}
+                            relatedColumns={relatedColumns}
                         />
 
                         {relatedItems.length > 0 && (

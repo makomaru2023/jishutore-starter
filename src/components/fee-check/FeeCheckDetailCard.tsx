@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { FeeItemColumnLinks, type FeeItemColumnTarget } from "@/components/column/FeeItemColumnLinks";
 import { KaiteiWatchInlineLink, type KaiteiWatchLinkTarget } from "@/components/column/KaiteiWatchLink";
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
@@ -311,6 +312,7 @@ export function FeeCheckDetailCard({
     isSample,
     hiddenCounts,
     kaiteiWatch,
+    relatedColumns = [],
 }: {
     domain: FeeDomain;
     item: FeeItem;
@@ -323,6 +325,8 @@ export function FeeCheckDetailCard({
     };
     /** 最新の改定ウォッチ記事。確認日の近くに出す（毎月点検している証拠を見せる場所） */
     kaiteiWatch?: KaiteiWatchLinkTarget;
+    /** この項目を図解しているコラム記事。算定要件の直後に出す（企画書§3-9） */
+    relatedColumns?: FeeItemColumnTarget[];
 }) {
     return (
         <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 print:border-slate-300 print:shadow-none">
@@ -396,6 +400,11 @@ export function FeeCheckDetailCard({
                 <Section title="算定要件">
                     <RequirementsList items={item.requirements} />
                 </Section>
+
+                {/* 条件の並びを読み終えた直後に、時系列に並べ直した図解記事へ渡す。
+                    ★Plusの入口より前に置く。ここは「わからなかった人」の逃げ道なので、
+                    先に施錠を見せると壁にぶつけることになる（§3-9）。 */}
+                <FeeItemColumnLinks targets={relatedColumns} />
 
                 <ContextualPlusGuide
                     domain={domain}

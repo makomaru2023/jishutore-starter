@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460">
+  <rect width="800" height="460" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">経口移行と経口維持は、対象になる方が逆です</text>
+
+    <!-- 経口移行 -->
+    <rect x="40" y="52" width="350" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="60" y="70" width="130" height="28" rx="14" fill="#64748B"/>
+    <text x="125" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">経口移行加算</text>
+    <text x="60" y="134" font-size="15" font-weight="bold" fill="#0F172A">いま経管で栄養をとっている方を、</text>
+    <text x="60" y="162" font-size="15" font-weight="bold" fill="#0F172A">口から食べられるようにしていく</text>
+
+    <!-- 経口維持 -->
+    <rect x="410" y="52" width="350" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="430" y="70" width="130" height="28" rx="14" fill="#1565C0"/>
+    <text x="495" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">経口維持加算</text>
+    <text x="430" y="134" font-size="15" font-weight="bold" fill="#0F172A">いま口から食べている方が、</text>
+    <text x="430" y="162" font-size="15" font-weight="bold" fill="#0F172A">食べ続けられるようにする</text>
+    <text x="430" y="188" font-size="13" font-weight="bold" fill="#334155">（摂食機能障害があり誤嚥が認められる方）</text>
+
+    <text x="400" y="232" text-anchor="middle" font-size="15" font-weight="bold" fill="#475569">経口維持加算(Ⅱ)は、(Ⅰ)への上乗せです</text>
+
+    <!-- (Ⅱ)の条件 -->
+    <rect x="40" y="248" width="350" height="130" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="70" cy="278" r="16" fill="#1565C0"/>
+    <text x="70" y="284" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="58" y="328" font-size="14" font-weight="bold" fill="#0F172A">協力歯科医療機関を</text>
+    <text x="58" y="352" font-size="14" font-weight="bold" fill="#0F172A">定めている</text>
+
+    <rect x="410" y="248" width="350" height="130" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="440" cy="278" r="16" fill="#1565C0"/>
+    <text x="440" y="284" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="428" y="312" font-size="14" font-weight="bold" fill="#0F172A">配置医師を除く医師、歯科医師、</text>
+    <text x="428" y="336" font-size="14" font-weight="bold" fill="#0F172A">歯科衛生士または言語聴覚士が</text>
+    <text x="428" y="360" font-size="14" font-weight="bold" fill="#0F172A">食事の観察・会議に加わる</text>
+
+    <!-- 注意 -->
+    <rect x="40" y="396" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="424" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">(Ⅱ)だけの算定はできません。(Ⅰ)を算定していることが前提です</text>
+  </g>
+</svg>

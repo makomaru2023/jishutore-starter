@@ -22,6 +22,8 @@ import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/article
 import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
+import { article as keikoIjiKasanNagare } from "@/data/column/articles/keiko-iji-kasan-nagare";
+import { article as kokueiyoScreeningNagare } from "@/data/column/articles/kokueiyo-screening-nagare";
 import { article as kokujiTsuchiGigikaishakuChigai } from "@/data/column/articles/kokuji-tsuchi-gigikaishaku-chigai";
 import { article as ninchishoTankiShuchuRihaTsusho } from "@/data/column/articles/ninchisho-tanki-shuchu-riha-tsusho";
 import { article as nyushoZengoHomonShidoJitsumu } from "@/data/column/articles/nyusho-zengo-homon-shido-jitsumu";
@@ -29,6 +31,7 @@ import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/r
 import { article as rokenShokiKasanKubun } from "@/data/column/articles/roken-shoki-kasan-kubun";
 import { article as rokenTaishojiShienKasan } from "@/data/column/articles/roken-taishoji-shien-kasan";
 import { article as santeiYoukenToShisetsuKijun } from "@/data/column/articles/santei-youken-to-shisetsu-kijun";
+import { article as zaitakuFukkiRyoyoShienKubun } from "@/data/column/articles/zaitaku-fukki-ryoyo-shien-kubun";
 
 export type ColumnCategory = "fee-practice" | "kaitei-watch" | "seido-yomikata" | "shiryo";
 
@@ -93,6 +96,11 @@ export const columnCategoryStyles: Record<ColumnCategory, string> = {
  */
 const articles: ColumnArticle[] = [
     kaiteiWatch202608,
+    // 図解つきの回。fee-check の項目ページから逆引きで呼ばれる（getColumnsByFeeItem）。
+    // 表示が出ているのにクリックが取れていない項目を、別の検索語（流れ・図解・違い）で拾いにいく回。
+    kokueiyoScreeningNagare,
+    zaitakuFukkiRyoyoShienKubun,
+    keikoIjiKasanNagare,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
     kokujiTsuchiGigikaishakuChigai,
     santeiYoukenToShisetsuKijun,
@@ -140,19 +148,44 @@ export function getLatestKaiteiWatch(): ColumnArticle | undefined {
     return getColumnArticles().find((article) => article.category === "kaitei-watch");
 }
 
-/** relatedFeeItems を fee-check の実データに解決する（表示用に項目名・単位数を取る）。 */
+/**
+ * relatedFeeItems を fee-check の実データに解決する（表示用に項目名・単位数を取る）。
+ *
+ * ★記事末尾に出すのは先頭 DISPLAYED_RELATED_FEE_ITEMS 件だけ。
+ * 「型」で書いた図解記事（居宅訪問型・LIFE型など）は5〜10項目に当てはまるので、
+ * データとしては多く持たせ、記事側の見た目だけ絞る（企画書_コラムの部分公開とPlus導線 §3-9）。
+ */
 export function resolveColumnRelatedFeeItems(article: ColumnArticle) {
-    return (article.relatedFeeItems ?? []).flatMap((ref) => {
+    return (article.relatedFeeItems ?? []).slice(0, DISPLAYED_RELATED_FEE_ITEMS).flatMap((ref) => {
         const found = getFeeItem(ref.domain, ref.id);
         return found ? [found] : [];
     });
+}
+
+/**
+ * fee-check の項目から、その項目を扱っているコラム記事を逆引きする。
+ *
+ * 用途：報酬チェック項目ページの「算定要件」の直後に「図解で解説しています」を出す導線。
+ * 文字の要件を読み終えた直後＝いちばんつまずいている瞬間に置くのが狙い（企画書§3-9）。
+ *
+ * ★新しいデータは持たない。記事側の relatedFeeItems をそのまま逆から引くだけ。
+ * ビルド時に実在チェックが通っているので、ここで死リンクは生まれない。
+ * 並び順は getColumnArticles()（新着順）に従う。
+ */
+export function getColumnsByFeeItem(domain: string, id: string): ColumnArticle[] {
+    return getColumnArticles().filter((article) =>
+        (article.relatedFeeItems ?? []).some((ref) => ref.domain === domain && ref.id === id),
+    );
 }
 
 // --- ビルド時の検証（企画書§3の必須条件） ---
 // typo で死リンクを作らないよう、ここで落とす。next build で気づける。
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
-const MAX_RELATED_FEE_ITEMS = 3;
+// データとして持てる上限。「型」で書いた記事は多くの項目に当てはまるので広めに取る。
+const MAX_RELATED_FEE_ITEMS = 10;
+// 記事末尾のカードに実際に出す件数。見た目が散らからないよう先頭3件に絞る。
+const DISPLAYED_RELATED_FEE_ITEMS = 3;
 
 function fail(slug: string, message: string): never {
     throw new Error(`[column] 記事 "${slug}": ${message}`);

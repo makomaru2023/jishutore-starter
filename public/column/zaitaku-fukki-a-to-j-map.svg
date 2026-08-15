@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">AからJは、ひとつの数字ではなく10個の項目の集まりです</text>
+
+    <!-- 上段3つ -->
+    <rect x="40" y="54" width="226" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="153" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">在宅へ帰す</text>
+    <text x="58" y="122" font-size="13" font-weight="bold" fill="#0F172A">・居宅への退所者割合</text>
+    <text x="58" y="148" font-size="13" font-weight="bold" fill="#0F172A">・平均在所日数</text>
+
+    <rect x="287" y="54" width="226" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">家と行き来する</text>
+    <text x="305" y="122" font-size="13" font-weight="bold" fill="#0F172A">・入所前後訪問</text>
+    <text x="305" y="148" font-size="13" font-weight="bold" fill="#0F172A">・退所前後訪問</text>
+
+    <rect x="534" y="54" width="226" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="647" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">在宅サービスをやっている</text>
+    <text x="552" y="122" font-size="13" font-weight="bold" fill="#0F172A">・訪問リハビリテーション、</text>
+    <text x="562" y="148" font-size="13" font-weight="bold" fill="#0F172A">通所リハビリテーション、</text>
+    <text x="562" y="174" font-size="13" font-weight="bold" fill="#0F172A">短期入所療養介護の実施状況</text>
+
+    <!-- 下段2つ -->
+    <rect x="40" y="224" width="350" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="215" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">人を置いている</text>
+    <text x="58" y="292" font-size="13" font-weight="bold" fill="#0F172A">・リハビリテーション職員の配置</text>
+    <text x="58" y="318" font-size="13" font-weight="bold" fill="#0F172A">・支援相談員の配置</text>
+
+    <rect x="410" y="224" width="350" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="585" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">状態の重い方を受けている</text>
+    <text x="428" y="292" font-size="13" font-weight="bold" fill="#0F172A">・要介護4または5の割合</text>
+    <text x="428" y="318" font-size="13" font-weight="bold" fill="#0F172A">・喀痰吸引の実施割合</text>
+    <text x="428" y="344" font-size="13" font-weight="bold" fill="#0F172A">・経管栄養の実施割合</text>
+
+    <text x="400" y="400" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どの記号がどの項目にあたるか、配点と確認する期間は告示第95号で確認します</text>
+  </g>
+</svg>

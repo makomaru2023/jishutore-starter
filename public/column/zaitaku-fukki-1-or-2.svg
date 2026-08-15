@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <rect width="800" height="440" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">(Ⅰ)と(Ⅱ)の分かれ目は、単位数ではありません</text>
+    <text x="400" y="56" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">どちらも51単位/日。自施設がどちらに当たるかを見ます</text>
+
+    <!-- 加算(Ⅰ) -->
+    <rect x="40" y="74" width="350" height="250" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="60" y="92" width="110" height="28" rx="14" fill="#1565C0"/>
+    <text x="115" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">加算(Ⅰ)</text>
+    <text x="60" y="152" font-size="12" font-weight="bold" fill="#64748B">算定している基本報酬</text>
+    <text x="60" y="177" font-size="14" font-weight="bold" fill="#0F172A">サービス費(Ⅰ)の(i)・(iii)</text>
+    <text x="60" y="200" font-size="13" font-weight="bold" fill="#334155">ユニット型(Ⅰ)の(i)／経過的(i)</text>
+    <line x1="60" y1="218" x2="370" y2="218" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="60" y="242" font-size="12" font-weight="bold" fill="#64748B">AからJの算式で出した数</text>
+    <text x="60" y="272" font-size="20" font-weight="bold" fill="#1565C0">40以上</text>
+    <text x="60" y="302" font-size="14" font-weight="bold" fill="#0F172A">＋ 地域に貢献する活動</text>
+
+    <!-- 加算(Ⅱ) -->
+    <rect x="410" y="74" width="350" height="250" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="430" y="92" width="110" height="28" rx="14" fill="#1565C0"/>
+    <text x="485" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">加算(Ⅱ)</text>
+    <text x="430" y="152" font-size="12" font-weight="bold" fill="#64748B">算定している基本報酬</text>
+    <text x="430" y="177" font-size="14" font-weight="bold" fill="#0F172A">サービス費(Ⅰ)の(ii)・(iv)</text>
+    <text x="430" y="200" font-size="13" font-weight="bold" fill="#334155">ユニット型(Ⅰ)の(ii)／経過的(ii)</text>
+    <line x1="430" y1="218" x2="740" y2="218" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="430" y="242" font-size="12" font-weight="bold" fill="#64748B">AからJの算式で出した数</text>
+    <text x="430" y="272" font-size="20" font-weight="bold" fill="#1565C0">70以上</text>
+    <text x="430" y="302" font-size="13" font-weight="bold" fill="#64748B">※地域に貢献する活動は加算(Ⅰ)の要件</text>
+
+    <!-- 除外 -->
+    <rect x="40" y="342" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="370" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">イ(4)・ロ(4)を算定している老健では、この加算は算定しない</text>
+
+    <text x="400" y="414" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">基本報酬の区分要件に出てくる20以上・60以上とは、別の数字です</text>
+  </g>
+</svg>

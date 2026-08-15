@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460">
+  <rect width="800" height="460" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">(Ⅰ)か(Ⅱ)か、それとも算定しないか</text>
+
+    <!-- 先に確認すること -->
+    <rect x="40" y="52" width="720" height="76" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <rect x="60" y="68" width="96" height="26" rx="13" fill="#B45309"/>
+    <text x="108" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">まず確認</text>
+    <text x="400" y="116" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">他の事業所が同じ利用者で本加算・口腔連携強化加算を算定 → 算定しない</text>
+
+    <text x="400" y="156" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">自分の事業所の状況で分かれる</text>
+
+    <!-- (Ⅰ) -->
+    <rect x="40" y="170" width="350" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="215" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">他の加算・サービスと重なっていない</text>
+    <text x="215" y="232" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">口腔と栄養、両方を確認する</text>
+    <rect x="100" y="252" width="230" height="48" rx="8" fill="#1565C0"/>
+    <text x="215" y="283" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">(Ⅰ) 20単位/回</text>
+
+    <!-- (Ⅱ) -->
+    <rect x="410" y="170" width="350" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="585" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">栄養アセスメント加算などを算定中</text>
+    <text x="585" y="232" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">口腔か栄養、一方だけ確認する</text>
+    <rect x="470" y="252" width="230" height="48" rx="8" fill="#1565C0"/>
+    <text x="585" y="283" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">(Ⅱ) 5単位/回</text>
+
+    <!-- 補足 -->
+    <rect x="40" y="344" width="720" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="374" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">栄養改善サービス・口腔機能向上サービスを受けている間と終了月も(Ⅰ)の対象外</text>
+    <text x="400" y="400" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">ただし、確認の結果そのサービスが必要と判断されて始まった月は除きます</text>
+
+    <text x="400" y="444" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">区分と算定できない組み合わせの全文は報酬チェックのページで確認できます</text>
+  </g>
+</svg>
