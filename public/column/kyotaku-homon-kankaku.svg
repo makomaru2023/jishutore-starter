@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 396" width="800" height="396">
+  <rect width="800" height="396" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ「居宅を訪問して」でも、間隔は加算ごとに違います</text>
+
+    <rect x="40" y="56" width="720" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="94" font-size="14" font-weight="bold" fill="#0F172A">生活行為向上リハビリテーション実施加算（通所リハ）</text>
+    <rect x="520" y="68" width="220" height="40" rx="8" fill="#1565C0"/>
+    <text x="630" y="94" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">おおむね1月に1回以上</text>
+
+    <rect x="40" y="132" width="720" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="170" font-size="14" font-weight="bold" fill="#0F172A">個別機能訓練加算（通所介護）</text>
+    <rect x="520" y="144" width="220" height="40" rx="8" fill="#1565C0"/>
+    <text x="630" y="170" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">3月ごとに1回以上</text>
+
+    <rect x="40" y="208" width="720" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="246" font-size="14" font-weight="bold" fill="#0F172A">栄養改善加算（通所リハ）</text>
+    <rect x="520" y="220" width="220" height="40" rx="8" fill="#64748B"/>
+    <text x="630" y="246" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">必要に応じて</text>
+
+    <rect x="40" y="284" width="720" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="322" font-size="14" font-weight="bold" fill="#0F172A">入浴介助加算(Ⅱ)（通所介護・通所リハ）</text>
+    <rect x="520" y="296" width="220" height="40" rx="8" fill="#64748B"/>
+    <text x="630" y="322" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">はじめの評価で訪問</text>
+
+    <text x="400" y="376" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どの加算がどの間隔かは、報酬チェックの算定要件に書いてあります</text>
+  </g>
+</svg>

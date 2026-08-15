@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 356" width="800" height="356">
+  <rect width="800" height="356" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">LIFEは「出して終わり」ではありません</text>
+
+    <rect x="40" y="56" width="226" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="66" cy="82" r="14" fill="#1565C0"/>
+    <text x="66" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="153" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">評価する</text>
+    <text x="153" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ADL・栄養・口腔・</text>
+    <text x="153" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">認知症の状況など</text>
+
+    <polygon points="272,110 285,121 272,132" fill="#1565C0"/>
+
+    <rect x="287" y="56" width="226" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="313" cy="82" r="14" fill="#1565C0"/>
+    <text x="313" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="400" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">LIFEに提出する</text>
+    <text x="400" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">厚生労働省へ</text>
+    <text x="400" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">情報を出す</text>
+
+    <polygon points="519,110 532,121 519,132" fill="#1565C0"/>
+
+    <rect x="534" y="56" width="226" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="560" cy="82" r="14" fill="#1565C0"/>
+    <text x="560" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="647" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">活用する</text>
+    <text x="647" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">返ってきた情報を見て</text>
+    <text x="647" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">計画を見直す</text>
+
+    <!-- 3 から 1 へ戻る -->
+    <path d="M647 196 L647 228 L153 228 L153 202" fill="none" stroke="#1565C0" stroke-width="2" stroke-dasharray="6 4"/>
+    <polygon points="147,206 153,194 159,206" fill="#1565C0"/>
+    <text x="400" y="252" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">見直した内容で、また評価する</text>
+
+    <rect x="40" y="272" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="302" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">要件は「提出し、活用すること」。3番目まで書かれています</text>
+
+    <text x="400" y="344" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">加算ごとの正確な文言は、報酬チェックの算定要件で確認できます</text>
+  </g>
+</svg>

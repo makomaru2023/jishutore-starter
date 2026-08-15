@@ -18,6 +18,7 @@ import { getItems } from "@/lib/items";
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
 import { article as benkyokaiShiryoMaeNiKimeru } from "@/data/column/articles/benkyokai-shiryo-mae-ni-kimeru";
+import { article as hainyoJiritsuKaifukuki } from "@/data/column/articles/hainyo-jiritsu-kaifukuki";
 import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
 import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
@@ -25,6 +26,8 @@ import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-
 import { article as keikoIjiKasanNagare } from "@/data/column/articles/keiko-iji-kasan-nagare";
 import { article as kokueiyoScreeningNagare } from "@/data/column/articles/kokueiyo-screening-nagare";
 import { article as kokujiTsuchiGigikaishakuChigai } from "@/data/column/articles/kokuji-tsuchi-gigikaishaku-chigai";
+import { article as kyotakuHomonKasanKata } from "@/data/column/articles/kyotaku-homon-kasan-kata";
+import { article as lifeTeishutsuKata } from "@/data/column/articles/life-teishutsu-kata";
 import { article as ninchishoTankiShuchuRihaTsusho } from "@/data/column/articles/ninchisho-tanki-shuchu-riha-tsusho";
 import { article as nyushoZengoHomonShidoJitsumu } from "@/data/column/articles/nyusho-zengo-homon-shido-jitsumu";
 import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/riha-keikakusho-setsumei-tejun";
@@ -101,6 +104,11 @@ const articles: ColumnArticle[] = [
     kokueiyoScreeningNagare,
     zaitakuFukkiRyoyoShienKubun,
     keikoIjiKasanNagare,
+    hainyoJiritsuKaifukuki,
+    // ★「型」で括った回（企画書_コラムの部分公開とPlus導線 §3-9）。個別の加算ではなく、
+    // 複数項目に共通する進み方を1枚の図にしてある。1本で5〜10項目の導線を兼ねる。
+    kyotakuHomonKasanKata,
+    lifeTeishutsuKata,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
     kokujiTsuchiGigikaishakuChigai,
     santeiYoukenToShisetsuKijun,

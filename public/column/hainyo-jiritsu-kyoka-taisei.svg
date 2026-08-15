@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320">
+  <rect width="800" height="320" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">回復期リハ強化体制加算（80点/日）の施設基準は4つ</text>
+
+    <rect x="40" y="56" width="168" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="66" cy="82" r="14" fill="#64748B"/>
+    <text x="66" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="56" y="132" font-size="13" font-weight="bold" fill="#0F172A">入院料1の</text>
+    <text x="56" y="156" font-size="13" font-weight="bold" fill="#0F172A">施設基準を</text>
+    <text x="56" y="180" font-size="13" font-weight="bold" fill="#0F172A">満たす</text>
+
+    <rect x="224" y="56" width="168" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="250" cy="82" r="14" fill="#64748B"/>
+    <text x="250" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="240" y="132" font-size="13" font-weight="bold" fill="#0F172A">実績指数が</text>
+    <text x="240" y="156" font-size="13" font-weight="bold" fill="#0F172A">48以上</text>
+    <text x="240" y="180" font-size="12" font-weight="bold" fill="#475569">入院料1自体は42以上</text>
+
+    <rect x="408" y="56" width="168" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="434" cy="82" r="14" fill="#64748B"/>
+    <text x="434" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="424" y="132" font-size="13" font-weight="bold" fill="#0F172A">退院前訪問指導の</text>
+    <text x="424" y="156" font-size="13" font-weight="bold" fill="#0F172A">十分な実績</text>
+
+    <rect x="592" y="56" width="168" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="3"/>
+    <circle cx="618" cy="82" r="14" fill="#1565C0"/>
+    <text x="618" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">4</text>
+    <text x="608" y="132" font-size="13" font-weight="bold" fill="#1565C0">排尿自立支援加算</text>
+    <text x="608" y="156" font-size="13" font-weight="bold" fill="#1565C0">に係る届出</text>
+    <text x="608" y="182" font-size="12" font-weight="bold" fill="#475569">この記事で扱うところ</text>
+
+    <rect x="40" y="228" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="256" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">届出は、入院料1を届け出る病棟全体で行います</text>
+
+    <text x="400" y="300" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">対象は回復期リハビリテーション病棟入院料1を算定する病棟です</text>
+  </g>
+</svg>

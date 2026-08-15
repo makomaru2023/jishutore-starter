@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360">
+  <rect width="800" height="360" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">いつ出すかも、要件に書かれています（通所リハの例）</text>
+
+    <rect x="40" y="54" width="350" height="210" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="215" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">科学的介護推進体制加算</text>
+    <text x="58" y="126" font-size="13" font-weight="bold" fill="#0F172A">・算定を開始した月</text>
+    <text x="58" y="154" font-size="13" font-weight="bold" fill="#0F172A">・新しく利用が始まった月</text>
+    <text x="58" y="182" font-size="13" font-weight="bold" fill="#0F172A">・少なくとも3月ごと</text>
+    <text x="58" y="210" font-size="13" font-weight="bold" fill="#0F172A">・サービスの利用が終わった月</text>
+
+    <rect x="410" y="54" width="350" height="210" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="585" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">リハビリテーション</text>
+    <text x="585" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">マネジメント加算(ロ)(ハ)</text>
+    <text x="428" y="142" font-size="13" font-weight="bold" fill="#0F172A">・計画を作成した月</text>
+    <text x="428" y="170" font-size="13" font-weight="bold" fill="#0F172A">・計画を変更した月</text>
+    <text x="428" y="198" font-size="13" font-weight="bold" fill="#0F172A">・少なくとも3月に1回</text>
+
+    <rect x="40" y="286" width="720" height="48" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="316" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">どちらも、原則として翌月10日までに提出します</text>
+  </g>
+</svg>

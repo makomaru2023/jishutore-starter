@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <rect width="800" height="300" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">居宅を訪問する加算は、だいたいこの4段階です</text>
+
+    <rect x="40" y="56" width="162" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="66" cy="82" r="14" fill="#1565C0"/>
+    <text x="66" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="121" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">訪問して見る</text>
+    <text x="121" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">動作・環境・生活の様子</text>
+
+    <polygon points="208,113 222,121 208,129" fill="#1565C0"/>
+
+    <rect x="226" y="56" width="162" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="252" cy="82" r="14" fill="#1565C0"/>
+    <text x="252" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="307" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">計画を作る</text>
+    <text x="307" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">多職種で共同して</text>
+
+    <polygon points="394,113 408,121 394,129" fill="#1565C0"/>
+
+    <rect x="412" y="56" width="162" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="438" cy="82" r="14" fill="#1565C0"/>
+    <text x="438" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="493" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">計画に沿って行う</text>
+    <text x="493" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所での提供が中心</text>
+
+    <polygon points="580,113 594,121 580,129" fill="#1565C0"/>
+
+    <rect x="598" y="56" width="162" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="624" cy="82" r="14" fill="#1565C0"/>
+    <text x="624" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">4</text>
+    <text x="679" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">また訪問する</text>
+    <text x="679" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">進み具合を見て見直す</text>
+
+    <rect x="40" y="208" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="236" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">4番目をどのくらいの間隔でやるかが、加算によって違います</text>
+
+    <text x="400" y="280" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">加算ごとの細かい要件は、報酬チェックの各ページで確認できます</text>
+  </g>
+</svg>
