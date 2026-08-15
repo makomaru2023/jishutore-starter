@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <rect width="800" height="440" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">単位数と頻度は、そろっていません</text>
+
+    <text x="40" y="60" font-size="13" font-weight="bold" fill="#64748B">短期集中リハビリテーション実施加算</text>
+
+    <rect x="40" y="70" width="226" height="110" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="153" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">訪問リハ</text>
+    <text x="153" y="132" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">200単位/日</text>
+
+    <rect x="287" y="70" width="226" height="110" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">通所リハ</text>
+    <text x="400" y="132" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">110単位/日</text>
+    <text x="400" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">名前だけ「短期集中個別」</text>
+
+    <rect x="534" y="70" width="226" height="110" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="647" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">老健・入所</text>
+    <text x="647" y="132" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">258 / 200</text>
+    <text x="647" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">(Ⅰ)258・(Ⅱ)200単位/日</text>
+
+    <text x="40" y="212" font-size="13" font-weight="bold" fill="#64748B">認知症短期集中リハビリテーション実施加算</text>
+
+    <rect x="40" y="222" width="226" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">訪問リハ</text>
+    <text x="153" y="284" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">240単位/日</text>
+    <text x="153" y="316" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">1週に2日まで</text>
+
+    <rect x="287" y="222" width="226" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">通所リハ</text>
+    <text x="400" y="280" text-anchor="middle" font-size="18" font-weight="bold" fill="#1565C0">(Ⅰ)240単位/日</text>
+    <text x="400" y="304" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">1週に2日まで</text>
+    <text x="400" y="332" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">(Ⅱ)1,920単位/月</text>
+
+    <rect x="534" y="222" width="226" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="647" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">老健・入所</text>
+    <text x="647" y="284" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">240 / 120</text>
+    <text x="647" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">(Ⅰ)240・(Ⅱ)120単位/日</text>
+    <text x="647" y="336" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">1週に3日まで</text>
+
+    <rect x="40" y="372" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="394" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">認知症の(Ⅰ)は3分野とも240単位/日。ばらついているのは短期集中のほうです</text>
+    <text x="400" y="412" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">通所リハの(Ⅱ)だけは上限ではなく「1月に4回以上」＝回数の下限</text>
+  </g>
+</svg>

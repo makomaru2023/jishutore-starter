@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">渡す相手と、数える単位が加算ごとに違います</text>
+
+    <text x="170" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">加算</text>
+    <text x="450" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">渡す相手</text>
+    <text x="680" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">回数</text>
+
+    <rect x="40" y="84" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="58" y="112" font-size="13" font-weight="bold" fill="#0F172A">口腔連携強化加算</text>
+    <text x="58" y="132" font-size="11" font-weight="bold" fill="#64748B">訪問リハ・訪問看護 各50単位</text>
+    <text x="450" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">歯科医療機関 と ケアマネ</text>
+    <text x="680" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">1月に1回</text>
+
+    <rect x="40" y="154" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="58" y="182" font-size="13" font-weight="bold" fill="#0F172A">退所時栄養情報連携加算</text>
+    <text x="58" y="202" font-size="11" font-weight="bold" fill="#64748B">老健 70単位/月</text>
+    <text x="450" y="192" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">行き先で変わる</text>
+    <text x="680" y="192" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">1月に1回</text>
+
+    <rect x="40" y="224" width="720" height="62" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="58" y="252" font-size="13" font-weight="bold" fill="#78350F">再入所時栄養連携加算</text>
+    <text x="58" y="272" font-size="11" font-weight="bold" fill="#92400E">老健 200単位</text>
+    <text x="450" y="262" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">病院の管理栄養士と一緒に作る</text>
+    <text x="680" y="262" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">1人につき1回</text>
+
+    <rect x="40" y="294" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="58" y="322" font-size="13" font-weight="bold" fill="#0F172A">栄養情報連携料</text>
+    <text x="58" y="342" font-size="11" font-weight="bold" fill="#64748B">回復期リハ 入院料1 70点</text>
+    <text x="450" y="332" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">他の医療機関等の医師・管理栄養士</text>
+    <text x="680" y="332" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">入院中1回</text>
+
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">「1月に1回」「入院中1回」「1人につき1回」。数える単位そのものが違います</text>
+  </g>
+</svg>

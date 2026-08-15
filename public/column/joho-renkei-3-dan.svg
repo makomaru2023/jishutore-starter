@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <rect width="800" height="340" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">情報連携の加算は、どれもこの3段でできています</text>
+
+    <rect x="40" y="56" width="226" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="66" cy="82" r="14" fill="#1565C0"/>
+    <text x="66" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="153" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">評価する</text>
+    <text x="153" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">口腔の健康状態</text>
+    <text x="153" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">栄養の状態</text>
+
+    <polygon points="272,110 285,121 272,132" fill="#1565C0"/>
+
+    <rect x="287" y="56" width="226" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="3"/>
+    <circle cx="313" cy="82" r="14" fill="#1565C0"/>
+    <text x="313" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="400" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">同意を得る</text>
+    <text x="400" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">どの加算にも</text>
+    <text x="400" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">入っています</text>
+
+    <polygon points="519,110 532,121 519,132" fill="#1565C0"/>
+
+    <rect x="534" y="56" width="226" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="560" cy="82" r="14" fill="#1565C0"/>
+    <text x="560" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="647" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">決まった相手へ渡す</text>
+    <text x="647" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">相手は加算ごとに</text>
+    <text x="647" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">決まっている</text>
+
+    <rect x="40" y="220" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="250" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">評価しただけ、渡しただけでは要件を満たしません</text>
+
+    <text x="400" y="296" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">加算ごとの正確な文言は、報酬チェックの算定要件で確認できます</text>
+  </g>
+</svg>

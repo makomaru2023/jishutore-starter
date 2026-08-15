@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 410" width="800" height="410">
+  <rect width="800" height="410" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ「3月以内」でも、どこから数えるかが違います</text>
+
+    <text x="130" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">分野</text>
+    <rect x="220" y="52" width="270" height="28" rx="14" fill="#1565C0"/>
+    <text x="355" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">短期集中</text>
+    <rect x="490" y="52" width="270" height="28" rx="14" fill="#64748B"/>
+    <text x="625" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">認知症短期集中</text>
+
+    <rect x="40" y="90" width="720" height="64" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">訪問リハ</text>
+    <text x="355" y="128" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">退院（所）日 または 認定日</text>
+    <text x="625" y="128" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">退院（所）日 または 訪問開始日</text>
+
+    <rect x="40" y="162" width="720" height="64" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">通所リハ</text>
+    <text x="355" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">退院（所）日 または 認定日</text>
+    <text x="625" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">退院（所）日 または 通所開始日</text>
+
+    <rect x="40" y="234" width="720" height="64" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">老健・入所</text>
+    <text x="355" y="272" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">入所日</text>
+    <text x="625" y="272" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">入所日</text>
+
+    <rect x="40" y="318" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="348" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">同じ分野の中でも、短期集中と認知症短期集中で起算日が違うことがあります</text>
+
+    <text x="400" y="392" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">正確な文言は、報酬チェックの各ページの算定要件で確認できます</text>
+  </g>
+</svg>

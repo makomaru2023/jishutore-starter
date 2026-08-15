@@ -23,6 +23,7 @@ import { article as hainyoJiritsuKaifukuki } from "@/data/column/articles/hainyo
 import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
 import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
 import { article as jishutoreTsuzukanaiWatashikata } from "@/data/column/articles/jishutore-tsuzukanai-watashikata";
+import { article as johoRenkeiKata } from "@/data/column/articles/joho-renkei-kata";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
 import { article as keikoIjiKasanNagare } from "@/data/column/articles/keiko-iji-kasan-nagare";
@@ -38,6 +39,7 @@ import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/r
 import { article as rokenShokiKasanKubun } from "@/data/column/articles/roken-shoki-kasan-kubun";
 import { article as rokenTaishojiShienKasan } from "@/data/column/articles/roken-taishoji-shien-kasan";
 import { article as santeiYoukenToShisetsuKijun } from "@/data/column/articles/santei-youken-to-shisetsu-kijun";
+import { article as tankiShuchuRihaKata } from "@/data/column/articles/tanki-shuchu-riha-kata";
 import { article as zaitakuFukkiRyoyoShienKubun } from "@/data/column/articles/zaitaku-fukki-ryoyo-shien-kubun";
 
 export type ColumnCategory = "fee-practice" | "kaitei-watch" | "seido-yomikata" | "shiryo";
@@ -119,6 +121,8 @@ const articles: ColumnArticle[] = [
     lifeTeishutsuKata,
     mijisshiGensanKata,
     doitsuTatemonoSogeiGensan,
+    tankiShuchuRihaKata,
+    johoRenkeiKata,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
     kokujiTsuchiGigikaishakuChigai,
     santeiYoukenToShisetsuKijun,
