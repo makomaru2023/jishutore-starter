@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">「同一建物」の範囲が、訪問と通所で違います</text>
+
+    <!-- 見出し行 -->
+    <text x="240" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">建物の位置</text>
+    <rect x="420" y="54" width="160" height="28" rx="14" fill="#1565C0"/>
+    <text x="500" y="74" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">訪問系</text>
+    <rect x="596" y="54" width="160" height="28" rx="14" fill="#64748B"/>
+    <text x="676" y="74" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">通所系</text>
+
+    <!-- ケース1 -->
+    <rect x="40" y="92" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="128" font-size="14" font-weight="bold" fill="#0F172A">構造上・外形上、一体的な建物</text>
+    <text x="500" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">対象になる</text>
+    <text x="676" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">対象になる</text>
+
+    <!-- ケース2 -->
+    <rect x="40" y="162" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="198" font-size="14" font-weight="bold" fill="#0F172A">同一敷地内の別棟</text>
+    <text x="500" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">対象になりうる</text>
+    <text x="676" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">該当しない</text>
+
+    <!-- ケース3 -->
+    <rect x="40" y="232" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="268" font-size="14" font-weight="bold" fill="#0F172A">道路を挟んで隣接する建物</text>
+    <text x="500" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">対象になりうる</text>
+    <text x="676" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">該当しない</text>
+
+    <rect x="40" y="312" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="342" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">訪問系は位置関係だけで機械的に当てません。迂回が必要な場合などは適用すべきでないとされています</text>
+
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">通所系の「同一建物」は、構造上又は外形上、一体的な建築物を指します</text>
+  </g>
+</svg>

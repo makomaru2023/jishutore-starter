@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ同一建物減算でも、引き方が違います</text>
+
+    <rect x="40" y="54" width="350" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="60" y="72" width="180" height="28" rx="14" fill="#1565C0"/>
+    <text x="150" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">訪問系は「率」で引く</text>
+    <text x="60" y="124" font-size="12" font-weight="bold" fill="#475569">訪問リハビリテーション・訪問看護</text>
+    <text x="60" y="162" font-size="20" font-weight="bold" fill="#1565C0">100分の90</text>
+    <text x="60" y="186" font-size="13" font-weight="bold" fill="#334155">同一敷地内建物等、または</text>
+    <text x="60" y="208" font-size="13" font-weight="bold" fill="#334155">同一建物に20人以上</text>
+    <text x="60" y="236" font-size="14" font-weight="bold" fill="#B45309">50人以上の建物なら 100分の85</text>
+
+    <rect x="410" y="54" width="350" height="200" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="430" y="72" width="180" height="28" rx="14" fill="#64748B"/>
+    <text x="520" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">通所系は「定額」で引く</text>
+    <text x="430" y="124" font-size="12" font-weight="bold" fill="#475569">通所介護・通所リハビリテーション</text>
+    <text x="430" y="162" font-size="20" font-weight="bold" fill="#1565C0">94単位/日</text>
+    <text x="430" y="186" font-size="13" font-weight="bold" fill="#334155">同一建物に居住する方、または</text>
+    <text x="430" y="208" font-size="13" font-weight="bold" fill="#334155">同一建物から通う方</text>
+    <text x="430" y="236" font-size="14" font-weight="bold" fill="#B45309">送迎が必要と認められる方は対象外</text>
+
+    <rect x="40" y="276" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="306" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">通所系には、送迎を行わない場合の減算（47単位/片道）も別にあります</text>
+
+    <text x="400" y="358" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">正確な区分と単位数は、報酬チェックの各ページで確認できます</text>
+  </g>
+</svg>

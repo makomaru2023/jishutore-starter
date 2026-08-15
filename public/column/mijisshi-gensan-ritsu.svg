@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <rect width="800" height="440" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">引かれる大きさは、そろっていません</text>
+
+    <rect x="40" y="52" width="720" height="52" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="84" font-size="13" font-weight="bold" fill="#0F172A">身体拘束廃止未実施減算（老健）</text>
+    <rect x="540" y="62" width="200" height="32" rx="6" fill="#1565C0"/>
+    <text x="640" y="84" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">100分の10</text>
+
+    <rect x="40" y="112" width="720" height="52" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="60" y="144" font-size="13" font-weight="bold" fill="#78350F">業務継続計画未策定減算（老健だけ）</text>
+    <rect x="540" y="122" width="200" height="32" rx="6" fill="#B45309"/>
+    <text x="640" y="144" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">100分の3</text>
+
+    <rect x="40" y="172" width="720" height="52" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="204" font-size="13" font-weight="bold" fill="#0F172A">業務継続計画未策定減算（訪問リハ・通所介護・通所リハ）</text>
+    <rect x="540" y="182" width="200" height="32" rx="6" fill="#64748B"/>
+    <text x="640" y="204" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">100分の1</text>
+
+    <rect x="40" y="232" width="720" height="52" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="264" font-size="13" font-weight="bold" fill="#0F172A">高齢者虐待防止措置未実施減算（4分野とも）</text>
+    <rect x="540" y="242" width="200" height="32" rx="6" fill="#64748B"/>
+    <text x="640" y="264" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">100分の1</text>
+
+    <rect x="40" y="292" width="720" height="52" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="324" font-size="13" font-weight="bold" fill="#0F172A">安全管理体制未実施減算（老健）</text>
+    <rect x="540" y="302" width="200" height="32" rx="6" fill="#64748B"/>
+    <text x="640" y="324" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">5単位/日</text>
+
+    <rect x="40" y="352" width="720" height="52" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="384" font-size="13" font-weight="bold" fill="#0F172A">栄養管理減算（老健）</text>
+    <rect x="540" y="362" width="200" height="32" rx="6" fill="#64748B"/>
+    <text x="640" y="384" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">14単位/日</text>
+
+    <text x="400" y="426" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">率で引くものは、基本報酬が大きいほど金額も大きくなります</text>
+  </g>
+</svg>

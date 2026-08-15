@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">未実施減算でそろえるものは、だいたい共通です</text>
+
+    <rect x="40" y="56" width="168" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="124" y="94" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">委員会</text>
+    <text x="124" y="126" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">定期的に開いて</text>
+    <text x="124" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">結果を全員へ周知</text>
+    <text x="124" y="174" text-anchor="middle" font-size="11" font-weight="bold" fill="#B45309">身体拘束は3月に1回以上</text>
+
+    <rect x="224" y="56" width="168" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="308" y="94" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">指針</text>
+    <text x="308" y="126" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">整備しておく</text>
+
+    <rect x="408" y="56" width="168" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="492" y="94" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">研修</text>
+    <text x="492" y="126" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">定期的に実施する</text>
+
+    <rect x="592" y="56" width="168" height="140" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="676" y="94" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">担当者</text>
+    <text x="676" y="126" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">置いておく</text>
+
+    <text x="400" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">ただし業務継続計画（BCP）だけは形が違います</text>
+
+    <rect x="40" y="236" width="720" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="266" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">計画を策定する → 従業者へ周知する → 研修と訓練を定期的に行う</text>
+    <text x="400" y="288" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">→ 定期的に見直す</text>
+
+    <rect x="40" y="320" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="350" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">ひとつでも欠けていれば減算の対象になります</text>
+
+    <text x="400" y="398" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">加算ごとの正確な文言は、報酬チェックの算定要件で確認できます</text>
+  </g>
+</svg>
