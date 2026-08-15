@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ColumnCard } from "@/components/column/ColumnCard";
 import { ColumnCta } from "@/components/column/ColumnCta";
 import { ColumnRelatedFeeItems } from "@/components/column/ColumnRelatedFeeItems";
+import { ColumnRelatedItems } from "@/components/column/ColumnRelatedItems";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
@@ -16,6 +17,7 @@ import {
     getColumnArticles,
     getColumnUrl,
     resolveColumnRelatedFeeItems,
+    resolveColumnRelatedItems,
     type ColumnCategory,
     type ColumnCtaId,
 } from "@/lib/column";
@@ -99,6 +101,7 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
 
     const { Body } = article;
     const relatedFeeItems = resolveColumnRelatedFeeItems(article);
+    const relatedItems = resolveColumnRelatedItems(article);
     const otherArticles = getColumnArticles()
         .filter((entry) => entry.slug !== article.slug)
         .slice(0, 2);
@@ -216,6 +219,8 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
 
                                 <Body />
                             </div>
+
+                            <ColumnRelatedItems items={relatedItems} />
 
                             <ColumnRelatedFeeItems slug={article.slug} entries={relatedFeeItems} />
 

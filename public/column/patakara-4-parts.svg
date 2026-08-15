@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">パタカラの4つの音は、使う場所がそれぞれ違います</text>
+
+    <!-- 見出し -->
+    <text x="120" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">音</text>
+    <text x="330" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">鍛えるところ</text>
+    <text x="610" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">先にほぐしておくとよい動き</text>
+
+    <rect x="40" y="86" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="124" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">パ</text>
+    <text x="330" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">口唇を閉じる力</text>
+    <text x="610" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">『イー・ウー』／頬の膨らませ</text>
+
+    <rect x="40" y="156" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="194" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">タ</text>
+    <text x="330" y="194" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">舌先の力</text>
+    <text x="610" y="194" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">舌を前に出す／歯の裏につける</text>
+
+    <rect x="40" y="226" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="264" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">カ</text>
+    <text x="330" y="264" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">舌根の力</text>
+    <text x="610" y="264" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">舌を上あごにつける</text>
+
+    <rect x="40" y="296" width="720" height="60" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="334" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">ラ</text>
+    <text x="330" y="334" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">舌を丸める力</text>
+    <text x="610" y="334" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">舌を左右に動かす／上に反らす</text>
+
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">だからパタカラは、口と舌をひととおり動かしたあとに置くと声が出しやすくなります</text>
+  </g>
+</svg>

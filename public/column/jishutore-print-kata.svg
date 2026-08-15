@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">渡すのは1枚。上から「いつ」「なにを」「できたか」</text>
+
+    <!-- 紙 -->
+    <rect x="180" y="54" width="440" height="290" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+
+    <!-- いつ -->
+    <rect x="200" y="74" width="400" height="58" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="98" font-size="11" font-weight="bold" fill="#1565C0">いつやるか</text>
+    <text x="216" y="120" font-size="15" font-weight="bold" fill="#0F172A">朝ごはんのあと、テレビをつける前に</text>
+
+    <!-- なにを -->
+    <text x="216" y="158" font-size="11" font-weight="bold" fill="#1565C0">なにをやるか（3つまで）</text>
+    <rect x="200" y="168" width="400" height="34" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="216" y="190" font-size="14" font-weight="bold" fill="#0F172A">① 座位足踏み　20回</text>
+    <rect x="200" y="208" width="400" height="34" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="216" y="230" font-size="14" font-weight="bold" fill="#0F172A">② 座位かかと上げ　20回</text>
+    <rect x="200" y="248" width="400" height="34" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="216" y="270" font-size="14" font-weight="bold" fill="#0F172A">③ 座位つま先上げ　20回</text>
+
+    <!-- できたか -->
+    <text x="216" y="308" font-size="11" font-weight="bold" fill="#1565C0">できたら印をつける欄</text>
+    <rect x="200" y="316" width="400" height="14" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="257" y1="316" x2="257" y2="330" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="314" y1="316" x2="314" y2="330" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="371" y1="316" x2="371" y2="330" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="428" y1="316" x2="428" y2="330" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="485" y1="316" x2="485" y2="330" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="542" y1="316" x2="542" y2="330" stroke="#CBD5E1" stroke-width="1"/>
+
+    <text x="400" y="378" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">種目のところにイラストを置くと、文字を読まなくても思い出せます</text>
+  </g>
+</svg>

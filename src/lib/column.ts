@@ -13,7 +13,7 @@
 
 import type { ComponentType } from "react";
 import { getFeeItem } from "@/lib/fee-check";
-import { getItems } from "@/lib/items";
+import { findItemById, getItems } from "@/lib/items";
 
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
@@ -22,11 +22,13 @@ import { article as doitsuTatemonoSogeiGensan } from "@/data/column/articles/doi
 import { article as hainyoJiritsuKaifukuki } from "@/data/column/articles/hainyo-jiritsu-kaifukuki";
 import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
 import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
+import { article as jishutoreTsuzukanaiWatashikata } from "@/data/column/articles/jishutore-tsuzukanai-watashikata";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
 import { article as keikoIjiKasanNagare } from "@/data/column/articles/keiko-iji-kasan-nagare";
 import { article as kokueiyoScreeningNagare } from "@/data/column/articles/kokueiyo-screening-nagare";
 import { article as kokujiTsuchiGigikaishakuChigai } from "@/data/column/articles/kokuji-tsuchi-gigikaishaku-chigai";
+import { article as kokukuTaisoJunban } from "@/data/column/articles/kokuku-taiso-junban";
 import { article as kyotakuHomonKasanKata } from "@/data/column/articles/kyotaku-homon-kasan-kata";
 import { article as lifeTeishutsuKata } from "@/data/column/articles/life-teishutsu-kata";
 import { article as mijisshiGensanKata } from "@/data/column/articles/mijisshi-gensan-kata";
@@ -100,6 +102,10 @@ export const columnCategoryStyles: Record<ColumnCategory, string> = {
  * 見せたい順に並べること（先頭ほど上に出る）。
  */
 const articles: ColumnArticle[] = [
+    // ★イラスト層（来訪者の約半分）向けの回。素材ページが答えていない
+    // 「何をどの順で」「渡したあと続かない」を担当する。`relatedItems` で素材へ返す。
+    kokukuTaisoJunban,
+    jishutoreTsuzukanaiWatashikata,
     kaiteiWatch202608,
     // 図解つきの回。fee-check の項目ページから逆引きで呼ばれる（getColumnsByFeeItem）。
     // 表示が出ているのにクリックが取れていない項目を、別の検索語（流れ・図解・違い）で拾いにいく回。
@@ -170,6 +176,20 @@ export function getLatestKaiteiWatch(): ColumnArticle | undefined {
 export function resolveColumnRelatedFeeItems(article: ColumnArticle) {
     return (article.relatedFeeItems ?? []).slice(0, DISPLAYED_RELATED_FEE_ITEMS).flatMap((ref) => {
         const found = getFeeItem(ref.domain, ref.id);
+        return found ? [found] : [];
+    });
+}
+
+/**
+ * relatedItems を items.json の実データに解決する（記事末尾にサムネイル付きで出す）。
+ *
+ * イラスト層向けの記事（口腔体操の順番・自主トレの渡し方など）では、
+ * 「記事で説明した動きの絵が、そのまま無料で取れる」ことが記事の値打ちになる。
+ * 本文中のテキストリンクだけだと絵を探しに行く動作が要るので、末尾に並べて見せる。
+ */
+export function resolveColumnRelatedItems(article: ColumnArticle) {
+    return (article.relatedItems ?? []).flatMap((id) => {
+        const found = findItemById(id);
         return found ? [found] : [];
     });
 }
