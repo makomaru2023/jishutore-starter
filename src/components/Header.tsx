@@ -44,6 +44,18 @@ export function Header() {
                         報酬チェック
                     </Link>
 
+                    {/* 報酬チェックの隣に置く。コラムは入口側の資産で、実際の流れも
+                        報酬チェック → コラム → Plus の順になるため。
+                        ★企画書§10の「ヘッダーナビへの追加はしない」は記事0本のときの判断で、
+                        24本になった2026-08-15に見直した。
+
+                        ★lg以上でだけ出す。md（768px）だと5項目でロゴとナビが接触する
+                        （実測：コラム有りで隙間1px／無しで59px）。768〜1023pxでは出ないが、
+                        1023px以下のモバイルメニューには常に入れてあるので、行き止まりにはならない。 */}
+                    <Link href="/column/" className="hidden text-sm font-bold text-slate-300 transition-colors hover:text-white lg:block">
+                        コラム
+                    </Link>
+
                     <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
                         素材庫Plus
                     </Link>
@@ -108,6 +120,13 @@ export function Header() {
                             onClick={closeMenu}
                         >
                             報酬チェック
+                        </Link>
+                        <Link
+                            href="/column/"
+                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                            onClick={closeMenu}
+                        >
+                            コラム
                         </Link>
                         <Link
                             href="/products/jishutore-plus"
