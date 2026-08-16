@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <rect width="800" height="440" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">口腔と栄養の加算は、数え方が3種類あります</text>
+
+    <rect x="40" y="56" width="720" height="146" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="100" y="96" text-anchor="middle" font-size="30" font-weight="bold" fill="#1565C0">回</text>
+    <text x="100" y="124" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">やった分</text>
+    <line x1="170" y1="76" x2="170" y2="182" stroke="#90CAF9" stroke-width="2"/>
+    <text x="196" y="92" font-size="14" font-weight="bold" fill="#0F172A">通所介護・栄養改善加算 ＝ 200単位/回</text>
+    <text x="196" y="120" font-size="14" font-weight="bold" fill="#0F172A">通所介護・口腔機能向上加算 ＝ 150／160単位/回</text>
+    <text x="196" y="148" font-size="14" font-weight="bold" fill="#0F172A">通所リハ・口腔機能向上加算 ＝ 150／155／160単位/回</text>
+    <text x="196" y="176" font-size="12" font-weight="bold" fill="#B45309">いずれも原則3月以内、1月に2回を限度</text>
+
+    <rect x="40" y="214" width="350" height="118" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="100" y="254" text-anchor="middle" font-size="30" font-weight="bold" fill="#1565C0">月</text>
+    <text x="100" y="282" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">評価した分</text>
+    <line x1="170" y1="234" x2="170" y2="312" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="192" y="256" font-size="14" font-weight="bold" fill="#0F172A">通所リハ</text>
+    <text x="192" y="280" font-size="14" font-weight="bold" fill="#0F172A">栄養アセスメント加算</text>
+    <text x="192" y="306" font-size="16" font-weight="bold" fill="#1565C0">50単位/月</text>
+
+    <rect x="410" y="214" width="350" height="118" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="470" y="254" text-anchor="middle" font-size="30" font-weight="bold" fill="#1565C0">日</text>
+    <text x="470" y="282" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">体制の分</text>
+    <line x1="540" y1="234" x2="540" y2="312" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="562" y="256" font-size="14" font-weight="bold" fill="#0F172A">老健</text>
+    <text x="562" y="280" font-size="14" font-weight="bold" fill="#0F172A">栄養マネジメント強化加算</text>
+    <text x="562" y="306" font-size="16" font-weight="bold" fill="#1565C0">11単位/日</text>
+
+    <rect x="40" y="348" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="376" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">何に対してお金が付いているかが、数え方の単位に出ています</text>
+
+    <text x="400" y="422" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">重ねられない組み合わせがあります。報酬チェックの各ページで確認してください</text>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">実績を作る年と、加算が付く年がずれています</text>
+
+    <rect x="40" y="70" width="330" height="120" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="205" y="102" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">評価対象期間</text>
+    <text x="205" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">算定する年度の初日が属する年の</text>
+    <text x="205" y="154" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">前年1月から12月まで</text>
+    <text x="205" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">届出の年は、届出の日から同年12月まで</text>
+
+    <path d="M378 130 L422 130" stroke="#1565C0" stroke-width="4" marker-end="url(#a2)"/>
+    <defs>
+      <marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1565C0"/>
+      </marker>
+    </defs>
+
+    <rect x="430" y="70" width="330" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="595" y="102" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">算定できる期間</text>
+    <text x="595" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">評価対象期間の末日が属する年度の</text>
+    <text x="595" y="154" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">次の年度内に限ります</text>
+    <text x="595" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">事業所評価加算も同じ形です</text>
+
+    <rect x="40" y="212" width="720" height="52" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="400" y="236" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">通所リハの移行支援加算の要件には、数字が並んでいます</text>
+    <text x="400" y="256" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">終了者のうち通所介護等を実施した割合が3%超／12を平均利用月数で除して得た数が27%以上</text>
+
+    <rect x="40" y="282" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="311" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">「来月から取ろう」という動き方はできません。今年の関わり方が来年返ってきます</text>
+
+    <text x="400" y="362" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">終了日から14日以降44日以内に、移行先での実施状況を確認して記録します</text>
+  </g>
+</svg>

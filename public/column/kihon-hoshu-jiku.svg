@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">基本報酬は、軸がいくつあるかで決まります</text>
+
+    <rect x="40" y="56" width="330" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="205" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">訪問リハ ＝ 軸は1つ</text>
+    <text x="205" y="122" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">1回につき 308単位</text>
+    <text x="205" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">要介護度でも訪問時間でも変わりません</text>
+    <text x="205" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">介護予防は別建てで 1回298単位</text>
+
+    <rect x="390" y="56" width="370" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="575" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">通所 ＝ 軸は3つ</text>
+    <text x="575" y="122" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">規模 × 所要時間 × 要介護度</text>
+    <text x="575" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">3つを決めて、はじめて1つの数字が出ます</text>
+    <text x="575" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所リハは通常規模型と大規模型で70通り</text>
+
+    <text x="400" y="238" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">通所の3つの軸は、それぞれ決まり方が違います</text>
+
+    <rect x="40" y="254" width="230" height="96" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="155" y="284" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">規模</text>
+    <text x="155" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">前年度の1月あたり</text>
+    <text x="155" y="332" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">平均利用延人員数で判定</text>
+
+    <rect x="285" y="254" width="230" height="96" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="284" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">所要時間</text>
+    <text x="400" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">実際にかかった時間ではなく</text>
+    <text x="400" y="332" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">計画上の標準的な時間</text>
+
+    <rect x="530" y="254" width="230" height="96" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="645" y="284" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">要介護度</text>
+    <text x="645" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">要介護1から5まで</text>
+    <text x="645" y="332" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">認定で決まります</text>
+
+    <text x="400" y="384" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">通所介護は3〜4時間から8〜9時間の6区分、通所リハは1〜2時間から7〜8時間の7区分です</text>
+    <text x="400" y="408" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">自分の事業所の欄は、報酬チェックの基本報酬のページで確認できます</text>
+  </g>
+</svg>

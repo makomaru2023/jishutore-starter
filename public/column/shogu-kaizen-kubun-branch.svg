@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">区分を分けているのは、2つの条件だけです</text>
+
+    <text x="300" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">データ連携システムの利用、または連携推進法人への所属</text>
+    <text x="200" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">満たさない → イ</text>
+    <text x="404" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">満たす → ロ</text>
+
+    <text x="60" y="150" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">体制強化</text>
+    <text x="60" y="168" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">加算の届出</text>
+    <text x="60" y="192" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">あり</text>
+
+    <rect x="110" y="110" width="180" height="86" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="200" y="146" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">加算(Ⅰ)イ</text>
+    <text x="200" y="174" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所リハなら10.3%</text>
+
+    <rect x="314" y="110" width="180" height="86" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="404" y="146" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">加算(Ⅰ)ロ</text>
+    <text x="404" y="174" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所リハなら11.1%</text>
+
+    <text x="60" y="256" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">なし</text>
+
+    <rect x="110" y="212" width="180" height="86" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="200" y="248" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">加算(Ⅱ)イ</text>
+    <text x="200" y="276" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所リハなら10.0%</text>
+
+    <rect x="314" y="212" width="180" height="86" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="404" y="248" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">加算(Ⅱ)ロ</text>
+    <text x="404" y="276" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所リハなら10.8%</text>
+
+    <rect x="520" y="110" width="240" height="188" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="640" y="142" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">この4つに</text>
+    <text x="640" y="176" text-anchor="middle" font-size="18" font-weight="bold" fill="#1565C0">加算(Ⅲ)・加算(Ⅳ)</text>
+    <text x="640" y="206" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">を足して6区分</text>
+    <text x="640" y="240" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">キャリアパス要件などの</text>
+    <text x="640" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">充足範囲が段階的に</text>
+    <text x="640" y="280" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">狭くなる区分です</text>
+
+    <rect x="40" y="316" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="344" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">どの区分も、いずれか一つしか算定できません</text>
+
+    <text x="400" y="388" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">率はサービスごとに違います。図の%は通所リハビリテーションの場合です</text>
+  </g>
+</svg>

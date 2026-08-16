@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" width="800" height="470">
+  <rect width="800" height="470" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">老健の認知症の加算4つは、見ているものが違います</text>
+
+    <rect x="40" y="56" width="350" height="176" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="90" y="92" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">場所</text>
+    <line x1="140" y1="74" x2="140" y2="214" stroke="#90CAF9" stroke-width="2"/>
+    <text x="162" y="88" font-size="14" font-weight="bold" fill="#0F172A">認知症ケア加算</text>
+    <text x="162" y="112" font-size="16" font-weight="bold" fill="#1565C0">76単位/日</text>
+    <text x="162" y="140" font-size="12" font-weight="bold" fill="#475569">他の入所者と区別した施設・設備</text>
+    <text x="162" y="162" font-size="12" font-weight="bold" fill="#475569">単位ごとの入所者数は10人を標準</text>
+    <text x="162" y="184" font-size="12" font-weight="bold" fill="#475569">家族への介護方法の提供のため</text>
+    <text x="162" y="206" font-size="12" font-weight="bold" fill="#475569">30平方メートル以上の施設を設ける</text>
+
+    <rect x="410" y="56" width="350" height="176" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="460" y="92" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">人</text>
+    <line x1="510" y1="74" x2="510" y2="214" stroke="#90CAF9" stroke-width="2"/>
+    <text x="532" y="88" font-size="14" font-weight="bold" fill="#0F172A">認知症専門ケア加算</text>
+    <text x="532" y="112" font-size="16" font-weight="bold" fill="#1565C0">(Ⅰ)3単位/日・(Ⅱ)4単位/日</text>
+    <text x="532" y="140" font-size="12" font-weight="bold" fill="#475569">専門的な研修を修了した者の配置</text>
+    <text x="532" y="162" font-size="12" font-weight="bold" fill="#475569">対象者が入所者の2分の1以上</text>
+    <text x="532" y="184" font-size="12" font-weight="bold" fill="#475569">(Ⅱ)は指導者研修の修了者を</text>
+    <text x="532" y="206" font-size="12" font-weight="bold" fill="#475569">1名以上と研修計画</text>
+
+    <rect x="40" y="246" width="350" height="176" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="90" y="282" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">やり方</text>
+    <line x1="140" y1="264" x2="140" y2="404" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="162" y="278" font-size="14" font-weight="bold" fill="#0F172A">認知症チームケア推進加算</text>
+    <text x="162" y="302" font-size="16" font-weight="bold" fill="#1565C0">(Ⅰ)150・(Ⅱ)120単位/月</text>
+    <text x="162" y="330" font-size="12" font-weight="bold" fill="#475569">行動・心理症状の評価を計画的に</text>
+    <text x="162" y="352" font-size="12" font-weight="bold" fill="#475569">評価に基づく値を測定する</text>
+    <text x="162" y="374" font-size="12" font-weight="bold" fill="#475569">チームでカンファレンス・計画・</text>
+    <text x="162" y="396" font-size="12" font-weight="bold" fill="#475569">振り返り・見直しを回す</text>
+
+    <rect x="410" y="246" width="350" height="176" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="460" y="282" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">対象者</text>
+    <line x1="510" y1="264" x2="510" y2="404" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="532" y="278" font-size="14" font-weight="bold" fill="#0F172A">若年性認知症入所者受入加算</text>
+    <text x="532" y="302" font-size="16" font-weight="bold" fill="#1565C0">120単位/日</text>
+    <text x="532" y="330" font-size="12" font-weight="bold" fill="#475569">初老期における認知症によって</text>
+    <text x="532" y="352" font-size="12" font-weight="bold" fill="#475569">要介護者等となった方が対象</text>
+    <text x="532" y="374" font-size="12" font-weight="bold" fill="#475569">受け入れた方ごとに</text>
+    <text x="532" y="396" font-size="12" font-weight="bold" fill="#475569">個別の担当者を定める</text>
+
+    <text x="400" y="452" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">上位互換ではありません。並びに順番はなく、それぞれ別のことを評価しています</text>
+  </g>
+</svg>

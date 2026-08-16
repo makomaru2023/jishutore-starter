@@ -17,6 +17,16 @@ import { findItemById, getItems } from "@/lib/items";
 
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
+import { article as chiikiKasanKata } from "@/data/column/articles/chiiki-kasan-kata";
+import { article as ikigireJishutoreWatashikata } from "@/data/column/articles/ikigire-jishutore-watashikata";
+import { article as ikouShienSotsugyoKata } from "@/data/column/articles/ikou-shien-sotsugyo-kata";
+import { article as iryoKaigoDochira } from "@/data/column/articles/iryo-kaigo-dochira";
+import { article as kataGaAgaranaiJishutore } from "@/data/column/articles/kata-ga-agaranai-jishutore";
+import { article as kihonHoshuKata } from "@/data/column/articles/kihon-hoshu-kata";
+import { article as kokuuEiyoKasanKata } from "@/data/column/articles/kokuu-eiyo-kasan-kata";
+import { article as ninchishoKasanMap } from "@/data/column/articles/ninchisho-kasan-map";
+import { article as shoguKaizenKata } from "@/data/column/articles/shogu-kaizen-kata";
+import { article as teYubiJishutoreJunban } from "@/data/column/articles/te-yubi-jishutore-junban";
 import { article as benkyokaiShiryoMaeNiKimeru } from "@/data/column/articles/benkyokai-shiryo-mae-ni-kimeru";
 import { article as doitsuTatemonoSogeiGensan } from "@/data/column/articles/doitsu-tatemono-sogei-gensan";
 import { article as hainyoJiritsuKaifukuki } from "@/data/column/articles/hainyo-jiritsu-kaifukuki";
@@ -116,6 +126,9 @@ export const columnCategoryStyles: Record<ColumnCategory, string> = {
 const articles: ColumnArticle[] = [
     // ★イラスト層（来訪者の約半分）向けの回。素材ページが答えていない
     // 「何をどの順で」「渡したあと続かない」を担当する。`relatedItems` で素材へ返す。
+    ikigireJishutoreWatashikata,
+    teYubiJishutoreJunban,
+    kataGaAgaranaiJishutore,
     kokukuTaisoJunban,
     jishutoreTsuzukanaiWatashikata,
     jishutoreCheckHyo,
@@ -131,6 +144,13 @@ const articles: ColumnArticle[] = [
     hainyoJiritsuKaifukuki,
     // ★「型」で括った回（企画書_コラムの部分公開とPlus導線 §3-9）。個別の加算ではなく、
     // 複数項目に共通する進み方を1枚の図にしてある。1本で5〜10項目の導線を兼ねる。
+    shoguKaizenKata,
+    kihonHoshuKata,
+    kokuuEiyoKasanKata,
+    ninchishoKasanMap,
+    chiikiKasanKata,
+    ikouShienSotsugyoKata,
+    iryoKaigoDochira,
     kyotakuHomonKasanKata,
     lifeTeishutsuKata,
     mijisshiGensanKata,

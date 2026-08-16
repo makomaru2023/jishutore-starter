@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360">
+  <rect width="800" height="360" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">やめどきは、紙に残っているかどうかで決まります</text>
+
+    <rect x="40" y="56" width="345" height="184" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="212" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">運動の紙だけを渡した場合</text>
+    <rect x="80" y="106" width="265" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="212" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">やること：この運動を◯回</text>
+    <rect x="80" y="162" width="265" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="212" y="191" text-anchor="middle" font-size="14" font-weight="bold" fill="#94A3B8">やめどき：書いていない</text>
+    <text x="212" y="228" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">1人でいるとき、止まる理由がありません</text>
+
+    <rect x="415" y="56" width="345" height="184" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="587" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">「中止」の1枚を足した場合</text>
+    <rect x="455" y="106" width="265" height="46" rx="8" fill="#FFFFFF" stroke="#90CAF9" stroke-width="2"/>
+    <text x="587" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">やること：この運動を◯回</text>
+    <rect x="455" y="162" width="265" height="46" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="587" y="183" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">息切れがあるときは運動中止</text>
+    <text x="587" y="202" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">続く場合は医療機関の受診も検討</text>
+    <text x="587" y="228" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">口で伝えた注意も、紙になって残ります</text>
+
+    <rect x="40" y="262" width="720" height="46" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="400" y="291" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">深呼吸と座位でのゆっくり息吐きの素材にも、息苦しさやめまいが出たら中止と書いてあります</text>
+
+    <text x="400" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">運動していい状態かどうかは、対象の方の状態に合わせて専門職が判断してください</text>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">この2つは併算定できません。どちらか一方です</text>
+
+    <rect x="40" y="56" width="330" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="205" y="86" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">認知症専門ケア加算</text>
+    <text x="205" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">1日につき算定します</text>
+    <text x="205" y="144" text-anchor="middle" font-size="18" font-weight="bold" fill="#1565C0">(Ⅰ) 3単位／(Ⅱ) 4単位</text>
+    <text x="205" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">見ているのは「人」の配置です</text>
+
+    <text x="400" y="128" text-anchor="middle" font-size="22" font-weight="bold" fill="#B45309">か</text>
+
+    <rect x="430" y="56" width="330" height="130" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="595" y="86" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">認知症チームケア推進加算</text>
+    <text x="595" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">1月につき算定します</text>
+    <text x="595" y="144" text-anchor="middle" font-size="18" font-weight="bold" fill="#1565C0">(Ⅰ) 150単位／(Ⅱ) 120単位</text>
+    <text x="595" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">見ているのは「やり方」です</text>
+
+    <text x="400" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">まるまる入所している方で並べると、月の長さで入れ替わります</text>
+
+    <rect x="40" y="238" width="720" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="130" y="267" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">30日の月</text>
+    <text x="330" y="267" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">専門(Ⅱ) 4×30＝120単位</text>
+    <text x="480" y="267" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">＝</text>
+    <text x="640" y="267" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">チーム(Ⅱ) 120単位</text>
+
+    <rect x="40" y="290" width="350" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="110" y="319" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">31日の月</text>
+    <text x="270" y="319" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">専門(Ⅱ) 124単位で上回る</text>
+
+    <rect x="410" y="290" width="350" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="480" y="319" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">28日の月</text>
+    <text x="640" y="319" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">専門(Ⅱ) 112単位で下回る</text>
+
+    <text x="400" y="372" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">求めているものが違うので、金額だけで選ぶものではありません</text>
+  </g>
+</svg>

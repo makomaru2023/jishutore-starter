@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ口腔機能向上加算でも、区分の数が違います</text>
+
+    <rect x="40" y="56" width="330" height="184" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="205" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565C0">通所介護 ＝ 2区分</text>
+    <rect x="70" y="106" width="270" height="52" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="205" y="138" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">加算(Ⅰ) ＝ 150単位/回</text>
+    <rect x="70" y="168" width="270" height="52" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="205" y="192" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">加算(Ⅱ) ＝ 160単位/回</text>
+    <text x="205" y="212" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">LIFEへの提出と活用が乗ります</text>
+
+    <rect x="390" y="56" width="370" height="184" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="575" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565C0">通所リハ ＝ 3区分</text>
+    <rect x="415" y="106" width="320" height="38" rx="8" fill="#FFFFFF" stroke="#90CAF9" stroke-width="2"/>
+    <text x="575" y="131" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">加算(Ⅰ) ＝ 150単位/回</text>
+    <rect x="415" y="152" width="320" height="38" rx="8" fill="#FFFFFF" stroke="#90CAF9" stroke-width="2"/>
+    <text x="575" y="177" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">加算(Ⅱ)イ ＝ 155単位/回</text>
+    <rect x="415" y="198" width="320" height="38" rx="8" fill="#FFFFFF" stroke="#90CAF9" stroke-width="2"/>
+    <text x="575" y="223" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">加算(Ⅱ)ロ ＝ 160単位/回</text>
+
+    <rect x="390" y="256" width="370" height="94" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="575" y="282" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">分かれ目はリハマネ加算(ハ)です</text>
+    <text x="575" y="308" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">算定している → (Ⅱ)イ</text>
+    <text x="575" y="330" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">算定していない → (Ⅱ)ロ</text>
+
+    <text x="205" y="284" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">どちらの加算も、原則3月以内で</text>
+    <text x="205" y="306" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">1月に2回が限度です</text>
+    <text x="205" y="336" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">3月ごとの評価で必要と認められれば</text>
+    <text x="205" y="356" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">3月を超えて算定できます</text>
+
+    <text x="575" y="368" text-anchor="middle" font-size="11" font-weight="bold" fill="#64748B">リハマネ(ハ)算定時は(Ⅰ)と(Ⅱ)ロを算定しません</text>
+  </g>
+</svg>

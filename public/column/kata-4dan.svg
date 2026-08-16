@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <rect width="800" height="440" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">肩の自主トレは、補助の強さで4段に並びます</text>
+
+    <rect x="40" y="56" width="720" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="115" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">1 重力にまかせる</text>
+    <line x1="200" y1="70" x2="200" y2="118" stroke="#90CAF9" stroke-width="2"/>
+    <text x="224" y="88" font-size="14" font-weight="bold" fill="#0F172A">臥位で両肩の屈曲運動／振り子運動</text>
+    <text x="224" y="112" font-size="12" font-weight="bold" fill="#475569">仰臥位は重力が補助になり、振り子は肩に力を入れず重心移動で振ります</text>
+
+    <rect x="40" y="144" width="720" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="115" y="190" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">2 反対の手で助ける</text>
+    <line x1="200" y1="158" x2="200" y2="206" stroke="#90CAF9" stroke-width="2"/>
+    <text x="224" y="176" font-size="14" font-weight="bold" fill="#0F172A">タオルを把持して肩関節屈曲／棒を使用した肩関節屈曲</text>
+    <text x="224" y="200" font-size="12" font-weight="bold" fill="#475569">健側で患側を引き上げる自己介助運動として使えます</text>
+
+    <rect x="40" y="232" width="720" height="76" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="115" y="278" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">3 自分の力で</text>
+    <line x1="200" y1="246" x2="200" y2="294" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="224" y="264" font-size="14" font-weight="bold" fill="#0F172A">肩挙上運動</text>
+    <text x="224" y="288" font-size="12" font-weight="bold" fill="#475569">自重で困難なら、テーブルの上で腕を滑らせる運動から始めます</text>
+
+    <rect x="40" y="320" width="720" height="76" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="115" y="366" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">4 重りを足す</text>
+    <line x1="200" y1="334" x2="200" y2="382" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="224" y="352" font-size="14" font-weight="bold" fill="#0F172A">ダンベルを使った肩関節外転運動（難易度：中級）</text>
+    <text x="224" y="376" font-size="12" font-weight="bold" fill="#475569">軽い重量から始め、痛みが出ない範囲で行います</text>
+
+    <text x="400" y="424" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">上の段へ進む前に、痛みが出る角度を確かめておきます</text>
+  </g>
+</svg>

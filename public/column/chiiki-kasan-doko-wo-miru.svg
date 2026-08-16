@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ地域の加算でも、見ている相手が違います</text>
+
+    <rect x="40" y="56" width="345" height="230" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="212" y="90" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565C0">事業所を見る加算</text>
+    <text x="212" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">特別地域加算（+15%）</text>
+    <text x="212" y="148" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">中山間地域等の小規模事業所加算（+10%）</text>
+    <line x1="70" y1="170" x2="355" y2="170" stroke="#90CAF9" stroke-width="2"/>
+    <text x="212" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">判断材料＝事業所がどこにあるか</text>
+    <text x="212" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">条件を満たせば</text>
+    <text x="212" y="256" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">その事業所の訪問すべてに付きます</text>
+
+    <rect x="415" y="56" width="345" height="230" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="587" y="90" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565C0">利用者を見る加算</text>
+    <text x="587" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">中山間地域等に居住する者への</text>
+    <text x="587" y="148" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">サービス提供加算（+5%）</text>
+    <line x1="445" y1="170" x2="730" y2="170" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="587" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">判断材料＝利用者がどこに住んでいるか</text>
+    <text x="587" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">＋通常の事業の実施地域を越えたか</text>
+    <text x="587" y="256" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">利用者ごとに変わります</text>
+
+    <rect x="40" y="302" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">対象となる地域の範囲は、別の告示（厚生労働大臣が定める地域）で定められています</text>
+  </g>
+</svg>

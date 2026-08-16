@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ「単位」でも、指しているものが違います</text>
+
+    <rect x="40" y="56" width="345" height="180" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="212" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">介護保険</text>
+    <text x="212" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">訪問リハビリテーション費</text>
+    <text x="212" y="152" text-anchor="middle" font-size="22" font-weight="bold" fill="#0F172A">1回につき 308単位</text>
+    <line x1="70" y1="174" x2="355" y2="174" stroke="#90CAF9" stroke-width="2"/>
+    <text x="212" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">この単位は報酬の数字として</text>
+    <text x="212" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">並んでいるものです</text>
+
+    <rect x="415" y="56" width="345" height="180" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="587" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">医療保険</text>
+    <text x="587" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">在宅患者訪問リハビリテーション指導管理料</text>
+    <text x="587" y="152" text-anchor="middle" font-size="22" font-weight="bold" fill="#78350F">1単位 ＝ 20分以上</text>
+    <line x1="445" y1="174" x2="730" y2="174" stroke="#FCD34D" stroke-width="2"/>
+    <text x="587" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">こちらは実施の量です</text>
+    <text x="587" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">同一建物以外300点／同一建物255点</text>
+
+    <text x="400" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#475569">だから医療保険の「週6単位」は、週6回という意味ではありません</text>
+
+    <rect x="40" y="288" width="230" height="66" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="155" y="314" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">週の上限</text>
+    <text x="155" y="338" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">週6単位</text>
+
+    <rect x="285" y="288" width="230" height="66" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="400" y="314" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">退院の日から3月以内</text>
+    <text x="400" y="338" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">週12単位</text>
+
+    <rect x="530" y="288" width="230" height="66" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="645" y="314" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">末期の悪性腫瘍</text>
+    <text x="645" y="338" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">週6単位の限度の対象外</text>
+
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">点数と要件は、報酬チェックの在宅患者訪問リハビリテーション指導管理料のページで確認できます</text>
+  </g>
+</svg>

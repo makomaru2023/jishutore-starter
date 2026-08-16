@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">手指の課題は、3つの列に分かれます</text>
+
+    <rect x="40" y="56" width="230" height="240" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="155" y="90" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">握る</text>
+    <text x="155" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">手のひら全体を使う</text>
+    <line x1="70" y1="132" x2="240" y2="132" stroke="#90CAF9" stroke-width="2"/>
+    <text x="155" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">グーとパー</text>
+    <text x="155" y="184" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">タオル握り</text>
+    <text x="155" y="210" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">10秒しっかり握ります</text>
+    <text x="155" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">呼吸は止めません</text>
+    <rect x="70" y="248" width="170" height="32" rx="6" fill="#FFFFFF" stroke="#90CAF9" stroke-width="2"/>
+    <text x="155" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">難易度：初級</text>
+
+    <rect x="285" y="56" width="230" height="240" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="90" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">つまむ</text>
+    <text x="400" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">指先だけを使う</text>
+    <line x1="315" y1="132" x2="485" y2="132" stroke="#90CAF9" stroke-width="2"/>
+    <text x="400" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">洗濯ばさみつまみ</text>
+    <text x="400" y="184" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">ペグ操作</text>
+    <text x="400" y="210" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">硬貨を使った手指の運動</text>
+    <text x="400" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">持つものが小さいほど難しく</text>
+    <rect x="315" y="248" width="170" height="32" rx="6" fill="#FFFFFF" stroke="#90CAF9" stroke-width="2"/>
+    <text x="400" y="270" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">初級〜中級／中級〜上級</text>
+
+    <rect x="530" y="56" width="230" height="240" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="645" y="90" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">両手で使う</text>
+    <text x="645" y="116" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">左右を役割分担させる</text>
+    <line x1="560" y1="132" x2="730" y2="132" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="645" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">両手でタオルを畳む</text>
+    <text x="645" y="184" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">お手玉を使った箸練習</text>
+    <text x="645" y="210" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">麻痺側を補助手として</text>
+    <text x="645" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">使う渡し方もできます</text>
+    <rect x="560" y="248" width="170" height="32" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="645" y="270" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">初級〜中級／中級〜上級</text>
+
+    <rect x="40" y="312" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="341" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">1列目ができないうちに3列目を渡すと、たいてい続きません</text>
+
+    <text x="400" y="392" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">3列の前に、前腕のストレッチと手首の曲げ伸ばしを準備として置きます</text>
+  </g>
+</svg>

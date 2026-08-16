@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">前後を呼吸ではさむ形にします</text>
+
+    <rect x="40" y="56" width="620" height="86" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="120" y="106" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">整える</text>
+    <line x1="200" y1="72" x2="200" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="224" y="94" font-size="14" font-weight="bold" fill="#0F172A">深呼吸／座位でのゆっくり息吐き</text>
+    <text x="224" y="120" font-size="12" font-weight="bold" fill="#475569">肩の力を抜き、鼻からゆっくり吸って口から長く吐く</text>
+
+    <rect x="40" y="154" width="620" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="120" y="204" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">動く</text>
+    <line x1="200" y1="170" x2="200" y2="224" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="224" y="192" font-size="14" font-weight="bold" fill="#0F172A">座位足踏み・腕振り ＝ 20〜30回が目安</text>
+    <text x="224" y="218" font-size="12" font-weight="bold" fill="#475569">息切れしない範囲のリズムで行います</text>
+
+    <rect x="40" y="252" width="620" height="86" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="120" y="302" text-anchor="middle" font-size="20" font-weight="bold" fill="#1565C0">整える</text>
+    <line x1="200" y1="268" x2="200" y2="322" stroke="#90CAF9" stroke-width="2"/>
+    <text x="224" y="290" font-size="14" font-weight="bold" fill="#0F172A">腹式呼吸（座位 5回×3セット／背臥位 10秒×3セット）</text>
+    <text x="224" y="316" font-size="12" font-weight="bold" fill="#475569">動いたあとの整え方まで、紙の上に残せます</text>
+
+    <rect x="676" y="56" width="84" height="282" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="718" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">どの段</text>
+    <text x="718" y="172" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">でも</text>
+    <text x="718" y="204" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">息苦しさ</text>
+    <text x="718" y="226" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">めまいが</text>
+    <text x="718" y="248" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">出たら</text>
+    <text x="718" y="276" text-anchor="middle" font-size="16" font-weight="bold" fill="#B45309">中止</text>
+
+    <text x="400" y="374" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">回数と秒数は素材に書いてある目安です。何分ずつという配分は僕の組み方です</text>
+  </g>
+</svg>

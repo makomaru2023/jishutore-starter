@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ加算なのに、サービスで率が8倍違います</text>
+
+    <text x="40" y="62" font-size="12" font-weight="bold" fill="#475569">区分が複数あるサービス（いちばん高い区分で比べています）</text>
+
+    <text x="40" y="94" font-size="13" font-weight="bold" fill="#0F172A">通所介護</text>
+    <rect x="150" y="76" width="420" height="26" rx="4" fill="#1565C0"/>
+    <text x="580" y="94" font-size="13" font-weight="bold" fill="#0F172A">1000分の120＝12.0%</text>
+
+    <text x="40" y="132" font-size="13" font-weight="bold" fill="#0F172A">通所リハ</text>
+    <rect x="150" y="114" width="389" height="26" rx="4" fill="#1E88E5"/>
+    <text x="549" y="132" font-size="13" font-weight="bold" fill="#0F172A">1000分の111＝11.1%</text>
+
+    <text x="40" y="170" font-size="13" font-weight="bold" fill="#0F172A">老健</text>
+    <rect x="150" y="152" width="340" height="26" rx="4" fill="#42A5F5"/>
+    <text x="500" y="170" font-size="13" font-weight="bold" fill="#0F172A">1000分の97＝9.7%</text>
+
+    <line x1="40" y1="196" x2="760" y2="196" stroke="#CBD5E1" stroke-width="1"/>
+
+    <text x="40" y="222" font-size="12" font-weight="bold" fill="#475569">2026年6月から対象になったサービス（区分がなく単一の率）</text>
+
+    <text x="40" y="254" font-size="13" font-weight="bold" fill="#0F172A">訪問看護</text>
+    <rect x="150" y="236" width="63" height="26" rx="4" fill="#90CAF9"/>
+    <text x="223" y="254" font-size="13" font-weight="bold" fill="#0F172A">1000分の18＝1.8%</text>
+
+    <text x="40" y="292" font-size="13" font-weight="bold" fill="#0F172A">訪問リハ</text>
+    <rect x="150" y="274" width="53" height="26" rx="4" fill="#90CAF9"/>
+    <text x="213" y="292" font-size="13" font-weight="bold" fill="#0F172A">1000分の15＝1.5%</text>
+
+    <rect x="40" y="318" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="348" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">率はサービスの種類で先に決まります。区分を上げても届きません</text>
+
+    <text x="400" y="396" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">正確な率と要件は、報酬チェックの各サービスのページで確認できます</text>
+  </g>
+</svg>
