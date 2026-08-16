@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360">
+  <rect width="800" height="360" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">欄は5つで足ります。増やすほど書かれなくなります</text>
+
+    <rect x="40" y="54" width="720" height="230" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+
+    <rect x="60" y="72" width="120" height="34" rx="6" fill="#E3F2FD" stroke="#1565C0" stroke-width="1"/>
+    <text x="120" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">日付</text>
+    <rect x="188" y="72" width="330" height="34" rx="6" fill="#E3F2FD" stroke="#1565C0" stroke-width="1"/>
+    <text x="353" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">やること（3つまで・絵つき）</text>
+    <rect x="526" y="72" width="100" height="34" rx="6" fill="#E3F2FD" stroke="#1565C0" stroke-width="1"/>
+    <text x="576" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">できた印</text>
+    <rect x="634" y="72" width="106" height="34" rx="6" fill="#E3F2FD" stroke="#1565C0" stroke-width="1"/>
+    <text x="687" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">ひとこと</text>
+
+    <line x1="60" y1="120" x2="740" y2="120" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="60" y1="156" x2="740" y2="156" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="60" y1="192" x2="740" y2="192" stroke="#CBD5E1" stroke-width="1"/>
+    <line x1="60" y1="228" x2="740" y2="228" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="120" y="144" text-anchor="middle" font-size="13" font-weight="bold" fill="#94A3B8">8/16</text>
+    <text x="353" y="144" text-anchor="middle" font-size="13" font-weight="bold" fill="#94A3B8">① 座位足踏み　② かかと上げ　③ つま先上げ</text>
+    <text x="576" y="144" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">○</text>
+    <text x="687" y="144" text-anchor="middle" font-size="12" font-weight="bold" fill="#94A3B8">ふらつき少</text>
+
+    <rect x="60" y="240" width="680" height="30" rx="6" fill="#FFF8E1" stroke="#FCD34D" stroke-width="1"/>
+    <text x="400" y="260" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">次に会うときに見るところ：立ち上がりのふらつき</text>
+
+    <text x="400" y="316" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">5つ目の欄は本人用ではなく、渡す側が自分のために書く欄です</text>
+    <text x="400" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">ここがあると、次に会ったとき何を見ればいいか迷いません</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">割合の中身も、追加で置く人数も違います</text>
+
+    <text x="130" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">加算</text>
+    <text x="360" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">割合の条件</text>
+    <text x="560" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">追加で置く人</text>
+    <text x="700" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">単位</text>
+
+    <rect x="40" y="84" width="720" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">中重度者ケア体制</text>
+    <text x="130" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所介護</text>
+    <text x="360" y="126" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">要介護3〜5が30%以上</text>
+    <text x="560" y="114" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">常勤換算2以上</text>
+    <text x="560" y="138" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">＋専従の看護職員1名</text>
+    <text x="700" y="126" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">45</text>
+
+    <rect x="40" y="166" width="720" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">中重度者ケア体制</text>
+    <text x="130" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所リハ</text>
+    <text x="360" y="208" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">要介護3〜5が30%以上</text>
+    <text x="560" y="196" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">常勤換算1以上</text>
+    <text x="560" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">＋専従の看護職員1名</text>
+    <text x="700" y="208" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">20</text>
+
+    <rect x="40" y="248" width="720" height="72" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="278" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">認知症加算</text>
+    <text x="130" y="300" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通所介護</text>
+    <text x="360" y="290" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">認知症の方が15%以上</text>
+    <text x="560" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">常勤換算2以上</text>
+    <text x="560" y="302" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">＋専従の研修修了者1名</text>
+    <text x="700" y="290" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">60</text>
+
+    <text x="400" y="352" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">単位は1日につき。同じ「中重度者ケア体制」でも通所リハは追加配置が1以上で済みます</text>
+  </g>
+</svg>

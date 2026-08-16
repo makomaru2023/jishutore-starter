@@ -23,7 +23,16 @@ import { article as hainyoJiritsuKaifukuki } from "@/data/column/articles/hainyo
 import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
 import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
 import { article as jishutoreTsuzukanaiWatashikata } from "@/data/column/articles/jishutore-tsuzukanai-watashikata";
+import { article as homonKangoRiha8tani } from "@/data/column/articles/homon-kango-riha-8tani";
+import { article as ikaNissuKata } from "@/data/column/articles/ika-nissu-kata";
 import { article as johoRenkeiKata } from "@/data/column/articles/joho-renkei-kata";
+import { article as chujudoNinchishoKasanKata } from "@/data/column/articles/chujudo-ninchisho-kasan-kata";
+import { article as kokujiChuNoYomikata } from "@/data/column/articles/kokuji-chu-no-yomikata";
+import { article as taiinKyodoShidoKata } from "@/data/column/articles/taiin-kyodo-shido-kata";
+import { article as henmahiJishutoreErabikata } from "@/data/column/articles/henmahi-jishutore-erabikata";
+import { article as jishutoreCheckHyo } from "@/data/column/articles/jishutore-check-hyo";
+import { article as tachiagariHokoJishutore } from "@/data/column/articles/tachiagari-hoko-jishutore";
+import { article as tentoYoboTaisoKumikata } from "@/data/column/articles/tento-yobo-taiso-kumikata";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
 import { article as keikoIjiKasanNagare } from "@/data/column/articles/keiko-iji-kasan-nagare";
@@ -38,6 +47,7 @@ import { article as nyushoZengoHomonShidoJitsumu } from "@/data/column/articles/
 import { article as rihaKeikakushoSetsumeiTejun } from "@/data/column/articles/riha-keikakusho-setsumei-tejun";
 import { article as rokenShokiKasanKubun } from "@/data/column/articles/roken-shoki-kasan-kubun";
 import { article as rokenTaishojiShienKasan } from "@/data/column/articles/roken-taishoji-shien-kasan";
+import { article as serviceTaiseiKyokaKata } from "@/data/column/articles/service-taisei-kyoka-kata";
 import { article as santeiYoukenToShisetsuKijun } from "@/data/column/articles/santei-youken-to-shisetsu-kijun";
 import { article as tankiShuchuRihaKata } from "@/data/column/articles/tanki-shuchu-riha-kata";
 import { article as zaitakuFukkiRyoyoShienKubun } from "@/data/column/articles/zaitaku-fukki-ryoyo-shien-kubun";
@@ -108,6 +118,10 @@ const articles: ColumnArticle[] = [
     // 「何をどの順で」「渡したあと続かない」を担当する。`relatedItems` で素材へ返す。
     kokukuTaisoJunban,
     jishutoreTsuzukanaiWatashikata,
+    jishutoreCheckHyo,
+    tentoYoboTaisoKumikata,
+    henmahiJishutoreErabikata,
+    tachiagariHokoJishutore,
     kaiteiWatch202608,
     // 図解つきの回。fee-check の項目ページから逆引きで呼ばれる（getColumnsByFeeItem）。
     // 表示が出ているのにクリックが取れていない項目を、別の検索語（流れ・図解・違い）で拾いにいく回。
@@ -123,7 +137,13 @@ const articles: ColumnArticle[] = [
     doitsuTatemonoSogeiGensan,
     tankiShuchuRihaKata,
     johoRenkeiKata,
+    serviceTaiseiKyokaKata,
+    ikaNissuKata,
+    homonKangoRiha8tani,
+    taiinKyodoShidoKata,
+    chujudoNinchishoKasanKata,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
+    kokujiChuNoYomikata,
     kokujiTsuchiGigikaishakuChigai,
     santeiYoukenToShisetsuKijun,
     kanpoTeiseiToWa,

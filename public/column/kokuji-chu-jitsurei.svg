@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">「注」の番号が違えば、まったく別の話です</text>
+
+    <text x="150" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">住所</text>
+    <text x="480" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">そこに書かれている中身</text>
+
+    <rect x="40" y="84" width="720" height="56" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="118" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">A100 注3</text>
+    <text x="290" y="118" font-size="14" font-weight="bold" fill="#0F172A">入院期間に応じた加算（14日以内450点など）</text>
+
+    <rect x="40" y="150" width="720" height="56" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="184" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">A100 注5</text>
+    <text x="290" y="184" font-size="14" font-weight="bold" fill="#0F172A">救急・在宅等支援病床初期加算（150点／日）</text>
+
+    <rect x="40" y="216" width="720" height="56" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="250" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">A308-3 注6</text>
+    <text x="290" y="250" font-size="14" font-weight="bold" fill="#0F172A">急性期患者支援病床初期加算・在宅患者支援病床初期加算</text>
+
+    <rect x="40" y="282" width="720" height="56" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="150" y="316" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">告示第19号 注14</text>
+    <text x="290" y="316" font-size="14" font-weight="bold" fill="#78350F">医師が計画作成に係る診療を行わなかった場合の減算</text>
+
+    <text x="400" y="364" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">同じA100でも注3は加算、注5は別の加算。番号まで見ないと特定できません</text>
+  </g>
+</svg>

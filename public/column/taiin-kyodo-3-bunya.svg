@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">単位数は3分野とも600。違うのは中身と回数です</text>
+
+    <text x="120" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">分野</text>
+    <text x="410" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">誰が何をするか</text>
+    <text x="680" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">回数</text>
+
+    <rect x="40" y="84" width="720" height="72" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="120" y="116" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">訪問看護</text>
+    <text x="120" y="138" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">600単位</text>
+    <text x="410" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">看護師等が退院時共同指導を行い</text>
+    <text x="410" y="136" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">退院後の初回訪問看護を行う</text>
+    <text x="680" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">1回</text>
+    <text x="680" y="138" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">特別な管理は2回</text>
+
+    <rect x="40" y="166" width="720" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">訪問リハ</text>
+    <text x="120" y="220" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">600単位</text>
+    <text x="410" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">医師またはPT・OT・STが</text>
+    <text x="410" y="218" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">退院前カンファレンスに参加する</text>
+    <text x="680" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">退院につき1回</text>
+
+    <rect x="40" y="248" width="720" height="72" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="280" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">通所リハ</text>
+    <text x="120" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">600単位</text>
+    <text x="410" y="278" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">同じくカンファレンスに参加し</text>
+    <text x="410" y="300" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">内容を通所リハ計画に反映する</text>
+    <text x="680" y="290" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">退院につき1回</text>
+
+    <text x="400" y="352" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">訪問看護だけ「退院前カンファレンスへの参加」ではなく、退院時共同指導という書き方です</text>
+  </g>
+</svg>

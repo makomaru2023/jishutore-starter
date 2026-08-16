@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院してから何日目に、何が起きるか</text>
+
+    <rect x="40" y="54" width="720" height="48" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="60" y="84" font-size="15" font-weight="bold" fill="#1565C0">14日まで</text>
+    <text x="200" y="84" font-size="14" font-weight="bold" fill="#0F172A">急性期の入院期間加算 450点/日。初期加算も14日が限度</text>
+
+    <rect x="40" y="110" width="720" height="48" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="140" font-size="15" font-weight="bold" fill="#1565C0">15〜30日</text>
+    <text x="200" y="140" font-size="14" font-weight="bold" fill="#0F172A">急性期の入院期間加算は 192点/日 に下がる</text>
+
+    <rect x="40" y="166" width="720" height="48" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="60" y="196" font-size="15" font-weight="bold" fill="#B45309">31日目〜</text>
+    <text x="200" y="196" font-size="14" font-weight="bold" fill="#78350F">急性期の入院期間加算は対象外になる</text>
+
+    <rect x="40" y="222" width="720" height="48" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="252" font-size="15" font-weight="bold" fill="#1565C0">40日で</text>
+    <text x="200" y="252" font-size="14" font-weight="bold" fill="#0F172A">地域包括ケアの入院料が下がる（入院料1は2,955→2,807点）</text>
+
+    <rect x="40" y="278" width="720" height="48" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="60" y="308" font-size="15" font-weight="bold" fill="#B45309">60日で</text>
+    <text x="200" y="308" font-size="14" font-weight="bold" fill="#78350F">地域包括ケアはここが限度</text>
+
+    <rect x="40" y="334" width="720" height="48" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="364" font-size="15" font-weight="bold" fill="#1565C0">状態ごと</text>
+    <text x="200" y="364" font-size="14" font-weight="bold" fill="#0F172A">回復期リハは上限日数（脳血管疾患等は150日以内など）</text>
+
+    <text x="400" y="406" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">「14日」は3か所に出てきます。急性期の入院期間加算・同じく初期加算・地域包括ケアの初期加算</text>
+  </g>
+</svg>

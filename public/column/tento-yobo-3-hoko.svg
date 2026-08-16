@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <rect width="800" height="340" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">転倒予防は、筋力だけでは組めません</text>
+
+    <rect x="40" y="56" width="226" height="180" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="66" cy="82" r="14" fill="#1565C0"/>
+    <text x="66" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="153" y="126" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">支える力</text>
+    <text x="153" y="156" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">立ち座り・かかと上げ</text>
+    <text x="153" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">つま先上げ</text>
+    <text x="153" y="210" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">体重を支え続ける</text>
+
+    <rect x="287" y="56" width="226" height="180" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="313" cy="82" r="14" fill="#1565C0"/>
+    <text x="313" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="400" y="126" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">崩れを戻す力</text>
+    <text x="400" y="156" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">片足立ち・サイドステップ</text>
+    <text x="400" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ステップ運動</text>
+    <text x="400" y="210" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">崩れてから足が出る</text>
+
+    <rect x="534" y="56" width="226" height="180" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="560" cy="82" r="14" fill="#1565C0"/>
+    <text x="560" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="647" y="126" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">またぐ力</text>
+    <text x="647" y="156" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">段差を使った</text>
+    <text x="647" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">前方・側方ステップ</text>
+    <text x="647" y="210" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">またぎ動作そのもの</text>
+
+    <rect x="40" y="256" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="284" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">1だけを増やしても、2と3が抜けていると転ぶ場面は変わりません</text>
+
+    <text x="400" y="326" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">環境の話（スリッパ・コード・段差）も、体操と並べて渡すと伝わります</text>
+  </g>
+</svg>

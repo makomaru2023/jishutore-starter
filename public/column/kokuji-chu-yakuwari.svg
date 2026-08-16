@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <rect width="800" height="340" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">点数の本体は上、条件は下の「注」に置かれています</text>
+
+    <rect x="40" y="56" width="720" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="60" y="72" width="110" height="26" rx="13" fill="#1565C0"/>
+    <text x="115" y="91" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">項目の本文</text>
+    <text x="60" y="122" font-size="15" font-weight="bold" fill="#0F172A">「◯◯入院基本料　△△点」　＝　いくらか、だけが書いてある</text>
+
+    <polygon points="392,140 408,140 400,156" fill="#1565C0"/>
+
+    <rect x="40" y="164" width="720" height="106" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <rect x="60" y="180" width="70" height="26" rx="13" fill="#B45309"/>
+    <text x="95" y="199" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">注</text>
+    <text x="60" y="230" font-size="14" font-weight="bold" fill="#78350F">誰が対象か／何日以内か／いくら加算するか／どんなときに減算するか</text>
+    <text x="60" y="256" font-size="14" font-weight="bold" fill="#78350F">＝ 実務で効く条件は、ほとんどこちらに入っている</text>
+
+    <text x="400" y="308" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">だから「A100 注3」のような書き方が、要件を指す住所として使われます</text>
+  </g>
+</svg>

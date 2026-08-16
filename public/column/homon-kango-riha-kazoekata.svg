@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">回数まわりに、独特なところが3つあります</text>
+
+    <rect x="40" y="54" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="92" font-size="14" font-weight="bold" fill="#0F172A">リハ職が連続して2回訪問した</text>
+    <rect x="470" y="66" width="270" height="38" rx="8" fill="#1565C0"/>
+    <text x="605" y="91" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">前年度の回数では「1回」</text>
+
+    <rect x="40" y="126" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="164" font-size="14" font-weight="bold" fill="#0F172A">連携型の定期巡回・随時対応型からの訪問</text>
+    <rect x="470" y="138" width="270" height="38" rx="8" fill="#1565C0"/>
+    <text x="605" y="163" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">前年度の回数に含める</text>
+
+    <rect x="40" y="198" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="236" font-size="14" font-weight="bold" fill="#0F172A">1日に2回を超えて訪問した</text>
+    <rect x="470" y="210" width="270" height="38" rx="8" fill="#64748B"/>
+    <text x="605" y="235" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">超えた回は100分の90</text>
+
+    <rect x="40" y="280" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="310" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">特別訪問看護指示書が出た日から14日間は、訪問看護費を算定しません</text>
+
+    <text x="400" y="360" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">「前年度の回数」は減算の判定に使う数え方で、算定回数とは別ものです</text>
+  </g>
+</svg>

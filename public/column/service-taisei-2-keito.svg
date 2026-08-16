@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ名前でも、見ている指標が2系統に分かれます</text>
+
+    <rect x="40" y="54" width="350" height="240" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <rect x="60" y="72" width="160" height="28" rx="14" fill="#1565C0"/>
+    <text x="140" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">通所・入所系</text>
+    <text x="60" y="122" font-size="12" font-weight="bold" fill="#475569">通所介護・通所リハ・老健</text>
+    <text x="60" y="156" font-size="12" font-weight="bold" fill="#64748B">見る指標</text>
+    <text x="60" y="182" font-size="18" font-weight="bold" fill="#1565C0">介護福祉士の割合</text>
+    <line x1="60" y1="200" x2="370" y2="200" stroke="#90CAF9" stroke-width="1"/>
+    <text x="60" y="224" font-size="12" font-weight="bold" fill="#64748B">区分は3つ</text>
+    <text x="60" y="252" font-size="15" font-weight="bold" fill="#0F172A">(Ⅰ)22 ・ (Ⅱ)18 ・ (Ⅲ)6</text>
+    <text x="60" y="276" font-size="12" font-weight="bold" fill="#475569">単位（回または日につき）</text>
+
+    <rect x="410" y="54" width="350" height="240" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="430" y="72" width="130" height="28" rx="14" fill="#64748B"/>
+    <text x="495" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">訪問系</text>
+    <text x="430" y="122" font-size="12" font-weight="bold" fill="#475569">訪問リハ・訪問看護</text>
+    <text x="430" y="156" font-size="12" font-weight="bold" fill="#64748B">見る指標</text>
+    <text x="430" y="182" font-size="18" font-weight="bold" fill="#B45309">勤続年数</text>
+    <line x1="430" y1="200" x2="740" y2="200" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="430" y="224" font-size="12" font-weight="bold" fill="#64748B">区分は2つ</text>
+    <text x="430" y="252" font-size="15" font-weight="bold" fill="#0F172A">(Ⅰ)6 ・ (Ⅱ)3</text>
+    <text x="430" y="276" font-size="12" font-weight="bold" fill="#475569">単位（1回につき）</text>
+
+    <rect x="40" y="314" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="344" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">(Ⅰ)どうしで比べると22単位と6単位。名前が同じでも別ものと考えたほうが早いです</text>
+
+    <text x="400" y="386" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">区分ごとの正確な要件は、報酬チェックの各ページで確認できます</text>
+  </g>
+</svg>

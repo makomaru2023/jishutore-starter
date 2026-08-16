@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320">
+  <rect width="800" height="320" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">どちらの加算も、そろえるのは3つです</text>
+
+    <rect x="40" y="56" width="226" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="66" cy="82" r="14" fill="#1565C0"/>
+    <text x="66" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="153" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">利用者の割合</text>
+    <text x="153" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">前年度、または</text>
+    <text x="153" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">算定月の前3月間で見る</text>
+
+    <rect x="287" y="56" width="226" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="313" cy="82" r="14" fill="#1565C0"/>
+    <text x="313" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="400" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">人を上乗せする</text>
+    <text x="400" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">基準の員数に「加えて」</text>
+    <text x="400" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">常勤換算で確保する</text>
+
+    <rect x="534" y="56" width="226" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="560" cy="82" r="14" fill="#1565C0"/>
+    <text x="560" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="647" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">専従を1名置く</text>
+    <text x="647" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">提供時間帯を通じて</text>
+    <text x="647" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">専らその業務に当たる</text>
+
+    <rect x="40" y="226" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="256" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">2の「加えて」がポイント。基準の人数に含めて数えることはできません</text>
+
+    <text x="400" y="300" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">共生型通所介護費を算定している場合は、どちらの加算も算定しません</text>
+  </g>
+</svg>

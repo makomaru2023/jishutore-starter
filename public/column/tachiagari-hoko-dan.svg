@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <rect width="800" height="340" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">歩く前に、段が4つあります</text>
+
+    <rect x="40" y="60" width="168" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="124" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">起き上がる</text>
+    <text x="124" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">側臥位から端座位へ</text>
+    <text x="124" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">寝返りの手順</text>
+
+    <polygon points="214,112 228,120 214,128" fill="#1565C0"/>
+
+    <rect x="232" y="60" width="168" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="316" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">座って保つ</text>
+    <text x="316" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">ベッド端座位</text>
+    <text x="316" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">座位足踏み</text>
+
+    <polygon points="406,112 420,120 406,128" fill="#1565C0"/>
+
+    <rect x="424" y="60" width="168" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="508" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">立ち上がる</text>
+    <text x="508" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">ベッド端から／車椅子から</text>
+    <text x="508" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">イスからの立ち座り</text>
+
+    <polygon points="598,112 612,120 598,128" fill="#1565C0"/>
+
+    <rect x="616" y="60" width="144" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="688" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">歩く</text>
+    <text x="688" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">平行棒内・歩行器</text>
+    <text x="688" y="152" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">杖歩行</text>
+
+    <rect x="40" y="206" width="720" height="48" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="236" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">どの段で止まっているかが決まれば、渡すものは自然に決まります</text>
+
+    <text x="400" y="290" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">歩けない理由が「歩行」にあるとは限りません</text>
+    <text x="400" y="316" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">起き上がりで力を使い切っていると、歩く練習まで届きません</text>
+  </g>
+</svg>

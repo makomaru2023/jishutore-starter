@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320">
+  <rect width="800" height="320" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">分野ごとに、ひとつずつ気をつけるところがあります</text>
+
+    <rect x="40" y="56" width="226" height="180" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">訪問看護</text>
+    <text x="153" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">初回加算とは</text>
+    <text x="153" y="150" text-anchor="middle" font-size="17" font-weight="bold" fill="#B45309">選択制</text>
+    <text x="153" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">初回加算を算定すると</text>
+    <text x="153" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">こちらは算定しない</text>
+
+    <rect x="287" y="56" width="226" height="180" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">通所リハ</text>
+    <text x="400" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">テレビ電話装置等を</text>
+    <text x="400" y="150" text-anchor="middle" font-size="17" font-weight="bold" fill="#1565C0">使ってよい</text>
+    <text x="400" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">本人・家族の同意と</text>
+    <text x="400" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ガイドライン遵守が前提</text>
+
+    <rect x="534" y="56" width="226" height="180" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="647" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">両方を使う人</text>
+    <text x="647" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">各事業所で</text>
+    <text x="647" y="150" text-anchor="middle" font-size="17" font-weight="bold" fill="#B45309">算定できる</text>
+    <text x="647" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">ただし一体的に運営して</text>
+    <text x="647" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">いる場合は併算定不可</text>
+
+    <text x="400" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">通所リハと訪問リハをどちらも使う方は、それぞれがカンファレンスに出れば両方で算定できます</text>
+  </g>
+</svg>

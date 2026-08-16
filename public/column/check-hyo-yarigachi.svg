@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320">
+  <rect width="800" height="320" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">書かれなくなる表には、だいたい同じ癖があります</text>
+
+    <rect x="40" y="56" width="226" height="170" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="153" y="90" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">欄が多い</text>
+    <text x="153" y="124" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">回数・時間・血圧・</text>
+    <text x="153" y="144" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">痛み・気分…</text>
+    <text x="153" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">→ 全部空欄になる</text>
+    <text x="153" y="202" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">迷う欄はひとつも要らない</text>
+
+    <rect x="287" y="56" width="226" height="170" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="90" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">期間が長い</text>
+    <text x="400" y="124" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">1か月ぶんを</text>
+    <text x="400" y="144" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">1枚に詰め込む</text>
+    <text x="400" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">→ 途切れたら戻れない</text>
+    <text x="400" y="202" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">次に会う日までで区切る</text>
+
+    <rect x="534" y="56" width="226" height="170" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="647" y="90" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">回数を書かせる</text>
+    <text x="647" y="124" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">「何回できましたか」</text>
+    <text x="647" y="144" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">を数字で記入</text>
+    <text x="647" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">→ 数える負担で止まる</text>
+    <text x="647" y="202" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">やったかどうかの印で足りる</text>
+
+    <text x="400" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">記録は評価のためではなく、続けるための道具として置きます</text>
+    <text x="400" y="300" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">細かく取りたい情報は、次に会ったときに口で聞けば足ります</text>
+  </g>
+</svg>

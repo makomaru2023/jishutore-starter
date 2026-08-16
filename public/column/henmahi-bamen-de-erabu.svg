@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <rect width="800" height="340" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">「麻痺側をどうするか」より先に、場面で選びます</text>
+
+    <rect x="40" y="56" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="94" font-size="15" font-weight="bold" fill="#1565C0">寝ているとき</text>
+    <text x="290" y="94" font-size="14" font-weight="bold" fill="#0F172A">麻痺側上肢のポジショニング</text>
+
+    <rect x="40" y="128" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="166" font-size="15" font-weight="bold" fill="#1565C0">起きるとき</text>
+    <text x="290" y="166" font-size="14" font-weight="bold" fill="#0F172A">寝返りの手順 → 側臥位から端座位へ</text>
+
+    <rect x="40" y="200" width="720" height="62" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="60" y="238" font-size="15" font-weight="bold" fill="#1565C0">身じたく</text>
+    <text x="290" y="238" font-size="14" font-weight="bold" fill="#0F172A">麻痺側から袖を通す更衣</text>
+
+    <rect x="40" y="278" width="720" height="44" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="306" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">場面で選ぶと「いつやるか」も一緒に決まります</text>
+  </g>
+</svg>
