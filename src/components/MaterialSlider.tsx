@@ -6,6 +6,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Item } from '@/types'
+import { getItemImageUrl } from '@/lib/items'
 
 type PropType = {
     items: Item[]
@@ -20,16 +21,6 @@ export function MaterialSlider(props: PropType) {
 
     if (!items || items.length === 0) return null;
 
-    const getImageUrl = (path: string) => {
-        if (!path) return '/placeholder.png';
-        if (path.startsWith("https://")) return path;
-
-        const R2_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
-        // Encode each path segment so spaces/parentheses become valid URL characters.
-        const encodedPath = path.split("/").map(encodeURIComponent).join("/");
-        return `${R2_DOMAIN}/${encodedPath}`;
-    }
-
     return (
         <div className="embla overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex">
@@ -40,7 +31,7 @@ export function MaterialSlider(props: PropType) {
                                 {/* Image Area */}
                                 <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
                                     <Image
-                                        src={getImageUrl(item.previewSrc)}
+                                        src={getItemImageUrl(item.previewSrc)}
                                         alt={item.titleJa || item.title}
                                         fill
                                         className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"

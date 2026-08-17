@@ -65,18 +65,16 @@ export function findItemById(id: string): Item | undefined {
     return ALL_ITEMS.find((item) => item.id === id || item.id === decoded);
 }
 
-const R2_PUBLIC_DOMAIN = "https://pub-00b4caa7ca60422fa31c5d5d0d6772c3.r2.dev";
 const R2_PREVIEW_VERSION = "20260707";
 
 /**
- * Build a usable R2 image URL from an item's previewSrc.
+ * Build a same-origin image URL from an item's previewSrc.
  *
- * previewSrc values are now all kebab-case ASCII, but each path segment is still
- * encoded defensively (with "/" separators preserved) so an irregular key can never
- * produce a URL the browser / next/image cannot load.
+ * R2's public development URL is intentionally not exposed here. Preview images are
+ * served through the allowlisted /api/image route so the bucket itself can remain
+ * private without breaking item pages.
  */
 export function getItemImageUrl(previewSrc: string): string {
     if (previewSrc.startsWith("https://")) return previewSrc;
-    const encodedPath = previewSrc.split("/").map(encodeURIComponent).join("/");
-    return `${R2_PUBLIC_DOMAIN}/${encodedPath}?v=${R2_PREVIEW_VERSION}`;
+    return `/api/image?key=${encodeURIComponent(previewSrc)}&v=${R2_PREVIEW_VERSION}`;
 }

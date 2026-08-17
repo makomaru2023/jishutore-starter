@@ -31,7 +31,7 @@ export function createSeoCategoryMetadata(
         categoryItems.find((item) => !item.id.endsWith("-premium-text")) ??
         categoryItems[0];
     const ogImage = ogItem
-        ? getItemImageUrl(ogItem.previewSrc)
+        ? new URL(getItemImageUrl(ogItem.previewSrc), BASE_URL).toString()
         : BASE_URL + "/opengraph-image.png";
 
     return {

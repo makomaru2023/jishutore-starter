@@ -101,8 +101,9 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
         notFound();
     }
 
-    // Use direct R2 URL for better performance
+    // Serve previews through the allowlisted same-origin API; the R2 bucket stays private.
     const imageUrl = getItemImageUrl(item.previewSrc);
+    const absoluteImageUrl = new URL(imageUrl, "https://jishutore-sozaiko.online").toString();
 
     const title = item.titleJa || item.title;
     const isTextImage = item.category === "text";
@@ -150,7 +151,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
             "@type": "ImageObject",
             "name": `${title}の自主トレイラスト`,
             "description": descriptionText,
-            "contentUrl": imageUrl,
+            "contentUrl": absoluteImageUrl,
             "license": "https://jishutore-sozaiko.online/license/",
             "acquireLicensePage": "https://jishutore-sozaiko.online/license/",
             "creditText": "自主トレ素材庫",
