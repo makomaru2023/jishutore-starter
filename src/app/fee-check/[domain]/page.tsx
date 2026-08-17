@@ -39,7 +39,9 @@ export async function generateMetadata({ params }: { params: Promise<{ domain: s
     }
 
     const title = `${domain.domainLabel}の算定要件・単位数一覧｜自主トレ素材庫`;
-    const description = `${domain.domainLabel}の報酬チェック項目を一覧で確認できます。単位数・算定要件・根拠資料リンクは無料公開、記録・自己点検ポイントはPlusで確認できます。`;
+    // ★2026-08-17：Bing の「description が短すぎる」警告を受けて73字→124〜138字へ拡充。
+    //   分野ラベルが最長（訪問看護からのリハビリ…）でも138字で、160字の上限に収まる。
+    const description = `${domain.domainLabel}の加算・減算・基本報酬を一覧で確認できます。単位数と算定要件、告示・通知など根拠資料へのリンクは無料公開。8分野148項目を毎月の改定確認で更新しています。記録に残すことと自己点検のポイントは自主トレ素材庫Plusでご覧いただけます。`;
     const pageUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
 
     return {

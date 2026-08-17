@@ -55,7 +55,10 @@ const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
 const OG_TITLE = "算定確認も資料づくりもこれひとつ｜自主トレ素材庫Plus";
 const HERO_DESCRIPTION = `全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数から「記録に残すこと」まで確認できます。編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料もすぐ用意できます。`;
-const OG_DESCRIPTION = HERO_DESCRIPTION;
+// ★2026-08-17：Bing の「description が短すぎる」警告を受けて、
+//   ヒーローの見出し文（HERO_DESCRIPTION・85字）と検索用の説明文を分けた。
+//   ページ上の文言は短いままにし、meta だけ150字に伸ばしている。
+const OG_DESCRIPTION = `訪問リハ・通所リハ・老健など全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数と算定要件から「記録に残すこと」「自己点検のポイント」まで確認できます。毎月の改定確認で内容を更新。編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料もすぐ用意できます。`;
 
 export const metadata: Metadata = {
     title: OG_TITLE,

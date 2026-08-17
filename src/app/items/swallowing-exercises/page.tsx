@@ -54,8 +54,9 @@ function isSwallowingExercise(item: Item): boolean {
 
 export const metadata: Metadata = {
     title: "嚥下体操の自主トレイラスト【無料・商用OK】｜自主トレ素材庫",
+    // ★2026-08-17：Bing の「description が短すぎる」警告を受けて75字→127字へ拡充。
     description:
-        "嚥下体操・口腔体操・舌の運動に使える自主トレイラストを無料ダウンロード。STの嚥下リハ、口腔フレイル予防、患者配布資料や介護施設の体操資料に使えます。",
+        "嚥下体操・口腔体操・舌の運動に使える無料イラスト。パタカラ体操、頬の膨らませ、舌の突出と左右運動、シャキア訓練まで。深呼吸から始める食事前の準備体操を組むのにも使えます。STの嚥下リハ、オーラルフレイル予防、介護施設の体操資料に無料でお使いいただけます。",
     alternates: {
         canonical: PAGE_URL,
     },

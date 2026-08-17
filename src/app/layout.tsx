@@ -22,7 +22,10 @@ const isProductionDeploy = process.env.VERCEL_ENV === "production";
 
 export const metadata: Metadata = {
   title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
-  description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど${FREE_MATERIAL_COUNT}点すべて無料・商用OK。患者配布資料がすぐ作れます。登録不要でダウンロード可能。`,
+  // ★2026-08-17：Bing の「description が短すぎる」警告を受けて96字→150字へ拡充。
+  //   あわせて報酬チェックを1文足した。来訪者の約半分が報酬チェック層なのに、
+  //   トップの説明文がイラストの話だけだったため（[[audience-split]]）。
+  description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・嚥下体操など${FREE_MATERIAL_COUNT}点すべて無料・商用OK、登録不要でダウンロードできます。脳卒中や変形性膝関節症など疾患からも探せます。訪問リハ・通所リハ・老健の報酬チェック（単位数と算定要件）も無料で公開中。`,
   metadataBase: new URL('https://jishutore-sozaiko.online'),
   alternates: {
     canonical: './',

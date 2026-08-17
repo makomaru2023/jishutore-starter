@@ -22,6 +22,38 @@ function normalizeLegacyItemId(id: string): string {
         .replace(/^-+|-+$/g, "");
 }
 
+/**
+ * description の末尾に targetCondition（対象疾患・活用場面）を足す。
+ *
+ * ★2026-08-17 追加。Bing Webmaster Tools の Top Recommendations に
+ * 「Meta descriptions on many pages are too short」が出ており、
+ * 実測すると素材453枚のうち329枚（73%）が120字未満だった（中央値111字）。
+ *
+ * 数字の意味：
+ * - SOFT_LIMIT 140 … これ以上あるページには足さない（もともと十分な長さのため）
+ * - MAX 155 …… 足した結果がここを超えたら、直前の「、」「。」で切って句点を打つ
+ * - MIN_CUT 110 … 切る位置がこれより手前になるなら、切らずにそのまま使う（不自然に短くしない）
+ *
+ * この値で453枚を試算すると 最短113・中央144・最長167字、120字未満は10枚に減る。
+ * ★値を変えたら必ず全件を測り直すこと（`[...s].length` で文字数。バイト数で測らない）。
+ */
+const DESC_SOFT_LIMIT = 140;
+const DESC_MAX = 155;
+const DESC_MIN_CUT = 110;
+
+function appendTargetCondition(base: string, targetCondition?: string): string {
+    if (!targetCondition) return base;
+    if ([...base].length >= DESC_SOFT_LIMIT) return base;
+
+    const joined = `${base}${targetCondition}`;
+    const chars = [...joined];
+    if (chars.length <= DESC_MAX) return joined;
+
+    const clipped = chars.slice(0, DESC_MAX).join("");
+    const cut = Math.max(clipped.lastIndexOf("、"), clipped.lastIndexOf("。"));
+    return cut > DESC_MIN_CUT ? `${clipped.slice(0, cut)}。` : clipped;
+}
+
 // Generate static params for all items to enable static export/SEO
 export async function generateStaticParams() {
     const items = getItems();
@@ -63,9 +95,15 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
         ? `${baseTitle}の自主トレイラスト（回数・ポイントの説明文つき）を無料ダウンロード。印刷してそのまま患者さんにお渡しできます。`
         : `${baseTitle}の自主トレイラストを無料ダウンロード。商用OK・登録不要のPNGです。`;
 
-    const metaDescription = item.description
+    const baseDescription = item.description
         ? `${leadDescription}${item.description}`
         : `${leadDescription}PT・OT・STの指導資料・患者配布用にそのままお使いいただけます。`;
+
+    // ★ Bing Webmaster Tools が「多くのページで description が短すぎる」と警告していたため、
+    //   items.json で使い道の無かった targetCondition（対象疾患・活用場面）を末尾に足す（2026-08-17）。
+    //   453枚の中央値が111字 → 144字になり、脳卒中・変形性膝関節症・嚥下障害といった
+    //   疾患名が検索面に載る。★短さの解消だけでなく、これが本命のねらい。
+    const metaDescription = appendTargetCondition(baseDescription, item.targetCondition);
 
     return {
         title: pageTitle,

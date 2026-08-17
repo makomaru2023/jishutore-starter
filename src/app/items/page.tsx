@@ -232,7 +232,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 
     return {
         title: `自主トレイラスト素材 全${FREE_MATERIAL_COUNT}点【無料・商用OK・登録不要】｜自主トレ素材庫`,
-        description: `スクワット・ブリッジ・嚥下体操など自主トレイラスト${FREE_MATERIAL_COUNT}点をすべて無料ダウンロード。登録不要・商用OK・クレジット表記不要。印刷してそのまま患者さんに渡せます。部位・疾患・姿勢で検索でき、文字あり・文字なしの2タイプ。`,
+        // ★2026-08-17：Bing の「description が短すぎる」警告を受けて109字→147字へ拡充。
+        description: `スクワット・ブリッジ・嚥下体操など自主トレイラスト${FREE_MATERIAL_COUNT}点をすべて無料ダウンロード。登録不要・商用OK・クレジット表記不要。印刷してそのまま患者さんに渡せます。上肢・下肢・体幹・歩行・座位・口腔など部位別に探せ、脳卒中の片麻痺や変形性膝関節症などの疾患からも選べます。文字あり・文字なしの2タイプ。`,
     };
 }
 
