@@ -18,6 +18,16 @@ import { findItemById, getItems } from "@/lib/items";
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
 import { article as chiikiKasanKata } from "@/data/column/articles/chiiki-kasan-kata";
+import { article as hizaItaiJishutore } from "@/data/column/articles/hiza-itai-jishutore";
+import { article as hokatsuToDemidaka } from "@/data/column/articles/hokatsu-to-demidaka";
+import { article as isuKurumaisuSuwarikata } from "@/data/column/articles/isu-kurumaisu-suwarikata";
+import { article as kaidanNoboriKudari } from "@/data/column/articles/kaidan-nobori-kudari";
+import { article as kaifukukiBetsuNiToreru } from "@/data/column/articles/kaifukuki-betsu-ni-toreru";
+import { article as kaifukukiShisetsuKijun } from "@/data/column/articles/kaifukuki-shisetsu-kijun";
+import { article as kansenshoSaigaiKata } from "@/data/column/articles/kansensho-saigai-kata";
+import { article as kijunWareGensanKata } from "@/data/column/articles/kijun-ware-gensan-kata";
+import { article as koshiKinkiKaraKimeru } from "@/data/column/articles/koshi-kinki-kara-kimeru";
+import { article as nyuyokuDosaJishutore } from "@/data/column/articles/nyuyoku-dosa-jishutore";
 import { article as ikigireJishutoreWatashikata } from "@/data/column/articles/ikigire-jishutore-watashikata";
 import { article as ikouShienSotsugyoKata } from "@/data/column/articles/ikou-shien-sotsugyo-kata";
 import { article as iryoKaigoDochira } from "@/data/column/articles/iryo-kaigo-dochira";
@@ -129,6 +139,11 @@ const articles: ColumnArticle[] = [
     ikigireJishutoreWatashikata,
     teYubiJishutoreJunban,
     kataGaAgaranaiJishutore,
+    hizaItaiJishutore,
+    koshiKinkiKaraKimeru,
+    kaidanNoboriKudari,
+    nyuyokuDosaJishutore,
+    isuKurumaisuSuwarikata,
     kokukuTaisoJunban,
     jishutoreTsuzukanaiWatashikata,
     jishutoreCheckHyo,
@@ -144,6 +159,10 @@ const articles: ColumnArticle[] = [
     hainyoJiritsuKaifukuki,
     // ★「型」で括った回（企画書_コラムの部分公開とPlus導線 §3-9）。個別の加算ではなく、
     // 複数項目に共通する進み方を1枚の図にしてある。1本で5〜10項目の導線を兼ねる。
+    kaifukukiShisetsuKijun,
+    kaifukukiBetsuNiToreru,
+    kijunWareGensanKata,
+    kansenshoSaigaiKata,
     shoguKaizenKata,
     kihonHoshuKata,
     kokuuEiyoKasanKata,
@@ -163,6 +182,7 @@ const articles: ColumnArticle[] = [
     taiinKyodoShidoKata,
     chujudoNinchishoKasanKata,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
+    hokatsuToDemidaka,
     kokujiChuNoYomikata,
     kokujiTsuchiGigikaishakuChigai,
     santeiYoukenToShisetsuKijun,
