@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 522" width="800" height="522">
+  <rect width="800" height="522" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">告示の単位数の書き方は、3つの型に分かれます</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="140" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">① 掛ける</text>
+    <line x1="240" y1="70" x2="240" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="264" y="82" font-size="14" font-weight="bold" fill="#0F172A">「所定単位数の100分の15」「所定単位数に100分の70を乗じる」</text>
+    <text x="264" y="108" font-size="12" font-weight="bold" fill="#475569">特別地域訪問リハビリテーション加算／定員超過利用の減算など</text>
+    <text x="264" y="130" font-size="12" font-weight="bold" fill="#475569">もとの単位数が残り、そこに率をかけた分が足されるか引かれます</text>
+    <rect x="40" y="176" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="140" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">② 積み上げて掛ける</text>
+    <line x1="240" y1="190" x2="240" y2="270" stroke="#90CAF9" stroke-width="2"/>
+    <text x="264" y="202" font-size="14" font-weight="bold" fill="#0F172A">「イからホまでにより算定した単位数に対して1000分の103」</text>
+    <text x="264" y="228" font-size="12" font-weight="bold" fill="#475569">介護職員等処遇改善加算。範囲はサービスごとに違います</text>
+    <text x="264" y="250" font-size="12" font-weight="bold" fill="#475569">通所リハは「イからホ」、老健は「イからマ」、訪問看護は「イからリ」</text>
+    <rect x="40" y="296" width="720" height="108" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="140" y="356" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">③ 置き換える</text>
+    <line x1="240" y1="310" x2="240" y2="390" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="264" y="322" font-size="14" font-weight="bold" fill="#0F172A">「所定単位数に代えて算定する」</text>
+    <text x="264" y="348" font-size="12" font-weight="bold" fill="#475569">老健の外泊時費用／地域包括ケア病棟の特定地域の点数など</text>
+    <text x="264" y="370" font-size="12" font-weight="bold" fill="#475569">もとの単位数は算定しません。その日の数字が入れ替わります</text>
+    <rect x="40" y="424" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="453" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">②だけ、他の加算を取るほど土台も増えるという関係になります</text>
+    <text x="400" y="504" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">「所定単位数」が何を指すかは項目ごとに定められています。計算は必ず原本に当たってください</text>
+  </g>
+</svg>

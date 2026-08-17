@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 382" width="800" height="382">
+  <rect width="800" height="382" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">ストレッチには「準備」と「ケア」の2つの役割があります</text>
+
+    <rect x="40" y="56" width="352.5" height="210" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">準備</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">これから動くために</text>
+    <line x1="60" y1="132" x2="372.5" y2="132" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">座位での両手上げ伸ばし</text>
+    <text x="216.25" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　脇から下を伸ばして胸郭の動きを出す</text>
+    <text x="216.25" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">座位での体側倒し</text>
+    <text x="216.25" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　座位で行える準備運動として使える</text>
+    <text x="216.25" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">体操の入口に置きやすい種目です</text>
+    <rect x="407.5" y="56" width="352.5" height="210" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">ケア</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">動いたあとや日常の手入れ</text>
+    <line x1="427.5" y1="132" x2="740" y2="132" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="583.75" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ハムストリングスストレッチ</text>
+    <text x="583.75" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　慢性腰痛・変形性膝関節症に</text>
+    <text x="583.75" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">壁を使用してアキレス腱のストレッチ</text>
+    <text x="583.75" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　歩行時のつまずき予防にも</text>
+    <text x="583.75" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">歩いたあとに硬くなる場所が中心です</text>
+    <rect x="40" y="284" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="313" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">素材の説明にどちらの役割が書かれているかで、渡す場面が決まります</text>
+    <text x="400" y="364" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">体操の前に入れるなら準備の列から、家で1人でやってもらうならケアの列から選びます</text>
+  </g>
+</svg>

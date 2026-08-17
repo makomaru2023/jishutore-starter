@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 474" width="800" height="474">
+  <rect width="800" height="474" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">職種の顔ぶれが変わるのは、入院料1と2だけです</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="135" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料1・2</text>
+    <line x1="230" y1="70" x2="230" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="82" font-size="14" font-weight="bold" fill="#0F172A">PT3名以上・OT2名以上・ST1名以上（いずれも専従常勤）</text>
+    <text x="254" y="108" font-size="12" font-weight="bold" fill="#475569">＋ 専任の常勤管理栄養士 1名以上</text>
+    <text x="254" y="130" font-size="12" font-weight="bold" fill="#475569">＋ 在宅復帰支援担当の専従常勤社会福祉士等 1名以上</text>
+    <rect x="40" y="176" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="135" y="224" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料3・4・5</text>
+    <line x1="230" y1="190" x2="230" y2="246" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="202" font-size="14" font-weight="bold" fill="#0F172A">PT2名以上・OT1名以上（専従常勤）</text>
+    <text x="254" y="228" font-size="12" font-weight="bold" fill="#475569">言語聴覚士・管理栄養士・社会福祉士等は要件に入りません</text>
+    <rect x="40" y="272" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="135" y="320" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院医療管理料</text>
+    <line x1="230" y1="286" x2="230" y2="342" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="254" y="298" font-size="14" font-weight="bold" fill="#0F172A">PT1名以上（専従常勤）・OT1名以上（専任常勤）</text>
+    <text x="254" y="324" font-size="12" font-weight="bold" fill="#475569">「専従」はその業務だけに就くこと／「専任」は主たる業務として担当すること</text>
+    <rect x="40" y="376" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="405" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">言語聴覚士・管理栄養士・社会福祉士等が要件になるのは入院料1と2だけです</text>
+    <text x="400" y="456" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">看護配置は入院患者15人ごとに1以上（入院料1・2は13人ごと）。看護師の割合は4割以上（1・2は7割以上）</text>
+  </g>
+</svg>

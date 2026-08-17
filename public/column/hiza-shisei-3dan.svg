@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">寝て・座って・立って。姿勢を上げていきます</text>
+
+    <rect x="40" y="56" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">寝てできる</text>
+    <text x="125" y="124" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">初級</text>
+    <line x1="210" y1="70" x2="210" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="82" font-size="14" font-weight="bold" fill="#0F172A">タオルを使ったクアドセット／自動SLR／ヒールスライド</text>
+    <text x="234" y="108" font-size="12" font-weight="bold" fill="#475569">自分の体重を支える量がいちばん少ない姿勢です</text>
+    <rect x="40" y="152" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="200" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">座ってできる</text>
+    <text x="125" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">初級</text>
+    <line x1="210" y1="166" x2="210" y2="222" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="178" font-size="14" font-weight="bold" fill="#0F172A">四頭筋トレーニング（斜め・側方）／座って四頭筋ストレッチ 15〜30秒</text>
+    <text x="234" y="204" font-size="12" font-weight="bold" fill="#475569">椅子さえあれば自宅でも続きます。立位が不安定な方にも渡せます</text>
+    <rect x="40" y="248" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="296" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">立ってできる</text>
+    <text x="125" y="316" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">初級〜中級</text>
+    <line x1="210" y1="262" x2="210" y2="318" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="234" y="274" font-size="14" font-weight="bold" fill="#0F172A">壁を用いた空気イス（膝60〜90度・10〜30秒）／イスからの立ち座り</text>
+    <text x="234" y="300" font-size="12" font-weight="bold" fill="#475569">どちらの素材にも「膝がつま先より前に出ないよう注意」と書かれています</text>
+    <rect x="40" y="352" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="381" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">姿勢が上がるほど、自分の体重を支える量が増えます</text>
+    <text x="400" y="432" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">空気イスは保持時間と膝の角度で負荷を細かく調整できます</text>
+  </g>
+</svg>

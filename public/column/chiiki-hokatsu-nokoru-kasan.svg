@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">包括の病棟でも、リハ職に関わる加算は残ります</text>
+
+    <rect x="40" y="56" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院基本料等加算</text>
+    <line x1="220" y1="70" x2="220" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="244" y="82" font-size="14" font-weight="bold" fill="#0F172A">認知症ケア加算／排尿自立支援加算／身体的拘束最小化推進体制加算</text>
+    <text x="244" y="108" font-size="12" font-weight="bold" fill="#475569">医療安全対策加算／感染対策向上加算／データ提出加算／入退院支援加算（1のロに限る）</text>
+    <rect x="40" y="152" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="200" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">医学管理等</text>
+    <line x1="220" y1="166" x2="220" y2="222" stroke="#90CAF9" stroke-width="2"/>
+    <text x="244" y="178" font-size="12.5" font-weight="bold" fill="#0F172A">退院時共同指導料2／介護支援等連携指導料／二次性骨折予防継続管理料（ロに限る）</text>
+    <text x="244" y="204" font-size="12" font-weight="bold" fill="#475569">退院に向けた連携の場面で算定できます</text>
+    <rect x="40" y="248" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="296" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">リハビリテーション</text>
+    <line x1="220" y1="262" x2="220" y2="318" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="244" y="274" font-size="14" font-weight="bold" fill="#0F172A">摂食機能療法のみ</text>
+    <text x="244" y="300" font-size="12" font-weight="bold" fill="#475569">第7部リハビリテーションの費用のうち、包括の外にあるのはこれだけです</text>
+    <rect x="40" y="352" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="381" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">拘束をすると加算が下がり、拘束を減らす体制には加算が付きます</text>
+    <text x="400" y="432" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">点数の形は取り組みを後押しする仕組みであって、判断の理由ではありません</text>
+  </g>
+</svg>

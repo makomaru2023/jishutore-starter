@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 406" width="800" height="406">
+  <rect width="800" height="406" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">足と道具を出す順番が決まっています</text>
+
+    <rect x="40" y="56" width="352.5" height="210" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">杖 ＝ 2動作歩行</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">2つを同時に</text>
+    <text x="216.25" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">杖と患側の足を同時に</text>
+    <line x1="60" y1="156" x2="372.5" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">杖は健側の手で持つ</text>
+    <text x="216.25" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">患側の足と杖を同時に前へ</text>
+    <text x="216.25" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">健側の足を出す</text>
+    <text x="216.25" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">高さは大転子・肘は約30度</text>
+    <rect x="407.5" y="56" width="352.5" height="210" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">歩行器 ＝ 3手順</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">3つに分ける</text>
+    <text x="583.75" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">器 → 患側 → 健側</text>
+    <line x1="427.5" y1="156" x2="740" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="583.75" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">① 歩行器を前方に置く</text>
+    <text x="583.75" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">② 患側の足を出す</text>
+    <text x="583.75" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">③ 健側の足を揃える</text>
+    <text x="583.75" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">器を持ち上げる上肢の力が要る</text>
+    <text x="400" y="296" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">どちらも患側が真ん中に来ます。支えを先に用意してから悪いほうを出す、という順番です</text>
+    <rect x="40" y="308" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="337" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">補助具は体を運ぶ道具ではなく、バランスを戻すための支えです</text>
+    <text x="400" y="388" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">階段の手すりでも浴室の手すりでも、「上肢に頼りすぎない」は共通しています</text>
+  </g>
+</svg>

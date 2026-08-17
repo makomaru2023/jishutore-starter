@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 474" width="800" height="474">
+  <rect width="800" height="474" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">階段の前に、段差で練習できます</text>
+
+    <rect x="40" y="56" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">① 足首から</text>
+    <line x1="220" y1="70" x2="220" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="244" y="82" font-size="14" font-weight="bold" fill="#0F172A">手すりを使ったかかと上げ／手すりを使ったつま先上げ</text>
+    <text x="244" y="108" font-size="12" font-weight="bold" fill="#475569">支持物ありで安全に行えます。かかと上げは蹴り出し、つま先上げはつまずき予防</text>
+    <rect x="40" y="152" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="212" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">② 前へのステップ</text>
+    <line x1="220" y1="166" x2="220" y2="246" stroke="#90CAF9" stroke-width="2"/>
+    <text x="244" y="178" font-size="14" font-weight="bold" fill="#0F172A">段差を用いた前方へのステップ</text>
+    <text x="244" y="204" font-size="12" font-weight="bold" fill="#475569">片足を段差に乗せて体を押し上げ、反対の足も揃えます</text>
+    <text x="244" y="226" font-size="12" font-weight="bold" fill="#475569">降りるときは逆の順序でゆっくり。膝が内側に入らないよう注意します</text>
+    <rect x="40" y="272" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="320" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">③ 横へのステップ</text>
+    <line x1="220" y1="286" x2="220" y2="342" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="244" y="298" font-size="14" font-weight="bold" fill="#0F172A">段差を用いたサイドステップ（10〜15cm程度の段差）</text>
+    <text x="244" y="324" font-size="12" font-weight="bold" fill="#475569">膝とつま先の方向を揃え、体幹を安定させて行います</text>
+    <rect x="40" y="376" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="405" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">転倒防止のため、手すりや壁を近くに確保してから始めます</text>
+    <text x="400" y="456" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">段差の練習は転ぶ場面に近いぶん危険も伴います。自宅で1人でやってもらうかは慎重に判断します</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 392" width="800" height="392">
+  <rect width="800" height="392" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">椅子は「高さ」、車椅子は「合わせ方」を見ます</text>
+
+    <rect x="40" y="56" width="352.5" height="220" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">椅子 ＝ 高さ</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">替えられるもの</text>
+    <line x1="60" y1="132" x2="372.5" y2="132" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">低い椅子は立ち上がりで</text>
+    <text x="216.25" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">膝や腰への負担が大きくなる</text>
+    <text x="216.25" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">座面の高さを上げる</text>
+    <text x="216.25" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">手すりを設置する</text>
+    <text x="216.25" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">高めのイスなら立ち上がりが楽になる</text>
+    <text x="216.25" y="257" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">肘掛けに手を置いて立つ</text>
+    <rect x="407.5" y="56" width="352.5" height="220" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">車椅子 ＝ 3か所</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">合わせるもの</text>
+    <line x1="427.5" y1="132" x2="740" y2="132" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="583.75" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">座面の奥行き</text>
+    <text x="583.75" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">背もたれの角度</text>
+    <text x="583.75" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">アームレストの高さ</text>
+    <text x="583.75" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">この3つが適切かを確認する</text>
+    <text x="583.75" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">長時間座位では定期的な除圧も</text>
+    <text x="583.75" y="257" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">指導に含める</text>
+    <rect x="40" y="294" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="323" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">椅子は「替える」もの、車椅子は「合わせる」もの。打てる手が違います</text>
+    <text x="400" y="374" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">立ち上がりの前にブレーキ。止まったら両側のブレーキをかける習慣づけが事故の予防になります</text>
+  </g>
+</svg>

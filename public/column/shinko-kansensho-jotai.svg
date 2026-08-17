@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 402" width="800" height="402">
+  <rect width="800" height="402" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">新興感染症等施設療養費は、いま算定できません</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">仕組み</text>
+    <line x1="220" y1="70" x2="220" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="244" y="82" font-size="14" font-weight="bold" fill="#0F172A">入所者が別に厚生労働大臣が定める感染症に感染した場合に 240単位/日</text>
+    <text x="244" y="108" font-size="12" font-weight="bold" fill="#475569">1月に1回、連続する5日を限度として算定します</text>
+    <text x="244" y="130" font-size="12" font-weight="bold" fill="#475569">相談対応・診療・入院調整等を行う医療機関の確保も要件です</text>
+    <rect x="40" y="176" width="720" height="108" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="130" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">いまの状態</text>
+    <line x1="220" y1="190" x2="220" y2="270" stroke="#FCD34D" stroke-width="2"/>
+    <text x="244" y="202" font-size="14" font-weight="bold" fill="#0F172A">「別に厚生労働大臣が定める感染症」が指定されていません</text>
+    <text x="244" y="228" font-size="12" font-weight="bold" fill="#475569">令和6年4月以降いまに至るまで指定がなく、新たに指定されない限り算定できません</text>
+    <text x="244" y="250" font-size="12" font-weight="bold" fill="#475569">出典＝令和6年度介護報酬改定Q&amp;A vol.1 問1（厚生労働省の回答）</text>
+    <rect x="40" y="304" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="333" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">次に大きな感染症が来たとき、すぐ動かせるように器だけ用意されています</text>
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">指定されたその日から算定できる加算なので、要件だけ知っておく価値があります</text>
+  </g>
+</svg>

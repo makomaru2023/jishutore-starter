@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 474" width="800" height="474">
+  <rect width="800" height="474" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">仰向けでできる運動から渡します</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="135" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">ドローイン</text>
+    <line x1="230" y1="70" x2="230" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="82" font-size="14" font-weight="bold" fill="#0F172A">息を吐きながら、おへそを背骨に近づけるようにお腹を凹ませます</text>
+    <text x="254" y="108" font-size="12" font-weight="bold" fill="#475569">5〜10秒保持。呼吸は止めません</text>
+    <text x="254" y="130" font-size="12" font-weight="bold" fill="#475569">慣れてきたら座位・立位でも行えます</text>
+    <rect x="40" y="176" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="135" y="224" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">骨盤の前後傾</text>
+    <line x1="230" y1="190" x2="230" y2="246" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="202" font-size="14" font-weight="bold" fill="#0F172A">腰を床に押し付けて後傾、次に反らせて前傾。ゆっくり繰り返します</text>
+    <text x="254" y="228" font-size="12" font-weight="bold" fill="#475569">脊椎を大きく動かすというより、骨盤の動きを感じてもらう運動です</text>
+    <rect x="40" y="272" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="135" y="320" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">仰向け両膝倒し</text>
+    <line x1="230" y1="286" x2="230" y2="342" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="254" y="298" font-size="14" font-weight="bold" fill="#0F172A">両肩は床につけたまま、膝だけをゆっくり左右に倒します</text>
+    <text x="254" y="324" font-size="12" font-weight="bold" fill="#475569">腰や股関節に強い痛みが出る場合は、可動範囲を狭くします</text>
+    <rect x="40" y="376" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="405" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">仰向けなら、立っているときのように体重が腰にかかりません</text>
+    <text x="400" y="456" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">膝抱えは15〜30秒保持。脊柱管狭窄症の症状緩和に使えますが、椎間板ヘルニアでは注意が必要です</text>
+  </g>
+</svg>

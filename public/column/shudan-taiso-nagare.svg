@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" width="800" height="570">
+  <rect width="800" height="570" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">4つの塊に並べると、中身だけ入れ替えられます</text>
+
+    <rect x="40" y="56" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">① 伸ばす</text>
+    <line x1="210" y1="70" x2="210" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="82" font-size="14" font-weight="bold" fill="#0F172A">座位での両手上げ伸ばし／座位での体側倒し</text>
+    <text x="234" y="108" font-size="12" font-weight="bold" fill="#475569">どちらも10秒×3セット。息を止めないよう声をかけます</text>
+    <rect x="40" y="152" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="200" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">② 動かす</text>
+    <line x1="210" y1="166" x2="210" y2="222" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="178" font-size="14" font-weight="bold" fill="#0F172A">座位で腕を広げた体幹回旋／座位かかと上げ／座位つま先上げ</text>
+    <text x="234" y="204" font-size="12" font-weight="bold" fill="#475569">痛みの出ない範囲で、大きくゆっくり動かします</text>
+    <rect x="40" y="248" width="720" height="108" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="308" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">③ 量を増やす</text>
+    <line x1="210" y1="262" x2="210" y2="342" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="234" y="274" font-size="14" font-weight="bold" fill="#0F172A">座位足踏み・腕振り　20〜30回が目安</text>
+    <text x="234" y="300" font-size="12" font-weight="bold" fill="#475569">息切れしない範囲のリズムで行います</text>
+    <text x="234" y="322" font-size="12" font-weight="bold" fill="#475569">心疾患や呼吸器疾患のある方は主治医に確認したうえで実施します</text>
+    <rect x="40" y="368" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="416" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">④ リズム</text>
+    <line x1="210" y1="382" x2="210" y2="438" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="234" y="394" font-size="14" font-weight="bold" fill="#0F172A">リズムに合わせた手叩き（1・2・3と数えて3で叩く）</text>
+    <text x="234" y="420" font-size="12" font-weight="bold" fill="#475569">集団だから成立する種目です。注意機能や協調性を高める狙いがあります</text>
+    <rect x="40" y="472" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="501" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">塊の中の種目を入れ替えるだけで、毎回違う体操になります</text>
+    <text x="400" y="552" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">新しい種目を探すより、並べ方を決めるほうが早いと感じています</text>
+  </g>
+</svg>

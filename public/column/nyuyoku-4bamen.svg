@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 546" width="800" height="546">
+  <rect width="800" height="546" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入浴は4つの場面に分かれます</text>
+
+    <rect x="40" y="56" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="115" y="104" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">座る</text>
+    <line x1="190" y1="70" x2="190" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="214" y="82" font-size="14" font-weight="bold" fill="#0F172A">浴室椅子と手すりを使った立ち座り</text>
+    <text x="214" y="108" font-size="12" font-weight="bold" fill="#475569">手すりは引っ張るのではなく、つかんで体を引き上げるように使います</text>
+    <rect x="40" y="152" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="115" y="200" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">洗う</text>
+    <line x1="190" y1="166" x2="190" y2="222" stroke="#90CAF9" stroke-width="2"/>
+    <text x="214" y="178" font-size="14" font-weight="bold" fill="#0F172A">シャワーチェアでの洗体／長柄ブラシでの洗体</text>
+    <text x="214" y="204" font-size="12" font-weight="bold" fill="#475569">前かがみが制限される方、肩や体幹の可動域が狭い方には長柄ブラシを使います</text>
+    <rect x="40" y="248" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="115" y="296" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">またぐ</text>
+    <line x1="190" y1="262" x2="190" y2="318" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="214" y="274" font-size="14" font-weight="bold" fill="#0F172A">手すりを使った浴槽またぎ</text>
+    <text x="214" y="300" font-size="12" font-weight="bold" fill="#475569">手すりをしっかり把持し、片脚ずつゆっくりまたぎます</text>
+    <rect x="40" y="344" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="115" y="392" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">立つ</text>
+    <line x1="190" y1="358" x2="190" y2="414" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="214" y="370" font-size="14" font-weight="bold" fill="#0F172A">浴室椅子からの立ち上がり</text>
+    <text x="214" y="396" font-size="12" font-weight="bold" fill="#475569">滑りやすい床面では、立ち上がりの直前に重心を前へ移すことを意識してもらいます</text>
+    <rect x="40" y="448" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="477" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">どの場面でつまずいているかを先に決めると、渡す絵が1枚に絞れます</text>
+    <text x="400" y="528" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">「お風呂が心配で」だけだと、絵を4枚渡すことになってしまいます</text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 594" width="800" height="594">
+  <rect width="800" height="594" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料と別に算定できるもの（リハ職に関わる主なもの）</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="145" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">計画をつくる</text>
+    <line x1="250" y1="70" x2="250" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="274" y="82" font-size="14" font-weight="bold" fill="#0F172A">リハビリテーション総合計画評価料　1＝初回300点／2回目以降240点</text>
+    <text x="274" y="108" font-size="12" font-weight="bold" fill="#475569">2＝初回240点／2回目以降196点　患者1人につき月1回まで</text>
+    <text x="274" y="130" font-size="12" font-weight="bold" fill="#475569">入院時訪問指導加算 150点（入院中1回・退院前訪問指導料とは併算定不可）</text>
+    <rect x="40" y="176" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="145" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">食べる</text>
+    <line x1="250" y1="190" x2="250" y2="270" stroke="#90CAF9" stroke-width="2"/>
+    <text x="274" y="202" font-size="14" font-weight="bold" fill="#0F172A">摂食機能療法　30分以上185点／30分未満130点</text>
+    <text x="274" y="228" font-size="12" font-weight="bold" fill="#475569">摂食嚥下機能回復体制加算1＝週1回210点／加算2＝週1回190点</text>
+    <text x="274" y="250" font-size="12" font-weight="bold" fill="#475569">加算3（120点）は療養病棟の患者に限られ、回復期は対象外</text>
+    <rect x="40" y="296" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="145" y="344" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">退院・骨折</text>
+    <line x1="250" y1="310" x2="250" y2="366" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="274" y="322" font-size="11.5" font-weight="bold" fill="#0F172A">入退院支援加算1ロ＝退院時1回1,000点／二次性骨折予防継続管理料2＝入院中1回750点</text>
+    <text x="274" y="348" font-size="12" font-weight="bold" fill="#475569">二次性骨折予防は急性期で「1」、回復期で「2」という流れになります</text>
+    <rect x="40" y="392" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="145" y="440" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">休日の体制</text>
+    <line x1="250" y1="406" x2="250" y2="462" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="274" y="418" font-size="14" font-weight="bold" fill="#0F172A">休日リハビリテーション提供体制加算 60点／日</text>
+    <text x="274" y="444" font-size="12" font-weight="bold" fill="#475569">対象は入院料5・入院医療管理料を算定している患者だけです</text>
+    <rect x="40" y="496" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="525" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">入院料の要件にすでに入っているものは、加算になりません</text>
+    <text x="400" y="576" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">入院料1〜4は施設基準で週7日体制が求められるため、休日リハの加算は対象外です</text>
+  </g>
+</svg>

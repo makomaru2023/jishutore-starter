@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 396" width="800" height="396">
+  <rect width="800" height="396" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">上りと下りで、先に出す足が逆になります</text>
+
+    <rect x="40" y="56" width="352.5" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">上り</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">体を持ち上げる動き</text>
+    <text x="216.25" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">健側から先に</text>
+    <line x1="60" y1="156" x2="372.5" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">良いほうの足を先に段へ乗せる</text>
+    <text x="216.25" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">力の出る側が先</text>
+    <text x="216.25" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">手すりがある場合は必ず持つ</text>
+    <rect x="407.5" y="56" width="352.5" height="200" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">下り</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">体を支える動き</text>
+    <text x="583.75" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">患側から先に</text>
+    <line x1="427.5" y1="156" x2="740" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="583.75" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">悪いほうの足を先に下ろす</text>
+    <text x="583.75" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">支える側を上に残す</text>
+    <text x="583.75" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">一段ずつ確実に行う</text>
+    <text x="400" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">左右交互に降りる昇降へ移るのは、十分な筋力と自信がついてからとされています</text>
+    <rect x="40" y="298" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="327" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">持ち上げるのか、支えるのか。そう考えると逆になる理由が分かります</text>
+    <text x="400" y="378" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">人工膝関節の術後は、手すりを使い術側から先に下ろして2足1段で降りる方法があります</text>
+  </g>
+</svg>

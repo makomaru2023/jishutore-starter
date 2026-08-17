@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 402" width="800" height="402">
+  <rect width="800" height="402" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">延長加算は、通所介護と通所リハで始まりが1時間違います</text>
+
+    <rect x="40" y="56" width="352.5" height="230" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">通所介護</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通算9時間から・5区分</text>
+    <text x="216.25" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">土台は8〜9時間</text>
+    <line x1="60" y1="156" x2="372.5" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">9〜10時間 ＝ 50単位</text>
+    <text x="216.25" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">10〜11時間 ＝ 100単位</text>
+    <text x="216.25" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">11〜12時間 ＝ 150単位</text>
+    <text x="216.25" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">12〜13時間 ＝ 200単位</text>
+    <text x="216.25" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">13〜14時間 ＝ 250単位</text>
+    <rect x="407.5" y="56" width="352.5" height="230" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">通所リハビリテーション</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">通算8時間から・6区分</text>
+    <text x="583.75" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">土台は7〜8時間</text>
+    <line x1="427.5" y1="156" x2="740" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="583.75" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">8〜9時間 ＝ 50単位</text>
+    <text x="583.75" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">9〜10時間 ＝ 100単位</text>
+    <text x="583.75" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">10〜11時間 ＝ 150単位</text>
+    <text x="583.75" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">11〜12時間 ＝ 200単位</text>
+    <text x="583.75" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">12〜13時間 ＝ 250単位／13〜14時間 ＝ 300単位</text>
+    <rect x="40" y="304" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="333" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">同じ13〜14時間でも、通所介護250単位・通所リハ300単位と1区分ぶんずれます</text>
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">判定に使うのは、サービスの所要時間と前後に行った日常生活上の世話を通算した時間です</text>
+  </g>
+</svg>

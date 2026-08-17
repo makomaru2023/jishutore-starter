@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 594" width="800" height="594">
+  <rect width="800" height="594" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">補助具は、支える量の多い順に並びます</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="135" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">平行棒</text>
+    <text x="135" y="136" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">支えがいちばん多い</text>
+    <line x1="230" y1="70" x2="230" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="82" font-size="14" font-weight="bold" fill="#0F172A">両手で平行棒を軽く把持し、一歩ずつ足を前に出します</text>
+    <text x="254" y="108" font-size="12" font-weight="bold" fill="#475569">セラピストの見守り下で実施します</text>
+    <text x="254" y="130" font-size="12" font-weight="bold" fill="#475569">上肢に頼りすぎず、下肢で体重を支える意識を持たせることが重要です</text>
+    <rect x="40" y="176" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="135" y="224" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">歩行器</text>
+    <line x1="230" y1="190" x2="230" y2="246" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="202" font-size="14" font-weight="bold" fill="#0F172A">固定型歩行器歩行。器を持ち上げて前に置く動作があります</text>
+    <text x="254" y="228" font-size="12" font-weight="bold" fill="#475569">上肢の筋力も求められます。安定した歩行パターンが確立するまで見守りで実施します</text>
+    <rect x="40" y="272" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="135" y="320" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">杖</text>
+    <line x1="230" y1="286" x2="230" y2="342" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="254" y="298" font-size="14" font-weight="bold" fill="#0F172A">杖歩行。杖は健側（痛みのない側）の手で持ちます</text>
+    <text x="254" y="324" font-size="12" font-weight="bold" fill="#475569">高さは大転子の位置、肘が約30度屈曲する長さに調整します</text>
+    <rect x="40" y="368" width="720" height="108" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="135" y="428" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">ポール</text>
+    <text x="135" y="448" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">支えより運動量</text>
+    <line x1="230" y1="382" x2="230" y2="462" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="254" y="394" font-size="14" font-weight="bold" fill="#0F172A">ノルディック歩行。ポールを後方に押し出すように使います</text>
+    <text x="254" y="420" font-size="12" font-weight="bold" fill="#475569">通常歩行よりエネルギー消費が20〜30%増えるとされます</text>
+    <text x="254" y="442" font-size="12" font-weight="bold" fill="#475569">バランスに不安がある方にはポールが支えにもなります</text>
+    <rect x="40" y="496" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="525" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">下に行くほど、自分で支える量が増えます</text>
+    <text x="400" y="576" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">導入は歩行の安定性を十分に評価したうえで判断します</text>
+  </g>
+</svg>

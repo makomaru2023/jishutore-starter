@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">集団体操は、全員ができることから逆に選びます</text>
+
+    <rect x="40" y="56" width="230" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="155" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">座位で完結する</text>
+    <text x="155" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">第一条件</text>
+    <line x1="60" y1="132" x2="250" y2="132" stroke="#90CAF9" stroke-width="2"/>
+    <text x="155" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">立てない方が一人でもいるなら</text>
+    <text x="155" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">立位の種目は入れにくい</text>
+    <text x="155" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">その方だけ見ている時間が生まれる</text>
+    <text x="155" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">座位の運動だけで1回分は組めます</text>
+    <rect x="285" y="56" width="230" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">数え方がそろう</text>
+    <text x="400" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">進行のため</text>
+    <line x1="305" y1="132" x2="495" y2="132" stroke="#90CAF9" stroke-width="2"/>
+    <text x="400" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">保持系は10秒×3セット</text>
+    <text x="400" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">回数系は10回か20〜30回</text>
+    <text x="400" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">この2つで組むと</text>
+    <text x="400" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">号令の調子が一定になります</text>
+    <rect x="530" y="56" width="230" height="200" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="645" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">道具が要らない</text>
+    <text x="645" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">準備のため</text>
+    <line x1="550" y1="132" x2="740" y2="132" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="645" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">人数分をそろえる必要がない</text>
+    <text x="645" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">準備と片づけの時間も減る</text>
+    <text x="645" y="194" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">素手でできる種目を選びます</text>
+    <rect x="40" y="274" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="303" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">個別は能力に合わせて選び、集団は全員ができるものから逆に選びます</text>
+    <text x="400" y="354" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">同じ「体操を組む」でも、出発点が反対だということです</text>
+  </g>
+</svg>

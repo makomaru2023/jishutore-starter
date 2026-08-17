@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 402" width="800" height="402">
+  <rect width="800" height="402" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">摂食機能療法の上に、体制加算が乗ります</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">上に乗る加算</text>
+    <line x1="210" y1="70" x2="210" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="82" font-size="14" font-weight="bold" fill="#0F172A">摂食嚥下機能回復体制加算1＝週1回210点／加算2＝週1回190点</text>
+    <text x="234" y="108" font-size="12" font-weight="bold" fill="#475569">算定にはFIM（機能的自立度評価法）とFOIS（経口摂取の段階）を測ります</text>
+    <text x="234" y="130" font-size="12" font-weight="bold" fill="#475569">加算3（120点）は療養病棟入院料1・2の患者に限られます</text>
+    <rect x="40" y="176" width="720" height="108" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">土台</text>
+    <line x1="210" y1="190" x2="210" y2="270" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="234" y="202" font-size="14" font-weight="bold" fill="#0F172A">摂食機能療法　30分以上＝185点／30分未満＝130点</text>
+    <text x="234" y="228" font-size="12" font-weight="bold" fill="#475569">30分以上は1月に4回まで。治療開始日から3月以内は1日につき算定できます</text>
+    <text x="234" y="250" font-size="12" font-weight="bold" fill="#475569">30分未満は脳卒中の方の発症から14日以内に限ります</text>
+    <rect x="40" y="304" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="333" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">回復期リハビリテーション病棟でも、要件を満たせば別に算定できます</text>
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">内視鏡下嚥下機能検査または嚥下造影の結果に基づく計画づくりと、週1回以上のカンファレンスが要件です</text>
+  </g>
+</svg>

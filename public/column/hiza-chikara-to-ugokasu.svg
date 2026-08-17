@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 402" width="800" height="402">
+  <rect width="800" height="402" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">膝の自主トレは「力を入れる」と「動かす」に分かれます</text>
+
+    <rect x="40" y="56" width="352.5" height="230" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">力を入れる</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">関節はほとんど動かさない</text>
+    <text x="216.25" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">5秒しっかり</text>
+    <line x1="60" y1="156" x2="372.5" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">タオルを使ったクアドセット</text>
+    <text x="216.25" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　膝のお皿が上に動くのを意識して5秒</text>
+    <text x="216.25" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">自動SLR</text>
+    <text x="216.25" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　膝を伸ばしたまま30〜45度・5秒保持</text>
+    <text x="216.25" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">四頭筋トレーニング（座位）</text>
+    <text x="216.25" y="281" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　膝を伸ばした位置で3〜5秒保持</text>
+    <rect x="407.5" y="56" width="352.5" height="230" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">動かす</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">曲がる範囲を広げる</text>
+    <text x="583.75" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">角度を少しずつ</text>
+    <line x1="427.5" y1="156" x2="740" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="583.75" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ヒールスライド</text>
+    <text x="583.75" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　踵を床で滑らせて膝を曲げ伸ばし</text>
+    <text x="583.75" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　曲がる角度を徐々に大きくする</text>
+    <text x="583.75" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　術後は可動域の制限に注意</text>
+    <text x="583.75" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ヒールスライド②</text>
+    <text x="583.75" y="281" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">　足底を床につけたまま踵を臀部へ</text>
+    <rect x="40" y="304" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="333" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">痛みや腫れが強い時期は、まず「力を入れる」ほうから始めます</text>
+    <text x="400" y="384" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">回数より「5秒しっかり」のほうが伝わりやすいので、そこを口頭で強調しています</text>
+  </g>
+</svg>

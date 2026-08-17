@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入浴素材4点すべてに、床の滑りへの注意があります</text>
+
+    <rect x="40" y="56" width="720" height="60" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="145" y="92" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">立ち座り</text>
+    <line x1="250" y1="70" x2="250" y2="102" stroke="#90CAF9" stroke-width="2"/>
+    <text x="274" y="82" font-size="13.5" font-weight="bold" fill="#0F172A">滑りやすい床面では、立ち上がりの直前に重心を前へ移すことを意識させる</text>
+    <rect x="40" y="128" width="720" height="60" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="145" y="164" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">浴槽またぎ</text>
+    <line x1="250" y1="142" x2="250" y2="174" stroke="#90CAF9" stroke-width="2"/>
+    <text x="274" y="154" font-size="14" font-weight="bold" fill="#0F172A">足元が滑らないよう、滑り止めマット等を併用する</text>
+    <rect x="40" y="200" width="720" height="60" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="145" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">長柄ブラシでの洗体</text>
+    <line x1="250" y1="214" x2="250" y2="246" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="274" y="226" font-size="14" font-weight="bold" fill="#0F172A">イスからの転落や床の滑り具合に注意する</text>
+    <rect x="40" y="272" width="720" height="60" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="145" y="308" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">シャワーチェアでの洗体</text>
+    <line x1="250" y1="286" x2="250" y2="318" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="274" y="298" font-size="14" font-weight="bold" fill="#0F172A">床の滑りに注意し、必要に応じて滑り止めを使う</text>
+    <rect x="40" y="352" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="381" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">動作の練習より先に、環境を見たほうが早く効く場面があります</text>
+    <text x="400" y="432" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">当サイトの入浴素材を数えた結果です（4点中4点に床の滑りへの言及がありました）</text>
+  </g>
+</svg>

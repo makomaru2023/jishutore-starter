@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 382" width="800" height="382">
+  <rect width="800" height="382" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">6つの区分は、2つずつのペアでできています</text>
+
+    <rect x="40" y="56" width="230" height="210" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="155" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料1・2</text>
+    <text x="155" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">要件はまったく同じ</text>
+    <text x="155" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">実績指数だけ違う</text>
+    <line x1="60" y1="156" x2="250" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="155" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入院料1 ＝ 42以上</text>
+    <text x="155" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入院料2 ＝ 32以上</text>
+    <rect x="285" y="56" width="230" height="210" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料3・4</text>
+    <text x="400" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">要件はまったく同じ</text>
+    <text x="400" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">実績指数だけ違う</text>
+    <line x1="305" y1="156" x2="495" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="400" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入院料3 ＝ 37以上</text>
+    <text x="400" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入院料4 ＝ 32以上</text>
+    <rect x="530" y="56" width="230" height="210" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="645" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料5・入院医療管理料</text>
+    <text x="645" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">別枠</text>
+    <text x="645" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">実績指数の基準なし</text>
+    <line x1="550" y1="156" x2="740" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="645" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入院料5は重症患者割合も</text>
+    <text x="645" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">在宅復帰率も基準なし</text>
+    <text x="645" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入院医療管理料は</text>
+    <text x="645" y="239" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">重症25%以上・在宅復帰率70%以上</text>
+    <rect x="40" y="284" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="313" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">数字が大きいほど厳しい階段ではなく、2つずつの組が3つ並んでいます</text>
+    <text x="400" y="364" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">実績指数＝入院中の日常生活動作の改善を、かかった日数で割った数字です</text>
+  </g>
+</svg>

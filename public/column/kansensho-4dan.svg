@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 594" width="800" height="594">
+  <rect width="800" height="594" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">感染症と災害の仕組みは、時間の順に4つ並びます</text>
+
+    <rect x="40" y="56" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="116" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">① 備える</text>
+    <line x1="210" y1="70" x2="210" y2="150" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="82" font-size="14" font-weight="bold" fill="#0F172A">高齢者施設等感染対策向上加算　(Ⅰ)10単位/月 ／ (Ⅱ)5単位/月</text>
+    <text x="234" y="108" font-size="12" font-weight="bold" fill="#475569">(Ⅰ)＝第二種協定指定医療機関との体制確保＋研修・訓練に1年に1回以上参加</text>
+    <text x="234" y="130" font-size="12" font-weight="bold" fill="#475569">(Ⅱ)＝感染対策向上加算の届出医療機関から3年に1回以上の実地指導</text>
+    <rect x="40" y="176" width="720" height="108" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="236" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">② つながる</text>
+    <line x1="210" y1="190" x2="210" y2="270" stroke="#90CAF9" stroke-width="2"/>
+    <text x="234" y="202" font-size="14" font-weight="bold" fill="#0F172A">協力医療機関連携加算　50単位/月 ／ 5単位/月</text>
+    <text x="234" y="228" font-size="12" font-weight="bold" fill="#475569">50単位は相談対応・診療・入院受入の3つの体制を満たす協力医療機関の場合</text>
+    <text x="234" y="250" font-size="12" font-weight="bold" fill="#475569">入院受入の体制を満たせるのは病院に限られます</text>
+    <rect x="40" y="296" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="344" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">③ 起きたとき</text>
+    <line x1="210" y1="310" x2="210" y2="366" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="234" y="322" font-size="14" font-weight="bold" fill="#0F172A">新興感染症等施設療養費　240単位/日（1月に1回・連続する5日を限度）</text>
+    <text x="234" y="348" font-size="12" font-weight="bold" fill="#475569">対象の感染症が指定されておらず、いまは算定できません</text>
+    <rect x="40" y="392" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="440" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">④ 減った分</text>
+    <line x1="210" y1="406" x2="210" y2="462" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="234" y="418" font-size="14" font-weight="bold" fill="#0F172A">通所介護・感染症又は災害による利用者数減少時の加算　所定単位数の100分の3</text>
+    <text x="234" y="444" font-size="12" font-weight="bold" fill="#475569">前年度の月平均より5%以上減った場合。減った月の翌々月から3月以内が対象です</text>
+    <rect x="40" y="496" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="525" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">備える側に手厚く、起きた側はいまのところ動いていません</text>
+    <text x="400" y="576" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">研修は1年に1回、実地指導は3年に1回。年間の予定の組み方が変わります</text>
+  </g>
+</svg>

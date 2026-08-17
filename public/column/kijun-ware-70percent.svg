@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 396" width="800" height="396">
+  <rect width="800" height="396" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">介護は定員超過も人員欠如も「70%」でそろっています</text>
+
+    <rect x="40" y="56" width="352.5" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216.25" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">通所介護</text>
+    <text x="216.25" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">どちらも同じ率</text>
+    <text x="216.25" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">所定単位数の 100分の70</text>
+    <line x1="60" y1="156" x2="372.5" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216.25" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">運営規程に定めた利用定員を超えた場合</text>
+    <text x="216.25" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">指定居宅サービス基準第93条の</text>
+    <text x="216.25" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">員数を置いていない場合</text>
+    <rect x="407.5" y="56" width="352.5" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="583.75" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">通所リハビリテーション</text>
+    <text x="583.75" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">どちらも同じ率</text>
+    <text x="583.75" y="140" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">所定単位数の 100分の70</text>
+    <line x1="427.5" y1="156" x2="740" y2="156" stroke="#90CAF9" stroke-width="2"/>
+    <text x="583.75" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">月平均の利用者数が利用定員を超えた場合</text>
+    <text x="583.75" y="197" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">医師・PT・OT・ST・看護職員・介護職員の</text>
+    <text x="583.75" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">員数が基準に足りない場合</text>
+    <text x="400" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">介護予防通所リハと一体的に運営している場合は、両方の利用者数の合計で定員超過を判定します</text>
+    <rect x="40" y="298" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="327" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">引かれるのは3割。覚える数字は「70%」の1つで足ります</text>
+    <text x="400" y="378" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">利用定員は、都道府県知事へ提出した運営規程に定められた数を基準にします</text>
+  </g>
+</svg>
