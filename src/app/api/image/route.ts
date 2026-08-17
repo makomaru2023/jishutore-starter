@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import items from "../../../../data/items.json";
 
 // Initialize S3 Client
 // NOTE: Account ID and Bucket Name need to be provided via environment variables
@@ -7,6 +8,10 @@ const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
 const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
 const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
 const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME;
+
+// 無料素材の配布専用API。任意のR2キーを許可すると、同じバケット内の
+// 有料ZIPや注文JSONも取得できるため、台帳に登録済みのキーだけを許可する。
+const PUBLIC_ITEM_KEYS = new Set(items.map((item) => item.previewSrc));
 
 const S3 = new S3Client({
     region: "auto",
@@ -23,6 +28,10 @@ export async function GET(request: NextRequest) {
 
     if (!key) {
         return new NextResponse("Missing key parameter", { status: 400 });
+    }
+
+    if (!PUBLIC_ITEM_KEYS.has(key)) {
+        return new NextResponse("Image not found", { status: 404 });
     }
 
     if (!R2_ACCOUNT_ID || !R2_BUCKET_NAME || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY) {
@@ -42,9 +51,8 @@ export async function GET(request: NextRequest) {
             return new NextResponse("Image not found", { status: 404 });
         }
 
-        // Convert the stream to a Response
-        // @ts-ignore: Web streams are compatible
-        return new NextResponse(response.Body.transformToWebStream(), {
+        const body = response.Body.transformToWebStream() as ReadableStream<Uint8Array>;
+        return new NextResponse(body, {
             headers: {
                 "Content-Type": response.ContentType || "image/png",
                 "Cache-Control": "public, max-age=31536000, immutable",

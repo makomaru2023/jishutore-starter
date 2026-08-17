@@ -24,3 +24,8 @@ export const SLIDE_PROMPT_GENERATOR_PRICE_ID =
 // 自動的に購入ボタンが有効化される。
 export const DAY_SERVICE_EXERCISE_PACK_PRICE_ID =
     process.env.STRIPE_PRICE_ID_DAY_SERVICE_EXERCISE_PACK;
+
+// デイサービスパックの完成ZIPを置いたR2キー。
+// Price IDとこのキーの両方が設定されるまで販売を開始しない。
+export const DAY_SERVICE_EXERCISE_PACK_ZIP_KEY =
+    process.env.R2_KEY_DAY_SERVICE_EXERCISE_PACK?.trim() || undefined;

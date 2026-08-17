@@ -9,6 +9,7 @@ import {
     POSTURE_SELF_TRAINING_PRICE_ID,
     BUNDLE_SELF_TRAINING_PRICE_ID,
     SLIDE_PROMPT_GENERATOR_PRICE_ID,
+    DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
 } from "@/lib/products";
 import { signDownloadToken } from "@/lib/auth";
 import { DownloadTrackingLink } from "@/components/DownloadTrackingLink";
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 const PRODUCT_NAME_BY_ID: Record<string, string> = {
+    "day-service-exercise-pack": "デイサービス向け 体操・口腔体操・転倒予防資料パック",
     "self-training-materials-vol01": "疾患別自主トレ資料セット",
     "home-elderly-self-training": "姿勢別 自主トレ指導資料セット",
     "bundle-self-training-set": "疾患別＋姿勢別 まとめ買いセット",
@@ -53,6 +55,14 @@ type DownloadEntry = {
  * バンドル商品は複数エントリを持つ。
  */
 const PRODUCT_DOWNLOADS: Record<string, DownloadEntry[]> = {
+    "day-service-exercise-pack": [
+        {
+            itemName: "デイサービス向け 体操・口腔体操・転倒予防資料パック",
+            fileName: "day-service-exercise-pack.zip",
+            description: "PowerPoint・PDF・Excel編集版をまとめた施設向け資料パックです。",
+            delivery: "r2-token",
+        },
+    ],
     "self-training-materials-vol01": [
         {
             itemName: "疾患別自主トレ資料セット",
@@ -99,6 +109,7 @@ function priceIdToProductId(priceId: string | null | undefined): string | null {
         [POSTURE_SELF_TRAINING_PRICE_ID || ""]: "home-elderly-self-training",
         [BUNDLE_SELF_TRAINING_PRICE_ID || ""]: "bundle-self-training-set",
         [SLIDE_PROMPT_GENERATOR_PRICE_ID || ""]: "slide-prompt-generator",
+        [DAY_SERVICE_EXERCISE_PACK_PRICE_ID || ""]: "day-service-exercise-pack",
     };
     return map[priceId] || null;
 }

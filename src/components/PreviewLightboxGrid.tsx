@@ -67,11 +67,7 @@ function GroupCarouselCard({
     const [index, setIndex] = useState(0);
     const [playing, setPlaying] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
-
-    // 念のため範囲外を防ぐ
-    useEffect(() => {
-        if (index >= total) setIndex(0);
-    }, [index, total]);
+    const currentIndex = total > 0 && index < total ? index : 0;
 
     // 自動再生タイマー
     useEffect(() => {
@@ -123,7 +119,7 @@ function GroupCarouselCard({
             {/* めくれるカード */}
             <button
                 type="button"
-                onClick={() => onOpen(items[index]?.src ?? items[0].src)}
+                onClick={() => onOpen(items[currentIndex]?.src ?? items[0].src)}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleLeave}
                 aria-label={`${group.title}のサンプルを拡大（全${total}ページ）`}
@@ -134,11 +130,11 @@ function GroupCarouselCard({
                         <Image
                             key={it.src}
                             src={it.src}
-                            alt={i === index ? `${group.title}｜${it.title}｜透かし入りサンプル` : ''}
+                            alt={i === currentIndex ? `${group.title}｜${it.title}｜透かし入りサンプル` : ''}
                             fill
                             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                             className={`object-cover transition-opacity duration-500 ${
-                                i === index ? 'opacity-100' : 'opacity-0'
+                                i === currentIndex ? 'opacity-100' : 'opacity-0'
                             }`}
                         />
                     ))}
@@ -146,7 +142,7 @@ function GroupCarouselCard({
                         透かし入りサンプル
                     </span>
                     <span className="absolute right-2 top-2 rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-bold tabular-nums text-white">
-                        {index + 1}/{total}
+                        {currentIndex + 1}/{total}
                     </span>
                     <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-3 transition-colors group-hover:bg-slate-900/10">
                         <span className="translate-y-2 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-black text-slate-700 opacity-0 shadow transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
@@ -174,9 +170,9 @@ function GroupCarouselCard({
                                 setIndex(i);
                             }}
                             aria-label={`${i + 1}ページ目を表示`}
-                            aria-current={i === index}
+                            aria-current={i === currentIndex}
                             className={`h-2 rounded-full transition-all ${
-                                i === index ? 'w-4 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                                i === currentIndex ? 'w-4 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
                             }`}
                         />
                     ))}

@@ -263,6 +263,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                             />
 
                             {/* Transparent Spacer for "Save Image" Protection */}
+                            {/* eslint-disable-next-line @next/next/no-img-element -- transparent data URI overlay is intentionally not optimized */}
                             <img
                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                 alt={title}

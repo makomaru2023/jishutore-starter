@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe, isStripeConfigured } from '@/lib/stripe';
 import { DAY_SERVICE_EXERCISE_PACK_PRICE_ID } from '@/lib/products';
+import { PRODUCT_ZIP_KEYS } from '@/lib/orders';
+import { r2ObjectExists } from '@/lib/r2';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
@@ -48,6 +50,17 @@ export async function POST(req: NextRequest) {
         console.error(`Stripe checkout: price id is not configured for product "${productId}".`);
         return NextResponse.json(
             { error: '商品の価格設定が見つかりません。' },
+            { status: 503 }
+        );
+    }
+
+    // 配布ZIPが設定済みかつR2に実在する場合だけ決済を開始する。
+    // 支払い後にファイルを受け取れない事故を安全側で防ぐ。
+    const zipKey = PRODUCT_ZIP_KEYS[productId];
+    if (!zipKey || !(await r2ObjectExists(zipKey))) {
+        console.error(`Stripe checkout: delivery file is not ready for product "${productId}".`);
+        return NextResponse.json(
+            { error: '配布ファイルの準備中です。時間をおいて再度お試しください。' },
             { status: 503 }
         );
     }

@@ -31,7 +31,7 @@ function normalizeLegacyItemId(id: string): string {
         .replace(/^-+|-+$/g, "");
 }
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
     // 旧素材URL（大文字・空白・括弧など）を現行kebab-caseへ恒久転送する。

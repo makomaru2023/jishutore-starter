@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { PromptOutput } from "./buildPrompt";
 
 interface PromptPreviewProps {
@@ -13,18 +13,12 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
   const [advancedTo, setAdvancedTo] = useState<number | null>(null);
   const [mode, setMode] = useState<"all" | "single">("all");
   const [slideIndex, setSlideIndex] = useState(0);
-
-  // 枚数が変わって slideIndex が範囲外になったら 0 にリセット
-  useEffect(() => {
-    if (slideIndex >= output.slidePrompts.length) {
-      setSlideIndex(0);
-    }
-  }, [output.slidePrompts.length, slideIndex]);
+  const currentSlideIndex = slideIndex < output.slidePrompts.length ? slideIndex : 0;
 
   const currentPrompt = useMemo(() => {
     if (mode === "all") return output.allPrompt;
-    return output.slidePrompts[slideIndex] ?? output.slidePrompts[0] ?? "";
-  }, [mode, output.allPrompt, output.slidePrompts, slideIndex]);
+    return output.slidePrompts[currentSlideIndex] ?? output.slidePrompts[0] ?? "";
+  }, [mode, output.allPrompt, output.slidePrompts, currentSlideIndex]);
 
   const handleCopy = useCallback(async () => {
     try {
@@ -41,11 +35,13 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
 
     // 個別プロンプトでコピー成功時、2秒後に次のスライドへ自動進行（最終スライドでは進めない）
     let nextIndex: number | null = null;
-    if (mode === "single" && slideIndex < output.slidePrompts.length - 1) {
-      nextIndex = slideIndex + 1;
+    if (mode === "single" && currentSlideIndex < output.slidePrompts.length - 1) {
+      nextIndex = currentSlideIndex + 1;
       setAdvancedTo(nextIndex + 1); // 表示は1始まり
       setTimeout(() => {
-        setSlideIndex((current) => (current === slideIndex ? slideIndex + 1 : current));
+        setSlideIndex((current) =>
+          current === currentSlideIndex ? currentSlideIndex + 1 : current,
+        );
       }, 2000);
     } else {
       setAdvancedTo(null);
@@ -55,7 +51,7 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
       setCopied(false);
       setAdvancedTo(null);
     }, 2400);
-  }, [currentPrompt, mode, slideIndex, output.slidePrompts.length]);
+  }, [currentPrompt, mode, currentSlideIndex, output.slidePrompts.length]);
 
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
@@ -136,7 +132,7 @@ export function PromptPreview({ output, onReset }: PromptPreviewProps) {
                 type="button"
                 onClick={() => setSlideIndex(index)}
                 className={`rounded-full px-3 py-1.5 text-xs font-black ${
-                  slideIndex === index
+                  currentSlideIndex === index
                     ? "bg-sky-600 text-white"
                     : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                 }`}

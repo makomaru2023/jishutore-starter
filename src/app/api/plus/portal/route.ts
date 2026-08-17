@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { verifySessionToken, PLUS_SESSION_COOKIE } from "@/lib/plus-auth";
 import { createPortalUrl } from "@/lib/plus-subscription";
@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 /** Stripe カスタマーポータル（プラン管理・解約）のURLを返す。ログイン必須。 */
-export async function POST(_req: NextRequest) {
+export async function POST() {
     const cookieStore = await cookies();
     const raw = cookieStore.get(PLUS_SESSION_COOKIE)?.value;
     const session = raw ? await verifySessionToken(raw) : null;

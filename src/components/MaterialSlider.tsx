@@ -9,7 +9,7 @@ import { Item } from '@/types'
 
 type PropType = {
     items: Item[]
-    options?: any
+    options?: Parameters<typeof useEmblaCarousel>[0]
 }
 
 export function MaterialSlider(props: PropType) {

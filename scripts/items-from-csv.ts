@@ -54,8 +54,9 @@ async function main() {
     try {
       const txt = await fs.readFile(abs, "utf8");
       rows.push(...parse(txt));
-    } catch (e: any) {
-      console.error("READ_FAIL:", rel, e?.message || e);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error("READ_FAIL:", rel, message);
     }
   }
   if (!rows.length) {

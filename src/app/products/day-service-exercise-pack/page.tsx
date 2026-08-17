@@ -3,7 +3,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
-import { DAY_SERVICE_EXERCISE_PACK_PRICE_ID } from "@/lib/products";
+import {
+    DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
+    DAY_SERVICE_EXERCISE_PACK_ZIP_KEY,
+} from "@/lib/products";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,8 +25,10 @@ const PRODUCT_NAME = "デイサービス向け 体操・口腔体操・転倒予
 const PRICE = 14800;
 const LINE_HREF = "/#line";
 
-// 価格IDが設定されたら自動的に購入ボタンが有効化される。未設定の間は「近日公開」表示。
-const checkoutReady = Boolean(DAY_SERVICE_EXERCISE_PACK_PRICE_ID);
+// 価格IDと完成ZIPのR2キーがそろった場合だけ購入ボタンを有効化する。
+const checkoutReady = Boolean(
+    DAY_SERVICE_EXERCISE_PACK_PRICE_ID && DAY_SERVICE_EXERCISE_PACK_ZIP_KEY,
+);
 
 const HERO_BADGES = [
     "施設内利用OK",

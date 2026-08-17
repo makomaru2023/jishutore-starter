@@ -15,8 +15,12 @@ async function tryClient(label: string, client: S3Client) {
     const out: ListObjectsV2CommandOutput = await client.send(new ListObjectsV2Command({ Bucket: bucket, MaxKeys: 3 }));
     console.log(`✅ ${label} OK`, (out.Contents ?? []).map(o => o?.Key));
     return true;
-  } catch (e) {
-    console.log(`❌ ${label} NG`, (e as any)?.$metadata ?? (e as any));
+  } catch (error: unknown) {
+    const detail =
+      typeof error === "object" && error !== null && "$metadata" in error
+        ? error.$metadata
+        : error;
+    console.log(`❌ ${label} NG`, detail);
     return false;
   }
 }

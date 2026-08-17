@@ -6,6 +6,7 @@ import {
     POSTURE_SELF_TRAINING_PRICE_ID,
     BUNDLE_SELF_TRAINING_PRICE_ID,
     SLIDE_PROMPT_GENERATOR_PRICE_ID,
+    DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
 } from "@/lib/products";
 
 // Disable Next.js body parsing — Stripe needs the raw request body for signature verification.
@@ -25,6 +26,7 @@ function priceIdToProductId(priceId: string | null | undefined): string | null {
         [POSTURE_SELF_TRAINING_PRICE_ID || ""]: "home-elderly-self-training",
         [BUNDLE_SELF_TRAINING_PRICE_ID || ""]: "bundle-self-training-set",
         [SLIDE_PROMPT_GENERATOR_PRICE_ID || ""]: "slide-prompt-generator",
+        [DAY_SERVICE_EXERCISE_PACK_PRICE_ID || ""]: "day-service-exercise-pack",
     };
     return map[priceId] || null;
 }

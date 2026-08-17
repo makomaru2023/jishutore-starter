@@ -1,4 +1,5 @@
 import { getR2ObjectAsString, putR2Object } from "./r2";
+import { DAY_SERVICE_EXERCISE_PACK_ZIP_KEY } from "./products";
 
 const REDOWNLOAD_WINDOW_DAYS = 30;
 
@@ -20,6 +21,9 @@ export interface Order {
  * Update this when adding new products.
  */
 export const PRODUCT_ZIP_KEYS: Record<string, string> = {
+    ...(DAY_SERVICE_EXERCISE_PACK_ZIP_KEY
+        ? { "day-service-exercise-pack": DAY_SERVICE_EXERCISE_PACK_ZIP_KEY }
+        : {}),
     "self-training-materials-vol01": "products/jishutore-materials-vol01.zip",
     "home-elderly-self-training": "products/home-elderly-self-training.zip",
     // バンドル：order.zipKey は R2 から配信する疾患別ZIPを指す。

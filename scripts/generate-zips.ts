@@ -113,8 +113,6 @@ async function main() {
 
     const basicItems = allItems.filter(i => i.tier === 'basic');
     const proSpecificItems = allItems.filter(i => i.tier === 'pro');
-    const premiumSpecificItems = allItems.filter(i => i.tier === 'premium');
-
     const basicZipItems = [...basicItems];
     const proZipItems = [...basicItems, ...proSpecificItems];
     const premiumZipItems = [...allItems]; // All items
