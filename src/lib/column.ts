@@ -27,6 +27,8 @@ import { article as kaifukukiShisetsuKijun } from "@/data/column/articles/kaifuk
 import { article as kansenshoSaigaiKata } from "@/data/column/articles/kansensho-saigai-kata";
 import { article as kijunWareGensanKata } from "@/data/column/articles/kijun-ware-gensan-kata";
 import { article as koshiKinkiKaraKimeru } from "@/data/column/articles/koshi-kinki-kara-kimeru";
+import { article as rokenHibiNoZogen } from "@/data/column/articles/roken-hibi-no-zogen";
+import { article as tsushoEnchoKasan } from "@/data/column/articles/tsusho-encho-kasan";
 import { article as nyuyokuDosaJishutore } from "@/data/column/articles/nyuyoku-dosa-jishutore";
 import { article as ikigireJishutoreWatashikata } from "@/data/column/articles/ikigire-jishutore-watashikata";
 import { article as ikouShienSotsugyoKata } from "@/data/column/articles/ikou-shien-sotsugyo-kata";
@@ -163,6 +165,8 @@ const articles: ColumnArticle[] = [
     kaifukukiBetsuNiToreru,
     kijunWareGensanKata,
     kansenshoSaigaiKata,
+    rokenHibiNoZogen,
+    tsushoEnchoKasan,
     shoguKaizenKata,
     kihonHoshuKata,
     kokuuEiyoKasanKata,
