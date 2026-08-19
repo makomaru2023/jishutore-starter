@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 474" width="800" height="474">
+  <rect width="800" height="474" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ指標が、土台の点数と加算の両方を動かします</text>
+
+    <rect x="40" y="56" width="720" height="66" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">指標 20以上</text>
+    <text x="130" y="108" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">土台の点数</text>
+    <line x1="230" y1="70" x2="230" y2="108" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="84" font-size="14" font-weight="bold" fill="#0F172A">基本報酬の上位区分を算定できる</text>
+    <text x="254" y="108" font-size="12" font-weight="bold" fill="#475569">退所後指導、居宅生活の継続見込みの確認、計画的なリハビリも要件</text>
+
+    <rect x="40" y="134" width="720" height="52" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="160" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">指標 40以上</text>
+    <text x="130" y="178" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">加算が付く</text>
+    <line x1="230" y1="146" x2="230" y2="176" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="254" y="167" font-size="14" font-weight="bold" fill="#0F172A">在宅復帰・在宅療養支援機能加算(Ⅰ)　1日51単位</text>
+
+    <rect x="40" y="198" width="720" height="66" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="230" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">指標 60以上</text>
+    <text x="130" y="250" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">土台の点数</text>
+    <line x1="230" y1="212" x2="230" y2="250" stroke="#90CAF9" stroke-width="2"/>
+    <text x="254" y="226" font-size="14" font-weight="bold" fill="#0F172A">基本報酬のさらに上の区分を算定できる</text>
+    <text x="254" y="250" font-size="12" font-weight="bold" fill="#475569">地域貢献活動と、少なくとも週3回程度のリハビリテーションも要件</text>
+
+    <rect x="40" y="276" width="720" height="52" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="302" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">指標 70以上</text>
+    <text x="130" y="320" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">加算が付く</text>
+    <line x1="230" y1="288" x2="230" y2="318" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="254" y="309" font-size="14" font-weight="bold" fill="#0F172A">在宅復帰・在宅療養支援機能加算(Ⅱ)　1日51単位</text>
+
+    <rect x="40" y="346" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="375" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">帰した実績が足りないと、加算より先に土台の区分が下がります</text>
+
+    <text x="400" y="424" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">指標は居宅への退所者割合・平均在所日数・入所前後訪問・リハ職の配置など10項目から計算します</text>
+    <text x="400" y="450" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">加算(Ⅰ)には地域に貢献する活動を行っていることも要件に入っています</text>
+  </g>
+</svg>

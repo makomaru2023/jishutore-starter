@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">3か月で終わるのは、リハビリではなく上乗せです</text>
+
+    <rect x="40" y="56" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="102" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入所日〜3か月</text>
+    <text x="150" y="124" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">上乗せがある</text>
+    <line x1="270" y1="70" x2="270" y2="148" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">加算(Ⅰ)＝258単位/日　加算(Ⅱ)＝200単位/日</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">入所日から起算して3月以内。どちらか一方だけを算定します</text>
+    <text x="294" y="132" font-size="12" font-weight="bold" fill="#475569">(Ⅰ)は入所時と1月に1回以上ADL等の評価を行うことが条件</text>
+
+    <rect x="40" y="174" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="212" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">3か月を過ぎたあと</text>
+    <text x="150" y="234" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">上乗せは無くなる</text>
+    <line x1="270" y1="188" x2="270" y2="244" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="202" font-size="14" font-weight="bold" fill="#0F172A">リハビリそのものが終わるわけではありません</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">週3回程度という基本報酬側の要件は、そのまま続きます</text>
+
+    <rect x="40" y="276" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">「もう終わり」ではなく「上乗せの期間が終わる」と言えます</text>
+
+    <text x="400" y="354" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">(Ⅰ)は評価結果等を厚生労働省に提出し、必要に応じて計画を見直すことまでが条件です</text>
+    <text x="400" y="382" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">測って、出して、見直す。この3つがあるかどうかで区分が変わります</text>
+  </g>
+</svg>

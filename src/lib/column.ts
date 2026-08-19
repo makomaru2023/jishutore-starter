@@ -27,6 +27,9 @@ import { article as kaifukukiShisetsuKijun } from "@/data/column/articles/kaifuk
 import { article as kansenshoSaigaiKata } from "@/data/column/articles/kansensho-saigai-kata";
 import { article as kijunWareGensanKata } from "@/data/column/articles/kijun-ware-gensan-kata";
 import { article as koshiKinkiKaraKimeru } from "@/data/column/articles/koshi-kinki-kara-kimeru";
+import { article as rokenKaeruTameNoShisetsu } from "@/data/column/articles/roken-kaeru-tame-no-shisetsu";
+import { article as rokenRihaShu3To3kagetsu } from "@/data/column/articles/roken-riha-shu3-3kagetsu";
+import { article as rokenSaishoNo1kagetsu } from "@/data/column/articles/roken-saisho-no-1kagetsu";
 import { article as rokenHibiNoZogen } from "@/data/column/articles/roken-hibi-no-zogen";
 import { article as tsushoEnchoKasan } from "@/data/column/articles/tsusho-encho-kasan";
 import { article as nyuyokuDosaJishutore } from "@/data/column/articles/nyuyoku-dosa-jishutore";
@@ -153,6 +156,13 @@ const articles: ColumnArticle[] = [
     henmahiJishutoreErabikata,
     tachiagariHokoJishutore,
     kaiteiWatch202608,
+    // ★入門層。加算を調べに来た人ではなく「加算に興味のない現場職員」向けの回。
+    // 素朴な疑問（なぜ週3回・なぜ3か月・最初の1週間が慌ただしい理由）から入り、
+    // 答えが制度にあると気づいてもらって fee-check へ送る。導線の向きが他の層と逆。
+    // ★タイトルとdescriptionに加算名を入れないこと（既存の加算記事と食い合うため）。
+    rokenSaishoNo1kagetsu,
+    rokenRihaShu3To3kagetsu,
+    rokenKaeruTameNoShisetsu,
     // 図解つきの回。fee-check の項目ページから逆引きで呼ばれる（getColumnsByFeeItem）。
     // 表示が出ているのにクリックが取れていない項目を、別の検索語（流れ・図解・違い）で拾いにいく回。
     kokueiyoScreeningNagare,

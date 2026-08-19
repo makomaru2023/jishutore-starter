@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 const PRODUCT_ID = "day-service-exercise-pack";
 const PRODUCT_NAME = "デイサービス向け 体操・口腔体操・転倒予防資料パック";
-const PRICE = 14800;
+const PRICE = 9800;
 const LINE_HREF = "/#line";
 
 // 価格IDと完成ZIPのR2キーがそろった場合だけ購入ボタンを有効化する。

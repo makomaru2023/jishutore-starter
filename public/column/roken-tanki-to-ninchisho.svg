@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 402" width="800" height="402">
+  <rect width="800" height="402" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">期間は同じ3か月。違うのは1週の上限です</text>
+
+    <rect x="40" y="56" width="352.5" height="230" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="90" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">短期集中リハ</text>
+    <text x="216" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入所日から3月以内</text>
+    <line x1="76" y1="128" x2="356" y2="128" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="152" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">1週の上限なし</text>
+    <text x="216" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">加算(Ⅰ)＝258単位/日</text>
+    <text x="216" y="208" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">加算(Ⅱ)＝200単位/日</text>
+    <text x="216" y="240" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">(Ⅰ)は入所時と1月1回以上の</text>
+    <text x="216" y="262" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">ADL等の評価が条件</text>
+
+    <rect x="407.5" y="56" width="352.5" height="230" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="584" y="90" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">認知症短期集中リハ</text>
+    <text x="584" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">入所日から3月以内</text>
+    <line x1="444" y1="128" x2="724" y2="128" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="584" y="152" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">1週に3日を限度</text>
+    <text x="584" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">加算(Ⅰ)＝240単位/日</text>
+    <text x="584" y="208" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">加算(Ⅱ)＝120単位/日</text>
+    <text x="584" y="240" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">認知症と医師が判断し、生活機能の</text>
+    <text x="584" y="262" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">改善が見込まれる方が対象</text>
+
+    <rect x="40" y="304" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="333" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">同じ3か月でも、週の使い方が違います</text>
+
+    <text x="400" y="380" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どちらも(Ⅰ)と(Ⅱ)はいずれか一方のみを算定します</text>
+  </g>
+</svg>
