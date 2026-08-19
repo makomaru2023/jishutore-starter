@@ -53,6 +53,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
             '2026-01-01',
         ),
     )
+    // 公開・index可能・canonical設定済みの固定ページ。
+    // Bingが重要ページをsitemap外として検出しないよう、商品・信頼・スポンサー関連も明示する。
+    const additionalPublicUrls = [
+        { path: '/about/', lastModified: '2026-02-05', changeFrequency: 'yearly' as const, priority: 0.5 },
+        { path: '/contact/', lastModified: '2026-07-19', changeFrequency: 'yearly' as const, priority: 0.4 },
+        { path: '/faq/', lastModified: '2026-06-14', changeFrequency: 'monthly' as const, priority: 0.6 },
+        { path: '/license/', lastModified: '2026-07-22', changeFrequency: 'yearly' as const, priority: 0.5 },
+        { path: '/privacy/', lastModified: '2026-01-04', changeFrequency: 'yearly' as const, priority: 0.3 },
+        { path: '/tokushoho/', lastModified: '2026-08-19', changeFrequency: 'yearly' as const, priority: 0.3 },
+        { path: '/products/home-elderly-self-training/', lastModified: '2026-07-20', changeFrequency: 'monthly' as const, priority: 0.7 },
+        { path: '/products/self-training-materials/', lastModified: '2026-07-20', changeFrequency: 'monthly' as const, priority: 0.7 },
+        { path: '/products/slide-prompt-generator/', lastModified: '2026-07-20', changeFrequency: 'monthly' as const, priority: 0.7 },
+        { path: '/sponsor/detail-sponsor/', lastModified: '2026-06-08', changeFrequency: 'monthly' as const, priority: 0.4 },
+        { path: '/sponsor/page-sponsor/', lastModified: '2026-06-08', changeFrequency: 'monthly' as const, priority: 0.4 },
+        { path: '/sponsor/premium-sponsor/', lastModified: '2026-06-06', changeFrequency: 'monthly' as const, priority: 0.4 },
+    ].map((page) => ({
+        url: `${baseUrl}${page.path}`,
+        lastModified: new Date(`${page.lastModified}T00:00:00+09:00`),
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+    }))
 
     return [
         {
@@ -153,7 +174,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${baseUrl}/fee-check/editorial-policy/`,
-            lastModified: new Date('2026-07-12T00:00:00+09:00'),
+            lastModified: new Date('2026-08-19T00:00:00+09:00'),
             changeFrequency: 'monthly' as const,
             priority: 0.65,
         },
@@ -183,6 +204,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
+        ...additionalPublicUrls,
         ...columnUrls,
         ...itemUrls,
         ...feeDomainUrls,

@@ -8,7 +8,7 @@ const PAGE_URL = "https://jishutore-sozaiko.online/fee-check/editorial-policy/";
 export const metadata: Metadata = {
     title: "診療・介護報酬チェックの編集方針・確認方法｜自主トレ素材庫",
     description:
-        "自主トレ素材庫の診療・介護報酬チェックで、単位数・算定要件・記録・自己点検ポイントを作成、確認、更新する方法を公開しています。",
+        "診療・介護報酬チェックの編集方針を公開しています。作業療法士である運営者が、厚生労働省の告示・通知・疑義解釈などの一次資料を基準に、単位数・算定要件・記録・自己点検ポイントを確認・更新する方法、掲載範囲と注意事項、根拠資料リンクと最終確認日の扱いを説明します。",
     alternates: { canonical: PAGE_URL },
 };
 

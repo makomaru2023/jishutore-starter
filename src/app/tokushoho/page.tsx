@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "特定商取引法に基づく表記｜自主トレ素材庫",
-    description: "自主トレ素材庫における特定商取引法に基づく表記です。",
+    description: "自主トレ素材庫の特定商取引法に基づく表記です。自主トレ素材庫Plusと買い切り商品の販売事業者、連絡先、販売価格、支払方法、デジタルコンテンツの引渡し時期、継続課金サービスの更新・解約、返品・キャンセル条件、動作環境などを掲載しています。購入前にご確認ください。",
 };
 
 export default function TokushohoPage() {
