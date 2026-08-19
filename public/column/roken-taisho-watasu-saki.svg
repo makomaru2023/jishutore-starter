@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 546" width="800" height="546">
+  <rect width="800" height="546" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">情報を渡す相手ごとに、別の項目が立っています</text>
+
+    <rect x="40" y="56" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">ケアマネへ</text>
+    <text x="150" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">いちばん大きい</text>
+    <line x1="270" y1="70" x2="270" y2="148" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">入退所前連携加算　(Ⅰ)＝600単位　(Ⅱ)＝400単位</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">(Ⅰ)は入所予定日前30日以内又は入所後30日以内の連携と、</text>
+    <text x="294" y="132" font-size="12" font-weight="bold" fill="#475569">退所前の情報提供・調整の両方を満たす場合です</text>
+
+    <rect x="40" y="174" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="212" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">主治医へ</text>
+    <text x="150" y="234" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">家に帰る場合</text>
+    <line x1="270" y1="188" x2="270" y2="244" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="202" font-size="14" font-weight="bold" fill="#0F172A">退所時情報提供加算(Ⅰ)　500単位</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">診療状況・心身の状況・生活歴等の情報を提供して紹介します</text>
+
+    <rect x="40" y="270" width="720" height="62" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">医療機関へ</text>
+    <text x="150" y="320" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">入院する場合</text>
+    <line x1="270" y1="284" x2="270" y2="318" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="307" font-size="14" font-weight="bold" fill="#0F172A">退所時情報提供加算(Ⅱ)　250単位</text>
+
+    <rect x="40" y="344" width="720" height="62" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="374" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">訪問看護へ</text>
+    <text x="150" y="394" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">指示書を交付</text>
+    <line x1="270" y1="358" x2="270" y2="392" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="381" font-size="14" font-weight="bold" fill="#0F172A">訪問看護指示加算　300単位　※施設の医師が認めた場合</text>
+
+    <rect x="40" y="418" width="720" height="62" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="448" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">本人・家族へ</text>
+    <text x="150" y="468" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">試しに帰った日</text>
+    <line x1="270" y1="432" x2="270" y2="466" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="455" font-size="14" font-weight="bold" fill="#0F172A">試行的退所時指導加算　400単位　※最初の月から3月・1月1回</text>
+
+    <rect x="40" y="492" width="720" height="42" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="519" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">どれも入所者1人につき1回が限度です</text>
+  </g>
+</svg>

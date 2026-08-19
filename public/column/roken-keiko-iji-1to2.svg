@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 402" width="800" height="402">
+  <rect width="800" height="402" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">(Ⅱ)は単独では取れません。(Ⅰ)の上に乗ります</text>
+
+    <rect x="40" y="56" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">上に乗る (Ⅱ)</text>
+    <text x="150" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">外から加わる</text>
+    <line x1="270" y1="70" x2="270" y2="148" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">1月100単位　協力歯科医療機関を定めていること</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">食事の観察および会議等に、配置医師を除く医師・歯科医師・</text>
+    <text x="294" y="132" font-size="12" font-weight="bold" fill="#475569">歯科衛生士又は言語聴覚士が加わる場合に算定します</text>
+
+    <rect x="40" y="174" width="720" height="106" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="218" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">土台の (Ⅰ)</text>
+    <text x="150" y="240" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">施設の中で行う</text>
+    <line x1="270" y1="188" x2="270" y2="266" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="202" font-size="14" font-weight="bold" fill="#0F172A">1月400単位　誤嚥が認められる方が対象</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">医師又は歯科医師の指示に基づき、多職種が共同して</text>
+    <text x="294" y="250" font-size="12" font-weight="bold" fill="#475569">観察と会議を行い、入所者ごとに経口維持計画を作成します</text>
+
+    <rect x="40" y="292" width="720" height="42" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="319" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">STが施設にいなくても、外から加わってもらう形が用意されています</text>
+
+    <text x="400" y="368" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">(Ⅱ)は(Ⅰ)を算定している場合に限ります</text>
+  </g>
+</svg>

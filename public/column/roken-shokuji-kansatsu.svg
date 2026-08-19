@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 546" width="800" height="546">
+  <rect width="800" height="546" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">食事の場面には、見ることが要件の仕組みが4つあります</text>
+
+    <rect x="40" y="56" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">経口維持加算</text>
+    <text x="150" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">見て、集まって、決める</text>
+    <line x1="270" y1="70" x2="270" y2="148" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">(Ⅰ)＝1月400単位　(Ⅱ)＝1月100単位</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">医師又は歯科医師の指示に基づき、多職種が共同して</text>
+    <text x="294" y="132" font-size="12" font-weight="bold" fill="#475569">食事の観察および会議等を行い、経口維持計画を作成します</text>
+
+    <rect x="40" y="174" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="212" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">栄養マネジメント強化</text>
+    <text x="150" y="234" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">定期的に見る</text>
+    <line x1="270" y1="188" x2="270" y2="244" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="202" font-size="14" font-weight="bold" fill="#0F172A">1日11単位</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">栄養ケア計画に従い、食事の観察を定期的に行います</text>
+
+    <rect x="40" y="270" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="314" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">口腔衛生管理加算</text>
+    <text x="150" y="336" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">月2回以上・職員にも</text>
+    <line x1="270" y1="284" x2="270" y2="362" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="298" font-size="14" font-weight="bold" fill="#0F172A">(Ⅰ)＝1月90単位　(Ⅱ)＝1月110単位</text>
+    <text x="294" y="324" font-size="12" font-weight="bold" fill="#475569">歯科医師の指示を受けた歯科衛生士が月2回以上行います</text>
+    <text x="294" y="346" font-size="12" font-weight="bold" fill="#475569">介護職員への具体的な技術的助言・指導も要件に入っています</text>
+
+    <rect x="40" y="388" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="426" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">経口移行加算</text>
+    <text x="150" y="448" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">経管から経口へ</text>
+    <line x1="270" y1="402" x2="270" y2="458" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="416" font-size="14" font-weight="bold" fill="#0F172A">1日28単位</text>
+    <text x="294" y="442" font-size="12" font-weight="bold" fill="#475569">計画に従い、言語聴覚士又は看護職員による支援を行います</text>
+
+    <rect x="40" y="484" width="720" height="42" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="511" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">4つとも「誰が」「どれくらい見るか」まで決まっています</text>
+  </g>
+</svg>

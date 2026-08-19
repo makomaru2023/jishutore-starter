@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">お試しで家に帰る日は、置き換えで数えます</text>
+
+    <rect x="40" y="56" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">試行的退所</text>
+    <text x="150" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">日で置き換える</text>
+    <line x1="270" y1="70" x2="270" y2="148" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">800単位/日　1月に6日を限度</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">所定単位数に代えて算定するので、上乗せではなく置き換えです</text>
+    <text x="294" y="132" font-size="12" font-weight="bold" fill="#475569">試行的退所に係る初日および最終日は算定しません</text>
+
+    <rect x="40" y="174" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="212" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">その日の指導</text>
+    <text x="150" y="234" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">月に1回まで</text>
+    <line x1="270" y1="188" x2="270" y2="244" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="202" font-size="14" font-weight="bold" fill="#0F172A">試行的退所時指導加算　400単位</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">最初に試行的な退所を行った月から3月の間・1月に1回が限度</text>
+
+    <rect x="40" y="276" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">外泊時費用と同じ形です。上乗せではありません</text>
+
+    <text x="400" y="354" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">外泊時費用を算定する場合は、試行的退所時費用を算定しません</text>
+    <text x="400" y="382" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">退所が見込まれる方を居宅に帰し、施設が居宅サービスを提供する形です</text>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 498" width="800" height="498">
+  <rect width="800" height="498" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">リハ・食事・自立支援。3つとも医師が要件に入っています</text>
+
+    <rect x="40" y="56" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="94" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">リハビリ</text>
+    <text x="150" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">指示</text>
+    <line x1="270" y1="70" x2="270" y2="126" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">医師からリハ職への具体的指示</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">基本報酬の上位区分の要件に入っています</text>
+
+    <rect x="40" y="152" width="720" height="106" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="196" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">食事</text>
+    <text x="150" y="218" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">指示</text>
+    <line x1="270" y1="166" x2="270" y2="244" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="180" font-size="14" font-weight="bold" fill="#0F172A">医師又は歯科医師の指示に基づく</text>
+    <text x="294" y="206" font-size="12" font-weight="bold" fill="#475569">経口維持は指示に基づき多職種が観察と会議を行います</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">経管から経口へ進める計画も、医師の指示に基づいて作ります</text>
+
+    <rect x="40" y="270" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="314" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">自立支援</text>
+    <text x="150" y="336" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">★参加</text>
+    <line x1="270" y1="284" x2="270" y2="362" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="298" font-size="14" font-weight="bold" fill="#0F172A">医師が支援計画の策定等に参加していること</text>
+    <text x="294" y="324" font-size="12" font-weight="bold" fill="#475569">入所時に医学的評価を行い、少なくとも3月に1回見直します</text>
+    <text x="294" y="346" font-size="12" font-weight="bold" fill="#475569">支援計画のほうも、少なくとも3月に1回見直します</text>
+
+    <rect x="40" y="388" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="417" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">「指示」は出して終われますが、「参加」はその場にいることが要ります</text>
+
+    <text x="400" y="464" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">指示は医師、実施は各職種。この分担が要件の書き方に現れています</text>
+  </g>
+</svg>
