@@ -24,6 +24,8 @@ import { article as isuKurumaisuSuwarikata } from "@/data/column/articles/isu-ku
 import { article as kaidanNoboriKudari } from "@/data/column/articles/kaidan-nobori-kudari";
 import { article as kaifukukiBetsuNiToreru } from "@/data/column/articles/kaifukuki-betsu-ni-toreru";
 import { article as kaifukukiShisetsuKijun } from "@/data/column/articles/kaifukuki-shisetsu-kijun";
+import { article as kaifukukiDonichiRiha } from "@/data/column/articles/kaifukuki-donichi-riha";
+import { article as kaifukukiToiletToHomon } from "@/data/column/articles/kaifukuki-toilet-to-homon";
 import { article as kansenshoSaigaiKata } from "@/data/column/articles/kansensho-saigai-kata";
 import { article as kijunWareGensanKata } from "@/data/column/articles/kijun-ware-gensan-kata";
 import { article as koshiKinkiKaraKimeru } from "@/data/column/articles/koshi-kinki-kara-kimeru";
@@ -163,6 +165,8 @@ const articles: ColumnArticle[] = [
     // 素朴な疑問（なぜ週3回・なぜ3か月・最初の1週間が慌ただしい理由）から入り、
     // 答えが制度にあると気づいてもらって fee-check へ送る。導線の向きが他の層と逆。
     // ★タイトルとdescriptionに加算名を入れないこと（既存の加算記事と食い合うため）。
+    kaifukukiDonichiRiha,
+    kaifukukiToiletToHomon,
     rokenShokujiNiHitoGaAtsumaru,
     rokenTaishoMaeGaIsogashii,
     rokenIshiGaDetekuruRiyu,

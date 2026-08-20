@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 498" width="800" height="498">
+  <rect width="800" height="498" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">上乗せ1日80点には、条件が3つそろう必要があります</text>
+
+    <rect x="40" y="56" width="720" height="62" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="82" text-anchor="middle" font-size="15" font-weight="bold" fill="#92400E">回復期リハビリテーション強化体制加算　1日につき80点</text>
+    <text x="400" y="104" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400E">対象は入院料1を算定する病棟。届出は病棟全体で行います</text>
+
+    <rect x="40" y="132" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="170" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">① 実績指数</text>
+    <text x="150" y="192" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">数字で見る</text>
+    <line x1="270" y1="146" x2="270" y2="202" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="160" font-size="14" font-weight="bold" fill="#0F172A">48以上であること</text>
+    <text x="294" y="186" font-size="12" font-weight="bold" fill="#475569">入院料1自体の基準は42以上。それより高い水準が求められます</text>
+
+    <rect x="40" y="228" width="720" height="84" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="266" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">② 家庭訪問</text>
+    <text x="150" y="288" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">実績で見る</text>
+    <line x1="270" y1="242" x2="270" y2="298" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="256" font-size="14" font-weight="bold" fill="#0F172A">退院前訪問指導について、十分な実績を有していること</text>
+    <text x="294" y="282" font-size="12" font-weight="bold" fill="#475569">割合は人数で数えます。2回訪問しても分子は1人のままです</text>
+
+    <rect x="40" y="324" width="720" height="84" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="362" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">③ トイレ</text>
+    <text x="150" y="384" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">届出で見る</text>
+    <line x1="270" y1="338" x2="270" y2="394" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="352" font-size="14" font-weight="bold" fill="#0F172A">排尿自立支援加算に係る届出を行っていること</text>
+    <text x="294" y="378" font-size="12" font-weight="bold" fill="#475569">排尿自立支援加算そのものは週1回200点・12週が限度です</text>
+
+    <text x="400" y="444" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">トイレも家庭訪問も、個々の患者さんの話であると同時に、病棟の点数の話でもあります</text>
+    <text x="400" y="472" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">退院前訪問指導料そのものは入院中1回580点。早期に必要があれば2回算定できます</text>
+  </g>
+</svg>

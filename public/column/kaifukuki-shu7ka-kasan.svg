@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">同じ週7日でも、要件の病棟と上乗せの病棟があります</text>
+
+    <rect x="40" y="56" width="720" height="106" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">入院料1〜4</text>
+    <text x="150" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">やって当たり前</text>
+    <line x1="270" y1="70" x2="270" y2="148" stroke="#90CAF9" stroke-width="2"/>
+    <text x="294" y="84" font-size="14" font-weight="bold" fill="#0F172A">週7日のリハビリ提供体制が施設基準に入っています</text>
+    <text x="294" y="110" font-size="12" font-weight="bold" fill="#475569">すでに要件として求められているので、上乗せは付きません</text>
+    <text x="294" y="132" font-size="12" font-weight="bold" fill="#475569">土日のリハは、入院料の前提に含まれている扱いです</text>
+
+    <rect x="40" y="174" width="720" height="106" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="212" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">入院料5</text>
+    <text x="150" y="234" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">入院医療管理料</text>
+    <text x="150" y="256" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">整えると付く</text>
+    <line x1="270" y1="188" x2="270" y2="266" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="294" y="202" font-size="14" font-weight="bold" fill="#0F172A">休日リハビリテーション提供体制加算　1日につき60点</text>
+    <text x="294" y="228" font-size="12" font-weight="bold" fill="#475569">施設基準＝休日を含め、週7日間リハビリテーションを</text>
+    <text x="294" y="250" font-size="12" font-weight="bold" fill="#475569">提供できる体制を有していること</text>
+
+    <rect x="40" y="292" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="321" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400E">すでに要件になっているものは、あらためて加算にしません</text>
+
+    <text x="400" y="370" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">1日あたりのリハは入院料1で3単位以上、入院料5と入院医療管理料で2単位以上です</text>
+    <text x="400" y="398" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">週5日と週7日では、同じ入院期間でも積み上がる回数が変わります</text>
+  </g>
+</svg>
