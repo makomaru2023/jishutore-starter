@@ -108,7 +108,7 @@ export function ItemDetailPlusCta({ itemTitle, itemSlug, plusReps, plusPreview }
                             {[
                                 '黄色の回数バッジとポイント2行を編集できます',
                                 '最大10点を選んで、1つのPowerPointにまとめられます',
-                                '完成デッキ・プロンプト工房・報酬チェックも同じ月額に含まれます',
+                                'プロンプト工房・報酬チェックも同じ月額に含まれます',
                             ].map((benefit, index) => (
                                 <li key={benefit} className="flex items-start gap-3 text-sm leading-relaxed text-slate-700">
                                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-100 text-[11px] font-black text-blue-700" aria-hidden="true">
@@ -177,7 +177,7 @@ export function ItemDetailPlusCta({ itemTitle, itemSlug, plusReps, plusPreview }
 
                 {!plusPreview && (
                     <p className="mt-4 border-t border-slate-100 pt-4 text-center text-xs leading-relaxed text-slate-500">
-                        疾患別・姿勢別の完成デッキと「伝わるプロンプト工房」も、Plusにすべて収録されています。
+                        「伝わるプロンプト工房」と診療・介護報酬チェックも、Plusに収録されています。
                     </p>
                 )}
             </div>

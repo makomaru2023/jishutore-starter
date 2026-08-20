@@ -21,6 +21,10 @@ export function createPlusTools({
     feeItemCount: number;
 }): readonly PlusToolEntry[] {
     return [
+        // ★2026-08-20：疾患別・姿勢別は買い切り（各¥980）へ戻したため、
+        // Plus LP・サイト内の宣伝からは外した。ただし**既存会員のダウンロードは残す**
+        // （選択肢A・ユーザー判断）。ここと /api/plus/deck-download を消すと
+        // 契約中の会員が使えなくなるので、消すときは必ず事前告知とセットにすること。
         {
             id: "disease-deck",
             title: "疾患別 完成デッキ 9本セット",

@@ -531,7 +531,7 @@ export default function DayServiceExercisePackPage() {
                                 資料づくりも、算定確認も、Plusひとつで
                             </h3>
                             <p className={`text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                {jp("編集できる運動スライド、疾患別・姿勢別の完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックを利用できます。")}
+                                {jp("編集できる運動スライド、伝わるプロンプト工房、診療・介護報酬チェックを利用できます。")}
                             </p>
                             <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 transition-all group-hover:gap-2.5">
                                 Plusの内容を見る

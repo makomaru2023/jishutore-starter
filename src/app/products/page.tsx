@@ -86,13 +86,6 @@ export default function ProductsPage() {
                                         </p>
                                     </div>
                                     <div className="min-w-0 rounded-lg border border-blue-200 bg-white p-4">
-                                        <p className="text-xs font-black tracking-wider text-blue-700">完成デッキ</p>
-                                        <p className="mt-1 text-sm font-black text-slate-950">疾患別9本＋姿勢別セット</p>
-                                        <p className="mt-2 text-xs leading-5 text-slate-600">
-                                            退院前・訪問リハでそのまま使える完成済みPowerPointをZIPでダウンロードできます。
-                                        </p>
-                                    </div>
-                                    <div className="min-w-0 rounded-lg border border-blue-200 bg-white p-4">
                                         <p className="text-xs font-black tracking-wider text-blue-700">会員ツール</p>
                                         <p className="mt-1 text-sm font-black text-slate-950">伝わるプロンプト工房</p>
                                         <p className="mt-2 text-xs leading-5 text-slate-600">
@@ -113,7 +106,7 @@ export default function ProductsPage() {
                                 </p>
                                 <p className="mt-1 text-3xl font-black text-slate-950">月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</p>
                                 <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
-                                    スライド{PLUS_SLIDE_COUNT}点＋完成デッキ＋ツール＋報酬チェック<br />すべて利用できます
+                                    スライド{PLUS_SLIDE_COUNT}点＋ツール＋報酬チェック<br />すべて利用できます
                                 </p>
                                 <div className="mt-4 grid gap-2">
                                     {plusCheckoutReady ? (
@@ -144,6 +137,52 @@ export default function ProductsPage() {
                             </div>
                         </div>
 
+                    </div>
+                </section>
+
+                <section className="border-t border-slate-200 bg-slate-50 py-12 sm:py-16">
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-5xl">
+                            <div className="mb-6 text-center">
+                                <p className="text-xs font-black tracking-widest text-blue-700">買い切り</p>
+                                <h2 className="jp-heading mt-2 text-2xl font-black text-slate-950">
+                                    そのまま配れる資料は、必要なものだけ
+                                </h2>
+                                <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+                                    完成済みのPowerPoint資料です。月額に入らず、1回のお支払いでずっと使えます。
+                                </p>
+                            </div>
+                            <div className="grid gap-5 md:grid-cols-2">
+                                <article className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                                    <span className="self-start rounded-full bg-blue-700 px-3 py-1 text-xs font-black text-white">疾患別</span>
+                                    <h3 className="jp-heading mt-3 text-lg font-black text-slate-950">疾患別自主トレPowerPoint 9本セット</h3>
+                                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                                        脳卒中・腰痛・膝OA・圧迫骨折後・パーキンソン病など、疾患ごとの注意点と運動をまとめた完成資料です。
+                                    </p>
+                                    <p className="mt-4 text-2xl font-black text-slate-950">980円</p>
+                                    <Link
+                                        href="/products/self-training-materials/"
+                                        className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-800"
+                                    >
+                                        詳細を見る
+                                    </Link>
+                                </article>
+                                <article className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                                    <span className="self-start rounded-full bg-indigo-700 px-3 py-1 text-xs font-black text-white">姿勢別</span>
+                                    <h3 className="jp-heading mt-3 text-lg font-black text-slate-950">姿勢別自主トレPowerPointセット</h3>
+                                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                                        疾患名ではなく「今できる姿勢」から選べる完成資料です。体力や立位の安定性に合わせやすい構成になっています。
+                                    </p>
+                                    <p className="mt-4 text-2xl font-black text-slate-950">980円</p>
+                                    <Link
+                                        href="/products/home-elderly-self-training/"
+                                        className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-indigo-700 px-5 py-3 text-sm font-black text-white transition hover:bg-indigo-800"
+                                    >
+                                        詳細を見る
+                                    </Link>
+                                </article>
+                            </div>
+                        </div>
                     </div>
                 </section>
 

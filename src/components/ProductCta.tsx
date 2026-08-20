@@ -67,7 +67,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                                 自主トレ素材庫Plus
                             </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                編集できる運動スライド、完成デッキ、資料づくりのツール、報酬チェックをひとつの月額で利用できます。
+                                編集できる運動スライド、資料づくりのツール、報酬チェックをひとつの月額で利用できます。
                             </p>
                         </div>
                         <div className="flex items-center justify-end sm:flex-shrink-0">
@@ -91,7 +91,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                         資料づくりも、算定確認も、Plusひとつで
                     </p>
                     <p className="text-xs sm:text-sm text-slate-500 font-medium mb-4 leading-relaxed">
-                        編集できるスライドと完成デッキ、会員ツール、報酬チェックを利用できます。
+                        編集できるスライドと会員ツール、報酬チェックを利用できます。
                     </p>
                     <Link
                         href={PRODUCT_URL}
@@ -122,7 +122,7 @@ export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
                                 この素材を編集できるスライドで使いたい方へ
                             </p>
                             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                Plusなら、編集できるPowerPointスライドと完成デッキをダウンロードできます。
+                                Plusなら、編集できるPowerPointスライドをダウンロードできます。
                             </p>
                         </div>
                     </div>

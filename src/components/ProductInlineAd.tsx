@@ -36,12 +36,12 @@ export const PRODUCT_AD_CONFIG: Record<ProductAdType, ProductAdConfig> = {
         label: '自主トレ素材庫Plus',
         title: '資料づくりも、算定確認も、Plusひとつで',
         description:
-            `${PLUS_SLIDE_COUNT_PUBLIC}点の編集できる運動スライド、疾患別・姿勢別の完成デッキ、伝わるプロンプト工房、全${FEE_CHECK_DOMAIN_COUNT}分野・${FEE_CHECK_ITEM_COUNT}項目の診療・介護報酬チェックを利用できます。`,
+            `${PLUS_SLIDE_COUNT_PUBLIC}点の編集できる運動スライド、伝わるプロンプト工房、全${FEE_CHECK_DOMAIN_COUNT}分野・${FEE_CHECK_ITEM_COUNT}項目の診療・介護報酬チェックを利用できます。`,
         href: '/products/jishutore-plus/',
         price: `月額${formatYen(PLUS_PROMO_CURRENT_PRICE_YEN)}`,
         priceNote: 'いつでも解約OK',
         buttonLabel: 'Plusの内容を見る',
-        note: 'PowerPoint編集・完成デッキ・会員ツール・報酬チェック',
+        note: 'PowerPoint編集・会員ツール・報酬チェック',
         itemName: '自主トレ素材庫Plus',
     },
 };

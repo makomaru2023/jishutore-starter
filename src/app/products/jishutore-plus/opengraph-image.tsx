@@ -14,7 +14,6 @@ export const contentType = "image/png";
 const includedItems = [
     "診療・介護報酬チェック",
     "編集できる運動スライド",
-    "疾患別・姿勢別の完成デッキ",
     "伝わるプロンプト工房",
 ];
 

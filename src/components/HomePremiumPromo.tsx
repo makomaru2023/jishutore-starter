@@ -8,7 +8,6 @@ import {
 
 const PLUS_FEATURES = [
     { label: "スライド素材", value: `編集できる${PLUS_SLIDE_COUNT}点` },
-    { label: "完成デッキ", value: "疾患別9本＋姿勢別セット" },
     { label: "会員ツール", value: "伝わるプロンプト工房" },
     { label: "報酬チェック", value: "記録・自己点検まで" },
 ] as const;
@@ -28,7 +27,7 @@ export function HomePremiumPromo() {
                             時間がない方へ
                         </h2>
                         <p className="text-slate-500 font-medium text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                            編集できるスライド素材、完成デッキ、資料づくりのツール、報酬チェックまで。
+                            編集できるスライド素材、資料づくりのツール、報酬チェックまで。
                             <br className="hidden sm:block" />
                             有料はぜんぶ入りの「Plus」ひとつにまとめました。
                         </p>

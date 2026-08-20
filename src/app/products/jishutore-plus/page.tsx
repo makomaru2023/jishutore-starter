@@ -54,11 +54,11 @@ const feeCheckSampleItem =
 const feeCheckSampleUnit = feeCheckSampleItem.units[0];
 
 const OG_TITLE = "算定確認も資料づくりもこれひとつ｜自主トレ素材庫Plus";
-const HERO_DESCRIPTION = `全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数から「記録に残すこと」まで確認できます。編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料もすぐ用意できます。`;
+const HERO_DESCRIPTION = `全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数から「記録に残すこと」まで確認できます。編集できる運動スライド${PLUS_SLIDE_COUNT}点で、その日の自主トレ資料もすぐ用意できます。`;
 // ★2026-08-17：Bing の「description が短すぎる」警告を受けて、
 //   ヒーローの見出し文（HERO_DESCRIPTION・85字）と検索用の説明文を分けた。
 //   ページ上の文言は短いままにし、meta だけ150字に伸ばしている。
-const OG_DESCRIPTION = `訪問リハ・通所リハ・老健など全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数と算定要件から「記録に残すこと」「自己点検のポイント」まで確認できます。毎月の改定確認で内容を更新。編集できる運動スライド${PLUS_SLIDE_COUNT}点と完成デッキで、その日の自主トレ資料もすぐ用意できます。`;
+const OG_DESCRIPTION = `訪問リハ・通所リハ・老健など全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数と算定要件から「記録に残すこと」「自己点検のポイント」まで確認できます。毎月の改定確認で内容を更新。編集できる運動スライド${PLUS_SLIDE_COUNT}点で、その日の自主トレ資料もすぐ用意できます。`;
 
 export const metadata: Metadata = {
     title: OG_TITLE,
@@ -191,31 +191,11 @@ const pillars = [
     },
     {
         number: "03",
-        title: "そのまま使える完成デッキ",
-        summary: "疾患別9本と姿勢別6種を、会員ページからZIPでダウンロードできます。",
-        detail: "退院前指導や訪問リハの準備に",
-    },
-    {
-        number: "04",
         title: "伝わるプロンプト工房",
         summary: "ChatGPTに貼るスライド画像生成プロンプトを、選択式で組み立てます。",
         detail: "テンプレ8種・スタイル10種",
     },
 ] as const;
-
-const diseaseDeckTopics = [
-    "脳卒中 上肢",
-    "脳卒中 下肢",
-    "腰痛",
-    "膝OA・TKA",
-    "圧迫骨折後",
-    "パーキンソン病",
-    "五十肩",
-    "人工股関節術後",
-    "大腿骨骨折術後",
-] as const;
-
-const postureDeckTopics = ["全身", "上肢", "下肢", "座位", "臥位", "立位"] as const;
 
 const promptWorkshopFlow = [
     {
@@ -246,7 +226,7 @@ const workFlow = [
         number: "02",
         phase: "指導の準備",
         title: "使う資料を選ぶ",
-        body: `運動スライド${PLUS_SLIDE_COUNT}点、完成デッキ、プロンプト工房から、その日の仕事に合うものを選びます。`,
+        body: `運動スライド${PLUS_SLIDE_COUNT}点とプロンプト工房から、その日の仕事に合うものを選びます。`,
     },
     {
         number: "03",
@@ -273,7 +253,7 @@ const comparisonRows = [
     {
         label: "使える内容",
         free: "運動イラストを1点ずつ",
-        plus: "報酬チェック・運動スライド・完成デッキ・作成ツール",
+        plus: "報酬チェック・運動スライド・作成ツール",
     },
     {
         label: "報酬チェック",
@@ -293,7 +273,7 @@ const comparisonRows = [
     {
         label: "資料の準備",
         free: "画像を選び、自分で資料を作る",
-        plus: "最大10点を結合、または完成デッキを使う",
+        plus: "必要なページを最大10点まで結合して1つにできる",
     },
     {
         label: "プロンプト工房",
@@ -663,7 +643,7 @@ export default function JishutorePlusPage() {
                                 4つとも、追加料金なしで使えます
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
-                                個別販売していた完成デッキとツール、合計2,940円分もPlusへ収録。有料商品はPlusひとつにまとめました。
+                                毎月の改定確認つきの報酬チェックと、編集できる運動スライドを同じ月額で使えます。
                             </p>
                         </div>
                         <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -853,74 +833,6 @@ export default function JishutorePlusPage() {
 
                 <PlusPreviewGallery previews={previews} />
 
-                <section id="completed-decks" className="scroll-mt-20 border-y border-slate-200 bg-slate-50 py-12 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start">
-                            <div className="lg:sticky lg:top-24">
-                                <PillarLabel number="03" />
-                                <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 jp-heading ![word-break:normal] sm:text-3xl lg:text-4xl">
-                                    そのまま印刷して使える完成デッキ
-                                </h2>
-                                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                                    急ぐ日は、構成済みの資料を開いて必要な部分だけ調整できます。退院前指導や訪問リハなど、準備を一から始めたくない場面に使えます。
-                                </p>
-                                <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                                    <p className="text-sm font-black text-amber-950">旧・個別販売の商品も収録</p>
-                                    <p className="mt-1 text-xs leading-6 text-amber-900">
-                                        2つの完成デッキは旧・個別販売の商品です。Plusでは追加料金なしで利用できます。
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="grid gap-5 md:grid-cols-2">
-                                <article className="flex min-w-0 flex-col rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                                    <div className="flex flex-wrap items-center justify-between gap-2">
-                                        <span className="rounded-full bg-blue-700 px-3 py-1 text-xs font-black text-white">疾患別</span>
-                                        <span className="text-xs font-bold text-slate-500">PowerPoint＋PDF</span>
-                                    </div>
-                                    <h3 className="mt-4 text-xl font-black text-slate-950">疾患別9本セット</h3>
-                                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                                        疾患ごとの注意点と運動をまとめた完成資料。患者さん・ご家族が、自宅で見返しやすい構成です。
-                                    </p>
-                                    <ul className="mt-5 flex flex-wrap gap-2">
-                                        {diseaseDeckTopics.map((topic) => (
-                                            <li key={topic} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700">
-                                                {topic}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <p className="mt-5 border-t border-slate-100 pt-4 text-xs font-bold leading-5 text-blue-700">
-                                        退院前指導・訪問リハ・家族説明に
-                                    </p>
-                                </article>
-
-                                <article className="flex min-w-0 flex-col rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                                    <div className="flex flex-wrap items-center justify-between gap-2">
-                                        <span className="rounded-full bg-indigo-700 px-3 py-1 text-xs font-black text-white">姿勢別</span>
-                                        <span className="text-xs font-bold text-slate-500">会員ページからZIP</span>
-                                    </div>
-                                    <h3 className="mt-4 text-xl font-black text-slate-950">姿勢別6種セット</h3>
-                                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                                        疾患名ではなく、今できる姿勢から運動を選べる完成資料。体力や立位の安定性に合わせやすい構成です。
-                                    </p>
-                                    <ul className="mt-5 grid grid-cols-2 gap-2">
-                                        {postureDeckTopics.map((topic) => (
-                                            <li key={topic} className="rounded-xl border border-indigo-100 bg-indigo-50 px-3 py-2 text-center text-xs font-black text-indigo-900">
-                                                {topic}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <p className="mt-5 border-t border-slate-100 pt-4 text-xs font-bold leading-5 text-indigo-700">
-                                        訪問リハ・通所リハ・集団体操に
-                                    </p>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <MidPageCta placement="plus_lp_mid_completed_decks" />
-
                 <section id="prompt-workshop" className="scroll-mt-20 py-12 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
@@ -1073,13 +985,13 @@ export default function JishutorePlusPage() {
                                 4つ全部入りで、月額{currentPriceLabel}
                             </h2>
                             <p className="mt-4 text-sm leading-7 text-blue-100 sm:text-base">
-                                登録日を基準に1か月ごとの課金です。いつでも解約でき、ダウンロード済みのPowerPointと完成デッキは解約後も使えます。
+                                登録日を基準に1か月ごとの課金です。いつでも解約でき、ダウンロード済みのPowerPointは解約後も使えます。
                             </p>
                             <p className="mt-5 rounded-2xl border border-blue-400/60 bg-blue-800/50 px-4 py-3 text-sm font-bold leading-6 text-white">
                                 報酬チェックの全項目表示も、この料金に含まれます。
                             </p>
                             <p className="mt-3 rounded-2xl border border-blue-400/60 bg-blue-800/50 px-4 py-3 text-sm font-bold leading-6 text-white">
-                                旧・個別販売の完成デッキ2本＋プロンプト工房、合計2,940円分を含みます。
+                                報酬チェックは毎月の改定確認で内容を更新しています。
                             </p>
                             <ul className="mt-6 space-y-2 text-sm font-bold text-white">
                                 <li>✓ クレジットカード決済</li>
@@ -1117,7 +1029,7 @@ export default function JishutorePlusPage() {
                                     <p className="text-xs font-black text-blue-700">自主トレ素材庫Plus</p>
                                     <p className="mt-3 text-4xl font-black tracking-tight">月額{currentPriceLabel}</p>
                                     <p className="mt-3 text-sm leading-6 text-slate-600">
-                                        運動スライド、完成デッキ、プロンプト工房、報酬チェックの4つを利用できます。
+                                        運動スライド、プロンプト工房、報酬チェックの3つを利用できます。
                                     </p>
                                 </>
                             )}
@@ -1290,7 +1202,7 @@ export default function JishutorePlusPage() {
                             算定確認も、資料づくりも、これひとつ。
                         </h2>
                         <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                            診療・介護報酬チェック、編集できる運動スライド、完成デッキ、伝わるプロンプト工房を、同じ月額で利用できます。
+                            診療・介護報酬チェック、編集できる運動スライド、伝わるプロンプト工房を、同じ月額で利用できます。
                         </p>
                         {PLUS_PROMO_IS_ACTIVE && (
                             <p className="mx-auto mt-5 max-w-2xl rounded-2xl border border-blue-100 bg-white px-4 py-3 text-sm font-bold leading-6 text-slate-700 shadow-sm">

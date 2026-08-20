@@ -90,7 +90,7 @@ export function PremiumPromoBanner({ variant = "default" }: Props) {
                         資料づくりも、算定確認も、Plusひとつで。
                     </h3>
                     <p className="text-sm text-slate-300 leading-relaxed">
-                        編集できる運動スライド、完成デッキ、会員ツール、報酬チェックを同じ月額で利用できます。
+                        編集できる運動スライド、会員ツール、報酬チェックを同じ月額で利用できます。
                     </p>
                 </div>
 
