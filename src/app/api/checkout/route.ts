@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe, isStripeConfigured } from '@/lib/stripe';
-import { DAY_SERVICE_EXERCISE_PACK_PRICE_ID } from '@/lib/products';
+import { DAY_SERVICE_EXERCISE_PACK_PRICE_ID, POSTURE_SELF_TRAINING_PRICE_ID } from '@/lib/products';
 import { PRODUCT_ZIP_KEYS } from '@/lib/orders';
 import { r2ObjectExists } from '@/lib/r2';
 
@@ -13,9 +13,18 @@ type ProductConfig = {
     cancelPath: string;
 };
 
-// 2026-07 Plus全部入り化に伴い、個人向け買い切り（疾患別・姿勢別・バンドル・プロンプト工房）は
-// 販売終了。既存購入者の再ダウンロード（/api/download）とサンクスページは影響を受けない。
+// ★2026-08-20：素材の買い切り2つ（疾患別・姿勢別）を各¥980で再開した（ユーザー判断）。
+// 線引きは「素材＝買い切り／道具・調べ物＝サブスク」。
+// まとめ買い（¥1,480）とプロンプト工房は戻さない＝Plus¥500に負けて軸が濁るため。
 const PRODUCTS: Record<string, ProductConfig> = {
+    'self-training-materials-vol01': {
+        priceId: process.env.STRIPE_PRICE_ID_SELF_TRAINING_SET,
+        cancelPath: '/products/self-training-materials',
+    },
+    'home-elderly-self-training': {
+        priceId: POSTURE_SELF_TRAINING_PRICE_ID,
+        cancelPath: '/products/home-elderly-self-training',
+    },
     'day-service-exercise-pack': {
         priceId: DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
         cancelPath: '/products/day-service-exercise-pack',

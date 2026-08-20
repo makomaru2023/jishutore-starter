@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
     title: "有料コンテンツ｜自主トレ素材庫",
     description:
-        "有料コンテンツは「自主トレ素材庫Plus」ひとつ。編集できる運動スライド、疾患別・姿勢別の完成デッキ、伝わるプロンプト工房、診療・介護報酬チェックが全部入りの月額サービスです。",
+        "有料は2種類です。使い続ける道具は月額の「自主トレ素材庫Plus」、資料そのものは買い切り。疾患別9本セットと姿勢別セットは各980円で、編集できる運動スライド・伝わるプロンプト工房・診療介護報酬チェックはPlusにまとまっています。",
     alternates: {
         canonical: "https://jishutore-sozaiko.online/products/",
     },
@@ -39,12 +39,12 @@ export default function ProductsPage() {
                         <div className="mx-auto max-w-3xl text-center">
                             <p className="text-xs font-black tracking-widest text-blue-700">有料コンテンツ</p>
                             <h1 className="jp-heading mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
-                                <span className="block sm:inline">有料は「Plus」</span>
-                                <span className="block sm:ml-2 sm:inline">ひとつだけ</span>
+                                <span className="block sm:inline">使い続ける道具は月額、</span>
+                                <span className="block sm:ml-2 sm:inline">資料は買い切り</span>
                             </h1>
                             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                                スライド素材・完成デッキ・作成ツール・報酬チェックを、ひとつの月額にまとめました。
-                                どれを買うか迷う必要はありません。
+                                毎月使う道具（編集できるスライド・作成ツール・報酬チェック）は月額のPlusに。
+                                そのまま配れる資料は、必要なものだけ買い切りで選べます。
                             </p>
                         </div>
                     </div>

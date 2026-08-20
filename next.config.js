@@ -46,16 +46,8 @@ const nextConfig = {
         destination: '/products/jishutore-plus',
         permanent: true,
       },
-      {
-        source: '/products/self-training-materials',
-        destination: '/products/jishutore-plus',
-        permanent: true,
-      },
-      {
-        source: '/products/home-elderly-self-training',
-        destination: '/products/jishutore-plus',
-        permanent: true,
-      },
+      // ★2026-08-20：素材の買い切り2つを再開したため、Plus LPへの301を解除した。
+      // （プロンプト工房は「道具＝サブスク側」なので301のまま残す）
       {
         source: '/products/slide-prompt-generator',
         destination: '/products/jishutore-plus',
