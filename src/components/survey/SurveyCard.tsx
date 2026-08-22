@@ -13,7 +13,7 @@ import { markSurveyClicked } from "@/lib/survey";
  *   必要な情報を読み終えた後（既存の分野CTAのさらに下）に置く。
  *
  * 画面に入ったときだけ survey_impression を送る（マウント時ではなく実際に見られたとき）。
- * 常設のページ内容なので、閉じる機能や30日抑制は付けていない。
+ * 常設のページ内容なので、閉じる機能や再表示抑制は付けていない。
  */
 export function SurveyCard({
     placement,

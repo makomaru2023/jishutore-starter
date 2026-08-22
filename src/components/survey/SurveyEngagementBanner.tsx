@@ -23,7 +23,8 @@ import {
  *   - /fee-check 系 … ページ下部のカードが担当
  *   - Plus・会員・決済まわり … 申し込みの邪魔をしない
  *
- * 閉じた／回答した人には30日間出さない。1セッション1回まで（src/lib/survey.ts）。
+ * 回答リンクを押した人には今後ずっと出さない。閉じた人には7日間。
+ * さらに1セッション1回まで（src/lib/survey.ts）。
  */
 
 const PAGE_VIEW_KEY = "surveyPageViews";

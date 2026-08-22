@@ -7,7 +7,7 @@ import { markSurveyClicked } from "@/lib/survey";
 /**
  * フッターの常設アンケートリンク。
  * プライバシーポリシー等と同じ扱いで、目立たせない。
- * 常設なので30日抑制の対象外（押した記録だけは残し、割り込み型の導線を止める）。
+ * 常設なので再表示抑制の対象外（押した記録だけは残し、割り込み型の導線を止める）。
  */
 export function SurveyFooterLink({ className = "" }: { className?: string }) {
     if (!SURVEY_ENABLED) return null;
