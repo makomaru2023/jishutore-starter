@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { FeeCheckViewTracker } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
 import { FeeCheckDomainCta } from "@/components/fee-check/FeeCheckDomainCta";
+import { SurveyCard } from "@/components/survey/SurveyCard";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: { params: Promise<{ domain: s
     }
 
     const { domain, item } = result;
-    const title = `${item.name}の算定要件・単位数（${domain.domainLabel}）【2026年度対応】｜自主トレ素材庫`;
+    // ★2026-08-22：検索結果で切られない長さへ短縮した（生成規則と経緯は getFeeItemTitle 側）。
+    const title = getFeeItemTitle(item, domain);
     const description = getFeeDescription(item, domain);
 
     return {
@@ -195,6 +197,10 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             href={getDomainUrl(domain.domain)}
                             itemCount={domain.items.length}
                         />
+
+                        {/* 必要な情報を読み終えた後にだけ出す、利用者アンケートの導線。
+                            本文途中には置かない（算定要件の確認という目的を邪魔しないため）。 */}
+                        <SurveyCard placement="fee_check" className="mt-6" />
                     </div>
                 </div>
             </main>

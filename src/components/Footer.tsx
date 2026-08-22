@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TrackedPlusMemberLink } from "@/components/TrackedPlusMemberLink";
+import { SurveyFooterLink } from "@/components/survey/SurveyFooterLink";
 
 export function Footer() {
     return (
@@ -48,6 +49,7 @@ export function Footer() {
                         <Link href="/contact" className="hover:text-white transition-colors">
                             お問合せ
                         </Link>
+                        <SurveyFooterLink className="hover:text-white transition-colors" />
                     </div>
                     <div className="text-sm font-bold text-slate-500 flex items-center gap-2">
                         © {new Date().getFullYear()} 自主トレ素材庫
