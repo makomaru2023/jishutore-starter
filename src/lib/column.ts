@@ -16,6 +16,7 @@ import { getFeeItem } from "@/lib/fee-check";
 import { findItemById, getItems } from "@/lib/items";
 
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
+import { article as ashikubiTsumazuki } from "@/data/column/articles/ashikubi-tsumazuki";
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
 import { article as chiikiKasanKata } from "@/data/column/articles/chiiki-kasan-kata";
 import { article as hizaItaiJishutore } from "@/data/column/articles/hiza-itai-jishutore";
@@ -27,6 +28,7 @@ import { article as kaifukukiShisetsuKijun } from "@/data/column/articles/kaifuk
 import { article as kaifukukiDonichiRiha } from "@/data/column/articles/kaifukuki-donichi-riha";
 import { article as kaifukukiFimNandoMoHakaru } from "@/data/column/articles/kaifukuki-fim-nando-mo-hakaru";
 import { article as chiikiHokatsuDokoKaraKitaKa } from "@/data/column/articles/chiiki-hokatsu-doko-kara-kita-ka";
+import { article as chiikiHokatsuKangoKasan } from "@/data/column/articles/chiiki-hokatsu-kango-kasan";
 import { article as kaifukukiToiletToHomon } from "@/data/column/articles/kaifukuki-toilet-to-homon";
 import { article as kansenshoSaigaiKata } from "@/data/column/articles/kansensho-saigai-kata";
 import { article as kijunWareGensanKata } from "@/data/column/articles/kijun-ware-gensan-kata";
@@ -156,6 +158,7 @@ const articles: ColumnArticle[] = [
     kaidanNoboriKudari,
     nyuyokuDosaJishutore,
     isuKurumaisuSuwarikata,
+    ashikubiTsumazuki,
     kokukuTaisoJunban,
     jishutoreTsuzukanaiWatashikata,
     jishutoreCheckHyo,
@@ -191,6 +194,7 @@ const articles: ColumnArticle[] = [
     kansenshoSaigaiKata,
     rokenHibiNoZogen,
     tsushoEnchoKasan,
+    chiikiHokatsuKangoKasan,
     shoguKaizenKata,
     kihonHoshuKata,
     kokuuEiyoKasanKata,
