@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import {
     PLUS_PROMO_CURRENT_PRICE_YEN,
     PLUS_PROMO_IS_ACTIVE,
@@ -9,6 +10,35 @@ import {
  * banner: ページ最上部のお知らせ帯（Header直下に置く）
  * button: 旧・購入ボタンの置き換えブロック */
 export function PlusMergedCta({ variant = "button" }: { variant?: "banner" | "button" }) {
+    // ★2026-08-22：Plusの新規受付停止中は、Plusへの申込導線を出さずに
+    //   「個別販売は終了している」ことだけを伝える（購入済みの方への案内は残す）。
+    if (PLUS_SIGNUP_PAUSED) {
+        if (variant === "banner") {
+            return (
+                <div className="border-b border-amber-200 bg-amber-50">
+                    <div className="container mx-auto px-4 py-3 text-center">
+                        <p className="text-xs font-bold leading-5 text-amber-900 sm:text-sm">
+                            この商品の個別販売は終了しています。ご購入済みの方は、これまでどおりご利用いただけます。
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+        return (
+            <div className="mx-auto w-full max-w-md text-center">
+                <p className="text-sm font-bold leading-6 text-slate-600">
+                    個別販売は終了しました。現在、新しいお申し込みは受け付けていません。
+                </p>
+                <Link
+                    href="/plus/library/"
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-black text-blue-700 transition hover:bg-blue-50"
+                >
+                    会員ページへ
+                </Link>
+            </div>
+        );
+    }
+
     if (variant === "banner") {
         return (
             <div className="border-b border-amber-200 bg-amber-50">

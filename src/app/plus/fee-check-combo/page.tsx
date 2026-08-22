@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
 import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
+import { PLUS_PAUSED_MEMBER_NOTE, PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { getComboDomains, getFeeCheckTotalCount } from "@/lib/fee-check";
 
 /**
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://jishutore-sozaiko.online/plus/fee-check-combo/",
     },
+    // ★受付停止中は検索結果から下げる。既存会員の入口としてページ自体は残す。
+    ...(PLUS_SIGNUP_PAUSED ? { robots: { index: false, follow: false } } : {}),
 };
 
 const CHECK_TYPES = [
@@ -207,6 +210,11 @@ export default function FeeCheckComboGatePage() {
                                 この組み合わせチェック、全分野の横断検索、印刷が使えます。
                                 改定・疑義解釈は毎月点検し、各ページの確認日を更新しています。
                             </p>
+                            {PLUS_SIGNUP_PAUSED && (
+                                <p className="mt-4 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-6 text-slate-700 break-keep">
+                                    現在、新規のお申し込みは停止しています。{PLUS_PAUSED_MEMBER_NOTE}
+                                </p>
+                            )}
                             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                                 <PlusSubscribeButton
                                     placement="fee_combo_gate"
@@ -224,9 +232,11 @@ export default function FeeCheckComboGatePage() {
                                 <Link href="/fee-check/" className="text-blue-700 hover:underline">
                                     無料版の報酬チェックを見る
                                 </Link>
-                                <Link href="/products/jishutore-plus/" className="text-blue-700 hover:underline">
-                                    Plusの収録内容を見る
-                                </Link>
+                                {!PLUS_SIGNUP_PAUSED && (
+                                    <Link href="/products/jishutore-plus/" className="text-blue-700 hover:underline">
+                                        Plusの収録内容を見る
+                                    </Link>
+                                )}
                             </div>
                         </section>
 

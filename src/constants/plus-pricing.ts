@@ -1,9 +1,17 @@
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
+
 const parsePrice = (value: string | undefined, fallback: number) => {
     const parsed = Number(value);
     return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 };
 
-export const PLUS_PROMO_IS_ACTIVE = process.env.NEXT_PUBLIC_PLUS_PROMO_ACTIVE !== "false";
+/**
+ * 先行価格キャンペーンの告知を出すか。
+ * ★2026-08-22：新規受付を止めている間は必ず false。
+ *   受付停止中に「◯日までの登録で据え置き」と出ると案内が食い違うため。
+ */
+export const PLUS_PROMO_IS_ACTIVE =
+    !PLUS_SIGNUP_PAUSED && process.env.NEXT_PUBLIC_PLUS_PROMO_ACTIVE !== "false";
 export const PLUS_PROMO_DEADLINE_LABEL =
     process.env.NEXT_PUBLIC_PLUS_PROMO_DEADLINE_LABEL || "7月31日まで";
 export const PLUS_PROMO_DEADLINE_ISO =

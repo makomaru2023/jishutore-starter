@@ -18,6 +18,7 @@ import {
     getSampleFeeItems,
 } from "@/lib/fee-check";
 import { hasActivePlusAccess } from "@/lib/plus-access";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 
 export const metadata: Metadata = {
     title: "診療・介護報酬チェック｜算定要件・単位数を無料で確認｜自主トレ素材庫",
@@ -122,9 +123,11 @@ export default async function FeeCheckTopPage() {
                                     <p className="text-xs font-black tracking-widest text-blue-700">分野を選ぶ</p>
                                     <h2 className="mt-2 text-2xl font-black text-slate-950">公開中のチェック項目</h2>
                                 </div>
-                                <Link href="/products/jishutore-plus/" className="text-sm font-black text-blue-700 hover:underline">
-                                    記録・自己点検ポイントまで見る
-                                </Link>
+                                {!PLUS_SIGNUP_PAUSED && (
+                                    <Link href="/products/jishutore-plus/" className="text-sm font-black text-blue-700 hover:underline">
+                                        記録・自己点検ポイントまで見る
+                                    </Link>
+                                )}
                             </div>
 
                             <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -186,6 +189,9 @@ export default async function FeeCheckTopPage() {
                 <section className="border-t border-slate-200 bg-white py-12 sm:py-16">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-5xl">
+                            {/* ★2026-08-22：Plusの新規受付停止中は「無料とPlusの違い」の比較を出さない。
+                                買えない商品との比較表になってしまうため。全文サンプルの案内だけ残す。 */}
+                            {!PLUS_SIGNUP_PAUSED && (
                             <div className="text-center">
                                 <p className="text-xs font-black tracking-widest text-blue-700">無料とPlusの違い</p>
                                 <h2 className="mt-2 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
@@ -195,7 +201,9 @@ export default async function FeeCheckTopPage() {
                                     無料版とPlusの違いを比べて、必要な範囲を選べます。
                                 </p>
                             </div>
+                            )}
 
+                            {!PLUS_SIGNUP_PAUSED && (
                             <div className="mt-8 grid items-stretch gap-4 md:grid-cols-2">
                                 <div className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
                                     <div className="flex items-start justify-between gap-4">
@@ -279,15 +287,18 @@ export default async function FeeCheckTopPage() {
                                     </Link>
                                 </div>
                             </div>
+                            )}
 
-                            <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 sm:p-7">
+                            <div className={PLUS_SIGNUP_PAUSED ? "rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 sm:p-7" : "mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 sm:p-7"}>
                                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                                     <div>
                                         <span className="inline-flex rounded-full bg-emerald-700 px-3 py-1 text-xs font-black text-white">
                                             登録不要・無料
                                         </span>
                                         <h3 className="mt-3 text-xl font-black text-emerald-950 sm:text-2xl">
-                                            まずは全文サンプルで、Plus表示を体験
+                                            {PLUS_SIGNUP_PAUSED
+                                                ? "記録・自己点検まで載せた全文サンプル"
+                                                : "まずは全文サンプルで、Plus表示を体験"}
                                         </h3>
                                         <p className="mt-2 max-w-2xl text-sm leading-6 text-emerald-950/80">
                                             全{feeDomains.length}分野から、記録・自己点検・つまずきやすい点まで全文公開している項目です。登録なしでそのまま読めます。

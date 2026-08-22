@@ -5,6 +5,7 @@ import { KaiteiWatchInlineLink, type KaiteiWatchLinkTarget } from "@/components/
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckPrintButton } from "@/components/fee-check/FeeCheckPrintButton";
 import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { FEE_CHECK_ITEM_COUNT } from "@/constants/public-counts";
 import {
     categoryLabels,
@@ -133,7 +134,7 @@ function LockedSection({
     return (
         <Section title={title} className={kind === "pitfalls" ? "border-amber-200 bg-amber-50/30" : "border-blue-100 bg-blue-50/30"}>
             <LockedTextList items={items} kind={kind} />
-            {!isUnlocked && hiddenCount > 0 && (
+            {!isUnlocked && !PLUS_SIGNUP_PAUSED && hiddenCount > 0 && (
                 /* 1項目あたりのロック差分（記録2件など）が薄く見える問題への対策。
                    「この項目であと何件」ではなく「全項目でこの欄が開く」と伝える（2026-08-11）。 */
                 <div className="mt-3 rounded-md border border-dashed border-blue-200 bg-white px-3 py-3 text-sm font-black leading-6 text-blue-800 break-keep">
@@ -194,6 +195,27 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
     const sample = getSampleFeeItems().find((entry) => entry.domain.domain === domain.domain);
     const sampleHref = sample ? getFeeItemUrl(sample.domain.domain, sample.item.id) : "/fee-check/";
 
+    // ★2026-08-22：Plusの新規受付停止中は申込導線を出さず、
+    //   無料で読める全文サンプルへの案内だけ残す（148ページに効く）。
+    if (PLUS_SIGNUP_PAUSED) {
+        return (
+            <div className="rounded-lg border border-slate-200 bg-white p-4 print:hidden">
+                <p className="text-sm leading-6 text-slate-600 break-keep">
+                    単位数と算定要件はここまで無料で公開しています。
+                    「記録に残すこと・自己点検で見るポイント」まで載せた項目を、全文サンプルとして無料で読めます。
+                </p>
+                <FeeCheckTrackedLink
+                    href={sampleHref}
+                    event="result"
+                    params={{ fee_domain: domain.domain, fee_item_id: item.id, result_type: "sample" }}
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-50"
+                >
+                    全文サンプルを見る
+                </FeeCheckTrackedLink>
+            </div>
+        );
+    }
+
     return (
         <div className="rounded-lg border border-blue-200 bg-white p-4 print:hidden">
             {/* 2026-08-10：機能の羅列だと44秒で帰る層に届かないため、
@@ -243,6 +265,17 @@ function ContextualPlusGuide({
         return (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-black text-emerald-900 break-keep">
                 ✓ Plus実務チェック（記録・自己点検）
+            </div>
+        );
+    }
+
+    // ★2026-08-22：Plusの新規受付停止中は、非会員向けの誘導ブロックごと出さない。
+    //   全文サンプルであることの表示だけは残す（無料で読めることの説明なので）。
+    if (PLUS_SIGNUP_PAUSED) {
+        if (!isSample) return null;
+        return (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-black text-emerald-900 break-keep print:hidden">
+                🔓 この項目は、記録・自己点検・つまずきやすい点まで全文公開しています。
             </div>
         );
     }
@@ -365,7 +398,7 @@ export function FeeCheckDetailCard({
                 </div>
                 {isUnlocked ? (
                     <FeeCheckPrintButton domain={domain.domain} itemId={item.id} />
-                ) : (
+                ) : PLUS_SIGNUP_PAUSED ? null : (
                     /* 非会員にも同じ位置に鍵つきで見せる。「印刷できる」こと自体が
                        Plusの価値なので、存在ごと隠すと伝わらない（2026-08-11）。 */
                     <FeeCheckTrackedLink
@@ -382,7 +415,9 @@ export function FeeCheckDetailCard({
 
             {isSample && (
                 <div className="mt-5 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-black leading-6 text-emerald-900 break-keep">
-                    🔓 全文公開サンプル。Plusではすべての項目がこの表示で見られます。
+                    {PLUS_SIGNUP_PAUSED
+                        ? "🔓 全文公開サンプル。記録・自己点検・つまずきやすい点まで、この項目はすべて公開しています。"
+                        : "🔓 全文公開サンプル。Plusではすべての項目がこの表示で見られます。"}
                 </div>
             )}
 

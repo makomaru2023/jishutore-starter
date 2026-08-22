@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent, trackPlusCtaClick } from "@/lib/analytics";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import {
     formatYen,
     PLUS_PROMO_CURRENT_PRICE_YEN,
@@ -14,6 +15,9 @@ type PlusPlan = "monthly" | "yearly";
  * 自主トレ素材庫Plus の申し込みボタン。
  * クリックで /api/plus/checkout/ を呼び、Stripe の決済ページへ遷移する。
  * plan="yearly" の場合は年払い価格でセッションを作る。
+ *
+ * ★新規受付停止中（PLUS_SIGNUP_PAUSED）は何も描画しない。
+ *   押しても503になるボタンを出さないため。案内文は設置側で出す。
  */
 export function PlusSubscribeButton({
     placement,
@@ -28,6 +32,7 @@ export function PlusSubscribeButton({
 }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
 
     const priceYen = plan === "yearly" ? PLUS_YEARLY_PRICE_YEN : PLUS_PROMO_CURRENT_PRICE_YEN;
     const resolvedLabel =
@@ -72,6 +77,8 @@ export function PlusSubscribeButton({
             setLoading(false);
         }
     }
+
+    if (PLUS_SIGNUP_PAUSED) return null;
 
     return (
         <div className="w-full sm:w-auto">

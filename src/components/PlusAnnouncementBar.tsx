@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { formatYen, PLUS_PROMO_CURRENT_PRICE_YEN } from "@/constants/plus-pricing";
 import { FEE_CHECK_ITEM_COUNT, PLUS_SLIDE_COUNT_PUBLIC } from "@/constants/public-counts";
 import { trackEvent } from "@/lib/analytics";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 
 const PLUS_URL = "/products/jishutore-plus/";
 
@@ -22,6 +23,8 @@ const PLUS_URL = "/products/jishutore-plus/";
  *   （react-hooks/set-state-in-effect に抵触＋初回描画のちらつきが出る）。
  *   sticky な <header> の外にあってスクロールで流れて消える細いバーなので、
  *   状態を持たない実装のほうが素直だと判断した。
+ *
+ * ★2026-08-22：Plusの新規受付停止にともない、受付停止中は何も出さない。
  */
 export function PlusAnnouncementBar() {
     const pathname = usePathname();
@@ -31,6 +34,8 @@ export function PlusAnnouncementBar() {
     // 2026-08-10：来訪者の46%が報酬チェック目当てで、加算を調べに来た人に
     // 「編集できるスライド227点」を先に見せても刺さらないため。
     const isFeeCheck = pathname.startsWith("/fee-check");
+
+    if (PLUS_SIGNUP_PAUSED) return null;
 
     return (
         <div className="bg-blue-700 text-white">

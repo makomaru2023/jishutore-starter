@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getStripe, isStripeConfigured } from "@/lib/stripe";
 import { isPlusPlan, pickPlusPrice, type PlusPlan } from "@/lib/plus-subscription";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,6 +25,15 @@ async function readPlan(req: NextRequest): Promise<PlusPlan> {
  * plan: "monthly"（既定）/ "yearly" で価格を切り替える。
  */
 export async function POST(req: NextRequest) {
+    // ★新規受付の停止はここで止めるのが本丸。画面からボタンを消しても、
+    //   直接このAPIを叩けば決済セッションが作れてしまうため。
+    if (PLUS_SIGNUP_PAUSED) {
+        return NextResponse.json(
+            { error: "自主トレ素材庫Plusは現在、新規のお申し込みを停止しています。" },
+            { status: 503 },
+        );
+    }
+
     if (!isStripeConfigured()) {
         return NextResponse.json(
             { error: "決済機能の準備中です。時間をおいて再度お試しください。" },

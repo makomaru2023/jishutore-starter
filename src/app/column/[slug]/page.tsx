@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ColumnCard } from "@/components/column/ColumnCard";
 import { ColumnCta } from "@/components/column/ColumnCta";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { SurveyCard } from "@/components/survey/SurveyCard";
 import { ColumnRelatedFeeItems } from "@/components/column/ColumnRelatedFeeItems";
 import { ColumnRelatedItems } from "@/components/column/ColumnRelatedItems";
@@ -107,7 +108,11 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
         .filter((entry) => entry.slug !== article.slug)
         .slice(0, 2);
     const pageUrl = `${SITE_URL}${getColumnUrl(article.slug)}`;
-    const cta = CTA_COPY[article.cta];
+    // ★2026-08-22：Plusの新規受付停止中は、記事末尾のPlus CTAを無料素材へ振り替える。
+    //   記事側の cta: "plus" は54本あるので、記事データは触らずここで1か所で切り替える。
+    //   再開時は PLUS_SIGNUP_PAUSED を false にすれば元に戻る。
+    const ctaId = PLUS_SIGNUP_PAUSED && article.cta === "plus" ? "free-items" : article.cta;
+    const cta = CTA_COPY[ctaId];
 
     const breadcrumbJsonLd = {
         "@context": "https://schema.org",
@@ -226,7 +231,7 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                             <ColumnRelatedFeeItems slug={article.slug} entries={relatedFeeItems} />
 
                             <ColumnCta
-                                variant={article.cta}
+                                variant={ctaId}
                                 slug={article.slug}
                                 heading={cta.heading}
                                 body={cta.body}

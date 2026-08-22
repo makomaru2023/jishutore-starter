@@ -6,6 +6,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { SurveyModal } from "@/components/survey/SurveyModal";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
@@ -342,12 +343,14 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     </div>
                 </div>
 
-                <div className="mx-auto mb-8 max-w-5xl">
-                    <PlusRealPreviewBand
-                        variant="band"
-                        location="items_top_cta"
-                    />
-                </div>
+                {!PLUS_SIGNUP_PAUSED && (
+                    <div className="mx-auto mb-8 max-w-5xl">
+                        <PlusRealPreviewBand
+                            variant="band"
+                            location="items_top_cta"
+                        />
+                    </div>
+                )}
 
                 {!q && (
                     <nav
@@ -428,13 +431,15 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
                     categoryFilter={categoryFilter}
                 />
 
-                {/* 下部：有料資料への導線 */}
-                <div className="mt-16 max-w-5xl mx-auto">
-                    <ProductCta location="items_bottom_cta" variant="compact" />
-                </div>
+                {/* 下部：有料資料への導線（Plus受付停止中は出さない） */}
+                {!PLUS_SIGNUP_PAUSED && (
+                    <div className="mt-16 max-w-5xl mx-auto">
+                        <ProductCta location="items_bottom_cta" variant="compact" />
+                    </div>
+                )}
 
                 {/* 下部：ブックマーク・新着通知（リピーター化導線） */}
-                <div className="mt-6 max-w-5xl mx-auto">
+                <div className={PLUS_SIGNUP_PAUSED ? "mt-16 max-w-5xl mx-auto" : "mt-6 max-w-5xl mx-auto"}>
                     <RepeatVisitBanner placement="items_bottom" />
                 </div>
 

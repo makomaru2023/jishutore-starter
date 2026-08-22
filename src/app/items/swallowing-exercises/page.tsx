@@ -6,6 +6,7 @@ import { FilteredItemList } from "@/components/FilteredItemList";
 import { LineBanner } from "@/components/LineBanner";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { SurveyModal } from "@/components/survey/SurveyModal";
 import { getItems } from "@/lib/items";
@@ -277,9 +278,11 @@ export default function SwallowingExercisesPage() {
                 </section>
 
                 <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-                    <div className="mb-6">
-                        <ProductCta location="items_bottom_cta" variant="compact" />
-                    </div>
+                    {!PLUS_SIGNUP_PAUSED && (
+                        <div className="mb-6">
+                            <ProductCta location="items_bottom_cta" variant="compact" />
+                        </div>
+                    )}
                     <div className="mb-6">
                         <RepeatVisitBanner placement="category_bottom" />
                     </div>

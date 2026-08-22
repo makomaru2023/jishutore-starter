@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { LineHero } from "@/components/LineHero";
 import { PopularItemsSection } from "@/components/PopularItemsSection";
 import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { TrackedProductCtaLink } from "@/components/TrackedProductCtaLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { getColumnArticles } from "@/lib/column";
@@ -81,13 +82,16 @@ export default function Home() {
                   無料素材を見る
                   <ArrowIcon className="h-5 w-5" />
                 </Link>
-                <TrackedProductCtaLink
-                  location="home_hero_cta"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-slate-600 bg-white/10 px-8 py-4 text-base font-black text-white transition hover:bg-white/15"
-                >
-                  素材庫Plusを見る
-                  <ArrowIcon className="h-5 w-5" />
-                </TrackedProductCtaLink>
+                {/* ★2026-08-22：Plusの新規受付停止中はヒーローのPlus CTAを出さない。 */}
+                {!PLUS_SIGNUP_PAUSED && (
+                  <TrackedProductCtaLink
+                    location="home_hero_cta"
+                    className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-slate-600 bg-white/10 px-8 py-4 text-base font-black text-white transition hover:bg-white/15"
+                  >
+                    素材庫Plusを見る
+                    <ArrowIcon className="h-5 w-5" />
+                  </TrackedProductCtaLink>
+                )}
               </div>
             </div>
           </div>
@@ -212,16 +216,18 @@ export default function Home() {
           </section>
         )}
 
-        <section className="bg-slate-50 py-12 sm:py-16">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-5xl">
-              <PlusRealPreviewBand
-                variant="rich"
-                location="home_plus_band"
-              />
+        {!PLUS_SIGNUP_PAUSED && (
+          <section className="bg-slate-50 py-12 sm:py-16">
+            <div className="container mx-auto px-4">
+              <div className="mx-auto max-w-5xl">
+                <PlusRealPreviewBand
+                  variant="rich"
+                  location="home_plus_band"
+                />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         <LineHero />
       </main>

@@ -10,6 +10,7 @@ import {
 import { trackLineClick, trackPlusCtaClick } from "@/lib/analytics";
 import { TrackedPlusMemberLink } from "@/components/TrackedPlusMemberLink";
 import { PlusAnnouncementBar } from "@/components/PlusAnnouncementBar";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { SurveyEngagementBanner } from "@/components/survey/SurveyEngagementBanner";
 
 const plusPriceLabel = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
@@ -17,9 +18,12 @@ const plusPriceLabel = formatYen(PLUS_PROMO_CURRENT_PRICE_YEN);
 export function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
+    // ★受付停止中はPlus LPが「新規受付停止中」の案内ページになるため、
+    //   ヘッダーの申込CTA（#pricing へのスクロール）も出さない。
     const isPlusProductPage =
-        pathname === "/products/jishutore-plus" ||
-        pathname.startsWith("/products/jishutore-plus/");
+        !PLUS_SIGNUP_PAUSED &&
+        (pathname === "/products/jishutore-plus" ||
+            pathname.startsWith("/products/jishutore-plus/"));
 
     const closeMenu = () => setIsMobileMenuOpen(false);
 
@@ -28,7 +32,7 @@ export function Header() {
             {/* 全ページ最上部の告知バー。Headerに同梱することで27ページ分の個別設置が要らない。
                 Plus LP上では出さない（すでに料金が書いてあるページなので邪魔になるだけ）。
                 sticky な <header> の外に置くので、スクロールすると流れて消える。 */}
-            {!isPlusProductPage && <PlusAnnouncementBar />}
+            {!isPlusProductPage && !PLUS_SIGNUP_PAUSED && <PlusAnnouncementBar />}
             {/* 2ページ以上見た人にだけ出す利用者アンケートのバナー。
                 全ページに置く必要があるのでHeaderに同梱している（PlusAnnouncementBarと同じ理由）。
                 出す・出さないの判定はコンポーネント側が持つ。画面下部に固定表示。 */}
@@ -61,9 +65,14 @@ export function Header() {
                         コラム
                     </Link>
 
-                    <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
-                        素材庫Plus
-                    </Link>
+                    {/* ★2026-08-22：Plusの新規受付停止にともないナビから外している。
+                        再開するときは PLUS_SIGNUP_PAUSED を false にすれば戻る。
+                        「会員ページ」は既存会員の入口なので残す。 */}
+                    {!PLUS_SIGNUP_PAUSED && (
+                        <Link href="/products/jishutore-plus" className="text-sm font-bold text-teal-300 hover:text-teal-200 transition-colors">
+                            素材庫Plus
+                        </Link>
+                    )}
 
                     <TrackedPlusMemberLink
                         placement="header"
@@ -133,13 +142,15 @@ export function Header() {
                         >
                             コラム
                         </Link>
-                        <Link
-                            href="/products/jishutore-plus"
-                            className="block py-3 px-4 text-base font-bold text-teal-200 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
-                            onClick={closeMenu}
-                        >
-                            素材庫Plus
-                        </Link>
+                        {!PLUS_SIGNUP_PAUSED && (
+                            <Link
+                                href="/products/jishutore-plus"
+                                className="block py-3 px-4 text-base font-bold text-teal-200 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                                onClick={closeMenu}
+                            >
+                                素材庫Plus
+                            </Link>
+                        )}
                         <TrackedPlusMemberLink
                             placement="header"
                             className="block rounded-xl bg-slate-800 px-4 py-3 text-base font-bold text-white transition-colors hover:bg-slate-700"

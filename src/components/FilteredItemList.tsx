@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
 import { ProductInlineAd } from '@/components/ProductInlineAd';
+import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability';
 
 export interface CategoryFilter {
     key: string;
@@ -79,7 +80,9 @@ const TRAILING_GUARD = 4;
 /** items の配列から、widget広告を一定間隔で挟んだ ReactNode[] を作る純関数。 */
 function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): ReactNode[] {
     const out: ReactNode[] = [];
-    const canShowAds = inlineAds && items.length >= INLINE_AD_MIN_ITEMS;
+    // ★2026-08-22：Plusの新規受付停止中は自社広告（Plus）を挟まない。
+    //   広告はPlusの1種類しかないので、停止中は一覧が素材だけになる。
+    const canShowAds = !PLUS_SIGNUP_PAUSED && inlineAds && items.length >= INLINE_AD_MIN_ITEMS;
 
     items.forEach((item, i) => {
         // 追加表示分の先頭に自社広告を挿入する。初回24件だけのときは表示されない。

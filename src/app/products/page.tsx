@@ -8,6 +8,7 @@ import { PlusYearlyOption } from "@/components/plus/PlusYearlyOption";
 import { isPlusYearlyAvailable } from "@/lib/plus-subscription";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
+import { PLUS_PAUSED_MEMBER_NOTE, PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { PLUS_CURRENT_PRICE } from "@/lib/plus-subscription";
 import {
     PLUS_PROMO_BADGE_TEXT,
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
 const LINE_URL = "https://lin.ee/79a5bNt";
 
 export default function ProductsPage() {
-    const plusCheckoutReady = Boolean(PLUS_CURRENT_PRICE);
+    // ★受付停止中は価格IDの有無にかかわらず申し込ませない。
+    const plusCheckoutReady = !PLUS_SIGNUP_PAUSED && Boolean(PLUS_CURRENT_PRICE);
 
     return (
         <div className="flex min-h-screen flex-col bg-slate-50">
@@ -38,14 +40,28 @@ export default function ProductsPage() {
                     <div className="container mx-auto px-4 py-12 sm:py-16">
                         <div className="mx-auto max-w-3xl text-center">
                             <p className="text-xs font-black tracking-widest text-blue-700">有料コンテンツ</p>
-                            <h1 className="jp-heading mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
-                                <span className="block sm:inline">使い続ける道具は月額、</span>
-                                <span className="block sm:ml-2 sm:inline">資料は買い切り</span>
-                            </h1>
-                            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                                毎月使う道具（編集できるスライド・作成ツール・報酬チェック）は月額のPlusに。
-                                そのまま配れる資料は、必要なものだけ買い切りで選べます。
-                            </p>
+                            {PLUS_SIGNUP_PAUSED ? (
+                                <>
+                                    <h1 className="jp-heading mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
+                                        そのまま配れる資料を、<span className="block sm:ml-2 sm:inline">買い切りで</span>
+                                    </h1>
+                                    <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                                        必要なものだけを選んで購入できます。
+                                        月額の「自主トレ素材庫Plus」は、現在は新しいお申し込みを停止しています。
+                                    </p>
+                                </>
+                            ) : (
+                                <>
+                                    <h1 className="jp-heading mt-3 text-3xl font-black text-slate-950 sm:text-4xl">
+                                        <span className="block sm:inline">使い続ける道具は月額、</span>
+                                        <span className="block sm:ml-2 sm:inline">資料は買い切り</span>
+                                    </h1>
+                                    <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                                        毎月使う道具（編集できるスライド・作成ツール・報酬チェック）は月額のPlusに。
+                                        そのまま配れる資料は、必要なものだけ買い切りで選べます。
+                                    </p>
+                                </>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -101,31 +117,64 @@ export default function ProductsPage() {
                                 )}
                             </div>
                             <div className="min-w-0 max-w-full rounded-lg border border-blue-200 bg-white p-4">
-                                <p className="text-xs font-black tracking-widest text-blue-700">
-                                    {PLUS_PROMO_IS_ACTIVE ? "先行価格" : "料金"}
-                                </p>
-                                <p className="mt-1 text-3xl font-black text-slate-950">月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</p>
-                                <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
-                                    スライド{PLUS_SLIDE_COUNT}点＋ツール＋報酬チェック<br />すべて利用できます
-                                </p>
+                                {PLUS_SIGNUP_PAUSED ? (
+                                    <>
+                                        <p className="text-xs font-black tracking-widest text-slate-500">受付状況</p>
+                                        <p className="mt-1 text-2xl font-black leading-snug text-slate-800">
+                                            新しいお申し込みは<br />停止しています
+                                        </p>
+                                        <p className="mt-2 text-xs font-bold leading-5 text-slate-500">
+                                            再開時期が決まりましたら、LINEとサイトでお知らせします。
+                                        </p>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p className="text-xs font-black tracking-widest text-blue-700">
+                                            {PLUS_PROMO_IS_ACTIVE ? "先行価格" : "料金"}
+                                        </p>
+                                        <p className="mt-1 text-3xl font-black text-slate-950">月額{PLUS_PROMO_CURRENT_PRICE_YEN}円</p>
+                                        <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
+                                            スライド{PLUS_SLIDE_COUNT}点＋ツール＋報酬チェック<br />すべて利用できます
+                                        </p>
+                                    </>
+                                )}
                                 <div className="mt-4 grid gap-2">
-                                    {plusCheckoutReady ? (
-                                        <PlusSubscribeButton
-                                            placement="products_index_plus_card"
-                                            label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
-                                            className="inline-flex min-h-12 w-full max-w-full items-center justify-center whitespace-normal rounded-full bg-blue-700 px-5 py-3 text-center text-sm font-black leading-5 text-white shadow-sm transition hover:bg-blue-800"
-                                        />
+                                    {PLUS_SIGNUP_PAUSED ? (
+                                        <>
+                                            <span className="inline-flex min-h-12 w-full max-w-full items-center justify-center whitespace-normal rounded-full border border-slate-300 bg-slate-100 px-5 py-3 text-center text-sm font-black leading-5 text-slate-500">
+                                                新規受付停止中
+                                            </span>
+                                            <p className="text-xs leading-5 text-slate-500">
+                                                {PLUS_PAUSED_MEMBER_NOTE}
+                                            </p>
+                                            <Link
+                                                href="/plus/library/"
+                                                className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-blue-200 bg-white px-5 py-2.5 text-sm font-black text-blue-700 transition hover:bg-blue-50"
+                                            >
+                                                会員ページへ
+                                            </Link>
+                                        </>
                                     ) : (
-                                        <span className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-slate-200 bg-slate-100 px-5 py-3 text-sm font-black text-slate-400">
-                                            準備中
-                                        </span>
+                                        <>
+                                            {plusCheckoutReady ? (
+                                                <PlusSubscribeButton
+                                                    placement="products_index_plus_card"
+                                                    label={`月額${PLUS_PROMO_CURRENT_PRICE_YEN}円で申し込む`}
+                                                    className="inline-flex min-h-12 w-full max-w-full items-center justify-center whitespace-normal rounded-full bg-blue-700 px-5 py-3 text-center text-sm font-black leading-5 text-white shadow-sm transition hover:bg-blue-800"
+                                                />
+                                            ) : (
+                                                <span className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-slate-200 bg-slate-100 px-5 py-3 text-sm font-black text-slate-400">
+                                                    準備中
+                                                </span>
+                                            )}
+                                            <Link
+                                                href="/products/jishutore-plus/"
+                                                className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-blue-200 bg-white px-5 py-2.5 text-sm font-black text-blue-700 transition hover:bg-blue-50"
+                                            >
+                                                詳細を見る
+                                            </Link>
+                                        </>
                                     )}
-                                    <Link
-                                        href="/products/jishutore-plus/"
-                                        className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-blue-200 bg-white px-5 py-2.5 text-sm font-black text-blue-700 transition hover:bg-blue-50"
-                                    >
-                                        詳細を見る
-                                    </Link>
                                 </div>
                                 {plusCheckoutReady && (
                                     <PlusYearlyOption

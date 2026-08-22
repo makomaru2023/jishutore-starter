@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { trackEvent, trackLineClick, trackLineToastImpression } from "@/lib/analytics";
 import { canShowSurveyPrompt } from "@/lib/survey";
 import { SURVEY_EXCLUSIVE_MODE } from "@/constants/survey";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { MATERIAL_DOWNLOADED_EVENT } from "@/components/MaterialDownloadButton";
 
 /**
@@ -124,19 +125,22 @@ export function PostDownloadLineToast() {
                                 </svg>
                                 7点セットを受け取る
                             </a>
-                            <a
-                                href="/products/jishutore-plus/"
-                                onClick={() =>
-                                    trackEvent("product_cta_click", {
-                                        location: "post_download_toast_plus",
-                                        url: "/products/jishutore-plus/",
-                                        label: "自主トレ素材庫Plus",
-                                    })
-                                }
-                                className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black text-blue-700 transition-colors hover:bg-blue-100"
-                            >
-                                編集できる版を見る
-                            </a>
+                            {/* ★2026-08-22：Plusの新規受付停止中は出さない。 */}
+                            {!PLUS_SIGNUP_PAUSED && (
+                                <a
+                                    href="/products/jishutore-plus/"
+                                    onClick={() =>
+                                        trackEvent("product_cta_click", {
+                                            location: "post_download_toast_plus",
+                                            url: "/products/jishutore-plus/",
+                                            label: "自主トレ素材庫Plus",
+                                        })
+                                    }
+                                    className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black text-blue-700 transition-colors hover:bg-blue-100"
+                                >
+                                    編集できる版を見る
+                                </a>
+                            )}
                             <button
                                 onClick={close}
                                 className="rounded-full px-3 py-1.5 text-xs font-bold text-slate-400 transition-colors hover:text-slate-600"

@@ -13,6 +13,7 @@ import {
 } from "@/constants/plus-pricing";
 import { shouldShowPlusYearly } from "@/lib/plus-yearly";
 import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 
 /**
  * 月払いCTAの下に置く年払いの選択肢。
@@ -20,6 +21,7 @@ import { PlusSubscribeButton } from "@/components/plus/PlusSubscribeButton";
  * 2026-08-01 00:00 JST を過ぎると自動で表示される（環境変数の切り替え不要）。
  * 日付判定はマウント後に行うため、開始前は静的HTMLにも一切含まれない。
  * isPurchasable は年額の価格IDが設定済みかをサーバー側から受け取る。
+ * ★新規受付停止中は月払いごと止まっているので、年払いの案内も出さない。
  */
 export function PlusYearlyOption({
     placement,
@@ -50,6 +52,7 @@ export function PlusYearlyOption({
         return () => window.clearInterval(timerId);
     }, [isPurchasable]);
 
+    if (PLUS_SIGNUP_PAUSED) return null;
     if (!visible) return null;
 
     return (

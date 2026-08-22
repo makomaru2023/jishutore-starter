@@ -14,6 +14,12 @@ import { Testimonials } from "@/components/Testimonials";
 import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import {
+    PLUS_PAUSED_BODY,
+    PLUS_PAUSED_HEADING,
+    PLUS_PAUSED_MEMBER_NOTE,
+    PLUS_SIGNUP_PAUSED,
+} from "@/constants/plus-availability";
 import { PLUS_SLIDE_COUNT } from "@/constants/plus";
 import {
     PLUS_PROOF_LINE_FRIENDS,
@@ -60,7 +66,18 @@ const HERO_DESCRIPTION = `全${feeDomains.length}分野・${feeCheckItemCount}�
 //   ページ上の文言は短いままにし、meta だけ150字に伸ばしている。
 const OG_DESCRIPTION = `訪問リハ・通所リハ・老健など全${feeDomains.length}分野・${feeCheckItemCount}項目の報酬チェックで、単位数と算定要件から「記録に残すこと」「自己点検のポイント」まで確認できます。毎月の改定確認で内容を更新。編集できる運動スライド${PLUS_SLIDE_COUNT}点で、その日の自主トレ資料もすぐ用意できます。`;
 
-export const metadata: Metadata = {
+// ★受付停止中は検索結果から下げる（noindex）。ページ自体は残すので、
+//   既存会員やLINE経由で来た人が「今どうなっているか」を確認できる。
+const PAUSED_METADATA: Metadata = {
+    title: "新規受付停止中｜自主トレ素材庫Plus",
+    description: PLUS_PAUSED_BODY,
+    robots: { index: false, follow: false },
+    alternates: {
+        canonical: "https://jishutore-sozaiko.online/products/jishutore-plus/",
+    },
+};
+
+const ACTIVE_METADATA: Metadata = {
     title: OG_TITLE,
     description: OG_DESCRIPTION,
     alternates: {
@@ -79,6 +96,8 @@ export const metadata: Metadata = {
         description: OG_DESCRIPTION,
     },
 };
+
+export const metadata: Metadata = PLUS_SIGNUP_PAUSED ? PAUSED_METADATA : ACTIVE_METADATA;
 
 const previews = [
     {
@@ -458,7 +477,74 @@ function MidPageCta({ placement }: { placement: string }) {
     );
 }
 
+/**
+ * 新規受付停止中に出す案内ページ。
+ * 販売文面をそのまま残すと「買えるのに買えない」ページになるため、
+ * 案内だけの短いページに差し替える（LPの本体はフラグを戻せばそのまま復活する）。
+ */
+function PlusPausedNotice() {
+    return (
+        <div className="flex min-h-screen flex-col bg-slate-50">
+            <Header />
+            <main className="flex-1">
+                <section className="container mx-auto px-4 py-14 sm:py-20">
+                    <div className="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+                        <span className="inline-flex rounded-full bg-slate-900 px-4 py-1.5 text-xs font-black text-white">
+                            新規受付停止中
+                        </span>
+                        <h1 className="jp-heading mt-5 text-2xl font-black leading-snug text-slate-950 sm:text-3xl">
+                            {PLUS_PAUSED_HEADING}
+                        </h1>
+                        <p className="jp-text mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                            {PLUS_PAUSED_BODY}
+                        </p>
+                        <p className="jp-text mt-3 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm leading-7 text-blue-950">
+                            {PLUS_PAUSED_MEMBER_NOTE}
+                        </p>
+
+                        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                            <Link
+                                href="/plus/library/"
+                                className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full bg-blue-700 px-6 py-3 text-sm font-black text-white transition hover:bg-blue-800"
+                            >
+                                会員ページへ
+                            </Link>
+                            <Link
+                                href="/items/"
+                                className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-black text-slate-800 transition hover:border-teal-300 hover:text-teal-700"
+                            >
+                                無料素材を見る
+                            </Link>
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-black">
+                            <Link href="/fee-check/" className="text-blue-700 hover:underline">
+                                報酬チェック（無料公開）
+                            </Link>
+                            <Link href="/column/" className="text-blue-700 hover:underline">
+                                コラム
+                            </Link>
+                            <TrackedLineLink
+                                href={LINE_URL}
+                                placement="plus_paused_notice"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-emerald-700 hover:underline"
+                            >
+                                再開のお知らせをLINEで受け取る
+                            </TrackedLineLink>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </div>
+    );
+}
+
 export default function JishutorePlusPage() {
+    if (PLUS_SIGNUP_PAUSED) return <PlusPausedNotice />;
+
     return (
         <div className="flex min-h-screen flex-col bg-white pb-20 sm:pb-0">
             <Header />

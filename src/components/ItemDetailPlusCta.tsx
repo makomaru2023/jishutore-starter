@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PLUS_SLIDE_COUNT_PUBLIC } from '@/constants/public-counts';
 import { PRODUCT_AD_CONFIG } from '@/components/ProductInlineAd';
+import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability';
 
 declare global {
     interface Window {
@@ -60,7 +61,10 @@ interface ItemDetailPlusCtaProps {
  * この素材そのものがPlusに収録されている文脈で誘導する。
  * 買い切り資料は主張を抑えた副導線として1行だけ添える。
  */
+// ★2026-08-22：Plusの新規受付停止中は描画しない。
 export function ItemDetailPlusCta({ itemTitle, itemSlug, plusReps, plusPreview }: ItemDetailPlusCtaProps) {
+    if (PLUS_SIGNUP_PAUSED) return null;
+
     return (
         <section className="overflow-hidden rounded-2xl border border-blue-200 bg-white shadow-sm">
             <div className="border-b border-blue-100 bg-blue-50/50 px-5 py-3 sm:px-6">

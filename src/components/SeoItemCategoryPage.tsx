@@ -7,6 +7,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { SurveyModal } from "@/components/survey/SurveyModal";
 import {
@@ -241,12 +242,14 @@ export function SeoItemCategoryPage({
                             </p>
                         </div>
 
-                        <div className="mb-6 sm:mb-8">
-                            <PlusRealPreviewBand
-                                variant="band"
-                                location="category_plus_band"
-                            />
-                        </div>
+                        {!PLUS_SIGNUP_PAUSED && (
+                            <div className="mb-6 sm:mb-8">
+                                <PlusRealPreviewBand
+                                    variant="band"
+                                    location="category_plus_band"
+                                />
+                            </div>
+                        )}
 
                         <FilteredItemList
                             items={items}
@@ -312,9 +315,11 @@ export function SeoItemCategoryPage({
                 </section>
 
                 <div className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 lg:px-8">
-                    <div className="mb-6">
-                        <ProductCta location="items_bottom_cta" variant="compact" />
-                    </div>
+                    {!PLUS_SIGNUP_PAUSED && (
+                        <div className="mb-6">
+                            <ProductCta location="items_bottom_cta" variant="compact" />
+                        </div>
+                    )}
                     <div className="mb-6">
                         <RepeatVisitBanner placement="category_bottom" />
                     </div>

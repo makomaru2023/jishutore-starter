@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import {
     DAY_SERVICE_EXERCISE_PACK_PRICE_ID,
@@ -516,7 +517,8 @@ export default function DayServiceExercisePackPage() {
                     </div>
                 </section>
 
-                {/* 回遊（現在販売中のPlusのみ） */}
+                {/* 回遊（現在販売中のPlusのみ。★受付停止中は出さない） */}
+                {!PLUS_SIGNUP_PAUSED && (
                 <section className="bg-slate-50 py-12 sm:py-16 border-t border-slate-100">
                     <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
                         <p className="mb-5 text-center text-xs font-black tracking-widest text-slate-500">
@@ -542,6 +544,7 @@ export default function DayServiceExercisePackPage() {
                         </Link>
                     </div>
                 </section>
+                )}
             </main>
             <Footer />
         </div>

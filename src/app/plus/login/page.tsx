@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { PLUS_SESSION_COOKIE, verifySessionToken } from "@/lib/plus-auth";
 import { PlusLoginForm } from "./PlusLoginForm";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 
 export const metadata: Metadata = {
     title: "ログイン｜自主トレ素材庫Plus",
@@ -39,11 +40,17 @@ export default async function PlusLoginPage({
                 <PlusLoginForm />
             </Suspense>
             <p className="mt-8 text-center text-sm text-gray-500">
-                まだご登録でない方は{" "}
-                <a href="/products/jishutore-plus" className="font-semibold text-blue-600 hover:underline">
-                    Plusのご案内
-                </a>
-                {" "}へ
+                {PLUS_SIGNUP_PAUSED ? (
+                    "現在、新規のお申し込みは停止しています。"
+                ) : (
+                    <>
+                        まだご登録でない方は{" "}
+                        <a href="/products/jishutore-plus" className="font-semibold text-blue-600 hover:underline">
+                            Plusのご案内
+                        </a>
+                        {" "}へ
+                    </>
+                )}
             </p>
         </main>
     );

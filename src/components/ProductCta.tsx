@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { PRODUCT_AD_CONFIG } from './ProductInlineAd';
+import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability';
 
 declare global {
     interface Window {
@@ -46,6 +47,9 @@ const ArrowIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 export function ProductCta({ location, variant = 'full' }: ProductCtaProps) {
     const handleClick = () => trackClick(location);
+
+    // ★2026-08-22：Plusの新規受付停止中は出さない（設置側でも枠ごと外している）。
+    if (PLUS_SIGNUP_PAUSED) return null;
 
     // 上部用: スリムなバナー
     if (variant === 'compact') {

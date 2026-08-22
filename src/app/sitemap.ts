@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { getItems } from '@/lib/items'
 import { getColumnArticles, getColumnUrl } from '@/lib/column'
 import { feeDomains, getAllFeeItems } from '@/lib/fee-check'
+import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://jishutore-sozaiko.online'
@@ -74,6 +75,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: page.changeFrequency,
         priority: page.priority,
     }))
+
+    // ★2026-08-22：Plusの新規受付停止中は、販売系のURLを sitemap から外す。
+    //   ページ側は noindex にしてあるので、載せ続けると指示が食い違う。
+    //   再開時は PLUS_SIGNUP_PAUSED を false にすれば自動で戻る。
+    const plusSalesUrls = PLUS_SIGNUP_PAUSED
+        ? []
+        : [
+            {
+                url: `${baseUrl}/products/jishutore-plus/`,
+                lastModified: staticUpdatedAt,
+                changeFrequency: 'weekly' as const,
+                priority: 0.9,
+            },
+            {
+                // 非会員向けの組み合わせチェック説明ページ。
+                // 「併算定 できない」系のクエリの受け皿になりうるので載せる。
+                url: `${baseUrl}/plus/fee-check-combo/`,
+                lastModified: new Date('2026-08-12T00:00:00+09:00'),
+                changeFrequency: 'monthly' as const,
+                priority: 0.7,
+            },
+        ]
 
     return [
         {
@@ -161,12 +184,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/products/jishutore-plus/`,
-            lastModified: staticUpdatedAt,
-            changeFrequency: 'weekly' as const,
-            priority: 0.9,
-        },
-        {
             url: `${baseUrl}/fee-check/`,
             lastModified: feeCheckUpdatedAt,
             changeFrequency: 'weekly' as const,
@@ -177,14 +194,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date('2026-08-19T00:00:00+09:00'),
             changeFrequency: 'monthly' as const,
             priority: 0.65,
-        },
-        {
-            // 非会員向けの組み合わせチェック説明ページ（会員はmiddlewareでハブへ転送）。
-            // 「併算定 できない」系のクエリの受け皿になりうるので載せる。
-            url: `${baseUrl}/plus/fee-check-combo/`,
-            lastModified: new Date('2026-08-12T00:00:00+09:00'),
-            changeFrequency: 'monthly' as const,
-            priority: 0.7,
         },
         {
             url: `${baseUrl}/products/day-service-exercise-pack/`,
@@ -204,6 +213,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
+        ...plusSalesUrls,
         ...additionalPublicUrls,
         ...columnUrls,
         ...itemUrls,
