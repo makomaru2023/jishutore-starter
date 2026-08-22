@@ -8,7 +8,7 @@ import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { SurveyToast } from "@/components/survey/SurveyToast";
+import { SurveyModal } from "@/components/survey/SurveyModal";
 import {
     seoItemCategories,
     type SeoItemCategoryConfig,
@@ -324,7 +324,7 @@ export function SeoItemCategoryPage({
 
             <Footer />
             <PostDownloadLineToast />
-            <SurveyToast />
+            <SurveyModal />
         </div>
     );
 }

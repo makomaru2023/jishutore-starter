@@ -7,7 +7,7 @@ import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { SurveyToast } from "@/components/survey/SurveyToast";
+import { SurveyModal } from "@/components/survey/SurveyModal";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 import { seoItemCategories } from "@/lib/seoItemCategories";
 import { Metadata } from "next";
@@ -445,7 +445,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
             </main>
             <Footer />
             <PostDownloadLineToast />
-            <SurveyToast />
+            <SurveyModal />
         </div>
     );
 }

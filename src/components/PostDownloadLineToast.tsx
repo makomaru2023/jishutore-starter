@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { trackEvent, trackLineClick, trackLineToastImpression } from "@/lib/analytics";
 import { canShowSurveyPrompt } from "@/lib/survey";
+import { SURVEY_EXCLUSIVE_MODE } from "@/constants/survey";
 import { MATERIAL_DOWNLOADED_EVENT } from "@/components/MaterialDownloadButton";
 
 /**
@@ -33,6 +34,9 @@ export function PostDownloadLineToast() {
     const scheduledRef = useRef(false);
 
     useEffect(() => {
+        // アンケート集中期間中はLINEトーストを出さない（constants/survey.ts の定数で戻せる）
+        if (SURVEY_EXCLUSIVE_MODE) return;
+
         function canShow(): boolean {
             try {
                 if (sessionStorage.getItem(SESSION_KEY)) return false;

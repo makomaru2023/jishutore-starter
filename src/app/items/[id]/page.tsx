@@ -6,7 +6,7 @@ import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailPlusCta } from "@/components/ItemDetailPlusCta";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { SurveyToast } from "@/components/survey/SurveyToast";
+import { SurveyModal } from "@/components/survey/SurveyModal";
 import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
 import { findPlusForFreeItem } from "@/lib/plus-match";
 import Image from "next/image";
@@ -507,7 +507,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
             </main>
             <Footer />
             <PostDownloadLineToast />
-            <SurveyToast />
+            <SurveyModal />
         </div>
     );
 }

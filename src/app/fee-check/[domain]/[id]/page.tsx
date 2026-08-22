@@ -201,7 +201,7 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
 
                         {/* 必要な情報を読み終えた後にだけ出す、利用者アンケートの導線。
                             本文途中には置かない（算定要件の確認という目的を邪魔しないため）。 */}
-                        <SurveyCard placement="fee_check" className="mt-6" />
+                        <SurveyCard placement="fee_check" className="mt-6" emphasis />
                     </div>
                 </div>
             </main>

@@ -7,7 +7,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { ProductCta } from "@/components/ProductCta";
 import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { SurveyToast } from "@/components/survey/SurveyToast";
+import { SurveyModal } from "@/components/survey/SurveyModal";
 import { getItems } from "@/lib/items";
 import type { Item } from "@/types";
 
@@ -289,7 +289,7 @@ export default function SwallowingExercisesPage() {
 
             <Footer />
             <PostDownloadLineToast />
-            <SurveyToast />
+            <SurveyModal />
         </div>
     );
 }

@@ -18,9 +18,12 @@ import { markSurveyClicked } from "@/lib/survey";
 export function SurveyCard({
     placement,
     className = "",
+    emphasis = false,
 }: {
     placement: SurveyPlacement;
     className?: string;
+    /** 青枠＋塗りボタンで目立たせる。回答を集めたい期間に使う。 */
+    emphasis?: boolean;
 }) {
     const ref = useRef<HTMLElement | null>(null);
     const sentRef = useRef(false);
@@ -58,9 +61,11 @@ export function SurveyCard({
     return (
         <section
             ref={ref}
-            className={`rounded-lg border border-slate-200 bg-white p-5 ${className}`}
+            className={`rounded-lg border p-5 ${
+                emphasis ? "border-blue-200 bg-blue-50/60" : "border-slate-200 bg-white"
+            } ${className}`}
         >
-            <p className="text-xs font-black tracking-widest text-slate-400">ANQUETE</p>
+            <p className={`text-xs font-black tracking-widest ${emphasis ? "text-blue-700" : "text-slate-400"}`}>ANQUETE</p>
             <h2 className="mt-1 break-keep text-base font-black leading-snug text-slate-950 sm:text-lg">
                 自主トレ素材庫をもっと使いやすくするために
             </h2>
@@ -76,7 +81,11 @@ export function SurveyCard({
                     markSurveyClicked();
                     trackSurveyClick(placement);
                 }}
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-5 py-2.5 text-sm font-black text-blue-700 transition-colors hover:bg-blue-100"
+                className={`mt-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-black transition-colors ${
+                    emphasis
+                        ? "bg-blue-700 text-white hover:bg-blue-800"
+                        : "border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100"
+                }`}
             >
                 アンケートに回答する（約1分）
                 <svg

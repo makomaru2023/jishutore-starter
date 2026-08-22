@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ColumnCard } from "@/components/column/ColumnCard";
 import { ColumnCta } from "@/components/column/ColumnCta";
+import { SurveyCard } from "@/components/survey/SurveyCard";
 import { ColumnRelatedFeeItems } from "@/components/column/ColumnRelatedFeeItems";
 import { ColumnRelatedItems } from "@/components/column/ColumnRelatedItems";
 import { Footer } from "@/components/Footer";
@@ -235,6 +236,11 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                             <p className="jp-text mt-10 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs leading-6 text-slate-500 sm:p-5">
                                 {DISCLAIMER[article.category]}
                             </p>
+
+                            {/* 記事を読み終えた位置に置く利用者アンケートの導線。
+                                ★検索からの着地ページなので、モーダルではなくカードにする
+                                （Googleの「煩わしいインタースティシャル」を避けるため）。 */}
+                            <SurveyCard placement="column" className="mt-6" emphasis />
                         </article>
 
                         {otherArticles.length > 0 && (

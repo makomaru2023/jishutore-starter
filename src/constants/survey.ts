@@ -13,6 +13,15 @@
 export const SURVEY_ENABLED = true;
 
 /**
+ * アンケート集中期間モード。
+ * --------------------------------------------------------------
+ * true の間は、素材ダウンロード後のLINE誘導トーストを出さず、アンケートに一本化する。
+ * ★2026-08-22：LINEの友だち数が伸びていないため、30日間はアンケート優先にする判断。
+ *   期間が終わったら false に戻すだけで、LINEトーストが元どおり復活する。
+ */
+export const SURVEY_EXCLUSIVE_MODE = true;
+
+/**
  * 回答用フォームの正式URL。
  * ★短縮URL（https://forms.gle/TnUUAu8dWd1pPhxk6）ではなくこちらを使う理由：
  *   forms.gle はリダイレクトの過程でクエリ文字列が落ちるため、UTMが付かない。
@@ -30,6 +39,7 @@ export const USER_SURVEY_SHORT_URL = "https://forms.gle/TnUUAu8dWd1pPhxk6";
 export type SurveyPlacement =
     | "material_download"
     | "fee_check"
+    | "column"
     | "footer"
     | "engagement_banner";
 
