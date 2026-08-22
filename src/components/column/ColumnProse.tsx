@@ -3,11 +3,14 @@
  *
  * 記事側は素の <p> や <h2> を書かず、ここのパーツだけを使う。
  * 日本語の折返し（jp-text / jp-heading）と余白を記事ごとにブレさせないため。
- * すべてサーバーコンポーネント（状態を持たない）。
+ *
+ * ★Figure を除いてサーバーコンポーネント（状態を持たない）。
+ *   Figure だけは拡大表示のために ColumnFigureZoom（クライアント）へ渡している。
  */
 
 import type { ReactNode } from "react";
-import Image from "next/image";
+
+import { ColumnFigureZoom } from "@/components/column/ColumnFigureZoom";
 
 // 見出しの行間は leading-relaxed（1.625）で揃える。日本語の太字は文字の高さが行送りを
 // 上回るため、leading-snug（1.375）だと2行以上になったときに上下の行が実際に重なる。
@@ -79,7 +82,12 @@ export function Note({
     );
 }
 
-/** 図解。src は `/column/` 配下のSVG。alt は説明文にする（編集ガイド§6）。 */
+/**
+ * 図解。src は `/column/` 配下のSVG。alt は説明文にする（編集ガイド§6）。
+ *
+ * ★タップ／クリックで拡大できる（2026-08-23）。本文中の幅ではスマホで字が読めないため。
+ *   拡大・移動の中身は ColumnFigureZoom 側。ここは figure と caption だけを持つ。
+ */
 export function Figure({
     src,
     alt,
@@ -97,15 +105,7 @@ export function Figure({
         // 図解は読む文章より広く見せる。記事カード側に余白がある lg 以上でだけ左右にはみ出す
         // （それ未満の幅ではみ出すとカードから溢れる）。
         <figure className="mt-7 lg:-mx-12">
-            <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3 sm:p-4">
-                <Image
-                    src={src}
-                    alt={alt}
-                    width={width}
-                    height={height}
-                    className="h-auto w-full"
-                />
-            </div>
+            <ColumnFigureZoom src={src} alt={alt} caption={caption} width={width} height={height} />
             {caption && (
                 <figcaption className="jp-text mt-2 text-xs leading-6 text-slate-500">{caption}</figcaption>
             )}
