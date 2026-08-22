@@ -213,6 +213,152 @@ export function getPublicFeeSearchText(item: FeeItem): string {
     );
 }
 
+/**
+ * 検索結果に出す用の、短い分野名。
+ * ★正式名（domainLabel）はページ内の見出しとdescriptionで使う。ここは title 専用。
+ */
+const SHORT_DOMAIN_LABEL: Record<string, string> = {
+    "chiiki-hokatsu-care": "地域包括ケア病棟",
+    "homon-kango-riha": "訪問看護のリハ",
+    "homon-riha": "訪問リハ",
+    "kaifukuki-riha": "回復期リハ病棟",
+    kyuseiki: "急性期一般病棟",
+    "roken-nyusho": "老健・入所",
+    "tsusho-kaigo": "通所介護",
+    "tsusho-riha": "通所リハ",
+};
+
+/** 検索結果で切られない上限。日本語は全角なのでだいたい34字が限界（2026-08-22に実測して決めた）。 */
+const FEE_TITLE_MAX = 34;
+const FEE_TITLE_SUFFIX = "の算定要件・単位数";
+
+const charLength = (s: string) => [...s].length;
+
+/** 「（」と「）」の対応が取れているか。中略で括弧が開きっぱなしになるのを防ぐ。 */
+function hasBalancedParens(s: string): boolean {
+    let depth = 0;
+    for (const c of s) {
+        if (c === "（") depth++;
+        if (c === "）") depth--;
+        if (depth < 0) return false;
+    }
+    return depth === 0;
+}
+
+/** 閉じていない「（」があれば、その手前まで戻す。 */
+function trimUnbalancedTail(s: string): string {
+    let depth = 0;
+    let lastOpen = -1;
+    const cs = [...s];
+    for (let i = 0; i < cs.length; i++) {
+        if (cs[i] === "（") {
+            if (depth === 0) lastOpen = i;
+            depth++;
+        } else if (cs[i] === "）") {
+            depth = Math.max(0, depth - 1);
+        }
+    }
+    return depth > 0 && lastOpen >= 0 ? cs.slice(0, lastOpen).join("").trim() : s;
+}
+
+/** 括弧の外にある「・」だけで分割する（括弧の中の列挙を壊さないため）。 */
+function splitTopLevelNakaguro(s: string): string[] {
+    const out: string[] = [];
+    let buf = "";
+    let depth = 0;
+    for (const c of s) {
+        if (c === "（") depth++;
+        else if (c === "）") depth = Math.max(0, depth - 1);
+        if (c === "・" && depth === 0) {
+            out.push(buf);
+            buf = "";
+        } else {
+            buf += c;
+        }
+    }
+    out.push(buf);
+    return out;
+}
+
+/**
+ * 頭と末尾を残して中央を省く。
+ * ★末尾を守るのは「〜に対する減算」のように、末尾に種別が来る項目名があるため。
+ * 頭だけ残すと「減算の話」だと分からなくなる。
+ */
+function middleEllipsis(s: string, max: number): string {
+    if (charLength(s) <= max) return s;
+    const cs = [...s];
+    for (const tail of [9, 8, 7, 6, 5, 4]) {
+        const head = max - 1 - tail;
+        if (head < 4) continue;
+        const raw = cs.slice(0, head).join("") + "…" + cs.slice(cs.length - tail).join("");
+        if (hasBalancedParens(raw)) return raw;
+        const trimmed = trimUnbalancedTail(cs.slice(0, head).join("")) + "…" + cs.slice(cs.length - tail).join("");
+        if (hasBalancedParens(trimmed) && charLength(trimmed) >= 10) return trimmed;
+    }
+    return trimUnbalancedTail(cs.slice(0, max - 1).join("")) + "…";
+}
+
+/**
+ * 報酬チェック項目ページの <title>。
+ *
+ * ★2026-08-22に全面的に短くした。それまでは
+ * 「{項目名}の算定要件・単位数（{正式な分野名}）【2026年度対応】｜自主トレ素材庫」で、
+ * **148項目すべてが30字超**（中央値53字・最長98字）。検索結果では30字前後で切られるため、
+ * 「算定要件・単位数」も「2026年度対応」も画面に出ておらず、分野名も2回繰り返していた。
+ * GSCで「表示は多いのにクリック0」のページが並んでいたことへの対応（handover 2026-08-22）。
+ *
+ * ★落とした情報（正式な分野名・年度・サイト名）は description と og:siteName に残っている。
+ * ★段階的に縮め、収まった時点で採用する。項目名は検索語そのものなので最後まで守る。
+ */
+export function getFeeItemTitle(item: FeeItem, domain: FeeDomain): string {
+    const shortDomain = SHORT_DOMAIN_LABEL[domain.domain] ?? domain.domainLabel;
+    const variants: string[] = [];
+    const push = (candidate: string) => {
+        const v = candidate.trim();
+        if (v && !variants.includes(v)) variants.push(v);
+    };
+
+    push(item.name);
+    // 「→ 2026年6月から対象」のような補足を落とす
+    push(item.name.split("→")[0]);
+
+    // 末尾の補足カッコ（条番号・区分の列挙）を、短くなりすぎない範囲で繰り返し落とす
+    let stripped = variants[variants.length - 1];
+    for (let i = 0; i < 3; i++) {
+        const next = stripped.replace(/（[^（）]*）\s*$/u, "").trim();
+        if (next === stripped || charLength(next) < 6) break;
+        stripped = next;
+        push(stripped);
+    }
+
+    // それでも長いときだけ略す（短い項目名の正式表記は崩さない）
+    for (const base of [...variants]) push(base.replace(/リハビリテーション/g, "リハ"));
+
+    // 「A・B・C加算」の列挙は先頭だけ残して「ほか」
+    for (const base of [...variants]) {
+        const parts = splitTopLevelNakaguro(base);
+        if (parts.length <= 1) continue;
+        let acc = parts[0];
+        for (let i = 1; i < parts.length && charLength(`${acc}・${parts[i]}`) <= 16; i++) {
+            acc = `${acc}・${parts[i]}`;
+        }
+        if (charLength(acc) < charLength(base)) push(`${trimUnbalancedTail(acc)}ほか`);
+    }
+
+    for (const v of variants) {
+        const candidate = `${v}${FEE_TITLE_SUFFIX}｜${shortDomain}`;
+        if (charLength(candidate) <= FEE_TITLE_MAX) return candidate;
+    }
+    // ★分野名は必ず付ける。落とすと別分野の同名項目とtitleが衝突するため
+    //   （2026-08-22に「中山間地域等に居住する者へのサービス提供加算」が
+    //     訪問リハと通所介護で完全に同じtitleになる事故を実測して分かった）。
+    //   収まらないぶんは項目名を中略して吸収する。
+    const nameBudget = FEE_TITLE_MAX - charLength(FEE_TITLE_SUFFIX) - 1 - charLength(shortDomain);
+    const shortest = variants.reduce((a, b) => (charLength(b) < charLength(a) ? b : a));
+    return `${middleEllipsis(shortest, nameBudget)}${FEE_TITLE_SUFFIX}｜${shortDomain}`;
+}
+
 export function getFeeDescription(item: FeeItem, domain: FeeDomain): string {
     const firstRequirement = item.requirements[0] ?? "";
     const firstUnit = item.units[0] ? `${item.units[0].condition}は${item.units[0].value}` : "";

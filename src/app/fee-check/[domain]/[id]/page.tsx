@@ -11,6 +11,7 @@ import { Header } from "@/components/Header";
 import { getColumnsByFeeItem, getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
 import {
     getFeeDescription,
+    getFeeItemTitle,
     getDomainUrl,
     getFeeItem,
     getFeeItemUrl,
