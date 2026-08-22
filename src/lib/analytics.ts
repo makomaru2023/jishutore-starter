@@ -97,6 +97,25 @@ export function trackPlusSurveyClick(placement: string): void {
     trackEvent("plus_survey_click", { placement });
 }
 
+/**
+ * 利用者アンケート（Googleフォーム）の導線が画面に出たとき。
+ * placement: material_download / fee_check / engagement_banner
+ * ※フッターリンクは常時ページ内にあるため impression は送らない（分母が全PVになり意味を持たないため）。
+ */
+export function trackSurveyImpression(placement: string): void {
+    trackEvent("survey_impression", { placement });
+}
+
+/**
+ * 利用者アンケートの回答リンククリック。
+ * placement: material_download / fee_check / footer / engagement_banner
+ * 回答完了はGoogleフォーム側（外部ドメイン）なのでGA4では取れない。
+ * ここまでの表示数・クリック数・placement別CTRで施策を評価する。
+ */
+export function trackSurveyClick(placement: string): void {
+    trackEvent("survey_click", { placement });
+}
+
 export interface MaterialDownloadParams {
     /** 日本語の素材名 */
     materialName: string;
