@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { trackEvent, trackLineClick } from "@/lib/analytics";
+import { trackEvent, trackLineClick, trackLineToastImpression } from "@/lib/analytics";
+import { canShowSurveyPrompt } from "@/lib/survey";
 import { MATERIAL_DOWNLOADED_EVENT } from "@/components/MaterialDownloadButton";
 
 /**
@@ -10,6 +11,11 @@ import { MATERIAL_DOWNLOADED_EVENT } from "@/components/MaterialDownloadButton";
  * - 「閉じる」を押すと30日間は再表示しない（localStorage）
  * - 同一セッション内では最大1回（sessionStorage）
  * しつこさ厳禁。ダウンロード完了を妨げないタイミングで控えめに表示する。
+ *
+ * ★2026-08-22：利用者アンケートの導線を優先するようにした。
+ *   アンケート未回答・未拒否の人にはアンケートトースト（SurveyToast）が出るので、
+ *   そのときこのトーストは出さない。アンケートを回答済み／閉じた人だけがここに来る。
+ *   両方が canShowSurveyPrompt() を見ているので、同時に2つ出ることはない。
  */
 
 const LINE_URL = "https://lin.ee/79a5bNt";
@@ -17,22 +23,6 @@ const DISMISS_KEY = "line_toast_dismissed_until";
 const SESSION_KEY = "line_toast_shown_session";
 const SHOW_DELAY_MS = 3000;
 const DISMISS_MS = 30 * 24 * 60 * 60 * 1000; // 30日
-
-/**
- * このダウンロードでLINEトーストが出るかどうか。
- * アンケートトースト（SurveyToast）が同時に出ないようにするために使う。
- * LINE導線を優先し、LINEが出ない回だけアンケートを出す。
- */
-export function willLineToastShow(): boolean {
-    try {
-        if (sessionStorage.getItem(SESSION_KEY)) return false;
-        const until = localStorage.getItem(DISMISS_KEY);
-        if (until && Date.now() < Number(until)) return false;
-    } catch {
-        return true;
-    }
-    return true;
-}
 
 const LINE_SVG_PATH =
     "M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314";
@@ -56,6 +46,8 @@ export function PostDownloadLineToast() {
 
         function onDownloaded() {
             if (scheduledRef.current) return;
+            // アンケートの導線が出る回はそちらに譲る（同時に2つ出さない）
+            if (canShowSurveyPrompt()) return;
             if (!canShow()) return;
             scheduledRef.current = true;
 
@@ -65,6 +57,7 @@ export function PostDownloadLineToast() {
                 } catch {
                     /* noop */
                 }
+                trackLineToastImpression("post_download_toast");
                 setVisible(true);
                 // 次フレームでフェードイン
                 window.requestAnimationFrame(() => setEntered(true));

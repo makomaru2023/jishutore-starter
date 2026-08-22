@@ -15,10 +15,35 @@ declare global {
 
 type EventParams = Record<string, unknown>;
 
+/**
+ * 計測を許可するホスト名。
+ * --------------------------------------------------------------
+ * ★ここに無いホストからは GA4 へ一切送らない。
+ *   localhost / 127.0.0.1 / *.vercel.app（プレビュー・本番デプロイの別名URL）が対象外になる。
+ *   2026-08以前に localhost のアクセスが本番GA4へ混ざり、Plus LP到達数のような
+ *   母数の小さい指標が読めなくなった事故があったため、二重に塞いでいる。
+ *   （1枚目の防御は layout.tsx：本番デプロイ以外ではGAタグ自体を読み込まない＋
+ *     読み込んでもホストが違えば ga-disable で止める）
+ *
+ * ⚠ 独自ドメインを増やしたときは、ここに追加しないと計測が止まる。
+ */
+const MEASURABLE_HOSTS = ["jishutore-sozaiko.online", "www.jishutore-sozaiko.online"];
+
+/** いま計測してよい環境か（本番ホストのみ true） */
+function isMeasurableHost(): boolean {
+    try {
+        if (typeof window === "undefined") return false;
+        return MEASURABLE_HOSTS.includes(window.location.hostname);
+    } catch {
+        return false;
+    }
+}
+
 /** 任意の GA4 イベントを安全に送信する */
 export function trackEvent(name: string, params: EventParams = {}): void {
     try {
         if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+        if (!isMeasurableHost()) return;
         window.gtag("event", name, params);
     } catch {
         /* 計測失敗で本来の操作を止めない */
@@ -114,6 +139,24 @@ export function trackSurveyImpression(placement: string): void {
  */
 export function trackSurveyClick(placement: string): void {
     trackEvent("survey_click", { placement });
+}
+
+/**
+ * 利用者アンケートの案内を「閉じる」で消したとき。
+ * placement: material_download / engagement_banner
+ * 閉じるUIが無い場所（fee_check のカード・フッターリンク）では送らない。
+ */
+export function trackSurveyDismiss(placement: string): void {
+    trackEvent("survey_dismiss", { placement });
+}
+
+/**
+ * ダウンロード直後のLINEトーストが表示されたとき。
+ * クリックは既存の line_click（placement: post_download_toast）が担当しているので
+ * 新設せず、表示側だけを足して「表示→クリック」を比較できるようにする。
+ */
+export function trackLineToastImpression(placement: string): void {
+    trackEvent("line_toast_impression", { placement });
 }
 
 export interface MaterialDownloadParams {

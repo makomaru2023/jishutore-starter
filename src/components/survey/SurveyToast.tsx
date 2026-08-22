@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { trackSurveyClick, trackSurveyImpression } from "@/lib/analytics";
+import { trackSurveyClick, trackSurveyDismiss, trackSurveyImpression } from "@/lib/analytics";
 import { MATERIAL_DOWNLOADED_EVENT } from "@/components/MaterialDownloadButton";
-import { willLineToastShow } from "@/components/PostDownloadLineToast";
 import { buildSurveyUrl, SURVEY_ENABLED } from "@/constants/survey";
 import {
     canShowSurveyPrompt,
@@ -19,15 +18,17 @@ import {
  *   ダウンロードのリンク遷移が始まったあと、遅れて画面のすみに出るだけ。
  *
  * 既存の PostDownloadLineToast（LINE 7点セット）と場所が同じなので、
- * 二重に出さないよう次の順番にしている：
- *   1. LINEトーストが出る回 → アンケートは出さない（LINE導線を優先）
- *   2. LINEが出ない回（既に出た・閉じられて30日以内）→ アンケートを出す
- * 結果として「2枚目以降をダウンロードした人」＝関心の高い人に当たりやすい。
+ * 二重に出さないよう次の順番にしている（★2026-08-22にアンケート優先へ変更）：
+ *   1. アンケート未回答・未拒否の人 → アンケートを出す
+ *   2. アンケートを回答済み／閉じた／このセッションで既に出した人
+ *      → こちらは出さず、従来どおりLINEトーストが出る
+ * 判定はどちらのコンポーネントも canShowSurveyPrompt() を見ているので、
+ * 同時に2つ出ることはない。
  *
  * 閉じた／回答した人には30日間出さない（src/lib/survey.ts）。
  */
 
-const SHOW_DELAY_MS = 3500; // LINEトースト（3000ms）より後。DLの妨げにならない位置
+const SHOW_DELAY_MS = 3000; // ダウンロードの遷移が始まってから。妨げにならない位置
 const PLACEMENT = "material_download" as const;
 
 export function SurveyToast() {
@@ -41,12 +42,10 @@ export function SurveyToast() {
         function onDownloaded() {
             if (scheduledRef.current) return;
             if (!canShowSurveyPrompt()) return;
-            // LINEトーストが出る回はそちらに譲る
-            if (willLineToastShow()) return;
             scheduledRef.current = true;
 
             window.setTimeout(() => {
-                // 直前のダウンロードで出たLINEトーストがまだ画面に残っていたら出さない
+                // 直前のダウンロードで出たLINEトーストがまだ画面に残っていたら出さない（保険）
                 if (document.querySelector('[data-post-download-toast="line"]')) return;
                 markSurveyPromptShown();
                 trackSurveyImpression(PLACEMENT);
@@ -62,6 +61,7 @@ export function SurveyToast() {
     function close() {
         setEntered(false);
         markSurveyDismissed();
+        trackSurveyDismiss(PLACEMENT);
         window.setTimeout(() => setVisible(false), 300);
     }
 

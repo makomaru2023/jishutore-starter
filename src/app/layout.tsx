@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from "next/script";
 import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
@@ -19,6 +20,19 @@ const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "70
  * 一時的にローカルで計測を試したいときは、この定数を true にして戻す。
  */
 const isProductionDeploy = process.env.VERCEL_ENV === "production";
+
+/** GA4の測定ID。既存のプロパティをそのまま使う（新規作成しない）。 */
+const GA_MEASUREMENT_ID = "G-TDY9RZPYWX";
+
+/**
+ * 計測を許可する本番ホスト名。
+ * --------------------------------------------------------------
+ * VERCEL_ENV だけでは、本番デプロイに割り当てられる *.vercel.app の別名URLから
+ * アクセスされたときに素通りしてしまう。gtag.js 公式のオプトアウトフラグ
+ * （window["ga-disable-<測定ID>"]）を、GAタグより先に立てて塞ぐ。
+ * src/lib/analytics.ts 側にも同じホスト判定があり、二重に防いでいる。
+ */
+const MEASURABLE_HOSTS = ["jishutore-sozaiko.online", "www.jishutore-sozaiko.online"];
 
 export const metadata: Metadata = {
   title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
@@ -59,7 +73,15 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${notoSansJP.className} bg-slate-50 text-slate-800 antialiased`}>
         {children}
-        {isProductionDeploy && <GoogleAnalytics gaId="G-TDY9RZPYWX" />}
+        {isProductionDeploy && (
+          <>
+            {/* GAタグより先に走らせる。本番ホスト以外では計測を完全に無効化する。 */}
+            <Script id="ga-host-guard" strategy="beforeInteractive">
+              {`(function(){var h=location.hostname;var ok=${JSON.stringify(MEASURABLE_HOSTS)};if(ok.indexOf(h)===-1){window["ga-disable-${GA_MEASUREMENT_ID}"]=true;}})();`}
+            </Script>
+            <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+          </>
+        )}
       </body>
     </html>
   );

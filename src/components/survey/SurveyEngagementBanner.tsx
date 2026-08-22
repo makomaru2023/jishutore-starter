@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { trackSurveyClick, trackSurveyImpression } from "@/lib/analytics";
+import { trackSurveyClick, trackSurveyDismiss, trackSurveyImpression } from "@/lib/analytics";
 import { buildSurveyUrl, SURVEY_ENABLED } from "@/constants/survey";
 import {
     canShowSurveyPrompt,
@@ -91,6 +91,7 @@ export function SurveyEngagementBanner() {
     function close() {
         setEntered(false);
         markSurveyDismissed();
+        trackSurveyDismiss(PLACEMENT);
         window.setTimeout(() => setVisible(false), 300);
     }
 
