@@ -74,13 +74,13 @@ export function SurveyEngagementBanner() {
         const views = countPageView(pathname);
         if (views < MIN_PAGE_VIEWS) return;
         if (!isAllowedPath(pathname)) return;
-        if (!canShowSurveyPrompt()) return;
+        if (!canShowSurveyPrompt("banner")) return;
 
         const timer = window.setTimeout(() => {
             // 割り込み型が別に出ていたら譲る（DL後トースト等）
             if (document.querySelector("[data-post-download-toast]")) return;
-            if (!canShowSurveyPrompt()) return;
-            markSurveyPromptShown();
+            if (!canShowSurveyPrompt("banner")) return;
+            markSurveyPromptShown("banner");
             trackSurveyImpression(PLACEMENT);
             setVisible(true);
             window.requestAnimationFrame(() => setEntered(true));

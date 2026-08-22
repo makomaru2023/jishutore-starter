@@ -24,8 +24,15 @@ const DISMISS_MS = SURVEY_DISMISS_DAYS * 24 * 60 * 60 * 1000;
 const CLICKED_KEY = "surveyClicked";
 /** 「閉じる」を押した時刻（localStorage・7日で失効） */
 const DISMISSED_AT_KEY = "surveyDismissedAt";
-/** このセッションで割り込み型の導線を出したか（sessionStorage） */
-const SESSION_KEY = "surveyPromptShownSession";
+/**
+ * セッション内で出したかの記録。
+ * ★DL後トーストとバナーで枠を分けている。
+ *   同じ枠にすると「トップ→コラムと2ページ見てバナーが出た人」は、
+ *   そのあと素材をダウンロードしてもトーストが出なくなる。
+ *   素材DL後がいちばん大事なタイミングなので、そこはバナーに潰させない。
+ */
+const TOAST_SESSION_KEY = "surveyToastShownSession";
+const BANNER_SESSION_KEY = "surveyBannerShownSession";
 
 /**
  * 旧仕様（30日一律・値は失効時刻）で書かれたキー。
@@ -68,24 +75,34 @@ export function isWithinDismissWindow(): boolean {
     return Date.now() - at < DISMISS_MS;
 }
 
-/** 割り込み型の導線を出してよいか */
-export function canShowSurveyPrompt(): boolean {
+function sessionHas(key: string): boolean {
+    try {
+        return Boolean(window.sessionStorage.getItem(key));
+    } catch {
+        return false; // storage 不可なら表示は許可する
+    }
+}
+
+/**
+ * 割り込み型の導線を出してよいか。
+ * scope: "toast"  = 素材ダウンロード後のトースト（最優先。バナーに邪魔させない）
+ *        "banner" = 条件付きバナー（トーストが既に出ていたら遠慮する）
+ */
+export function canShowSurveyPrompt(scope: "toast" | "banner" = "toast"): boolean {
     if (typeof window === "undefined") return false;
     if (hasClickedSurvey()) return false;
     if (isWithinDismissWindow()) return false;
-    try {
-        if (window.sessionStorage.getItem(SESSION_KEY)) return false;
-    } catch {
-        /* storage 不可なら表示は許可する */
+    if (scope === "toast") {
+        return !sessionHas(TOAST_SESSION_KEY);
     }
-    return true;
+    return !sessionHas(BANNER_SESSION_KEY) && !sessionHas(TOAST_SESSION_KEY);
 }
 
-/** 割り込み型の導線を出した記録（このセッション内はもう出さない） */
-export function markSurveyPromptShown(): void {
+/** 割り込み型の導線を出した記録（このセッション内はその枠をもう使わない） */
+export function markSurveyPromptShown(scope: "toast" | "banner" = "toast"): void {
     if (typeof window === "undefined") return;
     try {
-        window.sessionStorage.setItem(SESSION_KEY, "1");
+        window.sessionStorage.setItem(scope === "toast" ? TOAST_SESSION_KEY : BANNER_SESSION_KEY, "1");
     } catch {
         /* noop */
     }
