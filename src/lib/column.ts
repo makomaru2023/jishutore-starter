@@ -17,6 +17,7 @@ import { findItemById, getItems } from "@/lib/items";
 
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
 import { article as ashikubiTsumazuki } from "@/data/column/articles/ashikubi-tsumazuki";
+import { article as taikanJishutoreJunban } from "@/data/column/articles/taikan-jishutore-junban";
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
 import { article as chiikiKasanKata } from "@/data/column/articles/chiiki-kasan-kata";
 import { article as hizaItaiJishutore } from "@/data/column/articles/hiza-itai-jishutore";
@@ -66,6 +67,7 @@ import { article as taiinKyodoShidoKata } from "@/data/column/articles/taiin-kyo
 import { article as henmahiJishutoreErabikata } from "@/data/column/articles/henmahi-jishutore-erabikata";
 import { article as jishutoreCheckHyo } from "@/data/column/articles/jishutore-check-hyo";
 import { article as tachiagariHokoJishutore } from "@/data/column/articles/tachiagari-hoko-jishutore";
+import { article as tsueHokokiRenshu } from "@/data/column/articles/tsue-hokoki-renshu";
 import { article as tentoYoboTaisoKumikata } from "@/data/column/articles/tento-yobo-taiso-kumikata";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
@@ -159,6 +161,8 @@ const articles: ColumnArticle[] = [
     nyuyokuDosaJishutore,
     isuKurumaisuSuwarikata,
     ashikubiTsumazuki,
+    tsueHokokiRenshu,
+    taikanJishutoreJunban,
     kokukuTaisoJunban,
     jishutoreTsuzukanaiWatashikata,
     jishutoreCheckHyo,
