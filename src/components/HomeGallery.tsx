@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { getItems, getItemImageUrl } from "@/lib/items";
 
 /**
@@ -78,7 +78,7 @@ export function HomeGallery() {
                         href="/items"
                         className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 text-white font-black text-base sm:text-lg hover:bg-slate-800 hover:scale-105 transition-all shadow-lg"
                     >
-                        {FREE_MATERIAL_COUNT}点すべて見る
+                        {FREE_MATERIAL_COUNT_LABEL}をすべて見る
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                         </svg>

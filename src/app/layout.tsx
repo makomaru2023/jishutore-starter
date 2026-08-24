@@ -3,7 +3,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from "next/script";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
 
@@ -35,26 +35,26 @@ const GA_MEASUREMENT_ID = "G-TDY9RZPYWX";
 const MEASURABLE_HOSTS = ["jishutore-sozaiko.online", "www.jishutore-sozaiko.online"];
 
 export const metadata: Metadata = {
-  title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
+  title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT_LABEL}｜自主トレ素材庫`,
   // ★2026-08-17：Bing の「description が短すぎる」警告を受けて96字→150字へ拡充。
   //   あわせて報酬チェックを1文足した。来訪者の約半分が報酬チェック層なのに、
   //   トップの説明文がイラストの話だけだったため（[[audience-split]]）。
-  description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・嚥下体操など${FREE_MATERIAL_COUNT}点すべて無料・商用OK、登録不要でダウンロードできます。脳卒中や変形性膝関節症など疾患からも探せます。訪問リハ・通所リハ・老健の報酬チェック（単位数と算定要件）も無料で公開中。`,
+  description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・嚥下体操など${FREE_MATERIAL_COUNT_LABEL}がすべて無料・商用OK、登録不要でダウンロードできます。脳卒中や変形性膝関節症など疾患からも探せます。訪問リハ・通所リハ・老健の報酬チェック（単位数と算定要件）も無料で公開中。`,
   metadataBase: new URL('https://jishutore-sozaiko.online'),
   alternates: {
     canonical: './',
   },
   openGraph: {
-    title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
-    description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど${FREE_MATERIAL_COUNT}点すべて無料・商用OK。患者配布資料がすぐ作れます。`,
+    title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT_LABEL}｜自主トレ素材庫`,
+    description: `PT・OT・STのための自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチなど${FREE_MATERIAL_COUNT_LABEL}がすべて無料・商用OK。患者配布資料がすぐ作れます。`,
     siteName: "自主トレ素材庫",
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT}点｜自主トレ素材庫`,
-    description: `PT・OT・STのための自主トレイラスト素材サイト。${FREE_MATERIAL_COUNT}点すべて無料・商用OK。登録不要でダウンロード可能。`,
+    title: `自主トレイラスト無料素材集｜リハビリ職向け${FREE_MATERIAL_COUNT_LABEL}｜自主トレ素材庫`,
+    description: `PT・OT・STのための自主トレイラスト素材サイト。${FREE_MATERIAL_COUNT_LABEL}がすべて無料・商用OK。登録不要でダウンロード可能。`,
   },
   verification: {
     google: [

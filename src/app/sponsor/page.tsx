@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SponsorCtaButton } from "@/components/SponsorCtaButton";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,7 +37,7 @@ const aboutPoints = [
 ];
 
 const mediaStatus: { label: string; value: string }[] = [
-    { label: "掲載素材数", value: `${FREE_MATERIAL_COUNT}点` },
+    { label: "掲載素材数", value: FREE_MATERIAL_COUNT_LABEL },
     { label: "主な読者", value: "理学療法士・作業療法士・言語聴覚士・介護職・医療介護関係者" },
     { label: "主な用途", value: "患者説明・退院前指導・訪問リハ・通所リハ・家族説明・施設内資料作成" },
     { label: "検索流入", value: "増加傾向" },
@@ -211,7 +211,7 @@ export default function SponsorPage() {
                                 広告を掲載できます
                             </h1>
                             <p className="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed text-left sm:text-center">
-                                自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。{FREE_MATERIAL_COUNT}点の無料素材を掲載し、読者層は医療・介護領域に絞られています。研修・教材・採用・福祉用具・介護サービスを、関心の近いユーザーへ届けられます。
+                                自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。{FREE_MATERIAL_COUNT_LABEL}の無料素材を掲載し、読者層は医療・介護領域に絞られています。研修・教材・採用・福祉用具・介護サービスを、関心の近いユーザーへ届けられます。
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -304,7 +304,7 @@ export default function SponsorPage() {
                             </figure>
 
                             <p className="mt-4 text-xs sm:text-sm text-slate-500 text-center leading-relaxed break-keep">
-                                ※画像は2026年3月〜5月時点の推移です。<strong className="text-slate-700">現在は{FREE_MATERIAL_COUNT}点の素材を掲載しています</strong>。
+                                ※画像は2026年3月〜5月時点の推移です。<strong className="text-slate-700">現在は{FREE_MATERIAL_COUNT_LABEL}の素材を掲載しています</strong>。
                                 <br className="hidden sm:block" />
                                 数値はGoogle Analytics 4による参考値です。広告効果を保証するものではありません。
                             </p>

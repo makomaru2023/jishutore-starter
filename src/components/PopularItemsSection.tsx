@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FREE_MATERIAL_COUNT } from '@/constants/content-counts';
+import { FREE_MATERIAL_COUNT_LABEL } from '@/constants/content-counts';
 import { getItemImageUrl, getItems } from '@/lib/items';
 import { PopularItemsCarousel, type PopularCarouselItem } from './PopularItemsCarousel';
 
@@ -64,7 +64,7 @@ export function PopularItemsSection() {
               className="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-700 px-6 py-3 text-sm font-black text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
               href="/items"
             >
-              全{FREE_MATERIAL_COUNT}点を見る
+              {FREE_MATERIAL_COUNT_LABEL}を見る
             </Link>
           </div>
         </div>

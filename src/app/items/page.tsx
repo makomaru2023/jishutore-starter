@@ -9,7 +9,7 @@ import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
 import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { SurveyModal } from "@/components/survey/SurveyModal";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { seoItemCategories } from "@/lib/seoItemCategories";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -233,9 +233,9 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     }
 
     return {
-        title: `自主トレイラスト素材 全${FREE_MATERIAL_COUNT}点【無料・商用OK・登録不要】｜自主トレ素材庫`,
+        title: `自主トレイラスト素材 ${FREE_MATERIAL_COUNT_LABEL}【無料・商用OK・登録不要】｜自主トレ素材庫`,
         // ★2026-08-17：Bing の「description が短すぎる」警告を受けて109字→147字へ拡充。
-        description: `スクワット・ブリッジ・嚥下体操など自主トレイラスト${FREE_MATERIAL_COUNT}点をすべて無料ダウンロード。登録不要・商用OK・クレジット表記不要。印刷してそのまま患者さんに渡せます。上肢・下肢・体幹・歩行・座位・口腔など部位別に探せ、脳卒中の片麻痺や変形性膝関節症などの疾患からも選べます。文字あり・文字なしの2タイプ。`,
+        description: `スクワット・ブリッジ・嚥下体操など自主トレイラスト${FREE_MATERIAL_COUNT_LABEL}をすべて無料ダウンロード。登録不要・商用OK・クレジット表記不要。印刷してそのまま患者さんに渡せます。上肢・下肢・体幹・歩行・座位・口腔など部位別に探せ、脳卒中の片麻痺や変形性膝関節症などの疾患からも選べます。文字あり・文字なしの2タイプ。`,
     };
 }
 
@@ -249,7 +249,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         <>
             <span className="inline-block sm:whitespace-nowrap">スクワット・ブリッジ・</span>
             <span className="inline-block sm:whitespace-nowrap">ストレッチなど、</span>
-            <span className="inline-block sm:whitespace-nowrap">{FREE_MATERIAL_COUNT}点の自主トレ素材を</span>
+            <span className="inline-block sm:whitespace-nowrap">{FREE_MATERIAL_COUNT_LABEL}の自主トレ素材を</span>
             <span className="inline-block sm:whitespace-nowrap">無料でダウンロードできます。</span>
             <span className="inline-block sm:whitespace-nowrap">文字なし版と、</span>
             <span className="inline-block sm:whitespace-nowrap">運動名・説明つきの文字あり版の</span>

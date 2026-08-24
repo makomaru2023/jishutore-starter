@@ -10,7 +10,7 @@ import { ColumnRelatedFeeItems } from "@/components/column/ColumnRelatedFeeItems
 import { ColumnRelatedItems } from "@/components/column/ColumnRelatedItems";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { PLUS_PROMO_CURRENT_PRICE_YEN, formatYen } from "@/constants/plus-pricing";
 import {
     columnCategoryLabels,
@@ -91,7 +91,7 @@ const CTA_COPY: Record<ColumnCtaId, { heading: string; body: string; buttonLabel
     },
     "free-items": {
         heading: "説明に使えるイラストを探している方へ",
-        body: `自主トレのイラスト素材を${FREE_MATERIAL_COUNT}点、無料で配布しています。説明用のプリントづくりや、宿題として渡す自主トレ表にそのまま使えます。`,
+        body: `自主トレのイラスト素材を${FREE_MATERIAL_COUNT_LABEL}、無料で配布しています。説明用のプリントづくりや、宿題として渡す自主トレ表にそのまま使えます。`,
         buttonLabel: "無料素材を見る",
     },
 };

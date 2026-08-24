@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 
 /**
  * トップページ用・3ステップで使い方を説明するセクション
@@ -19,7 +19,7 @@ const steps: Step[] = [
     {
         number: "01",
         title: "部位・目的から\n探す",
-        description: `カテゴリやキーワードで検索。\n${FREE_MATERIAL_COUNT}点の素材から1枚がすぐ見つかります。`,
+        description: `カテゴリやキーワードで検索。\n${FREE_MATERIAL_COUNT_LABEL}の素材から1枚がすぐ見つかります。`,
         iconPath: "m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z",
         accent: "from-rose-50 border-rose-200 text-rose-500",
     },

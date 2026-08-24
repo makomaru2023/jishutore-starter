@@ -13,7 +13,7 @@ import { TrackedPlusResourceLink } from "@/components/plus/TrackedPlusResourceLi
 import { Testimonials } from "@/components/Testimonials";
 import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
 import { TrackedLineLink } from "@/components/TrackedLineLink";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import {
     PLUS_PAUSED_BODY,
     PLUS_PAUSED_HEADING,
@@ -168,7 +168,7 @@ const heroSlides = [
 
 const proofItems = [
     {
-        value: `${FREE_MATERIAL_COUNT.toLocaleString("ja-JP")}点`,
+        value: FREE_MATERIAL_COUNT_LABEL,
         label: "無料素材を公開中",
     },
     ...(PLUS_PROOF_TOTAL_DL === null
@@ -1051,7 +1051,7 @@ export default function JishutorePlusPage() {
                             </article>
                             <article className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                                 <span className="text-3xl font-black text-blue-200">03</span>
-                                <h3 className="mt-4 text-lg font-black text-slate-950">無料イラスト {FREE_MATERIAL_COUNT}点</h3>
+                                <h3 className="mt-4 text-lg font-black text-slate-950">無料イラスト {FREE_MATERIAL_COUNT_LABEL}</h3>
                                 <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
                                     登録不要・商用利用OK。無料ページだけでも、PNG画像を1点ずつダウンロードできます。
                                 </p>
@@ -1228,7 +1228,7 @@ export default function JishutorePlusPage() {
                                 <Link href="/about/" className="mt-5 inline-flex text-sm font-black text-blue-700 hover:underline">運営者について →</Link>
                             </article>
                             <article className="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm">
-                                <p className="text-3xl font-black text-blue-700">{FREE_MATERIAL_COUNT}点</p>
+                                <p className="text-3xl font-black text-blue-700">{FREE_MATERIAL_COUNT_LABEL}</p>
                                 <h3 className="mt-3 text-lg font-black text-slate-950">無料素材を継続公開</h3>
                                 <p className="mt-2 text-sm leading-6 text-slate-600">登録不要・商用利用OKの素材を公開し、Plus登録前にも品質を確認できます。</p>
                                 <Link href="/items/" className="mt-5 inline-flex text-sm font-black text-blue-700 hover:underline">無料素材を見る →</Link>

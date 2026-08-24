@@ -8,7 +8,7 @@ import { PopularItemsSection } from "@/components/PopularItemsSection";
 import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import { TrackedProductCtaLink } from "@/components/TrackedProductCtaLink";
-import { FREE_MATERIAL_COUNT } from "@/constants/content-counts";
+import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { getColumnArticles } from "@/lib/column";
 import { feeDomains, getDomainUrl, getFeeCheckTotalCount } from "@/lib/fee-check";
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   //   あわせて報酬チェックを1文足した。来訪者の約半分が報酬チェック層なのに、
   //   トップの説明文がイラストの話だけだったため（[[audience-split]]）。
   description:
-    `PT・OT・ST向けの自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチ・歩行練習・嚥下体操など${FREE_MATERIAL_COUNT}点を無料ダウンロード。登録不要・商用OKで、退院前指導や家族説明の資料がすぐ作れます。訪問リハ・通所リハ・老健の報酬チェック（単位数と算定要件）も無料公開中。`,
+    `PT・OT・ST向けの自主トレイラスト素材サイト。スクワット・ブリッジ・ストレッチ・歩行練習・嚥下体操など${FREE_MATERIAL_COUNT_LABEL}を無料ダウンロード。登録不要・商用OKで、退院前指導や家族説明の資料がすぐ作れます。訪問リハ・通所リハ・老健の報酬チェック（単位数と算定要件）も無料公開中。`,
 };
 
 const categoryLinks = [
@@ -71,7 +71,7 @@ export default function Home() {
               </p>
               <p className="jp-text mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
                 <span className="inline-block">スクワット・ブリッジ・ストレッチ・</span>
-                <span className="inline-block">歩行練習など、{FREE_MATERIAL_COUNT}点の素材を</span>
+                <span className="inline-block">歩行練習など、{FREE_MATERIAL_COUNT_LABEL}の素材を</span>
                 <span className="inline-block">無料でダウンロードできます。</span>
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
