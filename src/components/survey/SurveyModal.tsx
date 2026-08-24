@@ -39,12 +39,25 @@ export function SurveyModal() {
     const [entered, setEntered] = useState(false);
     const scheduledRef = useRef(false);
 
-    const close = useCallback(() => {
+    /** 見た目を閉じるだけ。計測も再表示の抑制もしない。 */
+    const hide = useCallback(() => {
         setEntered(false);
-        markSurveyDismissed();
-        trackSurveyDismiss(PLACEMENT);
         window.setTimeout(() => setVisible(false), 200);
     }, []);
+
+    /**
+     * 「あとにする」で閉じたとき。survey_dismiss はここだけから送る。
+     *
+     * ★2026-08-24：回答リンク側は hide() だけを呼ぶように分離した。
+     *   以前は回答クリックでもこの処理を通っていたため、1人が回答すると
+     *   survey_click と survey_dismiss が両方立ち、placement別の「閉じた人」に
+     *   回答者が混ざっていた（＝dismissが過大に出ていた）。
+     */
+    const dismiss = useCallback(() => {
+        markSurveyDismissed();
+        trackSurveyDismiss(PLACEMENT);
+        hide();
+    }, [hide]);
 
     useEffect(() => {
         if (!SURVEY_ENABLED) return;
@@ -112,9 +125,11 @@ export function SurveyModal() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
+                        // 回答した人には surveyClicked で今後ずっと出さないので、
+                        // ここで surveyDismissedAt を書く必要はない（dismissも送らない）。
                         markSurveyClicked();
                         trackSurveyClick(PLACEMENT);
-                        close();
+                        hide();
                     }}
                     className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-sm font-black text-white transition-colors hover:bg-blue-800 sm:text-base"
                 >
@@ -125,7 +140,7 @@ export function SurveyModal() {
                 </a>
                 <button
                     type="button"
-                    onClick={close}
+                    onClick={dismiss}
                     className="mt-2 w-full rounded-full px-4 py-2 text-xs font-bold text-slate-400 transition-colors hover:text-slate-600"
                 >
                     あとにする
