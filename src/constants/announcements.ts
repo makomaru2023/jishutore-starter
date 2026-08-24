@@ -59,6 +59,14 @@ export const ANNOUNCEMENTS: readonly Announcement[] = [
         audience: ["plus"],
     },
     {
+        date: "2026-08-24",
+        kind: "material",
+        title: "無料素材を27種（54点）追加しました",
+        body: "立位での重心移動と足部への荷重練習、ふくらはぎのストレッチ、段差や歩行車を使った動作、スポーツ復帰に向けたジャンプ着地までの27種です。",
+        href: "/items/",
+        audience: ["public", "plus"],
+    },
+    {
         date: "2026-08-01",
         kind: "material",
         title: "Plusの収録スライドを227点に増やしました（+40点）",
