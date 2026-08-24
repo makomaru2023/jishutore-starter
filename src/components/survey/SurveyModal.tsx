@@ -117,14 +117,14 @@ export function SurveyModal() {
 
                 <p className="mt-3 text-xs font-black tracking-widest text-blue-700">ANQUETE</p>
                 <h2 id="survey-modal-title" className="mt-1 break-keep text-lg font-black leading-snug text-slate-950 sm:text-xl">
-                    30秒だけ、ご協力いただけませんか？
+                    次に増やしてほしい素材、教えてください
                 </h2>
                 <p className="mt-2 break-keep text-sm font-medium leading-relaxed text-slate-600">
-                    自主トレ素材庫を、どんな方に使っていただいているのかを知りたくてアンケートを実施しています。
-                    いただいた回答は、次にどんな素材を作るかを決めるときに使わせていただきます。
+                    自主トレ素材庫をどんな職種・現場の方が使っているのか調査しています。
+                    回答を今後の素材・機能追加に活用します。
                 </p>
                 <p className="mt-2 break-keep text-xs font-medium leading-relaxed text-slate-400">
-                    匿名・全7問・約1分です。お名前もメールアドレスもいただきません。
+                    匿名・選択式中心です
                 </p>
 
                 <a
@@ -138,7 +138,7 @@ export function SurveyModal() {
                     }}
                     className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-sm font-black text-white transition-colors hover:bg-blue-800 sm:text-base"
                 >
-                    1分アンケートに回答する
+                    アンケートに回答する
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-4 w-4 flex-shrink-0" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                     </svg>
