@@ -68,6 +68,7 @@ import { article as henmahiJishutoreErabikata } from "@/data/column/articles/hen
 import { article as jishutoreCheckHyo } from "@/data/column/articles/jishutore-check-hyo";
 import { article as tachiagariHokoJishutore } from "@/data/column/articles/tachiagari-hoko-jishutore";
 import { article as tsueHokokiRenshu } from "@/data/column/articles/tsue-hokoki-renshu";
+import { article as stretchItsuWatasu } from "@/data/column/articles/stretch-itsu-watasu";
 import { article as tentoYoboTaisoKumikata } from "@/data/column/articles/tento-yobo-taiso-kumikata";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
@@ -86,6 +87,7 @@ import { article as rokenTaishojiShienKasan } from "@/data/column/articles/roken
 import { article as serviceTaiseiKyokaKata } from "@/data/column/articles/service-taisei-kyoka-kata";
 import { article as santeiYoukenToShisetsuKijun } from "@/data/column/articles/santei-youken-to-shisetsu-kijun";
 import { article as tankiShuchuRihaKata } from "@/data/column/articles/tanki-shuchu-riha-kata";
+import { article as tanisuNoKakikata } from "@/data/column/articles/tanisu-no-kakikata";
 import { article as zaitakuFukkiRyoyoShienKubun } from "@/data/column/articles/zaitaku-fukki-ryoyo-shien-kubun";
 
 export type ColumnCategory = "fee-practice" | "kaitei-watch" | "seido-yomikata" | "shiryo";
@@ -163,6 +165,7 @@ const articles: ColumnArticle[] = [
     ashikubiTsumazuki,
     tsueHokokiRenshu,
     taikanJishutoreJunban,
+    stretchItsuWatasu,
     kokukuTaisoJunban,
     jishutoreTsuzukanaiWatashikata,
     jishutoreCheckHyo,
@@ -220,6 +223,7 @@ const articles: ColumnArticle[] = [
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
     hokatsuToDemidaka,
     kokujiChuNoYomikata,
+    tanisuNoKakikata,
     kokujiTsuchiGigikaishakuChigai,
     santeiYoukenToShisetsuKijun,
     kanpoTeiseiToWa,
