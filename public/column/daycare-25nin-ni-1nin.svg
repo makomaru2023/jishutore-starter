@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">デイケアのリハビリ職は、利用者25人に1人以上</text>
+
+    <rect x="40" y="56" width="720" height="86" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="165" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">配置の条件</text>
+    <line x1="290" y1="70" x2="290" y2="128" stroke="#90CAF9" stroke-width="2"/>
+    <text x="314" y="86" font-size="15" font-weight="bold" fill="#0F172A">利用者25人ごとに、1人以上</text>
+    <text x="314" y="110" font-size="11" font-weight="bold" fill="#475569">常時、理学療法士・作業療法士・言語聴覚士の合計数が</text>
+    <text x="314" y="130" font-size="11" font-weight="bold" fill="#475569">25またはその端数を増すごとに1以上</text>
+
+    <rect x="40" y="166" width="138" height="76" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="109" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">3〜4時間</text>
+    <text x="109" y="222" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">12単位</text>
+    <rect x="184" y="166" width="138" height="76" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="253" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">4〜5時間</text>
+    <text x="253" y="222" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">16単位</text>
+    <rect x="328" y="166" width="138" height="76" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="397" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">5〜6時間</text>
+    <text x="397" y="222" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">20単位</text>
+    <rect x="472" y="166" width="138" height="76" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="541" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">6〜7時間</text>
+    <text x="541" y="222" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">24単位</text>
+    <rect x="616" y="166" width="138" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="685" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">7時間以上</text>
+    <text x="685" y="222" text-anchor="middle" font-size="17" font-weight="bold" fill="#0F172A">28単位</text>
+
+    <text x="400" y="264" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">1日あたりの単位数。預かる時間が長いほど上がります</text>
+
+    <rect x="40" y="282" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="311" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">時間が長いほどリハビリ職の手が要る、という設計です</text>
+
+    <text x="400" y="360" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">実際にかかった時間ではなく、通所リハビリテーション計画上の標準的な時間で決まります</text>
+  </g>
+</svg>

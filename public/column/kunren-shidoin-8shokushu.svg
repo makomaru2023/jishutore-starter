@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">機能訓練指導員になれるのは、この8職種です</text>
+
+    <rect x="40" y="56" width="171" height="50" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="125" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">理学療法士</text>
+    <rect x="223" y="56" width="171" height="50" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="308" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">作業療法士</text>
+    <rect x="406" y="56" width="171" height="50" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="491" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">言語聴覚士</text>
+    <rect x="589" y="56" width="171" height="50" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="674" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">看護職員</text>
+
+    <rect x="40" y="114" width="171" height="50" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="125" y="145" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">柔道整復師</text>
+    <rect x="223" y="114" width="171" height="50" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="308" y="145" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">あん摩マッサージ指圧師</text>
+    <rect x="406" y="114" width="171" height="50" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="491" y="145" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">はり師</text>
+    <rect x="589" y="114" width="171" height="50" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="674" y="145" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">きゅう師</text>
+
+    <rect x="40" y="186" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="215" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">リハビリ職だけの仕事ではありません</text>
+
+    <rect x="40" y="252" width="720" height="64" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="165" y="290" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">配置の条件</text>
+    <line x1="290" y1="264" x2="290" y2="304" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="314" y="280" font-size="13" font-weight="bold" fill="#0F172A">専ら機能訓練を実施する職員として配置します</text>
+    <text x="314" y="302" font-size="11" font-weight="bold" fill="#475569">手厚い区分では、提供時間帯を通じて専従の職員をもう1名以上</text>
+
+    <text x="400" y="348" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">機能訓練指導員は、この8職種をまとめた呼び名です</text>
+  </g>
+</svg>
