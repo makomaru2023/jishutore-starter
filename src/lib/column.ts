@@ -58,9 +58,11 @@ import { article as benkyokaiShiryoMaeNiKimeru } from "@/data/column/articles/be
 import { article as doitsuTatemonoSogeiGensan } from "@/data/column/articles/doitsu-tatemono-sogei-gensan";
 import { article as hainyoJiritsuKaifukuki } from "@/data/column/articles/hainyo-jiritsu-kaifukuki";
 import { article as homonRihaShinryoMijisshiGensan } from "@/data/column/articles/homon-riha-shinryo-mijisshi-gensan";
+import { article as homonRihaKaisuDareGaKimeru } from "@/data/column/articles/homon-riha-kaisu-dare-ga-kimeru";
 import { article as kaiteiJohoDokoWoMiru } from "@/data/column/articles/kaitei-joho-doko-wo-miru";
 import { article as jishutoreTsuzukanaiWatashikata } from "@/data/column/articles/jishutore-tsuzukanai-watashikata";
 import { article as homonKangoRiha8tani } from "@/data/column/articles/homon-kango-riha-8tani";
+import { article as homonKangoRihaShokuGaKuru } from "@/data/column/articles/homon-kango-riha-shoku-ga-kuru";
 import { article as ikaNissuKata } from "@/data/column/articles/ika-nissu-kata";
 import { article as johoRenkeiKata } from "@/data/column/articles/joho-renkei-kata";
 import { article as chujudoNinchishoKasanKata } from "@/data/column/articles/chujudo-ninchisho-kasan-kata";
@@ -179,6 +181,8 @@ const articles: ColumnArticle[] = [
     // 素朴な疑問（なぜ週3回・なぜ3か月・最初の1週間が慌ただしい理由）から入り、
     // 答えが制度にあると気づいてもらって fee-check へ送る。導線の向きが他の層と逆。
     // ★タイトルとdescriptionに加算名を入れないこと（既存の加算記事と食い合うため）。
+    homonKangoRihaShokuGaKuru,
+    homonRihaKaisuDareGaKimeru,
     daycareRihaShokuGaIru,
     kinouKunrenShidoin8shokushu,
     chiikiHokatsuDokoKaraKitaKa,

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <rect width="800" height="340" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">訪問看護費の中に、リハビリ職の区分があります</text>
+
+    <rect x="40" y="56" width="720" height="76" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="165" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">訪問看護ステーション</text>
+    <line x1="290" y1="70" x2="290" y2="118" stroke="#90CAF9" stroke-width="2"/>
+    <text x="314" y="86" font-size="14" font-weight="bold" fill="#0F172A">理学療法士・作業療法士・言語聴覚士による訪問</text>
+    <text x="314" y="112" font-size="13" font-weight="bold" fill="#475569">1回につき294単位（時間区分の細分はなく定額）</text>
+
+    <rect x="40" y="152" width="720" height="60" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="165" y="188" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">病院・診療所</text>
+    <line x1="290" y1="166" x2="290" y2="198" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="314" y="188" font-size="14" font-weight="bold" fill="#0F172A">★この区分そのものがありません</text>
+
+    <rect x="40" y="232" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="261" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">リハビリ職が訪問できるのは、訪問看護ステーションからです</text>
+
+    <text x="400" y="310" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">主治の医師が交付した文書による指示と、訪問看護計画書にもとづいて行います</text>
+  </g>
+</svg>

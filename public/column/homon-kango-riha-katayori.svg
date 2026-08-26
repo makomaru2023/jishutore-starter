@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380">
+  <rect width="800" height="380" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">リハビリだけに偏らないよう、歯止めが置かれています</text>
+
+    <rect x="40" y="56" width="720" height="56" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="165" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">計画書・報告書</text>
+    <line x1="290" y1="68" x2="290" y2="100" stroke="#90CAF9" stroke-width="2"/>
+    <text x="314" y="90" font-size="13" font-weight="bold" fill="#0F172A">理学療法士等と看護職員が連携して作成します</text>
+
+    <rect x="40" y="126" width="720" height="56" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="165" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">看護職員の訪問</text>
+    <line x1="290" y1="138" x2="290" y2="170" stroke="#90CAF9" stroke-width="2"/>
+    <text x="314" y="160" font-size="13" font-weight="bold" fill="#0F172A">状態の変化等に応じ、定期的な訪問で適切に評価します</text>
+
+    <rect x="40" y="196" width="720" height="56" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="165" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">1日2回を超えたら</text>
+    <line x1="290" y1="208" x2="290" y2="240" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="314" y="230" font-size="13" font-weight="bold" fill="#0F172A">超えた回について、1回につき所定単位数の100分の90</text>
+
+    <rect x="40" y="272" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="301" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">訪問看護がリハビリテーションのみに偏らないようにする趣旨です</text>
+
+    <text x="400" y="350" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">特別訪問看護指示書が出た日から14日間は、訪問看護費を算定しません（医療保険で対応）</text>
+  </g>
+</svg>

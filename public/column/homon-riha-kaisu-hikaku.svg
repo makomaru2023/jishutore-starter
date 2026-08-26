@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 382" width="800" height="382">
+  <rect width="800" height="382" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">回数の上限は、医療保険と介護保険で考え方が違います</text>
+
+    <rect x="40" y="56" width="352" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="86" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">医療保険</text>
+    <text x="216" y="108" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">在宅患者訪問リハビリテーション指導管理料</text>
+    <line x1="72" y1="122" x2="360" y2="122" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="152" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">週6単位まで</text>
+    <text x="216" y="180" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">1単位＝訪問して20分以上の指導</text>
+    <text x="216" y="202" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">退院の日から3月以内は週12単位</text>
+    <text x="216" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">末期の悪性腫瘍は限度の対象外</text>
+
+    <rect x="408" y="56" width="352" height="200" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="86" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">介護保険</text>
+    <text x="584" y="108" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">訪問リハビリテーション費</text>
+    <line x1="440" y1="122" x2="728" y2="122" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="152" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">1回308単位</text>
+    <text x="584" y="180" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">週何回という上限は見当たりません</text>
+    <text x="584" y="202" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">頻度と時間は訪問リハビリテーション計画で</text>
+    <text x="584" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">実質の上限は区分支給限度基準額</text>
+
+    <rect x="40" y="276" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">介護保険側で回数を決めているのは、ケアプランと訪問リハビリテーション計画です</text>
+
+    <text x="400" y="352" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">介護保険の給付対象者は、原則として介護保険が優先されます</text>
+  </g>
+</svg>
