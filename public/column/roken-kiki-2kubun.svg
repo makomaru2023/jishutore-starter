@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">機器を入れただけでは、10単位のほうです</text>
+
+    <rect x="40" y="56" width="352" height="190" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">手厚いほう</text>
+    <text x="216" y="120" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">100単位／月</text>
+    <line x1="72" y1="136" x2="360" y2="136" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="162" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">委員会で検討し、実施を定期的に確認</text>
+    <text x="216" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">★介護機器を複数種類活用</text>
+    <text x="216" y="206" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">★取組と活用による実績がある</text>
+    <text x="216" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">事業年度ごとに厚生労働省へ報告</text>
+
+    <rect x="408" y="56" width="352" height="190" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="584" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">もう一方</text>
+    <text x="584" y="120" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">10単位／月</text>
+    <line x1="440" y1="136" x2="728" y2="136" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="584" y="162" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">委員会の要件は手厚いほうと同じ</text>
+    <text x="584" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">介護機器を活用</text>
+    <text x="584" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="#94A3B8">（複数種類・実績は求められない）</text>
+    <text x="584" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">事業年度ごとに厚生労働省へ報告</text>
+
+    <rect x="40" y="266" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="295" text-anchor="middle" font-size="14" font-weight="bold" fill="#78350F">差は「複数種類」と「実績」の2つ。どちらか一方しか算定できません</text>
+
+    <text x="400" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どちらも、基準に適合したうえで都道府県知事への電子届出が前提です</text>
+  </g>
+</svg>

@@ -42,6 +42,7 @@ import { article as rokenTaishoMaeGaIsogashii } from "@/data/column/articles/rok
 import { article as rokenRihaShu3To3kagetsu } from "@/data/column/articles/roken-riha-shu3-3kagetsu";
 import { article as rokenSaishoNo1kagetsu } from "@/data/column/articles/roken-saisho-no-1kagetsu";
 import { article as rokenHibiNoZogen } from "@/data/column/articles/roken-hibi-no-zogen";
+import { article as rokenKaigoKikiFueta } from "@/data/column/articles/roken-kaigo-kiki-fueta";
 import { article as tsushoEnchoKasan } from "@/data/column/articles/tsusho-encho-kasan";
 import { article as nyuyokuDosaJishutore } from "@/data/column/articles/nyuyoku-dosa-jishutore";
 import { article as ikigireJishutoreWatashikata } from "@/data/column/articles/ikigire-jishutore-watashikata";
@@ -81,6 +82,7 @@ import { article as kokueiyoScreeningNagare } from "@/data/column/articles/kokue
 import { article as kokujiTsuchiGigikaishakuChigai } from "@/data/column/articles/kokuji-tsuchi-gigikaishaku-chigai";
 import { article as kokukuTaisoJunban } from "@/data/column/articles/kokuku-taiso-junban";
 import { article as kyotakuHomonKasanKata } from "@/data/column/articles/kyotaku-homon-kasan-kata";
+import { article as kyuseikiTaiinHayaiRiyu } from "@/data/column/articles/kyuseiki-taiin-hayai-riyu";
 import { article as lifeTeishutsuKata } from "@/data/column/articles/life-teishutsu-kata";
 import { article as mijisshiGensanKata } from "@/data/column/articles/mijisshi-gensan-kata";
 import { article as ninchishoTankiShuchuRihaTsusho } from "@/data/column/articles/ninchisho-tanki-shuchu-riha-tsusho";
@@ -181,6 +183,8 @@ const articles: ColumnArticle[] = [
     // 素朴な疑問（なぜ週3回・なぜ3か月・最初の1週間が慌ただしい理由）から入り、
     // 答えが制度にあると気づいてもらって fee-check へ送る。導線の向きが他の層と逆。
     // ★タイトルとdescriptionに加算名を入れないこと（既存の加算記事と食い合うため）。
+    kyuseikiTaiinHayaiRiyu,
+    rokenKaigoKikiFueta,
     homonKangoRihaShokuGaKuru,
     homonRihaKaisuDareGaKimeru,
     daycareRihaShokuGaIru,
