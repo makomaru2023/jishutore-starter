@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Testimonials } from "@/components/Testimonials";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -111,15 +110,6 @@ const USE_SCENES = [
     ["在宅高齢者の運動習慣づくり", "生活環境や体力に合わせ、続けやすい自主トレ資料として渡せます。"],
 ];
 
-const RECOMMENDED = [
-    "疾患別資料だけでは運動選択が難しいと感じている",
-    "座位・立位・臥位で資料を使い分けたい",
-    "在宅高齢者向けに安全な自主トレを渡したい",
-    "通所リハで体操メニューを整理したい",
-    "訪問先でその人に合わせて資料を編集したい",
-    "転倒リスクや体力に合わせて運動を提案したい",
-    "無料素材を貼り合わせる時間を減らしたい",
-];
 
 // 透かし入りプレビュー（全ページ掲載）。
 // previews/{slug}-01..12.webp を PDF 全ページからレンダリングして掲載している。
@@ -252,33 +242,6 @@ function ProductCheckoutButton({
     );
 }
 
-function ComparisonSection() {
-    const rows = [
-        { label: "選び方", left: "疾患名から選ぶ", right: "今できる姿勢から選ぶ" },
-        { label: "向いている場面", left: "疾患ごとの注意点や説明を整理したいとき", right: "体力・転倒リスク・動作能力に合わせたいとき" },
-        { label: "主な対象", left: "脳卒中、腰痛、膝OA、術後など", right: "在宅高齢者、訪問リハ、通所リハ利用者など" },
-        { label: "使いやすい場面", left: "退院前指導、疾患別の家族説明", right: "訪問リハ、通所リハ、集団体操、ベッド上自主トレ" },
-        { label: "商品の役割", left: "疾患ごとの説明を時短する資料", right: "能力や安全性に合わせて運動を選ぶ資料" },
-    ];
-
-    return (
-        <section className="bg-slate-50 py-14 sm:py-20">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                <SectionHeading
-                    kicker="COMPARE"
-                    title="疾患別セットとの違い"
-                    description="疾患別セットは、疾患ごとの説明に強い資料です。姿勢別セットは、対象者の能力や安全性に合わせて運動を選びたいときに使いやすい資料です。"
-                />
-                <ProductComparisonTable
-                    rows={rows}
-                    leftLabel="疾患別セット"
-                    rightLabel="姿勢別セット"
-                />
-            </div>
-        </section>
-    );
-}
-
 function FreeMaterialComparison() {
     const rows = [
         { label: "形式", left: "イラスト単体", right: "姿勢別に構成済み" },
@@ -289,7 +252,7 @@ function FreeMaterialComparison() {
     ];
 
     return (
-        <section id="free-vs-paid" className="scroll-mt-20 bg-white py-14 sm:py-20">
+        <section id="free-vs-paid" className="scroll-mt-20 bg-slate-50 py-14 sm:py-20">
             <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                 <SectionHeading
                     kicker="FREE MATERIALS"
@@ -373,44 +336,27 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
+                {/* 2. 悩み → これは何か（旧「選びにくい場面」＋「このセットは〜の資料です」を統合） */}
                 <section className="bg-white py-14 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading
                             title="疾患別だけでは、運動を選びにくい場面があります"
-                            description="疾患名が同じでも、立位でできる人、座位から始めたい人、ベッド上中心の人では、渡す自主トレ資料は変わります。姿勢別に整理された資料があると、対象者の体力・バランス能力・生活環境に合わせて運動を選びやすくなります。"
+                            description="疾患名が同じでも、立位でできる人、座位から始めたい人、ベッド上中心の人では、渡す自主トレ資料は変わります。このセットは、対象者が安全に行える姿勢から選べるように、座位・立位・臥位などの実施姿勢ごとに整理した資料です。"
                         />
                         <CheckList items={PAIN_POINTS} />
+                        <p className="mt-8 text-center text-base font-bold text-blue-700 sm:text-lg">
+                            疾患ではなく、今できる姿勢から選べる。
+                        </p>
                     </div>
                 </section>
 
-                <section className="bg-slate-50 py-14 sm:py-20">
+                {/* 3. 収録内容 ＋ 使い方（何が入っていて、どう使うかは1つの話） */}
+                <section id="contents" className="scroll-mt-24 bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center sm:p-10">
-                            <p className="mb-3 text-xs font-bold tracking-wide text-blue-600">SOLUTION</p>
-                            <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
-                                このセットは、能力・姿勢に合わせて運動を選ぶための資料です
-                            </h2>
-                            <p className={`mx-auto mt-5 max-w-3xl text-sm font-medium leading-relaxed text-slate-700 sm:text-base ${JP_TEXT}`}>
-                                疾患名から選ぶだけではなく、対象者が安全に行える姿勢から自主トレを選べるように、
-                                座位・立位・臥位などの実施姿勢ごとに資料を整理しました。
-                                必要なページだけを残して、回数や注意点を編集すれば、患者さんやご家族に渡せる資料として使えます。
-                            </p>
-                            <p className="mx-auto mt-6 inline-flex rounded-full bg-white px-5 py-3 text-base font-bold text-blue-700">
-                                疾患ではなく、今できる姿勢から選べる。
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <ComparisonSection />
-                <FreeMaterialComparison />
-
-                <section id="contents" className="scroll-mt-24 bg-white py-14 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading
                             kicker="CONTENTS"
                             title="収録内容"
-                            description="座位・立位・臥位など、実施姿勢ごとに使いやすく整理しています。実際の商品は6種類収録です。"
+                            description="座位・立位・臥位など、実施姿勢ごとに使いやすく整理した6種類です。"
                         />
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {CONTENTS.map((content, index) => (
@@ -427,13 +373,9 @@ export default function HomeElderlySelfTrainingPage() {
                                 </article>
                             ))}
                         </div>
-                    </div>
-                </section>
 
-                <section className="bg-white py-14 sm:py-20">
-                    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading kicker="HOW TO USE" title="使い方はかんたんです" />
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                        <h3 className="mt-14 text-center text-xl font-bold text-slate-900">使い方は3ステップです</h3>
+                        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
                             {[
                                 ["1", "対象者が安全に行える姿勢を選ぶ"],
                                 ["2", "必要な運動ページだけ残す"],
@@ -443,19 +385,53 @@ export default function HomeElderlySelfTrainingPage() {
                                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
                                         {step}
                                     </span>
-                                    <h3 className={`mt-4 text-lg font-bold leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
+                                    <h4 className={`mt-4 text-base font-bold leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h4>
                                 </article>
                             ))}
                         </div>
-                        <p className={`mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                            疾患名だけで選ぶのではなく、立位の安定性、体力、理解度、生活環境に合わせて資料を調整できます。
-                        </p>
                     </div>
                 </section>
 
-                <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading kicker="SCENE" title="こんな場面で使えます" />
+                {/* 4. 実物プレビュー。★見た直後に買えるよう、CTAを続けて置く（旧構成では次のCTAが5,000px下だった） */}
+                <WatermarkPreviewSection
+                    id="preview"
+                    kicker="SAMPLE"
+                    heading="全ページを透かし入りで公開しています"
+                    intro="購入前に中身をしっかり確認できるよう、座位・立位・臥位・全身・上肢・下肢の全ページを掲載しています。カードにカーソルを合わせるとページが流れ、クリックすると拡大表示で左右の矢印でも送れます。"
+                    subcopy="掲載画像は透かし入りですが、購入後のPowerPoint・PDFファイルには透かしは入りません。"
+                    groups={PREVIEW_GROUPS}
+                    background="white"
+                    columns={3}
+                    display="carousel"
+                />
+
+                <section className="bg-white pb-14 sm:pb-20">
+                    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                        <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-6 text-center sm:p-8">
+                            <p className={`text-base font-bold text-slate-900 ${JP_HEADING}`}>
+                                中身を見て、使えそうだと思ったら
+                            </p>
+                            <div className="mx-auto mt-5 max-w-md">
+                                <ProductCheckoutButton />
+                            </div>
+                            <p className="mt-3 text-xs font-medium text-slate-500">
+                                買い切り980円・PowerPoint編集OK・印刷配布OK
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 5. 無料素材との違い */}
+                <FreeMaterialComparison />
+
+                {/* 6. こんな場面で使えます（旧「こんなリハ職におすすめです」は同じ主張の言い換えなので統合） */}
+                <section className="bg-white py-14 sm:py-20">
+                    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                        <SectionHeading
+                            kicker="SCENE"
+                            title="こんな場面で使えます"
+                            description="訪問リハ・通所リハ・退院前指導など、対象者の体力や転倒リスクに合わせて運動を選びたい場面で使えます。"
+                        />
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             {USE_SCENES.map(([title, description]) => (
                                 <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -467,41 +443,11 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-white py-14 sm:py-20">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading title="こんなリハ職におすすめです" />
-                        <CheckList items={RECOMMENDED} />
-                    </div>
-                </section>
-
-                <WatermarkPreviewSection
-                    id="preview"
-                    kicker="SAMPLE"
-                    heading="全ページを透かし入りで公開しています"
-                    intro="購入前に中身をしっかり確認できるよう、座位・立位・臥位・全身・上肢・下肢の全ページを掲載しています。カードにカーソルを合わせるとページが流れ、クリックすると拡大表示で左右の矢印でも送れます。"
-                    subcopy="対象者の「今できる姿勢」に合わせて使えるよう、実施姿勢ごとに資料を整理しています。掲載画像は透かし入りですが、購入後のPowerPoint・PDFファイルには透かしは入りません。"
-                    groups={PREVIEW_GROUPS}
-                    background="white"
-                    columns={3}
-                    display="carousel"
-                />
-
+                {/* 7. 価格・購入後の流れ・購入前の確認（買う直前に要る情報は1か所にまとめる） */}
                 <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-7">
-                            <h2 className="text-lg font-bold text-amber-900">購入前にご確認ください</h2>
-                            <p className={`mt-3 text-sm leading-relaxed text-amber-900 sm:text-base ${JP_TEXT}`}>
-                                この資料は、すべての対象者にそのまま使える医療プロトコルではありません。
-                                対象者の状態、医師の指示、疼痛、禁忌、転倒リスク、術後時期に合わせて、専門職の判断で編集してご使用ください。
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                         <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center sm:p-10">
-                            <p className="text-xs font-bold tracking-wide text-blue-600">PRICE</p>
+                            <p className="text-xs font-semibold tracking-[0.14em] text-blue-600">PRICE</p>
                             <h2 className="mt-3 text-3xl font-bold text-slate-900 sm:text-5xl">980円</h2>
                             <p className="mt-2 text-sm font-bold text-slate-600">税込・買い切り</p>
                             <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -511,30 +457,30 @@ export default function HomeElderlySelfTrainingPage() {
                                     </span>
                                 ))}
                             </div>
-                            <p className={`mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                訪問リハ、通所リハ、退院前指導で繰り返し使える、姿勢別の自主トレ資料セットです。
-                            </p>
                             <div className="mx-auto mt-7 max-w-md">
                                 <ProductCheckoutButton />
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading kicker="FLOW" title="購入後の流れ" />
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
                             {[
                                 ["1", "サイト内でStripe決済"],
                                 ["2", "決済完了後、ダウンロードページへ移動"],
-                                ["3", "PowerPoint資料・PDF資料をダウンロードして使用"],
+                                ["3", "PowerPoint・PDFをダウンロードして使用"],
                             ].map(([step, text]) => (
-                                <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6">
-                                    <span className="text-sm font-bold text-blue-600">STEP {step}</span>
-                                    <h3 className={`mt-2 text-base font-bold leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
-                                </article>
+                                <div key={step} className="rounded-2xl border border-slate-200 bg-white px-5 py-4">
+                                    <span className="text-xs font-bold text-blue-600">STEP {step}</span>
+                                    <p className={`mt-1 text-sm font-bold leading-snug text-slate-900 ${JP_HEADING}`}>{text}</p>
+                                </div>
                             ))}
+                        </div>
+
+                        <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+                            <p className="text-sm font-bold text-amber-900">購入前にご確認ください</p>
+                            <p className={`mt-2 text-sm leading-relaxed text-amber-900 ${JP_TEXT}`}>
+                                この資料は、すべての対象者にそのまま使える医療プロトコルではありません。
+                                対象者の状態、医師の指示、疼痛、禁忌、転倒リスク、術後時期に合わせて、専門職の判断で編集してご使用ください。
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -542,6 +488,7 @@ export default function HomeElderlySelfTrainingPage() {
                 {/* 掲載許諾つきの声が0件のあいだは何も表示しない */}
                 <Testimonials product="posture" />
 
+                {/* 8. FAQ */}
                 <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="FAQ" title="よくある質問" />
@@ -558,26 +505,7 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-blue-50 py-14 sm:py-20">
-                    <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
-                            購入前に雰囲気を確認したい方へ
-                        </h2>
-                        <p className={`mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base ${JP_TEXT}`}>
-                            LINE登録で、自主トレ継続に役立つ補助シートや一部サンプルを無料配布しています。
-                            有料版では、姿勢別に整理されたPowerPoint資料を編集可能な形で使用できます。
-                        </p>
-                        <div className="mx-auto mt-7 max-w-md">
-                            <Link
-                                href="/#line"
-                                className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-green-500 px-7 py-4 text-center text-base font-bold text-white shadow-sm transition-colors hover:bg-green-400 sm:w-auto"
-                            >
-                                LINEで無料サンプルを受け取る
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
+                {/* 9. 最終CTA。旧構成の「LINE案内」「最終CTA」「疾患別への導線」3セクションをここに畳んだ */}
                 <section className="bg-slate-50 py-16 sm:py-24">
                     <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
                         <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
@@ -590,34 +518,18 @@ export default function HomeElderlySelfTrainingPage() {
                         <div className="mx-auto mt-8 max-w-md">
                             <ProductCheckoutButton />
                         </div>
-                    </div>
-                </section>
-
-                {/* 疾患別セットへの回遊導線 */}
-                <section className="bg-white py-12 sm:py-16 border-t border-slate-100">
-                    <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-2xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
-                            <p className="mb-2 text-[11px] font-bold tracking-wide text-blue-700">
-                                もう1つの資料セット
-                            </p>
-                            <h2 className={`text-xl sm:text-2xl font-bold leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
-                                疾患ごとの注意点も整理したい方へ
-                            </h2>
-                            <p className={`text-sm sm:text-base leading-relaxed text-slate-600 mb-5 ${JP_TEXT}`}>
-                                脳卒中・腰痛・膝OAなど、疾患ごとに使える自主トレ資料セットもあります。退院前指導や疾患別の家族説明に使いやすい資料です。
-                            </p>
+                        <p className={`mt-6 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
+                            疾患ごとの注意点から整理したい方には、
                             <ProductSelectLink
                                 href="/products/self-training-materials/"
                                 itemName="疾患別自主トレ資料セット"
                                 location="products_cross_link"
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-blue-500 bg-white px-6 py-3 text-sm font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white"
+                                className="font-bold text-blue-700 underline underline-offset-2 hover:text-blue-600"
                             >
-                                疾患別セットを見る
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
-                                </svg>
+                                疾患別9本セット（980円）
                             </ProductSelectLink>
-                        </div>
+                            もあります。
+                        </p>
                     </div>
                 </section>
 

@@ -129,14 +129,6 @@ const USE_STEPS = [
 
 const USE_SCENES = ["退院前指導", "訪問リハ", "家族説明"];
 
-const RECOMMENDED = [
-    "退院前指導の資料を毎回ゼロから作っている",
-    "訪問リハで患者さんに渡せる資料が欲しい",
-    "口頭説明だけでは、自主トレが定着しにくいと感じている",
-    "家族にも運動内容を共有したい",
-    "自施設用に編集できる、PowerPoint資料が欲しい",
-    "無料イラストを貼る時間すら惜しい",
-];
 
 const FAQS: { q: string; a: string }[] = [
     {
@@ -310,12 +302,8 @@ export default function SelfTrainingMaterialsPage() {
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                </section>
 
-                {/* C. 解決策 */}
-                <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+                        {/* 旧「C. 解決策」を統合（同じ主張を2セクションに分けていた） */}
                         <p className="mb-2 block text-xs font-semibold tracking-[0.14em] text-blue-600">
                             解決策
                         </p>
@@ -331,21 +319,8 @@ export default function SelfTrainingMaterialsPage() {
                     </div>
                 </section>
 
-                {/* D. 無料素材との違い */}
-                <section className="bg-white py-14 sm:py-20">
-                    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading kicker="無料素材との違い" title="無料素材とPowerPoint資料、何が違うの？" />
-
-                        <ProductComparisonTable
-                            rows={COMPARISON_ROWS}
-                            leftLabel="無料素材"
-                            rightLabel="疾患別PowerPoint資料"
-                        />
-                    </div>
-                </section>
-
                 {/* E. 商品内容 */}
-                <section id="contents" className="bg-white py-14 sm:py-20 scroll-mt-24">
+                <section id="contents" className="bg-slate-50 py-14 sm:py-20 scroll-mt-24">
                     <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="収録内容" title="9テーマ・疾患別のPowerPoint資料" />
                         <div className="mx-auto mb-8 max-w-2xl rounded-2xl border border-blue-100 bg-blue-50/60 px-5 py-4 text-center">
@@ -379,25 +354,8 @@ export default function SelfTrainingMaterialsPage() {
                                 </article>
                             ))}
                         </div>
-                    </div>
-                </section>
 
-                {/* E2. 透かし入りプレビュー（全ページ掲載） */}
-                <WatermarkPreviewSection
-                    id="preview"
-                    kicker="SAMPLE"
-                    heading="9疾患の全ページを透かし入りで公開しています"
-                    intro="購入前に中身をしっかり確認できるよう、9疾患・全108ページを掲載しています。カードにカーソルを合わせるとページが流れ、クリックすると拡大表示で左右の矢印でも送れます。"
-                    subcopy="実際のPowerPoint資料の全ページを、透かし入りで掲載しています。購入後のPowerPoint・PDFファイルには透かしは入りません。"
-                    groups={PREVIEW_GROUPS}
-                    background="slate"
-                    columns={3}
-                    display="carousel"
-                />
-
-                {/* F. 使い方 */}
-                <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+                        {/* 旧「F. 使い方」を統合（何が入っていて、どう使うかは1つの話） */}
                         <SectionHeading kicker="使い方" title="使い方はかんたんです" />
 
                         <ol className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
@@ -434,50 +392,57 @@ export default function SelfTrainingMaterialsPage() {
                     </div>
                 </section>
 
-                {/* G. おすすめの人 */}
-                <section className="bg-white py-14 sm:py-20">
-                    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <SectionHeading title="こんなリハ職におすすめです" />
-                        <ul className="mx-auto grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
-                            {RECOMMENDED.map((item) => (
-                                <li
-                                    key={item}
-                                    className={`flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 ${JP_TEXT}`}
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-500">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                    </svg>
-                                    <span>{jp(item)}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </section>
+                {/* E2. 透かし入りプレビュー（全ページ掲載） */}
+                <WatermarkPreviewSection
+                    id="preview"
+                    kicker="SAMPLE"
+                    heading="9疾患の全ページを透かし入りで公開しています"
+                    intro="購入前に中身をしっかり確認できるよう、9疾患・全108ページを掲載しています。カードにカーソルを合わせるとページが流れ、クリックすると拡大表示で左右の矢印でも送れます。"
+                    subcopy="実際のPowerPoint資料の全ページを、透かし入りで掲載しています。購入後のPowerPoint・PDFファイルには透かしは入りません。"
+                    groups={PREVIEW_GROUPS}
+                    background="white"
+                    columns={3}
+                    display="carousel"
+                />
 
-                {/* H. 購入前の注意 */}
-                <section className="bg-slate-50 py-14 sm:py-20">
+                {/* ★2026-08-29：実物を見た直後に買えるようにCTAを置く。
+                    旧構成では次の購入ボタンが5,000px下の価格セクションまで無かった。 */}
+                <section className="bg-white pb-14 sm:pb-20">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-6 sm:px-7 sm:py-8">
-                            <div className="mb-3 flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5 text-amber-600">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                                </svg>
-                                <h2 className={`text-lg sm:text-xl font-bold text-amber-900 ${JP_TEXT}`}>
-                                    購入前にご確認ください
-                                </h2>
-                            </div>
-                            <p className={`text-sm sm:text-base leading-relaxed text-amber-900 ${JP_TEXT}`}>
-                                {jp("この資料は、すべての患者さんにそのまま使える、医療プロトコルではありません。")}
+                        <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-6 text-center sm:p-8">
+                            <p className={`text-base font-bold text-slate-900 ${JP_TEXT}`}>
+                                中身を見て、使えそうだと思ったら
                             </p>
-                            <p className={`mt-3 text-sm sm:text-base leading-relaxed text-amber-900 ${JP_TEXT}`}>
-                                {jp("対象者の状態、医師の指示、疼痛、禁忌、術後時期に合わせて、専門職の判断で編集してご使用ください。")}
+                            <div className="mx-auto mt-5 max-w-md">
+                                <CheckoutButton
+                                    productId={PRODUCT_ID}
+                                    productName={PRODUCT_NAME}
+                                    price={PRICE}
+                                    label="980円で購入する"
+                                    className={SECTION_CHECKOUT_CLASS}
+                                />
+                            </div>
+                            <p className="mt-3 text-xs font-medium text-slate-500">
+                                買い切り980円・PowerPoint編集OK・印刷配布OK
                             </p>
                         </div>
                     </div>
                 </section>
+                {/* D. 無料素材との違い */}
+                <section className="bg-slate-50 py-14 sm:py-20">
+                    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+                        <SectionHeading kicker="無料素材との違い" title="無料素材とPowerPoint資料、何が違うの？" />
+
+                        <ProductComparisonTable
+                            rows={COMPARISON_ROWS}
+                            leftLabel="無料素材"
+                            rightLabel="疾患別PowerPoint資料"
+                        />
+                    </div>
+                </section>
 
                 {/* I. 価格 */}
-                <section className="bg-white py-14 sm:py-20">
+                <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="価格" title="価格" />
 
@@ -523,12 +488,8 @@ export default function SelfTrainingMaterialsPage() {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                {/* J. 購入後の流れ */}
-                <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+                        {/* 旧「J. 購入後の流れ」を統合 */}
                         <SectionHeading kicker="購入後の流れ" title="購入後の流れ" />
                         <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                             {[
@@ -549,6 +510,24 @@ export default function SelfTrainingMaterialsPage() {
                                 </li>
                             ))}
                         </ol>
+
+                        {/* 旧「H. 購入前の注意」を統合（買う直前に要る情報は1か所に） */}
+                        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-6 sm:px-7 sm:py-8">
+                            <div className="mb-3 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5 text-amber-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                                </svg>
+                                <h2 className={`text-lg sm:text-xl font-bold text-amber-900 ${JP_TEXT}`}>
+                                    購入前にご確認ください
+                                </h2>
+                            </div>
+                            <p className={`text-sm sm:text-base leading-relaxed text-amber-900 ${JP_TEXT}`}>
+                                {jp("この資料は、すべての患者さんにそのまま使える、医療プロトコルではありません。")}
+                            </p>
+                            <p className={`mt-3 text-sm sm:text-base leading-relaxed text-amber-900 ${JP_TEXT}`}>
+                                {jp("対象者の状態、医師の指示、疼痛、禁忌、術後時期に合わせて、専門職の判断で編集してご使用ください。")}
+                            </p>
+                        </div>
                     </div>
                 </section>
 
@@ -588,26 +567,8 @@ export default function SelfTrainingMaterialsPage() {
                     </div>
                 </section>
 
-                {/* L. LINE無料特典 */}
-                <section className="bg-slate-50 py-14 sm:py-20">
-                    <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-6 sm:mb-8">
-                            <p className="mb-3 inline-block rounded-full bg-green-50 px-3 py-1 text-xs font-bold tracking-wide text-green-700">
-                                購入前に雰囲気を確認したい方へ
-                            </p>
-                            <h2 className={`text-2xl sm:text-3xl font-bold leading-snug text-slate-900 ${JP_TEXT}`}>
-                                LINE登録で、サンプル資料を無料でお試し
-                            </h2>
-                            <p className={`mt-4 mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                {jp("腰痛版の一部サンプルや、自主トレ継続に役立つ補助シートを無料配布しています。有料版では、9テーマすべてのPowerPoint資料を編集可能な形でご利用いただけます。")}
-                            </p>
-                        </div>
-                        <LineBanner />
-                    </div>
-                </section>
-
                 {/* M. 最終CTA */}
-                <section className="bg-white py-16 sm:py-24">
+                <section className="bg-slate-50 py-16 sm:py-24">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
                         <h2 className={`text-2xl sm:text-3xl font-bold leading-snug text-slate-900 ${JP_TEXT}`}>
                             退院前指導の資料作成を、
@@ -630,36 +591,24 @@ export default function SelfTrainingMaterialsPage() {
                                 Stripe決済 / 買い切り / 編集・印刷OK
                             </p>
                         </div>
-                    </div>
-                </section>
 
-                {/* 姿勢別セットへの回遊導線 */}
-                <section className="bg-slate-50 py-12 sm:py-16 border-t border-slate-100">
-                    <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-2xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
-                            <p className="mb-2 text-[11px] font-bold tracking-wide text-blue-700">
-                                もう1つの資料セット
-                            </p>
-                            <h2 className={`text-xl sm:text-2xl font-bold leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
-                                姿勢から選びたい方へ
-                            </h2>
-                            <p className={`text-sm sm:text-base leading-relaxed text-slate-600 mb-5 ${JP_TEXT}`}>
-                                座位・立位・臥位など、対象者の「今できる姿勢」から選べる資料セットもあります。立位が不安定な方や、ベッド上中心の方への自主トレ指導に使いやすい資料です。
-                            </p>
+                        {/* 旧「姿勢別セットへの回遊導線」セクションを1行に畳んだ */}
+                        <p className={`mt-8 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
+                            姿勢から選びたい方には、
                             <ProductSelectLink
                                 href="/products/home-elderly-self-training/"
                                 itemName="姿勢別自主トレ指導資料セット"
                                 location="products_cross_link"
-                                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-blue-500 bg-white px-6 py-3 text-sm font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white"
+                                className="font-bold text-blue-700 underline underline-offset-2 hover:text-blue-600"
                             >
-                                姿勢別セットを見る
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 flex-shrink-0">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6 21 12m0 0-7.5 6M21 12H3" />
-                                </svg>
+                                姿勢別セット（980円）
                             </ProductSelectLink>
-                        </div>
+                            もあります。
+                        </p>
                     </div>
                 </section>
+
+                <LineBanner />
             </main>
             <Footer />
         </div>
