@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 332" width="800" height="332">
+  <rect width="800" height="332" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">目的が決まっていれば、読むのは1か所です</text>
+
+    <rect x="40" y="56" width="232" height="150" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="156" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">これ、取れるの？</text>
+    <line x1="72" y1="110" x2="240" y2="110" stroke="#90CAF9" stroke-width="2"/>
+    <text x="156" y="146" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">算定要件だけ</text>
+    <text x="156" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">上から2つ目のかたまり</text>
+
+    <rect x="284" y="56" width="232" height="150" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">いくらになるの？</text>
+    <line x1="316" y1="110" x2="484" y2="110" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="146" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">単位数だけ</text>
+    <text x="400" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">いちばん上のかたまり</text>
+
+    <rect x="528" y="56" width="232" height="150" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="644" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">実地指導が近い</text>
+    <line x1="560" y1="110" x2="728" y2="110" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="644" y="146" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">記録と自己点検</text>
+    <text x="644" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">下のほうの2つ</text>
+
+    <rect x="40" y="226" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="255" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">迷ったら、上から順にではなく目的から入ります</text>
+
+    <text x="400" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">確認日と根拠資料は、いつ時点の情報かを確かめるための欄です</text>
+  </g>
+</svg>

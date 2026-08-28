@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 374" width="800" height="374">
+  <rect width="800" height="374" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">148項目は、4種類に分かれます</text>
+
+    <rect x="40" y="56" width="172" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="126" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">基本報酬</text>
+    <text x="126" y="128" text-anchor="middle" font-size="26" font-weight="bold" fill="#0F172A">10</text>
+    <text x="126" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">土台になる点数</text>
+
+    <rect x="222" y="56" width="172" height="120" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="308" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">加算</text>
+    <text x="308" y="128" text-anchor="middle" font-size="26" font-weight="bold" fill="#0F172A">102</text>
+    <text x="308" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">上に足すもの</text>
+
+    <rect x="404" y="56" width="172" height="120" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="490" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">減算</text>
+    <text x="490" y="128" text-anchor="middle" font-size="26" font-weight="bold" fill="#0F172A">25</text>
+    <text x="490" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">引かれるもの</text>
+
+    <rect x="586" y="56" width="172" height="120" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="672" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">ルール</text>
+    <text x="672" y="128" text-anchor="middle" font-size="26" font-weight="bold" fill="#0F172A">11</text>
+    <text x="672" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">点数のない決めごと</text>
+
+    <rect x="40" y="200" width="352" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="216" y="229" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">医療保険 26項目</text>
+    <rect x="408" y="200" width="352" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="584" y="229" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">介護保険 122項目</text>
+
+    <rect x="40" y="266" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="295" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">加算が7割。でも減算とルールは「取りに行く」ものではありません</text>
+
+    <text x="400" y="344" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">4種類でも、保険の別でも、足すと148項目になります</text>
+  </g>
+</svg>

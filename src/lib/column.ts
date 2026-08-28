@@ -22,6 +22,8 @@ import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misaku
 import { article as chiikiKasanKata } from "@/data/column/articles/chiiki-kasan-kata";
 import { article as hizaItaiJishutore } from "@/data/column/articles/hiza-itai-jishutore";
 import { article as hokatsuToDemidaka } from "@/data/column/articles/hokatsu-to-demidaka";
+import { article as hoshuCheck4shurui } from "@/data/column/articles/hoshu-check-4shurui";
+import { article as hoshuCheckPageYomikata } from "@/data/column/articles/hoshu-check-page-yomikata";
 import { article as isuKurumaisuSuwarikata } from "@/data/column/articles/isu-kurumaisu-suwarikata";
 import { article as kaidanNoboriKudari } from "@/data/column/articles/kaidan-nobori-kudari";
 import { article as kaifukukiBetsuNiToreru } from "@/data/column/articles/kaifukuki-betsu-ni-toreru";
@@ -233,6 +235,8 @@ const articles: ColumnArticle[] = [
     taiinKyodoShidoKata,
     chujudoNinchishoKasanKata,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
+    hoshuCheck4shurui,
+    hoshuCheckPageYomikata,
     hokatsuToDemidaka,
     kokujiChuNoYomikata,
     tanisuNoKakikata,
