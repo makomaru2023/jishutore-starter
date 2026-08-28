@@ -184,7 +184,7 @@ const FAQS = [
 ];
 
 const CHECKOUT_CLASS =
-    "flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-4 text-center text-base font-black text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+    "flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-4 text-center text-base font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
 
 function SectionHeading({
     title,
@@ -198,11 +198,11 @@ function SectionHeading({
     return (
         <div className="mb-8 text-center sm:mb-10">
             {kicker && (
-                <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-black tracking-widest text-blue-600">
+                <p className="mb-2 block text-xs font-semibold tracking-[0.14em] text-blue-600">
                     {kicker}
                 </p>
             )}
-            <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
+            <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                 {title}
             </h2>
             {description && (
@@ -220,7 +220,7 @@ function CheckList({ items }: { items: string[] }) {
             {items.map((item) => (
                 <li
                     key={item}
-                    className={`flex max-w-full items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 shadow-sm ${JP_TEXT}`}
+                    className={`flex max-w-full items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 ${JP_TEXT}`}
                 >
                     <span className="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
@@ -261,7 +261,7 @@ function ComparisonSection() {
     ];
 
     return (
-        <section className="bg-white py-14 sm:py-20">
+        <section className="bg-slate-50 py-14 sm:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <SectionHeading
                     kicker="COMPARE"
@@ -271,15 +271,15 @@ function ComparisonSection() {
 
                 <div className="grid gap-4 md:hidden">
                     {rows.map(([label, disease, posture]) => (
-                        <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                            <h3 className="text-sm font-black text-slate-900">{label}</h3>
+                        <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5">
+                            <h3 className="text-sm font-bold text-slate-900">{label}</h3>
                             <div className="mt-4 grid gap-3">
                                 <div className="rounded-xl bg-slate-50 p-4">
-                                    <p className="text-xs font-black text-slate-500">疾患別自主トレ資料セット</p>
+                                    <p className="text-xs font-bold text-slate-500">疾患別自主トレ資料セット</p>
                                     <p className={`mt-1 text-sm font-bold leading-relaxed text-slate-700 ${JP_TEXT}`}>{disease}</p>
                                 </div>
                                 <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
-                                    <p className="text-xs font-black text-blue-600">姿勢別自主トレ資料セット</p>
+                                    <p className="text-xs font-bold text-blue-600">姿勢別自主トレ資料セット</p>
                                     <p className={`mt-1 text-sm font-bold leading-relaxed text-blue-900 ${JP_TEXT}`}>{posture}</p>
                                 </div>
                             </div>
@@ -287,19 +287,19 @@ function ComparisonSection() {
                     ))}
                 </div>
 
-                <div className="hidden overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm md:block">
+                <div className="hidden overflow-hidden rounded-2xl border border-slate-200 bg-white md:block">
                     <table className="w-full table-fixed border-collapse text-left">
                         <thead className="bg-slate-50">
                             <tr>
-                                <th className="w-1/5 px-5 py-4 text-sm font-black text-slate-500">比較項目</th>
-                                <th className="px-5 py-4 text-sm font-black text-slate-700">疾患別自主トレ資料セット</th>
-                                <th className="bg-blue-50 px-5 py-4 text-sm font-black text-blue-700">姿勢別自主トレ資料セット</th>
+                                <th className="w-1/5 px-5 py-4 text-sm font-bold text-slate-500">比較項目</th>
+                                <th className="px-5 py-4 text-sm font-bold text-slate-700">疾患別自主トレ資料セット</th>
+                                <th className="bg-blue-50 px-5 py-4 text-sm font-bold text-blue-700">姿勢別自主トレ資料セット</th>
                             </tr>
                         </thead>
                         <tbody>
                             {rows.map(([label, disease, posture]) => (
                                 <tr key={label} className="border-t border-slate-100">
-                                    <th className="px-5 py-4 text-sm font-black text-slate-900">{label}</th>
+                                    <th className="px-5 py-4 text-sm font-bold text-slate-900">{label}</th>
                                     <td className={`px-5 py-4 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>{disease}</td>
                                     <td className={`bg-blue-50/50 px-5 py-4 text-sm font-bold leading-relaxed text-blue-900 ${JP_TEXT}`}>{posture}</td>
                                 </tr>
@@ -322,7 +322,7 @@ function FreeMaterialComparison() {
     ];
 
     return (
-        <section className="bg-slate-50 py-14 sm:py-20">
+        <section className="bg-white py-14 sm:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <SectionHeading
                     kicker="FREE MATERIALS"
@@ -331,15 +331,15 @@ function FreeMaterialComparison() {
                 />
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
                     {rows.map(([label, free, product]) => (
-                        <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                            <h3 className="text-sm font-black text-slate-900">{label}</h3>
+                        <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5">
+                            <h3 className="text-sm font-bold text-slate-900">{label}</h3>
                             <div className="mt-4 space-y-3">
                                 <p className={`rounded-xl bg-slate-50 p-3 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                    <span className="block text-xs font-black text-slate-400">無料素材</span>
+                                    <span className="block text-xs font-bold text-slate-400">無料素材</span>
                                     {free}
                                 </p>
                                 <p className={`rounded-xl border border-blue-100 bg-blue-50 p-3 text-sm font-bold leading-relaxed text-blue-900 ${JP_TEXT}`}>
-                                    <span className="block text-xs font-black text-blue-500">姿勢別PowerPoint資料</span>
+                                    <span className="block text-xs font-bold text-blue-500">姿勢別PowerPoint資料</span>
                                     {product}
                                 </p>
                             </div>
@@ -356,13 +356,13 @@ export default function HomeElderlySelfTrainingPage() {
         <div className="jp-phrase flex min-h-screen flex-col overflow-x-hidden bg-white">
             <Header />
             <main className="flex-1">
-                <section className="bg-gradient-to-b from-blue-50 via-white to-white py-12 sm:py-16 lg:py-20">
+                <section className="bg-slate-50 py-12 sm:py-16 lg:py-20">
                     <div className="mx-auto grid grid-cols-1 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:px-8">
                         <div>
-                            <p className="mb-4 inline-block rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-black tracking-widest text-blue-700 shadow-sm">
+                            <p className="mb-3 block text-xs font-semibold tracking-[0.14em] text-blue-600">
                                 姿勢別自主トレPowerPointセット
                             </p>
-                            <h1 className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">
+                            <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
                                 <span className="hidden sm:inline">
                                     疾患名だけでは、
                                     <br />
@@ -386,7 +386,7 @@ export default function HomeElderlySelfTrainingPage() {
                                 {HERO_BADGES.map((badge) => (
                                     <span
                                         key={badge}
-                                        className="rounded-full border border-blue-100 bg-white px-3 py-1.5 text-xs font-bold text-blue-700 shadow-sm"
+                                        className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600"
                                     >
                                         {badge}
                                     </span>
@@ -405,7 +405,7 @@ export default function HomeElderlySelfTrainingPage() {
                             </div>
                         </div>
 
-                        <div className="overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-sm">
+                        <div className="overflow-hidden rounded-2xl border border-blue-100 bg-white">
                             <Image
                                 src="/products/home-elderly-self-training/thumbnail.png"
                                 alt="今できる姿勢から選べる 姿勢別自主トレPowerPointセットのサムネイル"
@@ -418,7 +418,7 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-slate-50 py-14 sm:py-20">
+                <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading
                             title="疾患別だけでは、運動を選びにくい場面があります"
@@ -428,11 +428,11 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-white py-14 sm:py-20">
+                <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-3xl border border-blue-100 bg-blue-50 p-6 text-center shadow-sm sm:p-10">
-                            <p className="mb-3 text-xs font-black tracking-widest text-blue-600">SOLUTION</p>
-                            <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
+                        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center sm:p-10">
+                            <p className="mb-3 text-xs font-bold tracking-wide text-blue-600">SOLUTION</p>
+                            <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                                 このセットは、能力・姿勢に合わせて運動を選ぶための資料です
                             </h2>
                             <p className={`mx-auto mt-5 max-w-3xl text-sm font-medium leading-relaxed text-slate-700 sm:text-base ${JP_TEXT}`}>
@@ -440,7 +440,7 @@ export default function HomeElderlySelfTrainingPage() {
                                 座位・立位・臥位などの実施姿勢ごとに資料を整理しました。
                                 必要なページだけを残して、回数や注意点を編集すれば、患者さんやご家族に渡せる資料として使えます。
                             </p>
-                            <p className="mx-auto mt-6 inline-flex rounded-full bg-white px-5 py-3 text-base font-black text-blue-700 shadow-sm">
+                            <p className="mx-auto mt-6 inline-flex rounded-full bg-white px-5 py-3 text-base font-bold text-blue-700">
                                 疾患ではなく、今できる姿勢から選べる。
                             </p>
                         </div>
@@ -459,12 +459,12 @@ export default function HomeElderlySelfTrainingPage() {
                         />
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {CONTENTS.map((content, index) => (
-                                <article key={content.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                                <article key={content.title} className="rounded-2xl border border-slate-200 bg-white p-5">
                                     <div className="mb-3 flex items-center gap-3">
-                                        <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xs font-black text-blue-600">
+                                        <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-blue-600">
                                             {String(index + 1).padStart(2, "0")}
                                         </span>
-                                        <h3 className={`font-black text-slate-900 ${JP_HEADING}`}>{content.title}</h3>
+                                        <h3 className={`font-bold text-slate-900 ${JP_HEADING}`}>{content.title}</h3>
                                     </div>
                                     <p className={`text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
                                         {content.description}
@@ -475,7 +475,7 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-slate-50 py-14 sm:py-20">
+                <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="HOW TO USE" title="使い方はかんたんです" />
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -484,11 +484,11 @@ export default function HomeElderlySelfTrainingPage() {
                                 ["2", "必要な運動ページだけ残す"],
                                 ["3", "回数・注意点を編集して印刷する"],
                             ].map(([step, text]) => (
-                                <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white">
+                                <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6">
+                                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
                                         {step}
                                     </span>
-                                    <h3 className={`mt-4 text-lg font-black leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
+                                    <h3 className={`mt-4 text-lg font-bold leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
                                 </article>
                             ))}
                         </div>
@@ -498,13 +498,13 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-white py-14 sm:py-20">
+                <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="SCENE" title="こんな場面で使えます" />
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             {USE_SCENES.map(([title, description]) => (
-                                <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                                    <h3 className="text-base font-black text-slate-900">{title}</h3>
+                                <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5">
+                                    <h3 className="text-base font-bold text-slate-900">{title}</h3>
                                     <p className={`mt-2 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>{description}</p>
                                 </article>
                             ))}
@@ -512,7 +512,7 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-slate-50 py-14 sm:py-20">
+                <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title="こんなリハ職におすすめです" />
                         <CheckList items={RECOMMENDED} />
@@ -534,7 +534,7 @@ export default function HomeElderlySelfTrainingPage() {
                 <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                         <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-7">
-                            <h2 className="text-lg font-black text-amber-900">購入前にご確認ください</h2>
+                            <h2 className="text-lg font-bold text-amber-900">購入前にご確認ください</h2>
                             <p className={`mt-3 text-sm leading-relaxed text-amber-900 sm:text-base ${JP_TEXT}`}>
                                 この資料は、すべての対象者にそのまま使える医療プロトコルではありません。
                                 対象者の状態、医師の指示、疼痛、禁忌、転倒リスク、術後時期に合わせて、専門職の判断で編集してご使用ください。
@@ -545,13 +545,13 @@ export default function HomeElderlySelfTrainingPage() {
 
                 <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-3xl border border-blue-100 bg-blue-50 p-6 text-center shadow-sm sm:p-10">
-                            <p className="text-xs font-black tracking-widest text-blue-600">PRICE</p>
-                            <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-5xl">980円</h2>
+                        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center sm:p-10">
+                            <p className="text-xs font-bold tracking-wide text-blue-600">PRICE</p>
+                            <h2 className="mt-3 text-3xl font-bold text-slate-900 sm:text-5xl">980円</h2>
                             <p className="mt-2 text-sm font-bold text-slate-600">税込・買い切り</p>
                             <div className="mt-5 flex flex-wrap justify-center gap-2">
                                 {["PowerPoint形式", "PDF印刷用", "編集OK", "印刷配布OK", "追加料金なし"].map((item) => (
-                                    <span key={item} className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-blue-700 shadow-sm">
+                                    <span key={item} className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-blue-700">
                                         {item}
                                     </span>
                                 ))}
@@ -575,9 +575,9 @@ export default function HomeElderlySelfTrainingPage() {
                                 ["2", "決済完了後、ダウンロードページへ移動"],
                                 ["3", "PowerPoint資料・PDF資料をダウンロードして使用"],
                             ].map(([step, text]) => (
-                                <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                                    <span className="text-sm font-black text-blue-600">STEP {step}</span>
-                                    <h3 className={`mt-2 text-base font-black leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
+                                <article key={step} className="rounded-2xl border border-slate-200 bg-white p-6">
+                                    <span className="text-sm font-bold text-blue-600">STEP {step}</span>
+                                    <h3 className={`mt-2 text-base font-bold leading-snug text-slate-900 ${JP_HEADING}`}>{text}</h3>
                                 </article>
                             ))}
                         </div>
@@ -592,8 +592,8 @@ export default function HomeElderlySelfTrainingPage() {
                         <SectionHeading kicker="FAQ" title="よくある質問" />
                         <div className="space-y-3">
                             {FAQS.map((faq) => (
-                                <details key={faq.q} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                                    <summary className={`cursor-pointer list-none text-base font-black leading-snug text-slate-900 ${JP_HEADING}`}>
+                                <details key={faq.q} className="group rounded-2xl border border-slate-200 bg-white p-5">
+                                    <summary className={`cursor-pointer list-none text-base font-bold leading-snug text-slate-900 ${JP_HEADING}`}>
                                         {faq.q}
                                     </summary>
                                     <p className={`mt-3 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>{faq.a}</p>
@@ -605,7 +605,7 @@ export default function HomeElderlySelfTrainingPage() {
 
                 <section className="bg-blue-50 py-14 sm:py-20">
                     <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
+                        <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                             購入前に雰囲気を確認したい方へ
                         </h2>
                         <p className={`mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base ${JP_TEXT}`}>
@@ -615,7 +615,7 @@ export default function HomeElderlySelfTrainingPage() {
                         <div className="mx-auto mt-7 max-w-md">
                             <Link
                                 href="/#line"
-                                className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-green-500 px-7 py-4 text-center text-base font-black text-white shadow-lg shadow-green-500/20 transition-colors hover:bg-green-400 sm:w-auto"
+                                className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-green-500 px-7 py-4 text-center text-base font-bold text-white shadow-sm transition-colors hover:bg-green-400 sm:w-auto"
                             >
                                 LINEで無料サンプルを受け取る
                             </Link>
@@ -623,9 +623,9 @@ export default function HomeElderlySelfTrainingPage() {
                     </div>
                 </section>
 
-                <section className="bg-gradient-to-b from-white to-blue-50 py-16 sm:py-24">
+                <section className="bg-slate-50 py-16 sm:py-24">
                     <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-black leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
+                        <h2 className={`text-2xl font-bold leading-snug text-slate-900 sm:text-3xl ${JP_HEADING}`}>
                             対象者に合わせた自主トレ資料を、ゼロから作らない。
                         </h2>
                         <p className={`mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base ${JP_TEXT}`}>
@@ -641,11 +641,11 @@ export default function HomeElderlySelfTrainingPage() {
                 {/* 疾患別セットへの回遊導線 */}
                 <section className="bg-white py-12 sm:py-16 border-t border-slate-100">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-3xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
-                            <p className="mb-2 text-[11px] font-bold tracking-widest text-blue-700">
+                        <div className="rounded-2xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
+                            <p className="mb-2 text-[11px] font-bold tracking-wide text-blue-700">
                                 もう1つの資料セット
                             </p>
-                            <h2 className={`text-xl sm:text-2xl font-black leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
+                            <h2 className={`text-xl sm:text-2xl font-bold leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
                                 疾患ごとの注意点も整理したい方へ
                             </h2>
                             <p className={`text-sm sm:text-base leading-relaxed text-slate-600 mb-5 ${JP_TEXT}`}>

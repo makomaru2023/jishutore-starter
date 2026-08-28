@@ -5,6 +5,7 @@ import { LineBanner } from "@/components/LineBanner";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -172,10 +173,10 @@ const FAQS: { q: string; a: string }[] = [
 ];
 
 const HERO_CHECKOUT_CLASS =
-    "flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-black text-white shadow-lg shadow-blue-600/30 transition-all hover:bg-blue-500 hover:shadow-xl hover:shadow-blue-600/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+    "flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
 
 const SECTION_CHECKOUT_CLASS =
-    "flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-black text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+    "flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
 
 // 日本語本文用。
 // ★2026-08-28：break-keep をやめ、ルート側の .jp-phrase（word-break:auto-phrase）に任せる。
@@ -206,11 +207,11 @@ function SectionHeading({ kicker, title }: { kicker?: string; title: string }) {
     return (
         <div className="mb-8 sm:mb-10 text-center">
             {kicker && (
-                <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold tracking-widest text-blue-600">
+                <p className="mb-2 block text-xs font-semibold tracking-[0.14em] text-blue-600">
                     {kicker}
                 </p>
             )}
-            <h2 className={`text-2xl sm:text-3xl font-black leading-snug text-slate-900 ${JP_TEXT}`}>
+            <h2 className={`text-2xl sm:text-3xl font-bold leading-snug text-slate-900 ${JP_TEXT}`}>
                 {title}
             </h2>
         </div>
@@ -223,26 +224,29 @@ export default function SelfTrainingMaterialsPage() {
             <Header />
             <main className="flex-1">
                 {/* A. ファーストビュー */}
-                <section className="relative bg-gradient-to-b from-blue-50 via-white to-white pt-12 pb-16 sm:pt-16 sm:pb-20">
-                    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-                        <div className="mx-auto max-w-3xl text-center space-y-6">
-                            <p className="inline-block rounded-full bg-white border border-blue-200 px-4 py-1.5 text-xs sm:text-sm font-bold tracking-widest text-blue-700 shadow-sm">
+                <section className="relative bg-slate-50 pt-12 pb-16 sm:pt-16 sm:pb-20">
+                    {/* ★2026-08-28：中央寄せ1カラム＋商品画像なしだったのを、姿勢別LPと同じ
+                        「テキスト左／実物右」の2カラムに変更。スライドを売るページの
+                        ファーストビューにスライドが1枚も無い状態を解消する。 */}
+                    <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_420px] lg:px-8">
+                        <div className="space-y-6">
+                            <p className="inline-block text-xs sm:text-sm font-semibold tracking-[0.14em] text-blue-600">
                                 疾患別 自主トレ PowerPoint 9本セット
                             </p>
-                            <h1 className={`text-2xl sm:text-4xl font-black leading-snug tracking-tight text-slate-900 ${JP_TEXT}`}>
+                            <h1 className={`text-2xl sm:text-4xl font-bold leading-snug tracking-tight text-slate-900 ${JP_TEXT}`}>
                                 {jp("退院前・訪問リハの自主トレ説明、")}
                                 <br className="hidden sm:block" />
                                 {jp("毎回ゼロから作っていませんか？")}
                             </h1>
-                            <p className={`mx-auto max-w-2xl text-sm sm:text-base font-medium leading-relaxed text-slate-600 ${JP_TEXT}`}>
+                            <p className={`max-w-2xl text-sm sm:text-base font-medium leading-relaxed text-slate-600 ${JP_TEXT}`}>
                                 {jp("疾患別に使えるPowerPoint資料9本を、印刷・編集できる形でまとめました。患者さんやご家族が、自宅で見返しやすい自主トレ説明資料です。")}
                             </p>
 
-                            <div className="flex flex-wrap justify-center gap-2 pt-2">
+                            <div className="flex flex-wrap gap-2 pt-2">
                                 {HERO_BADGES.map((badge) => (
                                     <span
                                         key={badge}
-                                        className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-white px-3 py-1.5 text-xs sm:text-sm font-bold text-blue-700 shadow-sm whitespace-nowrap"
+                                        className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 whitespace-nowrap"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5 text-blue-500">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -252,7 +256,7 @@ export default function SelfTrainingMaterialsPage() {
                                 ))}
                             </div>
 
-                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 max-w-md sm:max-w-none mx-auto">
+                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                                 <div className="w-full sm:w-auto">
                                     <CheckoutButton
                                         productId={PRODUCT_ID}
@@ -276,18 +280,29 @@ export default function SelfTrainingMaterialsPage() {
                                 サイト内のStripeで決済 / 決済完了後にダウンロード案内が表示されます
                             </p>
                         </div>
+
+                        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                            <Image
+                                src="/products/self-training-materials/thumbnail.jpg"
+                                alt="疾患別自主トレPowerPoint 9本セットの資料イメージ"
+                                width={1200}
+                                height={900}
+                                className="h-auto w-full max-w-full"
+                                priority
+                            />
+                        </div>
                     </div>
                 </section>
 
                 {/* B. 悩み訴求 */}
-                <section className="bg-slate-50 py-14 sm:py-20">
+                <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title="こんな資料作成、地味に時間がかかりませんか？" />
                         <ul className="mx-auto grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                             {PAIN_POINTS.map((point) => (
                                 <li
                                     key={point}
-                                    className={`flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 shadow-sm ${JP_TEXT}`}
+                                    className={`flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 ${JP_TEXT}`}
                                 >
                                     <span className="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-3.5 w-3.5">
@@ -302,12 +317,12 @@ export default function SelfTrainingMaterialsPage() {
                 </section>
 
                 {/* C. 解決策 */}
-                <section className="bg-white py-14 sm:py-20">
+                <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-                        <p className="mb-3 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold tracking-widest text-blue-600">
+                        <p className="mb-2 block text-xs font-semibold tracking-[0.14em] text-blue-600">
                             解決策
                         </p>
-                        <h2 className={`text-2xl sm:text-3xl font-black leading-snug text-slate-900 ${JP_TEXT}`}>
+                        <h2 className={`text-2xl sm:text-3xl font-bold leading-snug text-slate-900 ${JP_TEXT}`}>
                             このセットは、イラスト素材ではなく
                             <wbr />
                             <span className="text-blue-600">&ldquo;説明資料&rdquo;</span>
@@ -320,7 +335,7 @@ export default function SelfTrainingMaterialsPage() {
                 </section>
 
                 {/* D. 無料素材との違い */}
-                <section className="bg-slate-50 py-14 sm:py-20">
+                <section className="bg-white py-14 sm:py-20">
                     <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="無料素材との違い" title="無料素材とPowerPoint資料、何が違うの？" />
 
@@ -329,9 +344,9 @@ export default function SelfTrainingMaterialsPage() {
                             {COMPARISON_ROWS.map((row) => (
                                 <div
                                     key={row.label}
-                                    className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+                                    className="rounded-2xl border border-slate-200 bg-white p-5"
                                 >
-                                    <p className="mb-3 text-xs font-black tracking-widest text-slate-500">
+                                    <p className="mb-3 text-xs font-bold tracking-wide text-slate-500">
                                         {row.label}
                                     </p>
                                     <div className="grid grid-cols-1 gap-3">
@@ -358,13 +373,13 @@ export default function SelfTrainingMaterialsPage() {
 
                         {/* PC: テーブル形式 */}
                         <div className="hidden md:block">
-                            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+                            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
                                 <table className="w-full min-w-[640px] text-sm">
                                     <thead>
                                         <tr className="bg-slate-50 text-left">
-                                            <th className="w-1/4 px-5 py-4 font-black tracking-widest text-xs text-slate-500">項目</th>
+                                            <th className="w-1/4 px-5 py-4 font-bold tracking-wide text-xs text-slate-500">項目</th>
                                             <th className="w-1/3 px-5 py-4 font-bold text-slate-700">無料素材</th>
-                                            <th className="w-1/3 px-5 py-4 font-black text-blue-700">有料PowerPoint資料</th>
+                                            <th className="w-1/3 px-5 py-4 font-bold text-blue-700">有料PowerPoint資料</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -403,13 +418,13 @@ export default function SelfTrainingMaterialsPage() {
                             {CONTENTS.map((item, idx) => (
                                 <article
                                     key={item.title}
-                                    className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-blue-200 hover:shadow-md"
+                                    className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-blue-200 hover:border-blue-300"
                                 >
                                     <div className="mb-3 flex items-center gap-3">
-                                        <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xs font-black text-blue-600">
+                                        <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-blue-600">
                                             {String(idx + 1).padStart(2, "0")}
                                         </span>
-                                        <h3 className={`text-base font-black text-slate-900 ${JP_TEXT}`}>
+                                        <h3 className={`text-base font-bold text-slate-900 ${JP_TEXT}`}>
                                             {item.title}
                                         </h3>
                                     </div>
@@ -444,9 +459,9 @@ export default function SelfTrainingMaterialsPage() {
                             {USE_STEPS.map((step, idx) => (
                                 <li
                                     key={step}
-                                    className="relative rounded-2xl border border-slate-200 bg-white px-5 py-6 text-center shadow-sm"
+                                    className="relative rounded-2xl border border-slate-200 bg-white px-5 py-6 text-center"
                                 >
-                                    <span className="absolute -top-3 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white shadow">
+                                    <span className="absolute -top-3 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow">
                                         {idx + 1}
                                     </span>
                                     <p className={`pt-2 text-sm sm:text-base font-bold text-slate-800 leading-relaxed ${JP_TEXT}`}>
@@ -457,14 +472,14 @@ export default function SelfTrainingMaterialsPage() {
                         </ol>
 
                         <div className="mt-10">
-                            <p className="text-center text-xs font-black tracking-widest text-slate-500 mb-3">
+                            <p className="text-center text-xs font-bold tracking-wide text-slate-500 mb-3">
                                 こんな場面で使えます
                             </p>
                             <div className="flex flex-wrap justify-center gap-2">
                                 {USE_SCENES.map((scene) => (
                                     <span
                                         key={scene}
-                                        className="rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs sm:text-sm font-bold text-blue-700 shadow-sm whitespace-nowrap"
+                                        className="rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap"
                                     >
                                         {scene}
                                     </span>
@@ -482,7 +497,7 @@ export default function SelfTrainingMaterialsPage() {
                             {RECOMMENDED.map((item) => (
                                 <li
                                     key={item}
-                                    className={`flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 shadow-sm ${JP_TEXT}`}
+                                    className={`flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed text-slate-700 ${JP_TEXT}`}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-500">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -502,7 +517,7 @@ export default function SelfTrainingMaterialsPage() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5 text-amber-600">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                                 </svg>
-                                <h2 className={`text-lg sm:text-xl font-black text-amber-900 ${JP_TEXT}`}>
+                                <h2 className={`text-lg sm:text-xl font-bold text-amber-900 ${JP_TEXT}`}>
                                     購入前にご確認ください
                                 </h2>
                             </div>
@@ -521,14 +536,14 @@ export default function SelfTrainingMaterialsPage() {
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="価格" title="価格" />
 
-                        <div className="rounded-3xl border-2 border-blue-200 bg-gradient-to-br from-blue-50/60 to-white px-6 py-8 sm:px-10 sm:py-10 shadow-sm">
+                        <div className="rounded-2xl border-2 border-blue-200 bg-blue-50/40 px-6 py-8 sm:px-10 sm:py-10">
                             <div className="text-center">
-                                <p className="text-xs font-black tracking-widest text-blue-600 mb-1">買い切り</p>
+                                <p className="text-xs font-bold tracking-wide text-blue-600 mb-1">買い切り</p>
                                 <p className="flex items-baseline justify-center gap-1">
-                                    <span className="text-5xl sm:text-6xl font-black tracking-tight text-slate-900">
+                                    <span className="text-5xl sm:text-6xl font-bold tracking-tight text-slate-900">
                                         980
                                     </span>
-                                    <span className="text-xl font-black text-slate-700">円</span>
+                                    <span className="text-xl font-bold text-slate-700">円</span>
                                 </p>
                                 <p className="mt-2 text-sm text-slate-500 font-medium">
                                     9本セット / 1本あたり 約109円
@@ -578,9 +593,9 @@ export default function SelfTrainingMaterialsPage() {
                             ].map((step, idx) => (
                                 <li
                                     key={step}
-                                    className="relative rounded-2xl border border-slate-200 bg-white px-5 py-6 text-center shadow-sm"
+                                    className="relative rounded-2xl border border-slate-200 bg-white px-5 py-6 text-center"
                                 >
-                                    <span className="absolute -top-3 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white shadow">
+                                    <span className="absolute -top-3 left-1/2 inline-flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow">
                                         {idx + 1}
                                     </span>
                                     <p className={`pt-2 text-sm sm:text-base font-bold text-slate-800 leading-relaxed ${JP_TEXT}`}>
@@ -603,7 +618,7 @@ export default function SelfTrainingMaterialsPage() {
                             {FAQS.map((faq, idx) => (
                                 <details
                                     key={faq.q}
-                                    className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition-all open:border-blue-200 open:shadow-md"
+                                    className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 transition-all open:border-blue-200"
                                     open={idx === 0}
                                 >
                                     <summary className={`flex cursor-pointer list-none items-start justify-between gap-3 text-sm sm:text-base font-bold text-slate-900 ${JP_TEXT}`}>
@@ -632,10 +647,10 @@ export default function SelfTrainingMaterialsPage() {
                 <section className="bg-slate-50 py-14 sm:py-20">
                     <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-6 sm:mb-8">
-                            <p className="mb-3 inline-block rounded-full bg-green-50 px-3 py-1 text-xs font-bold tracking-widest text-green-700">
+                            <p className="mb-3 inline-block rounded-full bg-green-50 px-3 py-1 text-xs font-bold tracking-wide text-green-700">
                                 購入前に雰囲気を確認したい方へ
                             </p>
-                            <h2 className={`text-2xl sm:text-3xl font-black leading-snug text-slate-900 ${JP_TEXT}`}>
+                            <h2 className={`text-2xl sm:text-3xl font-bold leading-snug text-slate-900 ${JP_TEXT}`}>
                                 LINE登録で、サンプル資料を無料でお試し
                             </h2>
                             <p className={`mt-4 mx-auto max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 ${JP_TEXT}`}>
@@ -647,9 +662,9 @@ export default function SelfTrainingMaterialsPage() {
                 </section>
 
                 {/* M. 最終CTA */}
-                <section className="bg-gradient-to-b from-white to-blue-50/60 py-16 sm:py-24">
+                <section className="bg-white py-16 sm:py-24">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-                        <h2 className={`text-2xl sm:text-3xl font-black leading-snug text-slate-900 ${JP_TEXT}`}>
+                        <h2 className={`text-2xl sm:text-3xl font-bold leading-snug text-slate-900 ${JP_TEXT}`}>
                             退院前指導の資料作成を、
                             <br className="hidden sm:block" />
                             <span className="text-blue-600">ゼロから始めない</span>
@@ -674,13 +689,13 @@ export default function SelfTrainingMaterialsPage() {
                 </section>
 
                 {/* 姿勢別セットへの回遊導線 */}
-                <section className="bg-white py-12 sm:py-16 border-t border-slate-100">
+                <section className="bg-slate-50 py-12 sm:py-16 border-t border-slate-100">
                     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-                        <div className="rounded-3xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
-                            <p className="mb-2 text-[11px] font-bold tracking-widest text-blue-700">
+                        <div className="rounded-2xl border border-blue-100 bg-blue-50/30 px-6 py-8 sm:px-8 sm:py-10">
+                            <p className="mb-2 text-[11px] font-bold tracking-wide text-blue-700">
                                 もう1つの資料セット
                             </p>
-                            <h2 className={`text-xl sm:text-2xl font-black leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
+                            <h2 className={`text-xl sm:text-2xl font-bold leading-snug text-slate-900 mb-3 ${JP_TEXT}`}>
                                 姿勢から選びたい方へ
                             </h2>
                             <p className={`text-sm sm:text-base leading-relaxed text-slate-600 mb-5 ${JP_TEXT}`}>
