@@ -65,6 +65,15 @@ export function Header() {
                         コラム
                     </Link>
 
+                    {/* ★2026-08-28：有料の入口をヘッダーに常設する（ユーザー指示）。
+                        Plus停止中は買い切り2商品（疾患別／姿勢別 各¥980）が有料の主役で、
+                        /products はその一覧。ヘッダー・フッターのどこからもリンクが無く、
+                        検索直着地でしか辿り着けない状態だったのを解消する。
+                        Plus再開後も、月額と買い切りをまとめた入口として機能する。 */}
+                    <Link href="/products/" className="text-sm font-bold text-teal-300 transition-colors hover:text-teal-200">
+                        有料コンテンツ
+                    </Link>
+
                     {/* ★2026-08-22：Plusの新規受付停止にともないナビから外している。
                         再開するときは PLUS_SIGNUP_PAUSED を false にすれば戻る。
                         「会員ページ」は既存会員の入口なので残す。 */}
@@ -141,6 +150,13 @@ export function Header() {
                             onClick={closeMenu}
                         >
                             コラム
+                        </Link>
+                        <Link
+                            href="/products/"
+                            className="block rounded-xl bg-slate-800 px-4 py-3 text-base font-bold text-teal-200 transition-colors hover:bg-slate-700"
+                            onClick={closeMenu}
+                        >
+                            有料コンテンツ
                         </Link>
                         {!PLUS_SIGNUP_PAUSED && (
                             <Link

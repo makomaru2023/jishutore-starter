@@ -177,11 +177,13 @@ const HERO_CHECKOUT_CLASS =
 const SECTION_CHECKOUT_CLASS =
     "flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-black text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
 
-// 日本語本文用：単語が途中で切れにくくする
-// word-break:keep-all で日本語の単語が途中で切れにくくする。
-// 句読点で改行されるのが基本。line-break:strict で「、」「。」「？」等の行頭禁則を守る。
-// 改行点が無く幅も超えた場合のみ、最終手段として break-word が効く。
-const JP_TEXT = "break-keep [line-break:strict] [overflow-wrap:break-word] text-pretty";
+// 日本語本文用。
+// ★2026-08-28：break-keep をやめ、ルート側の .jp-phrase（word-break:auto-phrase）に任せる。
+//   keep-all は「改行できる場所が1つも無い長い文字列」を作るため、
+//   句読点も助詞も無い区間ではみ出す位置で強制的に割られていた
+//   （375px実測：「透か／し入り」「カーソルを合／わせる」「左／右」「掲／載」）。
+//   下の jp() が挿入するゼロ幅スペースは auto-phrase と併用しても害はないので残す。
+const JP_TEXT = "[line-break:strict] [overflow-wrap:break-word] text-pretty";
 
 /**
  * 日本語テキストに改行可能位置（U+200B = ゼロ幅スペース）を挿入する。
@@ -217,7 +219,7 @@ function SectionHeading({ kicker, title }: { kicker?: string; title: string }) {
 
 export default function SelfTrainingMaterialsPage() {
     return (
-        <div className="min-h-screen bg-white flex flex-col overflow-x-hidden">
+        <div className="jp-phrase min-h-screen bg-white flex flex-col overflow-x-hidden">
             <Header />
             <main className="flex-1">
                 {/* A. ファーストビュー */}

@@ -353,7 +353,7 @@ function FreeMaterialComparison() {
 
 export default function HomeElderlySelfTrainingPage() {
     return (
-        <div className="flex min-h-screen flex-col overflow-x-hidden bg-white">
+        <div className="jp-phrase flex min-h-screen flex-col overflow-x-hidden bg-white">
             <Header />
             <main className="flex-1">
                 <section className="bg-gradient-to-b from-blue-50 via-white to-white py-12 sm:py-16 lg:py-20">
