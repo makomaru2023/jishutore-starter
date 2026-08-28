@@ -42,12 +42,17 @@ type DownloadEntry = {
     fileName: string;
     description: string;
     /**
-     * `public` … /files/ 以下の静的ZIPを直接配信。
-     * `r2-token` … サンクスページで発行する短期トークンで /api/download 経由で R2 から配信。
+     * 配信方式は `r2-token` のみ。
+     * サンクスページで発行する短期トークンを使い、/api/download 経由で R2 から配信する。
+     *
+     * ★2026-08-29：以前は `public`（/files/ 以下の静的ZIPへの直リンク）も選べたが、
+     *   姿勢別セットがそれで配信されていて、**購入判定を一切通らずURLだけで落とせる状態**
+     *   になっていた（本番で 200 / 42,691,997 bytes を実測）。商品ページのスラッグが
+     *   そのままファイル名だったので推測もしやすく、robots.txt も /files/ を塞いでいなかった。
+     *   同じ事故を繰り返さないよう、選択肢ごと削除している。有料の配布物を足すときは
+     *   必ずR2に置き、PRODUCT_ZIP_KEYS に登録すること。
      */
-    delivery: "public" | "r2-token";
-    /** delivery === "public" の場合のみ使用する直リンク先。 */
-    publicHref?: string;
+    delivery: "r2-token";
 };
 
 /**
@@ -76,8 +81,7 @@ const PRODUCT_DOWNLOADS: Record<string, DownloadEntry[]> = {
             itemName: "姿勢別 自主トレ指導資料セット",
             fileName: "home-elderly-self-training.zip",
             description: "PowerPoint版とPDF版をまとめたZIPファイルです。",
-            delivery: "public",
-            publicHref: "/files/home-elderly-self-training.zip",
+            delivery: "r2-token",
         },
     ],
     "bundle-self-training-set": [
@@ -91,8 +95,7 @@ const PRODUCT_DOWNLOADS: Record<string, DownloadEntry[]> = {
             itemName: "姿勢別 自主トレ指導資料セット",
             fileName: "home-elderly-self-training.zip",
             description: "在宅高齢者向け・姿勢別6種のPowerPoint＋PDFをまとめたZIPです。",
-            delivery: "public",
-            publicHref: "/files/home-elderly-self-training.zip",
+            delivery: "r2-token",
         },
     ],
 };
@@ -322,11 +325,9 @@ function OkBody({
                 ))}
             </div>
 
-            {downloads.some((d) => d.delivery === "r2-token") && (
-                <p className="mt-3 text-center text-xs text-slate-500 break-keep">
-                    署名つきダウンロードリンクは <strong>{formatDate(expiresAt)}</strong> まで有効です（ページを再読み込みすればリンクを再発行できます）。
-                </p>
-            )}
+            <p className="mt-3 text-center text-xs text-slate-500 break-keep">
+                署名つきダウンロードリンクは <strong>{formatDate(expiresAt)}</strong> まで有効です（ページを再読み込みすればリンクを再発行できます）。
+            </p>
 
             <PurchaseSurveyCard />
 
@@ -382,10 +383,7 @@ function DownloadCard({
     index?: number;
     total?: number;
 }) {
-    const href =
-        entry.delivery === "public" && entry.publicHref
-            ? entry.publicHref
-            : `/api/download?token=${encodeURIComponent(token)}`;
+    const href = `/api/download?token=${encodeURIComponent(token)}`;
 
     return (
         <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
