@@ -101,7 +101,7 @@
      *   要素側の break-keep に負けて一切効かない（実測で確認済み）。
      * ★auto-phrase 未対応のブラウザでは normal に落ちる＝サイト他ページと同じ挙動。
      */
-    .jp-phrase :is(h1, h2, h3, h4, p, li, dd, dt, summary, span, strong) {
+    .jp-phrase :is(h1, h2, h3, h4, p, li, dd, dt, td, th, summary, span, strong) {
         word-break: auto-phrase;
         overflow-wrap: break-word;
         line-break: strict;

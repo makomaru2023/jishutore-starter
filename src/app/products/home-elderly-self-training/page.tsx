@@ -9,6 +9,7 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
+import { ProductComparisonTable } from "@/components/ProductComparisonTable";
 
 const PRODUCT_ID = "home-elderly-self-training";
 const PRODUCT_NAME = "姿勢別自主トレPowerPointセット";
@@ -253,60 +254,26 @@ function ProductCheckoutButton({
 
 function ComparisonSection() {
     const rows = [
-        ["選び方", "疾患名から選ぶ", "今できる姿勢から選ぶ"],
-        ["向いている場面", "疾患ごとの注意点や説明を整理したいとき", "体力・転倒リスク・動作能力に合わせたいとき"],
-        ["主な対象", "脳卒中、腰痛、膝OA、術後など", "在宅高齢者、訪問リハ、通所リハ利用者など"],
-        ["使いやすい場面", "退院前指導、疾患別の家族説明", "訪問リハ、通所リハ、集団体操、ベッド上自主トレ"],
-        ["商品の役割", "疾患ごとの説明を時短する資料", "能力や安全性に合わせて運動を選ぶ資料"],
+        { label: "選び方", left: "疾患名から選ぶ", right: "今できる姿勢から選ぶ" },
+        { label: "向いている場面", left: "疾患ごとの注意点や説明を整理したいとき", right: "体力・転倒リスク・動作能力に合わせたいとき" },
+        { label: "主な対象", left: "脳卒中、腰痛、膝OA、術後など", right: "在宅高齢者、訪問リハ、通所リハ利用者など" },
+        { label: "使いやすい場面", left: "退院前指導、疾患別の家族説明", right: "訪問リハ、通所リハ、集団体操、ベッド上自主トレ" },
+        { label: "商品の役割", left: "疾患ごとの説明を時短する資料", right: "能力や安全性に合わせて運動を選ぶ資料" },
     ];
 
     return (
         <section className="bg-slate-50 py-14 sm:py-20">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                 <SectionHeading
                     kicker="COMPARE"
                     title="疾患別セットとの違い"
                     description="疾患別セットは、疾患ごとの説明に強い資料です。姿勢別セットは、対象者の能力や安全性に合わせて運動を選びたいときに使いやすい資料です。"
                 />
-
-                <div className="grid gap-4 md:hidden">
-                    {rows.map(([label, disease, posture]) => (
-                        <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5">
-                            <h3 className="text-sm font-bold text-slate-900">{label}</h3>
-                            <div className="mt-4 grid gap-3">
-                                <div className="rounded-xl bg-slate-50 p-4">
-                                    <p className="text-xs font-bold text-slate-500">疾患別自主トレ資料セット</p>
-                                    <p className={`mt-1 text-sm font-bold leading-relaxed text-slate-700 ${JP_TEXT}`}>{disease}</p>
-                                </div>
-                                <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
-                                    <p className="text-xs font-bold text-blue-600">姿勢別自主トレ資料セット</p>
-                                    <p className={`mt-1 text-sm font-bold leading-relaxed text-blue-900 ${JP_TEXT}`}>{posture}</p>
-                                </div>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-
-                <div className="hidden overflow-hidden rounded-2xl border border-slate-200 bg-white md:block">
-                    <table className="w-full table-fixed border-collapse text-left">
-                        <thead className="bg-slate-50">
-                            <tr>
-                                <th className="w-1/5 px-5 py-4 text-sm font-bold text-slate-500">比較項目</th>
-                                <th className="px-5 py-4 text-sm font-bold text-slate-700">疾患別自主トレ資料セット</th>
-                                <th className="bg-blue-50 px-5 py-4 text-sm font-bold text-blue-700">姿勢別自主トレ資料セット</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rows.map(([label, disease, posture]) => (
-                                <tr key={label} className="border-t border-slate-100">
-                                    <th className="px-5 py-4 text-sm font-bold text-slate-900">{label}</th>
-                                    <td className={`px-5 py-4 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>{disease}</td>
-                                    <td className={`bg-blue-50/50 px-5 py-4 text-sm font-bold leading-relaxed text-blue-900 ${JP_TEXT}`}>{posture}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                <ProductComparisonTable
+                    rows={rows}
+                    leftLabel="疾患別セット"
+                    rightLabel="姿勢別セット"
+                />
             </div>
         </section>
     );
@@ -314,38 +281,26 @@ function ComparisonSection() {
 
 function FreeMaterialComparison() {
     const rows = [
-        ["形式", "イラスト単体", "姿勢別に構成済み"],
-        ["使い方", "自分で資料に貼る", "必要なページを編集・印刷"],
-        ["説明文", "説明文や注意点は自分で作る", "説明文や注意点つき"],
-        ["運動選択", "運動を自分で選ぶ", "座位・立位・臥位から選べる"],
-        ["向いている人", "素材だけ欲しい人向け", "患者説明まで時短したい人向け"],
+        { label: "形式", left: "イラスト単体", right: "姿勢別に構成済み" },
+        { label: "使い方", left: "自分で資料に貼る", right: "必要なページを編集・印刷" },
+        { label: "説明文", left: "説明文や注意点は自分で作る", right: "説明文や注意点つき" },
+        { label: "運動選択", left: "運動を自分で選ぶ", right: "座位・立位・臥位から選べる" },
+        { label: "向いている人", left: "素材だけ欲しい人向け", right: "患者説明まで時短したい人向け" },
     ];
 
     return (
-        <section className="bg-white py-14 sm:py-20">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="free-vs-paid" className="scroll-mt-20 bg-white py-14 sm:py-20">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                 <SectionHeading
                     kicker="FREE MATERIALS"
                     title="無料素材との違い"
                     description="無料素材は、必要なイラストを自分で選んで資料を作りたい方向けです。姿勢別自主トレ資料セットは、説明の流れや運動メニューまで整えた資料です。"
                 />
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
-                    {rows.map(([label, free, product]) => (
-                        <article key={label} className="rounded-2xl border border-slate-200 bg-white p-5">
-                            <h3 className="text-sm font-bold text-slate-900">{label}</h3>
-                            <div className="mt-4 space-y-3">
-                                <p className={`rounded-xl bg-slate-50 p-3 text-sm leading-relaxed text-slate-600 ${JP_TEXT}`}>
-                                    <span className="block text-xs font-bold text-slate-400">無料素材</span>
-                                    {free}
-                                </p>
-                                <p className={`rounded-xl border border-blue-100 bg-blue-50 p-3 text-sm font-bold leading-relaxed text-blue-900 ${JP_TEXT}`}>
-                                    <span className="block text-xs font-bold text-blue-500">姿勢別PowerPoint資料</span>
-                                    {product}
-                                </p>
-                            </div>
-                        </article>
-                    ))}
-                </div>
+                <ProductComparisonTable
+                    rows={rows}
+                    leftLabel="無料素材"
+                    rightLabel="姿勢別PowerPoint資料"
+                />
             </div>
         </section>
     );

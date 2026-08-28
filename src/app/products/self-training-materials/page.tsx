@@ -6,6 +6,7 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import Image from "next/image";
+import { ProductComparisonTable, type ComparisonRow } from "@/components/ProductComparisonTable";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -45,17 +46,13 @@ const PAIN_POINTS = [
     "患者さんに渡せる見た目の資料を用意したい",
 ];
 
-const COMPARISON_ROWS: {
-    label: string;
-    free: string;
-    paid: string;
-}[] = [
-    { label: "内容", free: "イラスト単体", paid: "疾患別に構成済み" },
-    { label: "使い方", free: "自分で資料に貼る", paid: "開いて編集・印刷" },
-    { label: "説明文", free: "自分で作成", paid: "説明文入り" },
-    { label: "手順・注意点", free: "自分で調整", paid: "手順・回数・注意点つき" },
-    { label: "資料作成時間", free: "資料作成が必要", paid: "ゼロから作らなくていい" },
-    { label: "向いている人", free: "素材だけ欲しい人向け", paid: "患者説明まで時短したい人向け" },
+const COMPARISON_ROWS: readonly ComparisonRow[] = [
+    { label: "内容", left: "イラスト単体", right: "疾患別に構成済み" },
+    { label: "使い方", left: "自分で資料に貼る", right: "開いて編集・印刷" },
+    { label: "説明文", left: "自分で作成", right: "説明文入り" },
+    { label: "手順・注意点", left: "自分で調整", right: "手順・回数・注意点つき" },
+    { label: "資料作成時間", left: "資料作成が必要", right: "ゼロから作らなくていい" },
+    { label: "向いている人", left: "素材だけ欲しい人向け", right: "患者説明まで時短したい人向け" },
 ];
 
 const CONTENTS: { title: string; description: string }[] = [
@@ -339,63 +336,11 @@ export default function SelfTrainingMaterialsPage() {
                     <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading kicker="無料素材との違い" title="無料素材とPowerPoint資料、何が違うの？" />
 
-                        {/* スマホ: カード形式 */}
-                        <div className="grid gap-4 md:hidden">
-                            {COMPARISON_ROWS.map((row) => (
-                                <div
-                                    key={row.label}
-                                    className="rounded-2xl border border-slate-200 bg-white p-5"
-                                >
-                                    <p className="mb-3 text-xs font-bold tracking-wide text-slate-500">
-                                        {row.label}
-                                    </p>
-                                    <div className="grid grid-cols-1 gap-3">
-                                        <div className="rounded-xl bg-slate-50 p-3">
-                                            <p className="mb-1 text-[11px] font-bold tracking-wider text-slate-500">
-                                                無料素材
-                                            </p>
-                                            <p className={`text-sm font-medium text-slate-700 ${JP_TEXT}`}>
-                                                {row.free}
-                                            </p>
-                                        </div>
-                                        <div className="rounded-xl bg-blue-50 p-3">
-                                            <p className="mb-1 text-[11px] font-bold tracking-wider text-blue-600">
-                                                有料PowerPoint資料
-                                            </p>
-                                            <p className={`text-sm font-bold text-slate-800 ${JP_TEXT}`}>
-                                                {row.paid}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* PC: テーブル形式 */}
-                        <div className="hidden md:block">
-                            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-                                <table className="w-full min-w-[640px] text-sm">
-                                    <thead>
-                                        <tr className="bg-slate-50 text-left">
-                                            <th className="w-1/4 px-5 py-4 font-bold tracking-wide text-xs text-slate-500">項目</th>
-                                            <th className="w-1/3 px-5 py-4 font-bold text-slate-700">無料素材</th>
-                                            <th className="w-1/3 px-5 py-4 font-bold text-blue-700">有料PowerPoint資料</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {COMPARISON_ROWS.map((row) => (
-                                            <tr key={row.label} className="border-t border-slate-100 align-top">
-                                                <td className="px-5 py-4 font-bold text-slate-600">{row.label}</td>
-                                                <td className={`px-5 py-4 text-slate-600 ${JP_TEXT}`}>{row.free}</td>
-                                                <td className={`px-5 py-4 font-bold text-slate-800 bg-blue-50/40 ${JP_TEXT}`}>
-                                                    {row.paid}
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <ProductComparisonTable
+                            rows={COMPARISON_ROWS}
+                            leftLabel="無料素材"
+                            rightLabel="疾患別PowerPoint資料"
+                        />
                     </div>
                 </section>
 
