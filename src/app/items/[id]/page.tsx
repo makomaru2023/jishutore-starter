@@ -4,11 +4,14 @@ import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailPlusCta } from "@/components/ItemDetailPlusCta";
+import { ItemDetailBuyoutCta } from "@/components/ItemDetailBuyoutCta";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { SurveyModal } from "@/components/survey/SurveyModal";
 import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
 import { findPlusForFreeItem } from "@/lib/plus-match";
+import { matchBuyoutProduct } from "@/lib/buyout-match";
+import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -182,6 +185,8 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
         : undefined;
     // CTA見出し用に【文字あり】等のタグを除いた表示名（例: 杖歩き）
     const ctaTitle = title.replace(/【[^】]*】/g, "").trim() || title;
+    // Plus受付停止中に出す買い切りCTA用。素材の内容から疾患別／姿勢別のどちらかを選ぶ。
+    const buyoutMatch = matchBuyoutProduct(item);
 
     // JSON-LD structured data for SEO
     const jsonLd = [
@@ -399,13 +404,23 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                     </Link>
                                 )}
 
-                                {/* 主役の有料導線：この素材の編集できるスライド版（Plus）。買い切りはカード内に副導線として1行だけ添える */}
-                                <ItemDetailPlusCta
-                                    itemTitle={ctaTitle}
-                                    itemSlug={item.id}
-                                    plusReps={plusMatch?.reps}
-                                    plusPreview={plusPreview}
-                                />
+                                {/* 主役の有料導線。
+                                    ★2026-08-28：Plusの新規受付停止中は買い切り版（疾患別／姿勢別 各¥980）を出す。
+                                    受付を再開したら PLUS_SIGNUP_PAUSED が false になり、Plus版へ自動で戻る。 */}
+                                {PLUS_SIGNUP_PAUSED ? (
+                                    <ItemDetailBuyoutCta
+                                        itemTitle={ctaTitle}
+                                        itemSlug={item.id}
+                                        match={buyoutMatch}
+                                    />
+                                ) : (
+                                    <ItemDetailPlusCta
+                                        itemTitle={ctaTitle}
+                                        itemSlug={item.id}
+                                        plusReps={plusMatch?.reps}
+                                        plusPreview={plusPreview}
+                                    />
+                                )}
 
                                 {/* 無料のLINE導線はPlus CTAの直下に置く。ダウンロードした人の視界に入る位置で、
                                     かつ有料導線より後ろ（無料オファーが先に出ると有料側を食うため）。
