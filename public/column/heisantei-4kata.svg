@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 398" width="800" height="398">
+  <rect width="800" height="398" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">「一緒に取れない」は、4つに分かれます</text>
+
+    <rect x="40" y="56" width="720" height="48" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="150" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">併算定できない</text>
+    <line x1="260" y1="66" x2="260" y2="94" stroke="#FCD34D" stroke-width="2"/>
+    <text x="310" y="87" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">15件</text>
+    <line x1="360" y1="66" x2="360" y2="94" stroke="#FCD34D" stroke-width="2"/>
+    <text x="384" y="86" font-size="12" font-weight="bold" fill="#0F172A">同時には算定できません</text>
+
+    <rect x="40" y="112" width="720" height="48" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="150" y="142" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">条件つき</text>
+    <line x1="260" y1="122" x2="260" y2="150" stroke="#FCD34D" stroke-width="2"/>
+    <text x="310" y="143" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">9件</text>
+    <line x1="360" y1="122" x2="360" y2="150" stroke="#FCD34D" stroke-width="2"/>
+    <text x="384" y="142" font-size="12" font-weight="bold" fill="#0F172A">条件を満たすときだけ算定できます</text>
+
+    <rect x="40" y="168" width="720" height="48" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="150" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">区分の選択制</text>
+    <line x1="260" y1="178" x2="260" y2="206" stroke="#90CAF9" stroke-width="2"/>
+    <text x="310" y="199" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">38件</text>
+    <line x1="360" y1="178" x2="360" y2="206" stroke="#90CAF9" stroke-width="2"/>
+    <text x="384" y="198" font-size="12" font-weight="bold" fill="#0F172A">いくつかの区分から1つだけ選びます</text>
+
+    <rect x="40" y="224" width="720" height="48" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="150" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">前提になる加算</text>
+    <line x1="260" y1="234" x2="260" y2="262" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="310" y="255" text-anchor="middle" font-size="20" font-weight="bold" fill="#0F172A">3件</text>
+    <line x1="360" y1="234" x2="360" y2="262" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="384" y="254" font-size="12" font-weight="bold" fill="#0F172A">先に別の加算の届出や算定が要ります</text>
+
+    <rect x="40" y="292" width="720" height="46" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="321" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">いちばん多いのは「区分の選択制」。65件のうち38件です</text>
+
+    <text x="400" y="368" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">収録は8分野で合計65件。どの加算どうしかは会員ページで確認できます</text>
+  </g>
+</svg>

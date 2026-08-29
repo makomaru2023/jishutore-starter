@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 412" width="800" height="412">
+  <rect width="800" height="412" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">記号は、大きいほうから小さいほうへの入れ子です</text>
+
+    <rect x="40" y="56" width="720" height="52" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="60" y="88" font-size="15" font-weight="bold" fill="#1565C0">告示第◯号</text>
+    <text x="220" y="88" font-size="12" font-weight="bold" fill="#0F172A">どの告示に載っているか。介護なら第19号・第21号などです</text>
+
+    <rect x="70" y="116" width="690" height="52" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="90" y="148" font-size="15" font-weight="bold" fill="#1565C0">イ・ロ・ハ</text>
+    <text x="250" y="148" font-size="12" font-weight="bold" fill="#0F172A">いちばん大きな分かれ目。サービスの種類や施設の区分です</text>
+
+    <rect x="100" y="176" width="660" height="52" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="120" y="208" font-size="15" font-weight="bold" fill="#1565C0">(1)(2)(3)</text>
+    <text x="280" y="208" font-size="12" font-weight="bold" fill="#0F172A">その区分の中の枝番。「イの1番目」という意味です</text>
+
+    <rect x="130" y="236" width="630" height="52" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="150" y="268" font-size="15" font-weight="bold" fill="#1565C0">注1・注2…</text>
+    <text x="310" y="268" font-size="12" font-weight="bold" fill="#0F172A">点数に付く条件。要件はたいていここに入ります</text>
+
+    <rect x="40" y="306" width="720" height="46" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="335" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">「イ(1)」は、イという区分の1番目。それだけの意味です</text>
+
+    <text x="400" y="382" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">148項目のうち43項目（29%）の算定要件に、この書き方が出てきます</text>
+  </g>
+</svg>

@@ -21,6 +21,7 @@ import { article as taikanJishutoreJunban } from "@/data/column/articles/taikan-
 import { article as bcpMisakuteiGensan } from "@/data/column/articles/bcp-misakutei-gensan";
 import { article as chiikiKasanKata } from "@/data/column/articles/chiiki-kasan-kata";
 import { article as hizaItaiJishutore } from "@/data/column/articles/hiza-itai-jishutore";
+import { article as heisantei4kata } from "@/data/column/articles/heisantei-4kata";
 import { article as hokatsuToDemidaka } from "@/data/column/articles/hokatsu-to-demidaka";
 import { article as hoshuCheck4shurui } from "@/data/column/articles/hoshu-check-4shurui";
 import { article as hoshuCheckPageYomikata } from "@/data/column/articles/hoshu-check-page-yomikata";
@@ -70,6 +71,7 @@ import { article as ikaNissuKata } from "@/data/column/articles/ika-nissu-kata";
 import { article as johoRenkeiKata } from "@/data/column/articles/joho-renkei-kata";
 import { article as chujudoNinchishoKasanKata } from "@/data/column/articles/chujudo-ninchisho-kasan-kata";
 import { article as kokujiChuNoYomikata } from "@/data/column/articles/kokuji-chu-no-yomikata";
+import { article as kokujiKigouYomikata } from "@/data/column/articles/kokuji-kigou-yomikata";
 import { article as taiinKyodoShidoKata } from "@/data/column/articles/taiin-kyodo-shido-kata";
 import { article as henmahiJishutoreErabikata } from "@/data/column/articles/henmahi-jishutore-erabikata";
 import { article as jishutoreCheckHyo } from "@/data/column/articles/jishutore-check-hyo";
@@ -236,6 +238,8 @@ const articles: ColumnArticle[] = [
     chujudoNinchishoKasanKata,
     // 「制度の読み方」は、加算の記事を読むための土台になる回。先頭近くに置く。
     hoshuCheck4shurui,
+    heisantei4kata,
+    kokujiKigouYomikata,
     hoshuCheckPageYomikata,
     hokatsuToDemidaka,
     kokujiChuNoYomikata,

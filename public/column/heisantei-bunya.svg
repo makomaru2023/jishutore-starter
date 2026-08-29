@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 456" width="800" height="456">
+  <rect width="800" height="456" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">分野によって、件数がまるで違います</text>
+
+    <text x="258" y="76" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">老健・入所リハ</text>
+    <rect x="270" y="60" width="460" height="22" rx="4" fill="#1565C0"/>
+    <text x="738" y="76" font-size="12" font-weight="bold" fill="#0F172A">19</text>
+
+    <text x="258" y="111" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">通所リハ</text>
+    <rect x="270" y="95" width="460" height="22" rx="4" fill="#1565C0"/>
+    <text x="738" y="111" font-size="12" font-weight="bold" fill="#0F172A">19</text>
+
+    <text x="258" y="146" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">通所介護</text>
+    <rect x="270" y="130" width="339" height="22" rx="4" fill="#1E88E5"/>
+    <text x="617" y="146" font-size="12" font-weight="bold" fill="#0F172A">14</text>
+
+    <text x="258" y="181" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">訪問看護からのリハ</text>
+    <rect x="270" y="165" width="145" height="22" rx="4" fill="#90CAF9"/>
+    <text x="423" y="181" font-size="12" font-weight="bold" fill="#0F172A">6</text>
+
+    <text x="258" y="216" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">訪問リハ</text>
+    <rect x="270" y="200" width="73" height="22" rx="4" fill="#90CAF9"/>
+    <text x="351" y="216" font-size="12" font-weight="bold" fill="#0F172A">3</text>
+
+    <text x="258" y="251" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">回復期リハ病棟</text>
+    <rect x="270" y="235" width="73" height="22" rx="4" fill="#90CAF9"/>
+    <text x="351" y="251" font-size="12" font-weight="bold" fill="#0F172A">3</text>
+
+    <text x="258" y="286" text-anchor="end" font-size="13" font-weight="bold" fill="#1565C0">地域包括ケア病棟</text>
+    <rect x="270" y="270" width="24" height="22" rx="4" fill="#90CAF9"/>
+    <text x="302" y="286" font-size="12" font-weight="bold" fill="#0F172A">1</text>
+
+    <text x="258" y="321" text-anchor="end" font-size="13" font-weight="bold" fill="#78350F">急性期一般病棟</text>
+    <text x="274" y="321" font-size="12" font-weight="bold" fill="#78350F">0</text>
+
+    <rect x="40" y="352" width="720" height="46" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="381" text-anchor="middle" font-size="15" font-weight="bold" fill="#78350F">急性期は0件。組み合わせの規定そのものが載っていません</text>
+
+    <text x="400" y="428" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">分野をまたぐ関係や、基本報酬の区分による制限は、この件数には入っていません</text>
+  </g>
+</svg>

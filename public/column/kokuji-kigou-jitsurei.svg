@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">実際の一文を、そのまま読み下してみます</text>
+
+    <rect x="40" y="56" width="720" height="110" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">介護保健施設サービス費のイ(1)及びロ(1)について算定すること</text>
+    <line x1="72" y1="106" x2="728" y2="106" stroke="#90CAF9" stroke-width="2"/>
+    <text x="400" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">イの1番目と、ロの1番目。「及び」なので、その2つが対象です</text>
+    <text x="400" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">対象になる基本報酬の区分を絞っている一文</text>
+
+    <rect x="40" y="182" width="720" height="110" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="214" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">イ(4)又はロ(4)を算定している介護老人保健施設では、入所前後訪問指導加算を算定しないこと</text>
+    <line x1="72" y1="232" x2="728" y2="232" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="258" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">イの4番目か、ロの4番目。「又は」なので、どちらかに当たれば対象外</text>
+    <text x="400" y="280" text-anchor="middle" font-size="11" font-weight="bold" fill="#475569">こちらは除外を決めている一文</text>
+
+    <rect x="40" y="312" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="341" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">読み方の分かれ目は「及び」と「又は」。両方か、どちらかか</text>
+
+    <text x="400" y="388" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どの区分が何番なのかは、その報酬の単位数の欄に並んでいます</text>
+  </g>
+</svg>
