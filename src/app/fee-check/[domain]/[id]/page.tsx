@@ -173,6 +173,14 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             relatedColumns={relatedColumns}
                         />
 
+                        {/* 必要な情報を読み終えた後にだけ出す、利用者アンケートの導線。
+                            ★本文途中には置かない（算定要件の確認という目的を邪魔しないため）。
+                              根拠資料と確認日まで読み終えた＝詳細カードの直後がその位置。
+                            ★2026-08-30：もとはページ最下部（実測87%地点・1280px幅で2,785px下）で、
+                              「同じカテゴリの項目」と分野CTAの先にあり、まず見られていなかった。
+                              詳細カードの直後に上げる。集中期間が終わったら元の位置に戻してよい。 */}
+                        <SurveyCard placement="fee_check" className="mt-6" emphasis />
+
                         {relatedItems.length > 0 && (
                             <section className="mt-6 rounded-lg border border-slate-200 bg-white p-5">
                                 <h2 className="text-lg font-black text-slate-950">同じカテゴリの項目</h2>
@@ -199,9 +207,6 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             itemCount={domain.items.length}
                         />
 
-                        {/* 必要な情報を読み終えた後にだけ出す、利用者アンケートの導線。
-                            本文途中には置かない（算定要件の確認という目的を邪魔しないため）。 */}
-                        <SurveyCard placement="fee_check" className="mt-6" emphasis />
                     </div>
                 </div>
             </main>

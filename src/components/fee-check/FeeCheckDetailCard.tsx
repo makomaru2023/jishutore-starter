@@ -195,26 +195,14 @@ function LockedCta({ domain, item, isUnlocked }: { domain: FeeDomain; item: FeeI
     const sample = getSampleFeeItems().find((entry) => entry.domain.domain === domain.domain);
     const sampleHref = sample ? getFeeItemUrl(sample.domain.domain, sample.item.id) : "/fee-check/";
 
-    // ★2026-08-22：Plusの新規受付停止中は申込導線を出さず、
-    //   無料で読める全文サンプルへの案内だけ残す（148ページに効く）。
-    if (PLUS_SIGNUP_PAUSED) {
-        return (
-            <div className="rounded-lg border border-slate-200 bg-white p-4 print:hidden">
-                <p className="text-sm leading-6 text-slate-600 break-keep">
-                    単位数と算定要件はここまで無料で公開しています。
-                    「記録に残すこと・自己点検で見るポイント」まで載せた項目を、全文サンプルとして無料で読めます。
-                </p>
-                <FeeCheckTrackedLink
-                    href={sampleHref}
-                    event="result"
-                    params={{ fee_domain: domain.domain, fee_item_id: item.id, result_type: "sample" }}
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-50"
-                >
-                    全文サンプルを見る
-                </FeeCheckTrackedLink>
-            </div>
-        );
-    }
+    // ★2026-08-22：Plusの新規受付停止中は申込導線を出さず、全文サンプルの案内だけ残していた。
+    // ★2026-08-30：その案内も出さない。
+    //   ロック中の135項目（148 − 全文公開13）でしか出ないブロックで、
+    //   「このページは途中まで」と135枚で言い続けるうえ、続きは買えない。
+    //   さらに読者を13枚のサンプルへ送り出すので、ページ末尾のアンケートより前に
+    //   出口をひとつ作っていた。停止中は制限の話をしない。
+    //   ★再開時は PLUS_SIGNUP_PAUSED を false にすれば、下の申込導線がそのまま戻る。
+    if (PLUS_SIGNUP_PAUSED) return null;
 
     return (
         <div className="rounded-lg border border-blue-200 bg-white p-4 print:hidden">
