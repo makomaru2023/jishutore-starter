@@ -71,6 +71,7 @@ export function SurveyCard({
             </h2>
             <p className="mt-1.5 break-keep text-sm font-bold leading-relaxed text-slate-600">
                 どんな職種・領域の方に使っていただいているのかを知りたくて、簡単なアンケートを実施しています。
+                <br />
                 匿名で、回答は約1分です。
             </p>
             <a
