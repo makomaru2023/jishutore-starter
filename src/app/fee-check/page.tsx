@@ -95,8 +95,11 @@ export default async function FeeCheckTopPage() {
                                 <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-black text-slate-700">
                                     一次資料リンクつき
                                 </span>
+                                {/* ★2026-08-30：「全文サンプルあり」は、下の全文サンプル一覧を
+                                    指すバッジだった。そのセクションをPlus停止中は出さなくしたので、
+                                    行き先の無い案内になる。制限の話ではなく、毎月点検していることを出す。 */}
                                 <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800">
-                                    全文サンプルあり
+                                    毎月更新
                                 </span>
                             </div>
                             <p className="mt-5 text-xs font-bold leading-6 text-slate-500">
