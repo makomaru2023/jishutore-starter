@@ -226,6 +226,15 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                                 <Body />
                             </div>
 
+                            {/* 本文を読み終えた直後に置く利用者アンケートの導線。
+                                ★検索からの着地ページなので、モーダルではなくカードにする
+                                （Googleの「煩わしいインタースティシャル」を避けるため）。
+                                ★2026-08-30：もとは免責文の下＝ページ最下部で、関連素材・関連報酬・
+                                  記事CTAの3ブロックを越えた先にしか出ていなかった（＝そこまで
+                                  スクロールされない）。本文の直後に上げて、読み終えた瞬間に出す。
+                                  集中期間が終わったら元の位置（免責文の上）に戻してよい。 */}
+                            <SurveyCard placement="column" className="mt-10" emphasis />
+
                             <ColumnRelatedItems items={relatedItems} />
 
                             <ColumnRelatedFeeItems slug={article.slug} entries={relatedFeeItems} />
@@ -238,14 +247,7 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                                 buttonLabel={cta.buttonLabel}
                             />
 
-                            {/* 記事を読み終えた位置に置く利用者アンケートの導線。
-                                ★検索からの着地ページなので、モーダルではなくカードにする
-                                （Googleの「煩わしいインタースティシャル」を避けるため）。
-                                ★2026-08-30：免責文の下＝ページ最下部にあり、ほぼ見られていなかった。
-                                  免責文の上に移し、記事→関連→CTAの直後で目に入るようにした。 */}
-                            <SurveyCard placement="column" className="mt-10" emphasis />
-
-                            <p className="jp-text mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs leading-6 text-slate-500 sm:p-5">
+                            <p className="jp-text mt-10 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs leading-6 text-slate-500 sm:p-5">
                                 {DISCLAIMER[article.category]}
                             </p>
                         </article>

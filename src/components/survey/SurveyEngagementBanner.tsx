@@ -105,11 +105,16 @@ export function SurveyEngagementBanner() {
                 entered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
             }`}
         >
-            <div className="border-t border-slate-200 bg-white/95 px-4 py-3 shadow-[0_-4px_16px_rgba(15,23,42,0.08)] backdrop-blur">
+            {/*
+              ★2026-08-30：白地＋薄いグレー文字で、白いページの上では気づかれていなかった。
+                青ベタ＋白文字にして、ページの一部ではなく「別のもの」として見えるようにした。
+                文言も、モーダル（2026-08-24 に変更済み）と同じ「増やしてほしい素材」起点に揃える。
+            */}
+            <div className="border-t border-blue-900 bg-blue-700 px-4 py-3 shadow-[0_-6px_24px_rgba(15,23,42,0.22)]">
                 <div className="container mx-auto flex max-w-3xl items-center gap-3">
-                    <p className="min-w-0 flex-1 break-keep text-xs font-bold leading-relaxed text-slate-600 sm:text-sm">
-                        自主トレ素材庫をもっと使いやすくするために、簡単なアンケートを実施しています。
-                        <span className="text-slate-400">匿名・約1分です。</span>
+                    <p className="min-w-0 flex-1 break-keep text-xs font-bold leading-relaxed text-white sm:text-sm">
+                        次に増やしてほしい素材を教えてください。
+                        <span className="text-blue-200">匿名・約1分です。</span>
                     </p>
                     <a
                         href={buildSurveyUrl(PLACEMENT)}
@@ -119,14 +124,14 @@ export function SurveyEngagementBanner() {
                             markSurveyClicked();
                             trackSurveyClick(PLACEMENT);
                         }}
-                        className="flex-shrink-0 whitespace-nowrap rounded-full bg-blue-700 px-4 py-2 text-xs font-black text-white transition-colors hover:bg-blue-800 sm:text-sm"
+                        className="flex-shrink-0 whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-black text-blue-700 transition-colors hover:bg-blue-50 sm:text-sm"
                     >
                         回答する
                     </a>
                     <button
                         onClick={close}
                         aria-label="アンケートの案内を閉じる"
-                        className="flex-shrink-0 rounded-full p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+                        className="flex-shrink-0 rounded-full p-1.5 text-blue-200 transition-colors hover:bg-blue-600 hover:text-white"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
