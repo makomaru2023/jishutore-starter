@@ -186,147 +186,148 @@ export default async function FeeCheckTopPage() {
                     </div>
                 </section>
 
-                <section className="border-t border-slate-200 bg-white py-12 sm:py-16">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-5xl">
-                            {/* ★2026-08-22：Plusの新規受付停止中は「無料とPlusの違い」の比較を出さない。
-                                買えない商品との比較表になってしまうため。全文サンプルの案内だけ残す。 */}
-                            {!PLUS_SIGNUP_PAUSED && (
-                            <div className="text-center">
-                                <p className="text-xs font-black tracking-widest text-blue-700">無料とPlusの違い</p>
-                                <h2 className="mt-2 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
-                                    要件確認は無料。実務の見落とし対策はPlus。
-                                </h2>
-                                <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                                    無料版とPlusの違いを比べて、必要な範囲を選べます。
-                                </p>
-                            </div>
-                            )}
+                {/* 「無料とPlusの違い」の比較＋全文サンプル一覧。ここは丸ごとPlus販売用のブロック。
+                    ★2026-08-30：Plusの新規受付停止中は、セクションごと出さない。
+                      買えない商品の比較表を隠しても、その下の「全13項目のサンプル」は
+                      「148項目のうち13項目だけが全文＝残り135項目は続きがある」と読める。
+                      売るものが無い状態でその話をすると、制限だけを伝えることになる。
+                      無料で読める148項目は、上の検索と分野一覧から普通にたどれる。
+                    ★再開するときは PLUS_SIGNUP_PAUSED を false にすれば、そのまま元に戻る。 */}
+                {!PLUS_SIGNUP_PAUSED && (
+                    <section className="border-t border-slate-200 bg-white py-12 sm:py-16">
+                        <div className="container mx-auto px-4">
+                            <div className="mx-auto max-w-5xl">
+                                <div className="text-center">
+                                    <p className="text-xs font-black tracking-widest text-blue-700">無料とPlusの違い</p>
+                                    <h2 className="mt-2 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
+                                        要件確認は無料。実務の見落とし対策はPlus。
+                                    </h2>
+                                    <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                                        無料版とPlusの違いを比べて、必要な範囲を選べます。
+                                    </p>
+                                </div>
 
-                            {!PLUS_SIGNUP_PAUSED && (
-                            <div className="mt-8 grid items-stretch gap-4 md:grid-cols-2">
-                                <div className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div>
-                                            <span className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-black text-slate-700">
-                                                無料公開
+                                <div className="mt-8 grid items-stretch gap-4 md:grid-cols-2">
+                                    <div className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div>
+                                                <span className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-black text-slate-700">
+                                                    無料公開
+                                                </span>
+                                                <h3 className="mt-3 text-xl font-black text-slate-950">算定の前提をすばやく確認</h3>
+                                            </div>
+                                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-lg shadow-sm" aria-hidden="true">
+                                                🔎
                                             </span>
-                                            <h3 className="mt-3 text-xl font-black text-slate-950">算定の前提をすばやく確認</h3>
                                         </div>
-                                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-lg shadow-sm" aria-hidden="true">
-                                            🔎
-                                        </span>
-                                    </div>
-                                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                                        単位数と要件を、一次資料までさかのぼって確認したいときに。
-                                    </p>
-                                    <ul className="mt-5 flex-1 space-y-3 text-sm font-bold leading-6 text-slate-700">
-                                        {[
-                                            "単位数・点数",
-                                            "算定要件",
-                                            "根拠資料リンク・確認日",
-                                            "全分野検索・カテゴリ絞り込み",
-                                        ].map((label) => (
-                                            <li key={label} className="flex gap-2.5">
-                                                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs text-emerald-700" aria-hidden="true">✓</span>
-                                                <span>{label}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Link
-                                        href="#fee-check-search"
-                                        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-black text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
-                                    >
-                                        無料で項目を検索する
-                                    </Link>
-                                </div>
-
-                                <div className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-blue-500 bg-gradient-to-br from-blue-700 to-indigo-800 p-5 text-white shadow-lg shadow-blue-900/15 sm:p-6">
-                                    <div className="absolute right-0 top-0 h-32 w-32 translate-x-10 -translate-y-10 rounded-full bg-white/10" aria-hidden="true" />
-                                    <div className="relative flex items-start justify-between gap-4">
-                                        <div>
-                                            <span className="inline-flex rounded-full bg-amber-300 px-3 py-1 text-xs font-black text-amber-950">
-                                                自主トレ素材庫Plus
-                                            </span>
-                                            <h3 className="mt-3 text-xl font-black">実務の確認まで、ひとつの画面で</h3>
-                                        </div>
-                                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-lg" aria-hidden="true">
-                                            ✓
-                                        </span>
-                                    </div>
-                                    {PLUS_PROMO_IS_ACTIVE && (
-                                        <p className="relative mt-4 rounded-lg border border-amber-200 bg-amber-300 px-3 py-2 text-center text-xs font-black text-amber-950">
-                                            {PLUS_PROMO_BADGE_TEXT}
+                                        <p className="mt-3 text-sm leading-6 text-slate-600">
+                                            単位数と要件を、一次資料までさかのぼって確認したいときに。
                                         </p>
-                                    )}
-                                    <p className="relative mt-3 text-sm leading-6 text-blue-100">
-                                        無料公開の内容に加えて、記録漏れや見落としを減らす確認項目まで見られます。
-                                    </p>
-                                    <div className="relative mt-4 rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-xs font-black text-blue-50">
-                                        無料で見られる内容をすべて含みます
-                                    </div>
-                                    <ul className="relative mt-4 flex-1 space-y-3 text-sm font-bold leading-6 text-white">
-                                        {[
-                                            "記録に残すこと",
-                                            "自己点検で見るポイント",
-                                            "つまずきやすい点・関連Q&A",
-                                            "改定差分・印刷表示",
-                                        ].map((label) => (
-                                            <li key={label} className="flex gap-2.5">
-                                                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-xs text-blue-700" aria-hidden="true">✓</span>
-                                                <span>{label}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Link
-                                        href="/products/jishutore-plus/"
-                                        className="relative mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-black text-blue-800 shadow-sm transition hover:bg-blue-50"
-                                    >
-                                        Plusの内容・料金を見る
-                                        <span aria-hidden="true">→</span>
-                                    </Link>
-                                </div>
-                            </div>
-                            )}
-
-                            <div className={PLUS_SIGNUP_PAUSED ? "rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 sm:p-7" : "mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 sm:p-7"}>
-                                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                                    <div>
-                                        <span className="inline-flex rounded-full bg-emerald-700 px-3 py-1 text-xs font-black text-white">
-                                            登録不要・無料
-                                        </span>
-                                        <h3 className="mt-3 text-xl font-black text-emerald-950 sm:text-2xl">
-                                            {PLUS_SIGNUP_PAUSED
-                                                ? "記録・自己点検まで載せた全文サンプル"
-                                                : "まずは全文サンプルで、Plus表示を体験"}
-                                        </h3>
-                                        <p className="mt-2 max-w-2xl text-sm leading-6 text-emerald-950/80">
-                                            全{feeDomains.length}分野から、記録・自己点検・つまずきやすい点まで全文公開している項目です。登録なしでそのまま読めます。
-                                        </p>
-                                    </div>
-                                    <p className="shrink-0 text-xs font-black text-emerald-800">
-                                        全{samples.length}項目のサンプル
-                                    </p>
-                                </div>
-                                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                                    {samples.map(({ domain, item }) => (
+                                        <ul className="mt-5 flex-1 space-y-3 text-sm font-bold leading-6 text-slate-700">
+                                            {[
+                                                "単位数・点数",
+                                                "算定要件",
+                                                "根拠資料リンク・確認日",
+                                                "全分野検索・カテゴリ絞り込み",
+                                            ].map((label) => (
+                                                <li key={label} className="flex gap-2.5">
+                                                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs text-emerald-700" aria-hidden="true">✓</span>
+                                                    <span>{label}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                         <Link
-                                            key={item.id}
-                                            href={getFeeItemUrl(domain.domain, item.id)}
-                                            className="group flex min-h-32 flex-col rounded-xl border border-emerald-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-400 hover:shadow-md"
+                                            href="#fee-check-search"
+                                            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-black text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
                                         >
-                                            <span className="text-xs font-black text-emerald-700">{domain.domainLabel}</span>
-                                            <span className="mt-2 flex-1 text-sm font-black leading-6 text-slate-900">{item.name}</span>
-                                            <span className="mt-3 text-xs font-black text-emerald-700 group-hover:underline">
-                                                全文を見る <span aria-hidden="true">→</span>
-                                            </span>
+                                            無料で項目を検索する
                                         </Link>
-                                    ))}
+                                    </div>
+
+                                    <div className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-blue-500 bg-gradient-to-br from-blue-700 to-indigo-800 p-5 text-white shadow-lg shadow-blue-900/15 sm:p-6">
+                                        <div className="absolute right-0 top-0 h-32 w-32 translate-x-10 -translate-y-10 rounded-full bg-white/10" aria-hidden="true" />
+                                        <div className="relative flex items-start justify-between gap-4">
+                                            <div>
+                                                <span className="inline-flex rounded-full bg-amber-300 px-3 py-1 text-xs font-black text-amber-950">
+                                                    自主トレ素材庫Plus
+                                                </span>
+                                                <h3 className="mt-3 text-xl font-black">実務の確認まで、ひとつの画面で</h3>
+                                            </div>
+                                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-lg" aria-hidden="true">
+                                                ✓
+                                            </span>
+                                        </div>
+                                        {PLUS_PROMO_IS_ACTIVE && (
+                                            <p className="relative mt-4 rounded-lg border border-amber-200 bg-amber-300 px-3 py-2 text-center text-xs font-black text-amber-950">
+                                                {PLUS_PROMO_BADGE_TEXT}
+                                            </p>
+                                        )}
+                                        <p className="relative mt-3 text-sm leading-6 text-blue-100">
+                                            無料公開の内容に加えて、記録漏れや見落としを減らす確認項目まで見られます。
+                                        </p>
+                                        <div className="relative mt-4 rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-xs font-black text-blue-50">
+                                            無料で見られる内容をすべて含みます
+                                        </div>
+                                        <ul className="relative mt-4 flex-1 space-y-3 text-sm font-bold leading-6 text-white">
+                                            {[
+                                                "記録に残すこと",
+                                                "自己点検で見るポイント",
+                                                "つまずきやすい点・関連Q&A",
+                                                "改定差分・印刷表示",
+                                            ].map((label) => (
+                                                <li key={label} className="flex gap-2.5">
+                                                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-xs text-blue-700" aria-hidden="true">✓</span>
+                                                    <span>{label}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Link
+                                            href="/products/jishutore-plus/"
+                                            className="relative mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-black text-blue-800 shadow-sm transition hover:bg-blue-50"
+                                        >
+                                            Plusの内容・料金を見る
+                                            <span aria-hidden="true">→</span>
+                                        </Link>
+                                    </div>
+                                </div>
+
+                                <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 sm:p-7">
+                                    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                                        <div>
+                                            <span className="inline-flex rounded-full bg-emerald-700 px-3 py-1 text-xs font-black text-white">
+                                                登録不要・無料
+                                            </span>
+                                            <h3 className="mt-3 text-xl font-black text-emerald-950 sm:text-2xl">
+                                                まずは全文サンプルで、Plus表示を体験
+                                            </h3>
+                                            <p className="mt-2 max-w-2xl text-sm leading-6 text-emerald-950/80">
+                                                全{feeDomains.length}分野から、記録・自己点検・つまずきやすい点まで全文公開している項目です。登録なしでそのまま読めます。
+                                            </p>
+                                        </div>
+                                        <p className="shrink-0 text-xs font-black text-emerald-800">
+                                            全{samples.length}項目のサンプル
+                                        </p>
+                                    </div>
+                                    <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                                        {samples.map(({ domain, item }) => (
+                                            <Link
+                                                key={item.id}
+                                                href={getFeeItemUrl(domain.domain, item.id)}
+                                                className="group flex min-h-32 flex-col rounded-xl border border-emerald-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-400 hover:shadow-md"
+                                            >
+                                                <span className="text-xs font-black text-emerald-700">{domain.domainLabel}</span>
+                                                <span className="mt-2 flex-1 text-sm font-black leading-6 text-slate-900">{item.name}</span>
+                                                <span className="mt-3 text-xs font-black text-emerald-700 group-hover:underline">
+                                                    全文を見る <span aria-hidden="true">→</span>
+                                                </span>
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                )}
             </main>
             <Footer />
         </div>
