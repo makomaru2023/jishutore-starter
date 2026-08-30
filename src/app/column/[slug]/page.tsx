@@ -238,14 +238,16 @@ export default async function ColumnArticlePage({ params }: { params: Promise<{ 
                                 buttonLabel={cta.buttonLabel}
                             />
 
-                            <p className="jp-text mt-10 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs leading-6 text-slate-500 sm:p-5">
-                                {DISCLAIMER[article.category]}
-                            </p>
-
                             {/* 記事を読み終えた位置に置く利用者アンケートの導線。
                                 ★検索からの着地ページなので、モーダルではなくカードにする
-                                （Googleの「煩わしいインタースティシャル」を避けるため）。 */}
-                            <SurveyCard placement="column" className="mt-6" emphasis />
+                                （Googleの「煩わしいインタースティシャル」を避けるため）。
+                                ★2026-08-30：免責文の下＝ページ最下部にあり、ほぼ見られていなかった。
+                                  免責文の上に移し、記事→関連→CTAの直後で目に入るようにした。 */}
+                            <SurveyCard placement="column" className="mt-10" emphasis />
+
+                            <p className="jp-text mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs leading-6 text-slate-500 sm:p-5">
+                                {DISCLAIMER[article.category]}
+                            </p>
                         </article>
 
                         {otherArticles.length > 0 && (
