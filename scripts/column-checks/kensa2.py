@@ -14,6 +14,9 @@ import sys
 
 MAX_CHARS = 80
 RUN = 3
+# 共通CTAの本文の書き出し。ここを見つけて、その直前の文を「記事の締め」とみなす
+CTA_MARKS = ("自主トレのイラスト素材を", "自主トレ素材庫Plus", "報酬チェックの記録")
+
 ENDINGS = ["ます", "です", "ません", "でしょう", "ました", "でした", "ください", "はず", "思います", "なります"]
 
 
@@ -71,6 +74,26 @@ def main(paths):
             print("    - [{}] x{}".format(e, c))
             for s in sents[st:st + c]:
                 print("        {}".format(s))
+        # ★記事本文の締め（＝共通CTAの直前の一文）だけ別に出す。
+        #   CTAは「〜配布しています。」「〜使えます。」と「ます」2つで終わるので、
+        #   ★**締めが「ます」だと自動的に3連続**になる。4回踏んでいる。
+        #   ⚠ページの最後の文は共通の免責文なので、そこを見ても意味がない。
+        closing = None
+        for i, sent in enumerate(sents):
+            if any(mark in sent for mark in CTA_MARKS):
+                closing = sents[i - 1] if i > 0 else None
+                break
+        if closing:
+            tail = ending_of(closing)
+            ng = tail == "ます"
+            print("  ★本文の締め（CTA直前）: [{}] {}".format(tail, "⚠ NG" if ng else "OK"))
+            print("     {}".format(closing))
+            if ng:
+                print("     → 共通CTAが「ます」2つで終わるので、このままだと3連続になる。")
+                print("        「です／でしょう／ません／ました」で終えること。")
+        else:
+            print("  ★本文の締め: CTAが見つからないので判定できない（CTA_MARKS を確認）")
+
         problems += len(longs) + len(runs)
         print()
     print("★検査2の要修正: {} 件".format(problems))

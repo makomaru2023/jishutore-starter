@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 348" width="800" height="348">
+  <rect width="800" height="348" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">10・15・20単位。分けているのは結果です</text>
+
+    <rect x="40" y="56" width="720" height="56" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="130" y="90" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">加算(Ⅰ)</text>
+    <line x1="220" y1="66" x2="220" y2="102" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="290" y="90" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">10単位</text>
+    <line x1="360" y1="66" x2="360" y2="102" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="384" y="90" font-size="13" font-weight="bold" fill="#0F172A">評価・計画・見直しを続けている</text>
+
+    <rect x="40" y="126" width="720" height="56" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="130" y="160" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">加算(Ⅱ)</text>
+    <line x1="220" y1="136" x2="220" y2="172" stroke="#90CAF9" stroke-width="2"/>
+    <text x="290" y="160" text-anchor="middle" font-size="18" font-weight="bold" fill="#0F172A">15単位</text>
+    <line x1="360" y1="136" x2="360" y2="172" stroke="#90CAF9" stroke-width="2"/>
+    <text x="384" y="160" font-size="13" font-weight="bold" fill="#0F172A">(Ⅰ)に加えて、結果が3つのうち「いずれか」</text>
+
+    <rect x="40" y="196" width="720" height="56" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="130" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">加算(Ⅲ)</text>
+    <line x1="220" y1="206" x2="220" y2="242" stroke="#FCD34D" stroke-width="2"/>
+    <text x="290" y="230" text-anchor="middle" font-size="18" font-weight="bold" fill="#78350F">20単位</text>
+    <line x1="360" y1="206" x2="360" y2="242" stroke="#FCD34D" stroke-width="2"/>
+    <text x="384" y="230" font-size="13" font-weight="bold" fill="#0F172A">(Ⅰ)に加えて、結果が2つとも「かつ」</text>
+
+    <rect x="40" y="266" width="720" height="46" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="295" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">どれか1つだけ。(Ⅰ)の条件が、3つとも共通の土台です</text>
+
+    <text x="400" y="336" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">単位は1日ではなく1月につきです</text>
+  </g>
+</svg>

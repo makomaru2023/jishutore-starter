@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">(Ⅱ)は「いずれか」、(Ⅲ)は「かつ」</text>
+
+    <rect x="40" y="56" width="352" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="86" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">加算(Ⅱ)　15単位／月</text>
+    <text x="216" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">3つのうち、いずれか1つ</text>
+    <line x1="72" y1="122" x2="360" y2="122" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">排尿か排便が改善し、どちらも悪化していない</text>
+    <text x="216" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">入所時に使っていたおむつを使わなくなった</text>
+    <text x="216" y="204" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">入所時の尿道カテーテルが抜去された</text>
+    <text x="216" y="234" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">どれか1つで届きます</text>
+
+    <rect x="408" y="56" width="352" height="200" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="86" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">加算(Ⅲ)　20単位／月</text>
+    <text x="584" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">2つとも、そろって必要</text>
+    <line x1="440" y1="122" x2="728" y2="122" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">排尿か排便が改善し、どちらも悪化していない</text>
+    <text x="584" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">かつ、入所時に使っていたおむつを使わなくなった</text>
+    <text x="584" y="204" text-anchor="middle" font-size="11" font-weight="bold" fill="#94A3B8">（カテーテルの道はありません）</text>
+    <text x="584" y="234" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">両方そろって届きます</text>
+
+    <rect x="40" y="276" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="305" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">おむつが外れても、悪化があれば届きません</text>
+
+    <text x="400" y="352" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どちらも、加算(Ⅰ)の評価・計画・見直しを満たしたうえでの話です</text>
+  </g>
+</svg>

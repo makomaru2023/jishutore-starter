@@ -44,6 +44,8 @@ import { article as rokenShokujiNiHitoGaAtsumaru } from "@/data/column/articles/
 import { article as rokenTaishoMaeGaIsogashii } from "@/data/column/articles/roken-taisho-mae-ga-isogashii";
 import { article as rokenRihaShu3To3kagetsu } from "@/data/column/articles/roken-riha-shu3-3kagetsu";
 import { article as rokenSaishoNo1kagetsu } from "@/data/column/articles/roken-saisho-no-1kagetsu";
+import { article as rokenGaihakuJihi } from "@/data/column/articles/roken-gaihaku-jihi";
+import { article as rokenHaisetsuShien3kubun } from "@/data/column/articles/roken-haisetsu-shien-3kubun";
 import { article as rokenHibiNoZogen } from "@/data/column/articles/roken-hibi-no-zogen";
 import { article as rokenKaigoKikiFueta } from "@/data/column/articles/roken-kaigo-kiki-fueta";
 import { article as tsushoEnchoKasan } from "@/data/column/articles/tsusho-encho-kasan";
@@ -215,6 +217,8 @@ const articles: ColumnArticle[] = [
     kaifukukiBetsuNiToreru,
     kijunWareGensanKata,
     kansenshoSaigaiKata,
+    rokenGaihakuJihi,
+    rokenHaisetsuShien3kubun,
     rokenHibiNoZogen,
     tsushoEnchoKasan,
     chiikiHokatsuKangoKasan,
