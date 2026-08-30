@@ -236,3 +236,63 @@ export function trackFeeCheckSourceClick(params: EventParams): void {
 export function trackFeeCheckPrint(params: EventParams): void {
     trackEvent("fee_check_print", params);
 }
+
+// ---------------------------------------------------------------
+// 求人掲載（/jobs/）
+// ---------------------------------------------------------------
+// 施設へ「掲載期間中に何回表示され、何人が詳細を見て、何人が公式採用ページへ進んだか」を
+// 報告できるようにするためのイベント群。求人ID単位で集計できる形にそろえてある。
+//
+// ★GA4プロパティ・測定IDは既存のものをそのまま使う（新規作成しない）。
+// ★placement は line_click / survey_click などと同じ既存のカスタムディメンション。
+//   重複したディメンションを作らずに再利用する。
+
+/**
+ * 求人イベントに共通で載せる情報。
+ * Job 型そのものを要求しないので、クライアントコンポーネントが
+ * 求人データを import せずに済む（構造的に一致していれば渡せる）。
+ */
+export interface JobEventSource {
+    id: string;
+    slug: string;
+    facilityName: string;
+    /** 複数職種の求人があるため配列。GA4へは "PT,OT" のように連結して送る */
+    profession: readonly string[];
+}
+
+function jobParams(job: JobEventSource): EventParams {
+    return {
+        job_id: job.id,
+        job_slug: job.slug,
+        facility_name: job.facilityName,
+        profession: job.profession.join(","),
+    };
+}
+
+/**
+ * 求人カードが画面に入ったとき（表示回数）。
+ * placement で「求人一覧」「素材ページ」など設置場所ごとに集計する。
+ */
+export function trackJobImpression(job: JobEventSource, placement: string): void {
+    trackEvent("job_impression", { ...jobParams(job), placement });
+}
+
+/** 求人カードのクリック（＝求人詳細ページへの遷移）。 */
+export function trackJobClick(job: JobEventSource, placement: string): void {
+    trackEvent("job_click", { ...jobParams(job), placement });
+}
+
+/** 求人詳細ページの表示。 */
+export function trackJobDetailView(job: JobEventSource): void {
+    trackEvent("job_detail_view", jobParams(job));
+}
+
+/**
+ * 施設・法人の公式採用ページへのクリック。
+ * ⚠ 名前は job_apply_click だが、自主トレ素材庫上で応募が完了したことは意味しない。
+ *   「公式採用ページへ遷移したクリック」として扱うこと。
+ *   本サイトでは応募の受付・仲介を一切行っていない。
+ */
+export function trackJobApplyClick(job: JobEventSource): void {
+    trackEvent("job_apply_click", jobParams(job));
+}

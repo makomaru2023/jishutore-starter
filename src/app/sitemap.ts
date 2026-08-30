@@ -3,6 +3,8 @@ import { getItems } from '@/lib/items'
 import { getColumnArticles, getColumnUrl } from '@/lib/column'
 import { feeDomains, getAllFeeItems } from '@/lib/fee-check'
 import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability'
+import { getSitemapJobs, getJobUrl } from '@/lib/jobs'
+import { JOB_POSTING_LP_INDEXABLE } from '@/constants/jobs'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://jishutore-sozaiko.online'
@@ -74,6 +76,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(`${page.lastModified}T00:00:00+09:00`),
         changeFrequency: page.changeFrequency,
         priority: page.priority,
+    }))
+
+    // 求人（/jobs/）。掲載中の求人だけを載せる。
+    // 掲載サンプル（架空求人）と掲載終了した求人は getSitemapJobs 側で除いている。
+    // 終了求人を検索結果に残さないための、Googleのガイドラインに沿った扱い。
+    const jobUrls = getSitemapJobs().map((job) => ({
+        url: `${baseUrl}${getJobUrl(job.slug)}`,
+        lastModified: new Date(`${job.publishedAt}T00:00:00+09:00`),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
     }))
 
     // ★2026-08-22：Plusの新規受付停止中は、販売系のURLを sitemap から外す。
@@ -202,6 +214,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.85,
         },
         {
+            url: `${baseUrl}/jobs/`,
+            lastModified: new Date('2026-08-26T00:00:00+09:00'),
+            changeFrequency: 'weekly' as const,
+            priority: 0.6,
+        },
+        // 求人掲載LPは noindex の間 sitemap にも載せない（指示が食い違わないように）
+        ...(JOB_POSTING_LP_INDEXABLE
+            ? [
+                {
+                    url: `${baseUrl}/jobs/posting/`,
+                    lastModified: new Date('2026-08-26T00:00:00+09:00'),
+                    changeFrequency: 'monthly' as const,
+                    priority: 0.5,
+                },
+            ]
+            : []),
+        {
             url: `${baseUrl}/sponsor/`,
             lastModified: staticUpdatedAt,
             changeFrequency: 'monthly' as const,
@@ -213,6 +242,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
+        ...jobUrls,
         ...plusSalesUrls,
         ...additionalPublicUrls,
         ...columnUrls,

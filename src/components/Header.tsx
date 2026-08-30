@@ -65,6 +65,14 @@ export function Header() {
                         コラム
                     </Link>
 
+                    {/* ★2026-08-26：求人掲載β版の開始にあわせて追加。
+                        サイトの主役は無料素材・報酬チェックなので、控えめな1項目にとどめる。
+                        コラムと同じく lg 以上でだけ出す（md では6項目でロゴと接触するため）。
+                        モバイルメニューには常に入れてあるので行き止まりにはならない。 */}
+                    <Link href="/jobs/" className="hidden text-sm font-bold text-slate-300 transition-colors hover:text-white lg:block">
+                        求人
+                    </Link>
+
                     {/* ★2026-08-28：有料の入口をヘッダーに常設する（ユーザー指示）。
                         Plus停止中は買い切り2商品（疾患別／姿勢別 各¥980）が有料の主役で、
                         /products はその一覧。ヘッダー・フッターのどこからもリンクが無く、
@@ -150,6 +158,13 @@ export function Header() {
                             onClick={closeMenu}
                         >
                             コラム
+                        </Link>
+                        <Link
+                            href="/jobs/"
+                            className="block py-3 px-4 text-base font-bold text-white bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                            onClick={closeMenu}
+                        >
+                            求人
                         </Link>
                         <Link
                             href="/products/"

@@ -31,6 +31,12 @@ export function Footer() {
                         <Link href="/column/" className="hover:text-white transition-colors">
                             コラム
                         </Link>
+                        <Link href="/jobs/" className="hover:text-white transition-colors">
+                            求人情報
+                        </Link>
+                        <Link href="/jobs/posting/" className="hover:text-white transition-colors">
+                            求人掲載（施設の方へ）
+                        </Link>
                         <Link href="/fee-check/editorial-policy/" className="hover:text-white transition-colors">
                             報酬チェック編集方針
                         </Link>
