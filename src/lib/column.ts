@@ -46,6 +46,7 @@ import { article as rokenRihaShu3To3kagetsu } from "@/data/column/articles/roken
 import { article as rokenSaishoNo1kagetsu } from "@/data/column/articles/roken-saisho-no-1kagetsu";
 import { article as rokenGaihakuJihi } from "@/data/column/articles/roken-gaihaku-jihi";
 import { article as rokenHaisetsuShien3kubun } from "@/data/column/articles/roken-haisetsu-shien-3kubun";
+import { article as rokenRehamaneKeikakushoJoho } from "@/data/column/articles/roken-rehamane-keikakusho-joho";
 import { article as rokenHibiNoZogen } from "@/data/column/articles/roken-hibi-no-zogen";
 import { article as rokenKaigoKikiFueta } from "@/data/column/articles/roken-kaigo-kiki-fueta";
 import { article as tsushoEnchoKasan } from "@/data/column/articles/tsusho-encho-kasan";
@@ -219,6 +220,7 @@ const articles: ColumnArticle[] = [
     kansenshoSaigaiKata,
     rokenGaihakuJihi,
     rokenHaisetsuShien3kubun,
+    rokenRehamaneKeikakushoJoho,
     rokenHibiNoZogen,
     tsushoEnchoKasan,
     chiikiHokatsuKangoKasan,

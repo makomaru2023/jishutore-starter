@@ -59,6 +59,14 @@ function Body() {
                 短期集中リハビリテーション実施加算(Ⅰ)は「評価結果等の情報を厚生労働省に提出し、
                 必要に応じてリハビリテーション計画を見直していること」。
                 リハビリテーションマネジメント計画書情報加算も、計画の見直し等に活用していることが要件です。
+                老健の同加算については
+                <Link
+                    href="/column/roken-rehamane-keikakusho-joho/"
+                    className="mx-1 font-bold text-blue-700 hover:underline"
+                >
+                    (Ⅰ)と(Ⅱ)の分かれ目の記事
+                </Link>
+                で図解しました。
             </Note>
 
             <H2>出す時期も、要件のほうに書かれています</H2>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">(Ⅰ)にだけ要る、リハビリ以外の加算2つ</text>
+
+    <rect x="40" y="56" width="352" height="200" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">口腔衛生管理加算(Ⅱ)　110単位／月</text>
+    <text x="216" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">動くのは歯科衛生士です</text>
+    <line x1="72" y1="122" x2="360" y2="122" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">歯科衛生士が口腔衛生等の管理を月2回以上</text>
+    <text x="216" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">介護職員へ具体的な技術的助言と指導を行う</text>
+    <text x="216" y="204" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">情報を提出して活用する（(Ⅱ)の条件）</text>
+    <text x="216" y="234" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">条件は(Ⅱ)。(Ⅰ)＝90単位では届きません</text>
+
+    <rect x="408" y="56" width="352" height="200" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">栄養マネジメント強化加算　11単位／日</text>
+    <text x="584" y="108" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">効くのは管理栄養士の人数です</text>
+    <line x1="440" y1="122" x2="728" y2="122" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">管理栄養士を入所者数÷50以上、常勤換算で</text>
+    <text x="584" y="176" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">常勤の栄養士1名が給食管理なら÷70以上</text>
+    <text x="584" y="204" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">情報を提出して活用する</text>
+    <text x="584" y="234" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">1日ごとに付く数字です</text>
+
+    <rect x="40" y="276" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="305" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">どちらもリハビリ職だけでは動かせません</text>
+
+    <text x="400" y="352" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">20単位の差の手前に、歯科衛生士と管理栄養士の体制があります</text>
+  </g>
+</svg>
