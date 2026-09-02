@@ -44,7 +44,7 @@ export function Header() {
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden items-center gap-4 md:flex lg:gap-6 xl:gap-8">
+                <nav className="hidden items-center gap-4 lg:flex lg:gap-6 xl:gap-8">
                     <Link href="/items" className="text-sm font-bold text-slate-300 hover:text-white transition-colors">
                         無料素材
                     </Link>
@@ -56,20 +56,14 @@ export function Header() {
                     {/* 報酬チェックの隣に置く。コラムは入口側の資産で、実際の流れも
                         報酬チェック → コラム → Plus の順になるため。
                         ★企画書§10の「ヘッダーナビへの追加はしない」は記事0本のときの判断で、
-                        24本になった2026-08-15に見直した。
-
-                        ★lg以上でだけ出す。md（768px）だと5項目でロゴとナビが接触する
-                        （実測：コラム有りで隙間1px／無しで59px）。768〜1023pxでは出ないが、
-                        1023px以下のモバイルメニューには常に入れてあるので、行き止まりにはならない。 */}
-                    <Link href="/column/" className="hidden text-sm font-bold text-slate-300 transition-colors hover:text-white lg:block">
+                        24本になった2026-08-15に見直した。 */}
+                    <Link href="/column/" className="text-sm font-bold text-slate-300 transition-colors hover:text-white">
                         コラム
                     </Link>
 
                     {/* ★2026-08-26：求人掲載β版の開始にあわせて追加。
-                        サイトの主役は無料素材・報酬チェックなので、控えめな1項目にとどめる。
-                        コラムと同じく lg 以上でだけ出す（md では6項目でロゴと接触するため）。
-                        モバイルメニューには常に入れてあるので行き止まりにはならない。 */}
-                    <Link href="/jobs/" className="hidden text-sm font-bold text-slate-300 transition-colors hover:text-white lg:block">
+                        サイトの主役は無料素材・報酬チェックなので、控えめな1項目にとどめる。 */}
+                    <Link href="/jobs/" className="text-sm font-bold text-slate-300 transition-colors hover:text-white">
                         求人
                     </Link>
 
@@ -117,8 +111,12 @@ export function Header() {
                 </nav>
 
                 {/* Mobile Menu Button */}
+                {/* ★lg未満はハンバーガーに寄せる。以前は md(768px) から横並びナビに切り替え、
+                    コラムと求人だけ lg 未満で非表示にしていたが、768〜1023px ではハンバーガーも
+                    出ないため、その帯域だけコラム・求人への導線が消えていた（実測で確認）。
+                    切り替え位置をナビ・ハンバーガーとも lg に揃えて塞ぐ。 */}
                 <button
-                    className="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none"
+                    className="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     aria-label={isMobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
                     aria-expanded={isMobileMenuOpen}
@@ -136,7 +134,7 @@ export function Header() {
 
             {/* Mobile Menu Overlay */}
             {isMobileMenuOpen && (
-                <div id="mobile-navigation" className="md:hidden border-t border-slate-800 bg-slate-900 shadow-xl absolute w-full left-0">
+                <div id="mobile-navigation" className="lg:hidden border-t border-slate-800 bg-slate-900 shadow-xl absolute w-full left-0">
                     <div className="container mx-auto px-4 py-6 space-y-3">
                         <Link
                             href="/items"
