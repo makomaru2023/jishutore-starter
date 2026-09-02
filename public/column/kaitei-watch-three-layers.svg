@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <rect width="800" height="300" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+
+    <text x="400" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">月次点検で見ている3つの層（2026年9月）</text>
+
+    <!-- 層1 -->
+    <rect x="22" y="50" width="236" height="168" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="140" cy="82" r="17" fill="#1565C0"/>
+    <text x="140" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">1</text>
+    <text x="140" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">制度の新規発出</text>
+    <text x="140" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">改定・疑義解釈・訂正</text>
+    <rect x="38" y="158" width="204" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="140" y="180" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">3ポータルとも</text>
+    <text x="140" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">新しい資料なし</text>
+
+    <!-- 層2 -->
+    <rect x="282" y="50" width="236" height="168" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="400" cy="82" r="17" fill="#1565C0"/>
+    <text x="400" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">2</text>
+    <text x="400" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">出典リンクの生死</text>
+    <text x="400" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">PDFのURL切れ</text>
+    <rect x="298" y="158" width="204" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="400" y="180" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">46本すべて生存</text>
+    <text x="400" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#0F172A">先月は1本切れていた</text>
+
+    <!-- 層3 -->
+    <rect x="542" y="50" width="236" height="168" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <circle cx="660" cy="82" r="17" fill="#1565C0"/>
+    <text x="660" y="88" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">3</text>
+    <text x="660" y="124" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">出典ページの位置</text>
+    <text x="660" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">PDFの何ページか</text>
+    <rect x="558" y="158" width="204" height="46" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="660" y="180" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">106か所を照合し</text>
+    <text x="660" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350F">9項目を直した</text>
+
+    <!-- 下部の帯 -->
+    <rect x="22" y="238" width="756" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="267" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">制度に動きがない月は、出典の精度を上げる月にしています。</text>
+  </g>
+</svg>

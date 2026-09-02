@@ -84,6 +84,7 @@ import { article as tsueHokokiRenshu } from "@/data/column/articles/tsue-hokoki-
 import { article as stretchItsuWatasu } from "@/data/column/articles/stretch-itsu-watasu";
 import { article as tentoYoboTaisoKumikata } from "@/data/column/articles/tento-yobo-taiso-kumikata";
 import { article as kaiteiWatch202608 } from "@/data/column/articles/kaitei-watch-2026-08";
+import { article as kaiteiWatch202609 } from "@/data/column/articles/kaitei-watch-2026-09";
 import { article as kanpoTeiseiToWa } from "@/data/column/articles/kanpo-teisei-to-wa";
 import { article as keikoIjiKasanNagare } from "@/data/column/articles/keiko-iji-kasan-nagare";
 import { article as kokueiyoScreeningNagare } from "@/data/column/articles/kokueiyo-screening-nagare";
@@ -186,6 +187,7 @@ const articles: ColumnArticle[] = [
     tentoYoboTaisoKumikata,
     henmahiJishutoreErabikata,
     tachiagariHokoJishutore,
+    kaiteiWatch202609,
     kaiteiWatch202608,
     // ★入門層。加算を調べに来た人ではなく「加算に興味のない現場職員」向けの回。
     // 素朴な疑問（なぜ週3回・なぜ3か月・最初の1週間が慌ただしい理由）から入り、
