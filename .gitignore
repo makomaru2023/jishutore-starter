@@ -43,3 +43,6 @@ next-env.d.ts
 # Claude Code local config
 .claude/
 useful-tools/
+
+# 報酬チェックの一次資料キャッシュ（scripts/fee-checks）
+/.fee-source-cache/
