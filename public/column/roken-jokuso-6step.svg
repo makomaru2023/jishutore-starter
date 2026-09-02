@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">月3単位の加算(Ⅰ)に、要件は6つあります</text>
+
+    <rect x="40" y="52" width="226" height="104" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">① 入所時に確認</text>
+    <text x="153" y="104" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">褥瘡の有無を確認し</text>
+    <text x="153" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">発生リスクを評価する</text>
+
+    <rect x="287" y="52" width="226" height="104" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">② 3月に1回評価</text>
+    <text x="400" y="104" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">その後も少なくとも</text>
+    <text x="400" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">3月に1回は評価する</text>
+
+    <rect x="534" y="52" width="226" height="104" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="647" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">③ 提出して活用</text>
+    <text x="647" y="104" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">結果等の情報を提出し</text>
+    <text x="647" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">褥瘡管理に活用する</text>
+
+    <rect x="40" y="172" width="226" height="104" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="153" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">④ 計画を作る</text>
+    <text x="153" y="224" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">多職種が共同で</text>
+    <text x="153" y="248" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">褥瘡ケア計画を作成</text>
+
+    <rect x="287" y="172" width="226" height="104" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">⑤ 実施して記録</text>
+    <text x="400" y="224" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">計画に従い管理を実施し</text>
+    <text x="400" y="248" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">定期的に記録する</text>
+
+    <rect x="534" y="172" width="226" height="104" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="647" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">⑥ 3月に1回見直し</text>
+    <text x="647" y="224" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">少なくとも3月に1回</text>
+    <text x="647" y="248" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">ケア計画を見直す</text>
+
+    <rect x="40" y="296" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="325" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">これで加算(Ⅰ)＝1月につき3単位です</text>
+
+    <text x="400" y="376" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">①②は評価、③はLIFE、④⑤⑥は計画。3つの仕事がひとつの加算に入っています</text>
+  </g>
+</svg>

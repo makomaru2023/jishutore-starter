@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 356" width="800" height="356">
+  <rect width="800" height="356" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">つなぐのは管理栄養士どうしです</text>
+
+    <rect x="40" y="56" width="352" height="170" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">病院又は診療所の管理栄養士</text>
+    <line x1="72" y1="102" x2="360" y2="102" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="132" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">入院中の栄養の状況を持っている側</text>
+    <text x="216" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">退院してくる人の情報の出どころです</text>
+    <text x="216" y="196" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">ここと連携します</text>
+
+    <rect x="408" y="56" width="352" height="170" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">老健の管理栄養士</text>
+    <line x1="440" y1="102" x2="728" y2="102" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="132" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">連携して、その入所者に関する</text>
+    <text x="584" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">栄養ケア計画を策定すること</text>
+    <text x="584" y="196" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">計画を作るのはこちら</text>
+
+    <rect x="40" y="246" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="275" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">情報をもらうだけでなく、計画にするまでが要件です</text>
+
+    <text x="400" y="330" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">200単位は入所者1人につき1回が限度。イ及びロの注7を算定している場合は算定しません</text>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">対象になる療養食は9つです</text>
+
+    <rect x="40" y="52" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">糖尿病食</text>
+    <rect x="287" y="52" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">腎臓病食</text>
+    <rect x="534" y="52" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="647" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">肝臓病食</text>
+
+    <rect x="40" y="120" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="154" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">胃潰瘍食</text>
+    <rect x="287" y="120" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="154" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">貧血食</text>
+    <rect x="534" y="120" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="647" y="154" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">膵臓病食</text>
+
+    <rect x="40" y="188" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">脂質異常症食</text>
+    <rect x="287" y="188" width="226" height="56" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="400" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">痛風食</text>
+    <rect x="534" y="188" width="226" height="56" rx="8" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="647" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#0F172A">特別な場合の検査食</text>
+
+    <rect x="40" y="264" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="293" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">どれも、医師の発行する食事箋に基づいて提供したものです</text>
+
+    <text x="400" y="344" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">疾病治療の直接手段として、適切な栄養量及び内容を有するもの、と定義されています</text>
+  </g>
+</svg>

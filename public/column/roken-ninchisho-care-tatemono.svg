@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 356" width="800" height="356">
+  <rect width="800" height="356" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">建物の側にも、数字で書かれた条件があります</text>
+
+    <rect x="40" y="56" width="226" height="170" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="153" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">施設と設備</text>
+    <text x="153" y="124" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">対象の入所者に</text>
+    <text x="153" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">サービスを行うのに</text>
+    <text x="153" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">適当な施設及び設備</text>
+    <text x="153" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">を有すること</text>
+
+    <rect x="287" y="56" width="226" height="170" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="400" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">家族のための施設</text>
+    <text x="400" y="126" text-anchor="middle" font-size="24" font-weight="bold" fill="#0F172A">30㎡以上</text>
+    <text x="400" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">家族に介護方法の知識と</text>
+    <text x="400" y="182" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">技術を提供するために</text>
+    <text x="400" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="#78350F">必要な面積です</text>
+
+    <rect x="534" y="56" width="226" height="170" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="647" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">単位ごとの人数</text>
+    <text x="647" y="126" text-anchor="middle" font-size="24" font-weight="bold" fill="#0F172A">10人を標準</text>
+    <text x="647" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">介護保健施設サービスの</text>
+    <text x="647" y="182" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">単位ごとの入所者の数を</text>
+    <text x="647" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">10人を標準とすること</text>
+
+    <rect x="40" y="246" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="275" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">30㎡は、家族が来る場所として書かれています</text>
+
+    <text x="400" y="330" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">介護方法の知識及び技術の提供のために必要な、と要件に書かれています</text>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" width="800" height="372">
+  <rect width="800" height="372" fill="#FFFFFF"/>
+  <g font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif">
+    <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">13単位に届く道は2つ。どちらかで足ります</text>
+
+    <rect x="40" y="56" width="352" height="184" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="216" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">道その1　治った</text>
+    <line x1="72" y1="102" x2="360" y2="102" stroke="#90CAF9" stroke-width="2"/>
+    <text x="216" y="132" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">施設入所時に認められた褥瘡が</text>
+    <text x="216" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">治癒したこと</text>
+    <text x="216" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">入所時にあった人が対象</text>
+
+    <rect x="408" y="56" width="352" height="184" rx="10" fill="#FFF8E1" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="86" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">道その2　出さなかった</text>
+    <line x1="440" y1="102" x2="728" y2="102" stroke="#FCD34D" stroke-width="2"/>
+    <text x="584" y="132" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">入所時に発生リスクがあるとされた人に</text>
+    <text x="584" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F172A">褥瘡の発生がないこと</text>
+    <text x="584" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#78350F">リスクありの人が対象</text>
+
+    <rect x="40" y="260" width="720" height="46" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <text x="400" y="289" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">どちらか「いずれか」を満たせば届きます</text>
+
+    <text x="400" y="340" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748B">どちらの道も、加算(Ⅰ)の6つを満たしたうえでの話です。(Ⅰ)と(Ⅱ)は一方のみ</text>
+  </g>
+</svg>
