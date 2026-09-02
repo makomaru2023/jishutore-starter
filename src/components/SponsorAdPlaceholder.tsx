@@ -2,6 +2,15 @@ import Link from 'next/link';
 import { FREE_MATERIAL_COUNT_LABEL } from '@/constants/content-counts';
 
 /**
+ * スポンサー枠の「募集」表示。実際の広告ではなく、広告主を募るための枠。
+ *
+ * ★実際にスポンサー広告を出すコンポーネントを作るときは、
+ *   @/components/AdLabel の <AdLabel variant="sponsor" /> を必ず付けること。
+ *   対価を受けて載せるものが記事・素材と見分けられない表示になっていると、
+ *   景品表示法の指定告示（ステルスマーケティング規制）に触れる。
+ *   このプレースホルダー自体は当サイト自身の募集告知なので、
+ *   「スポンサー枠」「SAMPLE」の表示にとどめている。
+ *
  * バリアント設計：
  * - top:     /items の上部や、メインの誘導枠で使う「広告主に届きやすい」横長バナー
  * - inline:  素材グリッド内に col-span-full で挿入する「この枠に広告を掲載できます」型

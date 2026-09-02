@@ -169,6 +169,15 @@ export function SponsorDetailLayout({
                                         他のプランを見る
                                     </Link>
                                 </div>
+                                {/* 各プランのページからも掲載条件・広告掲載基準に届くようにする。
+                                    申込の直前に条件が読めない状態にしない。 */}
+                                <p className="mt-6 text-xs leading-relaxed text-slate-500">
+                                    お申し込みの前に{' '}
+                                    <Link href="/sponsor/terms/" className="font-bold text-blue-600 underline hover:text-blue-500">
+                                        スポンサー掲載規約・広告掲載基準
+                                    </Link>{' '}
+                                    をご確認ください。
+                                </p>
                             </div>
                         </div>
                     </div>

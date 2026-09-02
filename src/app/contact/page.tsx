@@ -2,13 +2,15 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TrackedB2bContactLink } from "@/components/TrackedB2bContactLink";
 
+const CONTACT_EMAIL = "smart.rehabili@gmail.com";
+
 const B2B_CONTACT_SUBJECT = "【施設利用のご相談】";
 const B2B_CONTACT_BODY = `・施設名：
 ・施設種別（通所介護・訪問看護ST・病院・クリニック等）：
 ・リハ職／機能訓練指導員のおおよその人数：
 ・ご利用を検討中の内容（自主トレ資料・報酬チェック など）：
 ・ご質問・ご要望：`;
-const B2B_CONTACT_MAILTO = `mailto:smart.rehabili@gmail.com?subject=${encodeURIComponent(B2B_CONTACT_SUBJECT)}&body=${encodeURIComponent(B2B_CONTACT_BODY)}`;
+const B2B_CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(B2B_CONTACT_SUBJECT)}&body=${encodeURIComponent(B2B_CONTACT_BODY)}`;
 
 export default function ContactPage() {
     return (
@@ -30,10 +32,10 @@ export default function ContactPage() {
                                 <h2 className="text-lg font-semibold text-gray-900 mb-2">メールでのお問い合わせ</h2>
                                 <p className="text-gray-600 mb-4">以下のメールアドレスまで直接ご連絡ください。</p>
                                 <a
-                                    href="mailto:smart.rehabili@gmail.com"
+                                    href={`mailto:${CONTACT_EMAIL}`}
                                     className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                                 >
-                                    smart.rehabili@gmail.com
+                                    {CONTACT_EMAIL}
                                 </a>
                             </div>
 

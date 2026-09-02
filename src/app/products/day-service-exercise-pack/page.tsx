@@ -495,6 +495,18 @@ export default function DayServiceExercisePackPage() {
                             <p className={`text-sm sm:text-base leading-relaxed text-amber-900 ${JP_TEXT}`}>
                                 {jp(DISCLAIMER)}
                             </p>
+                            {/* 有料商品なので、購入条件（価格・引渡し・返品・解約）の表記にも届くようにする */}
+                            <p className="mt-4 text-xs leading-6 text-amber-900">
+                                ご購入前に{" "}
+                                <Link href="/tokushoho/" className="font-bold underline hover:no-underline">
+                                    特定商取引法に基づく表記
+                                </Link>{" "}
+                                と{" "}
+                                <Link href="/license/" className="font-bold underline hover:no-underline">
+                                    利用規約・ライセンス
+                                </Link>{" "}
+                                をご確認ください。
+                            </p>
                         </div>
                     </div>
                 </section>

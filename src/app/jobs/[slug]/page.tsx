@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { AdLabel } from "@/components/AdLabel";
 import { JobApplyButton } from "@/components/jobs/JobApplyButton";
 import { JobCard } from "@/components/jobs/JobCard";
 import { JobDetailTracker } from "@/components/jobs/JobDetailTracker";
@@ -18,11 +19,12 @@ import {
     buildJobBreadcrumbJsonLd,
     buildJobMetaDescription,
     buildJobPostingJsonLd,
-    getConditionRows,
+    getCompensationRows,
     getJobBySlug,
     getPublishedJobs,
     getRecruiterRows,
     getVisibleJobs,
+    getWorkConditionRows,
     getWorkplaceRows,
     isJobExpired,
     type JobDetailRow,
@@ -114,7 +116,8 @@ export default async function JobDetailPage({
     if (!job) notFound();
 
     const expired = isJobExpired(job);
-    const conditionRows = getConditionRows(job);
+    const workConditionRows = getWorkConditionRows(job);
+    const compensationRows = getCompensationRows(job);
     const workplaceRows = getWorkplaceRows(job);
     const recruiterRows = getRecruiterRows(job);
     const jobPostingJsonLd = buildJobPostingJsonLd(job);
@@ -183,6 +186,8 @@ export default async function JobDetailPage({
 
                         <header className="mt-5">
                             <div className="flex flex-wrap items-center gap-1.5">
+                                {/* 有償掲載であることを、求人内容と同じ視界に置く */}
+                                {!job.isSample && !expired && <AdLabel variant="job-ad" />}
                                 {job.profession.map((profession) => (
                                     <span
                                         key={profession}
@@ -255,17 +260,26 @@ export default async function JobDetailPage({
                             </p>
                         </Section>
 
+                        {/* 勤務条件・給与・待遇は「そのほかの条件」に混ぜず、見出しで分ける。
+                            契約期間や変更の範囲は求職者が必ず確認する項目で、
+                            福利厚生と同じ扱いで最後にまとめると読み飛ばされる。 */}
+                        {workConditionRows.length > 0 && (
+                            <Section title="勤務条件">
+                                <DetailRows rows={workConditionRows} />
+                            </Section>
+                        )}
+
+                        {compensationRows.length > 0 && (
+                            <Section title="給与・待遇">
+                                <DetailRows rows={compensationRows} />
+                            </Section>
+                        )}
+
                         {job.benefits && (
                             <Section title="福利厚生">
                                 <p className="jp-text whitespace-pre-line text-sm font-bold leading-7 text-slate-800">
                                     {job.benefits}
                                 </p>
-                            </Section>
-                        )}
-
-                        {conditionRows.length > 0 && (
-                            <Section title="そのほかの条件">
-                                <DetailRows rows={conditionRows} />
                             </Section>
                         )}
 
@@ -290,7 +304,7 @@ export default async function JobDetailPage({
                             </section>
                         )}
 
-                        <Section title="募集主・お問い合わせ先">
+                        <Section title="募集主・応募方法">
                             <DetailRows rows={recruiterRows} />
                         </Section>
 
@@ -316,7 +330,7 @@ export default async function JobDetailPage({
                         </section>
 
                         <p className="jp-text mt-8 rounded-xl border border-slate-200 bg-white p-4 text-xs leading-6 text-slate-500 sm:p-5">
-                            この求人情報は、掲載施設・法人から提供された内容をもとに{JOB_OPERATOR_NAME}が掲載しているものです。自主トレ素材庫は求人情報の掲載のみを行い、応募の受付・仲介・人材紹介・職業紹介は行っていません。採用の可否や労働条件の最終的な内容は、施設・法人と応募者の間で確認・決定されます。掲載後に募集内容が変更・終了している場合があります。応募前に必ず公式採用ページで最新の情報をご確認ください。記載内容に誤りを見つけられた場合は、
+                            この求人情報は、掲載施設・法人から掲載料をいただいて掲載している求人広告です。内容は掲載施設・法人から提供されたものをもとに{JOB_OPERATOR_NAME}が掲載しています。自主トレ素材庫は求人情報の掲載のみを行い、応募の受付・仲介・人材紹介・職業紹介は行っていません。採用の可否や労働条件の最終的な内容は、施設・法人と応募者の間で確認・決定されます。掲載後に募集内容が変更・終了している場合があります。応募前に必ず公式採用ページで最新の情報をご確認ください。記載内容に誤りを見つけられた場合は、
                             <Link href="/contact" className="font-black text-blue-700 hover:underline">
                                 お問い合わせ
                             </Link>

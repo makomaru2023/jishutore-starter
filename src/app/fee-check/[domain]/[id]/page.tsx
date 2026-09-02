@@ -115,7 +115,8 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
         "@type": "Article",
         headline: `${item.name}の算定要件・単位数（${domain.domainLabel}）`,
         description: getFeeDescription(item, domain),
-        dateModified: item.lastVerified,
+        // 未確認の項目には dateModified を出さない（構造化データに嘘の更新日を入れない）
+        ...(item.lastVerified ? { dateModified: item.lastVerified } : {}),
         author: {
             "@type": "Person",
             name: "トロル",

@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import {
     categoryLabels,
     categoryStyles,
+    formatLastVerified,
     insuranceLabels,
     normalizeFeeText,
     type FeeCategory,
@@ -143,7 +144,7 @@ const FeeCard = ({ item, disclaimer }: { item: FeeItem; disclaimer: string }) =>
                 )}
             </div>
             <p className="rounded-md bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-500">
-                確認日: {item.lastVerified}
+                最終確認: {formatLastVerified(item.lastVerified)}
             </p>
         </div>
 

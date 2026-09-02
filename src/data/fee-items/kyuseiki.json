@@ -2,6 +2,10 @@
   "schemaVersion": 1,
   "domain": "kyuseiki",
   "domainLabel": "急性期一般病棟",
+  "appliedYear": {
+    "care": null,
+    "medical": "令和8年度（2026年度）"
+  },
   "revision": {
     "care": "対象外。一般病棟入院基本料は医療保険（診療報酬）の入院基本料であり、介護保険の給付対象ではない",
     "medical": "令和8年度診療報酬改定（2026-06-01施行）"

@@ -9,6 +9,7 @@ import {
     jobProfessionShortLabels,
     type JobPlacement,
 } from "@/constants/jobs";
+import { AdLabel } from "@/components/AdLabel";
 import { WorkplaceDisclosureBadge } from "@/components/jobs/WorkplaceDisclosureBadge";
 import type { Job } from "@/types/job";
 
@@ -26,11 +27,20 @@ export function JobCard({
     job,
     placement,
     isExpired = false,
+    showAdLabel = true,
 }: {
     job: Job;
     placement: JobPlacement;
     /** 掲載終了した求人。一覧では控えめに出す */
     isExpired?: boolean;
+    /**
+     * 有償掲載であることのラベルを出すか。
+     * ★既定は true。求人は掲載料をいただいて載せているので、
+     *   カード単位で広告と分かるようにする（景表法のステマ規制）。
+     *   false にしてよいのは、外側の枠がすでに「PR」を出している場合だけ
+     *   （SponsoredJobCard がそれ。二重表示になるので中では消す）。
+     */
+    showAdLabel?: boolean;
 }) {
     const ref = useRef<HTMLDivElement | null>(null);
     const sentRef = useRef(false);
@@ -76,6 +86,7 @@ export function JobCard({
                 }`}
             >
                 <div className="flex flex-wrap items-center gap-1.5">
+                    {showAdLabel && !job.isSample && <AdLabel variant="pr" />}
                     {job.profession.map((profession) => (
                         <span
                             key={profession}

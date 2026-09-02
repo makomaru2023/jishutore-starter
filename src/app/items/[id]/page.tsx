@@ -7,6 +7,7 @@ import { ItemDetailPlusCta } from "@/components/ItemDetailPlusCta";
 import { ItemDetailBuyoutCta } from "@/components/ItemDetailBuyoutCta";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
+import { MedicalDisclaimerNote } from "@/components/MedicalDisclaimerNote";
 import { SurveyModal } from "@/components/survey/SurveyModal";
 import { getCategoriesForItem } from "@/lib/seoCategoryMatching";
 import { findPlusForFreeItem } from "@/lib/plus-match";
@@ -448,6 +449,10 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                                         <p className="text-sm text-slate-700">{targetConditionText}</p>
                                     </div>
                                 </div>
+
+                                {/* 運動のポイント・対象疾患のすぐ下に置く。
+                                    説明文を読んだ流れで、適応は個別に違うことが目に入る位置。 */}
+                                <MedicalDisclaimerNote />
 
                                 <Link href="/items" className="flex items-center justify-center gap-2 text-slate-500 hover:text-teal-500 font-bold transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">

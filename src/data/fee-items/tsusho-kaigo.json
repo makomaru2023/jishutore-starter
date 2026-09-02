@@ -2,6 +2,10 @@
   "schemaVersion": 1,
   "domain": "tsusho-kaigo",
   "domainLabel": "通所介護（デイサービス）",
+  "appliedYear": {
+    "care": "令和8年度（2026年度）",
+    "medical": null
+  },
   "revision": {
     "care": "令和6年度介護報酬改定（2024-06施行）＋令和8年度期中改定（介護職員等処遇改善加算の拡充・2026-06施行）。次回全面改定は2027年度",
     "medical": "対象外。通所介護は介護保険サービスとして整理する"

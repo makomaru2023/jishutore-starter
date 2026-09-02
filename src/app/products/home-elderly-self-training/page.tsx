@@ -9,6 +9,7 @@ import { ProductSelectLink } from "@/components/ProductSelectLink";
 import { WatermarkPreviewSection, type PreviewGroup } from "@/components/WatermarkPreviewSection";
 import { POSTURE_SELF_TRAINING_PRICE_ID } from "@/lib/products";
 import { ProductComparisonTable } from "@/components/ProductComparisonTable";
+import Link from "next/link";
 
 const PRODUCT_ID = "home-elderly-self-training";
 const PRODUCT_NAME = "姿勢別自主トレPowerPointセット";
@@ -480,6 +481,18 @@ export default function HomeElderlySelfTrainingPage() {
                             <p className={`mt-2 text-sm leading-relaxed text-amber-900 ${JP_TEXT}`}>
                                 この資料は、すべての対象者にそのまま使える医療プロトコルではありません。
                                 対象者の状態、医師の指示、疼痛、禁忌、転倒リスク、術後時期に合わせて、専門職の判断で編集してご使用ください。
+                            </p>
+                            {/* 有料商品なので、購入条件（価格・引渡し・返品・解約）の表記にも届くようにする */}
+                            <p className="mt-4 text-xs leading-6 text-amber-900">
+                                ご購入前に{" "}
+                                <Link href="/tokushoho/" className="font-bold underline hover:no-underline">
+                                    特定商取引法に基づく表記
+                                </Link>{" "}
+                                と{" "}
+                                <Link href="/license/" className="font-bold underline hover:no-underline">
+                                    利用規約・ライセンス
+                                </Link>{" "}
+                                をご確認ください。
                             </p>
                         </div>
                     </div>

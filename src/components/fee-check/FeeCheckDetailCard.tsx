@@ -10,6 +10,8 @@ import { FEE_CHECK_ITEM_COUNT } from "@/constants/public-counts";
 import {
     categoryLabels,
     categoryStyles,
+    formatAppliedYears,
+    formatLastVerified,
     getFeeItemUrl,
     getSampleFeeItems,
     insuranceLabels,
@@ -349,6 +351,8 @@ export function FeeCheckDetailCard({
     /** この項目を図解しているコラム記事。算定要件の直後に出す（企画書§3-9） */
     relatedColumns?: FeeItemColumnTarget[];
 }) {
+    const appliedYearLabel = formatAppliedYears(domain.appliedYear);
+
     return (
         <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5 print:border-slate-300 print:shadow-none">
             <div className="flex flex-wrap items-start justify-between gap-3">
@@ -379,8 +383,18 @@ export function FeeCheckDetailCard({
                     <h1 className="mt-3 text-2xl font-black leading-snug text-slate-950 jp-heading sm:text-3xl">
                         {item.name}の算定要件・単位数
                     </h1>
+                    {/* 分野・対象年度・最終確認日。制度改定後に古い情報が残っていないかを、
+                        本文より先に見分けられるようにする。確認していない項目には日付を出さない。 */}
                     <p className="mt-2 text-sm font-bold text-slate-500">
-                        {domain.domainLabel} / 確認日: {item.lastVerified}
+                        {domain.domainLabel}
+                        {appliedYearLabel && (
+                            <>
+                                <span className="mx-1.5 text-slate-300">/</span>
+                                対象年度: {appliedYearLabel}
+                            </>
+                        )}
+                        <span className="mx-1.5 text-slate-300">/</span>
+                        最終確認: {formatLastVerified(item.lastVerified)}
                     </p>
                     <KaiteiWatchInlineLink target={kaiteiWatch} />
                 </div>
@@ -482,7 +496,7 @@ export function FeeCheckDetailCard({
                     <div>
                         <h2 className="text-sm font-black text-slate-900">情報の作成・確認について</h2>
                         <p className="mt-2 text-xs leading-6 text-slate-600">
-                            作成・公開責任：作業療法士が運営する自主トレ素材庫。厚生労働省等の一次資料を基準に整理し、資料リンクと確認日（{item.lastVerified}）を掲載しています。
+                            作成・公開責任：作業療法士が運営する自主トレ素材庫。厚生労働省等の一次資料を基準に整理し、資料リンクと最終確認日（{formatLastVerified(item.lastVerified)}）を掲載しています。掲載内容はこの時点のものであり、制度改正・疑義解釈の発出・告示の訂正等により変更されることがあります。
                         </p>
                     </div>
                     <div className="flex shrink-0 flex-wrap gap-x-4 gap-y-2 text-xs font-black">

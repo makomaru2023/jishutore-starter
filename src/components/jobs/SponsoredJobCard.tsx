@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AdLabel } from "@/components/AdLabel";
 import { JobCard } from "@/components/jobs/JobCard";
 import type { JobPlacement } from "@/constants/jobs";
 import type { Job } from "@/types/job";
@@ -34,16 +35,15 @@ export function SponsoredJobCard({
         <section className={`rounded-2xl border border-slate-200 bg-slate-50 p-4 ${className}`}>
             <div className="mb-3 flex items-center justify-between gap-3">
                 <p className="flex items-center gap-2 text-xs font-black text-slate-500">
-                    <span className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] tracking-widest">
-                        PR
-                    </span>
+                    <AdLabel variant="job-ad" />
                     リハビリ職の求人
                 </p>
                 <Link href="/jobs/" className="text-xs font-black text-blue-700 hover:underline">
                     求人一覧
                 </Link>
             </div>
-            <JobCard job={job} placement={placement} />
+            {/* 枠の見出しで「求人広告」と示しているので、カード側のラベルは出さない */}
+            <JobCard job={job} placement={placement} showAdLabel={false} />
         </section>
     );
 }

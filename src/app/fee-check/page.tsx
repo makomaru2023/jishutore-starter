@@ -10,6 +10,8 @@ import { getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
 import {
     categoryLabels,
     feeDomains,
+    formatAppliedYears,
+    formatLastVerified,
     getDomainUrl,
     getFeeCheckTotalCount,
     getFeeItemUrl,
@@ -181,6 +183,20 @@ export default async function FeeCheckTopPage() {
                                                     </span>
                                                 ))}
                                             </div>
+                                            {/* どの年度の制度か、いつ確認したかを分野を選ぶ段階で見せる。
+                                                制度改定のあとに切り替えが済んでいない分野は、ここの日付で見分けられる。 */}
+                                            <p className="mt-3 text-xs font-bold leading-5 text-slate-500">
+                                                {formatAppliedYears(domain.appliedYear) && (
+                                                    <>対象年度 {formatAppliedYears(domain.appliedYear)}<span className="mx-1.5 text-slate-300">/</span></>
+                                                )}
+                                                最終確認 {formatLastVerified(
+                                                    domain.items
+                                                        .map((entry) => entry.lastVerified)
+                                                        .filter((value): value is string => Boolean(value))
+                                                        .sort()
+                                                        .at(-1) ?? null,
+                                                )}
+                                            </p>
                                         </Link>
                                     );
                                 })}

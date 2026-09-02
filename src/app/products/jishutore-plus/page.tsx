@@ -1269,9 +1269,12 @@ export default function JishutorePlusPage() {
                                 </details>
                             ))}
                         </div>
+                        {/* 有料サービスなので、購入条件（価格・解約・返金）の表記にも届くようにする */}
                         <p className="mt-6 text-center text-xs text-slate-500">
                             利用条件の詳細は{" "}
-                            <Link href="/license" className="font-bold text-blue-700 hover:underline">利用規約</Link>
+                            <Link href="/license/" className="font-bold text-blue-700 hover:underline">利用規約</Link>
+                            、価格・解約・返品の条件は{" "}
+                            <Link href="/tokushoho/" className="font-bold text-blue-700 hover:underline">特定商取引法に基づく表記</Link>
                             {" "}をご覧ください。
                         </p>
                     </div>

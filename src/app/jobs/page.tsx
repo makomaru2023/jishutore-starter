@@ -72,9 +72,17 @@ export default function JobsPage() {
                                 <span className="whitespace-nowrap">PT・OT・ST</span>
                                 を中心に、リハビリ職の求人情報を掲載しています。応募・お問い合わせは、各求人ページから施設・法人の公式採用窓口へ直接行ってください。
                             </p>
-                            <p className="jp-text mt-3 rounded-xl border border-slate-200 bg-white p-4 text-xs leading-6 text-slate-500">
-                                自主トレ素材庫では、応募の受付・仲介・人材紹介は行っていません。掲載内容は各施設・法人から提供されたものです。条件の詳細や最新の募集状況は、必ず施設の公式採用ページでご確認ください。
-                            </p>
+                            {/* 有償掲載であることの開示。カードごとの「PR」バッジだけでは
+                                「何が有償なのか」「順番は金で買えるのか」が伝わらないため、
+                                一覧の入口で明文化する（景表法のステマ規制）。 */}
+                            <div className="jp-text mt-3 rounded-xl border border-slate-200 bg-white p-4 text-xs leading-6 text-slate-500">
+                                <p>
+                                    このページの求人は、掲載料をいただいて掲載している求人広告です。掲載順は、職場情報の開示項目数と掲載日で決まります。掲載料の多寡によって順番が変わることはありません。
+                                </p>
+                                <p className="mt-2">
+                                    自主トレ素材庫では、応募の受付・仲介・人材紹介は行っていません。掲載内容は各施設・法人から提供されたものです。条件の詳細や最新の募集状況は、必ず施設の公式採用ページでご確認ください。
+                                </p>
+                            </div>
                         </header>
 
                         {publishedJobs.length > 0 ? (
@@ -151,6 +159,14 @@ export default function JobsPage() {
                             </Link>
                             <p className="mt-4 text-xs font-bold text-slate-500">
                                 運営：{JOB_OPERATOR_NAME}
+                            </p>
+                            {/* 掲載条件は申込前に読めるところに置く。CTAと同じブロック内に出す。 */}
+                            <p className="mt-2 text-xs font-bold text-slate-500">
+                                掲載の条件は{" "}
+                                <Link href="/jobs/terms/" className="text-blue-700 hover:underline">
+                                    求人掲載規約
+                                </Link>{" "}
+                                をご確認ください。
                             </p>
                         </section>
                     </div>

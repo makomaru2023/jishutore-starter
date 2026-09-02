@@ -8,6 +8,7 @@ import { WatermarkPreviewSection, type PreviewGroup } from "@/components/Waterma
 import Image from "next/image";
 import { ProductComparisonTable, type ComparisonRow } from "@/components/ProductComparisonTable";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "退院前・訪問リハでそのまま使える 疾患別自主トレPowerPoint 9本セット｜自主トレ素材庫",
@@ -526,6 +527,18 @@ export default function SelfTrainingMaterialsPage() {
                             </p>
                             <p className={`mt-3 text-sm sm:text-base leading-relaxed text-amber-900 ${JP_TEXT}`}>
                                 {jp("対象者の状態、医師の指示、疼痛、禁忌、術後時期に合わせて、専門職の判断で編集してご使用ください。")}
+                            </p>
+                            {/* 有料商品なので、購入条件（価格・引渡し・返品・解約）の表記にも届くようにする */}
+                            <p className="mt-4 text-xs leading-6 text-amber-900">
+                                ご購入前に{" "}
+                                <Link href="/tokushoho/" className="font-bold underline hover:no-underline">
+                                    特定商取引法に基づく表記
+                                </Link>{" "}
+                                と{" "}
+                                <Link href="/license/" className="font-bold underline hover:no-underline">
+                                    利用規約・ライセンス
+                                </Link>{" "}
+                                をご確認ください。
                             </p>
                         </div>
                     </div>

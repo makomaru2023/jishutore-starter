@@ -46,6 +46,14 @@ export function Footer() {
                         <Link href="/license" className="hover:text-white transition-colors">
                             利用規約・ガイドライン
                         </Link>
+                        {/* 掲載事業者・広告主向けの規約。求人／スポンサーの申込前に読める場所として、
+                            サービス側の導線だけでなくフッターにも置く。 */}
+                        <Link href="/jobs/terms/" className="hover:text-white transition-colors">
+                            求人掲載規約
+                        </Link>
+                        <Link href="/sponsor/terms/" className="hover:text-white transition-colors">
+                            スポンサー掲載規約
+                        </Link>
                         <Link href="/privacy" className="hover:text-white transition-colors">
                             プライバシーポリシー
                         </Link>

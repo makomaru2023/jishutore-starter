@@ -7,7 +7,7 @@
  */
 
 import { FeeCheckTrackedLink } from "@/components/fee-check/FeeCheckAnalytics";
-import { categoryLabels, getFeeItemUrl, type FeeDomain, type FeeItem } from "@/lib/fee-check";
+import { categoryLabels, formatLastVerified, getFeeItemUrl, type FeeDomain, type FeeItem } from "@/lib/fee-check";
 
 export function ColumnRelatedFeeItems({
     slug,
@@ -56,7 +56,7 @@ export function ColumnRelatedFeeItems({
                             <span className="font-black text-blue-800">{item.units[0]?.value}</span>
                         </span>
                         <span className="mt-3 text-xs font-black text-blue-700">
-                            確認日 {item.lastVerified} / 詳しく見る →
+                            最終確認 {formatLastVerified(item.lastVerified)} / 詳しく見る →
                         </span>
                     </FeeCheckTrackedLink>
                 ))}

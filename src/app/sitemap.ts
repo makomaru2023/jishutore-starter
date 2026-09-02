@@ -16,13 +16,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'monthly' as const,
         priority: 0.8,
     }))
+    // 未確認（lastVerified が null）の項目は更新日の判定から外す。
+    // 日付が無いものを今日扱いにすると、確認していない項目を「更新済み」と伝えてしまう。
+    const latestVerified = (dates: (string | null)[]) =>
+        dates.reduce<string>(
+            (latest, value) => (value && value > latest ? value : latest),
+            '2026-01-01',
+        )
+
     const feeDomainUrls = feeDomains.map((domain) => ({
         url: `${baseUrl}/fee-check/${domain.domain}/`,
         lastModified: new Date(
-            domain.items.reduce(
-                (latest, item) => item.lastVerified > latest ? item.lastVerified : latest,
-                '2026-01-01',
-            ),
+            latestVerified(domain.items.map((item) => item.lastVerified)),
         ),
         changeFrequency: 'weekly' as const,
         priority: 0.85,
@@ -30,16 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const allFeeItems = getAllFeeItems()
     const feeItemUrls = allFeeItems.map(({ domain, item }) => ({
         url: `${baseUrl}/fee-check/${domain.domain}/${item.id}/`,
-        lastModified: new Date(item.lastVerified),
+        lastModified: new Date(latestVerified([item.lastVerified])),
         changeFrequency: 'monthly' as const,
         priority: 0.75,
     }))
     // ハブは全項目の最新確認日を更新日とする（分野ページと同じ考え方）
     const feeCheckUpdatedAt = new Date(
-        allFeeItems.reduce(
-            (latest, { item }) => item.lastVerified > latest ? item.lastVerified : latest,
-            '2026-01-01',
-        ),
+        latestVerified(allFeeItems.map(({ item }) => item.lastVerified)),
     )
 
     const columnArticles = getColumnArticles()
@@ -68,6 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: '/products/home-elderly-self-training/', lastModified: '2026-07-20', changeFrequency: 'monthly' as const, priority: 0.7 },
         { path: '/products/self-training-materials/', lastModified: '2026-07-20', changeFrequency: 'monthly' as const, priority: 0.7 },
         { path: '/products/slide-prompt-generator/', lastModified: '2026-07-20', changeFrequency: 'monthly' as const, priority: 0.7 },
+        { path: '/sponsor/terms/', lastModified: '2026-09-02', changeFrequency: 'yearly' as const, priority: 0.4 },
         { path: '/sponsor/detail-sponsor/', lastModified: '2026-06-08', changeFrequency: 'monthly' as const, priority: 0.4 },
         { path: '/sponsor/page-sponsor/', lastModified: '2026-06-08', changeFrequency: 'monthly' as const, priority: 0.4 },
         { path: '/sponsor/premium-sponsor/', lastModified: '2026-06-06', changeFrequency: 'monthly' as const, priority: 0.4 },
@@ -219,7 +222,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly' as const,
             priority: 0.6,
         },
-        // 求人掲載LPは noindex の間 sitemap にも載せない（指示が食い違わないように）
+        // 求人掲載LP・求人掲載規約は noindex の間 sitemap にも載せない（指示が食い違わないように）
         ...(JOB_POSTING_LP_INDEXABLE
             ? [
                 {
@@ -227,6 +230,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
                     lastModified: new Date('2026-08-26T00:00:00+09:00'),
                     changeFrequency: 'monthly' as const,
                     priority: 0.5,
+                },
+                {
+                    url: `${baseUrl}/jobs/terms/`,
+                    lastModified: new Date('2026-09-02T00:00:00+09:00'),
+                    changeFrequency: 'yearly' as const,
+                    priority: 0.4,
                 },
             ]
             : []),

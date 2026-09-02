@@ -1,11 +1,16 @@
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LegalDates } from "@/components/legal/LegalDocument";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "特定商取引法に基づく表記｜自主トレ素材庫",
-    description: "自主トレ素材庫の特定商取引法に基づく表記です。自主トレ素材庫Plusと買い切り商品の販売事業者、連絡先、販売価格、支払方法、デジタルコンテンツの引渡し時期、継続課金サービスの更新・解約、返品・キャンセル条件、動作環境などを掲載しています。購入前にご確認ください。",
+    description: "自主トレ素材庫の特定商取引法に基づく表記です。自主トレ素材庫Plusと買い切り商品の販売事業者、連絡先、販売価格、支払方法、デジタルコンテンツの引渡し時期、継続課金サービスの更新・解約、返品・キャンセル条件、動作環境などを掲載しています。販売事業者情報の開示請求も受け付けています。購入前にご確認ください。",
+    alternates: { canonical: "https://jishutore-sozaiko.online/tokushoho/" },
 };
+
+const CONTACT_EMAIL = "smart.rehabili@gmail.com";
 
 export default function TokushohoPage() {
     return (
@@ -33,8 +38,16 @@ export default function TokushohoPage() {
 
                         <section>
                             <h2 className="text-lg font-bold text-gray-900 mb-2">連絡先</h2>
-                            <p>smart.rehabili@gmail.com</p>
-                            <p className="text-sm mt-1 text-gray-500">（氏名・住所・電話番号は、ご購入検討者からのご請求があった場合、遅滞なく開示いたします）</p>
+                            <p>{CONTACT_EMAIL}</p>
+                            {/* 販売事業者の氏名・住所・電話番号は「請求があれば開示」の形を採っている。
+                                その形が成り立つには、請求のしかたが読めばわかる必要がある。
+                                ★ボタンは置かない。法務ページから請求を誘う導線にはしない。
+                                  義務はボタンの有無で変わらないので、方法を1文書けば足りる。
+                                ★「○営業日以内」など、守れるか分からない期限は書かないこと。 */}
+                            <p className="text-sm mt-2 leading-7 text-gray-600">
+                                販売事業者の氏名・住所・電話番号は、ご購入をご検討中の方またはご購入者からご請求があった場合、遅滞なく開示いたします。
+                                上記のメールアドレス宛に、件名を「販売事業者情報の開示請求」としてご連絡ください。内容を確認のうえ、法令に従い対応します。
+                            </p>
                         </section>
 
                         <hr className="border-gray-200" />
@@ -106,6 +119,25 @@ export default function TokushohoPage() {
                                 運動の実施にあたっては、利用者の体調や主治医・リハビリ専門職の指示に従ってください。
                             </p>
                         </section>
+
+                        <section>
+                            <h2 className="text-lg font-bold text-gray-900 mb-2">本表記の変更</h2>
+                            <p>
+                                本表記の内容は、法令の改正、販売する商品・価格・提供条件の変更に伴い、変更することがあります。変更した場合は、変更後の内容を本ページに掲載します。<br />
+                                販売価格・提供条件の変更は、変更後にお申し込みいただくご注文から適用します。すでに成立したご注文には適用しません。
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-lg font-bold text-gray-900 mb-2">関連するページ</h2>
+                            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold">
+                                <Link href="/license/" className="text-blue-700 hover:underline">利用規約・ライセンス</Link>
+                                <Link href="/privacy/" className="text-blue-700 hover:underline">プライバシーポリシー</Link>
+                                <Link href="/faq/" className="text-blue-700 hover:underline">よくあるご質問</Link>
+                            </div>
+                        </section>
+
+                        <LegalDates document="tokushoho" />
                     </div>
                 </div>
             </main>

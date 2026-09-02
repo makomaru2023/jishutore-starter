@@ -16,6 +16,7 @@ import {
 } from "@/lib/seoItemCategories";
 import { getSeoCategoryItems } from "@/lib/seoCategoryMatching";
 import { getItemImageUrl } from "@/lib/items";
+import { MedicalDisclaimerNote } from "@/components/MedicalDisclaimerNote";
 
 const BASE_URL = "https://jishutore-sozaiko.online";
 
@@ -315,6 +316,11 @@ export function SeoItemCategoryPage({
                 </section>
 
                 <div className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 lg:px-8">
+                    {/* 疾患名・症状名でこのページに来る人がいる。素材を見て終わりにせず、
+                        適応は個別に違うことを一覧側でも一度示す。 */}
+                    <div className="mb-6">
+                        <MedicalDisclaimerNote variant="compact" />
+                    </div>
                     {!PLUS_SIGNUP_PAUSED && (
                         <div className="mb-6">
                             <ProductCta location="items_bottom_cta" variant="compact" />

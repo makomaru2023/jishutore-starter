@@ -20,10 +20,52 @@ export type FeeUnit = {
 };
 
 export type FeeSource = {
+    /** 出典資料名（例：「令和8年度診療報酬改定 告示（別表第一）」） */
     label: string;
+    /** 出典URL */
     url: string;
+    /** 該当ページ・該当箇所（例：「p.412」「別紙様式21の6」） */
     page?: string;
 };
+
+/**
+ * 最終確認日（YYYY-MM-DD）。
+ * ================================================================
+ * ★確認していない項目に日付を入れないこと。
+ *   null は「まだ一次資料に当たっていない／確認できていない」を意味し、
+ *   画面には「未確認」と出る（formatLastVerified）。
+ *   実際に確認した日を入れれば、その日付が表示に切り替わる。
+ *   埋めるために今日の日付を入れると、確認済みだと嘘をつくことになる。
+ */
+export type FeeLastVerified = string | null;
+
+/** 画面に出す確認日。未確認のものに日付をでっち上げない。 */
+export function formatLastVerified(value: FeeLastVerified): string {
+    return value ?? "未確認";
+}
+
+/**
+ * 制度の版（対象年度）。分野ページ・項目ページに表示する。
+ * ================================================================
+ * 介護保険と医療保険で改定の年がずれるため、保険別に持つ。
+ * その分野で対象外の保険は null にする（「対象外」と表示される）。
+ * 詳しい経緯（期中改定など）は FeeDomain.revision の文章のほうに書く。
+ */
+export type FeeAppliedYear = {
+    care: string | null;
+    medical: string | null;
+};
+
+/** 保険別の対象年度の表示。対象外の保険は出さない。 */
+export function formatAppliedYears(applied: FeeAppliedYear | undefined): string | null {
+    if (!applied) return null;
+    const parts: string[] = [];
+    if (applied.care) parts.push(`介護 ${applied.care}`);
+    if (applied.medical) parts.push(`医療 ${applied.medical}`);
+    // 区切りは「・」。外側（分野名や最終確認日との区切り）で「/」を使っているので、
+    // 同じ記号を重ねると保険の切れ目がどこか分からなくなる。
+    return parts.length > 0 ? parts.join("・") : null;
+}
 
 export type RelatedQA = {
     label: string;
@@ -40,7 +82,7 @@ export type FeeConflictPair = {
     condition?: string;
     note: string;
     sources: FeeSource[];
-    lastVerified: string;
+    lastVerified: FeeLastVerified;
     verificationLevel?: string;
 };
 
@@ -48,7 +90,7 @@ export type FeeVariantChoice = {
     id: string;
     note: string;
     sources: FeeSource[];
-    lastVerified: string;
+    lastVerified: FeeLastVerified;
     verificationLevel?: string;
 };
 
@@ -63,7 +105,7 @@ export type FeeRequiresRule = {
     condition?: string;
     note: string;
     sources: FeeSource[];
-    lastVerified: string;
+    lastVerified: FeeLastVerified;
     verificationLevel?: string;
 };
 
@@ -89,7 +131,7 @@ export type FeeItem = {
     pitfalls?: string[];
     relatedQA?: RelatedQA[];
     sources: FeeSource[];
-    lastVerified: string;
+    lastVerified: FeeLastVerified;
     changedInLastRevision?: boolean;
     changeSummary?: string;
     verificationLevel?: string;
@@ -101,6 +143,12 @@ export type FeeDomain = {
     schemaVersion: number;
     domain: string;
     domainLabel: string;
+    /**
+     * 制度の版（対象年度）。画面に「介護 令和8年度（2026年度）」のように出す。
+     * 改定のたびにここを差し替える。分野で扱わない保険は null。
+     */
+    appliedYear: FeeAppliedYear;
+    /** 版の詳しい説明（期中改定・次回改定の予定など）。文章のまま出す */
     revision: {
         care: string;
         medical: string;
@@ -208,7 +256,7 @@ export function getPublicFeeSearchText(item: FeeItem): string {
             item.units.map((unit) => `${unit.condition} ${unit.value} ${unit.note || ""}`).join(" "),
             item.requirements.join(" "),
             item.sources.map((source) => source.label).join(" "),
-            item.lastVerified,
+            item.lastVerified ?? "",
         ].join(" ")
     );
 }

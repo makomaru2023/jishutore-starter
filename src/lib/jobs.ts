@@ -202,18 +202,35 @@ export function getWorkplaceRows(job: Job): JobDetailRow[] {
 }
 
 /**
- * 募集条件（職業安定法の明示事項をひととおり並べる）。
- * 賃金・就業場所・業務内容は必須なので必ず出る。
+ * 勤務条件。
+ * ================================================================
+ * 職業安定法（第5条の3）と、2024年4月1日施行の同法施行規則改正で
+ * 募集時に明示すべきとされた事項のうち、契約・勤務にかかわるものを並べる。
+ * 施設が答えなかった項目は行ごと出さない（compact）。
+ * ★未入力の項目に「なし」「変更なし」等の既定値を入れないこと。
+ *   書いていないだけの項目を、条件として断定してしまうため。
  */
-export function getConditionRows(job: Job): JobDetailRow[] {
+export function getWorkConditionRows(job: Job): JobDetailRow[] {
     return compact([
         row("契約期間", job.contractPeriod),
         row("契約更新の基準", job.contractRenewal),
+        row("契約更新の上限", job.contractRenewalLimit),
         row("試用期間", job.trialPeriod),
+        row("時間外労働", job.overtimeWork),
         row("業務の変更の範囲", job.jobScopeOfChange),
         row("就業場所の変更の範囲", job.workplaceScopeOfChange),
-        row("加入保険", job.insurance),
         row("受動喫煙防止措置", job.smokingPolicy),
+    ]);
+}
+
+/**
+ * 給与・待遇のうち、表形式で出す項目。
+ * 賃金そのものは「募集内容」の要約に出しているので、ここには内訳を置く。
+ */
+export function getCompensationRows(job: Job): JobDetailRow[] {
+    return compact([
+        row("固定残業代", job.fixedOvertimeAllowance),
+        row("加入保険", job.insurance),
     ]);
 }
 
@@ -225,6 +242,7 @@ export function getRecruiterRows(job: Job): JobDetailRow[] {
         row("所在地", job.address),
         row("施設種別", jobFacilityTypeLabels[job.facilityType]),
         row("連絡先・採用窓口", job.contact),
+        row("応募方法", job.applicationMethod),
     ]);
 }
 
@@ -248,8 +266,14 @@ function buildJobDescriptionHtml(job: Job): string {
         `<p><strong>勤務時間</strong><br>${escapeHtml(job.workHours)}</p>`,
         `<p><strong>休日・休暇</strong><br>${escapeHtml(job.holidays)}</p>`,
     ];
+    if (job.overtimeWork) {
+        blocks.push(`<p><strong>時間外労働</strong><br>${escapeHtml(job.overtimeWork)}</p>`);
+    }
     if (job.salaryNote) {
         blocks.push(`<p><strong>賃金の補足</strong><br>${escapeHtml(job.salaryNote)}</p>`);
+    }
+    if (job.fixedOvertimeAllowance) {
+        blocks.push(`<p><strong>固定残業代</strong><br>${escapeHtml(job.fixedOvertimeAllowance)}</p>`);
     }
     if (job.benefits) {
         blocks.push(`<p><strong>福利厚生</strong><br>${escapeHtml(job.benefits)}</p>`);

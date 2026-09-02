@@ -138,7 +138,7 @@ const steps: { step: string; title: string; body: string }[] = [
     {
         step: "STEP 2",
         title: "求人情報の確認・原稿提出",
-        body: "掲載項目をお送りしますので、募集職種・給与・勤務時間・休日・仕事内容などをご記入ください。リハビリ職員数や1日の単位数などは、答えられる範囲で構いません。",
+        body: "掲載項目をお送りしますので、基本情報（募集職種・業務内容・就業場所）、勤務条件（契約期間・勤務時間・休日・時間外労働）、給与・待遇の順にご記入ください。労働条件の明示に必要な項目は雛形に含めています。リハビリ職員数や1日の単位数などの職場情報は、答えられる範囲で構いません。",
     },
     {
         step: "STEP 3",
@@ -168,7 +168,7 @@ const faqs: { q: string; a: string }[] = [
     },
     {
         q: "掲載中に募集内容が変わった場合は？",
-        a: "掲載期間中の軽微な内容修正は料金に含まれています。ご連絡いただければ修正します。募集が終了した場合も、ご連絡いただければ速やかに掲載を終了します。",
+        a: "ご連絡ください。掲載期間中の内容修正は料金に含まれています。募集内容の変更・募集終了・採用決定など掲載内容に影響する事実が生じたときのご連絡は、求人掲載規約に定める掲載事業者の義務としています。募集が終了した求人が残っていると、求職者が実在しない募集に応募することになるためです。ご連絡いただければ速やかに掲載を終了します（採用決定による途中終了の場合、残期間分の返金はありません）。",
     },
     {
         q: "採用できなかった場合はどうなりますか？",
@@ -231,6 +231,14 @@ export default function JobPostingPage() {
                             </p>
                             <p className="mt-2 text-xs font-bold text-slate-500">
                                 運営：{JOB_OPERATOR_NAME}
+                            </p>
+                            {/* 申込の直下に掲載条件への導線を置く。CTAより先に読める位置に出す。 */}
+                            <p className="mt-2 text-xs font-bold text-slate-500">
+                                お申し込みの前に{" "}
+                                <Link href="/jobs/terms/" className="text-blue-700 underline hover:text-blue-800">
+                                    求人掲載規約
+                                </Link>{" "}
+                                をご確認ください。
                             </p>
                         </div>
                     </div>
@@ -617,9 +625,15 @@ export default function JobPostingPage() {
                                     </div>
 
                                     <p className="jp-text mt-5 text-xs leading-6 text-slate-500">
-                                        ※β版終了後は、媒体規模・掲載実績等に応じて料金を変更する場合があります。
+                                        ※β版終了後は、媒体規模・掲載実績等に応じて料金を変更する場合があります。料金の改定は、改定日以降に申し込まれた掲載に適用します。
                                         <br />
-                                        ※掲載による採用成果・応募数を保証するものではありません。
+                                        ※掲載による採用成果・応募数・閲覧数を保証するものではありません。
+                                        <br />
+                                        ※掲載条件・掲載の停止・キャンセル・返金の取り扱いは{" "}
+                                        <Link href="/jobs/terms/" className="font-black text-blue-700 underline">
+                                            求人掲載規約
+                                        </Link>{" "}
+                                        によります。
                                     </p>
                                 </div>
                             </div>
@@ -723,6 +737,12 @@ export default function JobPostingPage() {
                                 までお問い合わせください。
                                 <br />
                                 自主トレ素材庫は{JOB_OPERATOR_NAME}が運営しています。
+                                <br />
+                                お申し込みの前に{" "}
+                                <Link href="/jobs/terms/" className="font-black text-slate-200 underline">
+                                    求人掲載規約
+                                </Link>{" "}
+                                をご確認ください。
                             </p>
                             <Link
                                 href="/jobs/"

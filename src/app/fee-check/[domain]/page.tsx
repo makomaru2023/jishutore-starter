@@ -20,6 +20,8 @@ import {
     insuranceLabels,
     normalizeFeeText,
     isSampleFeeItem,
+    formatAppliedYears,
+    formatLastVerified,
     type FeeCategory,
 } from "@/lib/fee-check";
 
@@ -78,6 +80,17 @@ export default async function FeeCheckDomainPage({
         return getPublicFeeSearchText(item).includes(normalizedQuery);
     });
     const pageUrl = `https://jishutore-sozaiko.online${getDomainUrl(domain.domain)}`;
+
+    // 対象年度と、この分野で最も新しい最終確認日。
+    // 未確認（null）の項目は無視する。1件も確認日がなければ「未確認」と出す。
+    const appliedYearLabel = formatAppliedYears(domain.appliedYear);
+    const latestVerified = domain.items
+        .map((item) => item.lastVerified)
+        .filter((value): value is string => Boolean(value))
+        .sort()
+        .at(-1);
+    const domainLastVerified = formatLastVerified(latestVerified ?? null);
+
     const breadcrumbJsonLd = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -124,8 +137,23 @@ export default async function FeeCheckDomainPage({
                                         単位数・算定要件・根拠資料リンクは無料で確認できます。
                                         記録に残すこと、自己点検で見るポイントはPlusで表示します。
                                     </p>
+                                    {/* 対象年度と、この分野の最終確認日。
+                                        制度改定のあとに古い情報が残っていないかを、
+                                        本文を読む前に見分けられるようにする。 */}
+                                    <dl className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs font-bold leading-6 text-slate-600">
+                                        {appliedYearLabel && (
+                                            <div className="flex gap-1.5">
+                                                <dt className="text-slate-500">対象年度</dt>
+                                                <dd className="text-slate-800">{appliedYearLabel}</dd>
+                                            </div>
+                                        )}
+                                        <div className="flex gap-1.5">
+                                            <dt className="text-slate-500">分野内の最終確認</dt>
+                                            <dd className="text-slate-800">{domainLastVerified}</dd>
+                                        </div>
+                                    </dl>
                                     <p className="mt-3 text-xs font-bold leading-6 text-slate-500">
-                                        作業療法士が運営・一次資料を基準に作成しています。
+                                        作業療法士が運営・一次資料を基準に作成しています。掲載内容は各項目の最終確認日時点のものです。
                                         <Link href="/fee-check/editorial-policy/" className="ml-2 text-blue-700 hover:underline">
                                             編集方針・確認方法
                                         </Link>
