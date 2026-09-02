@@ -175,10 +175,8 @@ export const JOB_POSTING_LP_INDEXABLE = false;
  *   "floor" … 100人単位で切り下げて「1,400人以上」と出す（実数が動いても表記が揺れない）
  *   "exact" … 「3,012人」と実数で出す
  *
- * ★2026-08-26 時点：確定している直近の月次実績は2026年7月（アクティブユーザー 1,418人）。
- *   8月の月間値が確定したら monthlyActiveUsers と measurementMonth を差し替える。
- *   例）2026年8月が3,012人だった場合
- *       monthlyActiveUsers: 3012, measurementMonth: "2026年8月"
+ * ★2026-09-03 更新：2026年8月の月次実績が確定（アクティブユーザー 2,926人・前月比+106%）。
+ *   前回値は2026年7月の1,418人。次は9月が確定したら同じ2つを差し替える。
  *   実数で見せたくなったら displayMode を "exact" にする。
  *
  * ⚠ 確認できていない数字を大きく見せないこと。
@@ -187,9 +185,9 @@ export const JOB_POSTING_LP_INDEXABLE = false;
  */
 export const JOB_MEDIA_STATS = {
     /** GA4のアクティブユーザー（月間） */
-    monthlyActiveUsers: 1418,
+    monthlyActiveUsers: 2926,
     /** 上の数値の計測月 */
-    measurementMonth: "2026年7月",
+    measurementMonth: "2026年8月",
     /** 表示のしかた */
     displayMode: "floor" as "floor" | "exact",
 } as const;

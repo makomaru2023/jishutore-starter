@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { JobFacilityType } from "@/types/job";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FeeCheckViewTracker } from "@/components/fee-check/FeeCheckAnalytics";
@@ -6,6 +7,22 @@ import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
 import { FeeCheckDomainCta } from "@/components/fee-check/FeeCheckDomainCta";
 import { SurveyCard } from "@/components/survey/SurveyCard";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
+import { SponsoredJobCard } from "@/components/jobs/SponsoredJobCard";
+import { pickSponsoredJob } from "@/lib/jobs";
+
+/**
+ * 報酬チェックの分野 → 求人の施設種別。求人カードを分野の文脈に合わせるために使う。
+ * ★ここに無い分野（急性期・地域包括ケア病棟など）は絞り込まない。
+ *   地域包括ケア病棟は一般病院の一病棟で、JobFacilityType のどれとも1対1にならないため。
+ */
+const FEE_CHECK_DOMAIN_TO_FACILITY: Record<string, JobFacilityType | undefined> = {
+    "roken-nyusho": "roken",
+    "kaifukuki-riha": "kaifukuki-hospital",
+    "tsusho-riha": "day-care",
+    "tsusho-kaigo": "day-service",
+    "homon-riha": "home-rehab",
+    "homon-kango-riha": "home-nursing",
+};
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { getColumnsByFeeItem, getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
@@ -86,6 +103,14 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
     const relatedItems = domain.items
         .filter((entry) => entry.id !== item.id && entry.category === item.category)
         .slice(0, 4);
+
+    // ページ下部に出す求人広告。分野から施設種別を推定して文脈連動させる。
+    // 該当が無い分野（急性期・地域包括ケア病棟など）は絞り込まず、掲載中の求人をそのまま出す。
+    const sponsoredJob = pickSponsoredJob(
+        FEE_CHECK_DOMAIN_TO_FACILITY[domain.domain]
+            ? { facilityTypes: [FEE_CHECK_DOMAIN_TO_FACILITY[domain.domain]!] }
+            : undefined,
+    );
     const latestKaiteiWatch = getLatestKaiteiWatch();
     const kaiteiWatch = latestKaiteiWatch
         ? {
@@ -207,6 +232,20 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             href={getDomainUrl(domain.domain)}
                             itemCount={domain.items.length}
                         />
+
+                        {/* 求人広告枠（/jobs/posting/ で販売している「サイト内での求人カード表示」の実体）。
+                            ★分野から施設種別を推定して求人を選ぶ＝報酬チェックの文脈に連動させる。
+                              例）老健の加算を調べている人には老健の求人。
+                            ★掲載中の求人が無ければ null で何も描画しない。
+                              絞り込みで該当0件でも pickSponsoredJob が先頭にフォールバックする。
+                            ★位置：算定要件の確認を邪魔しないよう、分野CTAの後（最下部）に置く。 */}
+                        {sponsoredJob && (
+                            <SponsoredJobCard
+                                job={sponsoredJob}
+                                placement="fee_check"
+                                className="mt-6"
+                            />
+                        )}
 
                     </div>
                 </div>

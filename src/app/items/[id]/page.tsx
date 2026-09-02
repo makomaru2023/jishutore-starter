@@ -6,6 +6,8 @@ import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 import { ItemDetailPlusCta } from "@/components/ItemDetailPlusCta";
 import { ItemDetailBuyoutCta } from "@/components/ItemDetailBuyoutCta";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
+import { SponsoredJobCard } from "@/components/jobs/SponsoredJobCard";
+import { pickSponsoredJob } from "@/lib/jobs";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { MedicalDisclaimerNote } from "@/components/MedicalDisclaimerNote";
 import { SurveyModal } from "@/components/survey/SurveyModal";
@@ -178,6 +180,10 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
     // この素材に対応するPlusスライド。無料PNG → 編集できるスライドの文脈連動CTAに使う。
     const plusMatch = findPlusForFreeItem(item.id);
+
+    // ページ下部に出す求人広告（掲載中の求人が無ければ null＝何も出ない）。
+    // 素材ページは職種を特定できないので絞り込みはしない。
+    const sponsoredJob = pickSponsoredJob();
     const plusPreview = plusMatch
         ? {
             src: `/plus/previews/${plusMatch.id}.webp`,
@@ -519,6 +525,17 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                         </dl>
                     </section>
                 </div>
+
+                {/* 求人広告枠（/jobs/posting/ で販売している「サイト内での求人カード表示」の実体）。
+                    ★掲載中の求人が1件も無いときは pickSponsoredJob が null を返し、何も描画しない。
+                      掲載サンプル（isSample）は本番では対象外なので、実求人が入るまで表示は増えない。
+                    ★位置：素材情報を読み終えた後・LINE導線の前。DLの邪魔をしない「帰るまでの30秒」に置く。
+                    ★placement="item_detail" は GA4 の job_impression / job_click の内訳に出る。 */}
+                {sponsoredJob && (
+                    <div className="mt-8 max-w-4xl mx-auto">
+                        <SponsoredJobCard job={sponsoredJob} placement="item_detail" />
+                    </div>
+                )}
 
                 {/* 素材詳細ページの唯一のナーチャ導線：LINE（配布資料7点セット・新作通知） */}
                 <div className="mt-8 max-w-4xl mx-auto">
