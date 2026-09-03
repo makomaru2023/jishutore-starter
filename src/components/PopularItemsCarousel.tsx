@@ -10,6 +10,8 @@ export type PopularCarouselItem = {
   id: string;
   imageUrl: string;
   titleJa: string;
+  /** 画像検索向けの alt。サーバー側（PopularItemsSection）で getItemImageAlt から作る。 */
+  alt: string;
 };
 
 type PopularItemsCarouselProps = {
@@ -109,7 +111,7 @@ export function PopularItemsCarousel({ items }: PopularItemsCarouselProps) {
                   <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 group-hover:-translate-y-0.5 group-hover:shadow-lg">
                     <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
                       <Image
-                        alt={item.titleJa}
+                        alt={item.alt}
                         className="object-contain p-3 transition-transform duration-300 group-hover:scale-[1.03]"
                         fill
                         sizes="(max-width: 639px) 80vw, (max-width: 1023px) 46vw, (max-width: 1279px) 25vw, 23vw"

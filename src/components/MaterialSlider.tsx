@@ -6,6 +6,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Item } from '@/types'
+import { getItemImageAlt } from "@/lib/item-alt";
 import { getItemImageUrl } from '@/lib/items'
 
 type PropType = {
@@ -32,7 +33,7 @@ export function MaterialSlider(props: PropType) {
                                 <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
                                     <Image
                                         src={getItemImageUrl(item.previewSrc)}
-                                        alt={item.titleJa || item.title}
+                                        alt={getItemImageAlt(item)}
                                         fill
                                         className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 45vw, 30vw"

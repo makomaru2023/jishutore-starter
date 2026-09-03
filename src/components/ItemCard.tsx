@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getItemImageAlt } from "@/lib/item-alt";
 import { Item } from "@/types";
 import { getItemImageUrl } from "@/lib/items";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export function ItemCard({ item }: ItemCardProps) {
                 <Link href={`/items/${item.id}`}>
                     <Image
                         src={imageUrl}
-                        alt={item.title}
+                        alt={getItemImageAlt(item)}
                         fill
                         className="object-contain p-3 transition-transform duration-500 group-hover:scale-110 sm:p-6"
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"

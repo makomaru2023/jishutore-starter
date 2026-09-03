@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FREE_MATERIAL_COUNT_LABEL } from '@/constants/content-counts';
+import { getItemImageAlt } from '@/lib/item-alt';
 import { getItemImageUrl, getItems } from '@/lib/items';
 import { PopularItemsCarousel, type PopularCarouselItem } from './PopularItemsCarousel';
 
@@ -28,6 +29,7 @@ function getPopularItems(): PopularCarouselItem[] {
         id: item.id,
         imageUrl: getItemImageUrl(item.previewSrc),
         titleJa: item.titleJa ?? item.title,
+        alt: getItemImageAlt(item),
       },
     ];
   });

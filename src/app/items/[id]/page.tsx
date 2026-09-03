@@ -8,6 +8,7 @@ import { ItemDetailBuyoutCta } from "@/components/ItemDetailBuyoutCta";
 import { ItemDetailLineBanner } from "@/components/ItemDetailLineBanner";
 import { SponsoredJobCard } from "@/components/jobs/SponsoredJobCard";
 import { pickSponsoredJob } from "@/lib/jobs";
+import { getItemImageAlt } from "@/lib/item-alt";
 import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
 import { MedicalDisclaimerNote } from "@/components/MedicalDisclaimerNote";
 import { SurveyModal } from "@/components/survey/SurveyModal";
@@ -318,7 +319,7 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                             {/* eslint-disable-next-line @next/next/no-img-element -- transparent data URI overlay is intentionally not optimized */}
                             <img
                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                alt={title}
+                                alt={getItemImageAlt(item)}
                                 className="absolute inset-0 w-full h-full opacity-0 cursor-default z-10"
                                 style={{ objectFit: 'contain' }}
                             />

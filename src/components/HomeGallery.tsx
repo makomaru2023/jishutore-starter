@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { getItems, getItemImageUrl } from "@/lib/items";
+import { getItemImageAlt } from "@/lib/item-alt";
 
 /**
  * トップページ用・無料素材ショーケース
@@ -56,7 +57,7 @@ export function HomeGallery() {
                                 <div className="relative aspect-square w-full overflow-hidden bg-slate-50">
                                     <Image
                                         src={imageUrl}
-                                        alt={item.titleJa || item.title}
+                                        alt={getItemImageAlt(item)}
                                         fill
                                         className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
