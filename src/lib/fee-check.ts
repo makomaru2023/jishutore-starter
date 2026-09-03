@@ -24,6 +24,7 @@ import {
     type FeeItem,
     type FeeConflictSet,
     additionalSampleFeeItems,
+    getDomainUrl,
     sampleFeeItems,
 } from "@/lib/fee-check-shared";
 
@@ -43,6 +44,22 @@ export type FeeDomainId = (typeof feeDomains)[number]["domain"];
 export function getFeeDomain(domainId: string): FeeDomain | undefined {
     return feeDomains.find((domain) => domain.domain === domainId);
 }
+
+/**
+ * 「他の分野」ナビに渡す一覧を作る（現在の分野は除く）。
+ * ★2026-09-03：分野ページ同士に相互リンクが無かったため新設。
+ */
+export function getOtherFeeDomainNavEntries(currentDomainId: string) {
+    return feeDomains
+        .filter((domain) => domain.domain !== currentDomainId)
+        .map((domain) => ({
+            domain: domain.domain,
+            label: domain.domainLabel,
+            href: getDomainUrl(domain.domain),
+            itemCount: domain.items.length,
+        }));
+}
+
 
 export function getFeeItem(domainId: string, itemId: string): { domain: FeeDomain; item: FeeItem } | undefined {
     const domain = getFeeDomain(domainId);

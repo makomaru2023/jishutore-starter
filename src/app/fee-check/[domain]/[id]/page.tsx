@@ -5,10 +5,26 @@ import { notFound } from "next/navigation";
 import { FeeCheckViewTracker } from "@/components/fee-check/FeeCheckAnalytics";
 import { FeeCheckDetailCard } from "@/components/fee-check/FeeCheckDetailCard";
 import { FeeCheckDomainCta } from "@/components/fee-check/FeeCheckDomainCta";
+import { FeeCheckDomainNav } from "@/components/fee-check/FeeCheckDomainNav";
 import { SurveyCard } from "@/components/survey/SurveyCard";
 import { FeeCheckMemberHubBanner } from "@/components/fee-check/FeeCheckMemberHubBanner";
 import { SponsoredJobCard } from "@/components/jobs/SponsoredJobCard";
 import { pickSponsoredJob } from "@/lib/jobs";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { getColumnsByFeeItem, getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
+import {
+    getFeeDescription,
+    getFeeItemTitle,
+    getDomainUrl,
+    getFeeItem,
+    getFeeItemUrl,
+    getAllFeeItems,
+    isSampleFeeItem,
+    feeDomains,
+    getOtherFeeDomainNavEntries,
+} from "@/lib/fee-check";
+import { hasActivePlusAccess } from "@/lib/plus-access";
 
 /**
  * 報酬チェックの分野 → 求人の施設種別。求人カードを分野の文脈に合わせるために使う。
@@ -23,20 +39,7 @@ const FEE_CHECK_DOMAIN_TO_FACILITY: Record<string, JobFacilityType | undefined> 
     "homon-riha": "home-rehab",
     "homon-kango-riha": "home-nursing",
 };
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { getColumnsByFeeItem, getColumnUrl, getLatestKaiteiWatch } from "@/lib/column";
-import {
-    getFeeDescription,
-    getFeeItemTitle,
-    getDomainUrl,
-    getFeeItem,
-    getFeeItemUrl,
-    getAllFeeItems,
-    isSampleFeeItem,
-    feeDomains,
-} from "@/lib/fee-check";
-import { hasActivePlusAccess } from "@/lib/plus-access";
+
 
 export async function generateStaticParams() {
     return getAllFeeItems().map(({ domain, item }) => ({
@@ -103,6 +106,9 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
     const relatedItems = domain.items
         .filter((entry) => entry.id !== item.id && entry.category === item.category)
         .slice(0, 4);
+
+    // 他の分野（7件）。分野ページへの内部リンクを増やす目的も兼ねる。
+    const otherDomains = getOtherFeeDomainNavEntries(domain.domain);
 
     // ページ下部に出す求人広告。分野から施設種別を推定して文脈連動させる。
     // 該当が無い分野（急性期・地域包括ケア病棟など）は絞り込まず、掲載中の求人をそのまま出す。
@@ -231,6 +237,14 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             domainLabel={domain.domainLabel}
                             href={getDomainUrl(domain.domain)}
                             itemCount={domain.items.length}
+                        />
+
+                        {/* 他の分野への横移動。ここまでで自分の分野の導線は出し切っているので、
+                            押させるCTAではなく軽いナビとして置く（2026-09-03）。 */}
+                        <FeeCheckDomainNav
+                            entries={otherDomains}
+                            placement="item_page"
+                            className="mt-6"
                         />
 
                         {/* 求人広告枠（/jobs/posting/ で販売している「サイト内での求人カード表示」の実体）。

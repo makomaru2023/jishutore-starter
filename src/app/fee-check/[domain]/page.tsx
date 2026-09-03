@@ -6,6 +6,8 @@ import {
     FeeCheckTrackedLink,
     FeeCheckViewTracker,
 } from "@/components/fee-check/FeeCheckAnalytics";
+import { FeeCheckDomainNav } from "@/components/fee-check/FeeCheckDomainNav";
+import { getOtherFeeDomainNavEntries } from "@/lib/fee-check";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import {
@@ -90,6 +92,9 @@ export default async function FeeCheckDomainPage({
         .sort()
         .at(-1);
     const domainLastVerified = formatLastVerified(latestVerified ?? null);
+
+    // 他の分野（7件）。分野ページ同士の相互リンクに使う。
+    const otherDomains = getOtherFeeDomainNavEntries(domain.domain);
 
     const breadcrumbJsonLd = {
         "@context": "https://schema.org",
@@ -287,6 +292,14 @@ export default async function FeeCheckDomainPage({
                             </div>
                         )}
                     </div>
+
+                    {/* 他の分野への横移動。分野ページ同士に相互リンクが無く、
+                        老健を見ている人が通所リハへ回れなかった（2026-09-03の内部リンク実測）。 */}
+                    <FeeCheckDomainNav
+                        entries={otherDomains}
+                        placement="domain_page"
+                        className="mt-8"
+                    />
                 </section>
             </main>
             <Footer />
