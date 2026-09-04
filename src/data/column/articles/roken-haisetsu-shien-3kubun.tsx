@@ -138,7 +138,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "roken-haisetsu-shien-3kubun",
-    title: "老健の排せつ支援加算、10・15・20を分けているのは結果です",
+    title: "老健の排せつ支援加算、10・15・20を分けるのは結果",
     description:
         "排せつ支援加算は月10単位・15単位・20単位の3区分で、どれか1つだけを算定します。土台は(Ⅰ)の評価・計画・3月ごとの見直し。そのうえで(Ⅱ)は3つの結果のうち「いずれか」、(Ⅲ)は2つが「かつ」で必要です。(Ⅲ)には尿道カテーテルの道がありません。",
     category: "fee-practice",

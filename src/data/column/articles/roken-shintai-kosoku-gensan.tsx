@@ -143,7 +143,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "roken-shintai-kosoku-gensan",
-    title: "身体拘束廃止未実施減算は100分の10、4点セットの形も違います",
+    title: "身体拘束廃止未実施減算は100分の10、4点目は記録です",
     description:
         "身体拘束廃止未実施減算は所定単位数の100分の10で、高齢者虐待防止措置未実施減算の100分の1、業務継続計画未策定減算の100分の3より重い減算です。委員会・指針・研修の形は同じですが、身体拘束だけ委員会が3月に1回以上と決まっていて、4点目が担当者ではなく記録でした。",
     category: "fee-practice",

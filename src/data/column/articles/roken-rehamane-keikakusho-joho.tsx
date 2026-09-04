@@ -159,7 +159,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "roken-rehamane-keikakusho-joho",
-    title: "老健のリハマネ計画書情報加算、53と33を分けるのは口腔と栄養です",
+    title: "老健のリハマネ計画書情報加算、53と33の差は口腔と栄養",
     description:
         "リハビリテーションマネジメント計画書情報加算は(Ⅰ)53単位・(Ⅱ)33単位で、どちらか一方だけを算定します。計画書情報を提出し、計画の見直し等に活用していることは共通で、(Ⅰ)にだけ口腔衛生管理加算(Ⅱ)及び栄養マネジメント強化加算を算定していることと、多職種での情報共有が要りました。",
     category: "fee-practice",

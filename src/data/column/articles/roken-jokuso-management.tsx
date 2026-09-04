@@ -125,7 +125,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "roken-jokuso-management",
-    title: "褥瘡マネジメント加算(Ⅰ)は月3単位、それでも要件は6つあります",
+    title: "褥瘡マネジメント加算(Ⅰ)は月3単位、それでも要件は6つ",
     description:
         "褥瘡マネジメント加算は(Ⅰ)が1月につき3単位、(Ⅱ)が13単位です。(Ⅰ)には入所時の確認とリスク評価、3月ごとの評価、LIFEへの提出と活用、多職種での褥瘡ケア計画、定期的な記録、3月ごとの見直しの6つが要ります。(Ⅱ)に届く道は治癒と発生なしの2つでした。",
     category: "fee-practice",

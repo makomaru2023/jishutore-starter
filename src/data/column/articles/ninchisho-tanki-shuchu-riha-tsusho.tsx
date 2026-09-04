@@ -118,7 +118,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "ninchisho-tanki-shuchu-riha-tsusho",
-    title: "認知症短期集中リハ（通所リハ）、(Ⅰ)と(Ⅱ)の違いと算定条件",
+    title: "認知症短期集中リハ（通所リハ）、(Ⅰ)と(Ⅱ)の違い",
     description:
         "通所リハビリテーションの認知症短期集中リハビリテーション実施加算は、(Ⅰ)が日ごと・週2日まで、(Ⅱ)が月ごと・月4回以上という数え方の違いがあります。(Ⅱ)にはリハビリテーションマネジメント加算という前提があるため、選ぶ順番から整理しました。",
     category: "fee-practice",

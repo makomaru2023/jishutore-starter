@@ -47,7 +47,9 @@ export async function generateMetadata({
         return { title: "コラムが見つかりません｜自主トレ素材庫" };
     }
 
-    const title = `${article.title}｜自主トレ素材庫`;
+    // 検索結果のタイトルは30字前後で切れる。サイト名は og:siteName に残し、title からは落とす
+    // （報酬チェックで先に採用した方針。d8041e0f と同じ）
+    const title = article.title;
     const pageUrl = `${SITE_URL}${getColumnUrl(article.slug)}`;
 
     return {

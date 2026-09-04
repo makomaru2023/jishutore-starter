@@ -166,7 +166,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "roken-ryoyo-taisei-iji-tokubetsu",
-    title: "老健の療養体制維持特別加算、27単位と57単位で見るものが違います",
+    title: "老健の療養体制維持特別加算、27単位は来歴・57単位は状態",
     description:
         "療養体制維持特別加算は(Ⅰ)27単位・(Ⅱ)57単位で、どちらも1日につきです。(Ⅰ)が見るのは施設の来歴で、介護療養型医療施設や療養病床を有する病院から転換した老健であること。(Ⅱ)が見るのは入所者の状態で、前三月間の喀痰吸引・経管栄養と認知症の割合でした。",
     category: "fee-practice",

@@ -170,7 +170,7 @@ function Body() {
 
 export const article: ColumnArticle = {
     slug: "zaitaku-fukki-ryoyo-shien-kubun",
-    title: "在宅復帰・在宅療養支援機能加算、(Ⅰ)と(Ⅱ)の分かれ目を図解",
+    title: "在宅復帰・在宅療養支援機能加算、(Ⅰ)と(Ⅱ)の分かれ目",
     description:
         "在宅復帰・在宅療養支援機能加算は(Ⅰ)(Ⅱ)とも51単位/日で、選んで取るものではありません。分かれ目は自施設が算定している基本報酬の区分と、AからJまでの算式で出した数です。10項目の中身と、名前のよく似た在宅復帰支援機能加算との違いも図解にしました。",
     category: "fee-practice",
