@@ -1,4 +1,4 @@
-import { getItems, findItemById, getItemImageUrl } from "@/lib/items";
+import { getItems, findItemById, getItemImageUrl, getItemThumbUrl } from "@/lib/items";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LineBanner } from "@/components/LineBanner";
@@ -163,7 +163,8 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
         ? pairedCandidate
         : undefined;
     const pairedTitle = pairedItem ? pairedItem.titleJa || pairedItem.title : "";
-    const pairedImageUrl = pairedItem ? getItemImageUrl(pairedItem.previewSrc) : "";
+    // 80px枠の小さなサムネイルなので、こちらも軽いWebPで足りる。
+    const pairedImageUrl = pairedItem ? getItemThumbUrl(pairedItem.previewSrc) : "";
 
     // Use unique descriptions from items.json, with fallbacks
     const descriptionText = item.description

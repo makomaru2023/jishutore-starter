@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FREE_MATERIAL_COUNT_LABEL } from '@/constants/content-counts';
 import { getItemImageAlt } from '@/lib/item-alt';
-import { getItemImageUrl, getItems } from '@/lib/items';
+import { getItemThumbUrl, getItems } from '@/lib/items';
 import { PopularItemsCarousel, type PopularCarouselItem } from './PopularItemsCarousel';
 
 const POPULAR_ITEM_IDS = [
@@ -27,7 +27,9 @@ function getPopularItems(): PopularCarouselItem[] {
     return [
       {
         id: item.id,
-        imageUrl: getItemImageUrl(item.previewSrc),
+        // ★カルーセルのカードも600px幅のWebPで足りる（2026-09-05）。
+        //   トップの画像は10枚で1.87MBあった。カードの枠は最大でも約306px。
+        imageUrl: getItemThumbUrl(item.previewSrc),
         titleJa: item.titleJa ?? item.title,
         alt: getItemImageAlt(item),
       },

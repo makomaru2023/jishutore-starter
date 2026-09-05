@@ -76,5 +76,34 @@ const R2_PREVIEW_VERSION = "20260707";
  */
 export function getItemImageUrl(previewSrc: string): string {
     if (previewSrc.startsWith("https://")) return previewSrc;
-    return `/api/image?key=${encodeURIComponent(previewSrc)}&v=${R2_PREVIEW_VERSION}`;
+    // ★末尾スラッシュを付けておく。next.config.js が trailingSlash: true なので、
+    //   付けないと画像1枚ごとに308リダイレクトが1往復ぶん挟まる（一覧では24往復の無駄）。
+    return `/api/image/?key=${encodeURIComponent(previewSrc)}&v=${R2_PREVIEW_VERSION}`;
+}
+
+/**
+ * 一覧カード用の軽いプレビュー画像のR2キー。
+ * ================================================================
+ * 例）premium/plain/air-bike.png → preview/plain/air-bike.webp
+ *
+ * ★2026-09-05 追加。配布用のPNGは 1200x675・平均164KB あり、
+ *   一覧では幅250px前後の枠に縮めて出していた（必要の4〜6倍を落としていた）。
+ *   `next.config.js` の `images: { unoptimized: true }` で Next の自動縮小も効かないため、
+ *   600px幅のWebPを別に作って一覧だけそちらを見る。
+ *   ⚠**配布するPNG（fileHref）と、詳細ページの大きい画像は元のまま。**
+ *
+ * 生成は `npx tsx scripts/build-previews.ts --execute`（新規ぶんだけ作る）。
+ */
+export function getPreviewWebpKey(previewSrc: string): string {
+    return previewSrc.replace(/^premium\//, "preview/").replace(/\.(png|jpe?g)$/i, ".webp");
+}
+
+/**
+ * 一覧カード用の軽い画像URL。
+ * ★万一WebPがまだ無いキーでも、/api/image が元のPNGへ自動で切り替える
+ *   （画像が消えたように見える事故を作らないため）。
+ */
+export function getItemThumbUrl(previewSrc: string): string {
+    if (previewSrc.startsWith("https://")) return previewSrc;
+    return `/api/image/?key=${encodeURIComponent(getPreviewWebpKey(previewSrc))}&v=${R2_PREVIEW_VERSION}`;
 }

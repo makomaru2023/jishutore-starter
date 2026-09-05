@@ -7,7 +7,11 @@
 
 ## 0. 結論（いちばん大事なこと）
 
-**新しいイラストを反映する作業 = `data/items.json` に項目を追記して commit → push するだけ** です。
+**新しいイラストを反映する作業 = `data/items.json` に項目を追記 → プレビュー生成 → commit → push** です。
+
+> ★2026-09-05 に1手順増えました。`npx tsx scripts/build-previews.ts --execute` を1回流してください。
+> 一覧カード用の軽いWebP（600px・平均12KB）を作って R2 に上げます。増えたぶんだけ処理します。
+> 忘れても画像は消えません（`/api/image` が元のPNGに切り替えます）が、一覧が重いままになります。
 
 - 画像ファイル本体は **R2 に置いてある**（Git には含めない）。
 - サイトは `data/items.json` を「商品台帳」として読み込み、ビルド時に各イラストのページを生成する。
@@ -31,11 +35,15 @@
         1イラストにつき plain（文字なし）と text（文字あり）の2エントリを登録
         日本語タイトル・説明・運動ポイント等もここで記入
         ↓
-[4] ローカルで動作確認
+[4] 一覧カード用の軽いプレビューを作る
+        npx tsx scripts/build-previews.ts            （ドライラン）
+        npx tsx scripts/build-previews.ts --execute  （生成してR2へアップ）
+        ↓
+[5] ローカルで動作確認
         npm run build  （items.json が壊れていないか／型が通るか）
         npm run dev    （/items と /items/<id> を目視確認）
         ↓
-[5] commit → git push origin main → Vercel が自動デプロイ
+[6] commit → git push origin main → Vercel が自動デプロイ
 ```
 
 > ⚠️ **[1] の R2 アップロード自体はエージェントの作業範囲外**（運営者が事前に行う）。
@@ -54,12 +62,22 @@
 | 詳細ページ | `src/app/items/[id]/page.tsx` | `generateStaticParams()` で id ごとに静的生成 |
 | カード | `src/components/ItemCard.tsx` | 一覧の各カード。画像プレビュー＋ダウンロード |
 | 画像プロキシ | `src/app/api/image/route.ts` | R2 から画像を取得して返す（ダウンロード用） |
+| プレビュー生成 | `scripts/build-previews.ts` | **一覧カード用の軽いWebPを作ってR2へ。素材を足したら必ず1回流す** |
 | R2 確認用 | `scripts/list-recent-r2.ts` | R2 の最近アップされたキーを表示 |
 | R2 全件確認 | `scripts/list-r2.ts` | R2 のオブジェクト一覧を表示 |
 
 ### 画像が表示・ダウンロードされる仕組み
 
-- **プレビュー画像（一覧・詳細での表示）**
+- **一覧カードのプレビュー（軽いWebP）**
+  ★2026-09-05 追加。`src/lib/items.ts` の `getItemThumbUrl(previewSrc)` が
+  `premium/plain/foo.png` → `preview/plain/foo.webp` に読み替える。
+  実体は `scripts/build-previews.ts` が作る **600px幅のWebP（平均12KB）**。
+  配布用のPNGは 1200x675・平均241KB で、一覧では幅250px前後の枠に縮めて出していたため、
+  一覧の初回表示だけで3.8MB落ちていた（2026-09-05に実測）。
+  ⚠**配布するPNG（`fileHref`）と素材詳細ページの大きい画像は元のまま。** 一覧のカードだけ差し替えている。
+  ⚠WebPがまだ無いキーは `/api/image` が元のPNGへ自動で切り替える（画像が消えたようには見えない）。
+
+- **プレビュー画像（詳細での表示）**
   `src/lib/items.ts` の `getItemImageUrl(previewSrc)` が、`previewSrc`（R2のキー）を
   公開R2ドメインのURLに組み立てる。
   公開ドメイン（`src/lib/items.ts` にハードコード）:

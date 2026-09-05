@@ -13,7 +13,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getItemImageUrl } from "@/lib/items";
+import { getItemThumbUrl } from "@/lib/items";
 import type { Item } from "@/types";
 import { getItemImageAlt } from "@/lib/item-alt";
 
@@ -35,7 +35,7 @@ export function ColumnRelatedItems({ items }: { items: Item[] }) {
                     >
                         <div className="relative aspect-[4/3] w-full bg-white">
                             <Image
-                                src={getItemImageUrl(item.previewSrc)}
+                                src={getItemThumbUrl(item.previewSrc)}
                                 alt={getItemImageAlt(item)}
                                 fill
                                 className="object-contain p-2"

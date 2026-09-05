@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getItemImageAlt } from "@/lib/item-alt";
 import { Item } from "@/types";
-import { getItemImageUrl } from "@/lib/items";
+import { getItemThumbUrl } from "@/lib/items";
 import Link from "next/link";
 import { MaterialDownloadButton } from "@/components/MaterialDownloadButton";
 
@@ -10,8 +10,10 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item }: ItemCardProps) {
-    // Use direct R2 URL for better performance
-    const imageUrl = getItemImageUrl(item.previewSrc);
+    // ★一覧のカードは、配布用の大きいPNGではなく600px幅のWebPを見る（2026-09-05）。
+    //   平均241KB → 12KB。カードの枠は250px前後なので、2倍の画面でも足りる。
+    //   WebPがまだ無いキーは /api/image が元のPNGへ自動で切り替える。
+    const imageUrl = getItemThumbUrl(item.previewSrc);
     const isTextImage = item.category === "text";
 
     return (
