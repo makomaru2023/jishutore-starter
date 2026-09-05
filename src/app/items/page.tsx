@@ -1,18 +1,8 @@
 import { getItems } from "@/lib/items";
-import { FilteredItemList } from "@/components/FilteredItemList";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { LineBanner } from "@/components/LineBanner";
-import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
-import { ProductCta } from "@/components/ProductCta";
-import { RepeatVisitBanner } from "@/components/RepeatVisitBanner";
-import { PLUS_SIGNUP_PAUSED } from "@/constants/plus-availability";
-import { PostDownloadLineToast } from "@/components/PostDownloadLineToast";
-import { SurveyModal } from "@/components/survey/SurveyModal";
+import { ItemsIndexPage } from "@/components/ItemsIndexPage";
 import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
-import { seoItemCategories } from "@/lib/seoItemCategories";
+import { getTotalItemPages } from "@/lib/item-pagination";
 import { Metadata } from "next";
-import Link from "next/link";
 import type { ReactNode } from "react";
 
 const PROTECTED_JAPANESE_PHRASES = new Set([
@@ -197,11 +187,6 @@ const CATEGORY_CANONICALS: Record<string, string> = {
     walking: "/items/walking-exercises/",
 };
 
-const ITEM_CATEGORY_LINKS = [
-    ...seoItemCategories.map(({ slug, breadcrumb }) => ({ slug, breadcrumb })),
-    { slug: "swallowing-exercises", breadcrumb: "口腔・嚥下" },
-];
-
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ category?: string; q?: string }> }): Promise<Metadata> {
     const { category, q } = await searchParams;
 
@@ -315,142 +300,29 @@ export default async function ItemsPage({ searchParams }: { searchParams: Promis
         { key: "text", label: "文字あり", href: "/items?category=text", count: itemTypeCounts.text },
     ] as const;
 
+    // ★ページ分割は、絞り込みのない「素材一覧そのもの」だけに付ける。
+    //   ?category= や ?q= の絞り込みビューにページURLを作ると、
+    //   絞り込みの組み合わせぶんだけURLが増える（クロールさせたいのは本体の一覧）。
+    const showPagination = !q && !category;
+
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col">
-            <Header />
-            <main className="container mx-auto px-4 py-12 flex-1">
-                <div className="mb-10 text-center">
-                    <h1 className="jp-heading mb-4 text-[1.75rem] font-black text-slate-900 sm:text-4xl tracking-tight">
-                        {protectJapanesePhrases(title)}
-                    </h1>
-                    <p className="jp-text mx-auto max-w-2xl text-base sm:text-lg text-slate-500 font-medium">
-                        {description}
-                    </p>
-                    <div className="mt-5 flex flex-wrap justify-center gap-2">
-                        {[
-                            "無料ダウンロード",
-                            "商用利用OK",
-                            "登録不要",
-                            "クレジット表記不要",
-                        ].map((label) => (
-                            <span
-                                key={label}
-                                className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-700"
-                            >
-                                {label}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-
-                {!PLUS_SIGNUP_PAUSED && (
-                    <div className="mx-auto mb-8 max-w-5xl">
-                        <PlusRealPreviewBand
-                            variant="band"
-                            location="items_top_cta"
-                        />
-                    </div>
-                )}
-
-                {!q && (
-                    <nav
-                        aria-label="素材タイプ"
-                        className="mx-auto mb-8 max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
-                    >
-                        <p className="jp-text mb-3 text-center text-sm leading-relaxed text-slate-600">
-                            同じ運動のイラストに、文字なし版と
-                            <span className="inline-block sm:whitespace-nowrap">文字あり版（運動名・説明つき）</span>
-                            の<span className="inline-block sm:whitespace-nowrap">2タイプがあります。</span>
-                        </p>
-                        <div className="grid grid-cols-3 gap-1.5 rounded-xl bg-slate-100 p-1 sm:gap-2">
-                            {itemTypeTabs.map((tab) => {
-                                const isActive = activeItemType === tab.key;
-
-                                return (
-                                    <Link
-                                        key={tab.key}
-                                        href={tab.href}
-                                        aria-current={isActive ? "page" : undefined}
-                                        className={`flex min-w-0 flex-col items-center justify-center rounded-lg px-1.5 py-2.5 text-center transition sm:px-4 ${
-                                            isActive
-                                                ? "bg-teal-700 text-white shadow-sm"
-                                                : "text-slate-600 hover:bg-white hover:text-teal-700"
-                                        }`}
-                                    >
-                                        <span className="whitespace-nowrap text-xs font-black sm:text-sm">
-                                            {tab.label}
-                                        </span>
-                                        <span
-                                            className={`mt-0.5 whitespace-nowrap text-[10px] font-bold sm:text-xs ${
-                                                isActive ? "text-teal-50" : "text-slate-700"
-                                            }`}
-                                        >
-                                            {tab.count}点
-                                        </span>
-                                    </Link>
-                                );
-                            })}
-                        </div>
-                    </nav>
-                )}
-
-                <nav
-                    aria-label="素材カテゴリ"
-                    className="mx-auto mb-8 max-w-5xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
-                >
-                    <div className="mb-3 flex items-center justify-between gap-3">
-                        <h2 className="whitespace-nowrap text-sm font-black text-slate-900 sm:text-base">
-                            部位・用途から探す
-                        </h2>
-                        <Link
-                            href="/items/"
-                            className="shrink-0 text-xs font-bold text-teal-700 transition-colors hover:text-teal-500"
-                        >
-                            すべて表示
-                        </Link>
-                    </div>
-                    <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
-                        {ITEM_CATEGORY_LINKS.map((itemCategory) => (
-                            <Link
-                                key={itemCategory.slug}
-                                href={`/items/${itemCategory.slug}/`}
-                                className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-700 transition-colors hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700 sm:text-sm"
-                            >
-                                {itemCategory.breadcrumb}
-                            </Link>
-                        ))}
-                    </div>
-                    <p className="mt-2 text-xs leading-relaxed text-slate-500 sm:hidden">
-                        横にスワイプすると、ほかのカテゴリも選べます。
-                    </p>
-                </nav>
-
-                <FilteredItemList
-                    items={items}
-                    inlineAds
-                    categoryFilter={categoryFilter}
-                />
-
-                {/* 下部：有料資料への導線（Plus受付停止中は出さない） */}
-                {!PLUS_SIGNUP_PAUSED && (
-                    <div className="mt-16 max-w-5xl mx-auto">
-                        <ProductCta location="items_bottom_cta" variant="compact" />
-                    </div>
-                )}
-
-                {/* 下部：ブックマーク・新着通知（リピーター化導線） */}
-                <div className={PLUS_SIGNUP_PAUSED ? "mt-16 max-w-5xl mx-auto" : "mt-6 max-w-5xl mx-auto"}>
-                    <RepeatVisitBanner placement="items_bottom" />
-                </div>
-
-                {/* 下部：LINE無料特典 */}
-                <div className="mt-6 max-w-5xl mx-auto">
-                    <LineBanner />
-                </div>
-            </main>
-            <Footer />
-            <PostDownloadLineToast />
-            <SurveyModal />
-        </div>
+        <ItemsIndexPage
+            items={items}
+            title={protectJapanesePhrases(title)}
+            description={description}
+            typeTabs={q ? undefined : itemTypeTabs}
+            activeItemType={activeItemType}
+            categoryFilter={categoryFilter}
+            {...(showPagination
+                ? {
+                    pagination: {
+                        basePath: "/items/",
+                        currentPage: 1,
+                        totalPages: getTotalItemPages(items.length),
+                    },
+                    buyoutAd: "both" as const,
+                }
+                : {})}
+        />
     );
 }

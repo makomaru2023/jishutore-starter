@@ -5,6 +5,9 @@ import { feeDomains, getAllFeeItems } from '@/lib/fee-check'
 import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability'
 import { getSitemapJobs, getJobUrl } from '@/lib/jobs'
 import { JOB_POSTING_LP_INDEXABLE } from '@/constants/jobs'
+import { seoItemCategories } from '@/lib/seoItemCategories'
+import { getSeoCategoryItems, getSwallowingItems } from '@/lib/seoCategoryMatching'
+import { buildItemPageUrl, listExtraPageNumbers } from '@/lib/item-pagination'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://jishutore-sozaiko.online'
@@ -80,6 +83,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: page.changeFrequency,
         priority: page.priority,
     }))
+
+    // 素材一覧のページ分割（2ページ目以降）。
+    // ★1ページ目は下の固定URLで載せているので、ここでは2以上だけを足す。
+    //   クロールさせたい次ページを、sitemapから落として自分で遮断しないための追加。
+    const paginatedListUrls = [
+        { basePath: '/items/', total: items.length },
+        ...seoItemCategories.map((category) => ({
+            basePath: `/items/${category.slug}/`,
+            total: getSeoCategoryItems(category).length,
+        })),
+        { basePath: '/items/swallowing-exercises/', total: getSwallowingItems().length },
+    ].flatMap(({ basePath, total }) =>
+        listExtraPageNumbers(total).map((page) => ({
+            url: `${baseUrl}${buildItemPageUrl(basePath, page)}`,
+            lastModified: staticUpdatedAt,
+            changeFrequency: 'weekly' as const,
+            // 1ページ目（0.9）より低くする。入口は1ページ目のまま。
+            priority: 0.6,
+        })),
+    )
 
     // 求人（/jobs/）。掲載中の求人だけを載せる。
     // 掲載サンプル（架空求人）と掲載終了した求人は getSitemapJobs 側で除いている。
@@ -255,6 +278,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...plusSalesUrls,
         ...additionalPublicUrls,
         ...columnUrls,
+        ...paginatedListUrls,
         ...itemUrls,
         ...feeDomainUrls,
         ...feeItemUrls,

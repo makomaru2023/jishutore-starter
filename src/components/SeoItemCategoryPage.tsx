@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FilteredItemList } from "@/components/FilteredItemList";
+import { CategoryColumnLinks } from "@/components/CategoryColumnLinks";
 import { LineBanner } from "@/components/LineBanner";
 import { PlusRealPreviewBand } from "@/components/PlusRealPreviewBand";
 import { ProductCta } from "@/components/ProductCta";
@@ -16,16 +17,41 @@ import {
 } from "@/lib/seoItemCategories";
 import { getSeoCategoryItems } from "@/lib/seoCategoryMatching";
 import { getItemImageUrl } from "@/lib/items";
+import { resolveCategoryColumns } from "@/lib/category-columns";
+import {
+    buildItemPageUrl,
+    getItemPageRange,
+    getTotalItemPages,
+    listExtraPageNumbers,
+} from "@/lib/item-pagination";
 import { MedicalDisclaimerNote } from "@/components/MedicalDisclaimerNote";
 
 const BASE_URL = "https://jishutore-sozaiko.online";
 
 export { getSeoCategoryItems };
 
+/** そのカテゴリの1ページ目のURLパス（末尾スラッシュ付き）。 */
+export function getSeoCategoryBasePath(config: SeoItemCategoryConfig): string {
+    return "/items/" + config.slug + "/";
+}
+
+/** 2ページ目以降のページ番号（generateStaticParams 用）。 */
+export function listSeoCategoryExtraPages(config: SeoItemCategoryConfig): number[] {
+    return listExtraPageNumbers(getSeoCategoryItems(config).length);
+}
+
+/**
+ * カテゴリページのメタデータ。
+ * ★2ページ目以降は canonical を自分自身のURLにする。
+ *   全ページを1ページ目へ canonical 指定すると、2ページ目以降の素材が
+ *   「1ページ目の重複」として扱われ、そのページを見てもらえなくなる。
+ */
 export function createSeoCategoryMetadata(
     config: SeoItemCategoryConfig,
+    page = 1,
 ): Metadata {
-    const pageUrl = BASE_URL + "/items/" + config.slug + "/";
+    const basePath = getSeoCategoryBasePath(config);
+    const pageUrl = BASE_URL + buildItemPageUrl(basePath, page);
 
     // OGP画像：カテゴリの代表イラスト（文字なし版を優先）を使う。
     // 素材が無い場合のみサイト既定のOGP画像へフォールバック。
@@ -37,23 +63,34 @@ export function createSeoCategoryMetadata(
         ? new URL(getItemImageUrl(ogItem.previewSrc), BASE_URL).toString()
         : BASE_URL + "/opengraph-image.png";
 
+    const total = categoryItems.length;
+    const range = getItemPageRange(page, total);
+    const title =
+        page === 1
+            ? config.metaTitle
+            : `${config.breadcrumb}のリハビリイラスト ${page}ページ目｜自主トレ素材庫`;
+    const description =
+        page === 1
+            ? config.metaDescription
+            : `${config.breadcrumb}の無料イラスト一覧の${page}ページ目です（全${total}点のうち${range.start}〜${range.end}点目）。${config.listDescription}`;
+
     return {
-        title: config.metaTitle,
-        description: config.metaDescription,
+        title,
+        description,
         alternates: {
             canonical: pageUrl,
         },
         openGraph: {
-            title: config.metaTitle,
-            description: config.metaDescription,
+            title,
+            description,
             url: pageUrl,
             type: "website",
             images: [ogImage],
         },
         twitter: {
             card: "summary_large_image",
-            title: config.metaTitle,
-            description: config.metaDescription,
+            title,
+            description,
             images: [ogImage],
         },
     };
@@ -61,14 +98,22 @@ export function createSeoCategoryMetadata(
 
 export function SeoItemCategoryPage({
     config,
+    page = 1,
 }: {
     config: SeoItemCategoryConfig;
+    /** 1始まり。2以上のときは /items/<slug>/page/<page>/ から呼ばれる */
+    page?: number;
 }) {
     const items = getSeoCategoryItems(config);
-    const pageUrl = BASE_URL + "/items/" + config.slug + "/";
+    const basePath = getSeoCategoryBasePath(config);
+    const pageUrl = BASE_URL + buildItemPageUrl(basePath, page);
+    const totalPages = getTotalItemPages(items.length);
+    const range = getItemPageRange(page, items.length);
     const relatedCategories = seoItemCategories.filter(
         (category) => category.slug !== config.slug,
     );
+    // 関連コラム。存在しない slug ならここでビルドが落ちる。
+    const relatedColumns = resolveCategoryColumns(config.slug, config.relatedColumns);
 
     const jsonLd = [
         {
@@ -82,15 +127,19 @@ export function SeoItemCategoryPage({
                 name: "自主トレ素材庫",
                 url: BASE_URL + "/",
             },
+            // ★構造化データも「このページに載っている素材」だけを並べる。
+            //   全件を毎ページに書くと、どのページに何があるかの説明が食い違う。
             mainEntity: {
                 "@type": "ItemList",
                 numberOfItems: items.length,
-                itemListElement: items.map((item, index) => ({
-                    "@type": "ListItem",
-                    position: index + 1,
-                    name: item.titleJa || item.title,
-                    url: BASE_URL + "/items/" + item.id + "/",
-                })),
+                itemListElement: items
+                    .slice(Math.max(0, range.start - 1), range.end)
+                    .map((item, index) => ({
+                        "@type": "ListItem",
+                        position: range.start + index,
+                        name: item.titleJa || item.title,
+                        url: BASE_URL + "/items/" + item.id + "/",
+                    })),
             },
         },
         {
@@ -164,9 +213,24 @@ export function SeoItemCategoryPage({
                             <span className="mx-2" aria-hidden="true">
                                 /
                             </span>
-                            <span className="text-slate-700">
-                                {config.breadcrumb}
-                            </span>
+                            {page > 1 ? (
+                                <>
+                                    <Link
+                                        href={basePath}
+                                        className="transition-colors hover:text-blue-700"
+                                    >
+                                        {config.breadcrumb}
+                                    </Link>
+                                    <span className="mx-2" aria-hidden="true">
+                                        /
+                                    </span>
+                                    <span className="text-slate-700">{page}ページ目</span>
+                                </>
+                            ) : (
+                                <span className="text-slate-700">
+                                    {config.breadcrumb}
+                                </span>
+                            )}
                         </nav>
 
                         <p className="mb-3 text-sm font-bold text-blue-700">
@@ -239,6 +303,7 @@ export function SeoItemCategoryPage({
                             </h2>
                             <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
                                 関連する{items.length}点を掲載しています。
+                                {totalPages > 1 && `${range.start}〜${range.end}点目を表示しています（${page} / ${totalPages}ページ）。`}
                                 {config.listDescription}
                             </p>
                         </div>
@@ -254,10 +319,19 @@ export function SeoItemCategoryPage({
 
                         <FilteredItemList
                             items={items}
+                            buyoutAd={config.buyoutAd}
                             categoryFilter={{
                                 key: config.slug,
                                 label: config.searchLabel,
                             }}
+                            pagination={{ basePath, currentPage: page, totalPages }}
+                        />
+
+                        {/* 素材を選んだあとに読む導線。一覧より上には置かない。 */}
+                        <CategoryColumnLinks
+                            categorySlug={config.slug}
+                            categoryLabel={config.breadcrumb}
+                            columns={relatedColumns}
                         />
                     </div>
                 </section>

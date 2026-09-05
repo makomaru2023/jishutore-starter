@@ -6,20 +6,41 @@ import Link from 'next/link';
 import { Item } from '@/types';
 import { ItemCard } from '@/components/ItemCard';
 import { ProductInlineAd } from '@/components/ProductInlineAd';
+import { BuyoutInlineAd, type BuyoutAdFocus } from '@/components/BuyoutInlineAd';
+import { ItemListPagination } from '@/components/ItemListPagination';
 import { PLUS_SIGNUP_PAUSED } from '@/constants/plus-availability';
+import { ITEM_PAGE_SIZE, getItemPageRange } from '@/lib/item-pagination';
 
 export interface CategoryFilter {
     key: string;
     label: string;
 }
 
+/** ページ分割の情報。サーバー側（一覧ページ）から渡す。 */
+export interface ItemListPaginationInfo {
+    /** 1ページ目のURL（末尾スラッシュ付き）。例 "/items/" */
+    basePath: string;
+    /** いま開いているURLのページ番号（1始まり） */
+    currentPage: number;
+    /** 総ページ数 */
+    totalPages: number;
+}
+
 interface FilteredItemListProps {
     items: Item[];
     /** グリッド内に商品広告カードを一定間隔で挿入するか */
     inlineAds?: boolean;
+    /**
+     * 買い切り商品（疾患別／姿勢別・各980円）の案内を1枠だけ出すか。
+     * ★Plusの新規受付停止フラグ（PLUS_SIGNUP_PAUSED）とは切り離してある。
+     *   Plus広告は停止中に出さないが、販売中の買い切りはこの指定だけで決まる。
+     */
+    buyoutAd?: BuyoutAdFocus | null;
     /** カテゴリーモード。サーバー側で既に items をフィルタ済みである前提で、
      *  ここではチップ表示と検索バーの URL q 流し込み抑止だけに使う。 */
     categoryFilter?: CategoryFilter;
+    /** ページ分割。渡すとページ送りリンクが出る（渡さなければ従来どおり） */
+    pagination?: ItemListPaginationInfo;
 }
 
 const SEARCH_ALIASES: Record<string, string[]> = {
@@ -65,8 +86,8 @@ function matchesSearch(item: Item, query: string): boolean {
 
 // グリッド共通クラス
 const GRID_CLASS = 'grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4';
-const INITIAL_VISIBLE_COUNT = 24;
-const LOAD_MORE_COUNT = 24;
+const INITIAL_VISIBLE_COUNT = ITEM_PAGE_SIZE;
+const LOAD_MORE_COUNT = ITEM_PAGE_SIZE;
 
 // 初回表示では16枚目の後に広告を出す。
 // 追加表示では、25枚目・49枚目・73枚目…の直前に広告を入れ、
@@ -77,25 +98,49 @@ const INLINE_AD_MIN_ITEMS = 12;
 // 広告のあとに残るカードがこの枚数未満なら、その広告は省く（末尾広告の防止）
 const TRAILING_GUARD = 4;
 
-/** items の配列から、widget広告を一定間隔で挟んだ ReactNode[] を作る純関数。 */
-function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): ReactNode[] {
+interface GridAdOptions {
+    /** Plus広告（受付停止中は false で渡ってくる） */
+    inlineAds: boolean;
+    /** 買い切り案内。null なら出さない */
+    buyoutAd: BuyoutAdFocus | null;
+}
+
+/**
+ * items の配列から、自社広告を挟んだ ReactNode[] を作る純関数。
+ * ================================================================
+ * ★買い切り案内は「さらに24件見る」で追加される素材の直前に1枠だけ。
+ *   24件目までしか見ていない人には出ない（初回表示に広告を足さない）。
+ *   49件目・73件目…には繰り返さない。1つの一覧に1枠だけ、が原則。
+ * ★素材の表示そのものは、広告のクリックにも「閉じる」にも待ち時間にも依存しない。
+ */
+function buildGridChildren(
+    items: Item[],
+    { inlineAds, buyoutAd }: GridAdOptions,
+    keyPrefix = '',
+): ReactNode[] {
     const out: ReactNode[] = [];
     // ★2026-08-22：Plusの新規受付停止中は自社広告（Plus）を挟まない。
-    //   広告はPlusの1種類しかないので、停止中は一覧が素材だけになる。
-    const canShowAds = !PLUS_SIGNUP_PAUSED && inlineAds && items.length >= INLINE_AD_MIN_ITEMS;
+    //   ★2026-09-05：この条件は買い切り案内には掛けない（販売中の商品なので別扱い）。
+    const canShowPlusAds = !PLUS_SIGNUP_PAUSED && inlineAds && items.length >= INLINE_AD_MIN_ITEMS;
+    const canShowBuyoutAd = Boolean(buyoutAd) && items.length > LOAD_MORE_COUNT;
 
     items.forEach((item, i) => {
         // 追加表示分の先頭に自社広告を挿入する。初回24件だけのときは表示されない。
-        if (canShowAds && i > 0 && i % LOAD_MORE_COUNT === 0) {
+        if (canShowPlusAds && i > 0 && i % LOAD_MORE_COUNT === 0) {
             const remaining = items.length - i;
             if (remaining >= TRAILING_GUARD) {
                 out.push(<ProductInlineAd key={`${keyPrefix}ad-batch-${i}-plus`} type="plus" />);
             }
         }
 
+        // 買い切り案内は最初の追加表示の直前だけ（i === 24）。
+        if (canShowBuyoutAd && i === LOAD_MORE_COUNT) {
+            out.push(<BuyoutInlineAd key={`${keyPrefix}ad-buyout`} focus={buyoutAd!} />);
+        }
+
         out.push(<ItemCard key={item.id} item={item} />);
 
-        if (!canShowAds) return;
+        if (!canShowPlusAds) return;
         const pos = i + 1; // 1-indexed
         if (pos === FIRST_AD_AFTER) {
             const remaining = items.length - pos;
@@ -107,7 +152,13 @@ function buildGridChildren(items: Item[], inlineAds: boolean, keyPrefix = ''): R
     return out;
 }
 
-function FilteredItemListInner({ items, inlineAds = false, categoryFilter }: FilteredItemListProps) {
+function FilteredItemListInner({
+    items,
+    inlineAds = false,
+    buyoutAd = null,
+    categoryFilter,
+    pagination,
+}: FilteredItemListProps) {
     const searchParams = useSearchParams();
     const urlQuery = categoryFilter ? '' : searchParams.get('q') || '';
     const [searchState, setSearchState] = useState(() => ({
@@ -145,13 +196,25 @@ function FilteredItemListInner({ items, inlineAds = false, categoryFilter }: Fil
 
     // 新inlineAdsモード: 手動検索中・件数少のときは出さない
     const showInlineAds = inlineAds && !isManualSearching && filteredItems.length >= INLINE_AD_MIN_ITEMS;
-    const visibleItems = filteredItems.slice(0, visibleCount);
-    const hasMore = visibleCount < filteredItems.length;
+    // 買い切り案内も、検索中は出さない（探している最中に割り込まない）
+    const showBuyoutAd = !isManualSearching ? buyoutAd : null;
+
+    // ★2ページ目以降は、そのページの先頭からの24件を出す。
+    //   検索中はページの区切りを外し、全件から探す（ページ内だけを探す挙動にしない）。
+    const currentPage = pagination?.currentPage ?? 1;
+    const pageOffset = isManualSearching ? 0 : (currentPage - 1) * ITEM_PAGE_SIZE;
+    const visibleItems = filteredItems.slice(pageOffset, pageOffset + visibleCount);
+    const hasMore = pageOffset + visibleCount < filteredItems.length;
 
     const renderedGridChildren = useMemo<ReactNode[]>(
-        () => buildGridChildren(visibleItems, showInlineAds),
-        [showInlineAds, visibleItems],
+        () => buildGridChildren(visibleItems, { inlineAds: showInlineAds, buyoutAd: showBuyoutAd }),
+        [showBuyoutAd, showInlineAds, visibleItems],
     );
+
+    // ページ送りの行き先。「さらに24件見る」で増やした分だけ先を指す
+    // （48件見えている1ページ目からは、49件目にあたる3ページ目へ進む）。
+    const shownThrough = Math.min(pageOffset + visibleCount, filteredItems.length);
+    const nextPage = hasMore ? currentPage + Math.ceil(visibleCount / ITEM_PAGE_SIZE) : null;
 
     return (
         <div>
@@ -208,7 +271,10 @@ function FilteredItemListInner({ items, inlineAds = false, categoryFilter }: Fil
                     {searchQuery || categoryFilter
                         ? `${filteredItems.length}件見つかりました`
                         : `全${filteredItems.length}件`}
-                    {filteredItems.length > 0 && `（${Math.min(visibleCount, filteredItems.length)}件を表示中）`}
+                    {filteredItems.length > 0 &&
+                        (pageOffset > 0
+                            ? `（${pageOffset + 1}〜${shownThrough}件目を表示中）`
+                            : `（${shownThrough}件を表示中）`)}
                 </p>
             </div>
 
@@ -227,12 +293,24 @@ function FilteredItemListInner({ items, inlineAds = false, categoryFilter }: Fil
                                 })}
                                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-black text-white transition hover:bg-slate-800"
                             >
-                                さらに{Math.min(LOAD_MORE_COUNT, filteredItems.length - visibleCount)}件見る
+                                さらに{Math.min(LOAD_MORE_COUNT, filteredItems.length - shownThrough)}件見る
                             </button>
                             <p className="text-xs font-bold text-slate-400">
-                                {Math.min(visibleCount, filteredItems.length)} / {filteredItems.length}件
+                                {shownThrough} / {filteredItems.length}件
                             </p>
                         </div>
+                    )}
+                    {/* ★ページ送り。JavaScriptが動かなくても次のページへ進めるよう、通常のリンクで置く。
+                        検索中はページの区切りが意味を持たないので出さない（URLも増やさない）。 */}
+                    {pagination && !isManualSearching && (
+                        <ItemListPagination
+                            basePath={pagination.basePath}
+                            currentPage={currentPage}
+                            totalPages={pagination.totalPages}
+                            nextPage={nextPage}
+                            shownThrough={shownThrough}
+                            total={filteredItems.length}
+                        />
                     )}
                 </>
             ) : (
@@ -253,10 +331,24 @@ function FilteredItemListInner({ items, inlineAds = false, categoryFilter }: Fil
  * - インライン広告も決定論的な位置で挿入される
  * これにより本番HTMLにおいて <FilteredItemList> 位置で素材一覧が
  * 出力され、LineBanner / Footer より前に並ぶ DOM順を保てる。
+ *
+ * ★ここが「配信HTML」そのもの。検索エンジンとJavaScript無効の利用者はこれを見る。
+ *   だからページ送りのリンクも、本体側と同じものをここで描く。
  */
-function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: Item[]; inlineAds?: boolean; categoryFilter?: CategoryFilter }) {
-    const initialItems = items.slice(0, INITIAL_VISIBLE_COUNT);
-    const children = buildGridChildren(initialItems, inlineAds, 'fb-');
+function StaticItemGrid({
+    items,
+    inlineAds = false,
+    buyoutAd = null,
+    categoryFilter,
+    pagination,
+}: FilteredItemListProps) {
+    const currentPage = pagination?.currentPage ?? 1;
+    const pageOffset = (currentPage - 1) * ITEM_PAGE_SIZE;
+    const initialItems = items.slice(pageOffset, pageOffset + INITIAL_VISIBLE_COUNT);
+    const children = buildGridChildren(initialItems, { inlineAds, buyoutAd }, 'fb-');
+    const range = getItemPageRange(currentPage, items.length);
+    const shownThrough = Math.min(pageOffset + INITIAL_VISIBLE_COUNT, items.length);
+    const nextPage = shownThrough < items.length ? currentPage + 1 : null;
 
     return (
         <div>
@@ -286,17 +378,31 @@ function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: I
                     />
                 </div>
                 <p className="mt-3 text-center text-sm font-bold text-slate-500">
-                    全{items.length}件（{initialItems.length}件を表示中）
+                    全{items.length}件
+                    {items.length > 0 &&
+                        (pageOffset > 0
+                            ? `（${range.start}〜${range.end}件目を表示中）`
+                            : `（${initialItems.length}件を表示中）`)}
                 </p>
             </div>
 
-            {items.length > 0 ? (
+            {initialItems.length > 0 ? (
                 <>
                     <div className={GRID_CLASS}>{children}</div>
-                    {items.length > initialItems.length && (
+                    {nextPage && !pagination && (
                         <p className="mt-10 text-center text-sm font-bold text-slate-500">
                             続きは「さらに見る」から表示できます。
                         </p>
+                    )}
+                    {pagination && (
+                        <ItemListPagination
+                            basePath={pagination.basePath}
+                            currentPage={currentPage}
+                            totalPages={pagination.totalPages}
+                            nextPage={nextPage}
+                            shownThrough={shownThrough}
+                            total={items.length}
+                        />
                     )}
                 </>
             ) : (
@@ -311,15 +417,7 @@ function StaticItemGrid({ items, inlineAds = false, categoryFilter }: { items: I
 
 export function FilteredItemList(props: FilteredItemListProps) {
     return (
-        <Suspense
-            fallback={
-                <StaticItemGrid
-                    items={props.items}
-                    inlineAds={props.inlineAds}
-                    categoryFilter={props.categoryFilter}
-                />
-            }
-        >
+        <Suspense fallback={<StaticItemGrid {...props} />}>
             <FilteredItemListInner {...props} />
         </Suspense>
     );

@@ -47,7 +47,7 @@ const SWALLOWING_KEYWORDS = [
     "嚥下", "舌", "口腔", "口唇", "頬", "唇", "パタカラ", "シャキア", "唾液",
 ];
 
-function itemMatchesSwallowing(item: Item): boolean {
+export function itemMatchesSwallowing(item: Item): boolean {
     if (item.fileName === "deep-breathing.png") {
         return true;
     }
@@ -87,4 +87,13 @@ export function getCategoriesForItem(
     }
 
     return categories;
+}
+
+/**
+ * 口腔・嚥下ページ（/items/swallowing-exercises/）に載せる素材。
+ * ★ページ側にも同じ絞り込みが書かれていたので、こちらを正本にした（2026-09-05）。
+ *   ページ分割のルート（page/[page]）と1ページ目で並び順がずれないよう、1か所から取る。
+ */
+export function getSwallowingItems(): Item[] {
+    return getItems().filter(itemMatchesSwallowing);
 }

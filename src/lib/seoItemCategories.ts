@@ -1,3 +1,5 @@
+import type { BuyoutAdFocus } from "@/components/BuyoutInlineAd";
+
 export type SeoCategoryFaq = {
     question: string;
     answer: string;
@@ -26,6 +28,23 @@ export type SeoItemCategoryConfig = {
     safetyNote: string;
     useCases: SeoCategoryUseCase[];
     faqs: SeoCategoryFaq[];
+    /**
+     * このカテゴリと関係の深い公開コラムの slug（2〜3件）。
+     * ================================================================
+     * ★2026-09-05 追加。素材を選んだあと「どの順で渡すか」まで進めるようにする枠。
+     * ★手で選ぶ。カテゴリ名とのキーワード一致だけで決めない
+     *   （「階段」は加算の記事にも出てくる。機械一致だと制度の記事が混ざる）。
+     * ★slug が存在しない／未公開なら @/lib/category-columns がビルドを落とす。
+     *   下書き（src/lib/column.ts に未登録の記事）は書かないこと。
+     * ★記事名はここに書かない。表示時に現在のタイトルを引く（改題に自動で追従する）。
+     */
+    relatedColumns: string[];
+    /**
+     * 素材一覧の中に1枠だけ出す買い切り案内（各980円）の向き。
+     * "disease" 疾患別9本セット／"posture" 姿勢別セット／"both" 両方から選ばせる／
+     * null 出さない（どちらのセットも扱っていない領域）。
+     */
+    buyoutAd: BuyoutAdFocus | null;
 };
 
 export const upperLimbExercisesCategory: SeoItemCategoryConfig = {
@@ -68,6 +87,12 @@ export const upperLimbExercisesCategory: SeoItemCategoryConfig = {
         { question: "肩だけでなく手指の運動もありますか？", answer: "肩・肘・手首に加え、手指運動や巧緻動作に関する素材も掲載しています。" },
         { question: "OTの自主トレ資料に利用できますか？", answer: "利用できます。対象者の疼痛や運動制限を確認し、内容を個別に調整してください。" },
     ],
+    relatedColumns: [
+        "kata-ga-agaranai-jishutore",
+        "te-yubi-jishutore-junban",
+        "henmahi-jishutore-erabikata",
+    ],
+    buyoutAd: "posture",
 };
 
 export const lowerLimbExercisesCategory: SeoItemCategoryConfig = {
@@ -111,6 +136,12 @@ export const lowerLimbExercisesCategory: SeoItemCategoryConfig = {
         { question: "座ってできる下肢運動もありますか？", answer: "膝伸ばし、足踏み、足関節運動など、椅子に座って行う素材も掲載しています。" },
         { question: "人工関節術後の指導にも使えますか？", answer: "素材は使えますが、荷重や禁忌動作は術式や主治医の方針に合わせてください。" },
     ],
+    relatedColumns: [
+        "hiza-itai-jishutore",
+        "tachiagari-hoko-jishutore",
+        "ashikubi-tsumazuki",
+    ],
+    buyoutAd: "posture",
 };
 
 export const trunkExercisesCategory: SeoItemCategoryConfig = {
@@ -151,6 +182,12 @@ export const trunkExercisesCategory: SeoItemCategoryConfig = {
         { question: "高齢者向けの体幹運動もありますか？", answer: "座位や臥位で行う素材もあります。姿勢保持能力に合わせて選んでください。" },
         { question: "腰痛がある方にも使えますか？", answer: "使えますが、症状や禁忌事項には個人差があります。痛みが増える運動は避け、専門職が確認してください。" },
     ],
+    relatedColumns: [
+        "taikan-jishutore-junban",
+        "koshi-kinki-kara-kimeru",
+        "isu-kurumaisu-suwarikata",
+    ],
+    buyoutAd: "posture",
 };
 
 export const stretchingExercisesCategory: SeoItemCategoryConfig = {
@@ -190,6 +227,12 @@ export const stretchingExercisesCategory: SeoItemCategoryConfig = {
         { question: "部位別にストレッチを探せますか？", answer: "肩、体幹、股関節、大腿、下腿など、キーワードでさらに絞り込めます。" },
         { question: "高齢者の体操資料にも使えますか？", answer: "使えます。姿勢保持能力や疼痛に合わせ、無理のない運動を選んでください。" },
     ],
+    relatedColumns: [
+        "stretch-itsu-watasu",
+        "koshi-kinki-kara-kimeru",
+        "hiza-itai-jishutore",
+    ],
+    buyoutAd: "posture",
 };
 
 export const walkingExercisesCategory: SeoItemCategoryConfig = {
@@ -228,6 +271,12 @@ export const walkingExercisesCategory: SeoItemCategoryConfig = {
         { question: "杖や歩行器のイラストもありますか？", answer: "杖歩行、歩行器、平行棒、トレッドミルなどの素材を掲載しています。" },
         { question: "退院前指導に利用できますか？", answer: "利用できます。実際の補助具、荷重条件、見守り方法に合わせて説明を追加してください。" },
     ],
+    relatedColumns: [
+        "tsue-hokoki-renshu",
+        "kaidan-nobori-kudari",
+        "ashikubi-tsumazuki",
+    ],
+    buyoutAd: "posture",
 };
 
 export const seatedExercisesCategory: SeoItemCategoryConfig = {
@@ -284,6 +333,12 @@ export const seatedExercisesCategory: SeoItemCategoryConfig = {
                 "使えます。参加者の身体機能に合わせて、運動内容や回数を調整してください。",
         },
     ],
+    relatedColumns: [
+        "isu-kurumaisu-suwarikata",
+        "taikan-jishutore-junban",
+        "ikigire-jishutore-watashikata",
+    ],
+    buyoutAd: "posture",
 };
 
 export const handRehabilitationCategory: SeoItemCategoryConfig = {
@@ -359,6 +414,11 @@ export const handRehabilitationCategory: SeoItemCategoryConfig = {
                 "文字あり・文字なしの素材を用意しています。資料の用途に合わせて選べます。",
         },
     ],
+    relatedColumns: [
+        "te-yubi-jishutore-junban",
+        "kata-ga-agaranai-jishutore",
+    ],
+    buyoutAd: "posture",
 };
 
 export const fallPreventionCategory: SeoItemCategoryConfig = {
@@ -434,6 +494,12 @@ export const fallPreventionCategory: SeoItemCategoryConfig = {
                 "利用できます。集団の体力差に配慮し、支持物や見守り体制を準備してください。",
         },
     ],
+    relatedColumns: [
+        "tento-yobo-taiso-kumikata",
+        "ashikubi-tsumazuki",
+        "kaidan-nobori-kudari",
+    ],
+    buyoutAd: "posture",
 };
 
 export const bedMobilityCategory: SeoItemCategoryConfig = {
@@ -503,6 +569,12 @@ export const bedMobilityCategory: SeoItemCategoryConfig = {
                 "文字あり・文字なしの素材を掲載しています。説明方法に合わせて選べます。",
         },
     ],
+    relatedColumns: [
+        "henmahi-jishutore-erabikata",
+        "tachiagari-hoko-jishutore",
+        "taikan-jishutore-junban",
+    ],
+    buyoutAd: "posture",
 };
 
 export const strokeExercisesCategory: SeoItemCategoryConfig = {
@@ -559,6 +631,12 @@ export const strokeExercisesCategory: SeoItemCategoryConfig = {
                 "印刷できます。介助方法や注意点は、対象者に合わせて追記してください。",
         },
     ],
+    relatedColumns: [
+        "henmahi-jishutore-erabikata",
+        "kata-ga-agaranai-jishutore",
+        "tachiagari-hoko-jishutore",
+    ],
+    buyoutAd: "disease",
 };
 
 export const seoItemCategories = [
