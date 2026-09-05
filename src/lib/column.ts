@@ -13,6 +13,7 @@
 
 import type { ComponentType } from "react";
 import { getFeeItem } from "@/lib/fee-check";
+import { COLUMN_ARTICLE_COUNT, assertPublicCount } from "@/constants/public-counts";
 import { findItemById, getItems } from "@/lib/items";
 
 import { article as anzenTaisakuTaiseiKasan } from "@/data/column/articles/anzen-taisaku-taisei-kasan";
@@ -272,6 +273,12 @@ const articles: ColumnArticle[] = [
     anzenTaisakuTaiseiKasan,
     benkyokaiShiryoMaeNiKimeru,
 ];
+
+/**
+ * 公開コピー用の本数（@/constants/public-counts）と実データのズレを検出する。
+ * ★営業ページに古い本数を出さないための歯止め。記事を足したら定数も更新する。
+ */
+assertPublicCount("コラムの公開本数", articles.length, COLUMN_ARTICLE_COUNT);
 
 export function getColumnUrl(slug: string): string {
     return `/column/${slug}/`;

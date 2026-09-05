@@ -13,6 +13,8 @@
 export const FEE_CHECK_DOMAIN_COUNT = 8;
 export const FEE_CHECK_ITEM_COUNT = 148;
 export const PLUS_SLIDE_COUNT_PUBLIC = 227;
+/** 公開中のコラム本数（/column/）。営業ページ（/sponsor/・/jobs/posting/）が見る。 */
+export const COLUMN_ARTICLE_COUNT = 91;
 
 /**
  * 公開コピー用の定数と実データ件数のズレを検出する。サーバー側モジュールの

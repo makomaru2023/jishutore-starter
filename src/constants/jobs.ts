@@ -6,11 +6,17 @@
  *   データを巻き込むとバンドルが太る。fee-check.ts / fee-check-shared.ts と同じ理由。
  *
  * ★運用でよく直すのはこの3つ。他のファイルは触らなくてよい。
- *   1) JOB_POSTING_APPLICATION_URL … 申込先（Googleフォームができたらここだけ差し替え）
- *   2) JOB_MEDIA_STATS             … 月間ユーザー数と計測月
- *   3) JOB_MEDIA_SURVEY            … 利用者アンケートの集計値（回答が集まったら null をやめる）
+ *   1) JOB_POSTING_DRAFT_MAIL_URL … 掲載原稿（STEP 2）の項目雛形
+ *   2) JOB_MEDIA_STATS            … 月間ユーザー数と計測月（→ @/constants/media-stats）
+ *   3) JOB_MEDIA_SURVEY           … 利用者アンケートの集計値（回答が集まったら null をやめる）
  */
 
+import {
+    MEDIA_LAUNCH,
+    MONTHLY_USERS,
+    formatMeasurementNote,
+    formatMonthlyActiveUsers,
+} from "@/constants/media-stats";
 import type {
     Job,
     JobEmploymentType,
@@ -31,22 +37,32 @@ export const JOB_OPERATOR_NAME = "SmartReha（スマートリハ）";
 export const JOB_CONTACT_EMAIL = "smart.rehabili@gmail.com";
 
 /**
- * 求人掲載の申込先URL。
- * --------------------------------------------------------------
- * ★TODO（申込フォームを用意したら）：
- *   Googleフォーム等のURLが決まったら、この定数を
- *     export const JOB_POSTING_APPLICATION_URL = "https://forms.gle/xxxxxxxx";
- *   に差し替えるだけでよい。/jobs/posting/ の3か所のCTAと、
- *   /jobs/ の空状態からの導線がまとめて切り替わる。
- *   （URLをページ側に直接書かないこと。ここ1か所に集約している）
+ * 掲載の相談・申込の段階分け。
+ * ================================================================
+ * ★2026-09-05：初回の申込CTAが、勤務条件・給与・職場情報まで含む長いmailtoを
+ *   開いていた。項目が揃う利点はあるが、「まず話を聞きたい」段階の施設には重く、
+ *   メールアプリが設定されていない端末では申し込みそのものができなかった。
+ *   そこで段階を2つに分けた。
  *
- * 現時点では、実際に受信できる既存の問い合わせ先へのメールにしている。
- * 件名・本文を用意しておくことで、こちらが確認すべき項目が最初のメールで揃う。
+ *   STEP 1（初回相談）… /jobs/posting/#inquiry のフォーム。
+ *      施設名・担当者名・メール・公式採用ページURL（任意）・相談内容（任意）だけ。
+ *      送信は /api/jobs/inquiry（既存のResend基盤）で運営の受信箱へ届く。
+ *      ★料金は発生しない段階であることを、画面の文言で必ず示す。
+ *
+ *   STEP 2（掲載原稿）… 下の JOB_POSTING_DRAFT_MAIL_URL。
+ *      職業安定法の明示事項を含む項目一式。★項目は1つも減らしていない。
+ *
+ * ★フォームの入口URL。サイト内の他ページから初回相談へ送るときはこれを使う。
  */
-const APPLICATION_MAIL_SUBJECT = "【求人掲載β版】申し込み";
+export const JOB_POSTING_INQUIRY_URL = "/jobs/posting/#inquiry";
+
+/** 求人掲載LP内で、CTAからフォームへ飛ばすためのアンカーID。 */
+export const JOB_POSTING_INQUIRY_ANCHOR_ID = "inquiry";
+
+const DRAFT_MAIL_SUBJECT = "【求人掲載β版】掲載原稿の提出";
 
 /**
- * 申込メールの雛形。
+ * 掲載原稿（STEP 2）の項目雛形。
  * ================================================================
  * ★項目の並びは、求人詳細ページのセクションと同じ順にしている
  *   （基本情報 → 勤務条件 → 給与・待遇 → 職場情報 → 応募）。
@@ -59,9 +75,9 @@ const APPLICATION_MAIL_SUBJECT = "【求人掲載β版】申し込み";
  * ★該当しない項目は空欄のままでよい旨を書いている。
  *   埋めさせるために「なし」と書かせると、制度が無いことを断定してしまう。
  */
-const APPLICATION_MAIL_BODY = `自主トレ素材庫の求人掲載β版に申し込みます。
+const DRAFT_MAIL_BODY = `自主トレ素材庫の求人掲載β版に、掲載原稿を提出します。
 
-■ 申込者
+■ 掲載申込者
 ・施設名／法人名：
 ・ご担当者名：
 ・ご連絡先（電話）：
@@ -118,14 +134,10 @@ const APPLICATION_MAIL_BODY = `自主トレ素材庫の求人掲載β版に申�
 ※内容を確認のうえ、掲載内容のご確認と請求のご案内をお送りします。
 ※お申し込みは求人掲載規約（https://jishutore-sozaiko.online/jobs/terms/）に同意のうえお願いします。`;
 
-export const JOB_POSTING_APPLICATION_URL =
+export const JOB_POSTING_DRAFT_MAIL_URL =
     `mailto:${JOB_CONTACT_EMAIL}` +
-    `?subject=${encodeURIComponent(APPLICATION_MAIL_SUBJECT)}` +
-    `&body=${encodeURIComponent(APPLICATION_MAIL_BODY)}`;
-
-/** 申込先が外部サイト（Googleフォーム等）かどうか。別タブで開くかの判定に使う。 */
-export const JOB_POSTING_APPLICATION_IS_EXTERNAL =
-    JOB_POSTING_APPLICATION_URL.startsWith("http");
+    `?subject=${encodeURIComponent(DRAFT_MAIL_SUBJECT)}` +
+    `&body=${encodeURIComponent(DRAFT_MAIL_BODY)}`;
 
 /**
  * 求人掲載β版の商品条件。
@@ -169,46 +181,25 @@ export const JOB_POSTING_LP_INDEXABLE = false;
 /**
  * 媒体データ（月間ユーザー数）。
  * --------------------------------------------------------------
- * ★更新するのはこの1か所だけ。/jobs/posting/ の表示は全部ここを見ている。
+ * ★2026-09-05：正本を @/constants/media-stats へ移した。
+ *   スポンサーLP（/sponsor/）と求人LP（/jobs/posting/）が別々の数字を持っていたため、
+ *   月・指標名・出典まで含めて1か所で持つようにした。更新はあちらだけでよい。
  *
- * displayMode:
- *   "floor" … 100人単位で切り下げて「1,400人以上」と出す（実数が動いても表記が揺れない）
- *   "exact" … 「3,012人」と実数で出す
- *
- * ★2026-09-03 更新：2026年8月の月次実績が確定（アクティブユーザー 2,926人・前月比+106%）。
- *   前回値は2026年7月の1,418人。次は9月が確定したら同じ2つを差し替える。
- *   実数で見せたくなったら displayMode を "exact" にする。
- *
- * ⚠ 確認できていない数字を大きく見せないこと。
- *   職業安定法第5条の4は、募集情報等提供事業者に対しても
- *   「虚偽の表示又は誤解を生じさせる表示」を禁じている。
+ * ここは既存の呼び出し名を保つための橋渡し。求人側だけ数字を戻すことはしない。
  */
 export const JOB_MEDIA_STATS = {
     /** GA4のアクティブユーザー（月間） */
-    monthlyActiveUsers: 2926,
+    monthlyActiveUsers: MONTHLY_USERS.value,
     /** 上の数値の計測月 */
-    measurementMonth: "2026年8月",
+    measurementMonth: MONTHLY_USERS.month,
     /** 表示のしかた */
-    displayMode: "floor" as "floor" | "exact",
+    displayMode: MONTHLY_USERS.displayMode,
 } as const;
 
-/** 「月間1,400人以上」のような表記を組み立てる。 */
-export function formatMonthlyActiveUsers(): string {
-    const { monthlyActiveUsers, displayMode } = JOB_MEDIA_STATS;
-    if (displayMode === "exact") {
-        return `月間 ${monthlyActiveUsers.toLocaleString("ja-JP")}人`;
-    }
-    const floored = Math.floor(monthlyActiveUsers / 100) * 100;
-    return `月間 ${floored.toLocaleString("ja-JP")}人以上`;
-}
-
-/** 「（2026年7月実績・GA4）」のような注記。 */
-export function formatMeasurementNote(): string {
-    return `${JOB_MEDIA_STATS.measurementMonth}実績・Google Analytics 4`;
-}
+export { formatMonthlyActiveUsers, formatMeasurementNote };
 
 /** 媒体の運営開始月。 */
-export const JOB_MEDIA_LAUNCH = "2026年3月";
+export const JOB_MEDIA_LAUNCH = MEDIA_LAUNCH;
 
 /**
  * 利用者アンケートの集計値。

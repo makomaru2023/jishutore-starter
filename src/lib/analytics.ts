@@ -65,6 +65,17 @@ export function trackB2bContactClick(placement: string): void {
     trackEvent("b2b_contact_click", { placement });
 }
 
+/**
+ * 施設・法人からの相談フォームの「送信完了」。
+ * ⚠ クリック（b2b_contact_click）とは別物。
+ *   サーバーが成功を返したあとにだけ送ること。クリックを送信完了として数えない。
+ * ★施設名・担当者名・メールアドレス・採用ページURL・本文は送らない。
+ *   送るのは placement（どのCTAから開いたか）だけ。
+ */
+export function trackB2bContactSubmit(placement: string): void {
+    trackEvent("b2b_contact_submit", { placement });
+}
+
 /** Plus LPの申込導線クリック。actionで決済開始と料金欄への移動を分ける。 */
 export function trackPlusCtaClick(
     placement: string,

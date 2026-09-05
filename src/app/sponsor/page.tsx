@@ -2,6 +2,18 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SponsorCtaButton } from "@/components/SponsorCtaButton";
 import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
+import {
+    COLUMN_ARTICLE_COUNT,
+    FEE_CHECK_DOMAIN_COUNT,
+    FEE_CHECK_ITEM_COUNT,
+} from "@/constants/public-counts";
+import {
+    MEDIA_LAUNCH,
+    MEDIA_LEGACY_CHART,
+    MONTHLY_USERS,
+    formatMeasurementNote,
+    formatMonthlyActiveUsers,
+} from "@/constants/media-stats";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +21,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "広告掲載・スポンサー募集｜月3,000円からリハビリ・介護職に届く｜自主トレ素材庫",
     description:
-        "月3,000円から、リハビリ・介護現場のユーザーに広告を掲載できます。自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイト。読者層は医療・介護領域に絞られています。研修・教材・採用・福祉用具・介護サービスの掲載に。",
+        "月3,000円から、リハビリ・介護現場のユーザーに広告を掲載できます。自主トレ素材庫は、自主トレ素材・診療／介護報酬チェック・コラムを、リハビリ職や介護職が日常業務の中で使う専門サイトです。研修・教材・採用・福祉用具・介護サービスの掲載に。",
     alternates: { canonical: "/sponsor" },
 };
 
@@ -30,20 +42,36 @@ const CheckIcon = ({ className = "w-3 h-3" }: { className?: string }) => (
 );
 
 const aboutPoints = [
-    "リハビリ職・介護職向けの無料素材サイト",
-    "自主トレイラストや説明資料を継続的に追加",
-    "患者説明・家族指導・退院前指導・通所リハ・訪問リハで使いやすい構成",
-    "資料作成に関心の高いユーザーが訪問",
+    `患者さんに渡す自主トレイラスト（${FREE_MATERIAL_COUNT_LABEL}・無料）`,
+    `診療報酬・介護報酬の算定要件をまとめた報酬チェック（${FEE_CHECK_DOMAIN_COUNT}分野${FEE_CHECK_ITEM_COUNT}項目・毎月更新）`,
+    `加算の実務や自主トレの渡し方を扱うコラム（${COLUMN_ARTICLE_COUNT}本）`,
+    "資料づくりのときも、算定を確認したいときも開く。日常業務の中で使われる専門サイトです",
 ];
 
-const mediaStatus: { label: string; value: string }[] = [
-    { label: "掲載素材数", value: FREE_MATERIAL_COUNT_LABEL },
+/**
+ * 現在の媒体状況。
+ * ★2026-09-05：数字は @/constants/media-stats（求人LPと共通の定義）だけを見る。
+ *   期間の分からない「直近3か月 Google検索クリック235回／表示2,084回」は、
+ *   いつの3か月なのかを確認できなかったので、ここから外した。
+ *   確かな最新値が出せる指標だけを載せる。
+ */
+const mediaStatus: { label: string; value: string; note?: string }[] = [
+    {
+        label: MONTHLY_USERS.metric,
+        value: formatMonthlyActiveUsers(),
+        note: formatMeasurementNote(),
+    },
+    { label: "無料自主トレ素材", value: FREE_MATERIAL_COUNT_LABEL },
+    {
+        label: "診療・介護報酬チェック",
+        value: `${FEE_CHECK_DOMAIN_COUNT}分野 ${FEE_CHECK_ITEM_COUNT}項目`,
+        note: "月次で改定・出典を点検",
+    },
+    { label: "コラム", value: `${COLUMN_ARTICLE_COUNT}本` },
+    { label: "運営開始", value: MEDIA_LAUNCH },
     { label: "主な読者", value: "理学療法士・作業療法士・言語聴覚士・介護職・医療介護関係者" },
-    { label: "主な用途", value: "患者説明・退院前指導・訪問リハ・通所リハ・家族説明・施設内資料作成" },
-    { label: "検索流入", value: "増加傾向" },
-    { label: "主な検索キーワード", value: "リハビリ 自主トレ イラスト 無料 / 自主トレ イラスト 無料 など" },
-    { label: "直近3か月 Google検索クリック", value: "235回" },
-    { label: "直近3か月 Google検索表示回数", value: "2,084回" },
+    { label: "主な用途", value: "患者説明・退院前指導・訪問リハ・通所リハ・家族説明・算定要件の確認" },
+    { label: "アクセス", value: "国内からのアクセスが中心" },
 ];
 
 const targetUsers = [
@@ -226,7 +254,7 @@ export default function SponsorPage() {
                                 広告を掲載できます
                             </h1>
                             <p className="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed text-left sm:text-center">
-                                自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。{FREE_MATERIAL_COUNT_LABEL}の無料素材を掲載し、読者層は医療・介護領域に絞られています。研修・教材・採用・福祉用具・介護サービスを、関心の近いユーザーへ届けられます。
+                                自主トレ素材庫は、自主トレ素材・診療／介護報酬チェック・コラムを、リハビリ職や介護職が日常業務の中で使う専門サイトです。{FREE_MATERIAL_COUNT_LABEL}の無料素材と{FEE_CHECK_ITEM_COUNT}項目の報酬チェックを掲載しています。研修・教材・福祉用具・介護サービスを、関心の近いユーザーへ届けられます。
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -285,33 +313,39 @@ export default function SponsorPage() {
                     </div>
                 </section>
 
-                {/* 3. 3ヶ月間の運営データ */}
+                {/* 3. 立ち上げ期の推移（過去の参考資料）
+                    ★2026-09-05：見出しを「3ヶ月間の運営データ」から変えた。
+                      2026年3月〜5月の図で、現在の実績ではない。
+                      最新の数字は次の「現在の媒体状況」が担当する。 */}
                 <section id="performance" className="py-16 sm:py-20 bg-white scroll-mt-24">
                     <div className="container mx-auto px-4">
                         <div className="max-w-5xl mx-auto">
                             <div className="text-center mb-8">
-                                <p className="mb-2 inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold tracking-widest border border-blue-100">
-                                    GROWTH DATA
+                                <p className="mb-2 inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold tracking-widest border border-slate-200">
+                                    ARCHIVE
                                 </p>
                                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
-                                    3ヶ月間の運営データ
+                                    立ち上げ期の推移（{MEDIA_LEGACY_CHART.period}）
                                 </h2>
-                                <p className="text-sm sm:text-base text-slate-500 font-medium">
-                                    2026年3月〜5月にかけて、掲載素材数とサイトの閲覧数がともに増加しています。
+                                <p className="text-sm sm:text-base text-slate-500 font-medium break-keep">
+                                    過去の参考資料として残している図です。現在の実績ではありません。
                                 </p>
                             </div>
 
                             <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-8 break-keep max-w-3xl mx-auto">
-                                自主トレ素材庫は、リハビリ職・介護職が無料素材や資料を探すタイミングで訪問するサイトです。掲載素材数の増加に合わせて検索流入・閲覧数も伸びており、リハビリ・介護領域に関心の近いユーザーへ低価格で接触できます。
+                                自主トレ素材庫は、リハビリ職・介護職が素材や資料を探すとき、算定要件を確認したいときに開くサイトです。立ち上げからの数か月で、掲載素材数と閲覧数がともに増えました。最新の数字は次の「現在の媒体状況」をご覧ください。
                             </p>
 
                             <figure className="max-w-full rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                                <figcaption className="border-b border-slate-200 bg-slate-50 px-4 py-2.5 text-center text-xs font-bold text-slate-600 sm:text-sm">
+                                    {MEDIA_LEGACY_CHART.period}の推移（過去の参考資料）
+                                </figcaption>
                                 <div className="p-3 sm:p-5">
                                     <Image
-                                        src="/images/sponsor-performance-2026-spring.png"
-                                        alt="自主トレ素材庫 2026年3月から5月までの3ヶ月間の推移"
-                                        width={1672}
-                                        height={941}
+                                        src={MEDIA_LEGACY_CHART.src}
+                                        alt={MEDIA_LEGACY_CHART.alt}
+                                        width={MEDIA_LEGACY_CHART.width}
+                                        height={MEDIA_LEGACY_CHART.height}
                                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
                                         className="block w-full h-auto rounded-2xl"
                                     />
@@ -319,7 +353,7 @@ export default function SponsorPage() {
                             </figure>
 
                             <p className="mt-4 text-xs sm:text-sm text-slate-500 text-center leading-relaxed break-keep">
-                                ※画像は2026年3月〜5月時点の推移です。<strong className="text-slate-700">現在は{FREE_MATERIAL_COUNT_LABEL}の素材を掲載しています</strong>。
+                                ※この図は{MEDIA_LEGACY_CHART.period}時点のものです。<strong className="text-slate-700">現在の掲載素材数は{FREE_MATERIAL_COUNT_LABEL}です</strong>。
                                 <br className="hidden sm:block" />
                                 数値はGoogle Analytics 4による参考値です。広告効果を保証するものではありません。
                             </p>
@@ -336,7 +370,7 @@ export default function SponsorPage() {
                                     現在の媒体状況
                                 </h2>
                                 <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-3xl mx-auto break-keep">
-                                    自主トレ素材庫は、リハビリ職・介護職が患者さんへの自主トレ指導で使える無料素材サイトです。掲載素材数の拡充とともに、検索流入も少しずつ伸びています。
+                                    自主トレ素材庫は、自主トレ素材・診療／介護報酬チェック・コラムを、リハビリ職や介護職が日常業務の中で使う専門サイトです。
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -351,11 +385,22 @@ export default function SponsorPage() {
                                         <p className="text-sm font-bold leading-snug text-slate-900 sm:text-base break-keep">
                                             {row.value}
                                         </p>
+                                        {row.note && (
+                                            <p className="mt-1 text-[11px] font-bold text-slate-400 break-keep">
+                                                {row.note}
+                                            </p>
+                                        )}
                                     </div>
                                 ))}
                             </div>
+                            {/* ★2,926人は「サイト全体の利用者数」。
+                                全員がリハビリ職・転職希望者・広告を見た人ではない。ここで必ず断る。 */}
                             <p className="mt-5 text-xs sm:text-sm text-slate-500 leading-relaxed break-keep max-w-3xl mx-auto text-center">
-                                ※数値はGoogle Search Console等による参考値です。広告効果を保証するものではありません。
+                                ※{MONTHLY_USERS.metric}は{MONTHLY_USERS.caution}
+                                <br className="hidden sm:block" />
+                                ※読者層の内訳（職種・地域の比率）は、回答数が十分に集まるまで公開していません。
+                                <br className="hidden sm:block" />
+                                ※数値は{MONTHLY_USERS.source}による参考値です。広告の表示回数・クリック数・広告効果を保証するものではありません。
                             </p>
                         </div>
                     </div>
@@ -420,6 +465,10 @@ export default function SponsorPage() {
                         </div>
                         <p className="mt-8 max-w-3xl mx-auto text-xs sm:text-sm text-slate-500 leading-relaxed break-keep px-5 py-4 rounded-2xl bg-white border border-slate-200">
                             掲載位置は、プラン内容・掲載内容・サイト全体の見やすさに合わせて調整します。同一ページに過度な広告が並ばないよう、掲載数を制限する場合があります。
+                            <br />
+                            {/* ★売っていない面を、売っている面と同じ場所にはっきり書く。
+                                報酬チェック・コラムへの広告枠は用意していない（作っていない機能を約束しない）。 */}
+                            現在ご用意しているのは、上の掲載場所です。報酬チェック（/fee-check/）とコラム（/column/）のページには広告枠を設けていません。
                         </p>
                     </div>
                 </section>
@@ -502,6 +551,24 @@ export default function SponsorPage() {
                                 <br />
                                 医療・介護・福祉領域と著しく関連性が低い広告、公序良俗に反する内容、誇大表現を含む内容は掲載をお断りする場合があります。
                             </p>
+                        </div>
+
+                        {/* ★求人は別商品。料金・掲載期間・内容がスポンサー枠と違うので、
+                            同じ料金表の中で混同されないよう、専用LPへ分けて案内する。 */}
+                        <div className="max-w-4xl mx-auto mt-6 px-5 py-5 sm:px-6 sm:py-6 bg-white border border-blue-200 rounded-2xl">
+                            <h3 className="text-base font-black text-slate-900 mb-2 break-keep">
+                                リハビリ職の採用でお探しの方へ
+                            </h3>
+                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep">
+                                求人の掲載は、上のスポンサー枠とは別の商品です。掲載期間・料金・掲載内容が異なり、求人専用のページ（求人詳細ページ・求人一覧）に掲載します。
+                            </p>
+                            <Link
+                                href="/jobs/posting/"
+                                className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-full border border-blue-200 bg-white px-5 py-2.5 text-sm font-bold text-blue-600 transition-colors hover:bg-blue-600 hover:text-white"
+                            >
+                                求人掲載について見る
+                                <ArrowIcon className="h-3.5 w-3.5" />
+                            </Link>
                         </div>
                     </div>
                 </section>

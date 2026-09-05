@@ -3,9 +3,13 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JobPostingCtaButton } from "@/components/jobs/JobPostingCtaButton";
+import { JobPostingInquiryForm } from "@/components/jobs/JobPostingInquiryForm";
 import { FREE_MATERIAL_COUNT_LABEL } from "@/constants/content-counts";
 import { FEE_CHECK_ITEM_COUNT } from "@/constants/public-counts";
+import { MONTHLY_USERS } from "@/constants/media-stats";
 import {
+    JOB_POSTING_INQUIRY_ANCHOR_ID,
+    JOB_POSTING_DRAFT_MAIL_URL,
     JOB_POSTING_LP_INDEXABLE,
     JOB_WORKPLACE_DISCLOSURE_ITEMS,
     JOB_WORKPLACE_DISCLOSURE_TOTAL,
@@ -132,13 +136,13 @@ const planIncludes = [
 const steps: { step: string; title: string; body: string }[] = [
     {
         step: "STEP 1",
-        title: "掲載申込み",
-        body: "このページの申込みボタンから、施設名・ご担当者名・ご連絡先をお送りください。",
+        title: "まず相談する（料金は発生しません）",
+        body: "このページの相談フォームから、施設名・ご担当者名・メールアドレスをお送りください。公式採用ページのURLがあれば、そこから掲載内容をご相談できます。ご相談だけで終えていただいても構いません。",
     },
     {
         step: "STEP 2",
         title: "求人情報の確認・原稿提出",
-        body: "掲載項目をお送りしますので、基本情報（募集職種・業務内容・就業場所）、勤務条件（契約期間・勤務時間・休日・時間外労働）、給与・待遇の順にご記入ください。労働条件の明示に必要な項目は雛形に含めています。リハビリ職員数や1日の単位数などの職場情報は、答えられる範囲で構いません。",
+        body: "ご相談への返信で掲載項目の雛形をお送りします。基本情報（募集職種・業務内容・就業場所）、勤務条件（契約期間・勤務時間・休日・時間外労働）、給与・待遇の順にご記入ください。労働条件の明示に必要な項目は雛形に含めています。リハビリ職員数や1日の単位数などの職場情報は、答えられる範囲で構いません。",
     },
     {
         step: "STEP 3",
@@ -216,7 +220,7 @@ export default function JobPostingPage() {
 
                             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                                 <JobPostingCtaButton placement="jobs_posting_hero">
-                                    求人掲載について申し込む
+                                    まず相談する（無料）
                                 </JobPostingCtaButton>
                                 <Link
                                     href="#pricing"
@@ -228,6 +232,11 @@ export default function JobPostingPage() {
 
                             <p className="mt-6 text-sm font-bold text-slate-600">
                                 {JOB_POSTING_BETA.durationDays}日間 {priceLabel}（税込）／採用成功報酬なし
+                            </p>
+                            {/* ★CTAの直下に「まだ料金は発生しない」ことを置く。
+                                掲載原稿の記入は相談のあと（STEP 2）。 */}
+                            <p className="jp-text mt-2 text-sm font-bold leading-7 text-slate-600">
+                                相談の時点では料金は発生しません。最初にご記入いただくのは、施設名・ご担当者名・メールアドレス・公式採用ページのURL（あれば）だけです。
                             </p>
                             <p className="mt-2 text-xs font-bold text-slate-500">
                                 運営：{JOB_OPERATOR_NAME}
@@ -276,6 +285,14 @@ export default function JobPostingPage() {
                                     </div>
                                 ))}
                             </div>
+
+                            {/* ★月間ユーザー数は「サイト全体の利用者数」。
+                                全員がPT・OT・ST、転職希望者、広告を見た人ではない。数字のすぐ下で断る。 */}
+                            <p className="jp-text mt-4 text-xs font-bold leading-6 text-slate-500">
+                                ※{MONTHLY_USERS.metric}は{MONTHLY_USERS.caution}
+                                <br />
+                                ※掲載による応募・採用、表示回数・クリック数を保証するものではありません。
+                            </p>
 
                             {/*
                               利用者アンケートの集計値。
@@ -620,7 +637,7 @@ export default function JobPostingPage() {
 
                                     <div className="mt-8">
                                         <JobPostingCtaButton placement="jobs_posting_pricing">
-                                            求人掲載を申し込む
+                                            まず相談する（無料）
                                         </JobPostingCtaButton>
                                     </div>
 
@@ -684,6 +701,48 @@ export default function JobPostingPage() {
                     </div>
                 </section>
 
+                {/* ---------- 初回相談フォーム ----------
+                    ★このページの3つのCTAは、すべてここ（#inquiry）へ飛ぶ。
+                      掲載原稿（職業安定法の明示事項を含む項目一式）は STEP 2 のメール雛形が担当する。 */}
+                <section
+                    id={JOB_POSTING_INQUIRY_ANCHOR_ID}
+                    className="scroll-mt-20 border-t border-slate-200 bg-blue-50/40 py-14 sm:py-20"
+                >
+                    <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-2xl">
+                            <p className="text-xs font-black tracking-widest text-blue-700">CONTACT</p>
+                            <h2 className="jp-heading mt-2 text-2xl font-black leading-snug text-slate-950 sm:text-3xl">
+                                まず相談する
+                            </h2>
+                            <p className="jp-text mt-4 text-sm font-bold leading-8 text-slate-700 sm:text-base">
+                                採用ページのURLをいただければ、そこから掲載内容をご相談できます。公式採用ページがまだ無い施設でも掲載できますので、その場合はご相談内容にお書きください。
+                            </p>
+
+                            <div className="mt-8">
+                                <JobPostingInquiryForm placement="jobs_posting_form" />
+                            </div>
+
+                            <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
+                                <h3 className="jp-heading text-sm font-black text-slate-950 sm:text-base">
+                                    掲載原稿の項目を先に見ておきたい方へ
+                                </h3>
+                                <p className="jp-text mt-2 text-sm font-bold leading-7 text-slate-700">
+                                    STEP 2 でご記入いただく項目の雛形です。募集職種・業務内容・就業場所・勤務条件・給与など、労働条件の明示に必要な項目が入っています。相談の前に目を通しておきたい場合だけご利用ください。
+                                </p>
+                                <a
+                                    href={JOB_POSTING_DRAFT_MAIL_URL}
+                                    className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-slate-300 px-6 py-2.5 text-sm font-black text-slate-700 transition-colors hover:bg-slate-50"
+                                >
+                                    掲載原稿の雛形をメールで開く
+                                </a>
+                                <p className="mt-2 text-xs font-bold leading-6 text-slate-500">
+                                    メールアプリが開きます。開かない端末では、上のフォームからご相談ください。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* ---------- よくあるご質問 ---------- */}
                 <section className="border-t border-slate-200 bg-slate-50 py-14 sm:py-20">
                     <div className="container mx-auto px-4">
@@ -723,7 +782,7 @@ export default function JobPostingPage() {
                             </p>
                             <div className="mt-8 flex justify-center">
                                 <JobPostingCtaButton placement="jobs_posting_footer">
-                                    求人掲載を申し込む
+                                    まず相談する（無料）
                                 </JobPostingCtaButton>
                             </div>
                             <p className="mt-6 text-xs font-bold leading-6 text-slate-400">

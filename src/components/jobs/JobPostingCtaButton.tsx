@@ -1,19 +1,19 @@
 "use client";
 
 import { trackB2bContactClick } from "@/lib/analytics";
-import {
-    JOB_POSTING_APPLICATION_IS_EXTERNAL,
-    JOB_POSTING_APPLICATION_URL,
-} from "@/constants/jobs";
+import { JOB_POSTING_INQUIRY_ANCHOR_ID } from "@/constants/jobs";
 
 /**
- * 求人掲載の申込CTA（/jobs/posting/ 用）。
+ * 求人掲載の相談CTA（/jobs/posting/ 用）。
  * --------------------------------------------------------------
- * ★申込先URLは @/constants/jobs の JOB_POSTING_APPLICATION_URL 1か所だけ。
- *   ここを含め、ページ側にURLは書かない。
+ * ★2026-09-05：飛び先を「長いmailto」から「同じページ内の初回相談フォーム」に変えた。
+ *   メールアプリの設定がない端末でも相談でき、最初に書く項目も5つで済む。
+ *   掲載原稿（職業安定法の明示事項を含む一式）は STEP 2 で別途お送りする。
  *
  * 計測は既存の b2b_contact_click（placement 付き）を再利用する。
  * 新しいイベント名やカスタムディメンションは増やさない。
+ * ⚠ このクリックは「フォームを開いた」であって送信完了ではない。
+ *   送信完了は JobPostingInquiryForm 側の b2b_contact_submit で数える。
  * placement 例：jobs_posting_hero / jobs_posting_pricing / jobs_posting_footer
  */
 export function JobPostingCtaButton({
@@ -36,10 +36,7 @@ export function JobPostingCtaButton({
 
     return (
         <a
-            href={JOB_POSTING_APPLICATION_URL}
-            {...(JOB_POSTING_APPLICATION_IS_EXTERNAL
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
+            href={`#${JOB_POSTING_INQUIRY_ANCHOR_ID}`}
             onClick={() => trackB2bContactClick(placement)}
             className={`${base} ${style} ${className}`}
         >
@@ -53,7 +50,7 @@ export function JobPostingCtaButton({
                 className="h-4 w-4 shrink-0"
                 aria-hidden="true"
             >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m0 0-6-6m6 6 6-6" />
             </svg>
         </a>
     );
