@@ -15,7 +15,8 @@ import {
     jobFacilityTypeLabels,
     jobProfessionLabels,
 } from "@/constants/jobs";
-import type { Job, JobFacilityType, JobProfession } from "@/types/job";
+import { selectSponsoredJob, type SponsoredJobOptions } from "@/lib/job-rotation";
+import type { Job } from "@/types/job";
 
 const SITE_URL = "https://jishutore-sozaiko.online";
 
@@ -114,40 +115,21 @@ export function getSitemapJobs(): Job[] {
 }
 
 /**
- * 将来のコンテキスト連動配信で使う、1件だけ選ぶヘルパー。
- * ★今回は配信システムを作らないので、素材ページ等への設置はしていない。
- *   設置するときはサーバーコンポーネントでこれを呼び、
- *   返ってきた求人を <SponsoredJobCard job={job} placement="item_detail" /> に渡す。
+ * サイト内の広告枠に出す求人を1件だけ選ぶ。
+ * ================================================================
+ * 使う側（サーバーコンポーネント）：
+ *     const job = pickSponsoredJob({ seed: `item:${item.id}`, professions: ["OT"] });
+ *     {job && <SponsoredJobCard job={job} placement="item_detail" />}
+ *
+ * 候補は getPublishedJobs()。下書き・掲載終了は入らず、
+ * 本番デプロイでは掲載サンプル（架空求人）も入らない（getVisibleJobs）。
+ *
+ * ★選び方・分散の考え方・限界は @/lib/job-rotation の selectSponsoredJob に書いてある。
+ *   あちらはデータを持たない純関数なので、検証スクリプトから直接呼べる
+ *   （scripts/check-sponsored-job.ts）。
  */
-export function pickSponsoredJob(options?: {
-    professions?: JobProfession[];
-    facilityTypes?: JobFacilityType[];
-    topics?: string[];
-}): Job | null {
-    const candidates = getPublishedJobs();
-    if (candidates.length === 0) return null;
-    if (!options) return candidates[0];
-
-    const { professions, facilityTypes, topics } = options;
-    const matched = candidates.filter((job) => {
-        const t = job.targeting;
-        if (!t) return false;
-        if (professions?.length && !t.targetProfessions?.some((p) => professions.includes(p))) {
-            return false;
-        }
-        if (
-            facilityTypes?.length &&
-            !t.targetFacilityTypes?.some((f) => facilityTypes.includes(f))
-        ) {
-            return false;
-        }
-        if (topics?.length && !t.targetTopics?.some((topic) => topics.includes(topic))) {
-            return false;
-        }
-        return true;
-    });
-
-    return matched[0] ?? candidates[0];
+export function pickSponsoredJob(options?: SponsoredJobOptions): Job | null {
+    return selectSponsoredJob(getPublishedJobs(), options);
 }
 
 // ---------------------------------------------------------------

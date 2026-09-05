@@ -184,7 +184,9 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
 
     // ページ下部に出す求人広告（掲載中の求人が無ければ null＝何も出ない）。
     // 素材ページは職種を特定できないので絞り込みはしない。
-    const sponsoredJob = pickSponsoredJob();
+    // ★seed に素材IDを渡す＝掲載中の求人が複数あるとき、素材ごとに違う求人が出る。
+    //   先頭1件に偏らないようにするためで、素材ごとの表示は毎回同じ（ちらつかない）。
+    const sponsoredJob = pickSponsoredJob({ seed: `item:${item.id}` });
     const plusPreview = plusMatch
         ? {
             src: `/plus/previews/${plusMatch.id}.webp`,

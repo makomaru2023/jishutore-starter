@@ -112,11 +112,13 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
 
     // ページ下部に出す求人広告。分野から施設種別を推定して文脈連動させる。
     // 該当が無い分野（急性期・地域包括ケア病棟など）は絞り込まず、掲載中の求人をそのまま出す。
-    const sponsoredJob = pickSponsoredJob(
-        FEE_CHECK_DOMAIN_TO_FACILITY[domain.domain]
+    // ★seed に分野＋項目IDを渡す＝同じ施設種別に複数の求人があるとき、項目ごとに散る。
+    const sponsoredJob = pickSponsoredJob({
+        seed: `fee:${domain.domain}/${item.id}`,
+        ...(FEE_CHECK_DOMAIN_TO_FACILITY[domain.domain]
             ? { facilityTypes: [FEE_CHECK_DOMAIN_TO_FACILITY[domain.domain]!] }
-            : undefined,
-    );
+            : {}),
+    });
     const latestKaiteiWatch = getLatestKaiteiWatch();
     const kaiteiWatch = latestKaiteiWatch
         ? {
@@ -251,7 +253,7 @@ export default async function FeeCheckDetailPage({ params }: { params: Promise<{
                             ★分野から施設種別を推定して求人を選ぶ＝報酬チェックの文脈に連動させる。
                               例）老健の加算を調べている人には老健の求人。
                             ★掲載中の求人が無ければ null で何も描画しない。
-                              絞り込みで該当0件でも pickSponsoredJob が先頭にフォールバックする。
+                              絞り込みで該当0件のときは、候補全体から項目IDで散らして1件出す。
                             ★位置：算定要件の確認を邪魔しないよう、分野CTAの後（最下部）に置く。 */}
                         {sponsoredJob && (
                             <SponsoredJobCard

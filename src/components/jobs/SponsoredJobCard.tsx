@@ -12,14 +12,15 @@ import type { Job } from "@/types/job";
  * 求人一覧の JobCard に「求人広告」の明示を付けただけのもの。
  * 記事や素材の本文と広告を見分けられるようにするために分けている。
  *
- * ★今回はまだどのページにも設置していない（配信システムは作らない方針のため）。
- *   設置するときは、サーバーコンポーネント側で求人を選んで渡すだけでよい：
+ * ★設置済み：素材詳細（placement="item_detail"）と報酬チェック詳細（placement="fee_check"）。
+ *   増やすときは、サーバーコンポーネント側で求人を選んで渡すだけでよい：
  *
  *     import { pickSponsoredJob } from "@/lib/jobs";
- *     const job = pickSponsoredJob({ professions: ["OT"], topics: ["adl"] });
+ *     const job = pickSponsoredJob({ seed: `item:${item.id}`, professions: ["OT"] });
  *     ...
  *     {job && <SponsoredJobCard job={job} placement="item_detail" />}
  *
+ *   ★seed（ページを一意に表す文字列）を必ず渡すこと。渡さないと候補の先頭に固定される。
  *   placement を設置場所ごとに変えると、GA4でどこのカードが効いたか比較できる。
  */
 export function SponsoredJobCard({
