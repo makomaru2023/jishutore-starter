@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "LINE友だち追加特典 | 自主トレ素材庫",
@@ -85,7 +86,7 @@ export default function LineTokutenPage() {
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
             <Header />
-            <main className="container mx-auto px-4 py-12 flex-1 max-w-3xl">
+            <main className="container mx-auto px-4 py-12 flex-1 max-w-4xl">
                 {/* お礼メッセージ */}
                 <div className="text-center mb-12">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: '#06C755' }}>
@@ -98,11 +99,49 @@ export default function LineTokutenPage() {
                     </h1>
                     <p className="text-slate-500 font-medium">
                         配布資料6点＋制作ツール（無料版）の計7点をご利用いただけます。<br />
-                        資料は印刷してそのまま患者さんに渡せるフォーマットです。
+                        まずは腰痛編のPowerPointと、チェックシートからお試しください。
                     </p>
                 </div>
 
-                {/* 特典カード一覧 */}
+                <section aria-labelledby="start-title" className="mb-10 rounded-2xl border border-blue-200 bg-white p-5 sm:p-8 shadow-sm">
+                    <p className="text-sm font-bold text-blue-700">まずは、編集して使ってみる</p>
+                    <h2 id="start-title" className="mt-2 text-2xl sm:text-3xl font-black text-slate-900 break-keep">腰痛編から、必要な1枚を。</h2>
+                    <p className="mt-3 text-slate-600 leading-relaxed break-keep">疾患別9本セットの「腰痛編」1冊を、全12ページまとめて無料で試せます。</p>
+                    <div className="mt-6 grid gap-6 sm:grid-cols-[1fr_1.4fr] sm:items-center">
+                        <Image src="/line-tokuten/previews/low-back-pain-jishutore.jpg" alt="腰痛編の自主トレ資料サンプル" width={600} height={848} className="max-h-72 w-full object-contain rounded-xl bg-slate-50" />
+                        <div>
+                            <p className="font-bold text-slate-900">文字を編集するならPowerPoint</p>
+                            <p className="mt-2 text-sm leading-relaxed text-slate-600">必要なページを選び、配布先に合わせて説明文や見出しを整えられます。</p>
+                            <div className="mt-4 flex flex-col gap-3">
+                                <a href="/line-tokuten/low-back-pain-jishutore.pptx" download className="rounded-xl bg-blue-700 px-5 py-3 text-center font-bold text-white hover:bg-blue-800">腰痛編をダウンロード（PowerPoint）</a>
+                                <a href="/line-tokuten/low-back-pain-jishutore.pdf" download className="rounded-xl border border-slate-300 px-5 py-3 text-center font-bold text-slate-700 hover:bg-slate-50">まず内容を見る（PDF）</a>
+                            </div>
+                            <p className="mt-3 text-xs leading-relaxed text-slate-500">編集にはPowerPointなどの対応ソフトが必要です。ソフトやフォントによって表示が異なる場合があります。</p>
+                        </div>
+                    </div>
+                    <div className="mt-7 border-t border-slate-200 pt-6">
+                        <h3 className="font-bold text-slate-900">使い始めるまでの3ステップ</h3>
+                        <ol className="mt-3 grid gap-4 sm:grid-cols-3">
+                            <li className="rounded-xl bg-slate-50 p-4"><p className="font-bold text-blue-800">1. 必要なページを選ぶ</p><p className="mt-2 text-sm text-slate-600">原本を残し、コピーしたファイルで作業します。</p></li>
+                            <li className="rounded-xl bg-slate-50 p-4"><p className="font-bold text-blue-800">2. 文字を編集する</p><p className="mt-2 text-sm text-slate-600">見出しや説明文を、配布先に合わせて整えます。</p></li>
+                            <li className="rounded-xl bg-slate-50 p-4"><p className="font-bold text-blue-800">3. 印刷前に確認する</p><p className="mt-2 text-sm text-slate-600">プレビューで文字切れや、印刷するページを確認します。</p></li>
+                        </ol>
+                        <p className="mt-4 text-sm leading-relaxed text-slate-600">資料は医療行為の代わりになるものではありません。運動の選択・回数・注意点は、専門職が利用者さんの状態に合わせて判断してください。</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="checksheet-title" className="mb-10 rounded-2xl border border-slate-200 bg-white p-5 sm:p-8">
+                    <p className="text-sm font-bold text-blue-700">資料と一緒に使う</p>
+                    <h2 id="checksheet-title" className="mt-2 text-xl font-black text-slate-900">自主トレチェックシート</h2>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">自主トレを行った日を記録する、カレンダー式のシートです。配布資料とセットにして、振り返りに使えます。</p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                        <a href="/line-tokuten/jishutore-checksheet.pdf" download className="rounded-xl border border-blue-200 px-4 py-3 font-bold text-blue-800 hover:bg-blue-50">チェックシート（PDF）</a>
+                        <a href="/line-tokuten/jishutore-checksheet.pptx" download className="rounded-xl border border-blue-200 px-4 py-3 font-bold text-blue-800 hover:bg-blue-50">チェックシート（PowerPoint）</a>
+                    </div>
+                </section>
+
+                <section aria-labelledby="other-bonuses-title">
+                <h2 id="other-bonuses-title" className="mb-4 text-xl font-black text-slate-900">ほかの資料・制作ツールも使えます</h2>
                 <div className="space-y-6">
                     {/* NEW：プロンプト工房（無料版） */}
                     <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
@@ -111,9 +150,6 @@ export default function LineTokutenPage() {
                             <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-1">
                                     <h2 className="text-lg font-black text-slate-900">伝わるプロンプト工房（無料版）</h2>
-                                    <span className="text-xs font-black bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full tracking-wider">
-                                        NEW
-                                    </span>
                                 </div>
                                 <p className="text-sm text-slate-500 font-medium mb-4">
                                     用途とテーマを選ぶだけで、ChatGPT用のスライド画像生成プロンプトが完成。家族説明や勉強会の資料づくりに。無料版はテンプレート2種・スタイル3種・3枚まで使えます。
@@ -131,7 +167,7 @@ export default function LineTokutenPage() {
                         </div>
                     </div>
 
-                    {tokutenList.map((item, i) => (
+                    {tokutenList.filter((item) => !item.files.some((file) => file.href === "/line-tokuten/low-back-pain-jishutore.pptx" || file.href === "/line-tokuten/jishutore-checksheet.pptx")).map((item, i) => (
                         <div
                             key={i}
                             className={`bg-white rounded-2xl border p-6 shadow-sm ${
@@ -177,6 +213,14 @@ export default function LineTokutenPage() {
                         </div>
                     ))}
                 </div>
+                </section>
+
+                <section aria-labelledby="product-title" className="mt-10 rounded-2xl border border-blue-200 bg-blue-50 p-5 sm:p-8">
+                    <h2 id="product-title" className="text-xl font-black text-slate-900">ほかの疾患の資料も必要な方へ</h2>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">無料サンプルは腰痛編1冊です。疾患別9本セットは、腰痛編を含む9テーマのPowerPoint資料を収録しています。必要なテーマがあるか、商品ページでご確認ください。</p>
+                    <Link href="/products/self-training-materials/" className="mt-4 inline-flex rounded-xl bg-blue-700 px-5 py-3 font-bold text-white hover:bg-blue-800">疾患別9本セットの内容・価格を見る</Link>
+                    <p className="mt-3 text-xs text-slate-500">無料特典の利用に、商品の購入は必要ありません。</p>
+                </section>
 
                 {/* フッターメッセージ */}
                 <div className="mt-12 text-center">

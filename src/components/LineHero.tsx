@@ -18,12 +18,12 @@ type TokutenItem = {
 const LINE_SVG_PATH = "M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314";
 
 const tokutenList: TokutenItem[] = [
+    { label: "腰痛編・編集できるPowerPoint（全12ページ）", preview: "/line-tokuten/previews/low-back-pain-jishutore.jpg", ready: true },
+    { label: "一緒に使えるカレンダー式チェックシート", preview: "/line-tokuten/previews/jishutore-checksheet.jpg", ready: true },
     { label: "「自主トレする理由」説明スライド", preview: "/line-tokuten/previews/jishutore-reason.jpg", ready: true },
-    { label: "カレンダー式チェックシート", preview: "/line-tokuten/previews/jishutore-checksheet.jpg", ready: true },
     { label: "転倒予防チェックリスト", preview: "/line-tokuten/previews/fall-prevention-checklist.jpg", ready: true },
     { label: "お薬・リハビリ記録ノート", preview: "/line-tokuten/previews/medicine-rehab-record-weekly.jpg", ready: true },
     { label: "退院後の生活Q&A集", preview: "/line-tokuten/previews/post-discharge-qa.jpg", ready: true },
-    { label: "腰痛 自主トレメニュー（Plus収録サンプル）", preview: "/line-tokuten/previews/low-back-pain-jishutore.jpg", ready: true },
 ];
 
 function LineIconWhite({ className }: { className: string }) {
@@ -53,27 +53,24 @@ export function LineHero() {
                                         <path d={LINE_SVG_PATH} />
                                     </svg>
                                 </div>
-                                <p className="text-white font-black text-lg text-center leading-tight">退院後も<br />続けてもらう<br />7点セット</p>
+                                <p className="text-white font-black text-lg text-center leading-relaxed">選ぶ → 編集する → 印刷<br />まずは腰痛編で<br />資料づくりをお試し</p>
                             </div>
                         </div>
 
                         {/* 右側: テキスト＋特典リスト＋ボタン */}
                         <div className="lg:w-3/5 text-center lg:text-left">
                             <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight mb-4">
-                                <span className="block sm:inline">退院後も自主トレを</span>
-                                <span className="block sm:inline">続けてもらう</span>
-                                <span className="block sm:inline">
-                                    <span style={{ color: '#FDE047' }}>「7点セット」</span>を無料配布中
-                                </span>
+                                <span className="block break-keep">編集できる自主トレ資料</span>
+                                <span className="block break-keep">まずは<span style={{ color: '#FDE047' }}>無料でお試し</span></span>
                             </h2>
                             <p className="font-medium mb-6 text-sm sm:text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                                現役リハビリ職が現場で使っている患者配布資料。
+                                腰痛編のPowerPoint全12ページから、必要なページを選んで編集できます。
                                 <br />
                                 <span className="font-black" style={{ color: '#FDE047' }}>
-                                    有料9本セットから「腰痛 自主トレメニュー」のサンプルも追加！
+                                    一緒に使える、カレンダー式チェックシート付き。
                                 </span>
                                 <br />
-                                LINE友だち追加で、今すぐ全部もらえます。
+                                説明資料などの既存特典も、引き続き受け取れます。
                                 <br />
                                 <span className="text-xs" style={{ color: '#FDE047' }}>
                                     ↓ クリックでプレビュー
@@ -86,7 +83,7 @@ export function LineHero() {
                                         key={i}
                                         type="button"
                                         onClick={() => setPreview(item)}
-                                        className="w-full flex items-center gap-3 rounded-xl px-4 py-2.5 max-w-lg mx-auto lg:mx-0 cursor-pointer hover:scale-[1.02] hover:bg-white/20 transition-all text-left"
+                                        className={`w-full flex items-center gap-3 rounded-xl px-4 py-2.5 max-w-lg mx-auto lg:mx-0 cursor-pointer hover:bg-white/20 transition-all text-left ${i < 2 ? "ring-1 ring-white/50" : ""}`}
                                         style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
                                         title="クリックでプレビュー"
                                     >
@@ -109,7 +106,7 @@ export function LineHero() {
                                 <div className="space-y-2.5">
                                     <div className="flex items-start gap-2.5 text-white text-sm font-bold leading-snug">
                                         <span className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-black mt-0.5" style={{ backgroundColor: '#FDE047', color: '#1f2937' }}>
-                                            NEW
+                                            ＋
                                         </span>
                                         <span>
                                             <span aria-hidden="true">🛠</span> 伝わるプロンプト工房（無料版）が使える
@@ -144,10 +141,10 @@ export function LineHero() {
                                 <svg viewBox="0 0 24 24" className="w-7 h-7" fill="#06C755">
                                     <path d={LINE_SVG_PATH} />
                                 </svg>
-                                LINEで受け取る（無料・1分）
+                                編集用PowerPointを受け取る
                             </a>
                             <p className="text-xs mt-3 leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                                ※ ブロックはいつでも可能です。
+                                ※ 編集にはPowerPointなどの対応ソフトが必要です。ブロックはいつでも可能です。
                                 <br className="sm:hidden" />
                                 しつこい営業メッセージは送りません。
                             </p>
